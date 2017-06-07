@@ -1,0 +1,17 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS member ;
+
+DROP TABLE IF EXISTS restaurant;
+
+DROP TABLE IF EXISTS order01 ;
+
+DROP TABLE IF EXISTS rest_evaluate ;
+
+DROP TABLE IF EXISTS product_type;
+
+DROP TABLE IF EXISTS product ;
+
+DROP TABLE IF EXISTS order_item ;
+
+

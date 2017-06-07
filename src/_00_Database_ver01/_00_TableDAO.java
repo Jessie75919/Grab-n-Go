@@ -37,6 +37,7 @@ public class _00_TableDAO {
       
       public int insertMember(){
     	  getDataSource();
+    	  System.out.println();
     	  try(Connection con = ds.getConnection();)
     	  {
     		  

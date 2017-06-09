@@ -28,6 +28,8 @@ public class LoginServlet extends HttpServlet {
 		// 1. 讀取使用者輸入資料
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("pswd");
+		
+		System.out.println("password = "+password);
 		String rm = request.getParameter("rememberMe");
 		String requestURI = (String) session.getAttribute("requestURI");
 		// 2. 進行必要的資料轉換
@@ -134,7 +136,3 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 }
-/*
-x2Yker/Jn2J2jLiqx4fBmQ==
-x2Yker/Jn2J2jLiqx4fBmQ==
-*/

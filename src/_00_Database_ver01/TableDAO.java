@@ -42,7 +42,7 @@ public class TableDAO {
 
 	public int insertMember() {
 		getDataSource();
-		String sql = "insert into member values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into member values(?,?,?,?,?,?,?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
 				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/memberData.csv"));) {
@@ -68,6 +68,7 @@ public class TableDAO {
 				System.out.println("image : " + segment[7]);
 				InputStream is = new FileInputStream("WebContent/images/userImage/" + segment[7] + ".jpg");
 				pst.setBlob(8, is); // m_picture
+				pst.setString(9, segment[7]+".jpg"); // m_fileName
 				result = pst.executeUpdate();
 
 				if (result == 1)

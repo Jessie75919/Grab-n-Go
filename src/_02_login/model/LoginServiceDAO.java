@@ -10,4 +10,5 @@ public interface LoginServiceDAO {
 	public MemberBean checkIDPassword(String userId, String password) ;
 	public List<MemberBean> getMemberList();
 	public void addNewMember(MemberBean mb);
+	
 }

@@ -68,7 +68,7 @@ function setFocusToUserId(){
          </TR>
          <TR>
              <TD width="180" align="right">帳號：　</TD>
-             <TD width="180" colspan='2' align="LEFT">
+             <TD width="250" colspan='2' align="LEFT">
              <input  type="text" name="userId" size="10" 
              value="${sessionScope.user}">
              
@@ -76,13 +76,13 @@ function setFocusToUserId(){
          </TR>
          <TR>
              <TD width="180" align="right">密碼：　</TD>
-             <TD width="180" colspan='2' align="LEFT" >
+             <TD width="250" colspan='2' align="LEFT" >
              <input  type="password" name="pswd"  size="10" 
              value="${sessionScope.password}">
-              
              &nbsp;<small><Font color='red'  size="-3">${ErrorMsgKey.PasswordEmptyError}</Font></small></TD>
              
-         </TR>  
+         </TR>
+           
          <tr>
          <TD width="180" align="right" >
              <input type="checkbox" name="rememberMe" 

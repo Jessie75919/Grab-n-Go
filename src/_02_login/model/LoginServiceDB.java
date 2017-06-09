@@ -1,4 +1,5 @@
 package _02_login.model;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.sql.*;
 
 import _00_init.*;
 import _01_register.model.MemberBean;
+
 public class LoginServiceDB implements LoginServiceDAO {
 	static private List<MemberBean> memberList = new ArrayList<MemberBean>();
 	private DataSource ds = null;
@@ -19,38 +21,34 @@ public class LoginServiceDB implements LoginServiceDAO {
 			populateMemberList(); // 此方法只會執行一次
 		}
 	}
+
 	public MemberBean checkPassword(String user, String password) throws SQLException {
-		String sql = "SELECT * From eMember where memberId = ? and password = ? ";
+		String sql = "SELECT * From member where m_username = ? and m_password = ? ";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
 		MemberBean mb = null;
 		try {
 			connection = ds.getConnection();
-			System.out.println("sql=" + sql);
 			pStmt = connection.prepareStatement(sql);
-			pStmt.setString(1,  user);
-			pStmt.setString(2,  password);
+			pStmt.setString(1, user);
+			pStmt.setString(2, password);
 			rs = pStmt.executeQuery();
-			
+
 			if (rs.next()) {
-				int pKey = rs.getInt("seqNo");
-				String id = rs.getString("memberID").trim(); // 必須確定
-																// rs.getString("memberID")
-																// 不是null才能
-																// .trim()
-				String name = rs.getString("name").trim();
-				String pswd = rs.getString("password").trim();
-				String addr = rs.getString("address");
-				String email = rs.getString("email");
-				String tel = rs.getString("tel");
-				String userType = rs.getString("userType");
-				int exp = rs.getInt("experience");
-				java.sql.Timestamp ts = rs.getTimestamp("register");
-				double totalAmt = rs.getDouble("totalAmt");
-				mb = new MemberBean(pKey, id, name, pswd, addr,
-						email, tel, userType, exp, ts, totalAmt);
-				
+				String id = rs.getString("m_username").trim(); 
+				// 必須確定rs.getString("memberID") not null
+				String pswd = rs.getString("m_password").trim();
+				String name = rs.getString("m_name").trim();
+				String phone = rs.getString("m_phone").trim();
+				String email = rs.getString("m_email").trim();
+				String addr = rs.getString("m_address").trim();
+				Date birthday = rs.getDate("m_birthday");
+				Blob userImage = rs.getBlob("m_picture");
+				String filename = rs.getString("m_filename").trim();
+				mb = new MemberBean
+						(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+
 			}
 		} finally {
 			if (rs != null) {
@@ -60,11 +58,12 @@ public class LoginServiceDB implements LoginServiceDAO {
 				connection.close();
 			}
 		}
-			return mb;
+		return mb;
 	}
+
+	// 由Database讀取會員資料
 	public void populateMemberList() throws SQLException {
-		// 由Database讀取會員資料
-		String sql = "SELECT * From eMember";
+		String sql = "SELECT * From member";
 		Connection connection = null;
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;
@@ -73,31 +72,23 @@ public class LoginServiceDB implements LoginServiceDAO {
 			pStmt = connection.prepareStatement(sql);
 			rs = pStmt.executeQuery();
 			while (rs.next()) {
-				int pKey = rs.getInt("seqNo");
-				String id = rs.getString("memberID").trim(); // 必須確定
-																// rs.getString("memberID")
-																// 不是null才能
-																// .trim()
-				String name = rs.getString("name").trim();
-				String pswd = rs.getString("password").trim();
-				String addr = rs.getString("address");
-				String email = rs.getString("email");
-				String tel = rs.getString("tel");
-				String userType = rs.getString("userType");
-				int exp = rs.getInt("experience");
-				java.sql.Timestamp ts = rs.getTimestamp("register");
-				double totalAmt = rs.getDouble("totalAmt");
-				MemberBean mb = new MemberBean(pKey, id, name, pswd, addr,
-						email, tel, userType, exp, ts, totalAmt);
+				String id = rs.getString("m_username").trim(); // 必須確定rs.getString("memberID") not null
+				String pswd = rs.getString("m_password").trim();
+				String name = rs.getString("m_name").trim();
+				String phone = rs.getString("m_phone").trim();
+				String email = rs.getString("m_email").trim();
+				String addr = rs.getString("m_address").trim();
+				Date birthday = rs.getDate("m_birthday");
+				Blob userImage = rs.getBlob("m_picture");
+				String filename = rs.getString("m_filename").trim();
+				MemberBean mb = new MemberBean(id, pswd, name, phone, email, addr, birthday, userImage, filename);
 				memberList.add(mb);
 			}
 		} finally {
-			if (rs != null) {
+			if (rs != null)
 				rs.close();
-			}
-			if (connection != null) {
+			if (connection != null)
 				connection.close();
-			}
 		}
 	}
 
@@ -119,8 +110,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 	public List<MemberBean> getMemberList() {
 		return memberList;
 	}
+
 	public void addNewMember(MemberBean mb) {
 		memberList.add(mb);
 	}
-	
+
 }

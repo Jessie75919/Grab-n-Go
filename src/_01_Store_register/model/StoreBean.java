@@ -1,8 +1,9 @@
 package _01_Store_register.model;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
-public class StoreBean {
+public class StoreBean implements Serializable{
 	private int rest_id;
 	private String rest_typeId;
 	private String rest_name;
@@ -25,9 +26,61 @@ public class StoreBean {
 		super();
 	}
 
-	public StoreBean(String rest_typeId, String rest_name, String rest_branch, String rest_address, String rest_phone,
-			String rest_owner, String rest_email, String rest_username, String rest_passward, String rest_url,
-			float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo, Blob rest_coverimage) {
+	/*---------------------------------------------------------------------------------
+	 * */
+	
+	public StoreBean(int rest_id, String rest_typeId, String rest_name, String rest_branch,
+			String rest_address,String rest_phone, String rest_owner, String rest_email,
+			String rest_username, String rest_passward,String rest_url) {
+		super();
+		this.rest_id = rest_id;
+		this.rest_typeId = rest_typeId;
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_owner = rest_owner;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_passward = rest_passward;
+		this.rest_url = rest_url;
+	}
+	
+	/*---------------------------------------------------------------------------------
+	 * */
+
+	public StoreBean(int rest_id, String rest_typeId, String rest_name, String rest_branch,
+			String rest_address,String rest_phone, String rest_owner, String rest_email, 
+			String rest_username, String rest_passward,String rest_url, 
+			float rest_longitude, float rest_latitude, Blob rest_mainbanner, 
+			Blob rest_logo,Blob rest_coverimage) {
+		super();
+		this.rest_id = rest_id;
+		this.rest_typeId = rest_typeId;
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_owner = rest_owner;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_passward = rest_passward;
+		this.rest_url = rest_url;
+		this.rest_longitude = rest_longitude;
+		this.rest_latitude = rest_latitude;
+		this.rest_mainbanner = rest_mainbanner;
+		this.rest_logo = rest_logo;
+		this.rest_coverimage = rest_coverimage;
+	}
+
+	/*---------------------------------------------------------------------------------
+	 * */
+
+	public StoreBean(String rest_typeId, String rest_name, String rest_branch,
+			String rest_address, String rest_phone,String rest_owner, String rest_email,
+			String rest_username, String rest_passward, String rest_url,
+			float rest_longitude, float rest_latitude, Blob rest_mainbanner, 
+			Blob rest_logo, Blob rest_coverimage) {
 		super();
 		this.rest_typeId = rest_typeId;
 		this.rest_name = rest_name;
@@ -46,6 +99,9 @@ public class StoreBean {
 		this.rest_coverimage = rest_coverimage;
 	}
 
+	/*---------------------------------------------------------------------------------
+	 * */
+	
 	public int getRest_id() {
 		return rest_id;
 	}

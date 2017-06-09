@@ -15,7 +15,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import _00_init.GlobalService;
-import _01_Store_login.model.StoreLoginServiceDB;
+import _02_Store_login.model.StoreLoginServiceDB;
 
 public class StoreBeanDAO {
 	private List<StoreBean> storeList;

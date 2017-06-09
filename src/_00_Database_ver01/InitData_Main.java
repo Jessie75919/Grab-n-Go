@@ -4,8 +4,8 @@ public class InitData_Main {
 
 	public static void main(String[] args) {
 		TableDAO dao = new TableDAO();
-		dao.insertMember();
-		dao.insertRestaurant();
+		dao.insertMemberTable();
+		dao.insertRestaurantTable();
 
 	}
 

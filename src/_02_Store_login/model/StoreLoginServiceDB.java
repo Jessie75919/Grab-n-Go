@@ -1,4 +1,4 @@
-package _01_Store_login.model;
+package _02_Store_login.model;
 
 import java.util.List;
 

@@ -27,6 +27,7 @@ public class TableDAO {
 	Connection con;
 	PreparedStatement pst;
 
+	// get a connection object.
 	private void getDataSource() {
 		System.out.println("URL: " + GlobalService.DB_URLMySQL);
 		System.out.println("帳號: " + GlobalService.USERID);
@@ -52,7 +53,13 @@ public class TableDAO {
 				}
 				String[] segment = line.split(",");
 				pst.setString(1, segment[0]); // m_username
-				pst.setString(2, segment[1]); // m_password
+				String encrypedString = GlobalService.encryptString(segment[1]); // m_password with encryption
+				pst.setString(2, GlobalService.getMD5Endocing(encrypedString));  // all passwords are "1111"
+				
+				System.out.println("encrypedString : " + encrypedString);   
+				System.out.println("GlobalService.getMD5Endocing  : "
+						+ GlobalService.getMD5Endocing(encrypedString));  // show the result of encrypting 
+
 				pst.setString(3, segment[2]); // m_name
 				pst.setString(4, segment[3]); // m_phone
 				pst.setString(5, segment[4]); // m_email
@@ -64,9 +71,9 @@ public class TableDAO {
 				result = pst.executeUpdate();
 
 				if (result == 1)
-					System.out.println(segment[0] + " - 新增成功 ");
+					System.out.println(segment[0] + " - add success ");
 				else
-					System.out.println("表格新增失敗");
+					System.out.println("table gets error");
 			}
 		} catch (SQLException | IOException e) {
 			System.out.println("SQLException | IOException ");
@@ -75,6 +82,54 @@ public class TableDAO {
 		return result;
 	}
 
+	public int insertRestaurant() {
+		getDataSource();
+		String sql = "insert into restaurant values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantData.csv"));) {
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				String[] segment = line.split(",");
+				pst.setString(1, segment[0]); // rest_typeId
+				pst.setString(2, segment[1]); // rest_name
+				pst.setString(3, segment[2]); // rest_branch
+				pst.setString(4, segment[3]); // rest_address
+				pst.setString(5, segment[4]); // rest_phone
+				pst.setString(6, segment[5]); // rest_owner
+				pst.setString(7, segment[6]); // rest_email
+				pst.setString(8, segment[7]); // rest_username
+				String encrypedString = GlobalService.encryptString(segment[8]); // rest_passward  with encryption
+				pst.setString(9, GlobalService.getMD5Endocing(encrypedString)); // rest_passward
+				pst.setString(10, segment[9]); // rest_url
+				pst.setFloat(11, Float.parseFloat(segment[10])); // rest_longitude
+				pst.setFloat(12, Float.parseFloat(segment[11])); // rest_latitude
+				System.out.println("image : " + segment[12]);
+				InputStream is = new FileInputStream("WebContent/images/restImage/" + segment[12] + ".jpg");
+				pst.setBlob(13, is); // rest_mainbanner
+				is = new FileInputStream("WebContent/images/restImage/" + segment[13] + ".jpg");
+				pst.setBlob(14, is); // rest_logo
+				is = new FileInputStream("WebContent/images/restImage/" + segment[14] + ".jpg");
+				pst.setBlob(15, is); // rest_coverimage
+				result = pst.executeUpdate();
+
+				if (result == 1)
+					System.out.println(segment[1] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		} catch (SQLException | IOException e) {
+			System.out.println("SQLException | IOException ");
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
+	
 	private String[] readSqlFiles(String sqlFileName) {
 
 		try (FileInputStream fis = new FileInputStream(sqlFileName);

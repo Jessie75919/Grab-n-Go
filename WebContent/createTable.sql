@@ -1,4 +1,8 @@
 
+DROP DATABASE IF EXISTS Grab_n_Go;
+
+CREATE DATABASE Grab_n_Go;
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS member ;
@@ -36,15 +40,19 @@ CREATE TABLE restaurant (
 	rest_id INT AUTO_INCREMENT PRIMARY KEY ,
 	rest_typeId VARCHAR(10) NOT NULL,
 	rest_name VARCHAR(32) NOT NULL,
+	rest_branch VARCHAR(10) ,
 	rest_address VARCHAR(50) NOT NULL,
-	rest_phone VARCHAR(10) NOT NULL,
+	rest_phone VARCHAR(15) NOT NULL,
 	rest_owner VARCHAR(10) NOT NULL,
 	rest_email VARCHAR(50) NOT NULL,
 	rest_username VARCHAR(30) NOT NULL,
 	rest_passward VARCHAR(50) NOT NULL,
-	rest_url VARCHAR(50),
+	rest_url VARCHAR(100),
 	rest_longitude FLOAT,
-	rest_latitude FLOAT
+	rest_latitude FLOAT,
+	rest_mainbanner LONGBLOB,
+	rest_logo LONGBLOB,
+	rest_coverimage LONGBLOB
 	
 ) AUTO_INCREMENT = 00001, CHARACTER SET utf8 COLLATE utf8_general_ci;
 

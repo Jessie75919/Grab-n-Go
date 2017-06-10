@@ -1,14 +1,23 @@
 package _01_Store_register.controller;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import com.google.gson.Gson;
 
 import _00_init.GlobalService;
-import _01_register.model.*;
 
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
@@ -39,134 +48,125 @@ import _01_register.model.*;
 //否則存放在主記憶體。
 //maxFileSize: 上傳單一檔案之長度限制，如果超過此數值，Web Container會丟出例外
 //maxRequestSize: 上傳所有檔案之總長度限制，如果超過此數值，Web Container會丟出例外
-//@MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
-//		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
+@MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
+		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 
 @WebServlet("/_01_Store_register/StoreRegister.do")
 public class StoreRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//		System.out.println("I heard ! ");
+		System.out.println("I heard ! ");
 		request.setCharacterEncoding("UTF-8");
-		Map<String,String> errMsg = new HashMap<>();
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print("I heard !!!" );
+		Gson gson = new Gson();
+		String lan = request.getParameter("langitude");
+		System.out.println("lan = "+ lan);
+		
+		// 準備存放錯誤訊息的Map物件
+		// 準備存放註冊成功之訊息的Map物件
+		Map<String,String> msgErr = new HashMap<>();
+		Map<String,String> msgOK = new HashMap<>();
+		
+		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要 session物件來存放共用資料。
 		HttpSession session =  request.getSession(); 
-//		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
-//		// 準備存放錯誤訊息的Map物件
-//		Map<String, String> errorMsg = new HashMap<String, String>();
-//		// 準備存放註冊成功之訊息的Map物件
-//		Map<String, String> msgOK = new HashMap<String, String>();
-//		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要
-//		// session物件來存放共用資料。
-//		HttpSession session = request.getSession();
-//		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
-//		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
-//
-//		String memberID = "";
-//		String password = "";
-//		String password2 = "";
-//		String name = "";
-//		String email = "";
-//		String addr = "";
-//		String tel = "";
-//		String expericnceStr = "";
-//		String fileName = "";
-//		int experience = 0;
-//		long sizeInBytes = 0;
-//		InputStream is = null;
-//		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
+		request.setAttribute("msgErr", msgErr); // 顯示錯誤訊息
+		request.setAttribute("msgOK", msgOK); // 顯示正常訊息
+		
+		String memberID = "";
+		String password = "";
+		String StoreName = "";
+		String branch ="";
+		String addr = "";
+		String tel = "";
+		String email = "";
+		String owner = "";
+		String url = "";
+		float langitude = 0;
+		float latitude = 0;
+		// 上傳圖片
+		/*// mainBanner ------------------
+		String mb_fileName = "";
+		long mb_sizeInBytes = 0;
+		InputStream mb_is = null;
+		// logo ------------------		
+		String lg_fileName = "";
+		long lg_sizeInBytes = 0;
+		InputStream lg_is = null;
+		// coverImage ------------------
+		String cv_fileName = "";
+		long cv_sizeInBytes = 0;
+		InputStream cv_is = null;*/
+		
+		Collection<Part> parts = request.getParts(); // 取出HTTP multipart
 //														// request內所有的parts
-//		GlobalService.exploreParts(parts, request);
-//		// 由parts != null來判斷此上傳資料是否為HTTP multipart request
-//		if (parts != null) { // 如果這是一個上傳資料的表單
-//			for (Part p : parts) {
-//				String fldName = p.getName();
-//				String value = request.getParameter(fldName);
-//
-//				// 1. 讀取使用者輸入資料
-//				if (p.getContentType() == null) {
-//					if (fldName.equals("mid")) {
-//						memberID = value;
-//					} else if (fldName.equals("password")) {
-//						password = value;
-//					} else if (fldName.equalsIgnoreCase("password2")) {
-//						password2 = value;
-//					} else if (fldName.equalsIgnoreCase("name")) {
-//						name = value;
-//					} else if (fldName.equalsIgnoreCase("eMail")) {
-//						email = value;
-//					} else if (fldName.equalsIgnoreCase("address")) {
-//						addr = value;
-//					} else if (fldName.equalsIgnoreCase("tel")) {
-//						tel = value;
-//					} else if (fldName.equalsIgnoreCase("experience")) {
-//						expericnceStr = value;
-//					}
-//				} else {
-//					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
-//					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
-//					if (fileName != null && fileName.trim().length() > 0) {
-//						sizeInBytes = p.getSize();
-//						is = p.getInputStream();
-//					} else {
-//						errorMsg.put("errPicture", "必須挑選圖片檔");
-//					}
-//
-//				}
-//			}
-//			// 2. 進行必要的資料轉換
-//
-//			try {
-//				experience = Integer.parseInt(expericnceStr.trim());
-//			} catch (NumberFormatException e) {
-//				errorMsg.put("errorFormat", "網路購物經驗格式錯誤，應該為整數");
-//			}
-//			// 3. 檢查使用者輸入資料
-//			if (memberID == null || memberID.trim().length() == 0) {
-//				errorMsg.put("errorIDEmpty", "帳號欄必須輸入");
-//			}
-//			if (password == null || password.trim().length() == 0) {
-//				errorMsg.put("errorPasswordEmpty", "密碼欄必須輸入");
-//			}
-//			if (password2 == null || password2.trim().length() == 0) {
-//				errorMsg.put("errorPassword2Empty", "密碼確認欄必須輸入");
-//			}
-//			if (password.trim().length() > 0 && password2.trim().length() > 0) {
-//				if (!password.trim().equals(password2.trim())) {
-//					errorMsg.put("errorPassword2Empty", "密碼欄必須與確認欄一致");
-//					errorMsg.put("errorPasswordEmpty", "*");
-//				}
-//			}
-//			if (name == null || name.trim().length() == 0) {
-//				errorMsg.put("errorName", "姓名欄必須輸入");
-//			}
-//			if (addr == null || addr.trim().length() == 0) {
-//				errorMsg.put("errorAddr", "地址欄必須輸入");
-//			}
-//			if (email == null || email.trim().length() == 0) {
-//				errorMsg.put("errorEmail", "電子郵件欄必須輸入");
-//			}
-//			if (tel == null || tel.trim().length() == 0) {
-//				errorMsg.put("errorTel", "電話號碼欄必須輸入");
-//			}
-//			if (experience < 0) {
-//				errorMsg.put("errorFormat", "網路購物經驗應該為正整數或 0 ");
-//			}
-//		} else {
-//			errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
-//		}
-//		// 如果有錯誤
-//		if (!errorMsg.isEmpty()) {
-//			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-//			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
-//			rd.forward(request, response);
-//			return;
-//		}
+		GlobalService.exploreParts(parts, request);
+		
+		if (parts != null) { // 如果這是一個上傳資料的表單
+			for (Part p : parts) {
+				String fldName = p.getName();
+				String value = request.getParameter(fldName);
+				out.println(fldName );
+				out.println(value );
+				out.println("------------------");
+				// 1. 讀取使用者輸入資料
+				if (p.getContentType() == null) {
+					if (fldName.equals("mid"))
+						memberID = value;
+					else if (fldName.equals("password"))
+						password = value;
+					else if (fldName.equalsIgnoreCase("StoreName"))
+						StoreName = value;
+					else if (fldName.equalsIgnoreCase("branch"))
+						branch = value;
+					else if (fldName.equalsIgnoreCase("StoreName"))
+						StoreName = value;
+					else if (fldName.equalsIgnoreCase("address"))
+						addr = value;
+					else if (fldName.equalsIgnoreCase("tel"))
+						tel = value;
+					else if (fldName.equalsIgnoreCase("eMail"))
+						email = value;
+					else if (fldName.equalsIgnoreCase("owner"))
+						owner = value;
+					else if (fldName.equalsIgnoreCase("url"))
+						url = value;
+					else if (fldName.equalsIgnoreCase("langitude"))
+						langitude = Float.parseFloat(value);
+					else if (fldName.equalsIgnoreCase("latitude"))
+						latitude = Float.parseFloat(value);
+				}
+				/* jc : maybe don't ask Image of restaurant in registration.
+				 * 
+				  else {
+					 mb_fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
+					 mb_fileName = GlobalService.adjustFileName(mb_fileName,
+					 GlobalService.IMAGE_FILENAME_LENGTH);
+					 if (mb_fileName != null && mb_fileName.trim().length() > 0) {
+						 mb_sizeInBytes = p.getSize();
+						 mb_is = p.getInputStream();
+					 } 
+				}*/
+			}
+		}
+			// 2. 進行必要的資料轉換
+			// All data are String 
+	
+	
+			// 3. 檢查使用者輸入資料
+			// the validation of input are checked by Javascript			
+	
+	
 //		try {
 //			// 4. 進行Business Logic運算
 //			// RegisterServiceFile類別的功能：
 //			// 1.檢查帳號是否已經存在
 //			// 2.儲存會員的資料
+		
+			
+		
 //			RegisterServiceDAO rs = new RegisterServiceDAO_JDBC();
 //			if (rs.idExists(memberID)) {
 //				errorMsg.put("errorIDDup", "此代號已存在，請換新代號");

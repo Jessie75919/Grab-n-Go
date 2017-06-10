@@ -40,7 +40,9 @@ public class StoreBeanDAO {
 
 	synchronized public boolean isUserExists(String username) {
 		boolean exist = false;
+//		System.out.println(username);
 		for (StoreBean sb : storeList) {
+			System.out.println(sb.getRest_username());
 			if (sb.getRest_username().equals(username.trim()))
 				exist = true;
 		}
@@ -53,7 +55,7 @@ public class StoreBeanDAO {
 	synchronized public int insertShopData(StoreBean sb, InputStream banner, InputStream logo, InputStream cover,
 			long bannerSize, long logoSize, long coverSize) {
 		int result = 0;
-		String sql = "insert into restaurant values" + "(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into restaurant values" + "(null,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			pst.setString(++i, sb.getRest_typeId());
@@ -67,13 +69,11 @@ public class StoreBeanDAO {
 			String pwEncryped = GlobalService.encryptString(sb.getRest_passward());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
-			pst.setFloat(++i, sb.getRest_longitude()); // get values from google
-														// api ??
-			pst.setFloat(++i, sb.getRest_latitude()); // get values from google
-														// api ??
-			pst.setBinaryStream(++i, banner, bannerSize);
-			pst.setBinaryStream(++i, logo, logoSize);
-			pst.setBinaryStream(++i, cover, coverSize);
+			pst.setFloat(++i, sb.getRest_longitude()); 
+			pst.setFloat(++i, sb.getRest_latitude()); 
+//			pst.setBinaryStream(++i, banner, bannerSize);
+//			pst.setBinaryStream(++i, logo, logoSize);
+//			pst.setBinaryStream(++i, cover, coverSize);
 
 			result = pst.executeUpdate();
 

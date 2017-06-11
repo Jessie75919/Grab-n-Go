@@ -52,15 +52,24 @@ public class StoreBeanDAO {
 	/*---------------------------------------------------------------------------------
 	 * */
 
-	synchronized public int insertShopData(StoreBean sb, InputStream banner, InputStream logo, InputStream cover,
-			long bannerSize, long logoSize, long coverSize) {
+	synchronized public int insertShopData(StoreBean sb) {
 		int result = 0;
-		String sql = "insert into restaurant values" + "(null,?,?,?,?,?,?,?,?,?,?,?,?)";
+		System.out.println("------------------------------------");
+		System.out.println(sb.toString());
+		System.out.println("owner = "+sb.getRest_owner());
+		
+		String sql = "insert into restaurant "+
+				"(rest_id,rest_typeId,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_passward,rest_url,rest_longitude,rest_latitude)"
+				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
+			System.out.println("------------------------------------");
 			pst.setString(++i, sb.getRest_typeId());
+				System.out.println("getRest_typeId() = "+sb.getRest_typeId());
 			pst.setString(++i, sb.getRest_name());
+				System.out.println("getRest_name() = "+sb.getRest_name());
 			pst.setString(++i, sb.getRest_branch());
+				System.out.println(sb.getRest_branch());
 			pst.setString(++i, sb.getRest_address());
 			pst.setString(++i, sb.getRest_phone());
 			pst.setString(++i, sb.getRest_owner());
@@ -71,9 +80,6 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_url());
 			pst.setFloat(++i, sb.getRest_longitude()); 
 			pst.setFloat(++i, sb.getRest_latitude()); 
-//			pst.setBinaryStream(++i, banner, bannerSize);
-//			pst.setBinaryStream(++i, logo, logoSize);
-//			pst.setBinaryStream(++i, cover, coverSize);
 
 			result = pst.executeUpdate();
 

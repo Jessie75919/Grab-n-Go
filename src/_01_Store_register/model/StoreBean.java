@@ -75,6 +75,8 @@ public class StoreBean implements Serializable{
 
 	/*---------------------------------------------------------------------------------
 	 * */
+	
+	
 
 	public StoreBean(String rest_typeId, String rest_name, String rest_branch,
 			String rest_address, String rest_phone,String rest_owner, String rest_email,
@@ -97,6 +99,24 @@ public class StoreBean implements Serializable{
 		this.rest_mainbanner = rest_mainbanner;
 		this.rest_logo = rest_logo;
 		this.rest_coverimage = rest_coverimage;
+	}
+
+	public StoreBean(String rest_typeId, String rest_name, String rest_branch, String rest_address, String rest_phone,
+			String rest_owner, String rest_email, String rest_username, String rest_passward, String rest_url,
+			float rest_longitude, float rest_latitude) {
+		super();
+		this.rest_typeId = rest_typeId;
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_owner = rest_owner;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_passward = rest_passward;
+		this.rest_url = rest_url;
+		this.rest_longitude = rest_longitude;
+		this.rest_latitude = rest_latitude;
 	}
 
 	/*---------------------------------------------------------------------------------

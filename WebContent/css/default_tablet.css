@@ -1,0 +1,39 @@
+ @media only screen and (max-width: 1000px) {
+     /*----------共用----------*/
+     .headBg {
+         display: block;
+     }
+     .social {
+         width: 15%;
+     }
+     /*----------首頁----------*/
+     .mainBanner {
+         position: relative;
+         min-height: 400px;
+     }
+     .mainBanner .title {
+         right: 80px;
+     }
+     .mainBanner .title h1 {
+         font-size: 3em;
+         line-height: 50px;
+     }
+     .mainBanner .title h2 {
+         font-size: 1.3em;
+         line-height: 24px;
+     }
+     .aboutUs ul li {
+         width: 15.2%;
+         margin: 0 0.5% 0 0;
+         font-size: 0.93em;
+     }
+     .aboutUs ul li i {
+         padding: 0 5px 0 0;
+     }
+     .tasty {
+         width: 100%;
+     }
+     .tastyList {
+         padding: 0% 3%;
+     }
+ }

@@ -84,10 +84,21 @@
 		  <td class='menuData'>
 		  <div class='menu'>
 			<c:if test="${ funcName != 'REG' }">
-			   <a href="<c:url value='/_01_register/register.jsp' />"> 註冊 </a>
+			   <a href="<c:url value='/_01_StoreRegister/StoreRegister.jsp' />"> 註冊 </a>
 			</c:if> 
 			<c:if test="${ funcName == 'REG' }"> 
                                                      註冊
+            </c:if>
+            </div>
+          </td>
+          
+           <td class='menuData'>
+		  <div class='menu'>
+			<c:if test="${ funcName != 'UPD' }">
+			   <a href="<c:url value='/_01_StoreRegister/StoreUpdate.jsp' />"> 更新店家資訊 </a>
+			</c:if> 
+			<c:if test="${ funcName == 'UPD' }"> 
+				更新店家資訊
             </c:if>
             </div>
           </td>

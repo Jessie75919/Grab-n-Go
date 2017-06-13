@@ -5,7 +5,7 @@
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>加入會員</title>
+<title>修改會員資料</title>
 <style type="text/css">
 
 body {
@@ -125,7 +125,7 @@ br {
          <TR>
              <TD width="240" ></TD>
              <TD width="200"  align="center">
-                 <Font color="#006600" size='4' face="標楷體">加入會員</Font>
+                 <Font color="#006600" size='4' face="標楷體">修改會員資料/Font>
              </TD>
          <!-- 此區塊顯示程式執行後的訊息 -->
              <TD width="240" aligh="left"><font size="-1" color="#FF0000">
@@ -138,8 +138,8 @@ br {
      <TR><TD colspan="3">
 
 <%-- action="<c:url value='StoreRegister.do' />"  --%>
-<!--  ENCTYPE="multipart/form-data"  -->
-  <form method="POST" action="<c:url value='StoreRegister.do' />"  id="register.do" >
+
+  <form method="POST"  ENCTYPE="multipart/form-data"  action="<c:url value='StoreUpdate.do' />"  id="register.do" >
       
       <label class="fontSize" >帳號：</label> 
       <input type="text" name="mid" value="${param.mid}" id="mid"  class="fieldWidth" style="width: 180px;">
@@ -218,7 +218,7 @@ br {
       
       <br/>
       
-      <!--<label class="fontSize" >主頁面橫幅圖片：</label>
+      <label class="fontSize" >主頁面橫幅圖片：</label>
       <Input Type="file" size="40" class="fieldWidth" style="width: 480px;" id="mainBanner"  name="mainBanner"><BR>
       
       <br/>
@@ -229,12 +229,11 @@ br {
       <br/>
       
       <label class="fontSize" >首頁顯示圖片：</label>
-      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;" id="coverImg"  name="coverImg"><BR>-->
+      <Input Type="file" size="40" class="fieldWidth" style="width: 480px;" id="coverImg"  name="coverImg"><BR>
       
       <br/>
       
       <div id="btnArea" align="center">
-<!--       	<div id='holyshit'>送出</div> -->
       	
          <input type="submit" name=""submit"" id="holyshit" value="送出">
          <span id="setData">點我點我</span>

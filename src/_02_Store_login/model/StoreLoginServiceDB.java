@@ -22,6 +22,7 @@ public class StoreLoginServiceDB {
 	
 
 	public StoreLoginServiceDB() {
+		
 		try {
 			Context ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup(GlobalService.JNDI_DB_NAME);

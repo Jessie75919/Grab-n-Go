@@ -18,6 +18,7 @@ import _00_init.GlobalService;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 public class StoreBeanDAO {
+	
 	private List<StoreBean> storeList;
 	private DataSource ds = null;
 	StoreLoginServiceDB slsdb;

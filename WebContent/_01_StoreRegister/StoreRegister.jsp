@@ -129,7 +129,7 @@ br {
              </TD>
          <!-- 此區塊顯示程式執行後的訊息 -->
              <TD width="240" aligh="left"><font size="-1" color="#FF0000">
-                 ${MsgMap.InsertNG}${MsgMap.errorSaveData}</font>
+                 ${MsgMap.idRepeat}${MsgMap.errorSaveData}</font>
              </TD>
          </TR>         
          </TABLE>
@@ -139,8 +139,7 @@ br {
 
 <%-- action="<c:url value='StoreRegister.do' />"  --%>
 <!--  ENCTYPE="multipart/form-data"  -->
-  <form method="POST"   id="register.do" >
-  <!--<fieldset style='display: inline-block;'>-->
+  <form method="POST" action="<c:url value='StoreRegister.do' />"  id="register.do" >
       
       <label class="fontSize" >帳號：</label> 
       <input type="text" name="mid" value="${param.mid}" id="mid"  class="fieldWidth" style="width: 180px;">
@@ -168,7 +167,7 @@ br {
       <br/>
       
       <label class="fontSize" >餐廳類別：</label>
-      <select id ="StoreType" class="fieldWidth">
+      <select name ="StoreType" id ="StoreType" class="fieldWidth">
       	<option value="台式餐廳" >台式餐廳</option>
       	<option value="日式餐廳" >日式餐廳</option>
       	<option value="韓式餐廳" >韓式餐廳</option>
@@ -235,8 +234,10 @@ br {
       <br/>
       
       <div id="btnArea" align="center">
-      	<div id='holyshit'>送出</div>
-<!--          <input type="submit" name="holyshit" id="holyshit" value="註冊"/> -->
+<!--       	<div id='holyshit'>送出</div> -->
+      	
+         <input type="submit" name=""submit"" id="holyshit" value="送出">
+         <div id="setData">點我點我</div>
          <input type="reset" name="cancel" id="cancel" value="重填">
       </div>
       <br/>
@@ -271,7 +272,6 @@ br {
   	});
   }
 
-  // checkReapeatUser -------------------------------------
 
   //----------------------------------------------------------
   var sendBtn = document.getElementById("holyshit");
@@ -334,25 +334,13 @@ br {
   		var telResult = document.getElementById("telResult");
   		var eMailResult = document.getElementById("eMailResult");
   		var ownerResult = document.getElementById("ownerResult");
-//   		addressToLanlng(address.value);
-  		// mainBanner = document.getElementById("mainBanner");
-  		// logo = document.getElementById("logo");
-  		// coverImg = document.getElementById("coverImg");
   		//-----------------------
 
   		if (!account.value) {
   			midResult.innerHTML = "<font color = 'red' size ='-2'>請輸入帳號</font>";
   			hasErr = true;
   		} else {
-  			// if (checkRepeatUser(account.value)==true) {
-            //     console.log("checkRepeatUser(account.value)" + checkRepeatUser(account.value));
-  			// 	alert("after checkRepeatUser");
-  			// 	alert(checkRepeatUser(account.value));
   				midResult.innerHTML = "";
-  			//     console.log("hasErr : account" + hasErr );
-  			// } else {
-            //     console.log("checkRepeatUser(account.value) = false" );
-  			// }
   		}
 
   		//------------------------------
@@ -413,91 +401,25 @@ br {
   		if (hasErr) {
   			return false;
   		}
-  		//----------------------------------------------------------
 
-  			// client send a request to server
-  			var xhr1 = new XMLHttpRequest();
-            // addressToLanlng(address.value);
-			// alert("addressToLanlng = " + address.value );
-			// alert("langitude=  " + langitude.value);
-			// alert("latitude=  " + latitude.value);
-  			xhr1.open("POST", "StoreRegister.do", true);
-  			xhr1.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-			alert("after xhr1.setRequestHeader");
-
-  			alert("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-
-  			xhr1.send("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-  			
-  			
-
-
-  		// server responses clinet
-  		// xhr1.onreadystatechange = function(){
-
-  		//     // the situation needs to handle with
-  		//     if(xhr1.readyState == 4 && xhr1.status ==200){
-  		//         // got package from JSON and tranform to JS obj
-  		//         result = JSON.parse(xhr1.responseText);
-
-  		//     }
-
-  		// }    
   	}
 
   	//----------------------------------------------------------
-  	account.value = "Jessie75919";
-  	password.value = "a1234";
-  	password2.value = "a1234";
-  	StoreName.value = "subway";
-  	address.value = "台北市中山區長安東路二段92號1樓";
-  	tel.value = "(02)2517-7667";
-  	eMail.value = "jessie75919@gmail.com";
-  	owner.value = "謝阿哲";
-  	url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
+  	setData.onclick = function(){
+	  	account.value = "Jessie75919";
+	  	password.value = "a1234";
+	  	password2.value = "a1234";
+	  	StoreName.value = "subway";
+	  	StoreType.value = "美式餐廳";
+	  	address.value = "台北市中山區長安東路二段92號1樓";
+	  	tel.value = "(02)2517-7667";
+	  	eMail.value = "jessie75919@gmail.com";
+	  	owner.value = "謝阿哲";
+	  	url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
+  	}
 
   }
 
-
-//   function checkRepeatUser(usrname) {
-//   	alert("here is checkRepeatUser");
-//   	if (!usrname) {
-//   		div.innerHTML = "<font color='blue' size='-2'>請輸入帳號</font>";
-//   		return;
-//   	}
-//   	var checkId_xhr = new XMLHttpRequest();
-//   	checkId_xhr.open("GET", "Idcheck.do?id=" + usrname, true);
-//   	checkId_xhr.send();
-
-//   	//----------------------------
-
-//   	checkId_xhr.onreadystatechange = function() {
-//   		if (checkId_xhr.readyState == 4 && checkId_xhr.status == 200) {
-//   			var result = JSON.parse(checkId_xhr.responseText);
-//   			if (result == "OK") {
-//   				midResult.innerHTML = "<font color = 'green' size ='-2'>帳號可以使用喔</font>";
-//                   console.log("result = OK");
-//   				return true;
-//   			} else if (result == "NO") {
-//   				midResult.innerHTML = "<font color = 'red' size ='-2'>帳號有人使用囉</font>";
-//   				hasErr = true;
-//                   console.log("result = NO");
-//   				return false;
-//   			}
-//   		}
-
-//   	}
-//   }
 
   //----------------------------------------------------------
     

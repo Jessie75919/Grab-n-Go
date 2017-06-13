@@ -167,7 +167,7 @@ br {
       <br/>
       
       <label class="fontSize" >餐廳類別：</label>
-      <select id ="StoreType" class="fieldWidth">
+      <select name ="StoreType" id ="StoreType" class="fieldWidth">
       	<option value="台式餐廳" >台式餐廳</option>
       	<option value="日式餐廳" >日式餐廳</option>
       	<option value="韓式餐廳" >韓式餐廳</option>
@@ -272,7 +272,6 @@ br {
   	});
   }
 
-  // checkReapeatUser -------------------------------------
 
   //----------------------------------------------------------
   var sendBtn = document.getElementById("holyshit");
@@ -335,10 +334,6 @@ br {
   		var telResult = document.getElementById("telResult");
   		var eMailResult = document.getElementById("eMailResult");
   		var ownerResult = document.getElementById("ownerResult");
-//   		addressToLanlng(address.value);
-  		// mainBanner = document.getElementById("mainBanner");
-  		// logo = document.getElementById("logo");
-  		// coverImg = document.getElementById("coverImg");
   		//-----------------------
 
   		if (!account.value) {
@@ -406,45 +401,7 @@ br {
   		if (hasErr) {
   			return false;
   		}
-  		//----------------------------------------------------------
 
-  			// client send a request to server
-  			var xhr1 = new XMLHttpRequest();
-            // addressToLanlng(address.value);
-			// alert("addressToLanlng = " + address.value );
-			// alert("langitude=  " + langitude.value);
-			// alert("latitude=  " + latitude.value);
-  			xhr1.open("POST", "StoreRegister.do", true);
-  			xhr1.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-
-  			alert("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-
-  			xhr1.send("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-  			
-  			
-
-
-  		// server responses clinet
-  		// xhr1.onreadystatechange = function(){
-
-  		//     // the situation needs to handle with
-  		//     if(xhr1.readyState == 4 && xhr1.status ==200){
-  		//         // got package from JSON and tranform to JS obj
-  		//         result = JSON.parse(xhr1.responseText);
-
-  		//     }
-
-  		// }    
   	}
 
   	//----------------------------------------------------------
@@ -463,36 +420,6 @@ br {
 
   }
 
-
-//   function checkRepeatUser(usrname) {
-//   	alert("here is checkRepeatUser");
-//   	if (!usrname) {
-//   		div.innerHTML = "<font color='blue' size='-2'>請輸入帳號</font>";
-//   		return;
-//   	}
-//   	var checkId_xhr = new XMLHttpRequest();
-//   	checkId_xhr.open("GET", "Idcheck.do?id=" + usrname, true);
-//   	checkId_xhr.send();
-
-//   	//----------------------------
-
-//   	checkId_xhr.onreadystatechange = function() {
-//   		if (checkId_xhr.readyState == 4 && checkId_xhr.status == 200) {
-//   			var result = JSON.parse(checkId_xhr.responseText);
-//   			if (result == "OK") {
-//   				midResult.innerHTML = "<font color = 'green' size ='-2'>帳號可以使用喔</font>";
-//                   console.log("result = OK");
-//   				return true;
-//   			} else if (result == "NO") {
-//   				midResult.innerHTML = "<font color = 'red' size ='-2'>帳號有人使用囉</font>";
-//   				hasErr = true;
-//                   console.log("result = NO");
-//   				return false;
-//   			}
-//   		}
-
-//   	}
-//   }
 
   //----------------------------------------------------------
     

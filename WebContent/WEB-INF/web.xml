@@ -38,4 +38,14 @@
     <servlet-name>IdCheckServlet_01</servlet-name>
     <url-pattern>/IdCheckServlet_01</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StoreRegister</display-name>
+    <servlet-name>StoreRegister</servlet-name>
+    <servlet-class>_01_Store_register.controller.StoreRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoreRegister</servlet-name>
+    <url-pattern>/StoreRegister</url-pattern>
+  </servlet-mapping>
 </web-app>

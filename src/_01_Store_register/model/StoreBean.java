@@ -253,9 +253,14 @@ public class StoreBean implements Serializable{
 
 	@Override
 	public String toString() {
-		return "StoreBean [rest_typeId=" + rest_typeId + ", rest_name=" + rest_name + ", rest_email=" + rest_email
-				+ ", rest_username=" + rest_username + ", rest_passward=" + rest_passward + "]";
+		return "StoreBean [rest_id=" + rest_id + ", rest_typeId=" + rest_typeId + ", rest_name=" + rest_name
+				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_phone=" + rest_phone
+				+ ", rest_owner=" + rest_owner + ", rest_email=" + rest_email + ", rest_username=" + rest_username
+				+ ", rest_passward=" + rest_passward + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
+				+ ", rest_latitude=" + rest_latitude + "]";
 	}
+
+	
 	
 	
 	

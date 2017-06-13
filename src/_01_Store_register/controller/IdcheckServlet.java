@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 
 import _01_Store_register.model.StoreBeanDAO;
 
-@WebServlet("/_01_Store_register/Idcheck.do")
+@WebServlet("/_01_StoreRegister/Idcheck.do")
 public class IdcheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

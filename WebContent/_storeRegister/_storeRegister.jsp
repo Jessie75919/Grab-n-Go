@@ -12,7 +12,7 @@
   <title>Welcome GrabAndGo</title>
 </head>
 
-<body>
+<body onLoad="setFocusToUserId()">
   <div class="py-5 section text-center">
     <div class="container">
       <div class="row">
@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-md-12">
           <!-- 註冊介面開始 -->
-          <form class="">
+          <form form method="POST" action="<c:url value='/_01_StoreRegister/StoreRegister.do' />"  id="register.do" >
             <div id="formLeft">
               <!-- Sign up with google -->
               <button type="submit" class="btn text-gray-dark btn-primary">Sign up with Google</button>

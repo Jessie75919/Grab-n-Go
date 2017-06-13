@@ -22,7 +22,7 @@ public class StoreRegisterServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		System.out.println("I heard ! ");
-		
+		System.out.println();
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");

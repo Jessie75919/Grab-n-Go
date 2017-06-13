@@ -18,6 +18,7 @@ public class IdcheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println();
 		System.out.println("I am heard");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json ; charset=utf-8");

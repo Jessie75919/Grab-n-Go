@@ -118,6 +118,7 @@ public class LoginServlet extends HttpServlet {
 			// 此時不要用下面兩個敘述，因為網址列的URL不會改變
 			// RequestDispatcher rd = request.getRequestDispatcher("...");
 			// rd.forward(request, response);
+			System.out.println("requestURI="+requestURI);
 			if (requestURI != null) {
 				requestURI = (requestURI.length() == 0 ? request
 						.getContextPath() : requestURI);

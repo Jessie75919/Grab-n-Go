@@ -15,18 +15,16 @@ import javax.servlet.http.HttpSession;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
-@WebServlet("/_01_StoreRegister/StoreRegister.do")
-public class StoreRegister extends HttpServlet {
+@WebServlet("/_01_StoreRegister/StoreUpdate.do")
+public class StoreUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");
-//		PrintWriter out = response.getWriter();
-//		out.print("I heard !!!");
 		
-		
+		HttpSession session = request.getSession();
 		System.out.println(1);
 		String memberID = request.getParameter("mid");
 		System.out.println(2);
@@ -65,9 +63,9 @@ public class StoreRegister extends HttpServlet {
 		Map<String, String> msgErr = new HashMap<>();
 		System.out.println(10);
 		Map<String, String> msgOK = new HashMap<>();
+		
 
 		// 註冊成功後將用response.sendRedirect()導向新的畫面，所以需要 session物件來存放共用資料。
-		HttpSession session = request.getSession();
 		System.out.println(11);
 		request.setAttribute("msgErr", msgErr); // 顯示錯誤訊息
 		System.out.println(12);
@@ -100,10 +98,18 @@ public class StoreRegister extends HttpServlet {
 					System.out.println("15-a-3-2");
 					System.out.println(StoreName + " add successfully ,n= " +n );
 
-					System.out.println("15-a-3-3");
-					response.sendRedirect("../index.html");
-					System.out.println("15-a-3-4");
-					return;
+//					System.out.println("15-a-3-3");
+//					if (requestURI != null) {
+//						requestURI = (requestURI.length() == 0 ? request
+//								.getContextPath() : requestURI);
+//						response.sendRedirect(response.encodeRedirectURL(requestURI));
+//						return;
+//					} else {
+//						response.sendRedirect(response.encodeRedirectURL(request
+//								.getContextPath()));
+//						System.out.println("15-a-3-4");
+//					}
+					response.sendRedirect("../index.jsp");
 				}
 				 else{
 					 System.out.println("15-b-1");

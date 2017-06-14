@@ -20,6 +20,7 @@
       <!-- Logo -->
         <div class="col-md-12">
         		<img width="400" src="../images/share/logo.svg">
+        	
          <!--  <h1 class="text-gray-dark">Logo</h1> -->
         </div>
       </div>
@@ -299,46 +300,6 @@
   		if (hasErr) {
   			return false;
   		}
-  		//----------------------------------------------------------
-
-  			// client send a request to server
-  			var xhr1 = new XMLHttpRequest();
-            // addressToLanlng(address.value);
-			// alert("addressToLanlng = " + address.value );
-			// alert("langitude=  " + langitude.value);
-			// alert("latitude=  " + latitude.value);
-  			xhr1.open("POST", "StoreRegister.do", true);
-  			xhr1.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-			alert("after xhr1.setRequestHeader");
-
-  			alert("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-
-  			xhr1.send("mid=" + account.value + "&password=" + password.value + "&StoreName="
-  					+ StoreName.value + "&branch=" + branch.value
-  					+ "&address=" + address.value + "&tel=" + tel.value + "&eMail=" 
-  					+ eMail.value +  "&StoreType=" + StoreType.value +
-  					"&owner=" + owner.value + "&url=" + url.value + "&langitude="
-  					+ langitude.value + "&latitude=" + latitude.value);
-  			
-  			
-
-
-  		// server responses clinet
-  		// xhr1.onreadystatechange = function(){
-
-  		//     // the situation needs to handle with
-  		//     if(xhr1.readyState == 4 && xhr1.status ==200){
-  		//         // got package from JSON and tranform to JS obj
-  		//         result = JSON.parse(xhr1.responseText);
-
-  		//     }
-
-  		// }    
   	}
 
   	//----------------------------------------------------------

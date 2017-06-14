@@ -21,7 +21,7 @@
           <td class='menuData'>
             <div class='menu'>
 			  <c:if test="${empty LoginOK}">
-				<a href="<c:url value='/_02_storeLogin/_login.jsp' />">
+				<a href="<c:url value='/_02_storeLogin/Storelogin.jsp' />">
 				     登入 
 				</a>
               </c:if>

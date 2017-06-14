@@ -18,7 +18,7 @@ import _01_Store_register.model.StoreBean;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 @WebServlet("/_02_storeLogin/Storelogin.do")
-public class LoginServlet extends HttpServlet {
+public class StoreLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request,

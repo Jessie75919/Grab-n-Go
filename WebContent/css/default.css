@@ -9,7 +9,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 body {
     font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei", "新細明體";
-    background: #eee;
+    background: #fff;
     font-size: 1em;
     line-height: 24px;
     color: #000;
@@ -125,7 +125,7 @@ input,
 textarea,
 select {
     font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei", "新細明體";
-    background-color: #eee;
+    background-color: #f5f5f5;
     border: none;
     box-sizing: border-box;
     border-radius: 5px;
@@ -141,14 +141,14 @@ input[type="password"],
 input[type="tel"],
 input[type="email"] {
     width: 100%;
-    padding: 0px 10px;
-    margin: 0 0 3px 0;
-    line-height: 30px;
+    padding: 10px 10px;
+    margin: 0 0 5px 0;
+    
 }
 
 input[type="number"] {
-    width: auto;
-    padding: 0px 0px 0px 10px;
+    width: 100%;
+    padding: 10px 10px;
     margin: 0 0 3px 10px;
     line-height: 36px;
 }
@@ -156,14 +156,14 @@ input[type="number"] {
 textarea {
     width: 100%;
     padding: 10px 10px;
-    margin: 0 0 3px 0;
+    margin: 0 0 5px 0;
     line-height: 24px;
 }
 
 input[type="submit"],
 input[type="reset"] {
     border: none;
-    background: #333;
+    background: #eb503c;
     border-radius: 20px;
     color: #FFF;
     outline: none;
@@ -182,14 +182,14 @@ input[type="reset"] {
 
 input[type="submit"]:hover,
 input[type="reset"]:hover {
-    background-color: #f46d7d;
+    background-color: #ec8e26;
 }
 
 select {
-    width: auto;
-    padding: 8px 10px 9px 10px;
-    margin: 0 0 10px 0;
-    line-height: 30px;
+    width: 100%;
+    padding: 8px 10px 10px 10px;
+    margin: 0 0 5px 0;
+    
 }
 
 input:hover,
@@ -198,7 +198,7 @@ textarea:hover,
 textarea:focus,
 select:hover,
 select:focus {
-    background-color: #ddd;
+    background-color: #eee;
 }
 
 input[type="checkbox"],
@@ -348,74 +348,26 @@ header:after {
 
 footer {
     position: relative;
+    padding: 30px 3%;
+    box-sizing: border-box;
 }
 
-.contactBg {
+footer figure{
     position: relative;
-    background: url(../images/index_contact_bg.jpg) center 500px fixed;
-    background-repeat: no-repeat;
+    width: 200px;
+    margin: auto;
+    padding-bottom: 15px;
 }
-
-.contact {
-    position: relative;
-}
-
-.contact:after,
-.contactBg:after {
-    display: block;
-    content: '';
-    clear: both;
-    height: 0;
-}
-
-.contactInfo {
-    position: relative;
+footer figure img{
     width: 100%;
-    padding: 100px 0;
+    height: auto;
+} 
+footer p{
+    position: relative;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.95em;
+    color: #ccc;
 }
-
-.contactInfo a {
-    color: #000;
-}
-
-.contactInfo a:hover {
-    color: #666;
-}
-
-.contactInfo i {
-    font-size: 2em;
-}
-
-.copyright {
-    position: relative;
-    width: 60%;
-    float: left;
-    color: #999;
-    padding: 15px 0 15px 3%;
-    box-sizing: border-box;
-}
-
-.sitemap {
-    position: relative;
-    width: 38%;
-    float: right;
-    text-align: right;
-    padding: 15px 3% 15px 0;
-    box-sizing: border-box;
-    color: #999;
-}
-
-.sitemap a {
-    color: #333;
-    padding: 0 10px;
-}
-
-.sitemap a:hover {
-    color: #f39838;
-}
-
 .back-to-top {
     position: fixed;
     right: 10px;
@@ -436,14 +388,81 @@ footer {
     color: #fff;
     background-color: #f39838;
 }
-
-
+/*搜尋*/
+.search{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+.searchBg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+}
+section.searchContent{
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 100px auto 0 auto;
+    padding: 30px 50px;
+    box-sizing: border-box;
+}
+section.searchContent h2{
+    text-align: center;
+    padding-bottom: 25px;
+}
+section.searchContent .closeBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+section.searchContent .closeBtn i{
+    padding: 0;
+    font-size: 1.5em;
+    color: #ccc;
+    transition: ease 0.3s; 
+}
+section.searchContent .closeBtn:hover i{
+    color: #eb503c;
+}
+.searchList{
+    position: relative;
+    padding-bottom: 10px;
+}
+.searchBtn{
+    position: relative;
+    text-align: center;
+}
 /*主要框架*/
 
 main {
     position: relative;
+    padding-bottom: 100px;
 }
-
+section{
+    position: relative;
+    box-sizing: border-box;
+}
+section:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
 section.content {
     position: relative;
     width: 100%;
@@ -451,14 +470,6 @@ section.content {
     padding: 100px 3%;
     box-sizing: border-box;
 }
-
-section.content:after {
-    content: '';
-    display: block;
-    clear: both;
-    height: 0;
-}
-
 section.content h2 {
     font-size: 2em;
     font-weight: normal;
@@ -529,24 +540,152 @@ section.content h2.slogan {
 }
 
 /*瀑布流*/
-.grid-item {
+section.grid{
+    position: relative;
+}
+.gridItem {
     width: 20%;
-    height: 100px;
-    background-color: aqua;
+    background-color: #eee;
+    box-sizing: border-box;
+    border: #fff solid 1px;
+}
+.gridItem:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.gridItem figure{
+    position: relative;
+    overflow: hidden;
+}
+.gridItem figure img{
+    width: 100%;
+    height: auto;
+}
+.mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    transition: ease 0.3s;
+    
+    opacity: 0;
+}
+.mask a{
+    display: block;
+    text-align: center;
+    border: #fff solid 1px;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -20px 0 0 -60px;
+    
+}
+.mask a:hover{
+   border: #ec8e26 solid 1px;
+    background-color: #ec8e26;
+    
+}
+
+.gridItem:hover .mask{
+   
+    opacity: 1;
+}
+.storeInfo{
+    position: relative;
+    padding: 20px;
     box-sizing: border-box;
 }
-.grid-item.h200 {
-    width: 20%;
-    height: 200px;
-    background-color: red;
+.storeInfo h2{
+    padding: 0 0 10px 0;
+    font-weight: normal;
+}
+.storeInfo h2 a{
+    color: #000;
+    
+}
+.gridItem:hover .storeInfo h2 a{
+    color: #eb503c;
 }
 
+.star{
+    position: relative;
+    width: 50%;
+    float: left;
+    padding-bottom: 5px;
+    
+}
 
+.star i{
+    font-size: 1.2em;
+    padding: 0 3px 0 0;
+    color: #999;
+}
+.star i.on{
+    color: #ec8e26;
+}
+.dist{
+    position: relative;
+    width: 48%;
+    float: right;
+    text-align: right;
+    color: #666;
+}
+.dist i{
+    color: #eb503c;
+    vertical-align: middle;
+}
 
+.tagOrder{
+    position: relative;
+    clear: both;
+    border-top: #ccc solid 1px;
+    padding-top: 10px;
+}
+.tagOrder:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.tagOrder .tag{
+    position: relative;
+    width: 60%;
+    float: left;
+}
+.tagOrder .tag span{
+    display: inline-block;
+    background-color: #eb503c;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+.tagOrder .orderCount{
+    position: relative;
+    width: 38%;
+    float: right;
+    text-align: right;
+}
 
-
-
-
+.tagOrder .orderCount span{
+    display: inline-block;
+    background-color: #999;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
 
 
 

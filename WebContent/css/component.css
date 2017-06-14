@@ -9,7 +9,8 @@ nav {
 
 .cbp-spmenu {
     background: #eee;
-    position: absolute;
+    /*position: absolute;*/
+    position: fixed;
 }
 
 
@@ -144,7 +145,8 @@ nav {
 }
 
 .cbp-spmenu-left.cbp-spmenu-open {
-    left: -240px;
+    /*left: -240px;*/
+    left: 0px;
 }
 
 .cbp-spmenu-right.cbp-spmenu-open {

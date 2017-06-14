@@ -53,7 +53,7 @@ public class AppStoreLoginServlet extends HttpServlet {
 		if (sb != null) {
 			loginMessage = "LoginOK";
 		} else {
-			loginMessage = "該帳號不存在或密碼錯誤";
+			loginMessage = "UsernameOrPasswordError";
 		}
 		
 		PrintWriter out = response.getWriter();

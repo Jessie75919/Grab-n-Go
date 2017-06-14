@@ -1,9 +1,8 @@
-function doFirst() {
-    alert("H");
-    // console.log("gogoog");
-
-
-}
+//function doFirst() {
+//   alert("H");
+//
+//
+//}
 
 function validateForm(event) {
 
@@ -43,31 +42,4 @@ function validateForm(event) {
 
 
 
-// // Sign In btn click
-// signInBtn.onclick = function () {
-
-
-//     // validate username  
-//     if (!user.value) {
-//         usrRes.innerHTML = "<font color='blue' size='-2'>請輸入帳號</font>";
-//         hasErr = true;
-//     } else if (user.value.length > 30) {
-//         usrRes.innerHTML = "<font color='blue' size='-2'>帳號過長請重新輸入</font>";
-//         hasErr = true;
-//     }
-
-//     // validate password  
-//     if (!ps.value) {
-//         usrRes.innerHTML = "<font color='blue' size='-2'>請輸入密碼</font>";
-//         hasErr = true;
-//     }
-
-//     // if has any error.. return
-//     if (hasErr) {
-//         return false;
-//     }
-
-// }
-
-
-window.addEventListener('load', doFirst, false);
+//window.addEventListener('load', doFirst, false);

@@ -46,13 +46,13 @@
 						id="theForm" onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
 							<label>Username </label> <input type="text" id="usr"
-								name="username" value="${sessionScope.user}" class="form-control">
+								name="username" value="${cookie.user.value}" class="form-control">
 							<span id="usrRes" style = "height:10px;"></span>	
 						</div>
 						<div class="form-group my-1">
 							<label>Password</label> 
 							<input type="password" id="pw"
-							name="password" class="form-control" value="${sessionScope.password}" >
+							name="password" class="form-control" value="${cookie.password.value}" >
 							<span id="pwRes" style = "height:10px;"></span>		
 						</div>
 						<div>
@@ -67,7 +67,7 @@
 						<div class="form-check">
 							<label class="form-check-label"> 
 							<input	name="rememberMe" class="form-check-input" type="checkbox" id="rm"
-								<c:if test="${sessionScope.rememberMe==true}">checked='checked'</c:if>
+								<c:if test="${cookie.rm.value==true}">checked='checked'</c:if>
 								value="true" >&nbsp;Remember me
 							</label>
 						</div>

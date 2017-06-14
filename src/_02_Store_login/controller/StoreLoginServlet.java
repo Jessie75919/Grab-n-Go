@@ -127,7 +127,7 @@ public class StoreLoginServlet extends HttpServlet {
 				return;
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
-			RequestDispatcher rd = request.getRequestDispatcher("_login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("StoreLogin.jsp");
 			rd.forward(request, response);
 			return;
 		}

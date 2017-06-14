@@ -31,8 +31,8 @@
           <form form method="POST" action="<c:url value='/_01_StoreRegister/StoreRegister.do' />"  id="register.do" >
             <div id="formLeft">
               <!-- Sign up with google -->
-              <button type="submit" class="btn text-gray-dark btn-primary">Sign up with Google</button>
-              <hr>
+<!--               <button type="submit" class="btn text-gray-dark btn-primary">Sign up with Google</button> -->
+<!--               <hr> -->
               <!-- 註冊帳號 -->
               <div class="form-group m-0"> <label>Username</label>
                 <input type="text" name="mid" value="${param.mid}" id="mid" class="form-control" placeholder="Enter username">
@@ -61,9 +61,9 @@
             </div>
 
             <div id="formRight">
-              <div>
-                <h2> Restaurant Info </h2>
-              </div>
+<!--               <div> -->
+<!--                 <h2> Restaurant Info </h2> -->
+<!--               </div> -->
               <div class="form-group mx-2"> <label>Name of Restaurant</label>
                 <input type="text" name="StoreName" value="${param.StoreName}" id="StoreName" class="form-control" placeholder=""> <span id="StoreNameResult" style="height:10px;"></span> </div>
               <!-- 餐廳類型 -->

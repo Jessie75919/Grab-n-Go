@@ -21,7 +21,7 @@
           <td class='menuData'>
             <div class='menu'>
 			  <c:if test="${empty LoginOK}">
-				<a href="<c:url value='/_02_storeLogin/_login.jsp' />">
+				<a href="<c:url value='/_02_storeLogin/StoreLogin.jsp' />">
 				     登入 
 				</a>
               </c:if>
@@ -128,7 +128,7 @@
 		  </td> 
 		</tr>
 		<tr height='20px'>
-			<td width='300px' colspan='9'><small>${pageContext.session.id }</small>
+			<td width='300px' colspan='9'><small>${pageContext.session.id}</small>
 			</td>
 		</tr>
 	  </table>

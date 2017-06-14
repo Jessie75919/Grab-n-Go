@@ -2,16 +2,6 @@ $(window).load(function () {
     var offset = 220;
     var duration = 500;
     var ww = window.innerWidth;
-    /*header滾動*/
-    if (ww > 1000) {
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 400) {
-                $('.headBg').fadeIn(500);
-            } else {
-                $('.headBg').fadeOut(300);
-            }
-        });
-    }
 
     /*gotop*/
 
@@ -53,6 +43,18 @@ $(window).load(function () {
 
     new WOW().init();
 
-    /*nice select*/
+    /*搜尋*/
+    $(document).ready(function () {
+        $('.searchItem').click(function () {
+            $('.search').fadeIn();
+            return false;
+        });
+        $('.closeBtn, .searchBg').click(function () {
+            $('.search').fadeOut();
+            return false;
+        });
+
+
+    });
 
 })

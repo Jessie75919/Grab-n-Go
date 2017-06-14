@@ -15,13 +15,15 @@ import javax.servlet.http.HttpSession;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
-@WebServlet("/_01_StoreRegister/StoreRegister.do")
+@WebServlet("/_01_StoreRegister_Joanna/StoreRegister.do")
 public class StoreRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");
+		
+		
 		
 		HttpSession session = request.getSession();
 		String requestURI = (String) session.getAttribute("requestURI");

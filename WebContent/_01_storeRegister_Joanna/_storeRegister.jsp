@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-md-12">
           <!-- 註冊介面開始 -->
-          <form form method="POST" action="<c:url value='/_01_StoreRegister/StoreRegister.do' />"  id="register.do" >
+          <form form method="POST" action="<c:url value='StoreRegister.do' />"  id="register.do" >
             <div id="formLeft">
               <!-- Sign up with google -->
 <!--               <button type="submit" class="btn text-gray-dark btn-primary">Sign up with Google</button> -->

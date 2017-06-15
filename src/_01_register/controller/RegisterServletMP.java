@@ -105,6 +105,12 @@ public class RegisterServletMP extends HttpServlet {
 						is = p.getInputStream();
 					} else {
 						//errorMsg.put("errorPicture", "必須挑選圖片檔");
+						String path = "/images/userImage/default.png";
+						String realPath = getServletContext().getRealPath(path);
+						File file = new File(realPath);
+						fileName = file.getName();
+						is = new FileInputStream(file);
+						sizeInBytes = file.length();
 					}
 				
 				}

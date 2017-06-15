@@ -70,15 +70,12 @@
             <div class="form-check"> 
               <label class="form-check-label">
             	  <input class="form-check-input" type="checkbox" name="rememberMe"
-	             <c:if test='${sessionScope.rememberMe==true}'>
-		                  checked='checked'
-		         </c:if> 
+	             <c:if test='${sessionScope.rememberMe==true}'>checked='checked'</c:if>		         
 	           value="true">&nbsp;Remember me</label>
             </div>
 
             <button type="submit" class="btn btn-block my-1 btn-warning">Sign in</button>
-            <input type="submit" value="Sign up" class="btn btn-block my-2 btn-default"
-                  href='_01_storeRegister_Joanna/_storeRegister.jsp'>
+            <input type="submit" value="Sign up" class="btn btn-block my-2 btn-default" onclick="">
           </form>
         </div>
         <div class="col-md-4 w-25"></div>

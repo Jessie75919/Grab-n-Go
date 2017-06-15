@@ -7,20 +7,24 @@ $(window).load(function () {
 
     $(window).scroll(function () {
         if (jQuery(this).scrollTop() > offset) {
-            $('.back-to-top').fadeIn(duration);
+            $('.backToTop').fadeIn(duration);
         } else {
-            $('.back-to-top').fadeOut(duration);
+            $('.backToTop').fadeOut(duration);
         }
     });
-    $('.back-to-top').click(function (event) {
+    $('.backToTop').click(function (event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: 0
         }, duration);
         return false;
     });
-
-
+    
+    /*form check*/
+    $(".formcontent").validationEngine("attach", {
+        promptPosition: "topLeft"
+    });
+    
     /*menu*/
     var menuLeft = document.getElementById('cbp-spmenu-s1'),
         showLeftPush = document.getElementById('showLeftPush'),
@@ -38,9 +42,7 @@ $(window).load(function () {
         }
     }
 
-
     /*animation*/
-
     new WOW().init();
 
     /*搜尋*/
@@ -56,5 +58,7 @@ $(window).load(function () {
 
 
     });
+
+
 
 })

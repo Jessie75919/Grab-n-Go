@@ -1,1 +1,15 @@
+/_00_AppGlobal/
+/_00_Database_ver01/
+/_00_init/
+/_01_Store_register/
+/_01_register/
 /_02_Store_login/
+/_02_login/
+/_03_listBooks/
+/_04_ShoppingCart/
+/_05_orderProcess/
+/_20_productMaintain/
+<<<<<<< HEAD
+/hibernate.cfg.xml
+=======
+>>>>>>> c18aa172f5276a656e9556aec7db49d55663bfa8

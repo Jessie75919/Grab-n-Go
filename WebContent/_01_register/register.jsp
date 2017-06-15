@@ -126,7 +126,7 @@ function setFocusToUserId(){
                  <Font color="#006600" size='4' face="標楷體">加入會員</Font>
              </TD>
          <!-- 此區塊顯示程式執行後的訊息 -->
-             <TD width="240" aligh="left"><font size="-1" color="#FF0000">
+             <TD width="240" align="left"><font size="-1" color="#FF0000">
                  ${MsgMap.InsertNG}${MsgMap.errorSaveData}</font>
              </TD>
          </TR>         
@@ -172,15 +172,16 @@ function setFocusToUserId(){
           <font color="red" size="-1">${MsgMap.errorEmail}</font>
       <br/>
       
-      <label class="fontSize" >網路購物經驗：</label>
-          <input type="text"  name="experience" value="${param.experience}"   class="fieldWidth" style="width: 30px;">年
-          <font color="red" size="-1">${MsgMap.errorFormat}</font> 
+      <label class="fontSize" >生日：</label>
+          <input type="date"  name="birthday" value="${param.birthday}"   class="fieldWidth" style="width: 130px;">
+          <font color="red" size="-1">${MsgMap.errorBirthday}</font> 
       <br/>
       <label class="fontSize" >照片：</label>
       <Input Type="file" size="40" class="fieldWidth" style="width: 480px;"  name="file1"><BR>
+      <font color="red" size="-1">${MsgMap.errorPicture}</font> 
       <br/>
       <div id="btnArea" align="center">
-         <input type="submit" name="submit" id="submit" value="儲存"/>
+         <input type="submit" name="submit" id="submit" value="儲存">
          <input type="reset" name="cancel" id="cancel" value="重填">
       </div>
       <br/>

@@ -33,6 +33,18 @@ public class MemberBean implements Serializable {
 		this.memberImage = memberImage;
 		this.fileName = fileName;
 	}
+	
+	public MemberBean(String memberId, String password, String name, String phone, String email, String address, 
+			 Date birthday) {
+		super();
+		this.memberId = memberId;
+		this.password = password;
+		this.name = name;
+		this.address = address;
+		this.email = email;
+		this.phone = phone;
+		this.birthday = birthday;
+	}
 
 	public String getMemberId() {
 		return memberId;

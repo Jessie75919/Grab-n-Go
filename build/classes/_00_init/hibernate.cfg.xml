@@ -15,7 +15,7 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
      -->
 	<!-- JNDI設定 , 設定了DataSource屬性 -->
-	<property name="hibernate.connection.datasource">java:comp/env/jdbc/MemberDataBase</property>
+	<property name="hibernate.connection.datasource">java:comp/env/jdbc/Grab_n_Go</property>
      <!-- JDBC設定 , 設定driver_class, url, username, password -->
  <!-- 
      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -40,7 +40,7 @@
 	<property name="connection_pool_size">1</property>
 	
 	<!-- 3. 宣告程式使用的Mapping檔 ，每個永續類別都需要定義一個Mapping檔	-->
-	<mapping resource=" _00_init/member.hbm.xml"></mapping>
-	<mapping resource="ch04/ex03/model/member.hbm.xml"></mapping>
+<!-- 	<mapping resource=" _00_init/member.hbm.xml"></mapping> -->
+<!-- 	<mapping resource="ch04/ex03/model/member.hbm.xml"></mapping> -->
 	</session-factory>
 </hibernate-configuration>

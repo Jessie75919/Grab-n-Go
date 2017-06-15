@@ -27,7 +27,7 @@ public class GetImageFromDB extends HttpServlet {
 			Context context = new InitialContext();
 			// 透過JNDI取得DataSource物件
 			DataSource ds = (DataSource) context
-					.lookup("java:comp/env/jdbc/BookDataSQLver");
+					.lookup(GlobalService.JNDI_DB_NAME);
 			conn = ds.getConnection();
 			PreparedStatement pstmt = null;
 			//System.out.println("GetImageFromDB, Type==>" + type);

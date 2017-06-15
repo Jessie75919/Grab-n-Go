@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="SYSTEM" class="_00_init.GlobalService" scope="application"/>    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<head>
+    <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
@@ -22,16 +21,16 @@
     <meta property="og:url" content="http://www.chewchew.com.tw" />
     <meta property="og:image" content="http://lovegreenfood.com/gg/fb.jpg" />
     <link rel="image_src" href="http://lovegreenfood.com/gg/fb.jpg" />
-    <link rel="SHORTCUT ICON" href="../images/favicon.ico" />
-    <link rel="icon" href="../images/favicon.ico" type="image/ico" />
+    <link rel="SHORTCUT ICON" href="images/favicon.ico" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
     <!--main css-->
-    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="css_web/default.css" rel="stylesheet" type="text/css" />
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
-    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <link href="css_web/component.css" rel="stylesheet" type="text/css" />
     <!--輪播 css-->
-    <link href="css/slick.css" rel="stylesheet" type="text/css">
+    <link href="css_web/slick.css" rel="stylesheet" type="text/css">
     <!--animation-->
-    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css_web/animate.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -46,11 +45,11 @@
         <div class="account">
             <ul>
                 <!--未登入用這組-->
-                <li><a href="_02_login/login.jsp">登入</a></li>
+                <li><a href="_02_login/login.htm">登入</a></li>
                 <!--未登入用這組 end-->
                 <!--已登入用這組-->
                 <li><a href="_06_member/member.htm">Juicekuo</a></li>
-                <li><a href="_02_login/logout.jsp">登出</a></li>
+                <li><a href="#">登出</a></li>
                 <!--已登入用這組 end-->
             </ul>
         </div>
@@ -247,6 +246,7 @@
             </div>
         </section>
     </main>
+    <!--搜尋-->
     <div class="search">
         <div class="searchBg"></div>
         <section class="searchContent">
@@ -264,28 +264,22 @@
                        </select>
                 </div>
                 <div class="searchList">
-                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
+                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
                 </div>
                 <div class="searchList">
-                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
+                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
                 </div>
                 <div class="searchBtn">
                     <input name="reset" type="reset" id="reset" value="重填">
                     <input name="submit" type="submit" id="submit" value="搜尋">
                 </div>
-
-
-
-
             </form>
-
-
-
         </section>
     </div>
+    <!--搜尋 end-->
     <footer>
         <figure><img src="images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
-        <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="back-to-top">TOP</a></footer>
+        <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
     <!--main js-->
     <!--[if lt IE 8]><script type="text/javascript" src="javascript/html5.js"></script><![endif]-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -293,13 +287,6 @@
     <script type="text/javascript" src="javascript/classie.js"></script>
     <!--animation js-->
     <script type="text/javascript" src="javascript/wow.js"></script>
-    <!--loading js-->
-    <script>
-        $(window).load(function() {
-            $('#loading').fadeOut(500);
-        })
-
-    </script>
     <!--silder-->
     <script src="javascript/slick.js"></script>
     <script>
@@ -312,7 +299,6 @@
                 slidesToScroll: 1,
             });
         });
-
     </script>
     <!--瀑布流-->
     <script src="javascript/masonry.pkgd.min.js"></script>
@@ -324,7 +310,6 @@
                 percentPosition: true,
             });
         });
-
     </script>
     <!--share js-->
     <script src="javascript/share.js"></script>

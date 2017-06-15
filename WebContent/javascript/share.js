@@ -7,19 +7,18 @@ $(window).load(function () {
 
     $(window).scroll(function () {
         if (jQuery(this).scrollTop() > offset) {
-            $('.back-to-top').fadeIn(duration);
+            $('.backToTop').fadeIn(duration);
         } else {
-            $('.back-to-top').fadeOut(duration);
+            $('.backToTop').fadeOut(duration);
         }
     });
-    $('.back-to-top').click(function (event) {
+    $('.backToTop').click(function (event) {
         event.preventDefault();
         $('html, body').animate({
             scrollTop: 0
         }, duration);
         return false;
     });
-
 
     /*menu*/
     var menuLeft = document.getElementById('cbp-spmenu-s1'),
@@ -38,23 +37,24 @@ $(window).load(function () {
         }
     }
 
-
     /*animation*/
-
     new WOW().init();
 
     /*搜尋*/
-    $(document).ready(function () {
-        $('.searchItem').click(function () {
-            $('.search').fadeIn();
-            return false;
-        });
-        $('.closeBtn, .searchBg').click(function () {
-            $('.search').fadeOut();
-            return false;
-        });
-
-
+    $('.searchItem').click(function () {
+        $('.search').fadeIn();
+        return false;
     });
-
+    $('.closeBtn, .searchBg').click(function () {
+        $('.search').fadeOut();
+        return false;
+    });
 })
+
+
+$(document).ready(function () {
+    /*form check*/
+    $(".formcontent").validationEngine("attach", {
+        promptPosition: "topLeft"
+    });
+});

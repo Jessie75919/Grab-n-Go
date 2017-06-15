@@ -39,30 +39,30 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		Connection conn = ds.getConnection();
 		int r = 0;
 		try {
-			String sql1 = "insert into eMember "
-					+ " (memberID, name, password, address, email, tel, userType, "
-					+ " experience, register, totalAmt, memberImage, fileName) "
-					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql1 = "insert into Member "
+					+ " (m_username, m_password, m_name, m_phone, m_email, m_address, m_birthday, "
+					+ " m_picture, m_fileName) "
+					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setString(1, mb.getMemberId());
-			pstmt1.setString(2, mb.getName());
-
+			
 			String encrypedString = GlobalService.encryptString(mb.getPassword());
-			pstmt1.setString(3, GlobalService.getMD5Endocing(encrypedString));
-			pstmt1.setString(4, mb.getAddress());
+			pstmt1.setString(2, GlobalService.getMD5Endocing(encrypedString));
+			
+			pstmt1.setString(3, mb.getName());
+			pstmt1.setString(4, mb.getPhone());
 			pstmt1.setString(5, mb.getEmail());
-			pstmt1.setString(6, mb.getTel());
-			pstmt1.setString(7, mb.getUserType());
-			pstmt1.setInt(8, mb.getExperience());
-			java.sql.Timestamp now = new java.sql.Timestamp(
-					System.currentTimeMillis());
-			pstmt1.setTimestamp(9, now);
-			pstmt1.setDouble(10, mb.totalAmt);
+			pstmt1.setString(6, mb.getAddress());
+			pstmt1.setDate(7, mb.getBirthday());
+//			java.sql.Timestamp now = new java.sql.Timestamp(
+//					System.currentTimeMillis());
+//			pstmt1.setTimestamp(9, now);
+//			pstmt1.setDouble(10, mb.totalAmt);
 			// 設定Image欄位
 			// pstmt1.setBlob(11, is, size); // 此方法目前未支援
-			pstmt1.setBinaryStream(11, is, size);
-			pstmt1.setString(12, filename);
+			pstmt1.setBinaryStream(8, is, size);
+			pstmt1.setString(9, filename);
 			r = pstmt1.executeUpdate();
 			if (r == 1) {
 				// 寫入成功，應該將MemberBean mem立即加入LoginService的memberList內

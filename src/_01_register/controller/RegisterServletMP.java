@@ -65,9 +65,9 @@ public class RegisterServletMP extends HttpServlet {
 		String email  = "";
 		String addr  = "";
 		String tel  = "";
-		String expericnceStr  = "";
+		String bday  = "";
+		java.sql.Date date = null;
 		String fileName = "";
-		int experience = 0;
 		long sizeInBytes = 0;
 		InputStream is = null;
 		Collection<Part> parts = request.getParts(); // 取出HTTP multipart request內所有的parts
@@ -94,8 +94,8 @@ public class RegisterServletMP extends HttpServlet {
 						addr = value;  
 					} else if (fldName.equalsIgnoreCase("tel")) {
 						tel = value;
-					} else if (fldName.equalsIgnoreCase("experience")) {
-						expericnceStr = value;  
+					} else if (fldName.equalsIgnoreCase("birthday")) {
+						bday = value;  
 					}
 				} else {
 					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
@@ -104,18 +104,18 @@ public class RegisterServletMP extends HttpServlet {
 						sizeInBytes = p.getSize();
 						is = p.getInputStream();
 					} else {
-						errorMsg.put("errPicture", "必須挑選圖片檔");
+						//errorMsg.put("errorPicture", "必須挑選圖片檔");
 					}
 				
 				}
 			}
 			// 2. 進行必要的資料轉換
 			
-			try {
-				experience = Integer.parseInt(expericnceStr.trim());
-			} catch (NumberFormatException e) {
-				errorMsg.put("errorFormat","網路購物經驗格式錯誤，應該為整數");
-			}
+//			try {
+//				experience = Integer.parseInt(expericnceStr.trim());
+//			} catch (NumberFormatException e) {
+//				errorMsg.put("errorFormat","網路購物經驗格式錯誤，應該為整數");
+//			}
 			// 3. 檢查使用者輸入資料
 			if (memberID == null || memberID.trim().length() == 0) {
 				errorMsg.put("errorIDEmpty","帳號欄必須輸入");
@@ -144,8 +144,17 @@ public class RegisterServletMP extends HttpServlet {
 			if (tel == null || tel.trim().length() == 0) {
 				errorMsg.put("errorTel","電話號碼欄必須輸入");
 			}
-			if (experience < 0) {
-				errorMsg.put("errorFormat","網路購物經驗應該為正整數或 0 ");
+//			if (experience < 0) {
+//				errorMsg.put("errorFormat","網路購物經驗應該為正整數或 0 ");
+//			}
+			if (bday != null && bday.trim().length() > 0) {
+				try {
+					date = java.sql.Date.valueOf(bday);
+				} catch (IllegalArgumentException e) {
+					errorMsg.put("errorBirthday", "生日欄格式錯誤");
+				}
+			}else{
+				errorMsg.put("errorBirthday", "生日欄必須輸入");
 			}
 		} else {
 				errorMsg.put("errTitle", "此表單不是上傳檔案的表單");
@@ -167,7 +176,7 @@ public class RegisterServletMP extends HttpServlet {
 				errorMsg.put("errorIDDup","此代號已存在，請換新代號");
 			} else {
 					MemberBean mem = new MemberBean(memberID, 
-						name, password, addr, email, tel, experience);
+						password, name, tel, email, addr, date);
 					// 將MemberBean mem立即寫入Database				
 					System.out.println("filename:" + fileName);
 					int n = rs.saveMember(mem, is, sizeInBytes, fileName);

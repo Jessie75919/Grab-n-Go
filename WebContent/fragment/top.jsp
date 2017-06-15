@@ -21,7 +21,7 @@
           <td class='menuData'>
             <div class='menu'>
 			  <c:if test="${empty LoginOK}">
-				<a href="<c:url value='/_02_login/login.jsp' />">
+				<a href="<c:url value='/_02_storeLogin/StoreLogin.jsp' />">
 				     登入 
 				</a>
               </c:if>
@@ -113,7 +113,7 @@
 		  <td class='menuData'>
 		  <div class='menu'>
 			<c:if test="${ ! empty LoginOK }">
-			   <a href="<c:url value='/_02_login/logout.jsp' />">
+			   <a href="<c:url value='/_02_storeLogin/StoreLogout.jsp' />">
   				登出 
 	           </a>
 			</c:if>
@@ -122,13 +122,13 @@
 		  <td class='menuData'>
            	<c:if test="${! empty LoginOK }">
                <img height='40px' width='30px'
-	src='${pageContext.servletContext.contextPath}/_00_init/getImage?id=${LoginOK.memberId}&type=MEMBER'>
+	src='${pageContext.servletContext.contextPath}/_00_init/getImage?id=${LoginOK.rest_username}&type=MEMBER'>
 	
 			</c:if>
 		  </td> 
 		</tr>
 		<tr height='20px'>
-			<td width='300px' colspan='9'><small>${pageContext.session.id }</small>
+			<td width='300px' colspan='9'><small>${pageContext.session.id}</small>
 			</td>
 		</tr>
 	  </table>

@@ -83,6 +83,8 @@ public class StoreLoginServiceDB {
 		String sql = "select * from restaurant where rest_username = ? and rest_passward = ? ";
 
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1, userId);
+			pst.setString(2, password);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				int rest_id = rs.getInt("rest_id");

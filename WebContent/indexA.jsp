@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-hant">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:useBean id="SYSTEM" class="_00_init.GlobalService" scope="application"/>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<head>
-    <meta charset="UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
@@ -43,11 +46,11 @@
         <div class="account">
             <ul>
                 <!--未登入用這組-->
-                <li><a href="#">登入</a></li>
+                <li><a href="_02_login/login.jsp">登入</a></li>
                 <!--未登入用這組 end-->
                 <!--已登入用這組-->
                 <li><a href="_06_member/member.htm">Juicekuo</a></li>
-                <li><a href="#">登出</a></li>
+                <li><a href="_02_login/logout.jsp">登出</a></li>
                 <!--已登入用這組 end-->
             </ul>
         </div>

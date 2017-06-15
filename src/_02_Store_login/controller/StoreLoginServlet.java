@@ -18,7 +18,7 @@ import _01_Store_register.model.StoreBean;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 @WebServlet("/_02_storeLogin/Storelogin.do")
-public class LoginServlet extends HttpServlet {
+public class StoreLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doPost(HttpServletRequest request,
@@ -70,7 +70,6 @@ public class LoginServlet extends HttpServlet {
 			cookieUser = new Cookie("user", userId);
 			cookieUser.setMaxAge(0);   // MaxAge==0 表示要請瀏覽器刪除此Cookie
 			cookieUser.setPath(request.getContextPath());
-			//String encodePassword = DatatypeConverter.printBase64Binary(password.getBytes());
 			String encodePassword = GlobalService.encryptString(password);
 			cookiePassword = new Cookie("password", encodePassword);
 			cookiePassword.setMaxAge(0);
@@ -112,10 +111,7 @@ public class LoginServlet extends HttpServlet {
 //		// 5.依照 Business Logic 運算結果來挑選適當的畫面
 //		// 如果 errorMsgMap 是空的，表示沒有任何錯誤，交棒給下一棒
 		if (errorMsgMap.isEmpty()) {
-//			// 此時不要用下面兩個敘述，因為網址列的URL不會改變
-			 RequestDispatcher rd = request.getRequestDispatcher("...");
-			 rd.forward(request, response);
-//			System.out.println("requestURI="+requestURI);
+			
 //			if (requestURI != null) {
 //				requestURI = (requestURI.length() == 0 ? request
 //						.getContextPath() : requestURI);
@@ -126,9 +122,12 @@ public class LoginServlet extends HttpServlet {
 //						.getContextPath()));
 //				return;
 //			}
+//			
+			response.sendRedirect("../index.jsp");
+				return;
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("StoreLogin.jsp");
 			rd.forward(request, response);
 			return;
 		}

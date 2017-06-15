@@ -30,9 +30,6 @@
         <div class="col-md-12">
           <div> 
           	<img width="100" src="../images/share/storeRegisterOK.png">
-          	<br>
-          	<br>
-          	<br>
           	<div class="row"> 
       		</div>
           </div>
@@ -43,8 +40,8 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div> <h4><b>THANK YOU !&nbsp;
-            <br>You Have Successfully Signed Up for Grab And Go.</b></h4> </div>
+          <div> THANK YOU !&nbsp;
+            <br>You Have Successfully Signed Up for Grab And Go. </div>
         </div>
       </div>
     </div>

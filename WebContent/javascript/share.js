@@ -19,12 +19,7 @@ $(window).load(function () {
         }, duration);
         return false;
     });
-    
-    /*form check*/
-    $(".formcontent").validationEngine("attach", {
-        promptPosition: "topLeft"
-    });
-    
+
     /*menu*/
     var menuLeft = document.getElementById('cbp-spmenu-s1'),
         showLeftPush = document.getElementById('showLeftPush'),
@@ -46,19 +41,20 @@ $(window).load(function () {
     new WOW().init();
 
     /*搜尋*/
-    $(document).ready(function () {
-        $('.searchItem').click(function () {
-            $('.search').fadeIn();
-            return false;
-        });
-        $('.closeBtn, .searchBg').click(function () {
-            $('.search').fadeOut();
-            return false;
-        });
-
-
+    $('.searchItem').click(function () {
+        $('.search').fadeIn();
+        return false;
     });
-
-
-
+    $('.closeBtn, .searchBg').click(function () {
+        $('.search').fadeOut();
+        return false;
+    });
 })
+
+
+$(document).ready(function () {
+    /*form check*/
+    $(".formcontent").validationEngine("attach", {
+        promptPosition: "topLeft"
+    });
+});

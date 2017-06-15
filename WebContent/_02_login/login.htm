@@ -43,7 +43,7 @@
         <div class="account">
             <ul>
                 <!--未登入用這組-->
-                <li><a href="_02_login/login.htm">登入</a></li>
+                <li><a href="#">登入</a></li>
                 <!--未登入用這組 end-->
                 <!--已登入用這組-->
                 <li><a href="_06_member/member.htm">Juicekuo</a></li>
@@ -244,7 +244,6 @@
             </div>
         </section>
     </main>
-    <!--搜尋-->
     <div class="search">
         <div class="searchBg"></div>
         <section class="searchContent">
@@ -262,19 +261,25 @@
                        </select>
                 </div>
                 <div class="searchList">
-                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
+                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
                 </div>
                 <div class="searchList">
-                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
+                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
                 </div>
                 <div class="searchBtn">
                     <input name="reset" type="reset" id="reset" value="重填">
                     <input name="submit" type="submit" id="submit" value="搜尋">
                 </div>
+
+
+
+
             </form>
+
+
+
         </section>
     </div>
-    <!--搜尋 end-->
     <footer>
         <figure><img src="images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
         <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="back-to-top">TOP</a></footer>
@@ -290,6 +295,7 @@
         $(window).load(function() {
             $('#loading').fadeOut(500);
         })
+
     </script>
     <!--silder-->
     <script src="javascript/slick.js"></script>
@@ -303,6 +309,7 @@
                 slidesToScroll: 1,
             });
         });
+
     </script>
     <!--瀑布流-->
     <script src="javascript/masonry.pkgd.min.js"></script>
@@ -314,6 +321,7 @@
                 percentPosition: true,
             });
         });
+
     </script>
     <!--share js-->
     <script src="javascript/share.js"></script>

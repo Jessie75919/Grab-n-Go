@@ -19,104 +19,90 @@ body {
     /*overflow-x: hidden;*/
     outline: none;
 }
-
 img {
     border: none;
     padding: 0;
     margin: 0;
     display: block;
 }
-
 a {
     color: #eb503c;
     text-decoration: none;
     transition: ease 0.3s;
     outline: none;
 }
-
 a:hover {
     color: #ec8e26;
     text-decoration: none;
 }
-
 ::selection {
     background-color: #eb503c;
     color: #fff;
 }
-
 ::-moz-selection {
     background-color: #eb503c;
     color: #fff;
 }
-
 h1 {
     font-size: 1.5em;
     line-height: 26px;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
-
 h2 {
     font-size: 1.3em;
     line-height: 24px;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
-
 h3 {
     font-size: 1.1em;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
-
 h4 {
     font-size: 1em;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
-
 p {
     padding: 5px 0px 5px 0px;
 }
-
 tr,
 th,
 td {
     padding: 5px 10px;
     text-align: left;
 }
-
 ul,
 ol {
     margin-left: 20px;
     padding-top: 10px;
 }
-
 ul li {
     list-style: disc;
     padding: 0px 0px 8px 0px;
 }
-
 ol li {
     list-style: decimal;
     padding: 0px 0px 8px 0px;
 }
-
+form {
+    position: relative;
+    padding-top: 20px;
+}
 .clear {
     clear: both;
     height: 0;
 }
-
 i {
     vertical-align: middle;
     padding: 0 5px;
 }
-
 sub,
 sup {
     font-size: 12px;
 }
-
 
 /*----------表單樣式----------*/
 
@@ -134,30 +120,26 @@ select {
     outline: none;
     /*appearance: none;-moz-appearance: none;-webkit-appearance: none;*/
 }
-
 input[type="text"],
 input[type="password"],
 input[type="tel"],
 input[type="email"] {
     width: 100%;
-    padding: 10px 10px;
+    padding: 15px 10px;
     margin: 0 0 5px 0;
 }
-
 input[type="number"] {
     width: 100%;
-    padding: 10px 10px;
+    padding: 15px 10px;
     margin: 0 0 3px 10px;
     line-height: 36px;
 }
-
 textarea {
     width: 100%;
-    padding: 10px 10px;
+    padding: 15px 10px;
     margin: 0 0 5px 0;
     line-height: 24px;
 }
-
 input[type="submit"],
 input[type="reset"] {
     border: none;
@@ -177,18 +159,15 @@ input[type="reset"] {
     -webkit-appearance: none;
     box-sizing: border-box;
 }
-
 input[type="submit"]:hover,
 input[type="reset"]:hover {
     background-color: #ec8e26;
 }
-
 select {
     width: 100%;
-    padding: 8px 10px 10px 10px;
+    padding: 13px 10px 15px 10px;
     margin: 0 0 5px 0;
 }
-
 input:hover,
 input:focus,
 textarea:hover,
@@ -197,7 +176,6 @@ select:hover,
 select:focus {
     background-color: #eee;
 }
-
 input[type="checkbox"],
 input[type="radio"] {
     position: relative;
@@ -205,9 +183,10 @@ input[type="radio"] {
     transform: scale(1.3, 1.3);
 }
 
-
 /*----------字體樣式/背景顏色----------*/
-
+.wRed{
+    color: #eb503c;
+}
 
 /*----------共用----------*/
 
@@ -220,13 +199,11 @@ header {
     box-sizing: border-box;
     z-index: 999;
 }
-
 header:after {
     display: block;
     content: "";
     clear: both;
 }
-
 .menuBtn {
     position: relative;
     width: 40px;
@@ -234,12 +211,10 @@ header:after {
     padding-top: 25px;
     cursor: pointer;
 }
-
 .menuBtn i {
     font-size: 2em;
     color: #eb503c;
 }
-
 .storeBtn {
     position: relative;
     width: 100px;
@@ -247,7 +222,6 @@ header:after {
     cursor: pointer;
     padding: 23px 0 0 25px;
 }
-
 .storeBtn a {
     display: block;
     border: #eb503c solid 1px;
@@ -256,12 +230,10 @@ header:after {
     text-align: center;
     padding: 5px 0;
 }
-
 .storeBtn a:hover {
     background-color: #eb503c;
     color: #fff;
 }
-
 .logo {
     position: absolute;
     width: 200px;
@@ -270,20 +242,17 @@ header:after {
     margin-left: -100px;
     box-sizing: border-box;
 }
-
 .logo img {
     display: block;
     width: 100%;
     height: auto;
 }
-
 .account {
     position: relative;
     width: auto;
     float: right;
     padding-top: 30px;
 }
-
 .account>ul {
     position: relative;
     display: block;
@@ -291,7 +260,6 @@ header:after {
     margin: 0;
     text-align: left;
 }
-
 .account>ul>li {
     position: relative;
     padding: 0;
@@ -299,18 +267,15 @@ header:after {
     display: inline-block;
     transition: ease 0.3s;
 }
-
 .account>ul>li>a {
     color: #000;
     padding: 0 25px 0px 0px;
     display: block;
     box-sizing: border-box;
 }
-
 .account>ul>li>a:hover {
     color: #eb503c;
 }
-
 .rightBtn {
     position: relative;
     width: 40px;
@@ -319,7 +284,6 @@ header:after {
     margin-left: 10px;
     padding-top: 20px;
 }
-
 .rightBtn a {
     display: block;
     border: #eb503c solid 1px;
@@ -330,22 +294,18 @@ header:after {
     box-sizing: border-box;
     padding-top: 8px;
 }
-
 .rightBtn a:hover {
     background-color: #eb503c;
     color: #fff;
 }
-
 .rightBtn a i {
     padding: 0;
     font-size: 1.3em;
 }
-
 .rightBtn a i.icon-search {
     padding: 0;
     font-size: 1.2em;
 }
-
 
 /*footer*/
 
@@ -354,26 +314,22 @@ footer {
     padding: 30px 3%;
     box-sizing: border-box;
 }
-
 footer figure {
     position: relative;
     width: 200px;
     margin: auto;
     padding-bottom: 15px;
 }
-
 footer figure img {
     width: 100%;
     height: auto;
 }
-
 footer p {
     position: relative;
     text-align: center;
     font-size: 0.95em;
     color: #ccc;
 }
-
 .backToTop {
     position: fixed;
     right: 10px;
@@ -389,12 +345,10 @@ footer p {
     font-size: 0.95em;
     display: none;
 }
-
 .backToTop:hover {
     color: #fff;
     background-color: #f39838;
 }
-
 
 /*搜尋*/
 
@@ -407,7 +361,6 @@ footer p {
     z-index: 9999;
     display: none;
 }
-
 .searchBg {
     position: absolute;
     width: 100%;
@@ -416,7 +369,6 @@ footer p {
     top: 0;
     left: 0;
 }
-
 section.searchContent {
     position: relative;
     background-color: #fff;
@@ -427,12 +379,10 @@ section.searchContent {
     padding: 30px 50px;
     box-sizing: border-box;
 }
-
 section.searchContent h2 {
     text-align: center;
     padding-bottom: 25px;
 }
-
 section.searchContent .closeBtn {
     position: absolute;
     top: 10px;
@@ -442,28 +392,23 @@ section.searchContent .closeBtn {
     text-align: center;
     cursor: pointer;
 }
-
 section.searchContent .closeBtn i {
     padding: 0;
     font-size: 1.5em;
     color: #ccc;
     transition: ease 0.3s;
 }
-
 section.searchContent .closeBtn:hover i {
     color: #eb503c;
 }
-
 .searchList {
     position: relative;
     padding-bottom: 10px;
 }
-
 .searchBtn {
     position: relative;
     text-align: center;
 }
-
 
 /*主要框架*/
 
@@ -471,19 +416,16 @@ main {
     position: relative;
     padding-bottom: 100px;
 }
-
 section {
     position: relative;
     box-sizing: border-box;
 }
-
 section:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
-
 section.content {
     position: relative;
     width: 100%;
@@ -491,14 +433,12 @@ section.content {
     padding: 100px 3%;
     box-sizing: border-box;
 }
-
 section.content h2 {
     font-size: 2em;
     font-weight: normal;
     padding-bottom: 40px;
     text-align: center;
 }
-
 section.content h2 span {
     font-size: 0.6em;
     font-weight: normal;
@@ -506,13 +446,11 @@ section.content h2 span {
     padding: 0 0 0 10px;
 }
 
-
 /*----------首頁----------*/
 
 .mainBanner {
     position: relative;
 }
-
 .mainBanner h1 {
     position: absolute;
     width: 300px;
@@ -524,18 +462,15 @@ section.content h2 span {
     font-size: 1.8em;
     text-shadow: #fff 0 0 30px;
 }
-
 .mainBanner h1 .wBig {
     font-size: 2.8em;
     line-height: 1.2em;
 }
-
 .mainBanner h1 .wSmall {
     font-size: 1.6em;
     letter-spacing: 0.5em;
     padding-left: 3px;
 }
-
 .mainBanner h1 .wRed {
     font-size: 1em;
     letter-spacing: 0.6em;
@@ -543,12 +478,10 @@ section.content h2 span {
     color: #eb503c;
     font-weight: normal;
 }
-
 section.content.bgRed {
     background: #eb503c;
     padding: 50px 3%;
 }
-
 section.content h2.slogan {
     color: #fff;
     text-align: center;
@@ -558,37 +491,31 @@ section.content h2.slogan {
     padding: 0;
 }
 
-
 /*瀑布流*/
 
 section.grid {
     position: relative;
 }
-
 .gridItem {
     width: 20%;
     background-color: #eee;
     box-sizing: border-box;
     border: #fff solid 1px;
 }
-
 .gridItem:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
-
 .gridItem figure {
     position: relative;
     overflow: hidden;
 }
-
 .gridItem figure img {
     width: 100%;
     height: auto;
 }
-
 .mask {
     position: absolute;
     width: 100%;
@@ -599,7 +526,6 @@ section.grid {
     transition: ease 0.3s;
     opacity: 0;
 }
-
 .mask a {
     display: block;
     text-align: center;
@@ -613,52 +539,42 @@ section.grid {
     top: 50%;
     margin: -20px 0 0 -60px;
 }
-
 .mask a:hover {
     border: #ec8e26 solid 1px;
     background-color: #ec8e26;
 }
-
 .gridItem:hover .mask {
     opacity: 1;
 }
-
 .storeInfo {
     position: relative;
     padding: 20px;
     box-sizing: border-box;
 }
-
 .storeInfo h2 {
     padding: 0 0 10px 0;
     font-weight: normal;
 }
-
 .storeInfo h2 a {
     color: #000;
 }
-
 .gridItem:hover .storeInfo h2 a {
     color: #eb503c;
 }
-
 .star {
     position: relative;
     width: 50%;
     float: left;
     padding-bottom: 5px;
 }
-
 .star i {
     font-size: 1.2em;
     padding: 0 3px 0 0;
     color: #999;
 }
-
 .star i.on {
     color: #ec8e26;
 }
-
 .dist {
     position: relative;
     width: 48%;
@@ -666,32 +582,27 @@ section.grid {
     text-align: right;
     color: #666;
 }
-
 .dist i {
     color: #eb503c;
     vertical-align: middle;
 }
-
 .tagOrder {
     position: relative;
     clear: both;
     border-top: #ccc solid 1px;
     padding-top: 10px;
 }
-
 .tagOrder:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
-
 .tagOrder .tag {
     position: relative;
     width: 60%;
     float: left;
 }
-
 .tagOrder .tag span {
     display: inline-block;
     background-color: #eb503c;
@@ -699,14 +610,12 @@ section.grid {
     padding: 2px 10px;
     border-radius: 20px;
 }
-
 .tagOrder .orderCount {
     position: relative;
     width: 38%;
     float: right;
     text-align: right;
 }
-
 .tagOrder .orderCount span {
     display: inline-block;
     background-color: #999;
@@ -720,32 +629,68 @@ section.grid {
     margin-left: 5px;
 }
 
-
 /*----------登入----------*/
 
-main.login {
+.loginLogo {
     position: relative;
-    width: 94%;
-    max-width: 400px;
-    margin: 100px auto 0 auto;
-    padding-bottom: 0px;
-}
-
-main.login .logo {
-    position: relative;
-    width: 200px;
+    width: 270px;
     left: auto;
     top: auto;
     margin: auto;
-    padding-bottom: 50px;
+    padding: 80px 0 30px 0;
 }
-.googleBtn{
+main.login {
+    position: relative;
+    width: 94%;
+    max-width: 600px;
+    margin: 0px auto 0 auto;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    background-color: #eee;
+    border-radius: 10px;
+}
+main.login h2 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+main.login input,
+main.login select,
+main.login textarea
+{
+    background-color: #fff;
+}
+main.login input[type="submit"],
+main.login input[type="reset"] {
+    width: 48%;
+    background-color: #333;
+    border-radius: 10px;
+}
+main.login input[type="submit"]:hover,
+main.login input[type="reset"]:hover {
+    background-color: #ec8e26;
+}
+.loginList {
+    position: relative;
+    padding-bottom: 10px;
+}
+.loginBtn {
+    position: relative;
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: #ccc dotted 1px;
+    clear: both;
+}
+.loginBtn p {
+    padding-top: 10px;
+}
+.googleBtn {
     position: relative;
     padding-bottom: 20px;
     border-bottom: #ccc dotted 1px;
     margin-bottom: 20px;
 }
-.googleBtn a{
+.googleBtn a {
     display: block;
     background-color: #db4437;
     color: #fff;
@@ -755,40 +700,36 @@ main.login .logo {
     border-radius: 10px;
     font-weight: bold;
     font-size: 1.1em;
-    
 }
-.googleBtn a:hover{
-    background-color: #ec8e26;   
+.googleBtn a:hover {
+    background-color: #ec8e26;
 }
-.googleBtn i{
+.googleBtn i {
     vertical-align: text-top;
     font-size: 1.3em;
     padding: 0 10px 0 0;
 }
-main.login h2{
-    text-align: center;
-    padding-bottom: 20px;
-    
-}
-.loginList {
-    position: relative;
-    padding-bottom: 10px;
-}
 
-.loginBtn {
+/*----------購物車表單----------*/
+.formBtn {
     position: relative;
     text-align: center;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: #ccc dotted 1px;
+    clear: both;
+    text-align: center;
 }
-.loginBtn input[type="submit"], .loginBtn input[type="reset"]{
-    width: 48%;
-    background-color: #333;
-    border-radius: 10px;
-    
+.formBtn a {
+    display: inline-block;
+    background-color: #eb503c;
+    color: #fff;
+    text-align: center;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size: 1.1em;
 }
-.loginBtn input[type="submit"]:hover, .loginBtn input[type="reset"]:hover{
+.formBtn a:hover {
     background-color: #ec8e26;
-    
-}
-.loginBtn p{
-    padding-top: 10px;
 }

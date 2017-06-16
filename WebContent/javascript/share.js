@@ -37,9 +37,6 @@ $(window).load(function () {
         }
     }
 
-    /*animation*/
-    new WOW().init();
-
     /*搜尋*/
     $('.searchItem').click(function () {
         $('.search').fadeIn();
@@ -49,6 +46,9 @@ $(window).load(function () {
         $('.search').fadeOut();
         return false;
     });
+    
+        /*animation*/
+    new WOW().init();
 })
 
 
@@ -57,4 +57,5 @@ $(document).ready(function () {
     $(".formcontent").validationEngine("attach", {
         promptPosition: "topLeft"
     });
+    
 });

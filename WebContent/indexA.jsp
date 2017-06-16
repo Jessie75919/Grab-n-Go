@@ -71,11 +71,7 @@
 			<!--已登入用這組-->
 			<c:if test="${! empty LoginOK}">
 				<li><a href="_06_member/member.htm">${LoginOK.memberId}</a></li>
-				<li><a href="indexA.jsp">登出</a></li>
-				<c:remove var="LoginOK" scope="session" />
-				<%
-				  session.invalidate();
-				%>
+				<li><a href="logout.do">登出</a></li>
 				<!--已登入用這組 end-->
 			</c:if>
 			
@@ -83,15 +79,19 @@
 		</ul>
 	</div>
 	</header>
-	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
-		id="cbp-spmenu-s1"> <!--已登入用這組 未登入的話這塊隱藏-->
-	<div class="memberLogin">
-		<figure>
-		<img src="images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
-		<p>
-			JuiceKuo<a href="#">登出</a>
-		</p>
-	</div>
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left"
+			id="cbp-spmenu-s1"> 
+			<!--已登入用這組 未登入的話這塊隱藏-->
+	<c:if test="${!empty LoginOK}">
+		<div class="memberLogin">
+			<figure>
+			<img src="images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
+			<p>
+				${LoginOK.memberId}<a href="logout.do">登出</a>
+			</p>
+	
+		</div>
+	</c:if>
 	<!--已登入用這組 未登入的話這塊隱藏 end-->
 	<ul>
 		<li><a href="_06_member/member.htm"><i class="icon-user"></i>檢視/編輯個人資料</a></li>

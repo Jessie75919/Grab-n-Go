@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
-@WebServlet("/_01_StoreRegister_Joanna/StoreRegister.do")
+@WebServlet("/_01_StoreRegister/StoreRegister.do")
 public class StoreRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -112,7 +112,7 @@ public class StoreRegisterServlet extends HttpServlet {
 //								.getContextPath()));
 //						System.out.println("15-a-3-4");
 //					}
-					response.sendRedirect("../index.jsp");
+					response.sendRedirect("../indexA.jsp");
 				}
 				 else{
 					 System.out.println("15-b-1");
@@ -131,7 +131,7 @@ public class StoreRegisterServlet extends HttpServlet {
 			// // 導向原來輸入資料的畫面，這次會顯示錯誤訊息
 				 System.out.println(18);
 			 RequestDispatcher rd =
-			 request.getRequestDispatcher("StoreRegister.jsp");
+			 request.getRequestDispatcher("_storeRegister.jsp");
 			 System.out.println(19);
 			 rd.forward(request, response);
 			 System.out.println(20);
@@ -144,7 +144,7 @@ public class StoreRegisterServlet extends HttpServlet {
 			System.out.println(22);
 			msgErr.put("errorIDDup", e.getMessage());
 			System.out.println(23);
-			RequestDispatcher rd = request.getRequestDispatcher("StoreRegister.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeRegister.jsp");
 			System.out.println(24);
 			rd.forward(request, response);
 			return;

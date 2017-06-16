@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:useBean id="SYSTEM" class="_00_init.GlobalService" scope="application"/>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,7 +49,7 @@
 		<a href="_09_storeSys/index.htm">我是店家</a>
 	</div>
 	<div class="logo">
-		<a href="index.htm"><img src="images/share/logo.svg"
+		<a href="indexA.jsp"><img src="images/share/logo.svg"
 			alt="Grab &amp; Go" title="Grab &amp; Go"></a>
 	</div>
 	<div class="rightBtn searchItem">
@@ -58,12 +62,24 @@
 	<div class="account">
 		<ul>
 			<!--未登入用這組-->
-			<li><a href="_02_login/login.htm">登入</a></li>
+			<c:if test="${empty LoginOK}">
+				<li><a href="_02_login/loginA.jsp">登入</a></li>
+			</c:if>
+			
+<!-- 			<li><a href="_02_login/loginA.jsp">登入</a></li> -->
 			<!--未登入用這組 end-->
 			<!--已登入用這組-->
-			<li><a href="_06_member/member.htm">Juicekuo</a></li>
-			<li><a href="#">登出</a></li>
-			<!--已登入用這組 end-->
+			<c:if test="${! empty LoginOK}">
+				<li><a href="_06_member/member.htm">${LoginOK.memberId}</a></li>
+				<li><a href="indexA.jsp">登出</a></li>
+				<c:remove var="LoginOK" scope="session" />
+				<%
+				  session.invalidate();
+				%>
+				<!--已登入用這組 end-->
+			</c:if>
+			
+			
 		</ul>
 	</div>
 	</header>

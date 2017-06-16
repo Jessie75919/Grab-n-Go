@@ -95,7 +95,7 @@ function setFocusToUserId(){
              
          </tr>
          <TR height='10'>
-             <TD align="CENTER" colspan='2'>&nbsp;<Font color='red' size="-1">${ErrorMsgKey.LoginError}&nbsp;</Font></TD>
+             <TD align="CENTER" colspan='2'>&nbsp;<Font color='red' size="-1">1111${ErrorMsgKey.LoginError}&nbsp;</Font></TD>
          </TR>
         <TR>
             <TD colspan="2" align="center"><input type="submit" value="提交"> </TD>

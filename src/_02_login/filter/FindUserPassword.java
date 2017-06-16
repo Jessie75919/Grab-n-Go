@@ -17,7 +17,7 @@ import javax.xml.bind.DatatypeConverter;
 
 import _00_init.GlobalService;
 
-@WebFilter("/_02_login/login.jsp")
+@WebFilter("/_02_login/loginA.jsp")
 public class FindUserPassword implements Filter {
 
 	String requestURI;

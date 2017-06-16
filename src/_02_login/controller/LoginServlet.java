@@ -131,7 +131,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("loginA.jsp");
 			rd.forward(request, response);
 			return;
 		}

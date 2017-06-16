@@ -35,7 +35,8 @@
         <div class="col-md-12">
           <!-- 註冊介面開始 -->
           <!-- <div> </div> -->
-          <form  method="POST" action="<c:url value='StoreRegister.do' />"  id="StoreRegister.do">
+          <form  method="POST" action="<c:url value='StoreRegister.do' />"  id="theForm" 
+          		onsubmit="return validateForm(event);">
             <div id="formLeft">
               <!-- Sign up with google -->
               <!--               <button type="submit" class="btn text-gray-dark btn-primary">Sign up with Google</button> -->

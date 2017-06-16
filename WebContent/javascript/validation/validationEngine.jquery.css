@@ -46,16 +46,12 @@
 }
 .formError .formErrorContent {
 	width: 100%;
-	background: #333;
+	background: #eb503c;
 	position: relative;
 	color: #fff;
 	min-width: 120px;
 	font-size: 12px;
-	border: 2px solid #333;
-	/*box-shadow: 0 0 6px #333;
-	-moz-box-shadow: 0 0 6px #333;
-	-webkit-box-shadow: 0 0 6px #333;
-	-o-box-shadow: 0 0 6px #333;*/
+	border: 2px solid #eb503c;
 	padding: 0px 10px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -97,15 +93,15 @@ body[dir='rtl'] .formError .formErrorArrow, body.rtl .formError .formErrorArrow 
 	top: 2px;
 }
 .formError .formErrorArrow div {
-	border-left: 2px solid #333;
-	border-right: 2px solid #333;
+	border-left: 2px solid #eb503c;
+	border-right: 2px solid #eb503c;
 	/*box-shadow: 0 2px 3px #333;
 	-moz-box-shadow: 0 2px 3px #333;
 	-webkit-box-shadow: 0 2px 3px #333;
 	-o-box-shadow: 0 2px 3px #333;*/
 	font-size: 0px;
 	height: 1px;
-	background: #333;
+	background: #eb503c;
 	margin: 0 auto;
 	line-height: 0;
 	font-size: 0;
@@ -149,19 +145,19 @@ body[dir='rtl'] .formError .formErrorArrow, body.rtl .formError .formErrorArrow 
 }
 .formError .formErrorArrow .line3 {
 	width: 1px;
-	border-left: 2px solid #333;
-	border-right: 2px solid #333;
-	border-bottom: 0 solid #333;
+	border-left: 2px solid #eb503c;
+	border-right: 2px solid #eb503c;
+	border-bottom: 0 solid #eb503c;
 }
 .formError .formErrorArrow .line2 {
 	width: 3px;
 	border: none;
-	background: #333;
+	background: #eb503c;
 }
 .formError .formErrorArrow .line1 {
 	width: 1px;
 	border: none;
-	background: #333;
+	background: #eb503c;
 }
 @media only screen and (max-width : 770px) {
 .formError.inline {

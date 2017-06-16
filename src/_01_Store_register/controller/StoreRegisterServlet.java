@@ -112,7 +112,7 @@ public class StoreRegisterServlet extends HttpServlet {
 //								.getContextPath()));
 //						System.out.println("15-a-3-4");
 //					}
-					response.sendRedirect("../indexA.jsp");
+					response.sendRedirect("_storeRegisterSuccessful.jsp");
 				}
 				 else{
 					 System.out.println("15-b-1");

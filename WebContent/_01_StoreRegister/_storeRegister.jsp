@@ -48,10 +48,12 @@
                 <span id="midResult" style="height:10px;"></span> </div>
               <!-- 註冊密碼 -->
               <div class="form-group my-0"> <label>Password</label>
-                <input type="password" name="password" value="${param.password}" id="password" class="form-control" placeholder="Password"> <span id="passwordResult" style="height:10px;"></span> </div>
+                <input type="password" name="password" value="${param.password}" id="password" class="form-control" 
+                placeholder="Password"> <span id="passwordResult" style="height:10px;"></span> </div>
               <!-- 確認密碼 -->
               <div class="form-group m-0"> <label>Re-type password</label>
-                <input type="text" name="verf" value="${param.verf}" id="verf" class="form-control" placeholder=""> </div>
+                <input type="text" name="password2" value="${param.password2}" id="password2" class="form-control" placeholder="">
+                <span id="password2Result" style="height:10px;"></span> </div>
               <!-- 驗證碼 -->
               <div class="form-group">
                 <br>
@@ -71,9 +73,11 @@
             <div id="formRight">
               <!--               </div> -->
               <div class="form-group mx-2"> <label>Name of Restaurant</label>
-                <input type="text" name="StoreName" value="${param.StoreName}" id="StoreName" class="form-control" placeholder=""> <span id="StoreNameResult" style="height:10px;"></span> </div>
+                <input type="text" name="StoreName" value="${param.StoreName}" id="StoreName" class="form-control" placeholder=""> 
+                <span id="StoreNameResult" style="height:10px;"></span> </div>
               <!-- 餐廳類型 -->
-              <div class="form-group mx-2"> <label name="StoreType" id="StoreType">Cuisine type</label> <select class="form-control">
+              <div class="form-group mx-2"> <label >Cuisine type</label>
+               <select class="form-control" name="StoreType" id="StoreType">
                   <option value="台式餐廳">台式餐廳</option>
                   <option value="日式餐廳">日式餐廳</option>
                   <option value="韓式餐廳">韓式餐廳</option>
@@ -88,13 +92,20 @@
                 <input type="text" name="branch" value="${param.branch}" id="branch" class="form-control" placeholder=""> </div>
               <!-- 餐廳地址 -->
               <div class="form-group mx-2"><label>Address</label>
-                <input type="text" name="address" value="${param.address}" id="address" class="form-control" placeholder=""> <span id="addressResult" style="height:10px;"></span> </div>
+                <input type="text" name="address" value="${param.address}" id="address" class="form-control" placeholder=""> 
+                <span id="addressResult" style="height:10px;"></span> </div>
+              <!-- 餐廳Email -->
+              <div class="form-group mx-2"><label>Email</label>
+                <input type="text" name="eMail" value="${param.email}" id="eMail" class="form-control" placeholder="MR.  /  MS."> 
+                <span id="eMailResult" style="height:10px;"></span> </div>  
               <!-- 餐廳聯絡電話 -->
               <div class="form-group mx-2"><label>Contact phone number</label>
-                <input type="text" name="tel" value="${param.tel}" id="tel" class="form-control" placeholder=""> <span id="telResult" style="height:10px;"></span> </div>
+                <input type="text" name="tel" value="${param.tel}" id="tel" class="form-control" placeholder=""> 
+                <span id="telResult" style="height:10px;"></span> </div>
               <!-- 餐廳負責人 -->
               <div class="form-group mx-2"><label>Owner of Restaurant</label>
-                <input type="text" name="owner" value="${param.owner}" id="owner" class="form-control" placeholder="MR.  /  MS."> <span id="ownerResult" style="height:10px;"></span> </div>
+                <input type="text" name="owner" value="${param.owner}" id="owner" class="form-control" placeholder="MR.  /  MS."> 
+                <span id="ownerResult" style="height:10px;"></span> </div>
               <!-- 餐廳網站link -->
               <div class="form-group px-2"><label>Official Website</label>
                 <input type="text" name="url" value="${param.url}" id="url" class="form-control" placeholder="http://"> </div>

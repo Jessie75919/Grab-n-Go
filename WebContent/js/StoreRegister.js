@@ -6,6 +6,7 @@ function addressToLanlng(addr) {
 		"address": addr
 	}, function (results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
+			MapStatus = status;
 			langitude.value = results[0].geometry.location.lng();
 			latitude.value = results[0].geometry.location.lat();
 			alert(langitude.value);
@@ -15,25 +16,28 @@ function addressToLanlng(addr) {
 }
 
 //----------------------------------------------------------
+var MapStatus ;
+var sendBtn = document.getElementById("holyshit");
+var dateSet = document.getElementById("gygy");
+var resetBtn = document.getElementById("cancel");
+var idcheck = document.getElementById("accountlink");
+var account = document.getElementById("mid");
+var password = document.getElementById("password");
+var password2 = document.getElementById("password2");
+var StoreName = document.getElementById("StoreName");
+var StoreType = document.getElementById("StoreType");
+var branch = document.getElementById("branch");
+var address = document.getElementById("address");
+var tel = document.getElementById("tel");
+var eMail = document.getElementById("eMail");
+var owner = document.getElementById("owner");
+var url = document.getElementById("url");
+var langitude = document.getElementById("langitude");
+var latitude = document.getElementById("latitude");
+var midResult = document.getElementById("midResult");
+var langitude = document.getElementById("langitude");
+var latitude = document.getElementById("latitude");
 
-	var sendBtn = document.getElementById("holyshit");
-	var dateSet = document.getElementById("gygy");
-	var resetBtn = document.getElementById("cancel");
-	var idcheck = document.getElementById("accountlink");
-	var account = document.getElementById("mid");
-	var password = document.getElementById("password");
-	var password2 = document.getElementById("password2");
-	var StoreName = document.getElementById("StoreName");
-	var StoreType = document.getElementById("StoreType");
-	var branch = document.getElementById("branch");
-	var address = document.getElementById("address");
-	var tel = document.getElementById("tel");
-	var eMail = document.getElementById("eMail");
-	var owner = document.getElementById("owner");
-	var url = document.getElementById("url");
-	var langitude = document.getElementById("langitude");
-	var latitude = document.getElementById("latitude");
-	var midResult = document.getElementById("midResult");
 window.onload = function () {
 
 	//----------------------------------------------------------
@@ -63,18 +67,10 @@ window.onload = function () {
 		}
 	};
 
-	
-	//----------------------------------------------------------
 
-
-	// sendBtn.onclick = function () {
-
-		
-	// }
 
 	//----------------------------------------------------------
 	dateSet.onclick = function () {
-		alert("setData");
 		account.value = "Jessie75919";
 		password.value = "a1234";
 		password2.value = "a1234";
@@ -96,11 +92,10 @@ function validateForm(event) {
 	var formA = document.getElementById("theForm")
 
 	var passwordResult = document.getElementById("passwordResult");
-	passwordResult.value = 1111;
 	var password2Result = document.getElementById("password2Result");
 	var StroeNameResult = document.getElementById("StroeNameResult");
 	var addressResult = document.getElementById("addressResult");
-	var telResult = document.getElementById("telResult");
+	var telRes = document.getElementById("telResult");
 	var eMailResult = document.getElementById("eMailResult");
 	var ownerResult = document.getElementById("ownerResult");
 
@@ -128,16 +123,18 @@ function validateForm(event) {
 	} else if (!(password2.value == password.value)) {
 		password2Result.innerHTML = "<font color = 'red' size ='-2'>與之前密碼不相符</font>";
 		hasErr = true;
-	} else
+	} else {
 		console.log("hasErr : password2" + hasErr);
-	password2Result.innerHTML = "";
+		password2Result.innerHTML = "";
+	}
 	//------------------------------
 	if (!StoreName.value) {
 		StoreNameResult.innerHTML = "<font color = 'red' size ='-2'>請輸入店家名稱</font>";
 		hasErr = true;
-	} else
+	} else {
 		console.log("hasErr : StoreName" + hasErr);
-	StoreNameResult.innerHTML = "";
+		StoreNameResult.innerHTML = "";
+	}
 	//------------------------------
 	if (!address.value) {
 		addressResult.innerHTML = "<font color = 'red' size ='-2'>請輸入店家住址</font>";
@@ -148,11 +145,13 @@ function validateForm(event) {
 	}
 	//------------------------------
 	if (!tel.value) {
-		telResult.innerHTML = "<font color = 'red' size ='-2'>請輸入店家電話</font>";
+		alert("aaaa")
+		telRes.innerHTML = "<font color = 'red' size ='-2'>請輸入店家電話</font>";
 		hasErr = true;
-	} else
+	} else {
 		console.log("hasErr : tel" + hasErr);
-	telResult.innerHTML = "";
+		telRes.innerHTML = "";
+	}
 	//------------------------------
 	if (!eMail.value) {
 		eMailResult.innerHTML = "<font color = 'red' size ='-2'>請輸入店家E-mail</font>";
@@ -164,15 +163,28 @@ function validateForm(event) {
 	if (!owner.value) {
 		ownerResult.innerHTML = "<font color = 'red' size ='-2'>請輸入店家負責人</font>";
 		hasErr = true;
-	} else
+	} else {
 		console.log("hasErr : owner" + hasErr);
-	ownerResult.innerHTML = "";
+		ownerResult.innerHTML = "";
+	}
+
+
 	//------------------------------
 	if (hasErr) {
 		return false;
-	}else {
-   		 formA.submit();
-		 }
+	} else {
+		formA.submit();
+		console.log(account.value);
+		console.log(password.value);
+		console.log(password2.value);
+		console.log(StoreName.value);
+		console.log(address.value);
+		console.log(tel.value);
+		console.log(owner.value);
+		console.log(owner.value);
+		console.log(langitude.value);
+		console.log(langitude.value);
+	}
 
 
 }

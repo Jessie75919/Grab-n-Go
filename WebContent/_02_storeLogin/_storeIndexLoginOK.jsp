@@ -115,7 +115,7 @@
                   <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
                 </tr>
                 <tr>
-                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td nowrap>2017/05/19 11:05:31</td>
                   <td>A002</td>
                   <td>張小茶</td>
                   <td><a href="#">XX002</a></td>

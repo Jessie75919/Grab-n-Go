@@ -88,6 +88,7 @@
         <!-- 個人資料修改表格開始 -->
         <div id="profileArea" class="col-md-9" >
           <!-- <form> -->
+          <div style="font-size:14px; color:blue">${msgOK.UpdateOk}</div>
           <div id="titleP">
             <h5>My Account <br></h5>
             <hr>
@@ -187,6 +188,7 @@
               <label class="col-sm-2 control-label" >主頁橫幅圖：</label>
               <div class="col-sm-10">
               <input type="file" size="40" id="mainBanner"  name="mainBanner" class="exampleInputFile"><BR>
+              <span style="color:red; font-size:12px;">${MsgMap.errorPicture}</span>
               </div>
             </div>
 
@@ -194,6 +196,7 @@
               <label class="col-sm-2 control-label" >Logo 圖片：</label>
               <div class="col-sm-10">
               <input type="file" size="40" id="logo"   name="logo" class="exampleInputFile"><BR>
+              <span style="color:red; font-size:12px;">${MsgMap.errorPicture}</span>
               </div>
             </div>
 
@@ -201,6 +204,7 @@
               <label class="col-sm-2 control-label" >首頁圖片：</label>
               <div class="col-sm-10">
               <input type="file" size="40" iid="coverImg"  name="coverImg" class="exampleInputFile"><BR>
+              <span style="color:red; font-size:12px;">${MsgMap.errorPicture}</span>
               </div>
             </div>
           <!-- 按鈕 -->

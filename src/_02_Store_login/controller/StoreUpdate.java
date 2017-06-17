@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
+import _01_Store_register.model.StoreBean;
+import _01_Store_register.model.StoreBeanDAO;
 
 @MultipartConfig(location = "", fileSizeThreshold = 5 * 1024 * 1024, maxFileSize = 1024 * 1024
 		* 500, maxRequestSize = 1024 * 1024 * 500 * 5)
@@ -34,30 +36,34 @@ public class StoreUpdate extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
 		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
+		
+		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String type = request.getParameter("StoreType");
 		String addr = request.getParameter("address");
 		String tel = request.getParameter("tel");
 		String email = request.getParameter("eMail");
 		String url = request.getParameter("url");
-		String fileName = "";
-		long sizeInBytes = 0;
-		InputStream is = null;
+		String[] fileName = new String[3];
+		long[] sizeInBytes = new long[3];
+		InputStream[] is = new InputStream[3];
 		Collection<Part> parts = request.getParts();
 		GlobalService.exploreParts(parts, request);
-		
+		int i = 0;
 		// ----------------------------------------
 		
 		if (parts != null) {
+			
 			for (Part p : parts) {
 				if (p.getContentType() != null) {
 					String fieldName = p.getName();
+					System.out.println("fieldName="+fieldName);
 					String value = request.getParameter(fieldName);
-					fileName = GlobalService.getFileName(p); // 此為圖片檔的檔名
-					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
-					if (fileName != null && fileName.trim().length() > 0) {
-						sizeInBytes = p.getSize();
-						is = p.getInputStream();
+					fileName[i] = GlobalService.getFileName(p); // 此為圖片檔的檔名
+					fileName[i] = GlobalService.adjustFileName(fileName[i], GlobalService.IMAGE_FILENAME_LENGTH);
+					if (fileName[i] != null && fileName[i].trim().length() > 0) {
+						sizeInBytes[i] = p.getSize();
+						is[i] = p.getInputStream();
+						i++;
 					} else {
 						errorMsg.put("errorPicture", "必須挑選圖片檔");
 						System.out.println("必須挑選圖片檔");
@@ -76,6 +82,19 @@ public class StoreUpdate extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+		StoreBean sb = new StoreBean(username,addr,tel,email,password,url);
+		
+		
+		
+		StoreBeanDAO dao = new StoreBeanDAO();
+		int n = dao.updateShopData(sb,is[0],is[1],is[2],
+					sizeInBytes[0],sizeInBytes[1],sizeInBytes[2]);
+		if(n==1){
+			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
+			rd.forward(request, response);
+			msgOK.put("UpdateOk", "您的更新已成功囉~");
+		}
+		
 
 	}
 

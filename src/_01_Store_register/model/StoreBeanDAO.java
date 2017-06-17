@@ -106,34 +106,27 @@ public class StoreBeanDAO {
 			long logoSize, long coverSize) {
 
 		int result = 0;
-		String sql = "update restaurant set ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?";
+		
+		String sql = "update restaurant set rest_address=?,rest_phone=?,rest_email=? "
+				+ ",rest_passward =?,rest_url= ?, rest_mainbanner =?,rest_logo=?,rest_coverimage=? where rest_username = ?";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
-			pst.setInt(++i, sb.getRest_id());
-			pst.setString(++i, sb.getRest_typeId());
-			pst.setString(++i, sb.getRest_name());
-			pst.setString(++i, sb.getRest_branch());
 			pst.setString(++i, sb.getRest_address());
 			pst.setString(++i, sb.getRest_phone());
-			pst.setString(++i, sb.getRest_owner());
 			pst.setString(++i, sb.getRest_email());
-			pst.setString(++i, sb.getRest_username());
 			String pwEncryped = GlobalService.encryptString(sb.getRest_passward());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
-			pst.setFloat(++i, sb.getRest_longitude());
-				// get values from google api ??
-			pst.setFloat(++i, sb.getRest_latitude());
-				// get values from google api ??
 			pst.setBinaryStream(++i, banner, bannerSize);
 			pst.setBinaryStream(++i, logo, logoSize);
 			pst.setBinaryStream(++i, cover, coverSize);
+			pst.setString(++i, sb.getRest_username());
 
 			result = pst.executeUpdate();
 			if (result == 1) {
-				System.out.println(sb.getRest_name() + " update successfully ");
+				System.out.println(sb.getRest_username() + " update successfully ");
 			} else
-				System.out.println(sb.getRest_name() + " gets wrong ");
+				System.out.println(sb.getRest_username() + " gets wrong ");
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

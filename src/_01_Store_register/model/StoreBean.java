@@ -102,6 +102,16 @@ public class StoreBean implements Serializable{
 		this.rest_coverimage = rest_coverimage;
 	}
 
+	public StoreBean(String rest_username,String rest_address, String rest_phone, String rest_email, String rest_passward, String rest_url) {
+		super();
+		this.rest_username = rest_username;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_email = rest_email;
+		this.rest_passward = rest_passward;
+		this.rest_url = rest_url;
+	}
+
 	public StoreBean(String rest_typeId, String rest_name, String rest_branch, String rest_address, String rest_phone,
 			String rest_owner, String rest_email, String rest_username, String rest_passward, String rest_url,
 			float rest_longitude, float rest_latitude) {
@@ -119,6 +129,8 @@ public class StoreBean implements Serializable{
 		this.rest_longitude = rest_longitude;
 		this.rest_latitude = rest_latitude;
 	}
+	
+	
 
 	/*---------------------------------------------------------------------------------
 	 * */

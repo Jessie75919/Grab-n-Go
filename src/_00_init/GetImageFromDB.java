@@ -32,13 +32,14 @@ public class GetImageFromDB extends HttpServlet {
 			PreparedStatement pstmt = null;
 			//System.out.println("GetImageFromDB, Type==>" + type);
 			//System.out.println("GetImageFromDB, ID==>" + id);
-			if (type.equalsIgnoreCase("BOOK")) {  // 讀取eBook表格
+			if (type.equalsIgnoreCase("restaurant")) {  // 讀取eBook表格
 				pstmt = conn.prepareStatement(
-						"SELECT fileName, CoverImage from eBook where bookID = ?");
-			} else if (type.equalsIgnoreCase("MEMBER")) {  // 讀取eMember表格
+		"SELECT rest_mainbanner, rest_logo ,rest_coverimage from restaurant where rest_username = ?");
+			} else if (type.equalsIgnoreCase("member")) {  // 讀取eMember表格
 				pstmt = conn.prepareStatement(
-						"SELECT fileName, MemberImage from eMember where memberID = ?");
+						"SELECT m_filename, m_picture from member where m_username = ?");
 			}
+			
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -46,6 +47,8 @@ public class GetImageFromDB extends HttpServlet {
 				String fileName = rs.getString(1);
 				is = rs.getBinaryStream(2);				
 				String mimeType = getServletContext().getMimeType(fileName);
+				System.out.println("fileName = " +fileName);
+				System.out.println("mimeType = "+mimeType);
 				// 設定輸出資料的型態
 				response.setContentType(mimeType);
 				// 取得能寫出非文字資料的OutputStream物件
@@ -53,7 +56,7 @@ public class GetImageFromDB extends HttpServlet {
 				
 				if (is == null) {
 					is = getServletContext().getResourceAsStream(
-							"/images/NoImage.jpg");
+							"/images/userImage/default.png");
 				}
 				int count = 0;
 				byte[] bytes = new byte[8192];

@@ -87,27 +87,33 @@
         </div>
         <!-- 個人資料修改表格開始 -->
         <div id="profileArea" class="col-md-9" >
-          <form method="POST"  ENCTYPE="multipart/form-data"  action="<c:url value='StoreUpdate.do' />"  id="register.do" >
           <!-- <form> -->
           <div id="titleP">
             <h5>My Account <br></h5>
             <hr>
           </div>
+          <form method="POST"  ENCTYPE="multipart/form-data"  action="<c:url value='storeUpdate.do' />" >
           <!-- 會員帳號 -->
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">Username : </label>
+          <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">Username : </label>
               <div class="col-sm-10">
-                <!-- <input name="mid" value="${param.mid}" id="mid" type="text" class="form-control" > -->
-                <!--  -->
-                <p class="form-control-static">email001</p>
-                <span id="midResult" style="heigth:10px;" ></span>
+                <input type="text" name="username" value="${sessionScope.user}" id="username" class="form-control" readonly>
               </div>
             </div>
+<!--             <div class="form-group"> -->
+<!--               <label for="inputEmail3" class="col-sm-2 control-label">Username : </label> -->
+<!--               <div class="col-sm-10"> -->
+<!--                 <input name="mid" value="${param.mid}" id="mid" type="text" class="form-control" > -->
+<!--                  -->
+<%--                 <p class="form-control-static">${sessionScope.user}</p> --%>
+<!--               </div> -->
+<!--             </div> -->
+            
           <!-- 密碼  -->
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">Password : </label>
               <div class="col-sm-10">
-                <input type="password" name="password" value="${param.password}" id="password" class="form-control" readonly>
+                <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control" readonly>
               </div>
             </div>
           <div id="titleP">
@@ -119,70 +125,59 @@
             <div class="form-group">
               <label class="col-sm-2 control-label" >餐廳名稱：</label>
               <div class="col-sm-10">
-                <input type="text" name="StoreName" value="${param.StoreName}" id="StoreName" class="form-control" readonly>
-              <span id="StoreNameResult" style="heigth:10px;" ></span>
+                <input type="text" name="StoreName" value="${StoreLoginOK['rest_name']}" id="StoreName" class="form-control" readonly>
               </div>
             </div>
           <!-- 餐廳類別 -->
           <div  class="form-group">
               <label class="col-sm-2 control-label" >餐廳類別：</label>
               <div class="col-sm-10">
-                <select name ="StoreType" id ="StoreType">
-                <option value="台式餐廳" >台式餐廳</option>
-                <option value="日式餐廳" >日式餐廳</option>
-                <option value="韓式餐廳" >韓式餐廳</option>
-                <option value="美式餐廳" >美式餐廳</option>
-                <option value="義式餐廳" >義式餐廳</option>
-                <option value="法式餐廳" >法式餐廳</option>
-                <option value="泰式餐廳" >泰式餐廳</option>
-                <option value="越式餐廳" >越式餐廳</option>
-              </select>
+              	<input type="text" name="StoreType" value="${StoreLoginOK['rest_typeId']}" id="StoreType" class="form-control" readonly>
               </div>
             </div>
           <!-- 餐廳分店 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >餐廳分店：</label>
               <div class="col-sm-10">
-                <input type="text" name="branch" value="${param.branch}" id="branch" class="form-control" readonly>
+                <input type="text" name="branch" value="${StoreLoginOK['rest_branch']}" id="branch" class="form-control" readonly>
               </div>
             </div>
           <!-- 餐廳地址 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >餐廳地址：</label>
               <div class="col-sm-10">
-                <input type="text" name="address" value="${param.address}" id="address" class="form-control" readonly>
-                <span id="addressResult" style="heigth:10px;" ></span>
+                <input type="text" name="address" value="${StoreLoginOK['rest_address']}" id="address" class="form-control" readonly>
               </div>
             </div>
+            
+            
+            
           <!-- 餐廳電話 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >聯絡電話：</label>
               <div class="col-sm-10">
-                <input type="text"  name="tel" value="${param.tel}" id="tel" class="form-control" readonly>
-                <span id="telResult" style="heigth:10px;" ></span>
+                <input type="text"  name="tel" value="${StoreLoginOK['rest_phone']}" id="tel" class="form-control" readonly>
               </div>
             </div>
           <!-- E-mail -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >E-mail：</label>
               <div class="col-sm-10">
-                <input type="text"  name="eMail" value="${param.eMail}" id="eMail" class="form-control" readonly>
-                <span id="eMailResult" style="heigth:10px;" ></span>
+                <input type="text"  name="eMail" value="${StoreLoginOK['rest_email']}" id="eMail" class="form-control" readonly>
               </div>
             </div>
           <!-- 餐廳負責人 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >店家負責人</label>
               <div class="col-sm-10">
-                <input type="text" name="owner" value="${param.owner}" id="owner" class="form-control" readonly>
-                <span id="ownerResult" style="heigth:10px;" ></span>
+                <input type="text" name="owner" value="${StoreLoginOK['rest_owner']}" id="owner" class="form-control" readonly>
               </div>
             </div>
           <!-- 官方網站 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >官方網站：</label>
               <div class="col-sm-10">
-                <input type="text" name="url" value="${param.url}" id="url" class="form-control">
+                <input type="text" name="url" value="${StoreLoginOK['rest_url']}" id="url" class="form-control" >
               </div>
               <input type="text" name="langitude" style="display:none;" value="" id="langitude">
               <input type="text" name="latitude" style="display:none;" value="" id="latitude">
@@ -218,7 +213,6 @@
                 <input type="reset" name="cancel" id="cancel" value="cancel" class="btn btn-default">
               </div>
             </div>
-            <span id="setData">點我點我</span><br>
           </form>
         </div>
         </div>
@@ -226,22 +220,7 @@
       <div class="row"></div>
     </div>
   </div>
-  <script type="text/javascript">
-  window.onload = function() {
-	  setData.onclick = function(){
-		  	account.value = "Jessie75919";
-		  	password.value = "a1234";
-		  	password2.value = "a1234";
-		  	StoreName.value = "subway";
-		  	StoreType.value = "美式餐廳";
-		  	address.value = "台北市中山區長安東路二段92號1樓";
-		  	tel.value = "(02)2517-7667";
-		  	eMail.value = "jessie75919@gmail.com";
-		  	owner.value = "謝阿哲";
-		  	url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
-		}
-  }
-  </script>
+
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>

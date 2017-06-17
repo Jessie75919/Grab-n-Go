@@ -101,17 +101,6 @@ public class StoreRegisterServlet extends HttpServlet {
 					System.out.println("15-a-3-2");
 					System.out.println(StoreName + " add successfully ,n= " +n );
 
-//					System.out.println("15-a-3-3");
-//					if (requestURI != null) {
-//						requestURI = (requestURI.length() == 0 ? request
-//								.getContextPath() : requestURI);
-//						response.sendRedirect(response.encodeRedirectURL(requestURI));
-//						return;
-//					} else {
-//						response.sendRedirect(response.encodeRedirectURL(request
-//								.getContextPath()));
-//						System.out.println("15-a-3-4");
-//					}
 					response.sendRedirect("_storeRegisterSuccessful.jsp");
 				}
 				 else{

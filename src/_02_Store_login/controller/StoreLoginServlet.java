@@ -101,7 +101,7 @@ public class StoreLoginServlet extends HttpServlet {
 			
 			if (sb != null) {
 //				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
-				session.setAttribute("LoginOK", sb);
+				session.setAttribute("StoreLoginOK", sb);
 			} else {
 				// NG, userid與密碼的組合錯誤，放一個錯誤訊息到 errorMsgMap 之內
 				errorMsgMap.put("LoginError", "該帳號不存在或密碼錯誤");
@@ -123,7 +123,7 @@ public class StoreLoginServlet extends HttpServlet {
 //				return;
 //			}
 //			
-			response.sendRedirect("../index.jsp");
+			response.sendRedirect("../_02_storeLogin/_storeIndexLoginOK.jsp");
 				return;
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp

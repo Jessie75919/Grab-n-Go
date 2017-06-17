@@ -76,4 +76,14 @@
     <servlet-name>SaveLocationServlet</servlet-name>
     <url-pattern>/SaveLocationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StoreUpdate</display-name>
+    <servlet-name>StoreUpdate</servlet-name>
+    <servlet-class>_02_Store_login.controller.StoreUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StoreUpdate</servlet-name>
+    <url-pattern>/StoreUpdate</url-pattern>
+  </servlet-mapping>
 </web-app>

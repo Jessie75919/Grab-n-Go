@@ -484,6 +484,7 @@
 		title="Grab &amp; Go"></figure>
 	<p>Copyright © Garb and Go All rights reserved.</p>
 	<a href="#" class="backToTop">TOP</a></footer>
+	
 	<!--main js-->
 	<!--[if lt IE 8]><script type="text/javascript" src="javascript/html5.js"></script><![endif]-->
 	<script type="text/javascript"
@@ -518,6 +519,7 @@
 	</script>
 	<!--share js-->
 	<script src="javascript/share.js"></script>
+	<script	 src = "js/getUsrLocation.js"></script>
 </body>
 
 </html>

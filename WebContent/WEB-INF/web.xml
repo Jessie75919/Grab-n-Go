@@ -8,16 +8,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-   <display-name>Log4jWebDemo1</display-name>
-   
-    <context-param>
-        <param-name>log4jContextName</param-name>
-        <param-value>myApplication</param-value>
-    </context-param>
-   <context-param>
-        <param-name>log4jConfiguration</param-name>
-        <param-value>/WEB-INF/log4j2.xml</param-value>
-    </context-param>
+  <display-name>Log4jWebDemo1</display-name>
+  <context-param>
+    <param-name>log4jContextName</param-name>
+    <param-value>myApplication</param-value>
+  </context-param>
+  <context-param>
+    <param-name>log4jConfiguration</param-name>
+    <param-value>/WEB-INF/log4j2.xml</param-value>
+  </context-param>
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
@@ -66,5 +65,15 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaveLocationServlet</display-name>
+    <servlet-name>SaveLocationServlet</servlet-name>
+    <servlet-class>_02_login.controller.SaveLocationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveLocationServlet</servlet-name>
+    <url-pattern>/SaveLocationServlet</url-pattern>
   </servlet-mapping>
 </web-app>

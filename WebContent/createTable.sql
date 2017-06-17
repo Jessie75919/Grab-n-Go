@@ -33,7 +33,9 @@ CREATE TABLE member (
 	m_address VARCHAR(50),
 	m_birthday DATE,
 	m_picture LONGBLOB ,
-	m_filename VARCHAR(15)	
+	m_filename VARCHAR(15)
+	
+	
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 

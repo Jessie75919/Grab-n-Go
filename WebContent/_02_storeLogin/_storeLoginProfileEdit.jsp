@@ -88,7 +88,7 @@
         <!-- 個人資料修改表格開始 -->
         <div id="profileArea" class="col-md-9" >
           <!-- <form> -->
-          <div style="font-size:14px; color:blue">${msgOK.UpdateOk}</div>
+          <div style="font-size:14px; color:blue">${MsgOK.UpdateOk}${MsgOK.UpdateFail}</div>
           <div id="titleP">
             <h5>My Account <br></h5>
             <hr>
@@ -114,7 +114,7 @@
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">Password : </label>
               <div class="col-sm-10">
-                <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control" readonly>
+                <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control" >
               </div>
             </div>
           <div id="titleP">
@@ -143,11 +143,18 @@
                 <input type="text" name="branch" value="${StoreLoginOK['rest_branch']}" id="branch" class="form-control" readonly>
               </div>
             </div>
+          <!-- 餐廳負責人 -->
+          <div class="form-group">
+              <label class="col-sm-2 control-label" >店家負責人</label>
+              <div class="col-sm-10">
+                <input type="text" name="owner" value="${StoreLoginOK['rest_owner']}" id="owner" class="form-control" readonly >
+              </div>
+            </div>
           <!-- 餐廳地址 -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >餐廳地址：</label>
               <div class="col-sm-10">
-                <input type="text" name="address" value="${StoreLoginOK['rest_address']}" id="address" class="form-control" readonly>
+                <input type="text" name="address" value="${StoreLoginOK['rest_address']}" id="address" class="form-control" >
               </div>
             </div>
             
@@ -157,21 +164,14 @@
           <div class="form-group">
               <label class="col-sm-2 control-label" >聯絡電話：</label>
               <div class="col-sm-10">
-                <input type="text"  name="tel" value="${StoreLoginOK['rest_phone']}" id="tel" class="form-control" readonly>
+                <input type="text"  name="tel" value="${StoreLoginOK['rest_phone']}" id="tel" class="form-control" >
               </div>
             </div>
           <!-- E-mail -->
           <div class="form-group">
               <label class="col-sm-2 control-label" >E-mail：</label>
               <div class="col-sm-10">
-                <input type="text"  name="eMail" value="${StoreLoginOK['rest_email']}" id="eMail" class="form-control" readonly>
-              </div>
-            </div>
-          <!-- 餐廳負責人 -->
-          <div class="form-group">
-              <label class="col-sm-2 control-label" >店家負責人</label>
-              <div class="col-sm-10">
-                <input type="text" name="owner" value="${StoreLoginOK['rest_owner']}" id="owner" class="form-control" readonly>
+                <input type="text"  name="eMail" value="${StoreLoginOK['rest_email']}" id="eMail" class="form-control" >
               </div>
             </div>
           <!-- 官方網站 -->

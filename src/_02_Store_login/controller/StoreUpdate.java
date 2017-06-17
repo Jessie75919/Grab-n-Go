@@ -93,6 +93,8 @@ public class StoreUpdate extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
 			rd.forward(request, response);
 			msgOK.put("UpdateOk", "您的更新已成功囉~");
+		}else{
+			msgOK.put("UpdateFail", "您的更新失敗了...");
 		}
 		
 

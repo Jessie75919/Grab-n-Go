@@ -123,7 +123,7 @@ public class StoreLoginServlet extends HttpServlet {
 //				return;
 //			}
 //			
-			response.sendRedirect("../_02_storeLogin/_storeIndexLoginOK.jsp");
+			response.sendRedirect("_storeIndexAfterLogin.jsp");
 				return;
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp

@@ -58,10 +58,10 @@
           <ul id="leftMenu" class="list-group">
             <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
             <li class="list-group-item">
-              <a href="#">修改個人資料</a>
+              <a href="_storeLoginProfileEdit.jsp">修改個人資料</a>
             </li>
             <li class="list-group-item">
-              <a href="#">登出</a>
+              <a href="StoreLogout.jsp">登出</a>
             </li>
             <li class="list-group-item"><i class="fa fa-file-text-o fa-fw"></i>本日訂單</li>
             <li class="list-group-item">

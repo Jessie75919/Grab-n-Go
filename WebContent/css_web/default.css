@@ -676,7 +676,7 @@ main.login input[type="reset"]:hover {
 .loginBtn {
     position: relative;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
     margin-top: 10px;
     border-top: #ccc dotted 1px;
     clear: both;

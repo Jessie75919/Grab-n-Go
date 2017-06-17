@@ -2,13 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
-  <link rel="stylesheet" href="../css/_storeIndexLoginOK.css" type="text/css">
+  <link rel="stylesheet" href="../css/_storeIndexAfterLogin.css" type="text/css">
   <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->
@@ -18,11 +17,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-<!--           <h1 class="text-primary text-center">Logo</h1> -->
-			<center>
-				<img width="400" src="../images/share/logo.svg">
-			</center>
+          <center>
+          <img width="350px" src="../images/share/logo.svg">
+          </center>
         </div>
+      </div>
+      <div class="row">
+        <!-- <div id="formHeading" class="col-md-12">
+          <br>
+          <h3>本日訂單</h3>
+        </div> -->
       </div>
     </div>
   </div>
@@ -30,12 +34,21 @@
     <div class="container">
       <div class="row">
         <!-- 店家profile -->
-        <div class="col-md-4">
+        <div class="col-md-3">
+        <center>
           <img class="img-rounded" src="../images/restImage/af_logo.jpg">
-          <br> </div>
-        <div class="col-md-8">
-          <div></div>
-          <div> </div>
+          <br>
+         </center>
+        </div>
+        <div class="col-md-9">
+          <div id="formHeading">
+          	<br>
+          	<h3>本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
+          </div>
+          <br>
+          <div id="orderStatusHeading">
+          	待處理訂單
+          </div>
         </div>
       </div>
       <div class="row">
@@ -45,7 +58,7 @@
           <ul id="leftMenu" class="list-group">
             <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
             <li class="list-group-item">
-              <a href="_storeLoginProfileEdit.jsp">修改個人資料</a>
+              <a href="#">修改個人資料</a>
             </li>
             <li class="list-group-item">
               <a href="#">登出</a>
@@ -104,7 +117,7 @@
                   <th>訂單狀態</th>
                   <th>Action</th>
                 </tr>
-                <!-- 每筆訂單資訊 -->
+                <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                 <tr>
                   <td nowrap="">2017/05/19 11:05:31</td>
                   <td>A001</td>
@@ -115,11 +128,74 @@
                   <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
                 </tr>
                 <tr>
-                  <td nowrap>2017/05/19 11:05:31</td>
+                  <td nowrap="">2017/05/19 11:05:31</td>
                   <td>A002</td>
                   <td>張小茶</td>
                   <td><a href="#">XX002</a></td>
                   <td>$300</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
+                  <td>處理中</td>
+                  <td><a href="#">取消訂單</a></td>
+                </tr>
+                <tr>
+                  <td nowrap="">2017/05/19 11:05:31</td>
+                  <td>A002</td>
+                  <td>李小妹</td>
+                  <td><a href="#">XX003</a></td>
+                  <td>$450</td>
                   <td>處理中</td>
                   <td><a href="#">取消訂單</a></td>
                 </tr>
@@ -137,7 +213,9 @@
             <hr> 
         </div>
       </div>
-      <div class="row"></div>
+      <div class="row">
+        
+      </div>
     </div>
   </div>
   <script type="text/javascript">
@@ -147,9 +225,6 @@
           var string = '確定取消此筆訂單嗎？';
           confirm(string);
         }
-        
-    
-
   </script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>

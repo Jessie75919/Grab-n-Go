@@ -118,26 +118,23 @@ select {
     color: #333;
     transition: ease 0.3s;
     outline: none;
+    padding: 10px;
     /*appearance: none;-moz-appearance: none;-webkit-appearance: none;*/
 }
 input[type="text"],
 input[type="password"],
 input[type="tel"],
-input[type="email"] {
+input[type="email"],
+input[type="number"],
+input[type="date"]{
     width: 100%;
-    padding: 15px 10px;
-    margin: 0 0 5px 0;
 }
-input[type="number"] {
-    width: 100%;
-    padding: 15px 10px;
-    margin: 0 0 3px 10px;
-    line-height: 36px;
+input[type="file"]{
+    font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei", "新細明體";
+    width: 60%;
 }
 textarea {
     width: 100%;
-    padding: 15px 10px;
-    margin: 0 0 5px 0;
     line-height: 24px;
 }
 input[type="submit"],
@@ -165,8 +162,7 @@ input[type="reset"]:hover {
 }
 select {
     width: 100%;
-    padding: 13px 10px 15px 10px;
-    margin: 0 0 5px 0;
+    padding: 8px 10px 10px 10px;
 }
 input:hover,
 input:focus,
@@ -671,13 +667,28 @@ main.login input[type="reset"]:hover {
 }
 .loginList {
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+}
+.loginList span.checkBtn{
+    display: inline-block;
+    color: #666;
+    border: #666 solid 1px;
+    border-radius: 15px;
+    padding: 0px 10px;
+    margin-top: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.loginList span{
+    color: #eb503c;
+    font-size: 0.9em;
+    
 }
 .loginBtn {
     position: relative;
     text-align: center;
-    padding-top: 5px;
-    margin-top: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
     border-top: #ccc dotted 1px;
     clear: both;
 }

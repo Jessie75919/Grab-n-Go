@@ -46,7 +46,7 @@
 		<i class="icon-menu" title="Menu"></i>
 	</div>
 	<div class="storeBtn">
-		<a href="_09_storeSys/index.htm">我是店家</a>
+		<a href="_02_storeLogin/StoreLogin.jsp">我是店家</a>
 	</div>
 	<div class="logo">
 		<a href="indexA.jsp"><img src="images/share/logo.svg"

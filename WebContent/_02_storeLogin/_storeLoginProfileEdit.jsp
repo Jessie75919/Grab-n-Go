@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-12">
           <center>
-				<img width="350" src="../images/share/logo.svg">
+				<a href="_storeIndexLoginOK.jsp"><img width="350" src="../images/share/logo.svg"></a>
 			</center>
            <div id="topHeading">
             <h4>餐廳帳戶資料修改</h4>

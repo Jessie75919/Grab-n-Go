@@ -1,13 +1,29 @@
 package _01_register.controller;
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import javax.servlet.http.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import _00_init.GlobalService;
-import _01_register.model.*;
+import _01_register.model.MemberBean;
+import _01_register.model.RegisterServiceDAO;
+import _01_register.model.RegisterServiceDAO_JDBC;
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
  * 進行Business Logic運算，依照Business Logic運算結果來挑選適當的畫面
@@ -44,9 +60,11 @@ maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet("/_01_register/register.do")
 public class RegisterServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
+	private static final Logger log = LogManager.getLogger(RegisterServletMP.class);
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws IOException, ServletException {
+    	log.error("Here am I ");
     	request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
@@ -80,9 +98,9 @@ public class RegisterServletMP extends HttpServlet {
 				
 				// 1. 讀取使用者輸入資料
 				if (p.getContentType() == null) {
-					if (fldName.equals("mid")) {
+					if (fldName.equals("userId")) {
 						memberID = value;
-					} else if (fldName.equals("password")) {
+					} else if (fldName.equals("pswd")) {
 						password = value;
 					} else if (fldName.equalsIgnoreCase("password2")) {
 						password2 = value;
@@ -116,48 +134,12 @@ public class RegisterServletMP extends HttpServlet {
 				}
 			}
 			// 2. 進行必要的資料轉換
-			
-//			try {
-//				experience = Integer.parseInt(expericnceStr.trim());
-//			} catch (NumberFormatException e) {
-//				errorMsg.put("errorFormat","網路購物經驗格式錯誤，應該為整數");
-//			}
-			// 3. 檢查使用者輸入資料
-			if (memberID == null || memberID.trim().length() == 0) {
-				errorMsg.put("errorIDEmpty","帳號欄必須輸入");
-			}
-			if (password == null || password.trim().length() == 0) {
-				errorMsg.put("errorPasswordEmpty","密碼欄必須輸入");
-			}
-			if (password2 == null || password2.trim().length() == 0) {
-				errorMsg.put("errorPassword2Empty","密碼確認欄必須輸入");
-			}
-			if (password.trim().length() > 0 && password2.trim().length() > 0){
-				if (!password.trim().equals(password2.trim())){
-					errorMsg.put("errorPassword2Empty","密碼欄必須與確認欄一致");
-					errorMsg.put("errorPasswordEmpty","*");
-				}			
-			}
-			if (name == null || name.trim().length() == 0) {
-				errorMsg.put("errorName","姓名欄必須輸入");
-			}
-			if (addr == null || addr.trim().length() == 0) {
-				errorMsg.put("errorAddr","地址欄必須輸入");
-			}
-			if (email == null || email.trim().length() == 0) {
-				errorMsg.put("errorEmail","電子郵件欄必須輸入");
-			}
-			if (tel == null || tel.trim().length() == 0) {
-				errorMsg.put("errorTel","電話號碼欄必須輸入");
-			}
-//			if (experience < 0) {
-//				errorMsg.put("errorFormat","網路購物經驗應該為正整數或 0 ");
-//			}
 			if (bday != null && bday.trim().length() > 0) {
 				try {
 					date = java.sql.Date.valueOf(bday);
 				} catch (IllegalArgumentException e) {
 					errorMsg.put("errorBirthday", "生日欄格式錯誤");
+					log.error("生日欄格式錯誤");
 				}
 			}else{
 				errorMsg.put("errorBirthday", "生日欄必須輸入");
@@ -168,7 +150,7 @@ public class RegisterServletMP extends HttpServlet {
 			// 如果有錯誤
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("registerA.jsp");
 				rd.forward(request, response);
 				return;
 			}
@@ -187,8 +169,7 @@ public class RegisterServletMP extends HttpServlet {
 					System.out.println("filename:" + fileName);
 					int n = rs.saveMember(mem, is, sizeInBytes, fileName);
 					if ( n == 1) {
-						msgOK.put("InsertOK","<Font color='red'>新增成功，請開始使用本系統</Font>");
-						response.sendRedirect("../index.jsp");
+						response.sendRedirect("register_success.jsp");
 						return;
 					} else {
 						errorMsg.put("errorIDDup","新增此筆資料有誤(RegisterServlet)");
@@ -197,14 +178,14 @@ public class RegisterServletMP extends HttpServlet {
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			if (!errorMsg.isEmpty()) {
 				// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-				RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("registerA.jsp");
 				rd.forward(request, response);
 				return;
 			}		
 		} catch (Exception e) {
 			e.printStackTrace();
 			errorMsg.put("errorIDDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("registerA.jsp");
 			rd.forward(request, response);
 		}		
      }

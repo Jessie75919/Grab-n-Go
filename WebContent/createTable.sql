@@ -29,7 +29,7 @@ CREATE TABLE member (
 	m_password VARCHAR(50) NOT NULL ,
 	m_name VARCHAR(32) NOT NULL ,
 	m_phone VARCHAR(20) NOT NULL ,
-	m_email VARCHAR(20) NOT NULL ,
+	m_email VARCHAR(50) NOT NULL ,
 	m_address VARCHAR(50),
 	m_birthday DATE,
 	m_picture LONGBLOB ,

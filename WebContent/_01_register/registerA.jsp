@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Grab &amp; Go</title>
+ <title>會員註冊-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -27,54 +24,52 @@
     <!--main css-->
     <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
-    <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <!--animation-->
-    <link href="../css_web/animate.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-
-<!-- 下列敘述設定變數funcName的值為LOG，top.jsp 會用到此變數 -->
-<c:set var="funcName" value="LOG" scope="session"/>
-<c:if test="${ ! empty sessionScope.timeOut }" > <!-- 表示使用逾時，重新登入 -->
-   <c:set var="msg" value="<font color='red'>${sessionScope.timeOut}</font>" />
-</c:if>
-
+    <div class="loginLogo">
+        <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
+    </div>
     <main class="login">
-        <div class="logo">
-            <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
-        </div>
-        <div class="googleBtn"><a href="#"><i class="icon-google"></i>GOOGLE 登入</a></div>
-        <h2>會員帳號登入</h2>
-        <form action="<c:url value='login.do' />" method="POST" name="loginForm" class="formcontent">
+        <h2>會員註冊</h2>
+        <p class="wRed">*為必填</p>
+        <form ENCTYPE="multipart/form-data" action="register.do" method="post" class="formcontent">
             <div class="loginList">
-                <input type="text" name="userId" id="userId" placeholder="帳號" 
-                value="${sessionScope.user}" class="validate[required] text-input">
+                <input type="text" name="userId" id="userId" value="${param.userId}" placeholder="帳號*" class="validate[required] text-input">
+                <font size="-1" color="#FF0000">${MsgMap.errorIDEmpty}${MsgMap.errorIDDup}</font>
             </div>
             <div class="loginList">
-                <input type="password" name="pswd" id="pswd" placeholder="密碼" 
-                 value="${sessionScope.password}"  class="validate[required] text-input">
+                <input type="password" name="pswd" id="pswd" value="${param.pswd}"  placeholder="密碼*" class="validate[required] text-input">
             </div>
-            <!-- 機器人驗證 -->
-		<div class="form-group my-1">
-			<div class="g-recaptcha"
-				data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"></div>
-		</div>
-		<div class="loginList">
-                 <input type="checkbox" name="rememberMe" 
-               <c:if test='${sessionScope.rememberMe==true}'>
-                  checked='checked'
-               </c:if> 
-             value="true">記住此帳號!
+            <div class="loginList">
+                <input type="password" name="password2" id="password2" value="${param.password2}" placeholder="確認密碼*" class="validate[required,equals[pswd]] text-input">
             </div>
-            <TR height='10'>
-             <TD align="CENTER" colspan='2'>&nbsp;<Font color='red' size="-1">${ErrorMsgKey.LoginError}&nbsp;</Font></TD>
-       		</TR>
+            <div class="loginList">
+                <input type="text" name="name" id="name" placeholder="姓名*" value="${param.name}" class="validate[required] text-input">
+            </div>
+            <div class="loginList">
+                <input type="text" name="address" id="address" value="${param.address}"  placeholder="地址">
+            </div>
+            <div class="loginList">
+                <input type="text" name="tel" id="tel" placeholder="電話*" value="${param.tel}" class="validate[required,custom[phone]] text-input">
+            </div>
+            <div class="loginList">
+                <input type="text" name="eMail" id="eMail" placeholder="E-mail*"  value="${param.eMail}" class="validate[required,custom[email]] text-input">
+            </div>
+            <div class="loginList">
+                <input type="date" name="birthday" id="birthday" value="${param.birthday}" placeholder="生日 Ex:1985/12/27">
+                <font color="red" size="-1">${MsgMap.errorBirthday}</font> 
+            </div>
+            <div class="loginList">
+                上傳個人照片 <input type="file" name="file1" id="file1">
+            </div>
+            <div class="loginList">
+                <input type="checkbox">我同意隱私權政策與服務條款!
+            </div>
             <div class="loginBtn">
                 <input name="reset" type="reset" id="reset" value="重填">
-                <input name="submit" type="submit" id="submit" value="登入">
-                <p><a href="forget_password.htm">忘記密碼</a> | <a href="../_01_register/registerA.jsp">註冊新會員</a></p>
+                <input name="submit" type="submit" id="submit" value="註冊">
+                <p>已有帳號? <a href="../_02_login/loginA.jsp">立即登入</a></p>
             </div>
         </form>
     </main>
@@ -83,20 +78,13 @@
     <!--main js-->
     <!--[if lt IE 8]><script type="text/javascript" src="../javascript/html5.js"></script><![endif]-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!--animation js-->
-    <script type="text/javascript" src="../javascript/wow.js"></script>
     <!-- form check-->
     <link rel="stylesheet" href="../javascript/validation/validationEngine.jquery.css">
     <script type="text/javascript" charset="utf-8" src="../javascript/validation/languages/jquery.validationEngine-zh_TW.js"></script>
     <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
-    <script>
-    
-    </script>
     <!-- form check end-->
     <!--share js-->
     <script src="../javascript/share.js"></script>
-    
-    
 </body>
 
 </html>

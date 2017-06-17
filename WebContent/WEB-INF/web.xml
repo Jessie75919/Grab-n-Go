@@ -8,6 +8,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+   <display-name>Log4jWebDemo1</display-name>
+   
+    <context-param>
+        <param-name>log4jContextName</param-name>
+        <param-value>myApplication</param-value>
+    </context-param>
+   <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>/WEB-INF/log4j2.xml</param-value>
+    </context-param>
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

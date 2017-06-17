@@ -51,7 +51,7 @@
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-          <a class="btn btn-block btn-warning bg-warning" href="#">&nbsp;START TAKING ORDERS!</a>
+          <a class="btn btn-block btn-warning bg-warning" href="../_02_storeLogin/_storeIndexLoginOK.jsp">&nbsp;START TAKING ORDERS!</a>
         </div>
         <div class="col-md-4"></div>
       </div>

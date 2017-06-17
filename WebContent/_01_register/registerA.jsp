@@ -36,6 +36,9 @@
         <form ENCTYPE="multipart/form-data" action="register.do" method="post" class="formcontent">
             <div class="loginList">
                 <input type="text" name="userId" id="userId" value="${param.userId}" placeholder="帳號*" class="validate[required] text-input">
+                 <a href="#" id="accountlink" style="font-size: 10pt;">檢查帳號</a> 
+                <span id="midResult" style="height:10px;"></span> 
+                
                 <font size="-1" color="#FF0000">${MsgMap.errorIDEmpty}${MsgMap.errorIDDup}</font>
             </div>
             <div class="loginList">
@@ -84,6 +87,7 @@
     <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
     <!-- form check end-->
     <!--share js-->
+    <script src="../js/userRegister.js"></script>
     <script src="../javascript/share.js"></script>
 </body>
 

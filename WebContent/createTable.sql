@@ -44,7 +44,7 @@ CREATE TABLE member (
 CREATE TABLE restaurant (
 	rest_id INT AUTO_INCREMENT PRIMARY KEY ,
 	rest_typeId VARCHAR(10) NOT NULL,
-	rest_name VARCHAR(32) NOT NULL,
+	rest_name VARCHAR(32) UNIQUE KEY NOT NULL,
 	rest_branch VARCHAR(10) ,
 	rest_address VARCHAR(50) NOT NULL,
 	rest_phone VARCHAR(15) NOT NULL,
@@ -99,8 +99,11 @@ CREATE TABLE rest_evaluate (
 
 CREATE TABLE product_type (
 	
-	type_id  INT PRIMARY KEY AUTO_INCREMENT,
-	type_name VARCHAR(20) NOT NULL
+	rest_name VARCHAR(32) ,
+	type_id  INT ,
+	type_name VARCHAR(50) NOT NULL,
+	PRIMARY KEY(type_id,rest_name),
+	CONSTRAINT product_type_restname_FK FOREIGN KEY (rest_name) REFERENCES restaurant(rest_name) ON DELETE CASCADE
 	
 )  CHARACTER SET utf8 COLLATE utf8_general_ci;
 

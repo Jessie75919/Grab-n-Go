@@ -47,7 +47,6 @@ public class TableDAO {
 	/*--------------------------------------------------------------------------
 	 *   inflater member data
 	 * */
-
 	public int insertMemberTable() {
 		getDataSource();
 		String sql = "insert into member values(?,?,?,?,?,?,?,?,?)";
@@ -94,7 +93,6 @@ public class TableDAO {
 	/*--------------------------------------------------------------------------
 	 *  inflater restaurant data
 	 * */
-
 	public int insertRestaurantTable() {
 		getDataSource();
 		String sql = "insert into restaurant values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -142,8 +140,49 @@ public class TableDAO {
 	}
 
 	/*--------------------------------------------------------------------------
-	 *  
+	 *  inflate productType data
 	 * */
+	public void insertProductType(){
+		getDataSource();
+		String sql = "insert into product_type values(?,?,?)";
+		int result = -1;
+		String store = "";
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productType.csv"));) {
+			String line = "";
+			int i = 0;
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				String[] segment = line.split(",");
+				
+				if(store.equals(segment[0])){
+				}else{
+					store = segment[0];
+					i = 0;
+				}
+				pst.setString(1, segment[0]); // rest_name
+				pst.setInt(2,  ++i ); // no
+				pst.setString(3, segment[1]); // type_name
+				
+				result =  pst.executeUpdate();
+				if (result == 1)
+					System.out.println(segment[1] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
 	
 	/* 
 		private String[] readSqlFiles(String sqlFileName) {

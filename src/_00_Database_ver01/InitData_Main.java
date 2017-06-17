@@ -6,6 +6,7 @@ public class InitData_Main {
 		TableDAO dao = new TableDAO();
 		dao.insertMemberTable();
 		dao.insertRestaurantTable();
+		dao.insertProductType();
 
 	}
 

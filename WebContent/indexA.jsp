@@ -65,7 +65,6 @@
 			<c:if test="${empty LoginOK}">
 				<li><a href="_02_login/loginA.jsp">登入</a></li>
 			</c:if>
-			
 <!-- 			<li><a href="_02_login/loginA.jsp">登入</a></li> -->
 			<!--未登入用這組 end-->
 			<!--已登入用這組-->
@@ -74,8 +73,6 @@
 				<li><a href="logout.do">登出</a></li>
 				<!--已登入用這組 end-->
 			</c:if>
-			
-			
 		</ul>
 	</div>
 	</header>
@@ -89,7 +86,6 @@
 			<p>
 				${LoginOK.memberId}<a href="logout.do">登出</a>
 			</p>
-	
 		</div>
 	</c:if>
 	<!--已登入用這組 未登入的話這塊隱藏 end-->
@@ -519,6 +515,7 @@
 	</script>
 	<!--share js-->
 	<script src="javascript/share.js"></script>
+	<!-- 取得使用者位置 -->
 	<script	 src = "js/getUsrLocation.js"></script>
 </body>
 

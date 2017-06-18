@@ -82,7 +82,12 @@ public class StoreUpdate extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
+		StoreBean old_sb = (StoreBean) session.getAttribute("StoreLoginOK");
+		System.out.println("id ="+old_sb.getRest_id());
+		System.out.println("StoreName ="+old_sb.getRest_name());
+		System.out.println("username = "+old_sb.getRest_username());
 		StoreBean sb = new StoreBean(username,addr,tel,email,password,url);
+		
 		
 		
 		
@@ -90,6 +95,8 @@ public class StoreUpdate extends HttpServlet {
 		int n = dao.updateShopData(sb,is[0],is[1],is[2],
 					sizeInBytes[0],sizeInBytes[1],sizeInBytes[2]);
 		if(n==1){
+			session.setAttribute("StoreLoginOK", sb);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
 			rd.forward(request, response);
 			msgOK.put("UpdateOk", "您的更新已成功囉~");

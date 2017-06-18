@@ -188,7 +188,7 @@ input[type="radio"] {
 
 header {
     position: fixed;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 10px 3%;
     width: 100%;
     height: 100px;
@@ -307,7 +307,7 @@ header:after {
 
 footer {
     position: relative;
-    padding: 30px 3%;
+    padding: 50px 3%;
     box-sizing: border-box;
 }
 footer figure {
@@ -410,7 +410,6 @@ section.searchContent .closeBtn:hover i {
 
 main {
     position: relative;
-    padding-bottom: 100px;
 }
 section {
     position: relative;
@@ -426,8 +425,15 @@ section.content {
     position: relative;
     width: 100%;
     margin: auto;
-    padding: 100px 3%;
+    padding: 50px 3%;
     box-sizing: border-box;
+}
+section.content.small {
+    width: 600px;
+    max-width: 94%;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    
 }
 section.content h2 {
     font-size: 2em;
@@ -441,7 +447,28 @@ section.content h2 span {
     color: #65bf97;
     padding: 0 0 0 10px;
 }
-
+.insideTitle{
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding: 100px 0% 0px 0%;
+}
+.insideTitle h2{
+    background-color: #eb503c;
+    padding: 80px 3% 80px 3%;
+    color: #fff;
+    
+}
+.brcame{
+    position: relative;
+    width: 94%;
+    margin: auto;
+    padding: 30px 0;
+    color: #666;
+}
+.brcame a{
+    
+}
 /*----------首頁----------*/
 
 .mainBanner {
@@ -476,7 +503,6 @@ section.content h2 span {
 }
 section.content.bgRed {
     background: #eb503c;
-    padding: 50px 3%;
 }
 section.content h2.slogan {
     color: #fff;
@@ -721,12 +747,43 @@ main.login input[type="reset"]:hover {
     padding: 0 10px 0 0;
 }
 
-/*----------購物車表單----------*/
+/*----------表單相關----------*/
+.formList{
+    position: relative;
+    padding-bottom: 15px;
+}
+.formList:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.formList figure{
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.formList figure img{
+    width: 100%;
+    height: auto;
+}
+.formTitle{
+    position: relative;
+    width: 20%;
+    float: left;
+}
+.formInfo{
+    position: relative;
+    width: 78%;
+    float: right;
+}
 .formBtn {
     position: relative;
     text-align: center;
-    padding-top: 15px;
-    margin-top: 10px;
+    padding-top: 30px;
+    margin-top: 15px;
     border-top: #ccc dotted 1px;
     clear: both;
     text-align: center;
@@ -736,7 +793,7 @@ main.login input[type="reset"]:hover {
     background-color: #eb503c;
     color: #fff;
     text-align: center;
-    padding: 15px 30px;
+    padding: 10px 50px;
     box-sizing: border-box;
     border-radius: 30px;
     font-size: 1.1em;

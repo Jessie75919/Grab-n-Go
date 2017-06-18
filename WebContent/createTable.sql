@@ -21,6 +21,8 @@ DROP TABLE IF EXISTS product ;
 
 DROP TABLE IF EXISTS order_item ;
 
+DROP TABLE IF EXISTS rest_type ;
+
 
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -43,7 +45,7 @@ CREATE TABLE member (
 
 CREATE TABLE restaurant (
 	rest_id INT AUTO_INCREMENT PRIMARY KEY ,
-	rest_typeId VARCHAR(10) NOT NULL,
+	rest_type VARCHAR(10) NOT NULL,
 	rest_name VARCHAR(32) UNIQUE KEY NOT NULL,
 	rest_branch VARCHAR(10) ,
 	rest_address VARCHAR(50) NOT NULL,
@@ -58,7 +60,7 @@ CREATE TABLE restaurant (
 	rest_mainbanner LONGBLOB,
 	rest_logo LONGBLOB,
 	rest_coverimage LONGBLOB
-	
+	CONSTRAINT restaurant_rest_type_FK FOREIGN KEY (rest_type) REFERENCES rest_type(type_name) ON DELETE CASCADE
 ) AUTO_INCREMENT = 00001, CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
@@ -146,5 +148,13 @@ CREATE TABLE order_item (
 
 
 
+
+CREATE TABLE rest_type (
+	
+	type_id  INT ,
+	type_name VARCHAR(50) NOT NULL,
+	PRIMARY KEY(type_id),
+	
+) AUTO_INCREMENT = 00001,CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 

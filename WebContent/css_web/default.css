@@ -757,22 +757,15 @@ main.login input[type="reset"]:hover {
     content: "";
     clear: both;
 }
-.formList figure{
-    position: relative;
-    width: 240px;
-    height: 240px;
-    margin: auto;
-    border-radius: 50%;
-    overflow: hidden;
-}
-.formList figure img{
-    width: 100%;
-    height: auto;
-}
 .formTitle{
     position: relative;
     width: 20%;
     float: left;
+}
+.formTitle i{
+    padding-left: 0;
+    padding-right: 10px;
+    color: #eb503c;
 }
 .formInfo{
     position: relative;
@@ -800,4 +793,53 @@ main.login input[type="reset"]:hover {
 }
 .formBtn a:hover {
     background-color: #ec8e26;
+}
+/*----------檢視會員資料----------*/
+.memberAccount{
+    position: relative;
+    width: 800px;
+    max-width: 94%;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #eee;
+}
+.memberAccount:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.memberLeft{
+    position: relative;
+    width: 40%;
+    float: left;
+}
+.memberLeft figure{
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 25px auto 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.memberLeft figure img{
+    width: 100%;
+    height: auto;
+}
+.memberInfo{
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: #ccc dotted 1px;
+}
+.memberInfo .star {
+    width: 100%;
+    float: none;
+    padding-bottom: 0px;
+}
+.memberRight{
+    position: relative;
+    width: 58%;
+    float: right;
 }

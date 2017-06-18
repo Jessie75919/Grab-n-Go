@@ -47,7 +47,7 @@ $(window).load(function () {
         return false;
     });
     
-        /*animation*/
+    /*animation*/
     new WOW().init();
 })
 

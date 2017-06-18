@@ -96,12 +96,12 @@
 				&amp; Go</a></li>
 	</ul>
 	<!-- AddToAny BEGIN -->
-	<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-		<a class="a2a_button_facebook"></a> <a class="a2a_button_line"></a> <a
-			class="a2a_button_google_plus"></a> <a class="a2a_button_twitter"></a>
-		<a class="a2a_button_email"></a>
-	</div>
-	<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- 	<div class="a2a_kit a2a_kit_size_32 a2a_default_style"> -->
+<!-- 		<a class="a2a_button_facebook"></a> <a class="a2a_button_line"></a> <a -->
+<!-- 			class="a2a_button_google_plus"></a> <a class="a2a_button_twitter"></a> -->
+<!-- 		<a class="a2a_button_email"></a> -->
+<!-- 	</div> -->
+<!-- 	<script async src="https://static.addtoany.com/menu/page.js"></script> -->
 	<!-- AddToAny END --> </nav>
 	<div class="mainBanner">
 		<h1 class="slider wow fadeInDown" data-wow-delay="0.3s">

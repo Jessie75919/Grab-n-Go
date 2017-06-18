@@ -37,15 +37,14 @@ public class GetImageFromDB extends HttpServlet {
 			if (type.equalsIgnoreCase("restaurant")) {  // 讀取eBook表格
 				if(location.equalsIgnoreCase("logo")){
 					pstmt = conn.prepareStatement(
-							"SELECT rest_logo from restaurant where rest_username = ?");
+							"SELECT rest_name,rest_logo from restaurant where rest_username = ?");
 				}else if(location.equalsIgnoreCase("main")){
 					pstmt = conn.prepareStatement(
-							"SELECT rest_mainbanner from restaurant where rest_username = ?");
+							"SELECT rest_name,rest_mainbanner from restaurant where rest_username = ?");
 				}else if(location.equalsIgnoreCase("cover")){
 					pstmt = conn.prepareStatement(
-							"SELECT rest_coverimage from restaurant where rest_username = ?");
+							"SELECT rest_name,rest_coverimage from restaurant where rest_username = ?");
 				}
-				
 			} else if (type.equalsIgnoreCase("member")) {  // 讀取eMember表格
 				pstmt = conn.prepareStatement(
 						"SELECT m_filename, m_picture from member where m_username = ?");
@@ -56,11 +55,12 @@ public class GetImageFromDB extends HttpServlet {
 			if (rs.next()) {
 				// Image欄位可以取出InputStream物件
 				String fileName = rs.getString(1);
+				System.out.println("fileName="+fileName);
 				is = rs.getBinaryStream(2);				
 //				mimeType = getServletContext().getMimeType(fileName);
 				mimeType = "image/jpeg";
 				
-				System.out.println("fileName = " +fileName);
+//				System.out.println("fileName = " +fileName);
 				System.out.println("mimeType = "+mimeType);
 				// 設定輸出資料的型態
 				response.setContentType(mimeType);

@@ -57,7 +57,7 @@ CREATE TABLE rest_type (
 
 CREATE TABLE restaurant (
 	rest_id INT AUTO_INCREMENT PRIMARY KEY ,
-	rest_type VARCHAR(10) NOT NULL,
+	rest_type VARCHAR(10) ,
 	rest_name VARCHAR(32) UNIQUE KEY NOT NULL,
 	rest_branch VARCHAR(10) ,
 	rest_address VARCHAR(50) NOT NULL,

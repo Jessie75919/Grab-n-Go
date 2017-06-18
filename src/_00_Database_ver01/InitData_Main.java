@@ -4,11 +4,10 @@ public class InitData_Main {
 
 	public static void main(String[] args) {
 		TableDAO dao = new TableDAO();
-		dao.insertMemberTable();
 		dao.insertRestaurantType();
+		dao.insertMemberTable();
 		dao.insertRestaurantTable();
 		dao.insertProductType();
-		
 	}
 
 }

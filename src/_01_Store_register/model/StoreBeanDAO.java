@@ -76,7 +76,7 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_owner());
 			pst.setString(++i, sb.getRest_email());
 			pst.setString(++i, sb.getRest_username());
-			String pwEncryped = GlobalService.encryptString(sb.getRest_passward());
+			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
 			pst.setFloat(++i, sb.getRest_longitude()); 
@@ -86,7 +86,7 @@ public class StoreBeanDAO {
 
 			if (result == 1) {
 				System.out.println(sb.getRest_name() + " insert successfully ");
-				sb.setRest_passward(GlobalService.getMD5Endocing(pwEncryped));
+				sb.setRest_password(GlobalService.getMD5Endocing(pwEncryped));
 				storeList.add(sb);
 			} else
 				System.out.println(sb.getRest_name() + " gets wrong ");
@@ -114,7 +114,7 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_address());
 			pst.setString(++i, sb.getRest_phone());
 			pst.setString(++i, sb.getRest_email());
-			String pwEncryped = GlobalService.encryptString(sb.getRest_passward());
+			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
 			pst.setBinaryStream(++i, banner, bannerSize);

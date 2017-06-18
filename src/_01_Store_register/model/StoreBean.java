@@ -14,7 +14,7 @@ public class StoreBean implements Serializable{
 	private String rest_owner;
 	private String rest_email;
 	private String rest_username;
-	private String rest_passward;
+	private String rest_password;
 	private String rest_url;
 	private float rest_longitude;
 	private float rest_latitude;
@@ -43,7 +43,7 @@ public class StoreBean implements Serializable{
 		this.rest_owner = rest_owner;
 		this.rest_email = rest_email;
 		this.rest_username = rest_username;
-		this.rest_passward = rest_passward;
+		this.rest_password = rest_passward;
 		this.rest_url = rest_url;
 	}
 	
@@ -65,7 +65,7 @@ public class StoreBean implements Serializable{
 		this.rest_owner = rest_owner;
 		this.rest_email = rest_email;
 		this.rest_username = rest_username;
-		this.rest_passward = rest_passward;
+		this.rest_password = rest_passward;
 		this.rest_url = rest_url;
 		this.rest_longitude = rest_longitude;
 		this.rest_latitude = rest_latitude;
@@ -93,7 +93,7 @@ public class StoreBean implements Serializable{
 		this.rest_owner = rest_owner;
 		this.rest_email = rest_email;
 		this.rest_username = rest_username;
-		this.rest_passward = rest_passward;
+		this.rest_password = rest_passward;
 		this.rest_url = rest_url;
 		this.rest_longitude = rest_longitude;
 		this.rest_latitude = rest_latitude;
@@ -108,7 +108,7 @@ public class StoreBean implements Serializable{
 		this.rest_address = rest_address;
 		this.rest_phone = rest_phone;
 		this.rest_email = rest_email;
-		this.rest_passward = rest_passward;
+		this.rest_password = rest_passward;
 		this.rest_url = rest_url;
 	}
 
@@ -124,7 +124,7 @@ public class StoreBean implements Serializable{
 		this.rest_owner = rest_owner;
 		this.rest_email = rest_email;
 		this.rest_username = rest_username;
-		this.rest_passward = rest_passward;
+		this.rest_password = rest_passward;
 		this.rest_url = rest_url;
 		this.rest_longitude = rest_longitude;
 		this.rest_latitude = rest_latitude;
@@ -207,12 +207,12 @@ public class StoreBean implements Serializable{
 		this.rest_username = rest_username;
 	}
 
-	public String getRest_passward() {
-		return rest_passward;
+	public String getRest_password() {
+		return rest_password;
 	}
 
-	public void setRest_passward(String rest_passward) {
-		this.rest_passward = rest_passward;
+	public void setRest_password(String rest_passward) {
+		this.rest_password = rest_passward;
 	}
 
 	public String getRest_url() {
@@ -268,7 +268,7 @@ public class StoreBean implements Serializable{
 		return "StoreBean [rest_id=" + rest_id + ", rest_typeId=" + rest_typeId + ", rest_name=" + rest_name
 				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_phone=" + rest_phone
 				+ ", rest_owner=" + rest_owner + ", rest_email=" + rest_email + ", rest_username=" + rest_username
-				+ ", rest_passward=" + rest_passward + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
+				+ ", rest_password=" + rest_password + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
 				+ ", rest_latitude=" + rest_latitude + "]";
 	}
 

@@ -114,7 +114,7 @@
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">Password : </label>
               <div class="col-sm-10">
-                <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control" >
+                <input type="password" name="password" value="${StoreLoginOK['rest_name']}" id="password" class="form-control" >
               </div>
             </div>
           <div id="titleP">

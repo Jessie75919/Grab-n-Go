@@ -46,7 +46,7 @@ CREATE TABLE member (
 
 CREATE TABLE rest_type (
 	
-	type_name VARCHAR(50) PRIMARY KEY
+	type_name VARCHAR(10) PRIMARY KEY
 	
 	
 ) CHARACTER SET utf8 COLLATE utf8_general_ci;

@@ -41,12 +41,12 @@
         </div>
         
         <center>
-        	  <h2 style="color: #9297a0;">Hello, </h2>
-          <h3 class="text-Warning" >You have signed out of GrabAndGo!</h3><br>
+        	  <h2 style="color: #9297a0;">親～ </h2>
+          <h3 class="text-Warning" >已經成功登出囉！</h3><br>
         
         <p>
-          <button type="button" class="btn btn-default">Home Page</button>
-          <button type="button" class="btn btn-warning">Sign in</button>
+          <button type="button" class="btn btn-default">狠心離開</button>
+          <button type="button" class="btn btn-warning">登入</button>
         </p>
         </center>
         </div>

@@ -60,7 +60,7 @@ public class StoreBeanDAO {
 		System.out.println("owner = "+sb.getRest_owner());
 		
 		String sql = "insert into restaurant "+
-				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_passward,rest_url,rest_longitude,rest_latitude)"
+				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude)"
 				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
@@ -108,7 +108,7 @@ public class StoreBeanDAO {
 		int result = 0;
 		
 		String sql = "update restaurant set rest_address=?,rest_phone=?,rest_email=? "
-				+ ",rest_passward =?,rest_url= ?, rest_mainbanner =?,rest_logo=?,rest_coverimage=? where rest_username = ?";
+				+ ",rest_password =?,rest_url= ?, rest_mainbanner =?,rest_logo=?,rest_coverimage=? where rest_username = ?";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			pst.setString(++i, sb.getRest_address());
@@ -160,7 +160,7 @@ public class StoreBeanDAO {
 				String rest_owner = rs.getString("rest_owner");
 				String rest_email = rs.getString("rest_email");
 				String rest_username = rs.getString("rest_username");
-				String rest_passward = rs.getString("rest_passward");
+				String rest_password = rs.getString("rest_password");
 				String rest_url = rs.getString("rest_url");
 				float rest_longitude = rs.getFloat("rest_longitude");
 				float rest_latitude = rs.getFloat("rest_latitude");
@@ -170,7 +170,7 @@ public class StoreBeanDAO {
 			
 				StoreBean sb = new StoreBean(
 						rest_id,rest_type,rest_name,rest_branch,rest_address,
-						rest_phone,rest_owner,rest_email,rest_username,rest_passward,
+						rest_phone,rest_owner,rest_email,rest_username,rest_password,
 						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
 						rest_coverimage);
 				

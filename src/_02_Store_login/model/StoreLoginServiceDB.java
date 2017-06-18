@@ -50,7 +50,7 @@ public class StoreLoginServiceDB {
 				String rest_owner = rs.getString("rest_owner");
 				String rest_email = rs.getString("rest_email");
 				String rest_username = rs.getString("rest_username");
-				String rest_passward = rs.getString("rest_passward");
+				String rest_password = rs.getString("rest_password");
 				String rest_url = rs.getString("rest_url");
 				float rest_longitude = rs.getFloat("rest_longitude");
 				float rest_latitude = rs.getFloat("rest_latitude");
@@ -59,7 +59,7 @@ public class StoreLoginServiceDB {
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 
 				StoreBean sb = new StoreBean(rest_id, rest_type, rest_name, rest_branch, rest_address, rest_phone,
-						rest_owner, rest_email, rest_username, rest_passward, rest_url, rest_longitude, rest_latitude,
+						rest_owner, rest_email, rest_username, rest_password, rest_url, rest_longitude, rest_latitude,
 						rest_mainbanner, rest_logo, rest_coverimage);
 
 				storeList.add(sb);
@@ -80,7 +80,7 @@ public class StoreLoginServiceDB {
 	
 	public StoreBean checkPW(String userId, String password) {
 		StoreBean sb = null;
-		String sql = "select * from restaurant where rest_username = ? and rest_passward = ? ";
+		String sql = "select * from restaurant where rest_username = ? and rest_password = ? ";
 
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setString(1, userId);
@@ -96,7 +96,7 @@ public class StoreLoginServiceDB {
 				String rest_owner = rs.getString("rest_owner");
 				String rest_email = rs.getString("rest_email");
 				String rest_username = rs.getString("rest_username");
-				String rest_passward = rs.getString("rest_passward");
+				String rest_password = rs.getString("rest_password");
 				String rest_url = rs.getString("rest_url");
 				float rest_longitude = rs.getFloat("rest_longitude");
 				float rest_latitude = rs.getFloat("rest_latitude");
@@ -105,7 +105,7 @@ public class StoreLoginServiceDB {
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 
 				sb = new StoreBean(rest_id, rest_type, rest_name, rest_branch, rest_address, rest_phone, rest_owner,
-						rest_email, rest_username, rest_passward, rest_url, rest_longitude, rest_latitude,
+						rest_email, rest_username, rest_password, rest_url, rest_longitude, rest_latitude,
 						rest_mainbanner, rest_logo, rest_coverimage);
 
 			}

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,16 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import _01_App_register.model.RestaurantTypeDAO;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
 public class AppStoreRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private List<String> list;
 	
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		
+		RestaurantTypeDAO dao = new RestaurantTypeDAO();
+		list = dao.getRestaurantType();
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,11 +48,10 @@ public class AppStoreRegisterServlet extends HttpServlet {
 		//判斷送來的請求是否為要求category
 		String category = jsonObject.get("category").getAsString();
 		if (category.equals("category")) {
-			
-			
-			
-			
-			
+			//將餐廳類別送回App
+			PrintWriter out = response.getWriter();
+			out.println(gson.toJson(list));
+			out.close();
 		} else {
 			String username = jsonObject.get("username").getAsString();
 			String password = jsonObject.get("password").getAsString();

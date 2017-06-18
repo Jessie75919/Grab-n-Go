@@ -50,14 +50,14 @@
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
 							<label>Username </label> <input type="text" id="usr"
-								name="username" value="${sessionScope.user}"
+								name="username" value="${param.username}${sessionScope.user}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
 							<label>Password</label> <input type="password" id="pw"
 								name="password" class="form-control"
-								value="${sessionScope.password}"> <span id="pwRes"
+								value="${param.password}${sessionScope.password}"> <span id="pwRes"
 								style="height: 10px;"></span>
 						</div>
 						<div>
@@ -82,8 +82,7 @@
 							<button type="submit" id="signInBtn"
 								class="btn btn-block my-1 btn-warning">Sign in</button>
 					</form>
-					<button type="submit" class="btn btn-primary btn-block my-2"
-						href='../_01_register/_register.jsp'>Sign up</button>
+					<div class="btn btn-primary btn-block my-2"><a style="color:#fff;text-decoration:none;"  href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a></div>
 				</div>
 				<div class="col-md-4 w-25"></div>
 			</div>

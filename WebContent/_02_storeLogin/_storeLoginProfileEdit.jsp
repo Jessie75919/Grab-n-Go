@@ -50,7 +50,7 @@
               <a href="#">修改個人資料</a>
             </li>
             <li class="list-group-item">
-              <a href="#">登出</a>
+              <a href="_storeLogOut.jsp">登出</a>
             </li>
             <li class="list-group-item"><i class="fa fa-file-text-o fa-fw"></i>本日訂單</li>
             <li class="list-group-item">
@@ -93,12 +93,12 @@
             <h5>My Account <br></h5>
             <hr>
           </div>
-          <form method="POST"  ENCTYPE="multipart/form-data"  action="<c:url value='storeUpdate.do' />" >
+          <form method="POST"  ENCTYPE="multipart/form-data"  action="<c:url value='storeUpdate.do' />" class="formcontent"  >
           <!-- 會員帳號 -->
           <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">Username : </label>
               <div class="col-sm-10">
-                <input type="text" name="username" value="${sessionScope.user}" id="username" class="form-control" readonly>
+                <input type="text" name="username" value="${StoreLoginOK['rest_username']}" id="username" class="form-control" readonly>
               </div>
             </div>
 <!--             <div class="form-group"> -->
@@ -114,7 +114,7 @@
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">Password : </label>
               <div class="col-sm-10">
-                <input type="password" name="password" value="${StoreLoginOK['rest_name']}" id="password" class="form-control" >
+                <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control  validate[required] text-input"  >
               </div>
             </div>
           <div id="titleP">
@@ -154,11 +154,9 @@
           <div class="form-group">
               <label class="col-sm-2 control-label" >餐廳地址：</label>
               <div class="col-sm-10">
-                <input type="text" name="address" value="${StoreLoginOK['rest_address']}" id="address" class="form-control" >
+                <input type="text" name="address" value="${StoreLoginOK['rest_address']}" id="address" class="form-control validate[required] text-input"  >
               </div>
             </div>
-            
-            
             
           <!-- 餐廳電話 -->
           <div class="form-group">
@@ -224,10 +222,15 @@
       <div class="row"></div>
     </div>
   </div>
-
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+<!--     form check -->
+  <link rel="stylesheet" href="../javascript/validation/validationEngine.jquery.css">
+  <script type="text/javascript" charset="utf-8" src="../javascript/validation/languages/jquery.validationEngine-zh_TW.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
+	<!-- form check end-->
+  <script src="../javascript/share.js"></script>
 </body>
 
 </html>

@@ -32,7 +32,7 @@
       <div class="row">
         <!-- 店家profile -->
         <div class="col-md-4">
-          <img class="img-rounded" src="../images/restImage/af_logo.jpg">
+          <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>  
         </div>
         <div class="col-md-8">
@@ -91,7 +91,7 @@
           <div  class="form-group">
               <label class="col-sm-2 control-label" >餐廳類別：</label>
               <div class="col-sm-10">
-              	<input type="text" name="StoreType" value="${StoreLoginOK['rest_typeId']}" id="StoreType" class="form-control" readonly>
+              	<input type="text" name="StoreType" value="${StoreLoginOK['rest_type']}" id="StoreType" class="form-control" readonly>
               </div>
             </div>
           <!-- 餐廳分店 -->

@@ -89,7 +89,7 @@ public class StoreUpdate extends HttpServlet {
 		StoreBean sb = new StoreBean(username,addr,tel,email,password,url);
 		
 		StoreBean new_sb = new StoreBean
-				(old_sb.getRest_id(), old_sb.getRest_typeId(), 
+				(old_sb.getRest_id(), old_sb.getRest_type(), 
 				old_sb.getRest_name(), old_sb.getRest_branch(), addr, tel, old_sb.getRest_owner(),
 				email, old_sb.getRest_username(), password, url);
 		

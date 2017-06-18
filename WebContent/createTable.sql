@@ -65,7 +65,7 @@ CREATE TABLE restaurant (
 	rest_owner VARCHAR(10) NOT NULL,
 	rest_email VARCHAR(50) NOT NULL,
 	rest_username VARCHAR(30) NOT NULL,
-	rest_passward VARCHAR(50) NOT NULL,
+	rest_password VARCHAR(50) NOT NULL,
 	rest_url VARCHAR(100),
 	rest_longitude FLOAT,
 	rest_latitude FLOAT,

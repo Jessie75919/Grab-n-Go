@@ -91,9 +91,6 @@ public class TableDAO {
 	}
 	
 	
-	
-
-	
 	public int insertRestaurantType(){
 		getDataSource();
 		String sql = "insert into rest_type values(?)";

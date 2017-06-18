@@ -36,8 +36,8 @@
         <!-- 店家profile -->
         <div class="col-md-3">
         <center>
-          <img class="img-rounded" src="../images/restImage/af_logo.jpg">
-          <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
+<!--           <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
+          <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>
          </center>
         </div>

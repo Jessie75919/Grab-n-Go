@@ -8,7 +8,7 @@ public class InitData_Main {
 		dao.insertRestaurantType();
 		dao.insertRestaurantTable();
 		dao.insertProductType();
-
+		
 	}
 
 }

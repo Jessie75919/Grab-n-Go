@@ -82,7 +82,7 @@
 	<c:if test="${!empty LoginOK}">
 		<div class="memberLogin">
 			<figure>
-			<img src='${pageContext.servletContext.contextPath}/_00_init/getImage?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo"></figure>
+			<img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo"></figure>
 			<p>
 				${LoginOK.memberId}<a href="logout.do">登出</a>
 			</p>

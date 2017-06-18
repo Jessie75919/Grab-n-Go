@@ -90,6 +90,44 @@ public class TableDAO {
 		return result;
 	}
 	
+	
+	
+
+	
+	public int insertRestaurantType(){
+		getDataSource();
+		String sql = "insert into rest_type values(?)";
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantType.csv"));) {
+			String line = "";
+			
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				
+				String[] segment = line.split(",");
+				pst.setString(1, segment[0]); // rest_type
+				
+				result =  pst.executeUpdate();
+				if (result == 1)
+					System.out.println(segment[0] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	
+	
+	
+	
 	/*--------------------------------------------------------------------------
 	 *  inflater restaurant data
 	 * */
@@ -180,34 +218,7 @@ public class TableDAO {
 	}
 	
 	
-	public void insertRestaurantType(){
-		getDataSource();
-		String sql = "insert into rest_type values(?)";
-		int result = -1;
-		try (PreparedStatement pst = con.prepareStatement(sql);
-				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantType.csv"));) {
-			String line = "";
-			
-			while ((line = br.readLine()) != null) {
-				if (line.startsWith(UTF8_BOM)) {
-					line = line.substring(1);
-				}
-				
-				String[] segment = line.split(",");
-				pst.setString(1, segment[0]); // rest_type
-				
-				result =  pst.executeUpdate();
-				if (result == 1)
-					System.out.println(segment[0] + " - add success ");
-				else
-					System.out.println("table gets error");
-			}
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
-		
-	}
+
 	
 	
 	

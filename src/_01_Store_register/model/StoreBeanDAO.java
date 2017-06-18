@@ -60,13 +60,13 @@ public class StoreBeanDAO {
 		System.out.println("owner = "+sb.getRest_owner());
 		
 		String sql = "insert into restaurant "+
-				"(rest_id,rest_typeId,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_passward,rest_url,rest_longitude,rest_latitude)"
+				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_passward,rest_url,rest_longitude,rest_latitude)"
 				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			System.out.println("------------------------------------");
-			pst.setString(++i, sb.getRest_typeId());
-				System.out.println("getRest_typeId() = "+sb.getRest_typeId());
+			pst.setString(++i, sb.getRest_type());
+				System.out.println("getRest_type() = "+sb.getRest_type());
 			pst.setString(++i, sb.getRest_name());
 				System.out.println("getRest_name() = "+sb.getRest_name());
 			pst.setString(++i, sb.getRest_branch());
@@ -152,7 +152,7 @@ public class StoreBeanDAO {
 			ResultSet rs = pst.executeQuery(sql);
 			while(rs.next()){
 				int rest_id = rs.getInt("rest_id");
-				String rest_typeId = rs.getString("rest_typeId");
+				String rest_type = rs.getString("rest_type");
 				String rest_name = rs.getString("rest_name");
 				String rest_branch = rs.getString("rest_branch");
 				String rest_address = rs.getString("rest_address");
@@ -169,7 +169,7 @@ public class StoreBeanDAO {
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 			
 				StoreBean sb = new StoreBean(
-						rest_id,rest_typeId,rest_name,rest_branch,rest_address,
+						rest_id,rest_type,rest_name,rest_branch,rest_address,
 						rest_phone,rest_owner,rest_email,rest_username,rest_passward,
 						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
 						rest_coverimage);

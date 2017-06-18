@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import javax.sql.*;
 //本類別會依據傳入的書籍編號(BookID)讀取eBook表格內CoverImage欄位內的圖片，
 //然後傳回給提出請求的瀏覽器
-@WebServlet("/_00_init/getImage")
+@WebServlet("/_00_init/getImageA")
 public class GetImageFromDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +24,8 @@ public class GetImageFromDB extends HttpServlet {
 			// 分辨讀取哪個表格的圖片欄位
 			String type = request.getParameter("type"); 
 			// 取得能夠執行JNDI的Context物件
+			String location = request.getParameter("loc");
+			String mimeType ="";
 			Context context = new InitialContext();
 			// 透過JNDI取得DataSource物件
 			DataSource ds = (DataSource) context
@@ -33,8 +35,17 @@ public class GetImageFromDB extends HttpServlet {
 			//System.out.println("GetImageFromDB, Type==>" + type);
 			//System.out.println("GetImageFromDB, ID==>" + id);
 			if (type.equalsIgnoreCase("restaurant")) {  // 讀取eBook表格
-				pstmt = conn.prepareStatement(
-		"SELECT rest_mainbanner, rest_logo ,rest_coverimage from restaurant where rest_username = ?");
+				if(location.equalsIgnoreCase("logo")){
+					pstmt = conn.prepareStatement(
+							"SELECT rest_logo from restaurant where rest_username = ?");
+				}else if(location.equalsIgnoreCase("main")){
+					pstmt = conn.prepareStatement(
+							"SELECT rest_mainbanner from restaurant where rest_username = ?");
+				}else if(location.equalsIgnoreCase("cover")){
+					pstmt = conn.prepareStatement(
+							"SELECT rest_coverimage from restaurant where rest_username = ?");
+				}
+				
 			} else if (type.equalsIgnoreCase("member")) {  // 讀取eMember表格
 				pstmt = conn.prepareStatement(
 						"SELECT m_filename, m_picture from member where m_username = ?");
@@ -46,7 +57,9 @@ public class GetImageFromDB extends HttpServlet {
 				// Image欄位可以取出InputStream物件
 				String fileName = rs.getString(1);
 				is = rs.getBinaryStream(2);				
-				String mimeType = getServletContext().getMimeType(fileName);
+//				mimeType = getServletContext().getMimeType(fileName);
+				mimeType = "image/jpeg";
+				
 				System.out.println("fileName = " +fileName);
 				System.out.println("mimeType = "+mimeType);
 				// 設定輸出資料的型態

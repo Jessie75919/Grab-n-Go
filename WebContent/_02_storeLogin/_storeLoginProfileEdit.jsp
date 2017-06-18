@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-12">
           <center>
-				<a href="_storeIndexLoginOK.jsp"><img width="350" src="../images/share/logo.svg"></a>
+				<a href="_storeIndexAfterLogin.jsp"><img width="350" src="../images/share/logo.svg"></a>
 			</center>
            <div id="topHeading">
             <h4>餐廳帳戶資料修改</h4>
@@ -32,8 +32,8 @@
       <div class="row">
         <!-- 店家profile -->
         <div class="col-md-4">
-          <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg">
-          <br> --> 
+          <img class="img-rounded" src="../images/restImage/af_logo.jpg">
+          <br>  
         </div>
         <div class="col-md-8">
           <div>
@@ -41,50 +41,8 @@
         </div>
       </div>
       <div class="row">
-        <!-- 左側列表 -->
-        <div class="col-md-3">
-          <div id="topName"> R_name </div>
-          <ul id="leftMenu" class="list-group">
-            <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
-            <li class="list-group-item">
-              <a href="#">修改個人資料</a>
-            </li>
-            <li class="list-group-item">
-              <a href="_storeLogOut.jsp">登出</a>
-            </li>
-            <li class="list-group-item"><i class="fa fa-file-text-o fa-fw"></i>本日訂單</li>
-            <li class="list-group-item">
-              <a href="#">待處理訂單</a>
-            </li>
-            <li class="list-group-item">
-              <a href="#">已完成訂單</a>
-            </li>
-            <li class="list-group-item">
-              <a href="#">已付款訂單</a>
-            </li>
-            <li class="list-group-item">
-              <a href="#">查詢訂單</a>
-            </li>
-            <li class="list-group-item"><i class="fa fa-hand-o-right fa-fw"></i>歷史訂單</li>
-            <li class="list-group-item">
-              <a href="#">歷史訂單查詢</a>
-            </li>
-            <li class="list-group-item">
-              <a href="#">餐點熱銷排行</a>
-            </li>
-            <li class="list-group-item"><i class="fa fa-pencil-square-o fa-fw"></i>菜單管理</li>
-            <li class="list-group-item">
-              <a href="#">新增餐點項目</a>
-            </li>
-            <li class="list-group-item">
-              <a href="#">修改餐點項目</a>
-            </li>
-            <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
-            <li class="list-group-item">
-              <a href="#">營業額統計</a>
-            </li>
-          </ul>
-        </div>
+         <!-- 左側列表 -->
+        <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 個人資料修改表格開始 -->
         <div id="profileArea" class="col-md-9" >
           <!-- <form> -->

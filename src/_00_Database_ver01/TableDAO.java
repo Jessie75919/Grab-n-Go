@@ -105,7 +105,7 @@ public class TableDAO {
 					line = line.substring(1);
 				}
 				String[] segment = line.split(",");
-				pst.setString(1, segment[0]); // rest_typeId
+				pst.setString(1, segment[0]); // rest_type
 				pst.setString(2, segment[1]); // rest_name
 				pst.setString(3, segment[2]); // rest_branch
 				pst.setString(4, segment[3]); // rest_address
@@ -180,7 +180,34 @@ public class TableDAO {
 	}
 	
 	
-	
+	public void insertRestaurantType(){
+		getDataSource();
+		String sql = "insert into rest_type values(?)";
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantType.csv"));) {
+			String line = "";
+			
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				
+				String[] segment = line.split(",");
+				pst.setString(1, segment[0]); // rest_type
+				
+				result =  pst.executeUpdate();
+				if (result == 1)
+					System.out.println(segment[0] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	

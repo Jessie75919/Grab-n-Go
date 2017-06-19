@@ -74,6 +74,7 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_address());
 			pst.setString(++i, sb.getRest_phone());
 			pst.setString(++i, sb.getRest_owner());
+			System.out.println(sb.getRest_owner());
 			pst.setString(++i, sb.getRest_email());
 			pst.setString(++i, sb.getRest_username());
 			String pwEncryped = GlobalService.encryptString(sb.getRest_password());

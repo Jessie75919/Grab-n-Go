@@ -82,7 +82,9 @@
 							<button type="submit" id="signInBtn"
 								class="btn btn-block my-1 btn-warning">Sign in</button>
 					</form>
-					<div class="btn btn-primary btn-block my-2"><a style="color:#fff;text-decoration:none;"  href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a></div>
+					<div class="btn btn-primary btn-block my-2">
+					<a style="color:#fff;text-decoration:none;"  
+					href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a></div>
 				</div>
 				<div class="col-md-4 w-25"></div>
 			</div>

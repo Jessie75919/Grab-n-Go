@@ -69,6 +69,7 @@ public class StoreLoginServiceDB {
 		} catch (Exception e) {
 			System.out.println("populateStoreList() gots wrong");
 			System.out.println(e.getMessage());;
+			e.printStackTrace();
 		}
 
 	}
@@ -81,6 +82,7 @@ public class StoreLoginServiceDB {
 	public StoreBean checkPW(String userId, String password) {
 		StoreBean sb = null;
 		String sql = "select * from restaurant where rest_username = ? and rest_password = ? ";
+		
 
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setString(1, userId);
@@ -112,6 +114,7 @@ public class StoreLoginServiceDB {
 		} catch (Exception e) {
 			System.out.println("checkPW() gots wrong");
 			System.out.println(e.getMessage());;
+			e.printStackTrace();
 		}
 		return sb;
 

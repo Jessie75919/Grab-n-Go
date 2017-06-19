@@ -86,4 +86,14 @@
     <servlet-name>StoreUpdate</servlet-name>
     <url-pattern>/StoreUpdate</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>loadFoodType</display-name>
+    <servlet-name>loadFoodType</servlet-name>
+    <servlet-class>_01_Store_register.controller.loadFoodType</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadFoodType</servlet-name>
+    <url-pattern>/loadFoodType</url-pattern>
+  </servlet-mapping>
 </web-app>

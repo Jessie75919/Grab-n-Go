@@ -138,6 +138,39 @@ public class StoreBeanDAO {
 	};
 	
 	
+	public int updateShopDataNoImg(StoreBean sb) {
+		
+		int result = 0;
+		
+		String sql = "update restaurant set rest_address=?,rest_phone=?,rest_email=? "
+				+ ",rest_password =?,rest_url= ? where rest_username = ?";
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			int i = 0;
+			pst.setString(++i, sb.getRest_address());
+			pst.setString(++i, sb.getRest_phone());
+			pst.setString(++i, sb.getRest_email());
+			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
+			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
+			pst.setString(++i, sb.getRest_url());
+			pst.setString(++i, sb.getRest_username());
+			
+			result = pst.executeUpdate();
+			if (result == 1) {
+				System.out.println(sb.getRest_username() + " update successfully ");
+			} else
+				System.out.println(sb.getRest_username() + " gets wrong ");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	};
+	
+	
+	
+	
 	/* ----------------------------------------------------------------------------------------
 	 *  Search by name 
 	 * */

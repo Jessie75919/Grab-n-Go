@@ -49,8 +49,9 @@ public class StoreUpdate extends HttpServlet {
 		Collection<Part> parts = request.getParts();
 		GlobalService.exploreParts(parts, request);
 		int i = 0;
+		int mode = 0;
 		// ----------------------------------------
-		
+		StoreBean old_sb = (StoreBean) session.getAttribute("StoreLoginOK");
 		if (parts != null) {
 			
 			for (Part p : parts) {
@@ -65,8 +66,7 @@ public class StoreUpdate extends HttpServlet {
 						is[i] = p.getInputStream();
 						i++;
 					} else {
-						errorMsg.put("errorPicture", "必須挑選圖片檔");
-						System.out.println("必須挑選圖片檔");
+						mode = 1;
 					}
 				}
 			}
@@ -82,10 +82,7 @@ public class StoreUpdate extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		StoreBean old_sb = (StoreBean) session.getAttribute("StoreLoginOK");
-		System.out.println("id ="+old_sb.getRest_id());
-		System.out.println("StoreName ="+old_sb.getRest_name());
-		System.out.println("username = "+old_sb.getRest_username());
+		
 		StoreBean sb = new StoreBean(username,addr,tel,email,password,url);
 		
 		StoreBean new_sb = new StoreBean
@@ -93,20 +90,24 @@ public class StoreUpdate extends HttpServlet {
 				old_sb.getRest_name(), old_sb.getRest_branch(), addr, tel, old_sb.getRest_owner(),
 				email, old_sb.getRest_username(), password, url);
 		
-		
-		
-		
 		StoreBeanDAO dao = new StoreBeanDAO();
-		int n = dao.updateShopData(sb,is[0],is[1],is[2],
-					sizeInBytes[0],sizeInBytes[1],sizeInBytes[2]);
-		if(n==1){
+		int n = 0;
+		if (mode == 0) { // 有修改照片
+			n = dao.updateShopData(sb, is[0], is[1], is[2], sizeInBytes[0], sizeInBytes[1], sizeInBytes[2]);
+		}else if(mode==1){ // 沒修改照片
+			n = dao.updateShopDataNoImg(sb);
+		}
+		
+		if (n == 1) {
 			session.setAttribute("StoreLoginOK", new_sb);
-			
+			msgOK.put("UpdateOk", "您的更新已成功囉~");
 			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
 			rd.forward(request, response);
-			msgOK.put("UpdateOk", "您的更新已成功囉~");
-		}else{
+
+		} else {
 			msgOK.put("UpdateFail", "您的更新失敗了...");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
+			rd.forward(request, response);
 		}
 		
 

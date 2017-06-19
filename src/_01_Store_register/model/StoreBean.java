@@ -74,10 +74,9 @@ public class StoreBean implements Serializable{
 		this.rest_coverimage = rest_coverimage;
 	}
 
+
 	/*---------------------------------------------------------------------------------
 	 * */
-	
-	
 
 	public StoreBean(String rest_type, String rest_name, String rest_branch,
 			String rest_address, String rest_phone,String rest_owner, String rest_email,

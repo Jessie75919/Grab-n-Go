@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Grab &amp; Go</title>
+    <title>購物車-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -22,46 +22,45 @@
     <link rel="SHORTCUT ICON" href="../images/favicon.ico" />
     <link rel="icon" href="../images/favicon.ico" type="image/ico" />
     <!--main css-->
-    <link href="css/default.css" rel="stylesheet" type="text/css" />
-    <link href="css/default_tablet.css" rel="stylesheet" type="text/css" />
-    <link href="css/default_phone.css" rel="stylesheet" type="text/css" />
+    <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
-    <link href="css/component.css" rel="stylesheet" type="text/css" />
-    <!--輪播 css-->
-    <link href="css/slick.css" rel="stylesheet" type="text/css">
-    <!--animation-->
-    <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="top" class="cbp-spmenu-push">
     <header>
         <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
-        <div class="storeBtn"><a href="#">我是店家</a></div>
+        <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div>
         <div class="logo">
-            <a href="/"><img src="images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
+            <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
         </div>
-        <div class="rightBtn"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
-        <div class="rightBtn"><a href="#" title="購物車"><i class="icon-bag"></i></a></div>
+        <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
+        <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
         <div class="account">
             <ul>
-                <li><a href="member/index.htm">Juicekuo</a></li>
+                <!--未登入用這組-->
+                <li><a href="../_02_login/login.htm">登入</a></li>
+                <!--未登入用這組 end-->
+                <!--已登入用這組-->
+                <li><a href="../_06_member/member.htm">Juicekuo</a></li>
                 <li><a href="#">登出</a></li>
+                <!--已登入用這組 end-->
             </ul>
         </div>
     </header>
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
         <!--已登入用這組 未登入的話這塊隱藏-->
         <div class="memberLogin">
-            <figure><img src="images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
+            <figure><img src="../images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
             <p>JuiceKuo<a href="#">登出</a></p>
         </div>
         <!--已登入用這組 未登入的話這塊隱藏 end-->
         <ul>
-            <li><a href="#"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
-            <li><a href="#"><i class="icon-list"></i>訂購紀錄</a></li>
-            <li><a href="#"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
+            <li><a href="../_06_member/member.htm"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
+            <li><a href="../_06_member/order.htm"><i class="icon-list"></i>訂購紀錄</a></li>
+            <li><a href="../_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
         </ul>
-        <!-- AddToAny BEGIN -->
+        <!-- AddToAny BEGIN --
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
             <a class="a2a_button_facebook"></a>
             <a class="a2a_button_line"></a>
@@ -70,222 +69,72 @@
             <a class="a2a_button_email"></a>
         </div>
         <script async src="https://static.addtoany.com/menu/page.js"></script>
-        <!-- AddToAny END -->
+        AddToAny END -->
     </nav>
-    <div class="mainBanner">
-        <h1 class="slider wow fadeInDown" data-wow-delay="0.3s">What do you want<br><span class="wBig">TO EAT</span><br><span class="wSmall">today?</span><br><span class="wRed">今天想吃什麼</span></h1>
-        <!--main banner 輪播-->
-        <div class="banner slider wow fadeIn">
-            <div><img src="images/banner/main_banner20170610001.jpg" alt="Grab &amp; Go" title="Grab &amp; Go"></div>
-            <div><img src="images/banner/main_banner20170610002.jpg" alt="Grab &amp; Go" title="Grab &amp; Go"></div>
-        </div>
-        <!--main banner 輪播 end-->
+    <div class="insideTitle">
+        <h2>購物車</h2>
     </div>
     <main>
-        <!--標語-->
-        <section class="content bgRed">
-            <h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"</h2>
-        </section>
-        <!--標語 end-->
-        <!--瀑布流-->
-        <section class="grid slider wow fadeIn" id="container">
-            <div class="gridItem">
-                <figure><img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <figure><img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
-                    <div class="mask"><a href="#">觀看菜單</a></div>
-                </figure>
-                <div class="storeInfo">
-                    <h2><a href="#">紗舞缡-極品集</a></h2>
-                    <!--有亮的星星class要加上on-->
-                    <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                    <div class="dist"><i class="icon-location"></i>大安區</div>
-                    <div class="tagOrder">
-                        <div class="tag"><span>日式料理</span></div>
-                        <div class="orderCount">目前訂單<span>999</span></div>
-                    </div>
-                </div>
-            </div>
+        <div class="brcame"><a href="../index.jsp">首頁</a> / 購物車</div>
+        <section class="content">
+          <div class="cartLeft">
+              <h3>Afternoon Tea (三越南西門市)</h3>
+              <div class="foodList">
+                  <figure><img src="../images/restImage/fk_coverImg.jpg"></figure>
+                  <div class="foodInfo">
+                     <p>香烤雞腿佐十品溫野菜</p>
+                     <p><input type="number" name="" id="" value="1"> <span>$360</span></p>
+                     <p class="wRed">特殊需求：不要辣，不要洋蔥</p>
+                      
+                  </div>
+              </div>
+          </div>
+           <div class="cartRight">s
+              
+          </div>
         </section>
     </main>
+    <!--搜尋-->
+    <div class="search">
+        <div class="searchBg"></div>
+        <section class="searchContent">
+            <h2>Hello! 今天想吃什麼呢?</h2>
+            <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
+            <form action="#" method="post">
+                <div class="searchList">
+                    <select name="foodKind" id="foodKind">
+                           <option value="日式料理">日式料理</option>
+                           <option value="中式料理">中式料理</option>
+                           <option value="義式料理">義式料理</option>
+                           <option value="早午餐/下午茶">早午餐/下午茶</option>
+                           <option value="暗黑料理">暗黑料理</option>
+                           <option value="台灣小吃">台灣小吃</option>
+                       </select>
+                </div>
+                <div class="searchList">
+                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
+                </div>
+                <div class="searchList">
+                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
+                </div>
+                <div class="searchBtn">
+                    <input name="reset" type="reset" id="reset" value="重填">
+                    <input name="submit" type="submit" id="submit" value="搜尋">
+                </div>
+            </form>
+        </section>
+    </div>
+    <!--搜尋 end-->
     <footer>
-        <figure><img src="images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
-        <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="back-to-top">TOP</a></footer>
+        <figure><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
+        <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
     <!--main js-->
     <!--[if lt IE 8]><script type="text/javascript" src="javascript/html5.js"></script><![endif]-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!--nav-->
-    <script type="text/javascript" src="javascript/classie.js"></script>
-    <!--animation js-->
-    <script type="text/javascript" src="javascript/wow.js"></script>
-    <!--loading js-->
-    <script>
-        $(window).load(function() {
-            $('#loading').fadeOut(500);
-        })
-
-    </script>
-    <!--silder-->
-    <script src="javascript/slick.js"></script>
-    <script>
-        $(function() {
-            $('.banner').slick({
-                dots: true,
-                arrows: false,
-                infinite: true,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-            });
-        });
-
-    </script>
-    <!--瀑布流-->
-    <script src="javascript/masonry.pkgd.min.js"></script>
-    <script src="javascript/imagesloaded.pkgd.min.js"></script>
-    <script>
-        var $grid = $('.grid').imagesLoaded(function() {
-            $grid.masonry({
-                itemSelector: '.gridItem',
-                percentPosition: true,
-            });
-        });
-
-    </script>
+    <script type="text/javascript" src="../javascript/classie.js"></script>
     <!--share js-->
-    <script src="javascript/share.js"></script>
+    <script src="../javascript/share.js"></script>
 </body>
 
 </html>

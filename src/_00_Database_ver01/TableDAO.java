@@ -202,6 +202,48 @@ public class TableDAO {
 		
 	}
 	
+	// product data 尚未完成
+	public int insertProduct(){
+		getDataSource();
+		String sql = "insert into product values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantData.csv"));) {
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				String[] segment = line.split(",");
+				pst.setString(1, segment[0]); // rest_id
+				pst.setString(2, segment[1]); // type_id
+				pst.setString(3, segment[2]); // prod_name
+				pst.setString(4, segment[3]); // prod_price
+				pst.setString(5, segment[4]); // prod_amount
+				pst.setString(6, segment[5]); // 
+				pst.setString(7, segment[6]); // 
+				pst.setString(8, segment[7]); // 
+				
+				System.out.println("image : " + segment[12]);
+				InputStream is = new FileInputStream("WebContent/images/restImage/" + segment[12] + ".jpg");
+				pst.setBlob(13, is); // rest_mainbanner
+				is = new FileInputStream("WebContent/images/restImage/" + segment[13] + ".jpg");
+				pst.setBlob(14, is); // rest_logo
+				is = new FileInputStream("WebContent/images/restImage/" + segment[14] + ".jpg");
+				pst.setBlob(15, is); // rest_coverimage
+				result = pst.executeUpdate();
+
+				if (result == 1)
+					System.out.println(segment[1] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		} catch (SQLException | IOException e) {
+			System.out.println("SQLException | IOException ");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 
 	

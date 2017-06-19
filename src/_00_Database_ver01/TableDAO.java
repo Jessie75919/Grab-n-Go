@@ -176,31 +176,22 @@ public class TableDAO {
 	 * */
 	public void insertProductType(){
 		getDataSource();
-		String sql = "insert into product_type values(?,?,?)";
+		String sql = "insert into product_type values(?,?)";
 		int result = -1;
-		String store = "";
 		try (PreparedStatement pst = con.prepareStatement(sql);
 				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productType.csv"));) {
 			String line = "";
-			int i = 0;
 			while ((line = br.readLine()) != null) {
 				if (line.startsWith(UTF8_BOM)) {
 					line = line.substring(1);
 				}
 				String[] segment = line.split(",");
 				
-				if(store.equals(segment[0])){
-				}else{
-					store = segment[0];
-					i = 0;
-				}
-				pst.setString(1, segment[0]); // rest_name
-				pst.setInt(2,  ++i ); // no
-				pst.setString(3, segment[1]); // type_name
-				
+				pst.setString(1, segment[0]);  // type_name
+				pst.setString(2, segment[1]);  // rest_name
 				result =  pst.executeUpdate();
 				if (result == 1)
-					System.out.println(segment[1] + " - add success ");
+					System.out.println(segment[1] +" : " + segment[0]  + " - add success ");
 				else
 					System.out.println("table gets error");
 			}

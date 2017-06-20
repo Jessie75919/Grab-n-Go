@@ -216,6 +216,59 @@ public class StoreBeanDAO {
 		}
 		return listStore;
 	}
+
+	public int insertShopData(StoreBean sb, InputStream banner, InputStream logo, InputStream cover, long bannerSize,
+			long logoSize, long coverSize) { 
+		int result = 0;
+		System.out.println("------------------------------------");
+		System.out.println(sb.toString());
+		System.out.println("owner = "+sb.getRest_owner());
+		
+		String sql = "insert into restaurant "+
+				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,"
+				+ "rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,"
+				+ "rest_mainbanner,rest_logo,rest_coverimage)"
+				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			int i = 0;
+			System.out.println("------------------------------------");
+			pst.setString(++i, sb.getRest_type());
+				System.out.println("getRest_type() = "+sb.getRest_type());
+			pst.setString(++i, sb.getRest_name());
+				System.out.println("getRest_name() = "+sb.getRest_name());
+			pst.setString(++i, sb.getRest_branch());
+				System.out.println(sb.getRest_branch());
+			pst.setString(++i, sb.getRest_address());
+			pst.setString(++i, sb.getRest_phone());
+			pst.setString(++i, sb.getRest_owner());
+			System.out.println(sb.getRest_owner());
+			pst.setString(++i, sb.getRest_email());
+			pst.setString(++i, sb.getRest_username());
+			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
+			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
+			pst.setString(++i, sb.getRest_url());
+			pst.setFloat(++i, sb.getRest_longitude()); 
+			pst.setFloat(++i, sb.getRest_latitude());
+			pst.setBinaryStream(++i, banner, bannerSize);
+			pst.setBinaryStream(++i, logo, logoSize);
+			pst.setBinaryStream(++i, cover, coverSize);
+			
+
+			result = pst.executeUpdate();
+
+			if (result == 1) {
+				System.out.println(sb.getRest_name() + " insert successfully ");
+				sb.setRest_password(GlobalService.getMD5Endocing(pwEncryped));
+				storeList.add(sb);
+			} else
+				System.out.println(sb.getRest_name() + " gets wrong ");
+
+		} catch (SQLException e) {
+			System.out.println("I am a SQLException !");
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 }

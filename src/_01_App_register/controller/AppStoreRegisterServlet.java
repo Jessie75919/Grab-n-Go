@@ -1,7 +1,9 @@
 package _01_App_register.controller;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -64,28 +66,61 @@ public class AppStoreRegisterServlet extends HttpServlet {
 			String passwordConfirm = jsonObject.get("passwordConfirm").getAsString();
 			String storeName = jsonObject.get("storeName").getAsString();
 			String restType = jsonObject.get("restType").getAsString();
+			
 			String branch = jsonObject.get("branch").getAsString();
+			if(branch == null || branch.trim().length() == 0){
+				branch = null;
+			}
+			
 			String address = jsonObject.get("address").getAsString();
 			String phone = jsonObject.get("phone").getAsString();
 			String email = jsonObject.get("email").getAsString();
 			String owner = jsonObject.get("owner").getAsString();
+			
 			String website = jsonObject.get("website").getAsString();
-			float latitude = Float.parseFloat(jsonObject.get("latitude").getAsString());
-			float longitude = Float.parseFloat(jsonObject.get("longitude").getAsString());
-
-			System.out.println("latitude: " + latitude);
-			System.out.println("longitude: " + longitude);
-			System.out.println("latitude: " + latitude);
-			System.out.println("longitude: " + longitude);
+			if(website == null || website.trim().length() == 0){
+				website = null;
+			}
+			
+			String latitude_s = jsonObject.get("latitude").getAsString();
+			float latitude;
+			if(latitude_s == null || latitude_s.trim().length() == 0){
+				latitude = 0.0f;
+			} else {
+				latitude = Float.parseFloat(latitude_s);
+			}
+			
+			String longitude_s = jsonObject.get("longitude").getAsString();
+			float longitude;
+			if(longitude_s == null || longitude_s.trim().length() == 0){
+				longitude = 0.0f;
+			} else {
+				longitude = Float.parseFloat(longitude_s);
+			}
 			
 			
 			//紀錄-錯誤
 			Map<String, String> msgErr = new HashMap<>();
+			//紀錄-正確
+			Map<String, String> msgOk = new HashMap<>();
+			
+			
+			//放置預設的圖片
+			InputStream[] is = new InputStream[3]; 
+					
+				long size[] = new long[3];	
+				is[0] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_mBanner.jpg");
+				size[0] = is[0].available();
+				is[1] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_logo.JPG");
+				size[1] = is[1].available();
+				is[2] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_coverImg.JPG");
+				size[2] = is[2].available();
+				
 			
 			//將資料放進StoreBean
 			StoreBean sb = new StoreBean(restType, storeName, branch, address, 
-					phone, owner, email, username, password, website, longitude, latitude);
-			
+					phone, owner, email, username, password, website, longitude,
+					latitude);
 			
 			//將StoreBeanDAO類別new為物件，存放物件參考的變數為 dao
 			StoreBeanDAO dao = new StoreBeanDAO();
@@ -96,41 +131,63 @@ public class AppStoreRegisterServlet extends HttpServlet {
 				msgErr.put("username", "帳號欄必須輸入");
 			} else if (dao.isUserExists(username)){
 				msgErr.put("username", "帳號已使用");
+			} else {
+				msgOk.put("username", "OK");
 			}
 			if (password == null || password.trim().length() == 0) {
 				msgErr.put("password", "密碼欄必須輸入");
+			} else {
+				msgOk.put("password", "OK");
 			}
 			if (passwordConfirm == null || passwordConfirm.trim().length() == 0) {
 				msgErr.put("passwordConfirm", "密碼確認欄必須輸入");
 			} else if (!password.trim().equals(passwordConfirm.trim())) {
 				msgErr.put("passwordConfirm", "密碼欄必須與確認欄一致");
+			} else {
+				msgOk.put("passwordConfirm", "OK");
 			}
 			if (storeName == null || storeName.trim().length() == 0) {
 				msgErr.put("storeName", "店家名稱欄必須輸入");
+			} else {
+				msgOk.put("storeName", "OK");
 			}
 			if (address == null || address.trim().length() == 0) {
 				msgErr.put("address", "地址欄必須輸入");
+			} else {
+				msgOk.put("address", "OK");
 			}
 			if (phone == null || phone.trim().length() == 0) {
 				msgErr.put("phone", "電話號碼欄必須輸入");
+			} else {
+				msgOk.put("phone", "OK");
 			}
 			if (email == null || email.trim().length() == 0) {
 				msgErr.put("email", "電子郵件欄必須輸入");
+			} else {
+				msgOk.put("email", "OK");
 			}
 			if (owner == null || owner.trim().length() == 0) {
 				msgErr.put("owner", "商家負責人欄必須輸入");
+			} else {
+				msgOk.put("owner", "OK");
 			}
 			
 			//設定回傳資料
 			Map<String, String> map = new HashMap<>();
 			if (!msgErr.isEmpty()) {
-				map = msgErr;
+				map.put("RegisterMessage", "RegisterError");
+				map.putAll(msgErr);
+				map.putAll(msgOk);
+				
 			} else {
-				int n = dao.insertShopData(sb);
+				int n = dao.insertShopData(sb,is[0],is[1],is[2],size[0],size[1],size[2]);
 				if (n == 1) {
 					map.put("RegisterMessage", "RegisterOk");
 				}
 			}
+			System.out.println(map);
+			System.out.println(msgErr);
+			System.out.println(msgOk);
 			
 			//送回App
 			PrintWriter out = response.getWriter();

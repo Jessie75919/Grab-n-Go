@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import _00_init.GlobalService;
-import _03_Product.model.BookAccessBean;
-import _03_Product.model.BookBean;
+import _03_listBooks.model.BookAccessBean;
+import _03_listBooks.model.BookBean;
 
 @WebServlet("/_20_productMaintain/BookInsert.do")
 //  name1=%BC%5E%BD&name2=value2&....

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import _00_init.GlobalService;
 import _01_register.model.MemberBean;
-import _03_Product.model.BookAccessBean;
-import _03_Product.model.BookBean;
+import _03_listBooks.model.BookAccessBean;
+import _03_listBooks.model.BookBean;
 @WebServlet("/_20_productMaintain/DisplayPageProducts")
 public class DisplayMaintainProducts extends HttpServlet {
 	          

@@ -1,5 +1,5 @@
 
-//alert("helllo~")
+alert("helllo~")
 
 var idcheck = document.getElementById("accountlink");
 var account = document.getElementById("userId");

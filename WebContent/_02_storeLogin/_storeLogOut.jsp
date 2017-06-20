@@ -9,13 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> 
   <link rel="stylesheet" href="../css/_signOut.css" type="text/css">
-  <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
   <title> Sign Out </title>
 </head>
-<c:remove var="StoreLoginOK" scope="session" />
-<c:remove var="ShoppingCart" scope="session" />
-<!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
-<c:set var="funcName" value="OUT" scope="session"/>
 
 <body>
   <div class="py-5 section text-center">
@@ -48,29 +43,11 @@
         <center>
         	  <h2 style="color: #9297a0;">親～ </h2>
           <h3 class="text-Warning" >已經成功登出囉！</h3><br>
-
-						<p>
-						
-						<div class="btn btn-default">
-							<a style=" text-decoration: none;"
-								href="../indexA.jsp">狠心離開</a>
-						</div>
-						<div class="btn btn-warning">
-							<a style="color: #fff; text-decoration: none;"
-								href="StoreLogin.jsp">再次登入</a>
-						</div>
-
-
-
-<!-- 						<button type="button" class="btn btn-default">狠心離開</button> -->
-<!--           <button type="button" class="btn btn-warning">再次登入</button> -->
+        
+        <p>
+          <button type="button" class="btn btn-default">狠心離開</button>
+          <button type="button" class="btn btn-warning">登入</button>
         </p>
-        <%
-  session.invalidate();
-%>
-
-        
-        
         </center>
         </div>
         <div class="col-md-6">

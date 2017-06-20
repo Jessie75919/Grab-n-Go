@@ -8,7 +8,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-import _03_Product.model.*;
+import _03_listBooks.model.*;
 @WebServlet("/_20_productMaintain/BookDelete.do")
 public class BookDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

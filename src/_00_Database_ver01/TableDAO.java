@@ -26,15 +26,13 @@ public class TableDAO {
 	public static final String UTF8_BOM = "\uFEFF"; // 定義 UTF-8的BOM字元
 	Connection con;
 	PreparedStatement pst;
-	
-	
 
+	
+	
 	/*--------------------------------------------------------------------------
 	 * get a connection object.
 	 * */
-	
-	public TableDAO() {
-		super();
+	private void getDataSource() {
 		System.out.println("URL: " + GlobalService.DB_URLMySQL);
 		System.out.println("帳號: " + GlobalService.USERID);
 		System.out.println("密碼: " + GlobalService.PASSWORD);
@@ -45,13 +43,12 @@ public class TableDAO {
 			e.printStackTrace();
 		}
 	}
-
 	
 	/*--------------------------------------------------------------------------
 	 *   inflater member data
 	 * */
 	public int insertMemberTable() {
-		
+		getDataSource();
 		String sql = "insert into member values(?,?,?,?,?,?,?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -95,6 +92,7 @@ public class TableDAO {
 	
 	
 	public int insertRestaurantType(){
+		getDataSource();
 		String sql = "insert into rest_type values(?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -128,6 +126,7 @@ public class TableDAO {
 	 *  inflater restaurant data
 	 * */
 	public int insertRestaurantTable() {
+		getDataSource();
 		String sql = "insert into restaurant values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -176,6 +175,7 @@ public class TableDAO {
 	 *  inflate productType data
 	 * */
 	public void insertProductType(){
+		getDataSource();
 		String sql = "insert into product_type values(?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -205,6 +205,7 @@ public class TableDAO {
 	
 	// product data 尚未完成
 	public int insertProduct(){
+		getDataSource();
 		String sql = "insert into product values(null,?,?,?,?,?,?,?)";
 		//prod_id, rest_id, type_id, prod_name, prod_price, prod_desc, prod_ing, prod_filename
 		int result = -1;
@@ -244,6 +245,10 @@ public class TableDAO {
 		}
 		return result;
 	}
+	
+
+	
+	
 	
 	/* 
 		private String[] readSqlFiles(String sqlFileName) {

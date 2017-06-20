@@ -1,8 +1,7 @@
 package _04_ShoppingCart.model;
 
 import java.util.*;
-
-import _03_Product.model.OrderItemBean;
+import _03_listBooks.model.OrderItemBean;
 
 public class ShoppingCart {
 

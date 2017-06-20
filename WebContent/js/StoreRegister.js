@@ -9,8 +9,8 @@ function addressToLanlng(addr) {
 			MapStatus = status;
 			langitude.value = results[0].geometry.location.lng();
 			latitude.value = results[0].geometry.location.lat();
-			alert(langitude.value);
-			alert(latitude.value);
+//			alert(langitude.value);
+//			alert(latitude.value);
 		}
 	});
 }

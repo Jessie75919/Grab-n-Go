@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import _00_init.GlobalService;
-import _03_listBooks.model.*;
+import _03_Product.model.*;
 @WebServlet("/_20_productMaintain/BookUpdate.do")
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 public class BookUpdateServlet extends HttpServlet {

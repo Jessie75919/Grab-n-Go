@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +20,10 @@ import _01_App_register.model.RestaurantTypeDAO;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
+@SuppressWarnings("serial")
+@WebServlet("/AppStoreRegisterServlet")
 public class AppStoreRegisterServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private final static String CONTENT_TYPE = "text/html; charset=UTF-8";
 	private List<String> list;
 	
 	@Override
@@ -28,12 +31,13 @@ public class AppStoreRegisterServlet extends HttpServlet {
 		super.init();
 		RestaurantTypeDAO dao = new RestaurantTypeDAO();
 		list = dao.getRestaurantType();
+		System.out.println("init : list = " + list);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json; charset=UTF-8");
+		response.setContentType(CONTENT_TYPE);
 
 		//解開從App取得的Gson
 		Gson gson = new Gson();
@@ -43,16 +47,18 @@ public class AppStoreRegisterServlet extends HttpServlet {
 		while ((line = br.readLine()) != null) {
 			jsonIn.append(line);
 		}
+		System.out.println("jsonIn = " + jsonIn);
 		JsonObject jsonObject = gson.fromJson(jsonIn.toString(), JsonObject.class);
 		
-		//判斷送來的請求是否為要求category
-		String category = jsonObject.get("category").getAsString();
-		if (category.equals("category")) {
+		//判斷送來的請求為要求category或是signUp
+		String param = jsonObject.get("param").getAsString();
+		System.out.println("param = " + param);
+		if (param.equals("category")) {
 			//將餐廳類別送回App
 			PrintWriter out = response.getWriter();
 			out.println(gson.toJson(list));
 			out.close();
-		} else {
+		} else if (param.equals("signUp")){
 			String username = jsonObject.get("username").getAsString();
 			String password = jsonObject.get("password").getAsString();
 			String passwordConfirm = jsonObject.get("passwordConfirm").getAsString();
@@ -65,8 +71,10 @@ public class AppStoreRegisterServlet extends HttpServlet {
 			String owner = jsonObject.get("owner").getAsString();
 			String website = jsonObject.get("website").getAsString();
 			float latitude = Float.parseFloat(jsonObject.get("latitude").getAsString());
-			float longitude = Float.parseFloat(jsonObject.get("latitude").getAsString());
+			float longitude = Float.parseFloat(jsonObject.get("longitude").getAsString());
 
+			System.out.println("latitude: " + latitude);
+			System.out.println("longitude: " + longitude);
 			System.out.println("latitude: " + latitude);
 			System.out.println("longitude: " + longitude);
 			

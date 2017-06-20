@@ -126,7 +126,8 @@ input[type="password"],
 input[type="tel"],
 input[type="email"],
 input[type="number"],
-input[type="date"]{
+input[type="date"],
+input[type="time"]{
     width: 100%;
 }
 input[type="file"]{
@@ -425,7 +426,7 @@ section.content {
     position: relative;
     width: 100%;
     margin: auto;
-    padding: 50px 3%;
+    padding: 50px 10%;
     box-sizing: border-box;
 }
 section.content.small {
@@ -505,14 +506,18 @@ section.content h2 span {
     display: inline-block;
     background-color: #eb503c;
     color: #fff;
+    min-width: 150px;
     text-align: center;
-    padding: 10px 50px;
+    padding: 10px 0px 10px 0px;
     box-sizing: border-box;
     border-radius: 30px;
-    font-size: 1.1em;
+    margin: 0 5px;
 }
 .formBtn a:hover {
     background-color: #ec8e26;
+}
+.formBtn p{
+    padding-bottom: 15px;
 }
 /*----------首頁----------*/
 
@@ -804,13 +809,17 @@ main.login input[type="reset"]:hover {
 
 .cartLeft h3{
     position: relative;
-    border-bottom: #eb503c solid 2px;
+    font-size: 1.4em;
+    padding: 0 0 10px 0;
 }
 .foodList{
     position: relative;
-    padding: 10px 0;
-    border-bottom: #ccc solid 1px;
+    padding: 20px 40px 20px 0px;
+    border-top: #ccc solid 1px;
     box-sizing: border-box;
+}
+.foodList:last-child{
+    padding-bottom: 10px;
 }
 .foodList:after{
     display: block;
@@ -819,7 +828,7 @@ main.login input[type="reset"]:hover {
 }
 .foodList figure{
     position: relative;
-    width: 30%;
+    width: 38%;
     float: left;
 }
 .foodList figure img{
@@ -828,12 +837,19 @@ main.login input[type="reset"]:hover {
 }
 .foodInfo{
     position: relative;
-    width: 68%;
+    width: 60%;
     float: right;
 }
-.foodInfo p span{
+.foodInfo h4{
     font-size: 1.2em;
-    color: #eb503c;
+    padding: 0 0 10px 0;
+}
+.foodInfo p span.price{
+    display: inline-block;
+    color: #fff;
+    background-color: #ec8e26;
+    border-radius: 4px;
+    padding: 0 10px;
 }
 .foodInfo input[type="number"]{
     width: 100px;
@@ -841,15 +857,58 @@ main.login input[type="reset"]:hover {
     background-color: #fff;
     margin-right: 10px;
 }
+.foodInfo textarea{
+    background-color: #fff;
+    margin-top: 10px;
+}
+.foodList .closeBtn{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #999;
+    border-radius: 50%;
+    top: 20px;
+    right: 10px;
+    padding: 5px 0 0 0;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+.foodList .closeBtn:hover{
+    background-color: #eb503c;
+}
 .cartRight{
     position: relative;
     width: 48%;
-    float: right; 
+    float: right;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 }
-.cartRight:after{
-    display: block;
-    content: "";
-    clear: both;
+.cartRight h3{
+    position: relative;
+    font-size: 1.4em;
+    padding: 0 0 10px 0;
+    margin-bottom: 20px;
+}
+.cartRight .formList .formTitle{
+    padding-top: 10px;
+}
+.cartSuccess{
+    position: relative;
+    background-color: #eee;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+}
+.cartSuccess h3{
+    text-align: center;
 }
 /*----------檢視會員資料----------*/
 .memberAccount{

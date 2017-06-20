@@ -39,9 +39,9 @@
         <div class="account">
             <ul>
 <!--          <!--未登入用這組-->
-<%-- 			<c:if test="${empty LoginOK}"> --%>
-<!-- 				<li><a href="_02_login/loginA.jsp">登入</a></li> -->
-<!-- 			</c:if> -->
+			<c:if test="${empty LoginOK}">
+				<li><a href="_02_login/loginA.jsp">登入</a></li>
+			</c:if>
 <!-- 			<li><a href="_02_login/loginA.jsp">登入</a></li> -->
 			<!--未登入用這組 end-->
 			<!--已登入用這組-->

@@ -131,7 +131,7 @@ CREATE TABLE product (
 	type_name VARCHAR(50),
 	prod_name VARCHAR(30) NOT NULL,
 	prod_price MEDIUMINT NOT NULL,
-	prod_desc TINYTEXT , 
+	prod_desc VARCHAR(100) , 
 	prod_img LONGBLOB ,
 	prod_filename VARCHAR(30),
 	PRIMARY KEY(prod_id,rest_id),

@@ -210,7 +210,7 @@ public class TableDAO {
 		//prod_id, rest_id, type_id, prod_name, prod_price, prod_desc, prod_ing, prod_filename
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
-				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productTest.csv"));) {
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productData.csv"));) {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				if (line.startsWith(UTF8_BOM)) {
@@ -222,14 +222,15 @@ public class TableDAO {
 				pst.setString(3, segment[2]); // prod_name
 				pst.setString(4, segment[3]); // prod_price
 				pst.setString(5, segment[4]); // prod_desc
-//				pst.setString(6, segment[5]); // prod_img
 				System.out.println("image : " + segment[6]);
+				if(!segment[6].equals("null")){
+					InputStream is = new FileInputStream("WebContent/images/productImageTest/" + segment[6]+".jpg");
+					pst.setBlob(6, is);
+				}
 				
-				InputStream is = new FileInputStream("WebContent/images/productImageTest/" + segment[6] + ".jpg");
-				pst.setBlob(6, is); // 
+				
+				 // 
 				pst.setString(7, segment[6]); // prod_filename
-				
-				
 				
 				result = pst.executeUpdate();
 

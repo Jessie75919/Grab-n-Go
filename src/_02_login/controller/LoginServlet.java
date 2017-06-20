@@ -14,7 +14,7 @@ import _00_init.GlobalService;
 import _01_register.model.MemberBean;
 import _02_login.model.LoginServiceDB;
 
-@WebServlet("/_02_login/login.do")
+@WebServlet("/userLogin.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request,

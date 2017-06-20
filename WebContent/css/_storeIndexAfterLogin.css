@@ -57,9 +57,8 @@ td{
 }
 
 html, body {
-  font-family: "微軟正黑體",sans-serif ;
-  scroll-behavior: smooth; 
-}
+	family-name:"微軟正黑體", "Microsoft JhengHei", sans-serif;
+  	scroll-behavior: smooth; }
 
 /*!
 * Bootstrap 4.0.0-alpha.6 (https://getbootstrap.com)

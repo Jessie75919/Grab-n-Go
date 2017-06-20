@@ -71,19 +71,34 @@ public class ProductDAO implements ProductInterface{
 	}
 
 	@Override
-	public int deleteProduct(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteProduct(int prod_id,int rest_id) {
+		String sql = "delete from product where prod_id=? and rest_id = ?";
+		int result = -1;
+
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1,prod_id);
+			pst.setInt(2,rest_id);
+			result = pst.executeUpdate();
+			if (result == 1) {
+				System.out.println(rest_id + ": 刪除成功");
+			} else {
+				System.out.println(rest_id + ": 刪除失敗");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
-	public Product queryProduct(int id) {
+	public Product queryAllProduct(int rest_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Product> queryAllProduct(int rest_id, String typeName) {
+	public List<Product> queryProductByType(int rest_id, String typeName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

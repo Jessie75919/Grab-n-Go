@@ -48,7 +48,7 @@
             <main class="login">
                 <div class="googleBtn"><a href="#"><i class="icon-google"></i>GOOGLE 登入</a></div>
                 <h2>會員帳號登入</h2>
-                <form action="<c:url value='login.do' />" method="POST" name="loginForm" class="formcontent">
+                <form action="<c:url value='../userLogin.do' />" method="POST" name="loginForm" class="formcontent">
                     <div class="loginList">
                         <input type="text" name="userId" id="userId" placeholder="帳號" value="${sessionScope.user}" class="validate[required] text-input">
                     </div>

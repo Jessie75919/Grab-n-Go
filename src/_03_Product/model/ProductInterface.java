@@ -6,8 +6,8 @@ import java.util.List;
 public interface ProductInterface {
 	public int insertProduct(Product prod,InputStream is);
 	public int updateProduct(Product prod,InputStream is);
-	public int deleteProduct(int id);
-	public Product queryProduct(int id);
-	public List<Product> queryAllProduct(int rest_id, String typeName);
+	public int deleteProduct(int prod_id,int rest_id);
+	public Product queryAllProduct(int rest_id);
+	public List<Product> queryProductByType(int rest_id, String typeName);
 
 }

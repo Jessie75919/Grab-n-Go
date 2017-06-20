@@ -62,7 +62,7 @@ public class LoginFilter implements Filter {
 	}
 	private boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		MemberBean loginToken = (MemberBean) session.getAttribute("LoginOK");
+		MemberBean loginToken = (MemberBean) session.getAttribute("StoreLoginOK");
 		if (loginToken == null) {
 			return false;
 		} else {

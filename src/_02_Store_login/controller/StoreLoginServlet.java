@@ -56,22 +56,22 @@ public class StoreLoginServlet extends HttpServlet {
 		Cookie cookieRememberMe = null;
 //		
 		if (rm != null) {   // rm存放瀏覽器送來之RememberMe的選項
-			cookieUser = new Cookie("user", userId);
+			cookieUser = new Cookie("StoreUser", userId);
 			cookieUser.setMaxAge(30*60*60);
 			cookieUser.setPath(request.getContextPath());
 			String encodePassword = GlobalService.encryptString(password);
-			cookiePassword = new Cookie("password", encodePassword);
+			cookiePassword = new Cookie("StorePassword", encodePassword);
 			cookiePassword.setMaxAge(30*60*60);
 			cookiePassword.setPath(request.getContextPath());
 			cookieRememberMe = new Cookie("rm", "true");
 			cookieRememberMe.setMaxAge(30*60*60);
 			cookieRememberMe.setPath(request.getContextPath());
 		} else {
-			cookieUser = new Cookie("user", userId);
+			cookieUser = new Cookie("StoreUser", userId);
 			cookieUser.setMaxAge(0);   // MaxAge==0 表示要請瀏覽器刪除此Cookie
 			cookieUser.setPath(request.getContextPath());
 			String encodePassword = GlobalService.encryptString(password);
-			cookiePassword = new Cookie("password", encodePassword);
+			cookiePassword = new Cookie("StorePassword", encodePassword);
 			cookiePassword.setMaxAge(0);
 			cookiePassword.setPath(request.getContextPath());
 			cookieRememberMe = new Cookie("rm", "false");

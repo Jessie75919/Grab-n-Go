@@ -50,14 +50,14 @@
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
 							<label>Username </label> <input type="text" id="usr"
-								name="username" value="${param.username}${sessionScope.user}"
+								name="username" value="${param.username}${sessionScope.StoreUser}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
 							<label>Password</label> <input type="password" id="pw"
 								name="password" class="form-control"
-								value="${param.password}${sessionScope.password}"> <span id="pwRes"
+								value="${param.password}${sessionScope.StorePassword}"> <span id="pwRes"
 								style="height: 10px;"></span>
 						</div>
 						<div>

@@ -189,6 +189,7 @@ public class TableDAO {
 				
 				pst.setString(1, segment[0]);  // type_name
 				pst.setString(2, segment[1]);  // rest_name
+				System.out.println("ABCCCCC");
 				result =  pst.executeUpdate();
 				if (result == 1)
 					System.out.println(segment[1] +" : " + segment[0]  + " - add success ");

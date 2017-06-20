@@ -48,10 +48,10 @@ public class FindUserPassword implements Filter {
 				
 				for (int i = 0; i < cookies.length; i++) {
 					cookieName = cookies[i].getName();
-					if (cookieName.equals("user")) {
+					if (cookieName.equals("StoreUser")) {
 						//找到user這個Cookie
 						user = cookies[i].getValue();
-					} else if (cookieName.equals("password")) {
+					} else if (cookieName.equals("StorePassword")) {
 						//找到password這個Cookie						
 						String tmp  = cookies[i].getValue();
 						if (tmp!= null){
@@ -70,8 +70,8 @@ public class FindUserPassword implements Filter {
 			}
 			// 將這三項資料存入session物件
 			session.setAttribute("rememberMe", rememberMe);
-			session.setAttribute("user", user);
-			session.setAttribute("password", password);
+			session.setAttribute("StoreUser", user);
+			session.setAttribute("StorePassword", password);
 		}
 		chain.doFilter(request, response);
 	}

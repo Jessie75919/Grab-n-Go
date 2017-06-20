@@ -126,7 +126,7 @@ CREATE TABLE product_type (
 
 CREATE TABLE product (
 	
-	prod_id  INT ,
+	prod_id  INT AUTO_INCREMENT PRIMARY KEY,
 	rest_id INT NOT NULL,
 	type_name VARCHAR(50),
 	prod_name VARCHAR(30) NOT NULL,

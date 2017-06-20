@@ -205,10 +205,11 @@ public class TableDAO {
 	// product data 尚未完成
 	public int insertProduct(){
 		getDataSource();
-		String sql = "insert into product values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into product values(null,?,?,?,?,?,?,?)";
+		//prod_id, rest_id, type_id, prod_name, prod_price, prod_desc, prod_ing, prod_filename
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
-				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantData.csv"));) {
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productTest.csv"));) {
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				if (line.startsWith(UTF8_BOM)) {
@@ -219,18 +220,13 @@ public class TableDAO {
 				pst.setString(2, segment[1]); // type_id
 				pst.setString(3, segment[2]); // prod_name
 				pst.setString(4, segment[3]); // prod_price
-				pst.setString(5, segment[4]); // prod_amount
-				pst.setString(6, segment[5]); // 
-				pst.setString(7, segment[6]); // 
-				pst.setString(8, segment[7]); // 
+				pst.setString(5, segment[4]); // prod_desc
+				pst.setString(6, segment[5]); // prod_img
+//				pst.setString(7, segment[6]); // prod_filename
+				System.out.println("image : " + segment[6]);
 				
-				System.out.println("image : " + segment[12]);
-				InputStream is = new FileInputStream("WebContent/images/restImage/" + segment[12] + ".jpg");
-				pst.setBlob(13, is); // rest_mainbanner
-				is = new FileInputStream("WebContent/images/restImage/" + segment[13] + ".jpg");
-				pst.setBlob(14, is); // rest_logo
-				is = new FileInputStream("WebContent/images/restImage/" + segment[14] + ".jpg");
-				pst.setBlob(15, is); // rest_coverimage
+				InputStream is = new FileInputStream("WebContent/images/productImageTest/" + segment[6] + ".jpg");
+				pst.setBlob(7, is); // 
 				result = pst.executeUpdate();
 
 				if (result == 1)

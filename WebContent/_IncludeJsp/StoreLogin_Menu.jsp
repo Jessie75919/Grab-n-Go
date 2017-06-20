@@ -40,6 +40,9 @@
             </li>
             <li class="list-group-item"><i class="fa fa-pencil-square-o fa-fw"></i>菜單管理</li>
             <li class="list-group-item">
+              <a href="#">新增餐點類別</a>
+            </li>
+            <li class="list-group-item">
               <a href="#">新增餐點項目</a>
             </li>
             <li class="list-group-item">

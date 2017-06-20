@@ -15,6 +15,20 @@ public class Product implements Serializable{
 	private Blob prod_img; 
 	private String prod_filename;
 	
+	
+	public Product(int prod_id, int rest_id, String type_name, String prod_name, int prod_price, String prod_desc,
+			Blob prod_img, String prod_filename) {
+		super();
+		this.prod_id = prod_id;
+		this.rest_id = rest_id;
+		this.type_name = type_name;
+		this.prod_name = prod_name;
+		this.prod_price = prod_price;
+		this.prod_desc = prod_desc;
+		this.prod_img = prod_img;
+		this.prod_filename = prod_filename;
+	}
+
 	public Product(int rest_id, String type_name, String prod_name, int prod_price, String prod_desc, Blob prod_img,
 			String prod_filename) {
 		super();

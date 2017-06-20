@@ -1,8 +1,10 @@
 package _03_Product.model;
 
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -12,8 +14,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import _00_init.GlobalService;
-import _01_Store_register.model.StoreBean;
-import _02_Store_login.model.StoreLoginServiceDB;
 
 public class ProductDAO implements ProductInterface{
 	private DataSource ds = null;
@@ -91,16 +91,43 @@ public class ProductDAO implements ProductInterface{
 		return result;
 	}
 
-	@Override
-	public Product queryAllProduct(int rest_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public List<Product> queryProductByType(int rest_id, String typeName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> queryProducts(int rest_id, String typeName) {
+		List<Product> ptList = null;
+		String sql = "";
+		
+		if(typeName.equals("")){
+			 sql = "select * from product where rest_id=?";
+		}else{
+			 sql = "select * from product where rest_id=? and type_name=?";
+		}
+
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1,rest_id);
+			pst.setString(2,typeName);
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()){
+				int prodId = rs.getInt(1);
+				int restId = rs.getInt(2);
+				String typeNameA = rs.getString(3);
+				String prodName = rs.getString(4);
+				int prodPrice = rs.getInt(5);
+				String prodDesc = rs.getString(6);
+				Blob prodImg = rs.getBlob(7);
+				String fileNmae = rs.getString(8);
+				
+				Product pro = new Product(prodId, restId, typeNameA, prodName, 
+						prodPrice, prodDesc, prodImg, fileNmae);
+				ptList.add(pro);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ptList;
 	}
 	
 	

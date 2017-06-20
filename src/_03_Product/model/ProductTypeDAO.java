@@ -66,7 +66,6 @@ public class ProductTypeDAO {
 	}
 	
 	public List<String> queryAllProductType(String restName) {
-		
 		List<String> ptList = null;
 		String sql = "select typeName from product_type where rest_name=?";
 
@@ -78,6 +77,7 @@ public class ProductTypeDAO {
 				String typeName = rs.getString(1);
 				ptList.add(typeName);
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

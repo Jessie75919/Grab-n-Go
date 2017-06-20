@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import _01_register.model.MemberBean;
-import _03_listBooks.model.OrderItemBean;
+import _03_Product.model.OrderItemBean;
 import _04_ShoppingCart.model.OrderBean;
 import _04_ShoppingCart.model.OrderDAO;
 import _04_ShoppingCart.model.OrderItemDAOBean;

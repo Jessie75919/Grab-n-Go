@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.*;
 
+import _01_Store_register.model.StoreBean;
 import _01_register.model.*;
 @WebFilter(
 		urlPatterns = { "/*" }, 
@@ -16,7 +17,7 @@ import _01_register.model.*;
 				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
 				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
 		})
-public class LoginFilter implements Filter {
+public class StoreLoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -50,7 +51,7 @@ public class LoginFilter implements Filter {
 					if ( ! isRequestedSessionIdValid ) {
 						session.setAttribute("timeOut", "使用逾時，請重新登入");
 					}
-					resp.sendRedirect(contextPath + "/_02_login/login.jsp");
+					resp.sendRedirect(contextPath + "/_02_storeLogin/StoreLogin.jsp");
 					return;
 				}
 			} else {   //不需要登入
@@ -62,7 +63,7 @@ public class LoginFilter implements Filter {
 	}
 	private boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		MemberBean loginToken = (MemberBean) session.getAttribute("StoreLoginOK");
+		StoreBean loginToken = (StoreBean) session.getAttribute("StoreLoginOK");
 		if (loginToken == null) {
 			return false;
 		} else {

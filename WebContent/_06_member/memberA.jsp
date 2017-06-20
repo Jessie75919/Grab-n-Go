@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-hant">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>檢視個人資料-Grab &amp; Go</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>檢視個人資料-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -28,33 +28,43 @@
 </head>
 
 <body id="top" class="cbp-spmenu-push">
- <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
-<!--     <header> -->
-<!--         <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div> -->
-<!--         <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div> -->
-<!--         <div class="logo"> -->
-<!--             <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a> -->
-<!--         </div> -->
-<!--         <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div> -->
-<!--         <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div> -->
-<!--         <div class="account"> -->
-<!--             <ul> -->
-<!--                 未登入用這組 -->
-<!--                 <li><a href="../_02_login/login.htm">登入</a></li> -->
-<!--                 未登入用這組 end -->
-<!--                 已登入用這組 -->
-<!--                 <li><a href="../_06_member/member.htm">Juicekuo</a></li> -->
-<!--                 <li><a href="#">登出</a></li> -->
-<!--                 已登入用這組 end -->
-<!--             </ul> -->
-<!--         </div> -->
-<!--     </header> -->
+<%--  <jsp:include page="../_IncludeJsp/User_mainNav.jsp" /> --%>
+    <header>
+        <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
+        <div class="logo">
+            <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
+        </div>
+        <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
+        <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
+        <div class="account">
+            <ul>
+<!--          <!--未登入用這組-->
+<%-- 			<c:if test="${empty LoginOK}"> --%>
+<!-- 				<li><a href="_02_login/loginA.jsp">登入</a></li> -->
+<!-- 			</c:if> -->
+<!-- 			<li><a href="_02_login/loginA.jsp">登入</a></li> -->
+			<!--未登入用這組 end-->
+			<!--已登入用這組-->
+			<c:if test="${! empty LoginOK}">
+				<li><a href="_06_member/memberA.jsp">${LoginOK.memberId}</a></li>
+				<li><a href="logout.do">登出</a></li>
+				<!--已登入用這組 end-->
+			</c:if>
+            </ul>
+        </div>
+    </header>
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
         <!--已登入用這組 未登入的話這塊隱藏-->
-        <div class="memberLogin">
-            <figure><img src="../images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
-            <p>JuiceKuo<a href="#">登出</a></p>
-        </div>
+       <c:if test="${!empty LoginOK}">
+		<div class="memberLogin">
+			<figure>
+			<img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo">
+			</figure>
+			<p>
+				${LoginOK.memberId}<a href="logout.do">登出</a>
+			</p>
+		</div>
+	</c:if>
         <!--已登入用這組 未登入的話這塊隱藏 end-->
         <ul>
             <li><a href="../_06_member/member.htm"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
@@ -62,14 +72,14 @@
             <li><a href="../_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
         </ul>
         <!-- AddToAny BEGIN -->
-        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            <a class="a2a_button_facebook"></a>
-            <a class="a2a_button_line"></a>
-            <a class="a2a_button_google_plus"></a>
-            <a class="a2a_button_twitter"></a>
-            <a class="a2a_button_email"></a>
-        </div>
-        <script async src="https://static.addtoany.com/menu/page.js"></script>
+<!--         <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> -->
+<!--             <a class="a2a_button_facebook"></a> -->
+<!--             <a class="a2a_button_line"></a> -->
+<!--             <a class="a2a_button_google_plus"></a> -->
+<!--             <a class="a2a_button_twitter"></a> -->
+<!--             <a class="a2a_button_email"></a> -->
+<!--         </div> -->
+<!--         <script async src="https://static.addtoany.com/menu/page.js"></script> -->
         <!-- AddToAny END -->
     </nav>
     <div class="insideTitle">
@@ -80,32 +90,34 @@
         <section class="content">
            <div class="memberAccount">
             <div class="memberLeft">
-                <figure><img src="../images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
+               <figure>
+			<img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo">
+			</figure>
             </div>
             <div class="memberRight">
                 <div class="memberInfo">
-                    <h3>Jessie</h3>
+                    <h3>${LoginOK.memberId}</h3>
                     <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-user"></i>姓名</div>
-                    <div class="formInfo">謝宗哲</div>
+                    <div class="formInfo">${LoginOK.name}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-location"></i>地址</div>
-                    <div class="formInfo">台北市中山區民權東路22巷1號1樓</div>
+                    <div class="formInfo">${LoginOK.address}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-phone"></i>電話</div>
-                    <div class="formInfo">0932123456</div>
+                    <div class="formInfo">${LoginOK.phone}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-mail"></i>E-mail</div>
-                    <div class="formInfo">jessie@mail.com</div>
+                    <div class="formInfo">${LoginOK.email}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-birth"></i>生日</div>
-                    <div class="formInfo">1986/9/19</div>
+                    <div class="formInfo">${LoginOK.birthday}</div>
                 </div>
             </div>
             </div>

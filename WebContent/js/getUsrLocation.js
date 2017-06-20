@@ -8,8 +8,8 @@ window.onload = function () {
         }
 
     function showPosition(position) {
-        alert("Latitude: " + position.coords.latitude) ;
-        alert("Longitude: " + position.coords.longitude);
+//        alert("Latitude: " + position.coords.latitude) ;
+//        alert("Longitude: " + position.coords.longitude);
         var xhr = new XMLHttpRequest();
         xhr.open("GET","SaveLocation.do?latitude="+position.coords.latitude
                     +"&longitude="+position.coords.longitude,true);

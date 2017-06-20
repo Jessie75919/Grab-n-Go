@@ -222,12 +222,15 @@ public class TableDAO {
 				pst.setString(3, segment[2]); // prod_name
 				pst.setString(4, segment[3]); // prod_price
 				pst.setString(5, segment[4]); // prod_desc
-				pst.setString(6, segment[5]); // prod_img
-//				pst.setString(7, segment[6]); // prod_filename
+//				pst.setString(6, segment[5]); // prod_img
 				System.out.println("image : " + segment[6]);
 				
 				InputStream is = new FileInputStream("WebContent/images/productImageTest/" + segment[6] + ".jpg");
-				pst.setBlob(7, is); // 
+				pst.setBlob(6, is); // 
+				pst.setString(7, segment[6]); // prod_filename
+				
+				
+				
 				result = pst.executeUpdate();
 
 				if (result == 1)

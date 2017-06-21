@@ -3,7 +3,9 @@ package _01_Store_register.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.naming.Context;
@@ -15,7 +17,17 @@ import _00_init.GlobalService;
 
 public class RestaurantTypeDAO {
 	private DataSource ds = null;
-	
+	private String tagName = "";
+	private String selected = "";
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public void setSelected(String selected) {
+		this.selected = selected;
+	}
+
 	public RestaurantTypeDAO() {
 		try {
 			Context ctx = new InitialContext();
@@ -25,12 +37,10 @@ public class RestaurantTypeDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<String> getRestaurantType() {
 		List<String> list = new ArrayList<>();
-		try (
-			Connection con = ds.getConnection();
-		){
+		try (Connection con = ds.getConnection();) {
 			String sql = "Select * from rest_type";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
@@ -43,6 +53,23 @@ public class RestaurantTypeDAO {
 		}
 		return list;
 	}
-	
-	
+
+	// 給jsp網頁的下拉選單
+	public String getSelectTag() throws SQLException {
+		String ans = "";
+		Collection<String> list = getRestaurantType();
+		ans += "<SELECT name='" + tagName + "' class='form-control'>";
+
+		for (String type : list) {
+			if (type.equals(selected)) {
+				ans += "<option value='" + type + "' selected>" + type + "</option>";
+			} else {
+				ans += "<option value='" + type + "'>" + type + "</option>";
+			}
+		}
+		ans += "</SELECT>";
+		System.out.println(selected);
+		return ans;
+	}
+
 }

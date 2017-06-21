@@ -12,6 +12,7 @@
             <link rel="stylesheet" href="../css/_storeLoginProfileEdit.css" type="text/css">
             <title>GrabAndGo Edit Profile</title>
         </head>
+        <jsp:useBean id="rtd" class="_01_Store_register.model.RestaurantTypeDAO" scope="page"/>
         <!-- 餐廳 修改帳戶資料 -->
 
         <body>
@@ -90,10 +91,14 @@
                                         </div>
                                     </div>
                                     <!-- 餐廳類別 -->
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">餐廳類別：</label>
-                                        <div class="col-sm-10">
+<%--                                     <c:set target="${rtd}" property="tagName" value="StoreType"/> --%>
+<%--                                     <c:set target="${rtd}" property="selected" value="${StoreLoginOK['rest_type']}"/> --%>
+<!--                                     <div class="form-group"> -->
+<!--                                         <label class="col-sm-2 control-label">餐廳類別：</label> -->
+<!--                                         <div class="col-sm-10"> -->
+<%--                                                  ${rtd.selectTag} --%>
                                             <input type="text" name="StoreType" value="${StoreLoginOK['rest_type']}" id="StoreType" class="form-control" readonly>
+                                        
                                         </div>
                                     </div>
                                     <!-- 餐廳分店 -->

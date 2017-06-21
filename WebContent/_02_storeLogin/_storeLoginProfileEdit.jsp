@@ -74,7 +74,7 @@
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-2 control-label">Password : </label>
                                         <div class="col-sm-10">
-                                            <input type="password" name="password" value="${sessionScope.password}" id="password" class="form-control  validate[required] text-input">
+                                            <input type="password" name="password" value="${sessionScope.StorePassword}" id="password" class="form-control  validate[required] text-input">
                                         </div>
                                     </div>
                                     <div id="titleP">

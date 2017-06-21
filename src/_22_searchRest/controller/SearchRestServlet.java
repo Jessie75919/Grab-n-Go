@@ -32,10 +32,13 @@ public class SearchRestServlet extends HttpServlet {
 		int count = 0;
 		
 		RestDAO rd = new RestDAO();
+		//取得查詢字串的值
 		foodKind = request.getParameter("foodKind");
 		storeName = request.getParameter("storeName");
 		foodName = request.getParameter("foodName");
 		
+		//依欄位是否為空值做判斷，會得到不同的count值
+		//若非空值時才會丟給RestDAO
 		if(foodKind.trim().length() != 0){
 			rd.setFoodKind(foodKind);
 			count += 1;
@@ -50,11 +53,14 @@ public class SearchRestServlet extends HttpServlet {
 			rd.setFoodName(foodName);
 			count += 4;
 		}
+		//把count丟給RestDAO
 		rd.setCount(count);
 		Collection<RestBean> coll = rd.searchRest();
-		request.setAttribute("Restaurants", coll);
-		request.getRequestDispatcher("_22_SearchRest/result.jsp").forward(request, response);
-		return;
+		if(coll != null){
+			request.setAttribute("Restaurants", coll);
+			request.getRequestDispatcher("_22_SearchRest/result.jsp").forward(request, response);
+			return;
+		}
 		
 	}
 

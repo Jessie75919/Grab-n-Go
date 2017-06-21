@@ -12,7 +12,7 @@
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <title>Welcome GrabAndGo</title>
 </head>
-
+<jsp:useBean id="rtd" class="_01_Store_register.model.RestaurantTypeDAO" scope="page"/>
 <body onload="setFocusToUserId()">
   <div class="py-5 section text-center">
     <div class="container">
@@ -77,49 +77,24 @@
                 <span id="StoreNameResult" style="height:10px;"></span> </div>
               <!-- 餐廳類型 -->
               <div class="form-group mx-2" > <label >Cuisine type</label>
-               <select class="form-control" name="StoreType"  id="StoreType"></select>
-               <div id="foodtype" ></div>
-                <script>
-                 window.onload =function(){
-                	 var selectElement = document.getElementById('StoreType');  // 取出select標籤
-                     var foodType = document.getElementById('foodtype');  // 取出select標籤
-                     var xhr = new XMLHttpRequest();        	// 讀取書籍表格內的書籍資料
-                     // 存放所有書籍資料的書名與主鍵值，每一本書的書名與主鍵值放入一個陣列，在將此陣列放入(push)陣列bookData中
-                     var types = [];
-                     xhr.onreadystatechange = function () {
-                        xhr.open("GET", "loadFoodType.do", true);
-                        xhr.send();
-                     //   if (xhr.readyState == 4 && xhr.status == 200) {
-                     //     var books = JSON.parse(xhr.responseText);
-                     //     for (var i = 0; i < books.length; i++) {
-                     //       // 每一本書的書名與主鍵值放入一個陣列
-                     //       var book = [books[i].title, books[i].bookId];
-                     //       // 在將此陣列放入(push)陣列bookData中
-                     //       bookData.push(book);
-                     //     }
-                     //     // 將bookData內的資料全部移植到select標籤中
-                     //     for (var i = 0; i < bookData.length; i++) {
-                     //       var option = new Option(bookData[i][0], "" + bookData[i][1]);
-                     //       selectElement.options[selectElement.options.length] = option;
-                     //     }
-                     //   }
-                     }
-                 }
-                 
-                </script>
+             <c:set target="${rtd}" property="tagName" value="StoreType"/>
+             
+             
+             
+                ${rtd.selectTag}
 
 
 
-               <select class="form-control" name="StoreType"  id="StoreType">
-                  <option value="台式餐廳">台式餐廳</option>
-                  <option value="日式餐廳">日式餐廳</option>
-                  <option value="韓式餐廳">韓式餐廳</option>
-                  <option value="美式餐廳">美式餐廳</option>
-                  <option value="義式餐廳">義式餐廳</option>
-                  <option value="法式餐廳">法式餐廳</option>
-                  <option value="泰式餐廳">泰式餐廳</option>
-                  <option value="越式餐廳">越式餐廳</option>
-                </select> </div>
+<!--                <select class="form-control" name="StoreType"  id="StoreType"> -->
+<!--                   <option value="台式餐廳">台式餐廳</option> -->
+<!--                   <option value="日式餐廳">日式餐廳</option> -->
+<!--                   <option value="韓式餐廳">韓式餐廳</option> -->
+<!--                   <option value="美式餐廳">美式餐廳</option> -->
+<!--                   <option value="義式餐廳">義式餐廳</option> -->
+<!--                   <option value="法式餐廳">法式餐廳</option> -->
+<!--                   <option value="泰式餐廳">泰式餐廳</option> -->
+<!--                   <option value="越式餐廳">越式餐廳</option> -->
+<!--                 </select> </div> -->
               <!-- 餐廳分店 -->
               <div class="form-group mx-2"> <label>Store Branch</label>
                 <input type="text" name="branch" value="${param.branch}" id="branch" class="form-control" placeholder=""> </div>

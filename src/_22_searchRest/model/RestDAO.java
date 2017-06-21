@@ -77,6 +77,7 @@ public class RestDAO {
 		
 	}
 	
+	//給jsp網頁的下拉選單
 	public String getSelectTag() throws SQLException {
 		String ans = "";
 		Collection<String> list = getRestType();
@@ -89,6 +90,7 @@ public class RestDAO {
 		return ans;
 	}
 	
+	//從restaurant表格取出現有餐廳的餐廳種類
 	public Collection<String> getRestType(){
 		Connection conn = null;
 		Collection<String> list = new ArrayList<>();
@@ -124,6 +126,7 @@ public class RestDAO {
 		String sql = "";
 		try {
 			conn = ds.getConnection();
+			//3個欄位排列組合後共以下7種case，對應到各自的sql指令
 			switch(count){
 			case 1:
 				sql = "SELECT * FROM restaurant WHERE rest_type = ?";

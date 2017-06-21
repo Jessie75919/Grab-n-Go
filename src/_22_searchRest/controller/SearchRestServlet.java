@@ -53,7 +53,7 @@ public class SearchRestServlet extends HttpServlet {
 		rd.setCount(count);
 		Collection<RestBean> coll = rd.searchRest();
 		request.setAttribute("Restaurants", coll);
-		request.getRequestDispatcher("_21_SearchRest/result.jsp").forward(request, response);
+		request.getRequestDispatcher("_22_SearchRest/result.jsp").forward(request, response);
 		return;
 		
 	}

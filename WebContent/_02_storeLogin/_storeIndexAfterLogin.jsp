@@ -42,9 +42,9 @@
          </center>
         </div>
         <div class="col-md-9">
-          <div id="formHeading">
+          <div>
           	<br>
-          	<h3>本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
+          	<h3 id="formHeading">本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
           </div>
           <br>
           <div id="orderStatusHeading">
@@ -52,10 +52,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div id="leftMenu" class="row">
         <!-- 左側列表 -->
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
-        
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9" >
         <!-- 按鈕區塊 -->

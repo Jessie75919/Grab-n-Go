@@ -23,12 +23,14 @@
   float: left;
 }
 #leftMenu{
+	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
   /*width: 50%;*/
-  /*float: left;*/
-  font-size: 90%;
+/*   float: left; */
+/*   font-size: 90%; */
 }
 #formHeading{
  /* border:1px solid powderblue; */
+ font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
  margin-left: 40px;
 }
 #orderStatusHeading{
@@ -36,9 +38,13 @@
  width:88px;
  height:26px;
  margin-left: 40px;
+ font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
  font-weight: bolder;
  color:#ffffff;
  background-color:#383a3d;
+}
+#middleForm{
+font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 
 table{
@@ -55,10 +61,13 @@ th{
 td{
   font-size: 90%;
 }
+/* body{ */
+/* 	 font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei"; */
+/* } */
 
 html, body {
-	family-name:"微軟正黑體", "Microsoft JhengHei", sans-serif;
-  	scroll-behavior: smooth; }
+  	scroll-behavior: smooth; 
+  	}
 
 /*!
 * Bootstrap 4.0.0-alpha.6 (https://getbootstrap.com)

@@ -5,9 +5,13 @@
  * Licensed under MIT
  * Based on Bootstrap
 */
+
 @import url("https://fonts.googleapis.com/css?family=Lato");
+/* 設定字體樣式 */
+p, h2, h3{
+	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+}
 html, body {
-	family-name:"微軟正黑體", "Microsoft JhengHei", sans-serif;
   	scroll-behavior: smooth; }
 
 /*!

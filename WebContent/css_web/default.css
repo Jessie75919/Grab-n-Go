@@ -460,6 +460,14 @@ section.content h2 span {
     color: #fff;
     
 }
+.insideTitle figure{
+    position: relative;
+    min-height: 300px;
+}
+.insideTitle figure img{
+    width: 100%;
+    height: auto;
+}
 .brcame{
     position: relative;
     width: 94%;
@@ -666,6 +674,7 @@ section.content .gridItem .storeInfo h2{
 .dist i {
     color: #eb503c;
     vertical-align: middle;
+    padding-left: 0;
 }
 .tagOrder {
     position: relative;
@@ -690,6 +699,7 @@ section.content .gridItem .storeInfo h2{
     color: #fff;
     padding: 2px 10px;
     border-radius: 20px;
+    margin-top: 3px;
 }
 .tagOrder .orderCount {
     position: relative;
@@ -708,6 +718,53 @@ section.content .gridItem .storeInfo h2{
     line-height: 36px;
     border-radius: 50%;
     margin-left: 5px;
+}
+/*----------店家資訊----------*/
+.storeTitle{
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    width: 850px;
+    background-color: #eee;
+    text-align: left;
+}
+.storeTitle:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.storeLogo{
+    position: relative;
+    width: 25%;
+    float: left;
+}
+.storeLogo img{
+    width: 100%;
+    height: auto;  
+}
+.storeRight{
+    width: 73%;
+    float: right;
+    padding: 10px 10px 10px 0px;
+    box-sizing: border-box;
+}
+.storeRight h3 span{
+    color: #666;
+    font-size: 0.9em;
+    padding-left: 5px;
+    font-weight: normal;
+}
+.storeRight .star{
+    width: 100%;
+    float: none;
+}
+.storeRight p{
+    color: #666;
+    padding-bottom: 5px;
+}
+.storeRight p i{
+    color: #eb503c;
+    padding-left: 0px;
 }
 
 /*----------登入/註冊/密碼----------*/

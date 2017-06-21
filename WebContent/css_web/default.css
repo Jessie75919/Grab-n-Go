@@ -426,7 +426,7 @@ section.content {
     position: relative;
     width: 100%;
     margin: auto;
-    padding: 50px 10%;
+    padding: 50px 3%;
     box-sizing: border-box;
 }
 section.content.small {
@@ -572,7 +572,8 @@ section.grid {
     width: 20%;
     background-color: #eee;
     box-sizing: border-box;
-    border: #fff solid 1px;
+    border: #fff solid 2px;
+    text-align: left;
 }
 .gridItem:after {
     content: '';
@@ -626,6 +627,14 @@ section.grid {
 .storeInfo h2 {
     padding: 0 0 10px 0;
     font-weight: normal;
+    text-align: left;
+}
+section.content .gridItem .storeInfo h2{
+    font-size: 1.3em;
+    font-weight: normal;
+    padding: 0 0 10px 0;
+    text-align: left;
+    
 }
 .storeInfo h2 a {
     color: #000;
@@ -958,4 +967,42 @@ main.login input[type="reset"]:hover {
     position: relative;
     width: 58%;
     float: right;
+}
+/*----------訂購紀錄----------*/
+.orderList{
+    position: relative;
+    padding: 20px 0px;
+    border-bottom: #ccc solid 1px;
+}
+.orderList.head{
+    color: #eb503c;
+    border-bottom: #eb503c solid 4px;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+.orderList:after{
+    display: block;
+    content: "";
+    clear: both;
+}
+.order{
+    position: relative;
+    width: 18%;
+    float: left;
+    box-sizing: border-box;
+}
+.order:last-child{
+    width: 10%;
+}
+.order a{
+    display: inline-block;
+    border: #666 solid 1px;
+    border-radius: 20px;
+    padding: 0 15px;
+    color: #666;
+}
+.order a:hover{
+    border: #eb503c solid 1px;
+    color: #fff;
+    background-color: #eb503c;
 }

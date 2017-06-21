@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div id="leftMenu" class="row">
                         <!-- 左側列表 -->
                         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
                         <!-- 個人資料修改表格開始 -->

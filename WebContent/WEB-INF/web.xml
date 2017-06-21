@@ -96,4 +96,14 @@
     <servlet-name>loadFoodType</servlet-name>
     <url-pattern>/loadFoodType</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewDish</display-name>
+    <servlet-name>AddNewDish</servlet-name>
+    <servlet-class>_03_Product.controller.AddNewDish</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewDish</servlet-name>
+    <url-pattern>/AddNewDish</url-pattern>
+  </servlet-mapping>
 </web-app>

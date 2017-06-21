@@ -10,7 +10,7 @@
 <body>
 <header>
         <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
-        <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div>
+        <div class="storeBtn"><a href="../_02_storeLogin/StoreLogin.jsp">我是店家</a></div>
         <div class="logo">
             <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
         </div>
@@ -26,7 +26,7 @@
 			<!--未登入用這組 end-->
 			<!--已登入用這組-->
 			<c:if test="${! empty LoginOK}">
-				<li><a href="_06_member/memberA.jsp">${LoginOK.memberId}</a></li>
+				<li><a href="../_06_member/memberA.jsp">${LoginOK.memberId}</a></li>
 				<li><a href="../logout.do">登出</a></li>
 				<!--已登入用這組 end-->
 			</c:if>

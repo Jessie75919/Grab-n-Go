@@ -74,12 +74,12 @@ window.onload = function () {
 		account.value = "Jessie75919";
 		password.value = "a1234";
 		password2.value = "a1234";
-		StoreName.value = "subway";
-		StoreType.value = "美式餐廳";
+		StoreName.value = "八方雲集";
+		StoreType.value = "台式餐廳";
 		address.value = "台北市中山區長安東路二段92號1樓";
 		tel.value = "(02)2517-7667";
-		eMail.value = "jessie75919@gmail.com";
-		owner.value = "謝阿哲";
+		eMail.value = "hahaFat@gmail.com";
+		owner.value = "哈大胖";
 		url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
 	}
 

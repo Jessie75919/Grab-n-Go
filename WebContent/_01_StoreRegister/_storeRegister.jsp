@@ -78,13 +78,7 @@
               <!-- 餐廳類型 -->
               <div class="form-group mx-2" > <label >Cuisine type</label>
              <c:set target="${rtd}" property="tagName" value="StoreType"/>
-             
-             
-             
                 ${rtd.selectTag}
-
-
-
 <!--                <select class="form-control" name="StoreType"  id="StoreType"> -->
 <!--                   <option value="台式餐廳">台式餐廳</option> -->
 <!--                   <option value="日式餐廳">日式餐廳</option> -->
@@ -104,7 +98,7 @@
                 <span id="addressResult" style="height:10px;"></span> </div>
               <!-- 餐廳Email -->
               <div class="form-group mx-2"><label>Email</label>
-                <input type="text" name="eMail" value="${param.email}" id="eMail" class="form-control" placeholder="MR.  /  MS."> 
+                <input type="text" name="eMail" value="${param.email}" id="eMail" class="form-control" placeholder="grab_go@gmail.com"> 
                 <span id="eMailResult" style="height:10px;"></span> </div>  
               <!-- 餐廳聯絡電話 -->
               <div class="form-group mx-2"><label>Contact phone number</label>

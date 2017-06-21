@@ -16,7 +16,7 @@
               <a href="_storeLoginProfileEdit.jsp">修改個人資料</a>
             </li>
             <li class="list-group-item">
-              <a href="_storeLogOut.jsp">登出</a>
+              <a href="/_Grab_Go/_02_storeLogin/_storeLogOut.jsp">登出</a>
             </li>
             <li class="list-group-item"><i class="fa fa-file-text-o fa-fw"></i>本日訂單</li>
             <li class="list-group-item">

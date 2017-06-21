@@ -8,7 +8,7 @@ var count = 0;
 addBtn.onclick = function () {
     count++;
     countVar.value = count;
-    alert("countVar.value = " +countVar.value);
+//    alert("countVar.value = " +countVar.value);
 
     // alert("KFG");
 

@@ -58,7 +58,7 @@ public class RestaurantTypeDAO {
 	public String getSelectTag() throws SQLException {
 		String ans = "";
 		Collection<String> list = getRestaurantType();
-		ans += "<SELECT name='" + tagName + "' class='form-control'>";
+		ans += "<SELECT name='" + tagName + "'name='StoreType' id='StoreType' class='form-control'>";
 
 		for (String type : list) {
 			if (type.equals(selected)) {
@@ -71,5 +71,7 @@ public class RestaurantTypeDAO {
 		System.out.println(selected);
 		return ans;
 	}
+	
+	
 
 }

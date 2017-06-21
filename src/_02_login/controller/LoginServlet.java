@@ -14,7 +14,7 @@ import _00_init.GlobalService;
 import _01_register.model.MemberBean;
 import _02_login.model.LoginServiceDB;
 
-@WebServlet("/userLogin.do")
+@WebServlet("/_02_login/userLogin.do")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request,
@@ -118,7 +118,7 @@ public class LoginServlet extends HttpServlet {
 			// 此時不要用下面兩個敘述，因為網址列的URL不會改變
 			// RequestDispatcher rd = request.getRequestDispatcher("...");
 			// rd.forward(request, response);
-			response.sendRedirect(response.encodeRedirectURL("indexA.jsp"));
+			response.sendRedirect(response.encodeRedirectURL("../indexA.jsp"));
 			return;
 			
 			

@@ -29,7 +29,7 @@ public class Product implements Serializable{
 		this.prod_filename = prod_filename;
 	}
 
-	public Product(int rest_id, String type_name, String prod_name, int prod_price, String prod_desc, Blob prod_img,
+	public Product(int rest_id, String type_name, String prod_name, int prod_price, String prod_desc, 
 			String prod_filename) {
 		super();
 		this.rest_id = rest_id;
@@ -37,7 +37,6 @@ public class Product implements Serializable{
 		this.prod_name = prod_name;
 		this.prod_price = prod_price;
 		this.prod_desc = prod_desc;
-		this.prod_img = prod_img;
 		this.prod_filename = prod_filename;
 	}
 

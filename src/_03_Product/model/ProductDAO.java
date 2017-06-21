@@ -48,7 +48,7 @@ public class ProductDAO implements ProductInterface{
 			pst.setString(++i, prod.getProd_desc());
 			pst.setBlob(++i, is);
 			pst.setString(++i, prod.getProd_filename());
-			
+			System.out.println("GOOd");
 
 			result = pst.executeUpdate();
 			if (result == 1) {

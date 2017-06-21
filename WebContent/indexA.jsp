@@ -38,6 +38,7 @@
 <link href="css_web/slick.css" rel="stylesheet" type="text/css">
 <!--animation-->
 <link href="css_web/animate.css" rel="stylesheet" type="text/css" />
+<jsp:useBean id="rt" class="_22_searchRest.model.RestDAO" scope="page"/>
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -445,20 +446,25 @@
 	<div class="search">
 		<div class="searchBg"></div>
 		<section class="searchContent">
+		<div>${errMsg.nothing}</div>
 		<h2>Hello! 今天想吃什麼呢?</h2>
 		<div class="closeBtn">
 			<i class="icon-close" title="關閉"></i>
 		</div>
-		<form action="#" method="post">
+		<form action="SearchRestServlet" method="post">
 			<div class="searchList">
-				<select name="foodKind" id="foodKind">
-					<option value="日式料理">日式料理</option>
-					<option value="中式料理">中式料理</option>
-					<option value="義式料理">義式料理</option>
-					<option value="早午餐/下午茶">早午餐/下午茶</option>
-					<option value="暗黑料理">暗黑料理</option>
-					<option value="台灣小吃">台灣小吃</option>
-				</select>
+				<c:set target="${rt}" property="tagName" value='foodKind' /> 
+			${rt.selectTag}<br>
+<!-- 				
+
+<select name="foodKind" id="foodKind"> -->
+<!-- 					<option value="日式料理">日式料理</option> -->
+<!-- 					<option value="中式料理">中式料理</option> -->
+<!-- 					<option value="義式料理">義式料理</option> -->
+<!-- 					<option value="早午餐/下午茶">早午餐/下午茶</option> -->
+<!-- 					<option value="暗黑料理">暗黑料理</option> -->
+<!-- 					<option value="台灣小吃">台灣小吃</option> -->
+<!-- 				</select> -->
 			</div>
 			<div class="searchList">
 				<input type="text" name="storeName" id="storeName"

@@ -3,7 +3,132 @@
 
 /* CSS Document*/
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video,main {margin: 0;padding: 0;border: 0;font-size: 100%;list-style: none;}/* HTML5 display-role reset for older browsers */article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,time,main {display: block;}blockquote,q {quotes: none;}blockquote:before,blockquote:after,q:before,q:after {content: '';content: none;}table {vertical-align: middle;}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+main {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    list-style: none;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+time,
+main {
+    display: block;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    vertical-align: middle;
+}
+
+
 /*-----------------------start-------------------------*/
 
 body {
@@ -19,90 +144,109 @@ body {
     /*overflow-x: hidden;*/
     outline: none;
 }
+
 img {
     border: none;
     padding: 0;
     margin: 0;
     display: block;
 }
+
 a {
     color: #eb503c;
     text-decoration: none;
     transition: ease 0.3s;
     outline: none;
 }
+
 a:hover {
     color: #ec8e26;
     text-decoration: none;
 }
+
 ::selection {
     background-color: #eb503c;
     color: #fff;
 }
+
 ::-moz-selection {
     background-color: #eb503c;
     color: #fff;
 }
+
 h1 {
     font-size: 1.5em;
     line-height: 26px;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
+
 h2 {
     font-size: 1.3em;
     line-height: 24px;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
+
 h3 {
     font-size: 1.1em;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
+
 h4 {
     font-size: 1em;
     padding: 10px 0px 5px 0px;
     letter-spacing: 1px;
 }
+
 p {
     padding: 5px 0px 5px 0px;
 }
+
 tr,
 th,
 td {
     padding: 5px 10px;
     text-align: left;
 }
+
 ul,
 ol {
     margin-left: 20px;
     padding-top: 10px;
 }
+
 ul li {
     list-style: disc;
     padding: 0px 0px 8px 0px;
 }
+
 ol li {
     list-style: decimal;
     padding: 0px 0px 8px 0px;
 }
+
 form {
     position: relative;
     padding-top: 20px;
 }
+
 .clear {
     clear: both;
     height: 0;
 }
+
 i {
     vertical-align: middle;
     padding: 0 5px;
 }
+
 sub,
 sup {
     font-size: 12px;
 }
+
 
 /*----------表單樣式----------*/
 
@@ -121,23 +265,27 @@ select {
     padding: 10px;
     /*appearance: none;-moz-appearance: none;-webkit-appearance: none;*/
 }
+
 input[type="text"],
 input[type="password"],
 input[type="tel"],
 input[type="email"],
 input[type="number"],
 input[type="date"],
-input[type="time"]{
+input[type="time"] {
     width: 100%;
 }
-input[type="file"]{
+
+input[type="file"] {
     font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei", "新細明體";
     width: 60%;
 }
+
 textarea {
     width: 100%;
     line-height: 24px;
 }
+
 input[type="submit"],
 input[type="reset"] {
     border: none;
@@ -157,14 +305,17 @@ input[type="reset"] {
     -webkit-appearance: none;
     box-sizing: border-box;
 }
+
 input[type="submit"]:hover,
 input[type="reset"]:hover {
     background-color: #ec8e26;
 }
+
 select {
     width: 100%;
     padding: 8px 10px 10px 10px;
 }
+
 input:hover,
 input:focus,
 textarea:hover,
@@ -173,6 +324,7 @@ select:hover,
 select:focus {
     background-color: #eee;
 }
+
 input[type="checkbox"],
 input[type="radio"] {
     position: relative;
@@ -180,10 +332,13 @@ input[type="radio"] {
     transform: scale(1.3, 1.3);
 }
 
+
 /*----------字體樣式/背景顏色----------*/
-.wRed{
+
+.wRed {
     color: #eb503c;
 }
+
 
 /*----------共用----------*/
 
@@ -196,11 +351,13 @@ header {
     box-sizing: border-box;
     z-index: 999;
 }
+
 header:after {
     display: block;
     content: "";
     clear: both;
 }
+
 .menuBtn {
     position: relative;
     width: 40px;
@@ -208,10 +365,12 @@ header:after {
     padding-top: 25px;
     cursor: pointer;
 }
+
 .menuBtn i {
     font-size: 2em;
     color: #eb503c;
 }
+
 .storeBtn {
     position: relative;
     width: 100px;
@@ -219,6 +378,7 @@ header:after {
     cursor: pointer;
     padding: 23px 0 0 25px;
 }
+
 .storeBtn a {
     display: block;
     border: #eb503c solid 1px;
@@ -227,10 +387,12 @@ header:after {
     text-align: center;
     padding: 5px 0;
 }
+
 .storeBtn a:hover {
     background-color: #eb503c;
     color: #fff;
 }
+
 .logo {
     position: absolute;
     width: 200px;
@@ -239,17 +401,20 @@ header:after {
     margin-left: -100px;
     box-sizing: border-box;
 }
+
 .logo img {
     display: block;
     width: 100%;
     height: auto;
 }
+
 .account {
     position: relative;
     width: auto;
     float: right;
     padding-top: 30px;
 }
+
 .account>ul {
     position: relative;
     display: block;
@@ -257,6 +422,7 @@ header:after {
     margin: 0;
     text-align: left;
 }
+
 .account>ul>li {
     position: relative;
     padding: 0;
@@ -264,15 +430,18 @@ header:after {
     display: inline-block;
     transition: ease 0.3s;
 }
+
 .account>ul>li>a {
     color: #000;
     padding: 0 25px 0px 0px;
     display: block;
     box-sizing: border-box;
 }
+
 .account>ul>li>a:hover {
     color: #eb503c;
 }
+
 .rightBtn {
     position: relative;
     width: 40px;
@@ -281,6 +450,7 @@ header:after {
     margin-left: 10px;
     padding-top: 20px;
 }
+
 .rightBtn a {
     display: block;
     border: #eb503c solid 1px;
@@ -291,18 +461,22 @@ header:after {
     box-sizing: border-box;
     padding-top: 8px;
 }
+
 .rightBtn a:hover {
     background-color: #eb503c;
     color: #fff;
 }
+
 .rightBtn a i {
     padding: 0;
     font-size: 1.3em;
 }
+
 .rightBtn a i.icon-search {
     padding: 0;
     font-size: 1.2em;
 }
+
 
 /*footer*/
 
@@ -311,22 +485,26 @@ footer {
     padding: 50px 3%;
     box-sizing: border-box;
 }
+
 footer figure {
     position: relative;
     width: 200px;
     margin: auto;
     padding-bottom: 15px;
 }
+
 footer figure img {
     width: 100%;
     height: auto;
 }
+
 footer p {
     position: relative;
     text-align: center;
     font-size: 0.95em;
     color: #ccc;
 }
+
 .backToTop {
     position: fixed;
     right: 10px;
@@ -342,10 +520,12 @@ footer p {
     font-size: 0.95em;
     display: none;
 }
+
 .backToTop:hover {
     color: #fff;
     background-color: #f39838;
 }
+
 
 /*搜尋*/
 
@@ -358,6 +538,7 @@ footer p {
     z-index: 9999;
     display: none;
 }
+
 .searchBg {
     position: absolute;
     width: 100%;
@@ -366,6 +547,7 @@ footer p {
     top: 0;
     left: 0;
 }
+
 section.searchContent {
     position: relative;
     background-color: #fff;
@@ -376,10 +558,12 @@ section.searchContent {
     padding: 30px 50px;
     box-sizing: border-box;
 }
+
 section.searchContent h2 {
     text-align: center;
     padding-bottom: 25px;
 }
+
 section.searchContent .closeBtn {
     position: absolute;
     top: 10px;
@@ -389,39 +573,47 @@ section.searchContent .closeBtn {
     text-align: center;
     cursor: pointer;
 }
+
 section.searchContent .closeBtn i {
     padding: 0;
     font-size: 1.5em;
     color: #ccc;
     transition: ease 0.3s;
 }
+
 section.searchContent .closeBtn:hover i {
     color: #eb503c;
 }
+
 .searchList {
     position: relative;
     padding-bottom: 10px;
 }
+
 .searchBtn {
     position: relative;
     text-align: center;
 }
+
 
 /*主要框架*/
 
 main {
     position: relative;
 }
+
 section {
     position: relative;
     box-sizing: border-box;
 }
+
 section:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
+
 section.content {
     position: relative;
     width: 100%;
@@ -429,46 +621,52 @@ section.content {
     padding: 50px 3%;
     box-sizing: border-box;
 }
+
 section.content.small {
     width: 600px;
     max-width: 94%;
     background-color: #f5f5f5;
     border-radius: 10px;
-    
 }
+
 section.content h2 {
     font-size: 2em;
     font-weight: normal;
     padding-bottom: 40px;
     text-align: center;
 }
+
 section.content h2 span {
     font-size: 0.6em;
     font-weight: normal;
     color: #65bf97;
     padding: 0 0 0 10px;
 }
-.insideTitle{
+
+.insideTitle {
     position: relative;
     background-color: #fff;
     text-align: center;
     padding: 100px 0% 0px 0%;
 }
-.insideTitle h2{
+
+.insideTitle h2 {
     background-color: #eb503c;
     padding: 80px 3% 80px 3%;
     color: #fff;
-    
 }
-.insideTitle figure{
+
+.insideTitle figure {
     position: relative;
     min-height: 300px;
 }
-.insideTitle figure img{
+
+.insideTitle figure img {
     width: 100%;
     height: auto;
 }
-.brcame{
+
+.brcame {
     position: relative;
     width: 94%;
     margin: auto;
@@ -476,31 +674,38 @@ section.content h2 span {
     color: #666;
 }
 
+
 /*----------表單相關----------*/
-.formList{
+
+.formList {
     position: relative;
     padding-bottom: 15px;
 }
-.formList:after{
+
+.formList:after {
     display: block;
     content: "";
     clear: both;
 }
-.formTitle{
+
+.formTitle {
     position: relative;
     width: 20%;
     float: left;
 }
-.formTitle i{
+
+.formTitle i {
     padding-left: 0;
     padding-right: 10px;
     color: #eb503c;
 }
-.formInfo{
+
+.formInfo {
     position: relative;
     width: 78%;
     float: right;
 }
+
 .formBtn {
     position: relative;
     text-align: center;
@@ -510,6 +715,7 @@ section.content h2 span {
     clear: both;
     text-align: center;
 }
+
 .formBtn a {
     display: inline-block;
     background-color: #eb503c;
@@ -521,17 +727,22 @@ section.content h2 span {
     border-radius: 30px;
     margin: 0 5px;
 }
+
 .formBtn a:hover {
     background-color: #ec8e26;
 }
-.formBtn p{
+
+.formBtn p {
     padding-bottom: 15px;
 }
+
+
 /*----------首頁----------*/
 
 .mainBanner {
     position: relative;
 }
+
 .mainBanner h1 {
     position: absolute;
     width: 300px;
@@ -543,15 +754,18 @@ section.content h2 span {
     font-size: 1.8em;
     text-shadow: #fff 0 0 30px;
 }
+
 .mainBanner h1 .wBig {
     font-size: 2.8em;
     line-height: 1.2em;
 }
+
 .mainBanner h1 .wSmall {
     font-size: 1.6em;
     letter-spacing: 0.5em;
     padding-left: 3px;
 }
+
 .mainBanner h1 .wRed {
     font-size: 1em;
     letter-spacing: 0.6em;
@@ -559,9 +773,11 @@ section.content h2 span {
     color: #eb503c;
     font-weight: normal;
 }
+
 section.content.bgRed {
     background: #eb503c;
 }
+
 section.content h2.slogan {
     color: #fff;
     text-align: center;
@@ -571,11 +787,13 @@ section.content h2.slogan {
     padding: 0;
 }
 
+
 /*瀑布流*/
 
 section.grid {
     position: relative;
 }
+
 .gridItem {
     width: 20%;
     background-color: #eee;
@@ -583,20 +801,24 @@ section.grid {
     border: #fff solid 2px;
     text-align: left;
 }
+
 .gridItem:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
+
 .gridItem figure {
     position: relative;
     overflow: hidden;
 }
+
 .gridItem figure img {
     width: 100%;
     height: auto;
 }
+
 .mask {
     position: absolute;
     width: 100%;
@@ -607,6 +829,7 @@ section.grid {
     transition: ease 0.3s;
     opacity: 0;
 }
+
 .mask a {
     display: block;
     text-align: center;
@@ -620,50 +843,60 @@ section.grid {
     top: 50%;
     margin: -20px 0 0 -60px;
 }
+
 .mask a:hover {
     border: #ec8e26 solid 1px;
     background-color: #ec8e26;
 }
+
 .gridItem:hover .mask {
     opacity: 1;
 }
+
 .storeInfo {
     position: relative;
     padding: 20px;
     box-sizing: border-box;
 }
+
 .storeInfo h2 {
     padding: 0 0 10px 0;
     font-weight: normal;
     text-align: left;
 }
-section.content .gridItem .storeInfo h2{
+
+section.content .gridItem .storeInfo h2 {
     font-size: 1.3em;
     font-weight: normal;
     padding: 0 0 10px 0;
     text-align: left;
-    
 }
+
 .storeInfo h2 a {
     color: #000;
 }
+
 .gridItem:hover .storeInfo h2 a {
     color: #eb503c;
 }
+
 .star {
     position: relative;
     width: 50%;
     float: left;
     padding-bottom: 5px;
 }
+
 .star i {
     font-size: 1.2em;
     padding: 0 3px 0 0;
     color: #999;
 }
+
 .star i.on {
     color: #ec8e26;
 }
+
 .dist {
     position: relative;
     width: 48%;
@@ -671,28 +904,33 @@ section.content .gridItem .storeInfo h2{
     text-align: right;
     color: #666;
 }
+
 .dist i {
     color: #eb503c;
     vertical-align: middle;
     padding-left: 0;
 }
+
 .tagOrder {
     position: relative;
     clear: both;
     border-top: #ccc solid 1px;
     padding-top: 10px;
 }
+
 .tagOrder:after {
     content: '';
     display: block;
     clear: both;
     height: 0;
 }
+
 .tagOrder .tag {
     position: relative;
     width: 60%;
     float: left;
 }
+
 .tagOrder .tag span {
     display: inline-block;
     background-color: #eb503c;
@@ -701,12 +939,14 @@ section.content .gridItem .storeInfo h2{
     border-radius: 20px;
     margin-top: 3px;
 }
+
 .tagOrder .orderCount {
     position: relative;
     width: 38%;
     float: right;
     text-align: right;
 }
+
 .tagOrder .orderCount span {
     display: inline-block;
     background-color: #999;
@@ -719,8 +959,11 @@ section.content .gridItem .storeInfo h2{
     border-radius: 50%;
     margin-left: 5px;
 }
+
+
 /*----------店家資訊----------*/
-.storeTitle{
+
+.storeTitle {
     position: absolute;
     bottom: -50px;
     right: 0;
@@ -728,45 +971,179 @@ section.content .gridItem .storeInfo h2{
     background-color: #eee;
     text-align: left;
 }
-.storeTitle:after{
+
+.storeTitle:after {
     display: block;
     content: "";
     clear: both;
 }
-.storeLogo{
+
+.storeLogo {
     position: relative;
     width: 25%;
     float: left;
 }
-.storeLogo img{
+
+.storeLogo img {
     width: 100%;
-    height: auto;  
+    height: auto;
 }
-.storeRight{
+
+.storeRight {
     width: 73%;
     float: right;
     padding: 10px 10px 10px 0px;
     box-sizing: border-box;
 }
-.storeRight h3 span{
+
+.storeRight h3 span {
     color: #666;
     font-size: 0.9em;
     padding-left: 5px;
     font-weight: normal;
 }
-.storeRight .star{
+
+.storeRight .star {
     width: 100%;
     float: none;
 }
-.storeRight p{
+
+.storeRight p {
     color: #666;
     padding-bottom: 5px;
 }
-.storeRight p i{
+
+.storeRight p i {
     color: #eb503c;
     padding-left: 0px;
 }
 
+
+/*菜單分類tab*/
+
+.tabs {
+    position: relative;
+    width: 100%;
+}
+
+.tabArea {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.tabLinks:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+ul.tabLinks {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+ul.tabLinks li {
+    display: block;
+    margin: 0px;
+    list-style: none;
+    padding: 0;
+    position: relative;
+}
+
+ul.tabLinks a {
+    position: relative;
+    text-align: center;
+    display: block;
+    padding: 3px 5px;
+    margin: 0px 4px;
+    border-radius: 20px;
+    border: #ec8e26 solid 1px;
+    font-weight: bold;
+    color: #ec8e26;
+    box-sizing: border-box;
+}
+
+ul.tabLinks a:hover,
+ul.tabLinks li.active a,
+ul.tabLinks li.active a:hover {
+    background: #ec8e26;
+    color: #fff;
+}
+
+
+/*菜單分類Content*/
+
+.tab-content {
+    position: relative;
+}
+
+.tab {
+    display: none;
+}
+
+.tab:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.tab.active {
+    display: block;
+}
+
+.storeMenuList {
+    position: relative;
+    width: 20%;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.storeMenuList figure {
+    position: relative;
+}
+
+.storeMenuList figure img {
+    width: 100%;
+    height: auto;
+}
+
+.storeMenuName {
+    position: relative;
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+.storeMenuName a{
+    color: #000;
+}
+.storeMenuDes {
+    position: relative;
+    padding: 0px 10px 5px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666;
+    white-space: nowrap;
+    background-color: #f5f5f5;
+}
+.storeMenuPrice{
+    position: relative;
+    padding: 0px 10px 10px 10px;
+    color: #eb503c;
+    background-color: #f5f5f5;
+}
+.storeMenuList .mask {
+    background-color: rgba(235, 80, 60, 0.8);
+
+}
+.storeMenuList:hover .mask {
+    opacity: 1;
+}
+.storeMenuList:hover .storeMenuName a{
+    color: #eb503c;
+}
 /*----------登入/註冊/密碼----------*/
 
 .loginLogo {
@@ -777,6 +1154,7 @@ section.content .gridItem .storeInfo h2{
     margin: auto;
     padding: 80px 0 30px 0;
 }
+
 main.login {
     position: relative;
     width: 94%;
@@ -787,31 +1165,36 @@ main.login {
     background-color: #eee;
     border-radius: 10px;
 }
+
 main.login h2 {
     text-align: center;
     padding-bottom: 20px;
 }
+
 main.login input,
 main.login select,
-main.login textarea
-{
+main.login textarea {
     background-color: #fff;
 }
+
 main.login input[type="submit"],
 main.login input[type="reset"] {
     width: 48%;
     background-color: #333;
     border-radius: 10px;
 }
+
 main.login input[type="submit"]:hover,
 main.login input[type="reset"]:hover {
     background-color: #ec8e26;
 }
+
 .loginList {
     position: relative;
     padding-bottom: 15px;
 }
-.loginList span.checkBtn{
+
+.loginList span.checkBtn {
     display: inline-block;
     color: #666;
     border: #666 solid 1px;
@@ -821,11 +1204,12 @@ main.login input[type="reset"]:hover {
     font-size: 0.9em;
     cursor: pointer;
 }
-.loginList span{
+
+.loginList span {
     color: #eb503c;
     font-size: 0.9em;
-    
 }
+
 .loginBtn {
     position: relative;
     text-align: center;
@@ -834,15 +1218,18 @@ main.login input[type="reset"]:hover {
     border-top: #ccc dotted 1px;
     clear: both;
 }
+
 .loginBtn p {
     padding-top: 10px;
 }
+
 .googleBtn {
     position: relative;
     padding-bottom: 20px;
     border-bottom: #ccc dotted 1px;
     margin-bottom: 20px;
 }
+
 .googleBtn a {
     display: block;
     background-color: #db4437;
@@ -854,80 +1241,96 @@ main.login input[type="reset"]:hover {
     font-weight: bold;
     font-size: 1.1em;
 }
+
 .googleBtn a:hover {
     background-color: #ec8e26;
 }
+
 .googleBtn i {
     vertical-align: text-top;
     font-size: 1.3em;
     padding: 0 10px 0 0;
 }
+
+
 /*----------購物車----------*/
-.cartLeft{
+
+.cartLeft {
     position: relative;
     width: 50%;
-    float: left; 
+    float: left;
     background-color: #eee;
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.cartLeft h3{
+.cartLeft h3 {
     position: relative;
     font-size: 1.4em;
     padding: 0 0 10px 0;
 }
-.foodList{
+
+.foodList {
     position: relative;
     padding: 20px 40px 20px 0px;
     border-top: #ccc solid 1px;
     box-sizing: border-box;
 }
-.foodList:last-child{
+
+.foodList:last-child {
     padding-bottom: 10px;
 }
-.foodList:after{
+
+.foodList:after {
     display: block;
     content: "";
     clear: both;
 }
-.foodList figure{
+
+.foodList figure {
     position: relative;
     width: 38%;
     float: left;
 }
-.foodList figure img{
+
+.foodList figure img {
     width: 100%;
     height: auto;
 }
-.foodInfo{
+
+.foodInfo {
     position: relative;
     width: 60%;
     float: right;
 }
-.foodInfo h4{
+
+.foodInfo h4 {
     font-size: 1.2em;
     padding: 0 0 10px 0;
 }
-.foodInfo p span.price{
+
+.foodInfo p span.price {
     display: inline-block;
     color: #fff;
     background-color: #ec8e26;
     border-radius: 4px;
     padding: 0 10px;
 }
-.foodInfo input[type="number"]{
+
+.foodInfo input[type="number"] {
     width: 100px;
     max-width: 200px;
     background-color: #fff;
     margin-right: 10px;
 }
-.foodInfo textarea{
+
+.foodInfo textarea {
     background-color: #fff;
     margin-top: 10px;
 }
-.foodList .closeBtn{
+
+.foodList .closeBtn {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -942,10 +1345,12 @@ main.login input[type="reset"]:hover {
     cursor: pointer;
     transition: ease 0.3s;
 }
-.foodList .closeBtn:hover{
+
+.foodList .closeBtn:hover {
     background-color: #eb503c;
 }
-.cartRight{
+
+.cartRight {
     position: relative;
     width: 48%;
     float: right;
@@ -954,16 +1359,19 @@ main.login input[type="reset"]:hover {
     padding: 20px;
     box-sizing: border-box;
 }
-.cartRight h3{
+
+.cartRight h3 {
     position: relative;
     font-size: 1.4em;
     padding: 0 0 10px 0;
     margin-bottom: 20px;
 }
-.cartRight .formList .formTitle{
+
+.cartRight .formList .formTitle {
     padding-top: 10px;
 }
-.cartSuccess{
+
+.cartSuccess {
     position: relative;
     background-color: #eee;
     border-radius: 10px;
@@ -973,11 +1381,15 @@ main.login input[type="reset"]:hover {
     box-sizing: border-box;
     margin: auto;
 }
-.cartSuccess h3{
+
+.cartSuccess h3 {
     text-align: center;
 }
+
+
 /*----------檢視會員資料----------*/
-.memberAccount{
+
+.memberAccount {
     position: relative;
     width: 800px;
     max-width: 94%;
@@ -987,17 +1399,20 @@ main.login input[type="reset"]:hover {
     border-radius: 10px;
     background-color: #eee;
 }
-.memberAccount:after{
+
+.memberAccount:after {
     display: block;
     content: "";
     clear: both;
 }
-.memberLeft{
+
+.memberLeft {
     position: relative;
     width: 40%;
     float: left;
 }
-.memberLeft figure{
+
+.memberLeft figure {
     position: relative;
     width: 240px;
     height: 240px;
@@ -1005,60 +1420,73 @@ main.login input[type="reset"]:hover {
     border-radius: 50%;
     overflow: hidden;
 }
-.memberLeft figure img{
+
+.memberLeft figure img {
     width: 100%;
     height: auto;
 }
-.memberInfo{
+
+.memberInfo {
     position: relative;
     padding-bottom: 15px;
     margin-bottom: 15px;
     border-bottom: #ccc dotted 1px;
 }
+
 .memberInfo .star {
     width: 100%;
     float: none;
     padding-bottom: 0px;
 }
-.memberRight{
+
+.memberRight {
     position: relative;
     width: 58%;
     float: right;
 }
+
+
 /*----------訂購紀錄----------*/
-.orderList{
+
+.orderList {
     position: relative;
     padding: 20px 0px;
     border-bottom: #ccc solid 1px;
 }
-.orderList.head{
+
+.orderList.head {
     color: #eb503c;
     border-bottom: #eb503c solid 4px;
     font-weight: bold;
     padding: 10px 0px;
 }
-.orderList:after{
+
+.orderList:after {
     display: block;
     content: "";
     clear: both;
 }
-.order{
+
+.order {
     position: relative;
     width: 18%;
     float: left;
     box-sizing: border-box;
 }
-.order:last-child{
+
+.order:last-child {
     width: 10%;
 }
-.order a{
+
+.order a {
     display: inline-block;
     border: #666 solid 1px;
     border-radius: 20px;
     padding: 0 15px;
     color: #666;
 }
-.order a:hover{
+
+.order a:hover {
     border: #eb503c solid 1px;
     color: #fff;
     background-color: #eb503c;

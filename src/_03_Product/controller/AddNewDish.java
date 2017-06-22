@@ -38,6 +38,7 @@ public class AddNewDish extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
+		List<Product> list = new ArrayList<>()
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		Map<String, String> msgOK = new HashMap<String, String>();
 		HttpSession session = request.getSession();

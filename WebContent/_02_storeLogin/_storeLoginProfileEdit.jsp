@@ -23,7 +23,7 @@
                                 <a href="_storeIndexAfterLogin.jsp"><img width="350" src="../images/share/logo.svg"></a>
                             </center>
                             <div id="topHeading">
-                                <h4>餐廳帳戶資料修改</h4>
+                                <h4 id="topHeading">餐廳帳戶資料修改</h4>
                             </div>
                         </div>
                     </div>

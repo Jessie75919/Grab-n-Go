@@ -8,8 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> 
-  <link rel="stylesheet" href="../css/_signOut.css" type="text/css">
+<!--   <link rel="stylesheet" href="../css/_signOut.css" type="text/css"> -->
   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="../css/_storeFontDefault.css" type="text/css">
   <title> Sign Out </title>
 </head>
 <c:remove var="StoreLoginOK" scope="session" />
@@ -46,16 +47,16 @@
         </div>
         
         <center>
-        	  <h2 style="color: #9297a0;">親～ </h2>
-          <h3 class="text-Warning" >已經成功登出囉！</h3><br>
+        	  <h2 id="textSet" style="color: #9297a0;">親～ </h2>
+          <h3 id="textSet" class="text-Warning" >已經成功登出囉！</h3><br>
 
 						<p>
 						
-						<div class="btn btn-default">
+						<div id="textSet" class="btn btn-default">
 							<a style=" text-decoration: none;"
 								href="../indexA.jsp">狠心離開</a>
 						</div>
-						<div class="btn btn-warning">
+						<div id="textSet" class="btn btn-warning">
 							<a style="color: #fff; text-decoration: none;"
 								href="StoreLogin.jsp">再次登入</a>
 						</div>

@@ -6,10 +6,6 @@
  * Based on Bootstrap
 */
 @import url("https://fonts.googleapis.com/css?family=Lato");
-/* 設定字體樣式 */
-#formHeading, #leftMenu, #middleForm{
-  font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
-}
 #leftButtoms{
  /*  border:1px solid powderblue; */
   height: 30px;
@@ -25,11 +21,6 @@
   text-align: center;
   width: 260px;
   float: left;
-}
-#leftMenu{
-  /*width: 50%;*/
-  /*float: left;*/
-  font-size: 90%;
 }
 #formHeading{
  /* border:1px solid powderblue; */

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
   <link rel="stylesheet" href="../css/_storeMenuProdType.css" type="text/css" >
+  <link rel="stylesheet" href="../css/_storeFontDefault.css" type="text/css" >
   <title>GrabAndGo Menu System</title>
 </head>
 <!-- 菜單管理 新增餐點類型頁面 -->
@@ -42,7 +43,7 @@
         <div class="col-md-9">
           <div id="formHeading">
             <br>
-            <h3>菜&nbsp&nbsp單&nbsp&nbsp管&nbsp&nbsp理</h3>
+            <h3 id="textSet">菜&nbsp&nbsp單&nbsp&nbsp管&nbsp&nbsp理</h3>
           </div>
           <div id="formHeading">
             新增餐點項目前需先建立餐點類別呦～～

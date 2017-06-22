@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+/* 設定字體樣式 */
+#formHeading, #topName, #middleForm, #leftMenu, #productTypeTable, #insertButton, #textSet, #profileArea, #topHeading{
+	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+}
+html, body {
+  	scroll-behavior: smooth; }

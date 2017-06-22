@@ -43,6 +43,7 @@ addBtn.onclick = function () {
     var td5 = document.createElement("td");
     var dishImage = document.createElement("input");
     dishImage.setAttribute("type", "file");
+    dishImage.setAttribute("name", "file" + count);
 
     td1.appendChild(dishName);
     td2.appendChild(dishType);
@@ -66,6 +67,16 @@ function validateForm(e) {
     var hasErr = false;
     form.submit();
 
+}
 
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange =function () {
+    if(xhr.status==200 && xhr.readyState==4){
+        var successInfo = JSON.parse(xhr.responseText);
+        
+
+
+    }
 
 }

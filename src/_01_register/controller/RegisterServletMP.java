@@ -60,11 +60,9 @@ maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet("/_01_register/register.do")
 public class RegisterServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
-	private static final Logger log = LogManager.getLogger(RegisterServletMP.class);
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws IOException, ServletException {
-    	log.error("Here am I ");
     	request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsg = new HashMap<String, String>();
@@ -139,7 +137,6 @@ public class RegisterServletMP extends HttpServlet {
 					date = java.sql.Date.valueOf(bday);
 				} catch (IllegalArgumentException e) {
 					errorMsg.put("errorBirthday", "生日欄格式錯誤");
-					log.error("生日欄格式錯誤");
 				}
 			}else{
 				errorMsg.put("errorBirthday", "生日欄必須輸入");

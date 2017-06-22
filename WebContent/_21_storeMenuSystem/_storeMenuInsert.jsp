@@ -56,7 +56,8 @@
          <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
-        <form ENCTYPE="multipart/form-data" id="theForm" action="../addNewDish.do" 
+       	<div>${MsgMap.NeedOne}${MsgOK.OK}</div> 
+        <form ENCTYPE="multipart/form-data" id="theForm" action="addNewDish.do" 
         method="post" class="formcontent" onsubmit="return validateForm(e);">
         <!-- 按鈕區塊 -->
          <!--  <div id="leftButtoms">

@@ -9,7 +9,6 @@ addBtn.onclick = function () {
     count++;
     countVar.value = count;
 //    alert("countVar.value = " +countVar.value);
-
     // alert("KFG");
 
     var tr = document.createElement("tr");
@@ -73,10 +72,17 @@ function validateForm(e) {
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange =function () {
     if(xhr.status==200 && xhr.readyState==4){
-        var successInfo = JSON.parse(xhr.responseText);
+        var productObjs = JSON.parse(xhr.responseText);
+        var text;
+        for(pro in productObjs){
+            text += pro.prod_name + "新增成功 " 
+        }
+
+        confirm(text);
+        
         
 
-
+        
     }
 
-}
+};

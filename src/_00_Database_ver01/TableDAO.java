@@ -2,22 +2,17 @@ package _00_Database_ver01;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import _00_init.GlobalService;
 
@@ -203,7 +198,7 @@ public class TableDAO {
 		
 	}
 	
-	// product data 尚未完成
+	// product data
 	public int insertProduct(){
 		String sql = "insert into product values(null,?,?,?,?,?,?,?)";
 		//prod_id, rest_id, type_id, prod_name, prod_price, prod_desc, prod_ing, prod_filename
@@ -219,7 +214,8 @@ public class TableDAO {
 				pst.setString(1, segment[0]); // rest_id
 				pst.setString(2, segment[1]); // type_id
 				pst.setString(3, segment[2]); // prod_name
-				pst.setString(4, segment[3]); // prod_price
+				Integer price = Integer.parseInt(segment[3]);
+				pst.setInt(4, price); // prod_price
 				pst.setString(5, segment[4]); // prod_desc
 				System.out.println("image : " + segment[6]);
 				if(!segment[6].equals("null")){
@@ -242,6 +238,78 @@ public class TableDAO {
 			System.out.println("SQLException | IOException ");
 			e.printStackTrace();
 		}
+		return result;
+	}
+	//insert OrderMain 
+	public int insertOrder(){
+		String sql = "insert into order01 values(null,?,?,?,?,?)";
+		//ord_id, m_username, ord_time, rest_id, ord_totalPrice, ord_status
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+			BufferedReader br = new BufferedReader(new FileReader("WebContent/data/OrderMain.csv"));) {
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				String[] segment = line.split(",");
+				pst.setString(1, segment[0]); 		// m_username
+				
+				java.sql.Timestamp ts = java.sql.Timestamp.valueOf(segment[1]);
+				pst.setTimestamp(2, ts);				//ord_Time
+
+				pst.setString(3, segment[2]); 		// rest_id
+				Integer totalPrice = Integer.parseInt(segment[3]);
+				pst.setInt(4, totalPrice); 			// ord_totalPrice
+				pst.setString(5, segment[4]); 		// ord_status 
+				
+				result = pst.executeUpdate();
+
+				if (result == 1)
+					System.out.println(segment[1] + " - add success ");
+				else
+					System.out.println("table gets error");
+			}
+		} catch (SQLException | IOException e) {
+			System.out.println("SQLException | IOException ");
+			e.printStackTrace();
+		} 
+		return result ;
+	}
+	//insert OrderItems
+	public int insertOrderItems(){
+		String sql = "insert into order_item values(null,?,?,?,?,?,?,?)";
+		//serial_no, ord_id, prod_id, item_name, item_price, item_amount, item_note, m_username
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/orderItem.csv"));) {
+				String line = "";
+				while ((line = br.readLine()) != null) {
+					if (line.startsWith(UTF8_BOM)) {
+						line = line.substring(1);
+					}
+					String[] segment = line.split(",");
+					pst.setString(1, segment[0]); 	// ord_id
+					pst.setString(2, segment[1]); 	// prod_id
+					pst.setString(3, segment[2]); 	// item_name
+					Integer itemPrice = Integer.parseInt(segment[3]);
+					pst.setInt(4, itemPrice); 		// item_price
+					Integer itemAmount = Integer.parseInt(segment[4]);
+					pst.setInt(5, itemAmount); 		// item_amount
+					pst.setString(6, segment[5]);	// item_note
+					pst.setString(7, segment[6]);   //m_username
+					
+					result = pst.executeUpdate();
+
+					if (result == 1)
+						System.out.println(segment[2] + " - add success ");
+					else
+						System.out.println("table gets error");
+				}
+			} catch (SQLException | IOException e) {
+				System.out.println("SQLException | IOException ");
+				e.printStackTrace();
+			} 
 		return result;
 	}
 	

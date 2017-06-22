@@ -146,31 +146,31 @@ public class RestDAO {
 				break;
 			case 4:
 				sql = "SELECT * FROM restaurant a JOIN product b ON a.rest_id = b.rest_id " +
-						" WHERE b.prod_name = ?";
+						" WHERE b.prod_name LIKE ? GROUP BY a.rest_id";
 				stmt = conn.prepareStatement(sql);
-				stmt.setString(1, foodName);
+				stmt.setString(1, "%" + foodName + "%");
 				break;
 			case 5:
 				sql = "SELECT * FROM restaurant a JOIN product b ON a.rest_id = b.rest_id " +
-						" WHERE a.rest_type = ? AND b.prod_name = ?";
+						" WHERE a.rest_type = ? AND b.prod_name LIKE ? GROUP BY a.rest_id";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, foodKind);
-				stmt.setString(2, foodName);
+				stmt.setString(2, "%" + foodName + "%");
 				break;
 			case 6:
 				sql = "SELECT * FROM restaurant a JOIN product b ON a.rest_id = b.rest_id " +
-						" WHERE a.rest_name = ? AND b.prod_name = ?";
+						" WHERE a.rest_name = ? AND b.prod_name LIKE ? GROUP BY a.rest_id";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, storeName);
-				stmt.setString(2, foodName);
+				stmt.setString(2, "%" + foodName + "%");
 				break;
 			case 7:
 				sql = "SELECT * FROM restaurant a JOIN product b ON a.rest_id = b.rest_id " +
-				          " WHERE a.rest_type = ? AND a.rest_name = ? AND b.prod_name = ?";
+				          " WHERE a.rest_type = ? AND a.rest_name = ? AND b.prod_name LIKE ? GROUP BY a.rest_id";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, foodKind);
 				stmt.setString(2, storeName);
-				stmt.setString(3, foodName);
+				stmt.setString(3, "%" + foodName + "%");
 				break;
 			default:
 				conn.close();

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.tomcat.util.codec.binary.StringUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -62,16 +65,22 @@ public class AppStoreLoginServlet extends HttpServlet {
 			StoreBeanDAO dao = new StoreBeanDAO();
 			List<StoreBean> store = dao.getNameBranchLogo(username);
 			String rest_name = store.get(0).getRest_name();
-			System.out.println(rest_name);
+			map.put("rest_name", rest_name);
 			String rest_branch = store.get(0).getRest_branch();
-			System.out.println(rest_branch);
+			map.put("rest_branch", rest_branch);
+			
 			Blob rest_logo = store.get(0).getRest_logo();
-			System.out.println(rest_logo);
-			//待補Blob轉byte[]並調整大小~
+			byte[] logo_byte = ImageUtil.BlobToByteArrayAndAdjustSize(rest_logo, 64);
+			
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("data:image/png;base64,");
+			stringBuilder.append(Base64.encodeBase64(logo_byte, false));
+			String logo = stringBuilder.toString();
+			System.out.println(logo);
+			map.put("rest_logo", logo);
 		} else {
 			loginMessage = "UsernameOrPasswordError";
 		}
-		
 		map.put("loginMessage", loginMessage);
 		out.println(gson.toJson(map));
 		out.close();

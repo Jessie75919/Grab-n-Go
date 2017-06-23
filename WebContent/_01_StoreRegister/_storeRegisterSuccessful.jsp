@@ -8,6 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> 
+  <style>
+  #textSet{
+   font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+  }
+ </style>
   <title>Thank you for Signing Up!</title>
   </head>
   
@@ -40,8 +45,16 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div> THANK YOU !&nbsp;
-            <br>You Have Successfully Signed Up for Grab And Go. </div>
+          <div id="textSet"> 
+          	<br>
+          <h2 id="textSet">註冊成功 !</h2>
+            <br>
+            <br>
+            我們已經寄出一封認證信至您的信箱，請點擊認證信中的連結開通您的帳戶開始上架產品喔。
+            <br>
+            <br>
+            感謝您的配合
+            </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 
 import _00_init.GlobalService;
 import _01_Store_register.model.StoreBean;
+import _01_Store_register.model.StoreBeanDAO;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 @SuppressWarnings("serial")
@@ -50,14 +51,19 @@ public class AppStoreLoginServlet extends HttpServlet {
 		
 		StoreBean sb = slsdb.checkPW(username, password);
 		String loginMessage;
+		
+		PrintWriter out = response.getWriter();
+		Map<String, String> map = new HashMap<>();
+		
 		if (sb != null) {
 			loginMessage = "LoginOK";
+			StoreBeanDAO dao = new StoreBeanDAO();
+//			dao.getNameBranchLogo(username);
+			System.out.println(dao.getNameBranchLogo(username));
 		} else {
 			loginMessage = "UsernameOrPasswordError";
 		}
 		
-		PrintWriter out = response.getWriter();
-		Map<String, String> map = new HashMap<>();
 		map.put("loginMessage", loginMessage);
 		out.println(gson.toJson(map));
 		out.close();

@@ -183,7 +183,7 @@ public class StoreBeanDAO {
 			 PreparedStatement pst = con.prepareStatement(sql);
 				) {
 			pst.setString(1, rest_nameInput.trim());
-			ResultSet rs = pst.executeQuery(sql);
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				int rest_id = rs.getInt("rest_id");
 				String rest_type = rs.getString("rest_type");
@@ -271,16 +271,18 @@ public class StoreBeanDAO {
 	}
 	
 	public List<StoreBean> getNameBranchLogo(String rest_username){
-		String sql = "select rest_name,rest_branch,rest_logo from restaurant where rest_username = ? " ;
+		String sql = "SELECT rest_name, rest_branch, rest_logo "
+				+ " FROM restaurant WHERE rest_username = ?" ;
 		List<StoreBean> listStore = new ArrayList<>();
-		
-		try (Connection con = ds.getConnection();
-			 PreparedStatement pst = con.prepareStatement(sql);
-				) {
-			pst.setString(1, rest_username.trim());
-			ResultSet rs = pst.executeQuery(sql);
+		try (
+			Connection con = ds.getConnection(); 
+			PreparedStatement pst = con.prepareStatement(sql);
+		) {
+			pst.setString(1, rest_username);
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				String rest_name = rs.getString("rest_name");
+				System.out.println(rest_name);
 				String rest_branch = rs.getString("rest_branch");
 				Blob rest_logo = rs.getBlob("rest_logo");
 			

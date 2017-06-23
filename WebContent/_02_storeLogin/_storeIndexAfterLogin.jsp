@@ -13,36 +13,40 @@
 <!-- 商家登入成功畫面 -->
 <!-- 待處理訂單頁面 -->
 <body>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
+ <div class="py-5">
+   <!--  <div class="container">
+      <div class="row"> -->
+        <!-- <div class="col-md-12"> -->
+        <div>
           <center>
           <img width="350px" src="../images/share/logo.svg">
           </center>
         </div>
+        <!-- </div> -->
+      <!-- </div>
+      </div> -->
       </div>
-      <div class="row">
-        <!-- <div id="formHeading" class="col-md-12">
-          <br>
-          <h3>本日訂單</h3>
-        </div> -->
+      <div id="topBlock" class="topBlock">
+      	<h2>本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h2>
+      </div> 
+      <!-- <div class="row">
+        
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="py-5">
     <div class="container">
       <div class="row">
         <!-- 店家profile -->
         <div class="col-md-3">
         <center>
-<!--           <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-          <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
+         <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
+         <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>
          </center>
         </div>
         <div class="col-md-9">
-          <div>
+          <!-- <div>
           	<br>
           	<h3 id="formHeading">本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
           </div>
@@ -50,7 +54,7 @@
           <div id="orderStatusHeading">
           	待處理訂單
           </div>
-        </div>
+        </div> -->
       </div>
       <div id="leftMenu" class="row">
         <!-- 左側列表 -->
@@ -58,8 +62,8 @@
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9" >
         <!-- 按鈕區塊 -->
-          <div id="leftButtoms">
-            <ul id="leftOrderButtoms">
+          <div>
+            <ul class="nav nav-pills">
               <li id="leftOrderButtomGroup"><a href="#">待處理訂單</a></li>
               <li id="leftOrderButtomGroup"><a href="#">已完成訂單</a></li>
               <li id="leftOrderButtomGroup"><a href="#">已付款訂單</a></li>

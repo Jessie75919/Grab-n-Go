@@ -6,6 +6,25 @@
  * Based on Bootstrap
 */
 @import url("https://fonts.googleapis.com/css?family=Lato");
+.topBlock{
+	position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding: 100px 0% 0px 0%;
+	/*border:1px solid powderblue;*/
+}
+.topBlock h2 {
+    background-color: rgb(213, 141, 60);
+    padding: 40px 3% 40px 3%;
+    color: #fff;
+}
+/* #logoBlock{
+	padding: 40px 3% 40px 3%;
+	border:1px solid powderblue; 
+} */
+#row12{
+	border:1px solid red; 
+}
 #leftButtoms{
  /*  border:1px solid powderblue; */
   height: 30px;
@@ -22,7 +41,7 @@
   width: 260px;
   float: left;
 }
-#leftMenu{
+#leftMenu, #topBlock{
 	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
   /*width: 50%;*/
 /*   float: left; */

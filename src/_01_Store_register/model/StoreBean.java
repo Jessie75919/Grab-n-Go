@@ -129,11 +129,19 @@ public class StoreBean implements Serializable{
 		this.rest_latitude = rest_latitude;
 	}
 	
+	public StoreBean(String rest_name, String rest_branch, Blob rest_logo) {
+		super();
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_logo = rest_logo;
+	}
+	
 	
 
 	/*---------------------------------------------------------------------------------
 	 * */
 	
+
 	public int getRest_id() {
 		return rest_id;
 	}

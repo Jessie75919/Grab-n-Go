@@ -270,5 +270,30 @@ public class StoreBeanDAO {
 		return result;
 	}
 	
+	public List<StoreBean> getNameBranchLogo(String rest_username){
+		String sql = "select rest_name,rest_branch,rest_logo from restaurant where rest_username = ? " ;
+		List<StoreBean> listStore = new ArrayList<>();
+		
+		try (Connection con = ds.getConnection();
+			 PreparedStatement pst = con.prepareStatement(sql);
+				) {
+			pst.setString(1, rest_username.trim());
+			ResultSet rs = pst.executeQuery(sql);
+			while(rs.next()){
+				String rest_name = rs.getString("rest_name");
+				String rest_branch = rs.getString("rest_branch");
+				Blob rest_logo = rs.getBlob("rest_logo");
+			
+				StoreBean sb = new StoreBean(rest_name,rest_branch,rest_logo);
+				
+				listStore.add(sb);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listStore;
+	}
+	
 	
 }

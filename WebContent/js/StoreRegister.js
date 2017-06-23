@@ -89,7 +89,6 @@ function validateForm(event) {
 
 	event.preventDefault(); // this will prevent the submit event.
 	var hasErr = false;
-	var formA = document.getElementById("theForm")
 
 	var passwordResult = document.getElementById("passwordResult");
 	var password2Result = document.getElementById("password2Result");

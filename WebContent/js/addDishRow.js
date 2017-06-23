@@ -8,10 +8,28 @@ var count = 0;
 addBtn.onclick = function () {
     count++;
     countVar.value = count;
-//    alert("countVar.value = " +countVar.value);
+    //    alert("countVar.value = " +countVar.value);
     // alert("KFG");
 
     var tr = document.createElement("tr");
+    tr.setAttribute("id", "tr" + count);
+
+    // var tda = document.createElement("td");
+    // var showCot = document.createElement("span");
+    // var t = document.createTextNode(count);
+    // showCot.appendChild(t);
+    // tda.appendChild(showCot);
+    // tr.appendChild(tda);
+
+
+    var td0 = document.createElement("td");
+    var deleBtn = document.createElement("span");
+    var t = document.createTextNode("Delete");
+    deleBtn.appendChild(t);
+    deleBtn.setAttribute("name", "deleBtn" + count);
+    deleBtn.setAttribute("id", "deleBtn" + count);
+    deleBtn.setAttribute("onClick", "deleteRow(this)");
+
 
     var td1 = document.createElement("td");
     var dishName = document.createElement("input");
@@ -44,12 +62,16 @@ addBtn.onclick = function () {
     dishImage.setAttribute("type", "file");
     dishImage.setAttribute("name", "file" + count);
 
+
+
+    td0.appendChild(deleBtn);
     td1.appendChild(dishName);
     td2.appendChild(dishType);
     td3.appendChild(dishDesc);
     td4.appendChild(dishPrice);
     td5.appendChild(dishImage);
 
+    tr.appendChild(td0);
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
@@ -61,28 +83,41 @@ addBtn.onclick = function () {
 }
 
 
-function validateForm(e) {
-    e.preventDefault();
-    var hasErr = false;
-    form.submit();
+function deleteRow(me) {
+    // alert("AAAA");
+    // alert(me.id);
+
+    var delBtn = document.getElementById(me.id);
+    table.removeChild(delBtn.parentNode.parentNode);
 
 }
 
 
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange =function () {
-    if(xhr.status==200 && xhr.readyState==4){
-        var productObjs = JSON.parse(xhr.responseText);
-        var text;
-        for(pro in productObjs){
-            text += pro.prod_name + "新增成功 " 
+function validateForm(event) {
+    // alert("validateForm");
+    event.preventDefault();
+    var hasErr = false;
+    var result = document.getElementById("showMsg");
+
+    for (var i = 1; i <= count; i++) {
+        var dishName = document.getElementById("dishName" + i);
+        try {
+            if (!dishName.value) {
+                hasErr = true;
+                result.innerHTML = "<span>貼心小提醒 : 請刪除不必要的欄位喔~</span>";
+            } else {
+                result.innerHTML = "";
+            }
+        } catch (err) {
+            // alert("not Found");
         }
-
-        confirm(text);
-        
-        
-
-        
     }
 
-};
+    if (hasErr) {
+        return false
+    } else {
+        form.submit();
+    }
+
+}
+

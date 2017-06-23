@@ -3,7 +3,9 @@ package _02_App_login.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -58,8 +60,14 @@ public class AppStoreLoginServlet extends HttpServlet {
 		if (sb != null) {
 			loginMessage = "LoginOK";
 			StoreBeanDAO dao = new StoreBeanDAO();
-//			dao.getNameBranchLogo(username);
-			System.out.println(dao.getNameBranchLogo(username));
+			List<StoreBean> store = dao.getNameBranchLogo(username);
+			String rest_name = store.get(0).getRest_name();
+			System.out.println(rest_name);
+			String rest_branch = store.get(0).getRest_branch();
+			System.out.println(rest_branch);
+			Blob rest_logo = store.get(0).getRest_logo();
+			System.out.println(rest_logo);
+			//待補Blob轉byte[]並調整大小~
 		} else {
 			loginMessage = "UsernameOrPasswordError";
 		}

@@ -71,6 +71,7 @@
             <input id="count" name="countAA" value="0" style="display:none;">
               <table id="menuTable">
                 <tr>
+                  <th></th>
                   <th>餐點名稱</th>
                   <th>餐點種類</th>
                   <th>餐點簡介</th>

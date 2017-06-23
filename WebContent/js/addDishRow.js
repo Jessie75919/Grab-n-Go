@@ -22,10 +22,15 @@ addBtn.onclick = function () {
     // tr.appendChild(tda);
 
 
+
+
+
     var td0 = document.createElement("td");
-    var deleBtn = document.createElement("span");
-    var t = document.createTextNode("Delete");
-    deleBtn.appendChild(t);
+    var deleBtn = document.createElement("i");
+    // var deleBtn = document.createElement("span");
+    // var t = document.createTextNode("Delete");
+    // deleBtn.appendChild(t);
+    deleBtn.setAttribute("class", "fa fa-minus-square");
     deleBtn.setAttribute("name", "deleBtn" + count);
     deleBtn.setAttribute("id", "deleBtn" + count);
     deleBtn.setAttribute("onClick", "deleteRow(this)");

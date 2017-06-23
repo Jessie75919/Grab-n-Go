@@ -67,14 +67,16 @@ public class ProductTypeDAO {
 	
 	public List<String> queryAllProductType(String restName) {
 		List<String> ptList = null;
-		String sql = "select typeName from product_type where rest_name=?";
+		String sql = "select type_name from product_type where rest_name=?";
 
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
+			System.out.println("aaffbb");
 			pst.setString(1,restName);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				String typeName = rs.getString(1);
+				System.out.println("in queryAllProductType = "+typeName);
 				ptList.add(typeName);
 			}
 			

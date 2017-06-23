@@ -1,9 +1,31 @@
 var addBtn = document.getElementById("addMenu");
 var table = document.getElementById("menuTable");
 var countVar = document.getElementById("count");
-var insertBtn = document.getElementById("insertButton");
 var form = document.getElementById("theForm");
+var usename = document.getElementById("storeUserName").value;
 var count = 0;
+var typeArr = [];
+
+var xhr = new XMLHttpRequest();
+alert(usename);
+xhr.open("GET", "findProductType.do?id=" + usename, true);
+xhr.send();
+
+xhr.onreadystatechange = function () {
+    alert("in AJAX");
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        typeArr = JSON.parse(xhr.responseText);
+        for (type in typeArr) {
+            var type = [types.prod_typeName, types.rest_name];
+            alert("type= " +type);
+            typeArr.push(type); 
+        }
+
+    }
+}
+
+
+
 
 addBtn.onclick = function () {
     count++;
@@ -20,10 +42,6 @@ addBtn.onclick = function () {
     // showCot.appendChild(t);
     // tda.appendChild(showCot);
     // tr.appendChild(tda);
-
-
-
-
 
     var td0 = document.createElement("td");
     var deleBtn = document.createElement("i");
@@ -44,10 +62,10 @@ addBtn.onclick = function () {
 
 
     var td2 = document.createElement("td");
-    var dishType = document.createElement("input");
-    dishType.setAttribute("type", "text");
+    var dishType = document.createElement("select");
     dishType.setAttribute("name", "dishType" + count);
     dishType.setAttribute("id", "dishType" + count);
+
 
     var td3 = document.createElement("td");
     var dishDesc = document.createElement("input");

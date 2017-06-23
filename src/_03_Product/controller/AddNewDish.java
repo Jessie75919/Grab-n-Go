@@ -40,12 +40,11 @@ public class AddNewDish extends HttpServlet {
 		System.out.println("Heello~");
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		
-		List<Product> list = new ArrayList<>();
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		Map<String, String> msgOK = new HashMap<String, String>();
 		request.setAttribute("MsgMap", errorMsg); // 顯示錯誤訊息
 		HttpSession session = request.getSession();
-		session.setAttribute("MsgOK", msgOK); // 顯示正常訊息
+		request.setAttribute("MsgOK", msgOK); // 顯示正常訊息
 		StoreBean sb = (StoreBean) session.getAttribute("StoreLoginOK");
 
 		int count = Integer.parseInt(request.getParameter("countAA"));
@@ -100,7 +99,6 @@ public class AddNewDish extends HttpServlet {
 				ProductDAO dao = new ProductDAO();
 				dao.insertProduct(prod, is);
 				System.out.println(row[0] + " = OK");
-				list.add(prod);
 			}
 		}
 

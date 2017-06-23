@@ -122,8 +122,6 @@ CREATE TABLE product_type (
 
 
 
-
-
 CREATE TABLE product (
 	
 	prod_id  INT AUTO_INCREMENT,

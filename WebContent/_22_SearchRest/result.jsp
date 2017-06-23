@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查詢結果</title>
-<jsp:useBean id="rtdao" class="_01_App_register.model.RestaurantTypeDAO" scope="page" />
+<%-- <jsp:useBean id="rtdao" class="_01_App_register.model.RestaurantTypeDAO" scope="page" /> --%>
 </head>
 <body>
 	<div align="center">

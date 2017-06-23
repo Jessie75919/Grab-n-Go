@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import _01_App_register.model.RestaurantTypeDAO;
+import _01_Store_register.model.RestaurantTypeDAO;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 

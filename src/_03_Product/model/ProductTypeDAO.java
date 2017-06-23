@@ -3,6 +3,7 @@ package _03_Product.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -66,7 +67,7 @@ public class ProductTypeDAO {
 	}
 	
 	public List<String> queryAllProductType(String restName) {
-		List<String> ptList = null;
+		List<String> ptList = new ArrayList<String>();
 		String sql = "select type_name from product_type where rest_name=?";
 
 		try (Connection con = ds.getConnection(); 

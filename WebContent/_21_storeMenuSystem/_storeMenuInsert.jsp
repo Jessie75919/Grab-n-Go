@@ -69,10 +69,10 @@
           </div> -->
             <hr>
             <input id="count" name="countAA" value="0" style="display:none;">
-            <input id="storeUserName" name="storeUserName" value=${StoreLoginOK['rest_username']} style="display:none;">
+            <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
               <table id="menuTable">
                 <tr>
-                  <th></th>
+                  <th>${StoreLoginOK['rest_name']}</th>
                   <th>餐點名稱</th>
                   <th>餐點種類</th>
                   <th>餐點簡介</th>

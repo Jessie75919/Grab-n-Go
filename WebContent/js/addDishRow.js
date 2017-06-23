@@ -2,19 +2,20 @@ var addBtn = document.getElementById("addMenu");
 var table = document.getElementById("menuTable");
 var countVar = document.getElementById("count");
 var form = document.getElementById("theForm");
-var usename = document.getElementById("storeUserName").value;
+var storeName = document.getElementById("storeName").value;
 var count = 0;
 var typeArr = [];
 
 var xhr = new XMLHttpRequest();
-alert(usename);
-xhr.open("GET", "findProductType.do?id=" + usename, true);
+alert(storeName);
+xhr.open("GET", "findProductType.do?id=" + storeName, true);
 xhr.send();
 
 xhr.onreadystatechange = function () {
-    alert("in AJAX");
     if (xhr.readyState == 4 && xhr.status == 200) {
+        alert("in AJAX");
         typeArr = JSON.parse(xhr.responseText);
+        alert(typeArr);
         for (type in typeArr) {
             var type = [types.prod_typeName, types.rest_name];
             alert("type= " +type);

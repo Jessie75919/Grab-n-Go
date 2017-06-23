@@ -55,51 +55,55 @@
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
+          <input id="count" name="countAA" value="0" style="display:none;">
+            <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
+             <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
         <form>
             <hr>
               <table id="menuTable">
                 <tr>
-                  <th>&nbsp</th>
-                  <th>&nbsp</th>
+                  <th></th>
                   <th>餐點名稱</th>
                   <th>餐點種類</th>
                   <th>餐點簡介</th>
                   <th>價格</th>
                   <th>餐點圖片</th>
                 </tr>
-                <tr>
-                  <td><i id="editButton" class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
-                <tr>
-                  <td><i class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
-               <tr>
-                  <td><i class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
+<!--                 <tr> -->
+<!--                   <td><i id="editButton" class="fa fa-pencil-square-o"></i></td> -->
+<!--                   <td><i class="fa fa-minus-square"></i></td> -->
+<!--                   <td><input type="text" name="" ></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="file" name=""></td> -->
+<!--                 </tr> -->
+<!--                 <tr> -->
+<!--                   <td><i class="fa fa-pencil-square-o"></i></td> -->
+<!--                   <td><i class="fa fa-minus-square"></i></td> -->
+<!--                   <td><input type="text" name="" ></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="file" name=""></td> -->
+<!--                 </tr> -->
+<!--                <tr> -->
+<!--                   <td><i class="fa fa-pencil-square-o"></i></td> -->
+<!--                   <td><i class="fa fa-minus-square"></i></td> -->
+<!--                   <td><input type="text" name="" ></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
+<!--                   <td><input type="text" name=""></td> -->
+<!--                   <td><input type="file" name=""></td> -->
+<!--                 </tr> -->
               
               </table>
             <hr> 
-            <div id="insertButton">
-              <input type="submit" name="Submit" value="" class="btn btn-default">
-            <div>
+           <div id="insertButton">
+							<input
+								type="submit" name="Submit" value="確定修改"
+								class="btn btn-default">
+							<div>
             </form>
         </div>
       </div>
@@ -119,6 +123,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  <script src="../js/editDish.js"></script>
 </body>
 
 </html>

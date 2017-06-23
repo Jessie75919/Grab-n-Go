@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -94,19 +95,23 @@ public class ProductDAO implements ProductInterface{
 
 	@Override
 	public List<Product> queryProducts(int rest_id, String typeName) {
-		List<Product> ptList = null;
+		List<Product> ptList = new ArrayList<>();
 		String sql = "";
 		
-		if(typeName.equals("")){
+		if(typeName.equals("no")){
 			 sql = "select * from product where rest_id=?";
+			 System.out.println("goo");
 		}else{
 			 sql = "select * from product where rest_id=? and type_name=?";
+			 System.out.println("boo");
 		}
 
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setInt(1,rest_id);
-			pst.setString(2,typeName);
+			if(!typeName.equals("no")){
+				pst.setString(2,typeName);
+			}
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()){

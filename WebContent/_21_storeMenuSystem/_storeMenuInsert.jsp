@@ -72,7 +72,7 @@
             <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
               <table id="menuTable">
                 <tr>
-                  <th>${StoreLoginOK['rest_name']}</th>
+                  <th></th>
                   <th>餐點名稱</th>
                   <th>餐點種類</th>
                   <th>餐點簡介</th>
@@ -82,12 +82,11 @@
               
               </table>
             <hr> 
-            <span id="addMenu" class="btn btn-warning">新增餐點</span>
             <div id="insertButton">
+            <span id="addMenu"><img src="../images/share/plus.png"></span>
               <input type="submit" name="Submit" value="確認表單" class="btn btn-default">
             <div>
             </form>
-            
         </div>
       </div>
       <div class="row">

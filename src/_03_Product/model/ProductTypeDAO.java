@@ -72,12 +72,11 @@ public class ProductTypeDAO {
 
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
-			System.out.println("aaffbb");
 			pst.setString(1,restName);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				String typeName = rs.getString(1);
-				System.out.println("in queryAllProductType = "+typeName);
+//				System.out.println("in queryAllProductType = "+typeName);
 				ptList.add(typeName);
 			}
 			

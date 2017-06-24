@@ -28,21 +28,38 @@ public class findAllProduct extends HttpServlet {
 		PrintWriter out = response.getWriter();
 //		
 		int restId = Integer.parseInt(request.getParameter("id"));
+//		String restName = request.getParameter("name");
+//		String mode = request.getParameter("mode").trim();
 		System.out.println(restId);
-//		
-		try {
-			ProductDAO dao = new ProductDAO();
+//		System.out.println(restName);
+		
+//		if(mode.equals("product")){
+			try {
+				ProductDAO dao = new ProductDAO();
+				
+				List<Product> list = dao.queryProducts(restId, "no");
+				String typeJson = new Gson().toJson(list); 
+	            out.write(typeJson);
+	            out.flush();
+			} finally {
+				out.close();
+			}
+			return;
+//		}
+		
+//		if(mode.equals("productType")){
+//			try {
+//				ProductTypeDAO dao = new ProductTypeDAO();
+//				List<String> list = dao.queryAllProductType(restName);
+//				String typeJson = new Gson().toJson(list); 
+//	            out.write(typeJson);
+//	            out.flush();
+//			} finally {
+//				out.close();
+//			}
+//			return;
+//		}
 			
-			List<Product> list = dao.queryProducts(restId, "no");
-			String typeJson = new Gson().toJson(list); 
-            out.write(typeJson);
-            out.flush();
-		} finally {
-			out.close();
-		}
-
-	
-
 	}
 
 }

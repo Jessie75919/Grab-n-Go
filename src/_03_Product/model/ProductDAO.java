@@ -72,18 +72,19 @@ public class ProductDAO implements ProductInterface{
 	}
 
 	@Override
-	public int deleteProduct(int prod_id,int rest_id) {
-		String sql = "delete from product where prod_id=? and rest_id = ?";
+	public int deleteProduct(String prod_name,String type_name) {
+		String sql = "delete from product where prod_name=? and type_name = ?";
 		int result = -1;
 
-		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
-			pst.setInt(1,prod_id);
-			pst.setInt(2,rest_id);
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1,prod_name);
+			pst.setString(2,type_name);
 			result = pst.executeUpdate();
 			if (result == 1) {
-				System.out.println(rest_id + ": 刪除成功");
+				System.out.println(prod_name + ": 刪除成功");
 			} else {
-				System.out.println(rest_id + ": 刪除失敗");
+				System.out.println(prod_name + ": 刪除失敗");
 			}
 
 		} catch (Exception e) {
@@ -99,11 +100,9 @@ public class ProductDAO implements ProductInterface{
 		String sql = "";
 		
 		if(typeName.equals("no")){
-			 sql = "select * from product where rest_id=?";
-			 System.out.println("goo");
+			 sql = "select * from product where rest_id=? order by type_name";
 		}else{
-			 sql = "select * from product where rest_id=? and type_name=?";
-			 System.out.println("boo");
+			 sql = "select * from product where rest_id=? and type_name=? order by type_name";
 		}
 
 		try (Connection con = ds.getConnection(); 

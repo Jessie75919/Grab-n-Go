@@ -69,35 +69,16 @@
                   <th>價格</th>
                   <th>餐點圖片</th>
                 </tr>
-<!--                 <tr> -->
-<!--                   <td><i id="editButton" class="fa fa-pencil-square-o"></i></td> -->
-<!--                   <td><i class="fa fa-minus-square"></i></td> -->
-<!--                   <td><input type="text" name="" ></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="file" name=""></td> -->
-<!--                 </tr> -->
-<!--                 <tr> -->
-<!--                   <td><i class="fa fa-pencil-square-o"></i></td> -->
-<!--                   <td><i class="fa fa-minus-square"></i></td> -->
-<!--                   <td><input type="text" name="" ></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="file" name=""></td> -->
-<!--                 </tr> -->
-<!--                <tr> -->
-<!--                   <td><i class="fa fa-pencil-square-o"></i></td> -->
-<!--                   <td><i class="fa fa-minus-square"></i></td> -->
-<!--                   <td><input type="text" name="" ></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="text" name="" placeholder="optional"></td> -->
-<!--                   <td><input type="text" name=""></td> -->
-<!--                   <td><input type="file" name=""></td> -->
-<!--                 </tr> -->
-              
-              </table>
+
+				<div class='dialog' style='display: none'>
+					<div style='border: 1px solid blue; padding: 12px;'>
+						<span class='m'></span> 
+						<input type='button' value='Yes' /> 
+						<input type='button' value='No' />
+					</div>
+				</div>
+	
+				</table>
             <hr> 
            <div id="insertButton">
 							<input

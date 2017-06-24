@@ -55,10 +55,12 @@
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
-          <input id="count" name="countAA" value="0" style="display:none;">
             <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
-             <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
-        <form>
+            <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
+             <div>${MsgMap.noData}</div>
+       		<div id="showMsg">${MsgMap.NeedOne}${MsgOK.OK}</div> 
+      
+      	<form ENCTYPE="multipart/form-data" action="updateDish.do" method="post" class="formcontent">
             <hr>
               <table id="menuTable">
                 <tr>
@@ -69,22 +71,15 @@
                   <th>價格</th>
                   <th>餐點圖片</th>
                 </tr>
-
-				<div class='dialog' style='display: none'>
-					<div style='border: 1px solid blue; padding: 12px;'>
-						<span class='m'></span> 
-						<input type='button' value='Yes' /> 
-						<input type='button' value='No' />
-					</div>
-				</div>
-	
+          <input id="count" name="countAA" value="0" style="display:none;">
+				<input id="updateList" name="updateList" value="0" style="display:none;">
 				</table>
             <hr> 
-           <div id="insertButton">
-							<input
-								type="submit" name="Submit" value="確定修改"
-								class="btn btn-default">
-							<div>
+           <div id="insertButton" class="btn btn-default">
+				<input
+					type="submit" name="Submit" value="確定修改"
+					class="btn btn-default">
+			<div>
             </form>
         </div>
       </div>
@@ -93,14 +88,6 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-
-    // 觸發取消訂單事件
-    function orderCancel(){
-          var string = '確定取消此筆訂單嗎？';
-          confirm(string);
-        }
-  </script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>

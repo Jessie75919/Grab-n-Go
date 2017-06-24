@@ -66,9 +66,47 @@ public class ProductDAO implements ProductInterface{
 	}
 
 	@Override
-	public int updateProduct(Product prod, InputStream is) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateProduct(Product prod, InputStream is ,int mode) {
+		String sql = "";
+		if(mode==1){
+			sql = "update product set prod_name=?,type_name=?"
+					+ ",prod_price=?,prod_desc=?,prod_filename=?,prod_img=? "
+					+ "where prod_id=? ";
+		}else{
+			sql = "update product set prod_name=?,type_name=?"
+					+ ",prod_price=?,prod_desc=? "
+					+ "where prod_id=? ";
+		}
+		
+		int result = -1;
+
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			int i=0;
+			pst.setString(++i,prod.getProd_name());
+			pst.setString(++i,prod.getType_name());
+			pst.setInt(++i,prod.getProd_price());
+			pst.setString(++i,prod.getProd_desc());
+			if(mode==1){
+				pst.setString(++i, prod.getProd_filename());
+				pst.setBlob(++i, is);
+			}
+			pst.setInt(++i, prod.getProd_id());
+			
+			System.out.println("in updateProduct");
+			
+				result = pst.executeUpdate();
+				
+			if (result == 1) {
+				System.out.println(prod.getProd_name() + ": 更新成功");
+			} else {
+				System.out.println(prod.getProd_name() + ": 更新失敗");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

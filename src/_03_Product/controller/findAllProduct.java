@@ -28,13 +28,13 @@ public class findAllProduct extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String typeFood = "";
 		int restId = Integer.parseInt(request.getParameter("id"));
+		System.out.println("restId = " + restId);
 		try {
 			typeFood = request.getParameter("type");
 			System.out.println(typeFood);
 		} catch (Exception e) {
 			System.out.println("沒有type");
 		}
-		System.out.println(restId);
 		
 		if(typeFood==null){
 			try {

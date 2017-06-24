@@ -17,7 +17,7 @@ var productByType;
 // get productType from DB with AJAX
 var xhr1 = new XMLHttpRequest();
 // alert(storeName);
-xhr1.open("GET", "findProductType.do?name=" + storeName + "&mode=productType", true);
+xhr1.open("GET", "findProductType.do?name=" + storeName , true);
 xhr1.send();
 
 xhr1.onreadystatechange = function () {

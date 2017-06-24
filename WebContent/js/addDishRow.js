@@ -2,13 +2,13 @@ var addBtn = document.getElementById("addMenu");
 var table = document.getElementById("menuTable");
 var countVar = document.getElementById("count");
 var form = document.getElementById("theForm");
-var storeId = document.getElementById("storeName").value;
+var storeName = document.getElementById("storeName").value;
 var count = 0;
 var typeArr = [];
 
 var xhr = new XMLHttpRequest();
 //alert(storeName);
-xhr.open("GET", "findProductType.do?id=" + storeId, true);
+xhr.open("GET", "findProductType.do?name=" + storeName, true);
 xhr.send();
 
 xhr.onreadystatechange = function() {

@@ -5,6 +5,7 @@ var typeSelector = document.getElementById("typeSelector");
 var storeId = document.getElementById("storeId").value;
 var updateList = document.getElementById("updateList");
 var storeName = document.getElementById("storeName").value;
+var result = document.getElementById("showAA");
 var count = 0;
 var productArr;
 var typeArr = [];
@@ -53,6 +54,7 @@ function chooseType() {
 	xhr.send();
 
 	xhr.onreadystatechange = function () {
+		count = 0;
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			productByType = JSON.parse(xhr.responseText);
 			table.innerHTML = "";
@@ -158,8 +160,8 @@ function chooseType() {
 
 				table.appendChild(tr);
 
-
 			}
+			// alert("countVar.type = " +countVar.value);
 		}
 
 	}
@@ -177,6 +179,7 @@ function chooseType() {
 			productArr = JSON.parse(xhr.responseText);
 			// console.log(productArr);
 			// console.log(productArr.length);
+			count = 0;
 
 			for (var i = 0; i < productArr.length; i++) {
 				count++;
@@ -285,7 +288,7 @@ function chooseType() {
 				table.appendChild(tr);
 
 			}
-			// alert("countVar.value = " +countVar.value);
+			// alert("countVar.All = " +countVar.value);
 		}
 	}
 
@@ -348,26 +351,30 @@ function chooseType() {
 
 
 	function validateForm(event) {
-		// alert("validateForm");
 		event.preventDefault();
-		var hasErr = false;
-		var result = document.getElementById("showMsg");
 
+		var hasErr = false;
+			console.log("result =" + result.value);
+		
 		for (var i = 1; i <= count; i++) {
 			var dishName = document.getElementById("dishName" + i);
+			console.log("dishName =" + dishName.value);
 			try {
-				if (!dishName.value) {
+				if (!dishName.value || dishName.value =="") {
 					hasErr = true;
-					result.innerHTML = "<span>貼心小提醒 : 請刪除不必要的欄位喔~</span>";
+					console.log("貼心小提醒")
+					result.innerHTML = "<span>貼心小提醒 : 請檢查欄位是否有空白喔~~</span>";
+					
 				} else {
 					result.innerHTML = "";
 				}
 			} catch (err) {
-				// alert("not Found");
+				console.log("not Found");
 			}
 		}
 
 		if (hasErr) {
+			alert("貼心小提醒 : 請檢查欄位是否有空白喔~~");
 			return false
 		} else {
 			form.submit();

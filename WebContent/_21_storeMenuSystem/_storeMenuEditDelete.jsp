@@ -36,7 +36,7 @@
         <!-- 店家profile -->
         <div class="col-md-3">
         <center>
-          <img class="img-rounded" src="../images/restImage/af_logo.jpg">
+          <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>
          </center>
         </div>
@@ -55,14 +55,13 @@
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
-        <div id="typeSelector">
-        </div>
-            <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
-            <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
-             <div>${MsgMap.noData}</div>
-       		<div id="showMsg">${MsgMap.NeedOne}${MsgOK.OK}</div> 
+        <div>${MsgMap.noData}</div>
+   		<div id="showAA">${MsgMap.NeedOne}${MsgOK.OK}</div> 
+        <div id="typeSelector"></div>
       
-      	<form ENCTYPE="multipart/form-data" action="updateDish.do" method="post" class="formcontent">
+      	<form ENCTYPE="multipart/form-data" id="theForm" onsubmit="return validateForm(event);" action="updateDish.do" method="post" class="formcontent">
+        	<input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
+            <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
             <hr>
               <table id="menuTable">
                 <tr>

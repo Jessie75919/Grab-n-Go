@@ -60,6 +60,7 @@ public class UpdateProduct extends HttpServlet {
 		for (int i = 1; i <= count; i++) {
 			String[] row = new String[5];
 			row[0] = request.getParameter("dishName" + i);
+			System.out.println(row[0]);
 
 			for (int j = 0; j < updateLists.length; j++) {
 				if (updateLists[j].equals(row[0])) {
@@ -100,15 +101,15 @@ public class UpdateProduct extends HttpServlet {
 
 //						System.out.println(row[0] + " = OK");
 					}
-//				System.out.println("全數新增成功~");
-					msgOK.put("OK", "更新成功囉~");
-					RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
-					rd.forward(request, response);
-					return;
 				}
 			}
 			continue;
 		}
+		System.out.println("全數新增成功~");
+		msgOK.put("OK", "更新成功囉~");
+		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
+		rd.forward(request, response);
+		return;
 
 	}
 

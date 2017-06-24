@@ -55,6 +55,8 @@
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
+        <div id="typeSelector">
+        </div>
             <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
             <input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
              <div>${MsgMap.noData}</div>

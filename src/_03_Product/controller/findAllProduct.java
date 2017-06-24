@@ -26,17 +26,19 @@ public class findAllProduct extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-//		
+		String typeFood = "";
 		int restId = Integer.parseInt(request.getParameter("id"));
-//		String restName = request.getParameter("name");
-//		String mode = request.getParameter("mode").trim();
+		try {
+			typeFood = request.getParameter("type");
+			System.out.println(typeFood);
+		} catch (Exception e) {
+			System.out.println("沒有type");
+		}
 		System.out.println(restId);
-//		System.out.println(restName);
 		
-//		if(mode.equals("product")){
+		if(typeFood==null){
 			try {
 				ProductDAO dao = new ProductDAO();
-				
 				List<Product> list = dao.queryProducts(restId, "no");
 				String typeJson = new Gson().toJson(list); 
 	            out.write(typeJson);
@@ -45,20 +47,20 @@ public class findAllProduct extends HttpServlet {
 				out.close();
 			}
 			return;
-//		}
-		
-//		if(mode.equals("productType")){
-//			try {
-//				ProductTypeDAO dao = new ProductTypeDAO();
-//				List<String> list = dao.queryAllProductType(restName);
-//				String typeJson = new Gson().toJson(list); 
-//	            out.write(typeJson);
-//	            out.flush();
-//			} finally {
-//				out.close();
-//			}
-//			return;
-//		}
+			
+		}else{
+			try {
+				ProductDAO dao = new ProductDAO();
+				List<Product> list = dao.queryProducts(restId, typeFood);
+				String typeJson = new Gson().toJson(list); 
+				System.out.println(typeJson);
+	            out.write(typeJson);
+	            out.flush();
+			} finally {
+				out.close();
+			}
+			return;
+		}
 			
 	}
 

@@ -37,6 +37,7 @@
         <div class="col-md-3">
         <center>
           <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
+          	
           <br>
          </center>
         </div>

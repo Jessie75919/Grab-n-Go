@@ -76,7 +76,6 @@ public class ProductTypeDAO {
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				String typeName = rs.getString(1);
-//				System.out.println("in queryAllProductType = "+typeName);
 				ptList.add(typeName);
 			}
 			

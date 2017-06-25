@@ -82,7 +82,7 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_url());
 			pst.setFloat(++i, sb.getRest_longitude()); 
 			pst.setFloat(++i, sb.getRest_latitude());
-			pst.setBoolean(++i, sb.isRest_validate());
+			pst.setBoolean(++i, false);		//rest_validate於註冊完成時應為未驗證
 
 			result = pst.executeUpdate();
 
@@ -253,7 +253,7 @@ public class StoreBeanDAO {
 			pst.setBinaryStream(++i, banner, bannerSize);
 			pst.setBinaryStream(++i, logo, logoSize);
 			pst.setBinaryStream(++i, cover, coverSize);
-			pst.setBoolean(++i, sb.isRest_validate());
+			pst.setBoolean(++i, false);		//rest_validate於註冊完成時應為未驗證
 
 			result = pst.executeUpdate();
 

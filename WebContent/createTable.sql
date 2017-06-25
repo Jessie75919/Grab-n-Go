@@ -35,7 +35,8 @@ CREATE TABLE member (
 	m_address VARCHAR(50),
 	m_birthday DATE,
 	m_picture LONGBLOB ,
-	m_filename VARCHAR(15)
+	m_filename VARCHAR(15) ,
+	m_validate BOOLEAN NOT NULL
 	
 	
 )CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -72,6 +73,7 @@ CREATE TABLE restaurant (
 	rest_mainbanner LONGBLOB,
 	rest_logo LONGBLOB,
 	rest_coverimage LONGBLOB,
+	rest_validate BOOLEAN NOT NULL,
 	CONSTRAINT restaurant_rest_type_FK FOREIGN KEY (rest_type) REFERENCES rest_type(type_name) ON DELETE CASCADE
 
 ) AUTO_INCREMENT = 00001, CHARACTER SET utf8 COLLATE utf8_general_ci;

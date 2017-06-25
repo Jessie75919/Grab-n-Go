@@ -47,7 +47,7 @@ public class TableDAO {
 	 * */
 	public int insertMemberTable() {
 		
-		String sql = "insert into member values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into member values(?,?,?,?,?,?,?,?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
 				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/memberData.csv"));) {
@@ -74,6 +74,13 @@ public class TableDAO {
 				InputStream is = new FileInputStream("WebContent/images/userImage/" + segment[7] + ".jpg");
 				pst.setBlob(8, is); // m_picture
 				pst.setString(9, segment[7]+".jpg"); // m_fileName
+				boolean b = false;
+				if (segment.equals("1")) {
+					b = true ;
+				} else if (segment.equals("0")) {
+					b = false;
+				}
+				pst.setBoolean(10, b); // m_validate
 				result = pst.executeUpdate();
 
 				if (result == 1)
@@ -123,7 +130,7 @@ public class TableDAO {
 	 *  inflater restaurant data
 	 * */
 	public int insertRestaurantTable() {
-		String sql = "insert into restaurant values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into restaurant values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
 				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/restaurantData.csv"));) {
@@ -153,6 +160,13 @@ public class TableDAO {
 				pst.setBlob(14, is); // rest_logo
 				is = new FileInputStream("WebContent/images/restImage/" + segment[14] + ".jpg");
 				pst.setBlob(15, is); // rest_coverimage
+				boolean b = false;
+				if (segment[15].equals("1")) {
+					b = true ;
+				} else if (segment[15].equals("0")) {
+					b = false;
+				}
+				pst.setBoolean(16, b); // rest_validate
 				result = pst.executeUpdate();
 
 				if (result == 1)

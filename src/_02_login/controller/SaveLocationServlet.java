@@ -22,13 +22,14 @@ public class SaveLocationServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Hello~");
+		System.out.println("Hello!!");
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=utf-8");
 	    PrintWriter out = response.getWriter();
 		String latitude = request.getParameter("latitude");
 	    String longitude = request.getParameter("longitude");
-	    
+	    System.out.println(latitude);
+	    System.out.println(longitude);
 	    if(latitude==null || longitude==null || 
 	    		latitude.length()==0 || longitude.length()==0 ){
 	    	System.out.println("latitude & longitude not found ! ");

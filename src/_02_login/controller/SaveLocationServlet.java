@@ -18,42 +18,65 @@ import com.google.gson.Gson;
 @WebServlet("/SaveLocation.do")
 public class SaveLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("Hello!!");
 		request.setCharacterEncoding("UTF-8");
-	    response.setContentType("application/json; charset=utf-8");
-	    PrintWriter out = response.getWriter();
-		String latitude = request.getParameter("latitude");
-	    String longitude = request.getParameter("longitude");
-	    System.out.println(latitude);
-	    System.out.println(longitude);
-	    if(latitude==null || longitude==null || 
-	    		latitude.length()==0 || longitude.length()==0 ){
-	    	System.out.println("latitude & longitude not found ! ");
-	    	Gson gson = new Gson();
-	    	String msgJson = gson.toJson("找不到您的座標，這樣無法替您搜尋附近的餐廳喔~");
-	    	out.write(msgJson);
-	    	out.flush();
-	    }else{
-	    	Cookie lat = new Cookie("lat", latitude);
-	    	lat.setMaxAge(30*60*60);
-	    	lat.setPath(request.getContextPath());
-	    	Cookie lng = new Cookie("lng", longitude);
-	    	lng.setMaxAge(30*60*60);
-	    	lng.setPath(request.getContextPath());
-	    	response.addCookie(lat);
-	    	response.addCookie(lng);
-	    }
-		
-		
-		
-		
-		
-		
-	}
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		double latitude = 0;
+		double longitude = 0;
 
+		try {
+			latitude = Double.parseDouble(request.getParameter("latitude"));
+			longitude = Double.parseDouble(request.getParameter("longitude"));
+		} catch (NumberFormatException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+
+		System.out.println("latitude = " + latitude + ", longitude = " + longitude);
+
+		if (latitude == 0 || longitude == 0) {
+			/* check the value of Cookies */
+			Cookie[] coks = request.getCookies();
+			if (coks != null) {
+				try {
+					for (Cookie cok : coks) {
+						if (cok.getName().equals("lat")) {
+							latitude = Double.parseDouble(cok.getValue());
+						} else if (cok.getName().equals("lng")) {
+							longitude = Double.parseDouble(cok.getValue());
+						}
+					}
+				} catch (NumberFormatException e) {
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				}
+			} else { // get nothing from Cookies ....
+						// 隨機塞幾家餐廳回去
+				System.out.println("latitude & longitude not found ! ");
+				Gson gson = new Gson();
+				String msgJson = gson.toJson("找不到您的座標，這樣無法替您搜尋附近的餐廳喔~");
+				out.write(msgJson);
+				out.flush();
+			}
+		} else { /* get the value of location from broswer */
+			/* store into Cookie */
+			Cookie lat = new Cookie("lat", String.valueOf(latitude));
+			lat.setMaxAge(30 * 60 * 60);
+			lat.setPath(request.getContextPath());
+			Cookie lng = new Cookie("lng", String.valueOf(longitude));
+			lng.setMaxAge(30 * 60 * 60);
+			lng.setPath(request.getContextPath());
+			response.addCookie(lat);
+			response.addCookie(lng);
+
+			/* get restaurant from user's Location */
+
+		}
+
+	}
 
 }

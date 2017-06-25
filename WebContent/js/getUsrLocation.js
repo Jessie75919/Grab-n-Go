@@ -1,39 +1,43 @@
 
-
-
-
-
+var lat = 0;
+var long = 0;
 window.onload = function () {
 
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    } else {
+       
+
     }
 
     //Get latitude and longitude;
     function successFunction(position) {
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
+        lat = position.coords.latitude;
+        long = position.coords.longitude;
+
+        localStorage['authorizedGeoLocation'] = 1;
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "SaveLocation.do?latitude=" + position.coords.latitude
-            + "&longitude=" + position.coords.longitude, true);
+        xhr.open("GET", "SaveLocation.do?latitude=" + lat
+            + "&longitude=" + long, true);
         xhr.send();
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var msg = JSON.parse(xhr.responseText);
                 alert(msg);
-
             }
 
         }
-
-        localStorage['authorizedGeoLocation'] = 1;
     }
 
     function errorFunction() {
         localStorage['authorizedGeoLocation'] = 0;
+         var xhr = new XMLHttpRequest();
+        xhr.open("GET", "SaveLocation.do?latitude=" + lat
+            + "&longitude=" + long, true);
+        xhr.send();
         alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
     }
 
@@ -43,6 +47,8 @@ window.onload = function () {
         else
             return true;
     }
+
+
 
 
 

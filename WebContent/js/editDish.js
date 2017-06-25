@@ -185,7 +185,6 @@ xhr.onreadystatechange = function () {
 			count++;
 			countVar.value = count;
 
-			// alert("KFG");
 			// alert("I am here");
 			var tr = document.createElement("tr");
 			tr.setAttribute("id", "tr" + count);

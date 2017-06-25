@@ -29,9 +29,11 @@ public class findProductType extends HttpServlet {
 		System.out.println(restName);
 		
 		try {
+			
 			ProductTypeDAO dao = new ProductTypeDAO();
 			List<String> list = dao.queryAllProductType(restName);
 			String typeJson = new Gson().toJson(list); 
+			System.out.println();
             out.write(typeJson);
             out.flush();
 		} finally {

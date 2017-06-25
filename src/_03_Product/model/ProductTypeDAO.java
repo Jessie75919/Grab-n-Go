@@ -60,6 +60,8 @@ public class ProductTypeDAO {
 			} else {
 				System.out.println(typeName + ": 刪除失敗");
 			}
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,8 +80,6 @@ public class ProductTypeDAO {
 				String typeName = rs.getString(1);
 				ptList.add(typeName);
 			}
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

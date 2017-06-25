@@ -3,3 +3,5 @@
 
 # Log file
 *.log
+.class
+WebContent/.vscode/launch.json

@@ -38,6 +38,7 @@
 <link href="css_web/slick.css" rel="stylesheet" type="text/css">
 <!--animation-->
 <link href="css_web/animate.css" rel="stylesheet" type="text/css" />
+
 <jsp:useBean id="rt" class="_22_searchRest.model.RestDAO" scope="page"/>
 </head>
 
@@ -524,6 +525,7 @@
 	<script src="javascript/share.js"></script>
 	<!-- 取得使用者位置 -->
 	<script	 src = "js/getUsrLocation.js"></script>
+	<script src="js/getRestaurantFromUser.js"></script>
 </body>
 
 </html>

@@ -37,6 +37,7 @@ var latitude = document.getElementById("latitude");
 var midResult = document.getElementById("midResult");
 var langitude = document.getElementById("langitude");
 var latitude = document.getElementById("latitude");
+var formA = document.getElementById("theForm");
 
 window.onload = function () {
 
@@ -74,7 +75,7 @@ window.onload = function () {
 		account.value = "grabngo";
 		password.value = "1111";
 		password2.value = "1111";
-		StoreName.value = "Grab&Go";
+		StoreName.value = "GrabAndGo";
 		StoreType.value = "台式餐廳";
 		address.value = "台北市中山區長安東路二段92號1樓";
 		tel.value = "(02)2517-7667";

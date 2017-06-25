@@ -36,7 +36,7 @@
         <!-- 店家profile -->
         <div class="col-md-3">
         <center>
-          <img class="img-rounded" src="../images/restImage/af_logo.jpg">
+          <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>
          </center>
         </div>
@@ -55,51 +55,32 @@
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9">
-        <form>
+        <div>${MsgMap.noData}</div>
+   		<div id="showAA">${MsgMap.NeedOne}${MsgOK.OK}</div> 
+        <div id="typeSelector"></div>
+      
+      	<form ENCTYPE="multipart/form-data" id="theForm" onsubmit="return validateForm(event);" action="updateDish.do" method="post" class="formcontent">
+        	<input id="storeName" name="storeName" value="${StoreLoginOK['rest_name']}" style="display:none;">
+            <input id="storeId" name="storeId" value="${StoreLoginOK['rest_id']}" style="display:none;">
             <hr>
               <table id="menuTable">
                 <tr>
-                  <th>&nbsp</th>
-                  <th>&nbsp</th>
+                  <th></th>
                   <th>餐點名稱</th>
                   <th>餐點種類</th>
                   <th>餐點簡介</th>
                   <th>價格</th>
                   <th>餐點圖片</th>
                 </tr>
-                <tr>
-                  <td><i id="editButton" class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
-                <tr>
-                  <td><i class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
-               <tr>
-                  <td><i class="fa fa-pencil-square-o"></i></td>
-                  <td><i class="fa fa-minus-square"></i></td>
-                  <td><input type="text" name="" ></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="text" name="" placeholder="optional"></td>
-                  <td><input type="text" name=""></td>
-                  <td><input type="file" name=""></td>
-                </tr>
-              
-              </table>
+          <input id="count" name="countAA" value="0" style="display:none;">
+				<input id="updateList" name="updateList" value="0" style="display:none;">
+				</table>
             <hr> 
-            <div id="insertButton">
-              <input type="submit" name="Submit" value="" class="btn btn-default">
-            <div>
+           <div id="insertButton" class="btn btn-default">
+				<input
+					type="submit" name="Submit" value="確定修改"
+					class="btn btn-default">
+			<div>
             </form>
         </div>
       </div>
@@ -108,17 +89,10 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-
-    // 觸發取消訂單事件
-    function orderCancel(){
-          var string = '確定取消此筆訂單嗎？';
-          confirm(string);
-        }
-  </script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  <script src="../js/editDish.js"></script>
 </body>
 
 </html>

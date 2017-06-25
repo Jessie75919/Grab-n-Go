@@ -13,7 +13,7 @@
           <ul id="leftMenu" class="list-group">
             <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
             <li class="list-group-item">
-              <a href="_storeLoginProfileEdit.jsp">修改個人資料</a>
+              <a href="../_02_storeLogin/_storeLoginProfileEdit.jsp">修改個人資料</a>
             </li>
             <li class="list-group-item">
               <a href="/_Grab_Go/_02_storeLogin/_storeLogOut.jsp">登出</a>
@@ -46,7 +46,7 @@
               <a href="../_21_storeMenuSystem/_storeMenuInsert.jsp">新增餐點項目</a>
             </li>
             <li class="list-group-item">
-              <a href="#">修改餐點項目</a>
+              <a href="../_21_storeMenuSystem/_storeMenuEditDelete.jsp">修改餐點項目</a>
             </li>
             <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
             <li class="list-group-item">

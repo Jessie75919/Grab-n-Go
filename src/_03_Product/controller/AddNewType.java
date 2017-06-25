@@ -55,8 +55,6 @@ public class AddNewType extends HttpServlet {
 			String type = request.getParameter("typeName" + i);
 
 			System.out.println(type);
-			//
-			
 			
 			ProductType pt = new ProductType(type,storeName);
 			ProductTypeDAO ptDao = new ProductTypeDAO();

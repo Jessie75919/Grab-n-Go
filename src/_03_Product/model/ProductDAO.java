@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -65,24 +66,63 @@ public class ProductDAO implements ProductInterface{
 	}
 
 	@Override
-	public int updateProduct(Product prod, InputStream is) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateProduct(Product prod, InputStream is ,int mode) {
+		String sql = "";
+		if(mode==1){
+			sql = "update product set prod_name=?,type_name=?"
+					+ ",prod_price=?,prod_desc=?,prod_filename=?,prod_img=? "
+					+ "where prod_id=? ";
+		}else{
+			sql = "update product set prod_name=?,type_name=?"
+					+ ",prod_price=?,prod_desc=? "
+					+ "where prod_id=? ";
+		}
+		
+		int result = -1;
+
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			int i=0;
+			pst.setString(++i,prod.getProd_name());
+			pst.setString(++i,prod.getType_name());
+			pst.setInt(++i,prod.getProd_price());
+			pst.setString(++i,prod.getProd_desc());
+			if(mode==1){
+				pst.setString(++i, prod.getProd_filename());
+				pst.setBlob(++i, is);
+			}
+			pst.setInt(++i, prod.getProd_id());
+			
+			System.out.println("in updateProduct");
+			
+				result = pst.executeUpdate();
+				
+			if (result == 1) {
+				System.out.println(prod.getProd_name() + ": 更新成功");
+			} else {
+				System.out.println(prod.getProd_name() + ": 更新失敗");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
-	public int deleteProduct(int prod_id,int rest_id) {
-		String sql = "delete from product where prod_id=? and rest_id = ?";
+	public int deleteProduct(String prod_name,String type_name) {
+		String sql = "delete from product where prod_name=? and type_name = ?";
 		int result = -1;
 
-		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
-			pst.setInt(1,prod_id);
-			pst.setInt(2,rest_id);
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1,prod_name);
+			pst.setString(2,type_name);
 			result = pst.executeUpdate();
 			if (result == 1) {
-				System.out.println(rest_id + ": 刪除成功");
+				System.out.println(prod_name + ": 刪除成功");
 			} else {
-				System.out.println(rest_id + ": 刪除失敗");
+				System.out.println(prod_name + ": 刪除失敗");
 			}
 
 		} catch (Exception e) {
@@ -94,19 +134,21 @@ public class ProductDAO implements ProductInterface{
 
 	@Override
 	public List<Product> queryProducts(int rest_id, String typeName) {
-		List<Product> ptList = null;
+		List<Product> ptList = new ArrayList<>();
 		String sql = "";
 		
-		if(typeName.equals("")){
-			 sql = "select * from product where rest_id=?";
+		if(typeName.equals("no")){
+			 sql = "select * from product where rest_id=? order by type_name";
 		}else{
-			 sql = "select * from product where rest_id=? and type_name=?";
+			 sql = "select * from product where rest_id=? and type_name=? order by type_name";
 		}
 
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setInt(1,rest_id);
-			pst.setString(2,typeName);
+			if(!typeName.equals("no")){
+				pst.setString(2,typeName);
+			}
 			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()){

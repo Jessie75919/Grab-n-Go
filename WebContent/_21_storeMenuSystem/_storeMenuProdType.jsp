@@ -71,48 +71,6 @@
 								<th></th>
 								<th>建立餐點類別</th>
 							</tr>
-<!-- 							<tr> -->
-<!-- 								<td>1.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>2.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>3.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>4.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>5.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>6.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>7.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>8.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>9.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>10.</td> -->
-<!-- 								<td><input type="text" name=""></td> -->
-<!-- 							</tr> -->
-
-
 						</table>
 						<hr>
 						<div id="insertButton">

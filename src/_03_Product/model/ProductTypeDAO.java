@@ -79,6 +79,7 @@ public class ProductTypeDAO {
 				ptList.add(typeName);
 			}
 			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

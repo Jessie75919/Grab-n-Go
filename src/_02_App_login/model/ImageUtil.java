@@ -1,4 +1,4 @@
-package _02_App_login.controller;
+package _02_App_login.model;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

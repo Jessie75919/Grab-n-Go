@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,12 +16,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import _01_Store_register.model.RestaurantTypeDAO;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
+import _02_App_login.model.ImageUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/AppStoreRegisterServlet")
@@ -181,8 +185,24 @@ public class AppStoreRegisterServlet extends HttpServlet {
 				
 			} else {
 				int n = dao.insertShopData(sb,is[0],is[1],is[2],size[0],size[1],size[2]);
-				if (n == 1) {
+				if (n == 1) {	//註冊資料存入資料庫成功
 					map.put("RegisterMessage", "RegisterOk");
+					List<StoreBean> store = dao.getNameBranchLogoValidate(username);
+					String rest_name = store.get(0).getRest_name();
+					map.put("rest_name", rest_name);
+					String rest_branch = store.get(0).getRest_branch();
+					map.put("rest_branch", rest_branch);
+					System.out.println(rest_branch);
+					
+					Blob rest_logo = store.get(0).getRest_logo();
+					byte[] logo_byte = ImageUtil.BlobToByteArrayAndAdjustSize(rest_logo, 128);
+					String encodedImage = new String(Base64.encodeBase64(logo_byte), "UTF-8");
+					System.out.println(encodedImage);
+					map.put("rest_logo", encodedImage);
+					
+					String rest_validate = String.valueOf(store.get(0).isRest_validate());
+					System.out.println(rest_validate);
+					map.put("rest_validate", rest_validate);
 				}
 			}
 			System.out.println(map);

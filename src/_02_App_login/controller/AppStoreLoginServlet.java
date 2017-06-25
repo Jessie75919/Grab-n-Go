@@ -22,6 +22,7 @@ import com.google.gson.JsonObject;
 import _00_init.GlobalService;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
+import _02_App_login.model.ImageUtil;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 @SuppressWarnings("serial")

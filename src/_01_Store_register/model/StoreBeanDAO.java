@@ -60,8 +60,8 @@ public class StoreBeanDAO {
 		System.out.println("owner = "+sb.getRest_owner());
 		
 		String sql = "insert into restaurant "+
-				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude)"
-				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?)";
+				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,rest_validate)"
+				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			System.out.println("------------------------------------");
@@ -81,7 +81,8 @@ public class StoreBeanDAO {
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
 			pst.setFloat(++i, sb.getRest_longitude()); 
-			pst.setFloat(++i, sb.getRest_latitude()); 
+			pst.setFloat(++i, sb.getRest_latitude());
+			pst.setBoolean(++i, sb.isRest_validate());
 
 			result = pst.executeUpdate();
 
@@ -227,8 +228,8 @@ public class StoreBeanDAO {
 		String sql = "insert into restaurant "+
 				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,"
 				+ "rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,"
-				+ "rest_mainbanner,rest_logo,rest_coverimage)"
-				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "rest_mainbanner,rest_logo,rest_coverimage,rest_validate)"
+				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			System.out.println("------------------------------------");
@@ -252,7 +253,7 @@ public class StoreBeanDAO {
 			pst.setBinaryStream(++i, banner, bannerSize);
 			pst.setBinaryStream(++i, logo, logoSize);
 			pst.setBinaryStream(++i, cover, coverSize);
-			
+			pst.setBoolean(++i, sb.isRest_validate());
 
 			result = pst.executeUpdate();
 

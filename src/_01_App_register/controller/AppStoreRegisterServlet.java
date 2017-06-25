@@ -195,7 +195,7 @@ public class AppStoreRegisterServlet extends HttpServlet {
 					System.out.println(rest_branch);
 					
 					Blob rest_logo = store.get(0).getRest_logo();
-					byte[] logo_byte = ImageUtil.BlobToByteArrayAndAdjustSize(rest_logo, 128);
+					byte[] logo_byte = ImageUtil.BlobToByteArrayAndAdjustSize(rest_logo, 100);
 					String encodedImage = new String(Base64.encodeBase64(logo_byte), "UTF-8");
 					System.out.println(encodedImage);
 					map.put("rest_logo", encodedImage);

@@ -21,6 +21,7 @@ public class StoreBean implements Serializable{
 	private Blob rest_mainbanner;
 	private Blob rest_logo;
 	private Blob rest_coverimage;
+	private boolean rest_validate;
 	
 	
 	public StoreBean() {
@@ -99,6 +100,30 @@ public class StoreBean implements Serializable{
 		this.rest_mainbanner = rest_mainbanner;
 		this.rest_logo = rest_logo;
 		this.rest_coverimage = rest_coverimage;
+	}
+
+	public StoreBean(int rest_id, String rest_type, String rest_name, String rest_branch, String rest_address,
+			String rest_phone, String rest_owner, String rest_email, String rest_username, String rest_password,
+			String rest_url, float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo,
+			Blob rest_coverimage, boolean rest_validate) {
+		super();
+		this.rest_id = rest_id;
+		this.rest_type = rest_type;
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_owner = rest_owner;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_password = rest_password;
+		this.rest_url = rest_url;
+		this.rest_longitude = rest_longitude;
+		this.rest_latitude = rest_latitude;
+		this.rest_mainbanner = rest_mainbanner;
+		this.rest_logo = rest_logo;
+		this.rest_coverimage = rest_coverimage;
+		this.rest_validate = rest_validate;
 	}
 
 	public StoreBean(String rest_username,String rest_address, String rest_phone, String rest_email, String rest_password, String rest_url) {
@@ -270,20 +295,23 @@ public class StoreBean implements Serializable{
 		this.rest_coverimage = rest_coverimage;
 	}
 
+	public boolean isRest_validate() {
+		return rest_validate;
+	}
+
+	public void setRest_validate(boolean rest_validate) {
+		this.rest_validate = rest_validate;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreBean [rest_id=" + rest_id + ", rest_type=" + rest_type + ", rest_name=" + rest_name
 				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_phone=" + rest_phone
 				+ ", rest_owner=" + rest_owner + ", rest_email=" + rest_email + ", rest_username=" + rest_username
 				+ ", rest_password=" + rest_password + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
-				+ ", rest_latitude=" + rest_latitude + "]";
+				+ ", rest_latitude=" + rest_latitude + ", rest_mainbanner=" + rest_mainbanner + ", rest_logo="
+				+ rest_logo + ", rest_coverimage=" + rest_coverimage + ", rest_validate=" + rest_validate + "]";
 	}
-
-	
-	
-	
-	
-	
 	
 	
 }

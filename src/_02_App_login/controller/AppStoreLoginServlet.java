@@ -63,7 +63,7 @@ public class AppStoreLoginServlet extends HttpServlet {
 		if (sb != null) {
 			loginMessage = "LoginOK";
 			StoreBeanDAO dao = new StoreBeanDAO();
-			List<StoreBean> store = dao.getNameBranchLogo(username);
+			List<StoreBean> store = dao.getNameBranchLogoValidate(username);
 			String rest_name = store.get(0).getRest_name();
 			map.put("rest_name", rest_name);
 			String rest_branch = store.get(0).getRest_branch();
@@ -75,6 +75,10 @@ public class AppStoreLoginServlet extends HttpServlet {
 			String encodedImage = new String(Base64.encodeBase64(logo_byte), "UTF-8");
 			System.out.println(encodedImage);
 			map.put("rest_logo", encodedImage);
+			
+			String rest_validate = String.valueOf(store.get(0).isRest_validate());
+			System.out.println(rest_validate);
+			map.put("rest_validate", rest_validate);
 		} else {
 			loginMessage = "UsernameOrPasswordError";
 		}

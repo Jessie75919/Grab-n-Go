@@ -272,7 +272,7 @@ public class StoreBeanDAO {
 	}
 	
 	public List<StoreBean> getNameBranchLogoValidate(String rest_username){
-		String sql = "SELECT rest_name, rest_branch, rest_logo "
+		String sql = "SELECT rest_name, rest_branch, rest_logo, rest_validate "
 				+ " FROM restaurant WHERE rest_username = ?" ;
 		List<StoreBean> listStore = new ArrayList<>();
 		try (

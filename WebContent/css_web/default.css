@@ -3,132 +3,7 @@
 
 /* CSS Document*/
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video,
-main {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    list-style: none;
-}
-
-
-/* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-time,
-main {
-    display: block;
-}
-
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    vertical-align: middle;
-}
-
-
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video,main {margin: 0;padding: 0;border: 0;font-size: 100%;list-style: none;}/* HTML5 display-role reset for older browsers */article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,time,main {display: block;}blockquote,q {quotes: none;}blockquote:before,blockquote:after,q:before,q:after {content: '';content: none;}table {vertical-align: middle;}
 /*-----------------------start-------------------------*/
 
 body {
@@ -551,12 +426,18 @@ footer p {
 section.searchContent {
     position: relative;
     background-color: #fff;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     width: 94%;
     max-width: 500px;
     margin: 100px auto 0 auto;
     padding: 30px 50px;
     box-sizing: border-box;
+}
+
+section.searchContent:after {
+    display: block;
+    content: "";
+    clear: both;
 }
 
 section.searchContent h2 {
@@ -844,10 +725,11 @@ section.grid {
     margin: -20px 0 0 -60px;
 }
 
-.mask a:hover {
+
+/*.mask a:hover {
     border: #ec8e26 solid 1px;
     background-color: #ec8e26;
-}
+}*/
 
 .gridItem:hover .mask {
     opacity: 1;
@@ -1116,9 +998,11 @@ ul.tabLinks li.active a:hover {
     padding: 10px;
     background-color: #f5f5f5;
 }
-.storeMenuName a{
+
+.storeMenuName a {
     color: #000;
 }
+
 .storeMenuDes {
     position: relative;
     padding: 0px 10px 5px 10px;
@@ -1128,22 +1012,117 @@ ul.tabLinks li.active a:hover {
     white-space: nowrap;
     background-color: #f5f5f5;
 }
-.storeMenuPrice{
+
+.storeMenuPrice {
     position: relative;
     padding: 0px 10px 10px 10px;
     color: #eb503c;
     background-color: #f5f5f5;
 }
+
 .storeMenuList .mask {
     background-color: rgba(235, 80, 60, 0.8);
-
+    cursor: pointer;
 }
+
 .storeMenuList:hover .mask {
     opacity: 1;
 }
-.storeMenuList:hover .storeMenuName a{
+
+.storeMenuList:hover .storeMenuName a {
     color: #eb503c;
 }
+
+
+/*菜單訂購popup*/
+
+.menuDetail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+
+.menuDetail section.searchContent {
+    width: 94%;
+    max-width: 1000px;
+    padding: 0;
+}
+
+.menuDetail section.searchContent .closeBtn {
+    top: 0px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    background-color: #eb503c;
+    box-sizing: border-box;
+    padding-top: 7px;
+    transition: ease 0.3s;
+}
+
+.menuDetail section.searchContent .closeBtn:hover {
+    background-color: #ec8e26;
+}
+
+.menuDetail section.searchContent .closeBtn i {
+    color: #fff;
+}
+
+.menuDetail section.searchContent .closeBtn:hover i {
+    color: #fff;
+}
+
+.menuDetail section.searchContent form {
+    padding: 0;
+}
+
+.menuDetail figure {
+    position: relative;
+    width: 35%;
+    float: left;
+}
+
+.menuDetail figure img {
+    width: 100%;
+    height: auto;
+}
+
+.menuInfo {
+    position: relative;
+    width: 63%;
+    float: right;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.menuInfo:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.menuCount {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.menuCount input[type="number"] {
+    width: auto;
+    margin-left: 10px;
+}
+
+.addBtn {
+    position: relative;
+    width: 48%;
+    float: right;
+    text-align: right;
+}
+
+
 /*----------登入/註冊/密碼----------*/
 
 .loginLogo {

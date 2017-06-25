@@ -271,7 +271,7 @@ public class StoreBeanDAO {
 		return result;
 	}
 	
-	public List<StoreBean> getNameBranchLogo(String rest_username){
+	public List<StoreBean> getNameBranchLogoValidate(String rest_username){
 		String sql = "SELECT rest_name, rest_branch, rest_logo "
 				+ " FROM restaurant WHERE rest_username = ?" ;
 		List<StoreBean> listStore = new ArrayList<>();
@@ -286,8 +286,9 @@ public class StoreBeanDAO {
 				System.out.println(rest_name);
 				String rest_branch = rs.getString("rest_branch");
 				Blob rest_logo = rs.getBlob("rest_logo");
+				boolean rest_validate = rs.getBoolean("rest_validate");
 			
-				StoreBean sb = new StoreBean(rest_name,rest_branch,rest_logo);
+				StoreBean sb = new StoreBean(rest_name,rest_branch,rest_logo,rest_validate);
 				
 				listStore.add(sb);
 			}

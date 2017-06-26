@@ -51,7 +51,7 @@ public class OrderDAO {
 			while (rs.next()) {
 				OrderBean ob = new OrderBean();
 				ob.setOrd_id(rs.getInt("ord_id"));
-				ob.setOrd_time(rs.getDate("ord_time"));
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
 				ob.setRest_name(rs.getString("rest_name"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));

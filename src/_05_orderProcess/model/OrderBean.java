@@ -1,11 +1,11 @@
 package _05_orderProcess.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class OrderBean {
 	int ord_id;
 	String m_username;
-	Date ord_time;
+	Timestamp ord_time;
 	int rest_id;
 	int ord_totalPrice;
 	String ord_status;
@@ -32,10 +32,10 @@ public class OrderBean {
 	public void setM_username(String m_username) {
 		this.m_username = m_username;
 	}
-	public Date getOrd_time() {
+	public Timestamp getOrd_time() {
 		return ord_time;
 	}
-	public void setOrd_time(Date ord_time) {
+	public void setOrd_time(Timestamp ord_time) {
 		this.ord_time = ord_time;
 	}
 	public int getRest_id() {

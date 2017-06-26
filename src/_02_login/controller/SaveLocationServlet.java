@@ -80,12 +80,15 @@ public class SaveLocationServlet extends HttpServlet {
 			/* get restaurant from user's Location */
 			StoreBeanDAO dao = new StoreBeanDAO();
 			// CALL get_Rest(25.0483199,121.5344137);
-			List<StoreBean> storeList = dao.getStoreFromUser(25.0483199, 121.5344137);
+			List<StoreBean> storeList = dao.getStoreFromUser(latitude, longitude);
 			Gson gson = new Gson();
 			String storeListJson = gson.toJson(storeList);
 			System.out.println(storeListJson);
-//			out.write(storeListJson);
-//			out.flush();
+			out.write(storeListJson);
+			out.flush();
+			
+			
+			
 			
 			
 			

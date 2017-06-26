@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>訂購紀錄-Grab &amp; Go</title>
+    <title>訂購紀錄 | 詳細內容-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -28,11 +28,29 @@
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
 </head>
-<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
-<c:set target="${orderBeans}" property="username" value="${LoginOK.memberId}"/>
+<jsp:useBean id="orderItemDAOBean" class="_05_orderProcess.model.OrderItemDAO"/>
+<c:set target="${orderItemDAOBean}" property="ord_id" value="${param.ordId}"/>
 <body id="top" class="cbp-spmenu-push">
- <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
-
+    <header>
+        <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
+        <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div>
+        <div class="logo">
+            <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
+        </div>
+        <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
+        <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
+        <div class="account">
+            <ul>
+                <!--未登入用這組-->
+                <li><a href="../_02_login/login.htm">登入</a></li>
+                <!--未登入用這組 end-->
+                <!--已登入用這組-->
+                <li><a href="../_06_member/member.htm">Juicekuo</a></li>
+                <li><a href="#">登出</a></li>
+                <!--已登入用這組 end-->
+            </ul>
+        </div>
+    </header>
     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
         <!--已登入用這組 未登入的話這塊隱藏-->
         <div class="memberLogin">
@@ -45,7 +63,7 @@
             <li><a href="../_06_member/order.htm"><i class="icon-list"></i>訂購紀錄</a></li>
             <li><a href="../_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
         </ul>
-        <!-- AddToAny BEGIN -->
+        <!-- AddToAny BEGIN --
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
             <a class="a2a_button_facebook"></a>
             <a class="a2a_button_line"></a>
@@ -54,57 +72,64 @@
             <a class="a2a_button_email"></a>
         </div>
         <script async src="https://static.addtoany.com/menu/page.js"></script>
-        <!-- AddToAny END -->
+        AddToAny END -->
     </nav>
     <div class="insideTitle">
         <h2>訂購紀錄</h2>
     </div>
     <main>
-        <div class="brcame"><a href="../index.jsp">首頁</a> / 訂購紀錄</div>
+        <div class="brcame"><a href="../index.jsp">首頁</a> / <a href="order.jsp">訂購紀錄</a> / 訂購內容</div>
         <section class="content">
-          <div class="orderList head">
-              <div class="order nNumber">訂單編號</div>
-              <div class="order date">訂購日期</div>
-              <div class="order store">店家</div>
-              <div class="order price">應付金額</div>
-              <div class="order status">訂單狀態</div>
-              <div class="order detail">訂單內容</div>
-          </div>
-          <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.memberOrders}">
-          <div class="orderList">
-              <div class="order nNumber">${anOrderBean.ord_id}</div>
-              <div class="order date">${anOrderBean.ord_time}</div>
-              <div class="order store">${anOrderBean.rest_name}</div>
-              <div class="order price">${anOrderBean.ord_totalPrice}</div>
-              <div class="order status">${anOrderBean.ord_status}</div>
-              <div class="order detail"><a href="order_detail.jsp?ordId=${anOrderBean.ord_id}&restName=${anOrderBean.rest_name}&totalPrice=${anOrderBean.ord_totalPrice}">檢視</a></div>
-          </div>
-          </c:forEach>
-<!--           <div class="orderList"> -->
-<!--               <div class="order nNumber">No201706040001</div> -->
-<!--               <div class="order date">2017.06.04</div> -->
-<!--               <div class="order store">Afternoon Tea</div> -->
-<!--               <div class="order price">NT$1000</div> -->
-<!--               <div class="order status">已取餐</div> -->
-<!--               <div class="order detail"><a href="order_detail.htm">檢視</a></div> -->
-<!--           </div> -->
-<!--           <div class="orderList"> -->
-<!--               <div class="order nNumber">No201706040001</div> -->
-<!--               <div class="order date">2017.06.04</div> -->
-<!--               <div class="order store">Afternoon Tea</div> -->
-<!--               <div class="order price">NT$1000</div> -->
-<!--               <div class="order status">處理中</div> -->
-<!--               <div class="order detail"><a href="order_detail.htm">檢視</a></div> -->
-<!--           </div> -->
-<!--           <div class="orderList"> -->
-<!--               <div class="order nNumber">No201706040001</div> -->
-<!--               <div class="order date">2017.06.04</div> -->
-<!--               <div class="order store">Afternoon Tea</div> -->
-<!--               <div class="order price">NT$1000</div> -->
-<!--               <div class="order status">尚未取餐</div> -->
-<!--               <div class="order detail"><a href="order_detail.htm">檢視</a></div> -->
-<!--           </div> -->
-          
+
+            <div class="cartLeft">
+                <h3>${param.restName}</h3>
+                <!--菜單列表-->
+                <c:forEach var="orderItemBean" items="${orderItemDAOBean.orderItemById}">
+                <div class="foodList">
+                    <figure><img src="../images/restImage/fk_coverImg.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜"></figure>
+                    <div class="foodInfo">
+                        <h4>${orderItemBean.item_name}</h4>
+                        <p>數量 ${orderItemBean.item_amount} <span class="price">NT$${orderItemBean.item_price}</span></p>
+                        <p>特殊需求：${orderItemBean.item_note}</p>
+                    </div>
+                </div>
+                </c:forEach>
+<!--                 <div class="foodList"> -->
+<!--                     <figure><img src="../images/restImage/fk_coverImg.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜"></figure> -->
+<!--                     <div class="foodInfo"> -->
+<!--                         <h4>香烤雞腿佐十品溫野菜</h4> -->
+<!--                         <p>數量 8 <span class="price">NT$360</span></p> -->
+<!--                         <p>特殊需求：不要辣，不要洋蔥</p> -->
+<!--                     </div> -->
+<!--                 </div> -->
+                <!--菜單列表 end-->
+                <div class="total">總計：NT$${param.totalPrice}元</div>
+            </div>
+            <div class="cartRight">
+                <h3>訂購人資訊</h3>
+                <!--訂購人資訊-->
+                <div class="formList">
+                    <div class="formTitle"><i class="icon-user"></i>訂購人</div>
+                    <div class="formInfo noform">${LoginOK.name}</div>
+                </div>
+                <div class="formList">
+                    <div class="formTitle"><i class="icon-phone"></i>聯絡電話</div>
+                    <div class="formInfo noform">${LoginOK.phone}</div>
+                </div>
+                <div class="formList">
+                    <div class="formTitle"><i class="icon-mail"></i>E-mail</div>
+                    <div class="formInfo noform">${LoginOK.email}</div>
+                </div>
+                <div class="formList">
+                    <div class="formTitle"><i class="icon-birth"></i>預計取餐時間</div>
+                    <div class="formInfo noform">下午1:30</div>
+                </div>
+                <!--訂購人資訊 end-->
+                <div class="formBtn">
+                    <p><a href="../indexA.jsp">回首頁</a> <a href="order.jsp">回訂購紀錄列表</a></p>
+                </div>
+            </div>
+
         </section>
     </main>
     <!--搜尋-->
@@ -146,8 +171,12 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!--nav-->
     <script type="text/javascript" src="../javascript/classie.js"></script>
+    <!-- form check-->
+    <link rel="stylesheet" href="../javascript/validation/validationEngine.jquery.css">
+    <script type="text/javascript" charset="utf-8" src="../javascript/validation/languages/jquery.validationEngine-zh_TW.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
+    <!-- form check end-->
     <!--share js-->
     <script src="../javascript/share.js"></script>
 </body>
-
 </html>

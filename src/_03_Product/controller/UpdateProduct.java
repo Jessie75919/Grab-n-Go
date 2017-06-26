@@ -28,7 +28,7 @@ import _03_Product.model.ProductDAO;
 @WebServlet("/_21_storeMenuSystem/updateDish.do")
 public class UpdateProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// System.out.println("updateDish.do~");

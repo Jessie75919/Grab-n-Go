@@ -28,10 +28,11 @@ import _03_Product.model.ProductDAO;
 @WebServlet("/_21_storeMenuSystem/updateDish.do")
 public class UpdateProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("updateDish.do~");
+		
+		
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		Map<String, String> msgOK = new HashMap<String, String>();

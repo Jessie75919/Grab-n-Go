@@ -130,319 +130,327 @@
 	<h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
 		"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"
 	</h2>
-	</section> <!--標語 end--> <!--瀑布流--> <section class="grid slider wow fadeIn"
-		id="container">
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="gridItem">
-		<figure>
-		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集"
-			title="紗舞缡-極品集">
-		<div class="mask">
-			<a href="_07_storePage/store.htm">觀看菜單</a>
-		</div>
-		</figure>
-		<div class="storeInfo">
-			<h2>
-				<a href="_07_storePage/store.htm">紗舞缡-極品集</a>
-			</h2>
-			<!--有亮的星星class要加上on-->
-			<div class="star">
-				<i class="icon-star on"></i> <i class="icon-star on"></i> <i
-					class="icon-star on"></i> <i class="icon-star"></i> <i
-					class="icon-star"></i>
-			</div>
-			<div class="dist">
-				<i class="icon-location"></i>大安區
-			</div>
-			<div class="tagOrder">
-				<div class="tag">
-					<span>日式料理</span>
-				</div>
-				<div class="orderCount">
-					目前訂單<span>999</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	</section> </main>
+	</section> <!--標語 end--> <!--瀑布流--> 
+	
+	<section class="grid slider wow fadeIn" id="container">
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 			<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 				title="紗舞缡-極品集"> -->
+<!-- 			<div class="mask"> -->
+<!-- 				<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 			</div> -->
+<!-- 		</figure> -->
+		
+<!-- <!-- 		======================= --> 
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i>  -->
+<!-- 				<i class="icon-star on"></i>  -->
+<!-- 				<i class="icon-star on"></i>  -->
+<!-- 				<i class="icon-star"></i>  -->
+<!-- 				<i class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- <!-- 		======================= --> 
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/fk_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/ds_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/wb_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="gridItem"> -->
+<!-- 		<figure> -->
+<!-- 		<img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" -->
+<!-- 			title="紗舞缡-極品集"> -->
+<!-- 		<div class="mask"> -->
+<!-- 			<a href="_07_storePage/store.htm">觀看菜單</a> -->
+<!-- 		</div> -->
+<!-- 		</figure> -->
+<!-- 		<div class="storeInfo"> -->
+<!-- 			<h2> -->
+<!-- 				<a href="_07_storePage/store.htm">紗舞缡-極品集</a> -->
+<!-- 			</h2> -->
+<!-- 			<!--有亮的星星class要加上on--> 
+<!-- 			<div class="star"> -->
+<!-- 				<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
+<!-- 					class="icon-star on"></i> <i class="icon-star"></i> <i -->
+<!-- 					class="icon-star"></i> -->
+<!-- 			</div> -->
+<!-- 			<div class="dist"> -->
+<!-- 				<i class="icon-location"></i>大安區 -->
+<!-- 			</div> -->
+<!-- 			<div class="tagOrder"> -->
+<!-- 				<div class="tag"> -->
+<!-- 					<span>日式料理</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="orderCount"> -->
+<!-- 					目前訂單<span>999</span> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	</section> 
+	
+	</main>
 	<!--搜尋-->
 	<div class="search">
 		<div class="searchBg"></div>
@@ -525,7 +533,6 @@
 	<script src="javascript/share.js"></script>
 	<!-- 取得使用者位置 -->
 	<script	 src = "js/getUsrLocation.js"></script>
-	<script src="js/getRestaurantFromUser.js"></script>
 </body>
 
 </html>

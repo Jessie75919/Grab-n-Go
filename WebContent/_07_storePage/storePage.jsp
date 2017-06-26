@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="zh-hant">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>店家資訊-Grab &amp; Go</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>店家資訊-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -26,65 +27,27 @@
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
+    <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
+    <jsp:setProperty property="restNameA" name="${prodType}" value="${storeBean.rest_name}"/>
+<%--     <c:set target="${prodType}" property="restNameA" value="${storeBean['rest_name']}"/> --%>
 </head>
 
 <body id="top" class="cbp-spmenu-push">
-<!--      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" /> -->
-    <header>
-        <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
-        <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div>
-        <div class="logo">
-            <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
-        </div>
-        <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
-        <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
-        <div class="account">
-            <ul>
-<!--                                 未登入用這組 -->
-                <li><a href="../_02_login/login.htm">登入</a></li>
-<!--                                 未登入用這組 end -->
-<!--                                 已登入用這組 -->
-                <li><a href="../_06_member/member.htm">Juicekuo</a></li>
-                <li><a href="#">登出</a></li>
-<!--                                 已登入用這組 end -->
-            </ul>
-        </div>
-    </header>
-    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-        <!--已登入用這組 未登入的話這塊隱藏-->
-        <div class="memberLogin">
-            <figure><img src="../images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure>
-            <p>JuiceKuo<a href="#">登出</a></p>
-        </div>
-        <!--已登入用這組 未登入的話這塊隱藏 end-->
-        <ul>
-            <li><a href="../_06_member/member.htm"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
-            <li><a href="../_06_member/order.htm"><i class="icon-list"></i>訂購紀錄</a></li>
-            <li><a href="../_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
-        </ul>
-        <!-- AddToAny BEGIN -->
-        <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            <a class="a2a_button_facebook"></a>
-            <a class="a2a_button_line"></a>
-            <a class="a2a_button_google_plus"></a>
-            <a class="a2a_button_twitter"></a>
-            <a class="a2a_button_email"></a>
-        </div>
-        <script async src="https://static.addtoany.com/menu/page.js"></script>
-        <!-- AddToAny END -->
-    </nav>
+     <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
+     
+     
     <div class="insideTitle">
         <figure><img src="../images/restImage/af_mBanner.jpg" alt="店家資訊" title="店家資訊"></figure>
         <!--店家資訊-->
         <div class="storeTitle">
             <div class="storeLogo"><img src="../images/restImage/af_logo.jpg" alt="Afternoon Tea" title="Afternoon Tea"></div>
             <div class="storeRight">
-                <h3>Afternoon Tea‧統一午茶風光<span>三越南西門市</span></h3>
+                <h3>${storeBean['rest_name']}<span>${storeBean['rest_branch']}</span></h3>
                 <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                <p><i class="icon-location"></i>台北市中山區南京西路12號B1</p>
-                <p><i class="icon-phone"></i>02-2521-2630</p>
+                <p><i class="icon-location"></i>${storeBean.rest_address}</p>
+                <p><i class="icon-phone"></i>${storeBean.rest_phone}</p>
                 <div class="tagOrder">
-                    <div class="tag"><span>日式料理</span></div>
+                    <div class="tag"><span>${storeBean.rest_type}</span></div>
                     <div class="orderCount">目前訂單<span>999</span></div>
                 </div>
             </div>
@@ -92,17 +55,23 @@
         <!--店家資訊 end-->
     </div>
     <main>
-        <div class="brcame"><a href="../index.jsp">首頁</a> / Afternoon Tea‧統一午茶風光 三越南西門市</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a> / ${storeBean.rest_name}&nbsp;${storeBean.rest_branch}</div>
         <section class="content">
             <div class="tabs animated-fade">
                 <div class="tabArea">
                     <ul class="tabLinks slider">
+                    
+                    	<c:forEach var="foodType" items="${prodType.allProductType}"  varStatus='vs'>
+                   			<li <c:if test="${vs.first}">class ="active"</c:if>><a href="#tab0"></a>${foodType.prod_typeName}</li>
+                    	</c:forEach>
+                    
+                  
+                    
                         <!--菜單分類 要新增類別 href="#tab1" 的編號要往下新增-->
-                        <li class="active">
-                            <a href="#tab0">套餐</a></li>
-                        <li><a href="#tab1">主餐</a></li>
-                        <li><a href="#tab2">甜點</a></li>
-                        <li><a href="#tab3">飲料</a></li>
+<!--                         <li class="active"><a href="#tab0">套餐</a></li> -->
+<!--                         <li><a href="#tab1">主餐</a></li> -->
+<!--                         <li><a href="#tab2">甜點</a></li> -->
+<!--                         <li><a href="#tab3">飲料</a></li> -->
                     </ul>
                 </div>
                 <div class="tab-content">

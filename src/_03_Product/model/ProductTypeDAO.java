@@ -15,6 +15,17 @@ import _00_init.GlobalService;
 
 public class ProductTypeDAO {
 	private DataSource ds = null;
+	String restNameA;
+	
+	
+
+	public String getRestNameA() {
+		return restNameA;
+	}
+
+	public void setRestNameA(String restNameA) {
+		this.restNameA = restNameA;
+	}
 
 	public ProductTypeDAO() {
 		try {
@@ -60,13 +71,29 @@ public class ProductTypeDAO {
 			} else {
 				System.out.println(typeName + ": 刪除失敗");
 			}
-			
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<String> getAllProductType() {
+		List<String> ptList = new ArrayList<String>();
+		String sql = "select type_name from product_type where rest_name=?";
+
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1,restNameA);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				String typeName = rs.getString(1);
+				ptList.add(typeName);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ptList;
+	}
+	
 	
 	public List<String> queryAllProductType(String restName) {
 		List<String> ptList = new ArrayList<String>();

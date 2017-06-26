@@ -48,9 +48,9 @@
             <li class="list-group-item">
               <a href="../_21_storeMenuSystem/_storeMenuEditDelete.jsp">修改餐點項目</a>
             </li>
-            <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
+            <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</a></li>
             <li class="list-group-item">
-              <a href="#">營業額統計</a>
+              <a href=""../_23_storeOrderAnalysis/_storeOrderAnalysisMonthly.jsp"">營業額統計</a>
             </li>
           </ul>
         </div>

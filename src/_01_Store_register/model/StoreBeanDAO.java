@@ -24,6 +24,8 @@ public class StoreBeanDAO {
 	private DataSource ds = null;
 	StoreLoginServiceDB slsdb;
 
+	
+
 	public StoreBeanDAO() {
 		try {
 			Context ctx = new InitialContext();
@@ -174,20 +176,19 @@ public class StoreBeanDAO {
 	
 	
 	/* ----------------------------------------------------------------------------------------
-	 *  Search by name 
+	 *  Search by id 
 	 * */
-	public List<StoreBean> getStoreByName(String rest_nameInput){
+	public StoreBean getStoreById(int rest_id){
 		
-		String sql = "select * from restaurant where rest_name = ? " ;
+		String sql = "select * from restaurant where rest_id = ? " ;
 		List<StoreBean> listStore = new ArrayList<>();
-		
+		StoreBean sb = null;
 		try (Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);
 				) {
-			pst.setString(1, rest_nameInput.trim());
+			pst.setInt(1, rest_id);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
-				int rest_id = rs.getInt("rest_id");
 				String rest_type = rs.getString("rest_type");
 				String rest_name = rs.getString("rest_name");
 				String rest_branch = rs.getString("rest_branch");
@@ -204,16 +205,57 @@ public class StoreBeanDAO {
 				Blob rest_logo = rs.getBlob("rest_logo");
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 			
-				StoreBean sb = new StoreBean(
+				sb = new StoreBean(
 						rest_id,rest_type,rest_name,rest_branch,rest_address,
 						rest_phone,rest_owner,rest_email,rest_username,rest_password,
 						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
 						rest_coverimage);
 				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sb;
+	}
+	
+	/* ----------------------------------------------------------------------------------------
+	 *  Search all stores used in SaveLocation.java
+	 * */
+	public List<StoreBean> getAllStores(){
+		
+		String sql = "select * from restaurant " ;
+		List<StoreBean> listStore = new ArrayList<>();
+		StoreBean sb = null;
+		try (Connection con = ds.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+				) {
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				int rest_id = rs.getInt(1);
+				String rest_type = rs.getString("rest_type");
+				String rest_name = rs.getString("rest_name");
+				String rest_branch = rs.getString("rest_branch");
+				String rest_address = rs.getString("rest_address");
+				String rest_phone = rs.getString("rest_phone");
+				String rest_owner = rs.getString("rest_owner");
+				String rest_email = rs.getString("rest_email");
+				String rest_username = rs.getString("rest_username");
+				String rest_password = rs.getString("rest_password");
+				String rest_url = rs.getString("rest_url");
+				double rest_longitude = rs.getDouble("rest_longitude");
+				double rest_latitude = rs.getDouble("rest_latitude");
+				Blob rest_mainbanner = rs.getBlob("rest_mainbanner");
+				Blob rest_logo = rs.getBlob("rest_logo");
+				Blob rest_coverimage = rs.getBlob("rest_coverimage");
+				
+				sb = new StoreBean(
+						rest_id,rest_type,rest_name,rest_branch,rest_address,
+						rest_phone,rest_owner,rest_email,rest_username,rest_password,
+						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
+						rest_coverimage);
 				listStore.add(sb);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listStore;

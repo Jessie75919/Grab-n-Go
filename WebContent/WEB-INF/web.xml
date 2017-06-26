@@ -106,4 +106,10 @@
     <servlet-name>AddNewDish</servlet-name>
     <url-pattern>/AddNewDish</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppStoreProfileServlet</display-name>
+    <servlet-name>AppStoreProfileServlet</servlet-name>
+    <servlet-class>_02_App_profile.controller.AppStoreProfileServlet</servlet-class>
+  </servlet>
 </web-app>

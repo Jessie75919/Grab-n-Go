@@ -1,4 +1,4 @@
-package _02_login.controller;
+package _06_listRestaurants.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;

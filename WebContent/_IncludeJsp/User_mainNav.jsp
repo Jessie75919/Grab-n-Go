@@ -20,7 +20,7 @@
 		<ul>
 			<!--未登入用這組-->
 			<c:if test="${empty LoginOK}">
-				<li><a href="_02_login/loginA.jsp">登入</a></li>
+				<li><a href="../_02_login/loginA.jsp">登入</a></li>
 			</c:if>
 <!-- 			<li><a href="_02_login/loginA.jsp">登入</a></li> -->
 			<!--未登入用這組 end-->
@@ -49,7 +49,7 @@
 	<!--已登入用這組 未登入的話這塊隱藏 end-->
 	<ul>
 		<li><a href="_06_member/memberA.jsp"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
-		<li><a href="_06_member/order.htm"><i class="icon-list"></i>訂購紀錄</a></li>
+		<li><a href="_06_member/order.jsp"><i class="icon-list"></i>訂購紀錄</a></li>
 		<li><a href="_08_about/about.htm"><i class="icon-gg"></i>關於Grab
 				&amp; Go</a></li>
 	</ul>

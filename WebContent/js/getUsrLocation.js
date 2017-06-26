@@ -91,7 +91,7 @@ function createStoreList(store) {
                 mask.className = "mask";
                 /*---------------------------------------------------------*/
                     var link = document.createElement("a");
-                    link.href = "#";
+                    link.href = "getStoreBean.do?id="+store.rest_id;
                     /*---------------------------------------------------------*/
                         var text = document.createTextNode("觀看菜單");
 
@@ -109,7 +109,7 @@ function createStoreList(store) {
              var h2 = document.createElement("h2");
                 /*---------------------------------------------------------*/   
                  var link2 = document.createElement("a");
-                    link2.href = "#";
+                    link2.href = "getStoreBean.do?id="+store.rest_id;
                     /*---------------------------------------------------------*/
                         var text2 = document.createTextNode(store.rest_name);
 
@@ -184,6 +184,5 @@ function createStoreList(store) {
         container.appendChild(gridItem);
 
 
-
-    alert("hihihihihi");
+    // alert("hihihihihi");
 }

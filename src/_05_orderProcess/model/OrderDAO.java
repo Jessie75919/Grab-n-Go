@@ -41,7 +41,6 @@ public class OrderDAO {
 		String sql = "SELECT a.ord_id, a.ord_time, b.rest_name, a.ord_totalPrice, a.ord_status"
 				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
 				+ " WHERE m_username = ?";
-
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);

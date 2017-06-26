@@ -112,8 +112,4 @@
     <servlet-name>AppStoreProfileServlet</servlet-name>
     <servlet-class>_02_App_profile.controller.AppStoreProfileServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>AppStoreProfileServlet</servlet-name>
-    <url-pattern>/AppStoreProfileServlet</url-pattern>
-  </servlet-mapping>
 </web-app>

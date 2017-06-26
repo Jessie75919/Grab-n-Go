@@ -1,3 +1,4 @@
+<%@page import="_03_Product.model.ProductType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -28,8 +29,7 @@
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
     <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
-    <jsp:setProperty property="restNameA" name="${prodType}" value="${storeBean.rest_name}"/>
-<%--     <c:set target="${prodType}" property="restNameA" value="${storeBean['rest_name']}"/> --%>
+    <c:set target="${prodType}" property="restNameA" value="${storeBean['rest_name']}"/>
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -61,13 +61,13 @@
                 <div class="tabArea">
                     <ul class="tabLinks slider">
                     
-                    	<c:forEach var="foodType" items="${prodType.allProductType}"  varStatus='vs'>
-                   			<li <c:if test="${vs.first}">class ="active"</c:if>><a href="#tab0"></a>${foodType.prod_typeName}</li>
-                    	</c:forEach>
+                 	<c:set var="x" value="0"/>
+                   	<c:forEach var="foodType" items="${prodType.allProductType}"   varStatus='vs'>
+                		<li <c:if test="${vs.first}">class ="active"</c:if>><a href="#tab${x}">${foodType}</a></li>
+	                 	<c:set var="x" value="${x+1}"/>
+                   	</c:forEach>
                     
-                  
-                    
-                        <!--菜單分類 要新增類別 href="#tab1" 的編號要往下新增-->
+<!--                         菜單分類 要新增類別 href="#tab1" 的編號要往下新增 -->
 <!--                         <li class="active"><a href="#tab0">套餐</a></li> -->
 <!--                         <li><a href="#tab1">主餐</a></li> -->
 <!--                         <li><a href="#tab2">甜點</a></li> -->

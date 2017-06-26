@@ -31,7 +31,8 @@ public class UpdateProduct extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("updateDish.do~");
+		
+		
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		Map<String, String> errorMsg = new HashMap<String, String>();
 		Map<String, String> msgOK = new HashMap<String, String>();

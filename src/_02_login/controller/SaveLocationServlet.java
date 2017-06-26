@@ -45,27 +45,36 @@ public class SaveLocationServlet extends HttpServlet {
 		if (latitude == 0 || longitude == 0) {
 			/* check the value of Cookies */
 			Cookie[] coks = request.getCookies();
-			if (coks != null) {
-				try {
-					for (Cookie cok : coks) {
-						if (cok.getName().equals("lat")) {
-							latitude = Double.parseDouble(cok.getValue());
-						} else if (cok.getName().equals("lng")) {
-							longitude = Double.parseDouble(cok.getValue());
-						}
+			System.out.println("here ??");
+			try {
+				for (Cookie cok : coks) {
+					if (cok.getName().equals("lat")) {
+						latitude = Double.parseDouble(cok.getValue());
+						System.out.println("latitude= " + latitude);
+					} else if (cok.getName().equals("lng")) {
+						longitude = Double.parseDouble(cok.getValue());
 					}
-				} catch (NumberFormatException e) {
-					System.out.println(e.getMessage());
-					e.printStackTrace();
+					
 				}
-			} else { // get nothing from Cookies ....
-						// 隨機塞幾家餐廳回去
-				System.out.println("latitude & longitude not found ! ");
-				Gson gson = new Gson();
-				String msgJson = gson.toJson("找不到您的座標，這樣無法替您搜尋附近的餐廳喔~");
-				out.write(msgJson);
-				out.flush();
+				if (latitude == 0 && longitude == 0) {
+					// get nothing from Cookies ....
+					// 隨機塞幾家餐廳回去
+					System.out.println("隨機塞幾家餐廳回去");
+					StoreBeanDAO dao = new StoreBeanDAO();
+					List<StoreBean> storeList = dao.getAllStores();
+					Gson gson = new Gson();
+					String storeListJson = gson.toJson(storeList);
+					out.write(storeListJson);
+					out.flush();
+				}else{
+					getRestWithLocation(out);
+
+				}
+			} catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
+			
 		} else { /* get the value of location from broswer */
 			/* store into Cookie */
 			Cookie lat = new Cookie("lat", String.valueOf(latitude));
@@ -76,28 +85,25 @@ public class SaveLocationServlet extends HttpServlet {
 			lng.setPath(request.getContextPath());
 			response.addCookie(lat);
 			response.addCookie(lng);
+			
+			getRestWithLocation(out);
 
-			/* get restaurant from user's Location */
-			StoreBeanDAO dao = new StoreBeanDAO();
-			// CALL get_Rest(25.0483199,121.5344137);
-			List<StoreBean> storeList = dao.getStoreFromUser(latitude, longitude);
-			Gson gson = new Gson();
-			String storeListJson = gson.toJson(storeList);
-			System.out.println(storeListJson);
-			out.write(storeListJson);
-			out.flush();
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 		}
 
 	}
+	private void getRestWithLocation(PrintWriter out){
+		/* get restaurant from user's Location */
+		StoreBeanDAO dao = new StoreBeanDAO();
+		// CALL get_Rest(25.0483199,121.5344137);
+		List<StoreBean> storeList = dao.getStoreFromUser(25.0483199, 121.5344137);
+		// List<StoreBean> storeList = dao.getStoreFromUser(latitude,
+		// longitude);
+		Gson gson = new Gson();
+		String storeListJson = gson.toJson(storeList);
+		System.out.println(storeListJson);
+		out.write(storeListJson);
+		out.flush();
+	}
+	
 
 }

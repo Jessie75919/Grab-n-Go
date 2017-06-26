@@ -68,8 +68,8 @@ CREATE TABLE restaurant (
 	rest_username VARCHAR(30) NOT NULL,
 	rest_password VARCHAR(50) NOT NULL,
 	rest_url VARCHAR(100),
-	rest_longitude FLOAT,
-	rest_latitude FLOAT,
+	rest_longitude DOUBLE,
+	rest_latitude DOUBLE,
 	rest_mainbanner LONGBLOB,
 	rest_logo LONGBLOB,
 	rest_coverimage LONGBLOB,
@@ -164,7 +164,9 @@ DROP PROCEDURE IF EXISTS get_Rest //
 
 CREATE PROCEDURE get_Rest( lat DOUBLE, longi DOUBLE )
 BEGIN  
-   SELECT a.rest_id AS rest, 
+    SELECT a.rest_id , a.rest_type , a.rest_name , a.rest_branch , a.rest_address , a.rest_phone, 
+ a.rest_owner , a.rest_email , a.rest_username , a.rest_password , a.rest_url , a.rest_longitude ,
+  a.rest_latitude , a.rest_mainbanner , a.rest_logo , a.rest_coverimage , a.rest_validate ,
 	111.111 *
 	DEGREES(ACOS(COS(RADIANS(a.rest_latitude))
 		 * COS(RADIANS(lat))

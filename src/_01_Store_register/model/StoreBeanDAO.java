@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,8 +81,8 @@ public class StoreBeanDAO {
 			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
-			pst.setFloat(++i, sb.getRest_longitude()); 
-			pst.setFloat(++i, sb.getRest_latitude());
+			pst.setDouble(++i, sb.getRest_longitude()); 
+			pst.setDouble(++i, sb.getRest_latitude());
 			pst.setBoolean(++i, false);		//rest_validate於註冊完成時應為未驗證
 
 			result = pst.executeUpdate();
@@ -197,8 +198,8 @@ public class StoreBeanDAO {
 				String rest_username = rs.getString("rest_username");
 				String rest_password = rs.getString("rest_password");
 				String rest_url = rs.getString("rest_url");
-				float rest_longitude = rs.getFloat("rest_longitude");
-				float rest_latitude = rs.getFloat("rest_latitude");
+				double rest_longitude = rs.getDouble("rest_longitude");
+				double rest_latitude = rs.getDouble("rest_latitude");
 				Blob rest_mainbanner = rs.getBlob("rest_mainbanner");
 				Blob rest_logo = rs.getBlob("rest_logo");
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
@@ -248,8 +249,8 @@ public class StoreBeanDAO {
 			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
 			pst.setString(++i, sb.getRest_url());
-			pst.setFloat(++i, sb.getRest_longitude()); 
-			pst.setFloat(++i, sb.getRest_latitude());
+			pst.setDouble(++i, sb.getRest_longitude()); 
+			pst.setDouble(++i, sb.getRest_latitude());
 			pst.setBinaryStream(++i, banner, bannerSize);
 			pst.setBinaryStream(++i, logo, logoSize);
 			pst.setBinaryStream(++i, cover, coverSize);
@@ -294,6 +295,63 @@ public class StoreBeanDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listStore;
+	}
+	
+	
+	/* ----------------------------------------------------------------------------------------
+	 *  Search store with user's location
+	 * */
+	public List<StoreBean> getStoreFromUser(double lat,double lng){
+		
+		String sql = "CALL get_Rest(?,?);";
+				
+		List<StoreBean> listStore = new ArrayList<>();
+		System.out.println(lat+ "  " +lng);
+		try (Connection con = ds.getConnection();
+			 PreparedStatement pst = con.prepareStatement(sql);
+				) {
+			pst.setDouble(1, lat);
+			pst.setDouble(2, lng);
+			Statement stmt = con.createStatement();
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				int rest_id = rs.getInt(1);
+				System.out.println("rest_id = " + rest_id);
+				String rest_type = rs.getString("a.rest_type");
+				String rest_name = rs.getString("rest_name");
+				System.out.println("rest_name = " + rest_name);
+				String rest_branch = rs.getString("rest_branch");
+				String rest_address = rs.getString("rest_address");
+				String rest_phone = rs.getString("rest_phone");
+				String rest_owner = rs.getString("rest_owner");
+				String rest_email = rs.getString("rest_email");
+				String rest_username = rs.getString("rest_username");
+				String rest_password = rs.getString("rest_password");
+				String rest_url = rs.getString("rest_url");
+				double rest_longitude = rs.getDouble("rest_longitude");
+				double rest_latitude = rs.getDouble("rest_latitude");
+				Blob rest_mainbanner = rs.getBlob("rest_mainbanner");
+				Blob rest_logo = rs.getBlob("rest_logo");
+				Blob rest_coverimage = rs.getBlob("rest_coverimage");
+				double distance = Math.round(rs.getDouble("distance_in_km")*1000.0); // toMeter
+				System.out.println(distance);
+			
+				StoreBean sb = new StoreBean(
+						rest_id,rest_type,rest_name,rest_branch,rest_address,
+						rest_phone,rest_owner,rest_email,rest_username,rest_password,
+						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
+						rest_coverimage);
+				listStore.add(sb);
+				
+				for(StoreBean sbn : listStore){
+					System.out.println( "in StoreBeanDAO : "+sbn);
+				}
+				
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listStore;

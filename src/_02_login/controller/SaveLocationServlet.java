@@ -2,6 +2,7 @@ package _02_login.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+
+import _01_Store_register.model.StoreBean;
+import _01_Store_register.model.StoreBeanDAO;
 
 /**
  * Servlet implementation class SaveLocationServlet
@@ -74,7 +78,15 @@ public class SaveLocationServlet extends HttpServlet {
 			response.addCookie(lng);
 
 			/* get restaurant from user's Location */
-
+			StoreBeanDAO dao = new StoreBeanDAO();
+			// CALL get_Rest(25.0483199,121.5344137);
+			List<StoreBean> storeList = dao.getStoreFromUser(25.0483199, 121.5344137);
+			Gson gson = new Gson();
+			String storeListJson = gson.toJson(storeList);
+			System.out.println(storeListJson);
+//			out.write(storeListJson);
+//			out.flush();
+			
 		}
 
 	}

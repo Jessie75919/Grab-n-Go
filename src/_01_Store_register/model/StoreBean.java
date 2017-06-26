@@ -16,12 +16,13 @@ public class StoreBean implements Serializable {
 	private String rest_username;
 	private String rest_password;
 	private String rest_url;
-	private float rest_longitude;
-	private float rest_latitude;
+	private double rest_longitude;
+	private double rest_latitude;
 	private Blob rest_mainbanner;
 	private Blob rest_logo;
 	private Blob rest_coverimage;
 	private boolean rest_validate;
+	private double distance;
 
 	public StoreBean() {
 		super();
@@ -52,7 +53,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(int rest_id, String rest_type, String rest_name, String rest_branch, String rest_address,
 			String rest_phone, String rest_owner, String rest_email, String rest_username, String rest_password,
-			String rest_url, float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo,
+			String rest_url, double rest_longitude, double rest_latitude, Blob rest_mainbanner, Blob rest_logo,
 			Blob rest_coverimage) {
 		super();
 		this.rest_id = rest_id;
@@ -78,7 +79,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(String rest_type, String rest_name, String rest_branch, String rest_address, String rest_phone,
 			String rest_owner, String rest_email, String rest_username, String rest_password, String rest_url,
-			float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo, Blob rest_coverimage) {
+			double rest_longitude, double rest_latitude, Blob rest_mainbanner, Blob rest_logo, Blob rest_coverimage) {
 		super();
 		this.rest_type = rest_type;
 		this.rest_name = rest_name;
@@ -110,7 +111,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(String rest_type, String rest_name, String rest_branch, String rest_address, String rest_phone,
 			String rest_owner, String rest_email, String rest_username, String rest_password, String rest_url,
-			float rest_longitude, float rest_latitude) {
+			double rest_longitude, double rest_latitude) {
 		super();
 		this.rest_type = rest_type;
 		this.rest_name = rest_name;
@@ -141,7 +142,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(int rest_id, String rest_type, String rest_name, String rest_branch, String rest_address,
 			String rest_phone, String rest_owner, String rest_email, String rest_username, String rest_password,
-			String rest_url, float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo,
+			String rest_url, double rest_longitude, double rest_latitude, Blob rest_mainbanner, Blob rest_logo,
 			Blob rest_coverimage, boolean rest_validate) {
 		super();
 		this.rest_id = rest_id;
@@ -165,7 +166,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(int rest_id, String rest_type, String rest_name, String rest_branch, String rest_address,
 			String rest_phone, String rest_owner, String rest_email, String rest_username, String rest_password,
-			String rest_url, float rest_longitude, float rest_latitude, boolean rest_validate) {
+			String rest_url, double rest_longitude, double rest_latitude, boolean rest_validate) {
 		super();
 		this.rest_id = rest_id;
 		this.rest_type = rest_type;
@@ -203,7 +204,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(String rest_type, String rest_name, String rest_branch, String rest_address, String rest_phone,
 			String rest_owner, String rest_email, String rest_username, String rest_password, String rest_url,
-			float rest_longitude, float rest_latitude, Blob rest_mainbanner, Blob rest_logo, Blob rest_coverimage,
+			double rest_longitude, double rest_latitude, Blob rest_mainbanner, Blob rest_logo, Blob rest_coverimage,
 			boolean rest_validate) {
 		super();
 		this.rest_type = rest_type;
@@ -226,7 +227,7 @@ public class StoreBean implements Serializable {
 
 	public StoreBean(String rest_type, String rest_name, String rest_branch, String rest_address, String rest_phone,
 			String rest_owner, String rest_email, String rest_username, String rest_password, String rest_url,
-			float rest_longitude, float rest_latitude, boolean rest_validate) {
+			double rest_longitude, double rest_latitude, boolean rest_validate) {
 		super();
 		this.rest_type = rest_type;
 		this.rest_name = rest_name;
@@ -258,6 +259,27 @@ public class StoreBean implements Serializable {
 		this.rest_password = rest_password;
 		this.rest_url = rest_url;
 		this.rest_validate = rest_validate;
+		
+	}
+	
+	
+	/*used  <StroeBeanDAO>  getStoreFromUser()*/
+	public StoreBean(String rest_type, String rest_name, String rest_branch, String rest_address, String rest_phone,
+			String rest_owner, String rest_email, String rest_username, String rest_password, String rest_url,
+			boolean rest_validate,double distance) {
+		super();
+		this.rest_type = rest_type;
+		this.rest_name = rest_name;
+		this.rest_branch = rest_branch;
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_owner = rest_owner;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_password = rest_password;
+		this.rest_url = rest_url;
+		this.rest_validate = rest_validate;
+		this.distance = distance;
 	}
 
 	/*---------------------------------------------------------------------------------
@@ -351,19 +373,19 @@ public class StoreBean implements Serializable {
 		this.rest_url = rest_url;
 	}
 
-	public float getRest_longitude() {
+	public double getRest_longitude() {
 		return rest_longitude;
 	}
 
-	public void setRest_longitude(float rest_longitude) {
+	public void setRest_longitude(double rest_longitude) {
 		this.rest_longitude = rest_longitude;
 	}
 
-	public float getRest_latitude() {
+	public double getRest_latitude() {
 		return rest_latitude;
 	}
 
-	public void setRest_latitude(float rest_latitude) {
+	public void setRest_latitude(double rest_latitude) {
 		this.rest_latitude = rest_latitude;
 	}
 

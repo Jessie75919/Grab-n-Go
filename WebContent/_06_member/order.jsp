@@ -33,29 +33,6 @@
 <body id="top" class="cbp-spmenu-push">
  <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
 
-<!--     <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1"> -->
-<!--         已登入用這組 未登入的話這塊隱藏 -->
-<!--         <div class="memberLogin"> -->
-<!--             <figure><img src="../images/userImage/user_photo.jpg" alt="Photo" title="Photo"></figure> -->
-<!--             <p>JuiceKuo<a href="#">登出</a></p> -->
-<!--         </div> -->
-<!--         已登入用這組 未登入的話這塊隱藏 end -->
-<!--         <ul> -->
-<!--             <li><a href="../_06_member/member.htm"><i class="icon-user"></i>檢視/編輯個人資料</a></li> -->
-<!--             <li><a href="../_06_member/order.htm"><i class="icon-list"></i>訂購紀錄</a></li> -->
-<!--             <li><a href="../_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li> -->
-<!--         </ul> -->
-<!--         AddToAny BEGIN -->
-<!--         <div class="a2a_kit a2a_kit_size_32 a2a_default_style"> -->
-<!--             <a class="a2a_button_facebook"></a> -->
-<!--             <a class="a2a_button_line"></a> -->
-<!--             <a class="a2a_button_google_plus"></a> -->
-<!--             <a class="a2a_button_twitter"></a> -->
-<!--             <a class="a2a_button_email"></a> -->
-<!--         </div> -->
-<!--         <script async src="https://static.addtoany.com/menu/page.js"></script> -->
-<!--         AddToAny END -->
-<!--     </nav> -->
     <div class="insideTitle">
         <h2>訂購紀錄</h2>
     </div>

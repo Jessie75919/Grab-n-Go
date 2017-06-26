@@ -18,6 +18,26 @@ import _00_init.GlobalService;
 
 public class ProductDAO implements ProductInterface{
 	private DataSource ds = null;
+	
+	private int rest_id;
+	private String typeName;
+	
+
+	public int getRest_id() {
+		return rest_id;
+	}
+
+	public void setRest_id(int rest_id) {
+		this.rest_id = rest_id;
+	}
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
 
 	public ProductDAO() {
 		try {
@@ -29,6 +49,7 @@ public class ProductDAO implements ProductInterface{
 			e.printStackTrace();
 		}
 	}
+	
 
 	@Override
 	public int insertProduct(Product prod, InputStream is) {
@@ -131,6 +152,10 @@ public class ProductDAO implements ProductInterface{
 		return result;
 	}
 
+	public List<Product> getProductByType(){
+		List<Product> ptList = queryProducts(rest_id,typeName);
+		return ptList;
+	}
 
 	@Override
 	public List<Product> queryProducts(int rest_id, String typeName) {

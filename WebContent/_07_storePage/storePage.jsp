@@ -30,6 +30,8 @@
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
     <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
     <c:set target="${prodType}" property="restNameA" value="${storeBean['rest_name']}"/>
+    <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session"/>
+    <c:set target="${product}" property="" value="" />
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -60,20 +62,12 @@
             <div class="tabs animated-fade">
                 <div class="tabArea">
                     <ul class="tabLinks slider">
-                    
-                 	<c:set var="x" value="0"/>
-                   	<c:forEach var="foodType" items="${prodType.allProductType}"   varStatus='vs'>
-                		<li <c:if test="${vs.first}">class ="active"</c:if>><a href="#tab${x}">${foodType}</a></li>
-	                 	<c:set var="x" value="${x+1}"/>
+                   	<c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
+                		<li <c:if test="${vs.first}"> class ="active"</c:if>><a href="#tab${foodType}">${foodType}</a></li>
                    	</c:forEach>
-                    
-<!--                         菜單分類 要新增類別 href="#tab1" 的編號要往下新增 -->
-<!--                         <li class="active"><a href="#tab0">套餐</a></li> -->
-<!--                         <li><a href="#tab1">主餐</a></li> -->
-<!--                         <li><a href="#tab2">甜點</a></li> -->
-<!--                         <li><a href="#tab3">飲料</a></li> -->
                     </ul>
                 </div>
+                
                 <div class="tab-content">
                     <div id="tab0" class="tab active">
                         <div class="storeMenuList">
@@ -84,6 +78,9 @@
                             <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
                             <div class="storeMenuPrice">$360</div>
                         </div>
+                        
+                        
+                        
                         <div class="storeMenuList">
                             <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
                                 <div class="mask"><a href="#">我要訂餐</a></div>
@@ -305,6 +302,7 @@
     <script src="../javascript/tabs.js"></script>
     <!--share js-->
     <script src="../javascript/share.js"></script>
+    <script src="../js/readProduct.js"></script>
 </body>
 
 </html>

@@ -50,6 +50,7 @@ public class OrderItemDAO {
 			while (rs.next()) {
 				OrderItemBean oib = new OrderItemBean();
 				oib.setItem_name(rs.getString("item_name"));
+				oib.setProd_id(rs.getInt("prod_id"));
 				oib.setItem_price(rs.getInt("item_price"));
 				oib.setItem_amount(rs.getInt("item_amount"));
 				oib.setItem_note(rs.getString("item_note"));

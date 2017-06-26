@@ -86,7 +86,7 @@
                 <!--菜單列表-->
                 <c:forEach var="orderItemBean" items="${orderItemDAOBean.orderItemById}">
                 <div class="foodList">
-                    <figure><img src="../images/restImage/fk_coverImg.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜"></figure>
+                    <figure><img src='${pageContext.servletContext.contextPath}/_00_init/getImage?id=${orderItemBean.prod_id}' alt="${orderItemBean.item_name}" title="${orderItemBean.item_name}"></figure>
                     <div class="foodInfo">
                         <h4>${orderItemBean.item_name}</h4>
                         <p>數量 ${orderItemBean.item_amount} <span class="price">NT$${orderItemBean.item_price}</span></p>

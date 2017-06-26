@@ -1,91 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--載入bootstrap 效果-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/_storeOrderAnalysisMonthly.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-    <!-- 載入 d3.js -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <title>Welcome to GrabAndGo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
+  <link rel="stylesheet" href="../css/_storeOrderAnalysisDay.css" type="text/css">
+  <!-- 載入長條圖js -->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
+	<script src="../js/d3pie.js"></script>
+  <title>Welcome to GrabAndGo</title>
 </head>
-<!--商家帳務分析-->
-<!--每月營業額統計-->
-
+<!-- 商家登入成功畫面 -->
+<!-- 帳務分析頁面/ 每月訂單統計(一併呈現當日餐點熱銷) -->
 <body>
-    <!--Logo-->
-    <header>
-        <div class="logoImg">
-        <img src="../images/share/logo.svg" alt="">
-        </div>
-    </header>
-    <div class="topBlock">
+    <div class="container">
+       <div class="row" >
+         <div class="col-md-12 p-0"> 
+        <!-- <div> -->
+          <center>
+          <img width="350px" src="../images/share/logo.svg">
+          </center>
+        <!-- </div> -->
+         </div> 
+       <!--</div>-->
+      </div>
+      </div>
+      <div id="topBlock" class="topBlock">
         <h2>帳&nbsp&nbsp務&nbsp&nbsp分&nbsp&nbsp析</h2>
+      </div> 
+      <!-- <div class="row">
+        
+      </div>
     </div>
-    <!--店家profile-->
-    <section class="container">
-        <div class="row">
-            <!-- 店家profile -->
-            <div class="col-md-3">
-                <center>
-                    <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-                    <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-                        alt="Photo" title="Photo">
-                    <br>
-                </center>
-            </div>
-            <div class="col-md-9">
-            </div>
-    </section>
-    <section class="container">
-        <div id="leftMenu" class="row">
+  </div> -->
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- 店家profile -->
+        <div class="col-md-3">
+        <center>
+         <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
+         <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
+          <br>
+         </center>
+        </div>
+        <div class="col-md-9">
+          <!-- <div>
+            <br>
+            <h3 id="formHeading">本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
+          </div>
+          <br>
+          <div id="orderStatusHeading">
+            待處理訂單
+          </div>
+        </div> -->
+      </div>
+      <div id="leftMenu" class="row">
         <!-- 左側列表 -->
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
-            <!-- 表格開始 -->
-            <div id="middleForm" class="col-md-9">
-                <div>
-                    <h3>本月訂單統計</h3>
-                </div>
-                <!-- 圖表區塊 -->
-                <div id="barChart">
-                    <!-- 動態產生 -->
-                </div>
-                <span id="spanText">本月總金額:</span>
-                <hr>
+        <!-- 表格開始 -->
+        <div id="middleForm" class="col-md-9" >
+          <span id="spanText">
+            <h3>本月訂單統計</h3>
+            </span>
+        <!-- 圖表區塊 -->
+          <div id="barChart">
+            <!-- 動態產生 -->
+          </div>
+          <span id="spanText">本月總金額:</span>
+            <hr>
+            
+              <table id="orderTable">
+                <tr>
+                  <th>訂購日期</th>
+                  <th>餐點種類</th>
+                  <th>餐點名稱</th>
+                  <th>銷售數量</th>
+                  <th>銷售總額</th>
+                </tr>
+                <!-- 營業額統計係項 -->
+                <tr>
+                  <td nowrap="">2017/06/22 11:05:31</td>
+                  <td>主餐</td>
+                  <td>西班牙海鮮燉飯</td>
+                  <td>100</td>
+                  <td>$33000</td>
+                </tr>
 
-                <table id="orderTable">
-                    <tr>
-                        <th>訂購日期</th>
-                        <th>餐點種類</th>
-                        <th>餐點名稱</th>
-                        <th>銷售數量</th>
-                        <th>銷售總額</th>
-                    </tr>
-                    <!-- 營業額統計係項 -->
-                    <tr>
-                        <td nowrap="">2017/06/22 11:05:31</td>
-                        <td>主餐</td>
-                        <td>西班牙海鮮燉飯</td>
-                        <td>100</td>
-                        <td>$33000</td>
-                    </tr>
-
-                </table>
-                <hr>
-            </div>
+              </table>
+            <hr> 
         </div>
-        <div class="row">
-        </div>
-        </div>
-        </div>
-    </section>
-
-<!--長條圖 js-->
+      </div>
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+  <!--長條圖 js-->
     <script type="text/javascript">
         // 設定svg長寬
         var svg_width = 500;
@@ -154,10 +169,9 @@
             .attr("fill", "white")
 
     </script>
-    <!--載入js-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
 </body>
 
 </html>

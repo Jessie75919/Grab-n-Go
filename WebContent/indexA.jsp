@@ -129,6 +129,7 @@
 		<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
 		${cookie.lat.value}<br>
 		${cookie.lng.value}
+		${stList}
 	</h2>
 	</section>
 	 <!--標語 end--> 

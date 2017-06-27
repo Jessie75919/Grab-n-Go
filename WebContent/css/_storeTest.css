@@ -1,0 +1,40 @@
+/*設定字體*/
+ul, li, h2, h3, .topTitle h2, #middleForm, #leftMenu, #topBlock, #topName{
+	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+}
+.logoArea{
+	width:20%;
+	margin: 0 auto;
+	padding-top: 34px;
+}
+
+
+.topTitle{
+	position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 0% 0px 0%;
+	/*border:1px solid powderblue;*/
+}
+.topTitle h2 {
+    background-color: rgb(213, 141, 60);
+    padding: 30px 3% 30px 3%;
+    color: #fff;
+}
+.col-md-0 h3{
+	margin: 40px;
+}
+th{
+  text-align: left;
+  font-size: 110%;
+  width: 200px;
+  height: 40px;
+
+}
+
+td{
+  font-size: 110%;
+}
+ul, li{
+  font-size: 108%;
+}

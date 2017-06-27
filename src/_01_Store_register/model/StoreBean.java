@@ -135,6 +135,20 @@ public class StoreBean implements Serializable {
 		this.rest_validate = rest_validate;
 	}
 
+	public StoreBean(String rest_address, String rest_phone, String rest_email, String rest_username,
+			String rest_password, String rest_url, double rest_longitude, double rest_latitude) {
+		super();
+		this.rest_address = rest_address;
+		this.rest_phone = rest_phone;
+		this.rest_email = rest_email;
+		this.rest_username = rest_username;
+		this.rest_password = rest_password;
+		this.rest_url = rest_url;
+		this.rest_longitude = rest_longitude;
+		this.rest_latitude = rest_latitude;
+	}
+	
+
 	/*---------------------------------------------------------------------------------
 	 * */
 

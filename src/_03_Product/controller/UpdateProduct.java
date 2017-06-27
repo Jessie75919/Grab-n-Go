@@ -46,7 +46,8 @@ public class UpdateProduct extends HttpServlet {
 		// check the updatelist
 		if (updateList.equals("0")) {
 			errorMsg.put("NeedOne", "至少需要修改一個欄位喔~");
-			RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
+			//RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDeleteA.jsp");
 			rd.forward(request, response);
 			System.out.println("need to fill");
 			return;
@@ -108,7 +109,8 @@ public class UpdateProduct extends HttpServlet {
 		}
 		System.out.println("全數新增成功~");
 		msgOK.put("OK", "更新成功囉~");
-		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDelete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuEditDeleteA.jsp");
 		rd.forward(request, response);
 		return;
 

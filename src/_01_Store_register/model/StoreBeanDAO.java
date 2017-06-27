@@ -278,6 +278,10 @@ public class StoreBeanDAO {
 		return listStore;
 	}
 
+	/* ----------------------------------------------------------------------------------------
+	 *  Android App Using
+	 * */
+	
 	public int insertShopData(StoreBean sb, InputStream banner, InputStream logo, InputStream cover, long bannerSize,
 			long logoSize, long coverSize) { 
 		int result = 0;
@@ -290,7 +294,10 @@ public class StoreBeanDAO {
 				+ "rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,"
 				+ "rest_mainbanner,rest_logo,rest_coverimage,rest_validate)"
 				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+		try (
+				Connection con = ds.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+			) {
 			int i = 0;
 			System.out.println("------------------------------------");
 			pst.setString(++i, sb.getRest_type());
@@ -358,6 +365,41 @@ public class StoreBeanDAO {
 		}
 		return listStore;
 	}
+	
+	public int updateShopDataForApp(StoreBean sb) {
+		
+		int result = 0;
+		
+		String sql = "update restaurant set rest_password =?, rest_address=?, "
+				+ "rest_phone=?, rest_email=?, rest_url=?, rest_longitude=?, "
+				+ "rest_latitude=? where rest_username = ?";
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);
+		) {
+			int i = 0;
+			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
+			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));
+			pst.setString(++i, sb.getRest_address());
+			pst.setString(++i, sb.getRest_phone());
+			pst.setString(++i, sb.getRest_email());
+			pst.setString(++i, sb.getRest_url());
+			pst.setDouble(++i, sb.getRest_longitude());
+			pst.setDouble(++i, sb.getRest_latitude());
+			pst.setString(++i, sb.getRest_username());
+			
+			result = pst.executeUpdate();
+			if (result == 1) {
+				System.out.println(sb.getRest_username() + " update successfully - Android App ");
+			} else
+				System.out.println(sb.getRest_username() + " gets wrong - Android App ");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	};
 	
 	
 //	public List<StoreBean> getStoreFromUser(){

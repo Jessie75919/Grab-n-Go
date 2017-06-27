@@ -1,0 +1,32 @@
+.col-md-9 h3{
+	font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+
+	}
+label{
+	font-size: 114%;
+}
+#leftMenu, #profileArea, #topHeading{
+  font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
+}
+#profileArea{
+/* 	border:1px solid powderblue; */
+}
+#btnS{
+  margin-left: 38%;
+  /*width:50%;*/
+  float: left;
+}
+#pRight{
+  float:left;
+}
+#btnC{
+  margin-left: 5px;
+  float: left;
+}
+#titleP{
+  margin:10px;
+  font-size: 150%;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-style: italic;
+  font-weight: bold;
+}

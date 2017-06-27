@@ -87,19 +87,19 @@ public class AppStoreRegisterServlet extends HttpServlet {
 			}
 			
 			String latitude_s = jsonObject.get("latitude").getAsString();
-			float latitude;
+			double latitude;
 			if(latitude_s == null || latitude_s.trim().length() == 0){
 				latitude = 0.0f;
 			} else {
-				latitude = Float.parseFloat(latitude_s);
+				latitude = Double.parseDouble(latitude_s);
 			}
 			
 			String longitude_s = jsonObject.get("longitude").getAsString();
-			float longitude;
+			double longitude;
 			if(longitude_s == null || longitude_s.trim().length() == 0){
 				longitude = 0.0f;
 			} else {
-				longitude = Float.parseFloat(longitude_s);
+				longitude = Double.parseDouble(longitude_s);
 			}
 			
 			

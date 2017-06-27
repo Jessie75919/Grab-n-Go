@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="SYSTEM" class="_00_init.GlobalService"
-	scope="application" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<jsp:useBean id="SYSTEM" class="_00_init.GlobalService" scope="application" />
 
 <html>
 <head>
@@ -101,7 +101,8 @@
 	<!-- 		<a class="a2a_button_facebook"></a> <a class="a2a_button_line"></a> <a -->
 	<!-- 			class="a2a_button_google_plus"></a> <a class="a2a_button_twitter"></a> -->
 	<!-- 		<a class="a2a_button_email"></a> --> <!-- 	</div> --> <!-- 	<script async src="https://static.addtoany.com/menu/page.js"></script> -->
-	<!-- AddToAny END --> </nav>
+	<!-- AddToAny END --> 
+	</nav>
 	<div class="mainBanner">
 		<h1 class="slider wow fadeInDown" data-wow-delay="0.3s">
 			What do you want<br> <span class="wBig">TO EAT</span><br> <span
@@ -124,15 +125,56 @@
 	 <!--標語--> 
 	 <section class="content bgRed">
 	<h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
-		"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"
+		"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?
+		<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
+		${cookie.lat.value}<br>
+		${cookie.lng.value}
 	</h2>
 	</section>
 	 <!--標語 end--> 
 	 <!--瀑布流--> 
+	 <c:set var="x" value="${stList}" />
 	 <section class="grid slider wow fadeIn" id="container"> 
-		
-		
-		</section> 
+	 <!-- 	// CALL get_Rest(25.0483199,121.5344137); -->
+	 	<c:forEach var="restaurant" items="${x}" varStatus='vs'>
+	 	<div class="gridItem">
+		<figure>
+			<img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${restaurant.rest_username}&type=restaurant&loc=cover" alt="${restaurant.rest_name}" title="${restaurant.rest_name}">
+			<div class="mask">
+				<a href="_07_storePage/storePage.jsp?restUser=${restaurant.rest_username}&restId=${restaurant.rest_id}&restName=${restaurant.rest_name}&restBranch=&{restaurant.rest_branch}&restType=${restaurant.rest_type}&restAddr=${restaurant.rest_address}&restPhone=${restaurant.rest_phone}&restMail=${restaurant.rest_email}&restUrl=${restaurant.rest_url}">觀看菜單</a>
+			</div>
+		</figure>
+		<div class="storeInfo">
+			<h2>
+			${restaurant.rest_id}
+				<a href="_07_storePage/storePage.jsp?restUser=${restaurant.rest_username}&restId=${restaurant.rest_id}&restName=${restaurant.rest_name}&restBranch=&{restaurant.rest_branch}&restType=${restaurant.rest_type}&restAddr=${restaurant.rest_address}&restPhone=${restaurant.rest_phone}&restMail=${restaurant.rest_email}&restUrl=${restaurant.rest_url}">${restaurant.rest_name}</a>
+			</h2>
+<!-- 			有亮的星星class要加上on -->
+			<div class="star">
+				<i class="icon-star on"></i>
+				<i class="icon-star on"></i> 
+				<i class="icon-star on"></i> 
+				<i class="icon-star"></i> 
+				<i class="icon-star"></i>
+			</div>
+			<div class="dist">
+			<c:set var="string1" value="${restaurant.rest_address}"/>
+			<c:set var="string2" value="${fn:substring(string1,3,6)}"/>
+				<i class="icon-location"></i>${string2}
+			</div>
+			<div class="tagOrder">
+				<div class="tag">
+					<span>${restaurant.rest_type}</span>
+				</div>
+				<div class="orderCount">
+					目前訂單<span>999</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	</c:forEach>
+
+	</section> 
 		</main>
 	<!--搜尋-->
 	<div class="search">

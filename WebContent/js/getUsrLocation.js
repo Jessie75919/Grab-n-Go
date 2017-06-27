@@ -3,8 +3,6 @@ var container = document.getElementById("container");
 var lat = 0;
 var long = 0;
 
-
-
 window.onload = function () {
 
 
@@ -17,11 +15,18 @@ window.onload = function () {
          lat = position.coords.latitude;
          long = position.coords.longitude;
 
+
+        //  alert("in successFunction");
+        //  setCookie("lat", lat);
+        //  setCookie("lng", long);
+        //  alert("lat" + lat + ",  long" + long);
+    
+    
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "SaveLocation.do?latitude=" + lat
             + "&longitude=" + long, true);
         xhr.send();
-
+    /*
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var storeList = JSON.parse(xhr.responseText);
@@ -35,6 +40,7 @@ window.onload = function () {
             }
 
         }
+    */
 
         localStorage['authorizedGeoLocation'] = 1;
     }
@@ -42,12 +48,16 @@ window.onload = function () {
     function errorFunction() {
         localStorage['authorizedGeoLocation'] = 0;
         alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
+        // setCookie("lat", lat);
+        // setCookie("lng", long);
 
+        
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "SaveLocation.do?latitude=" + lat
             + "&longitude=" + long, true);
         xhr.send();
 
+        /*
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var storeList = JSON.parse(xhr.responseText);
@@ -61,6 +71,7 @@ window.onload = function () {
             }
 
         }
+        */
     }
 
     function checkauthorizedGeoLocation() { // you can use this function to know if geoLocation was previously allowed
@@ -69,6 +80,26 @@ window.onload = function () {
         else
             return true;
     }
+
+   
+}
+
+function setCookie(name,value) {
+    var cookieName = name; 
+    if (document.cookie.indexOf(cookieName) >= 0) {
+        var expD = new Date();
+        expD.setTime(expD.getTime() + (-1 * 24 * 60 * 60 * 1000));
+        var uexpires = "expires=" + expD.toUTCString();
+        document.cookie = cookieName + "=" + value + "; " + uexpires;
+    }
+    /*第二段*/
+    //設定cookie值
+    var d = new Date();
+    var exdays = 7 ;
+    //可以自行修改此段，將過期週期設為符合需求的格式
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cookieName + "=" + value + "; " + expires;
 }
 
 

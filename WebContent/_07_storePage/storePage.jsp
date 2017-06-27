@@ -29,27 +29,28 @@
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
     <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
-    <c:set target="${prodType}" property="restNameA" value="${storeBean['rest_name']}"/>
+    <c:set target="${prodType}" property="restNameA" value="${param.restName}"/>
     <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session"/>
-    <c:set target="${product}" property="" value="" />
+<%--     <c:set target="${product}" property="" value="" /> --%>
 </head>
 
 <body id="top" class="cbp-spmenu-push">
      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
      
-     
     <div class="insideTitle">
-        <figure><img src="../images/restImage/af_mBanner.jpg" alt="店家資訊" title="店家資訊"></figure>
+        <figure>
+        <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${param.restUser}&type=restaurant&loc=main" alt="店家資訊" title="店家資訊">
+        </figure>
         <!--店家資訊-->
         <div class="storeTitle">
-            <div class="storeLogo"><img src="../images/restImage/af_logo.jpg" alt="Afternoon Tea" title="Afternoon Tea"></div>
+            <div class="storeLogo"><img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${param.restUser}&type=restaurant&loc=logo" alt="${param.restName}" title="${param.restName}"></div>
             <div class="storeRight">
-                <h3>${storeBean['rest_name']}<span>${storeBean['rest_branch']}</span></h3>
+                <h3>${param.restName}<span>${param.restBranch}</span></h3>
                 <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                <p><i class="icon-location"></i>${storeBean.rest_address}</p>
-                <p><i class="icon-phone"></i>${storeBean.rest_phone}</p>
+                <p><i class="icon-location"></i>${param.restAddr}</p>
+                <p><i class="icon-phone"></i>${param.restPhone}</p>
                 <div class="tagOrder">
-                    <div class="tag"><span>${storeBean.rest_type}</span></div>
+                    <div class="tag"><span>${param.restType}</span></div>
                     <div class="orderCount">目前訂單<span>999</span></div>
                 </div>
             </div>
@@ -57,7 +58,7 @@
         <!--店家資訊 end-->
     </div>
     <main>
-        <div class="brcame"><a href="../indexA.jsp">首頁</a> / ${storeBean.rest_name}&nbsp;${storeBean.rest_branch}</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a> / ${param.restName}&nbsp;${param.restBranch}</div>
         <section class="content">
             <div class="tabs animated-fade">
                 <div class="tabArea">

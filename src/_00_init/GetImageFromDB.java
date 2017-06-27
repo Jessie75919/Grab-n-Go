@@ -21,10 +21,13 @@ public class GetImageFromDB extends HttpServlet {
 		try {
 			// 讀取瀏覽器傳送來的書籍代號(BookID)
 			String id = request.getParameter("id");
+			System.out.println("id = "+id);
 			// 分辨讀取哪個表格的圖片欄位
 			String type = request.getParameter("type"); 
+			System.out.println("type = "+type);
 			// 取得能夠執行JNDI的Context物件
 			String location = request.getParameter("loc");
+			System.out.println("location = "+location);
 			String mimeType ="";
 			Context context = new InitialContext();
 			// 透過JNDI取得DataSource物件
@@ -42,6 +45,7 @@ public class GetImageFromDB extends HttpServlet {
 					pstmt = conn.prepareStatement(
 							"SELECT rest_name,rest_mainbanner from restaurant where rest_username = ?");
 				}else if(location.equalsIgnoreCase("cover")){
+					System.out.println("cover ??");
 					pstmt = conn.prepareStatement(
 							"SELECT rest_name,rest_coverimage from restaurant where rest_username = ?");
 				}

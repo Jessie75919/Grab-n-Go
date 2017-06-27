@@ -23,8 +23,25 @@ public class StoreBeanDAO {
 	private List<StoreBean> storeList;
 	private DataSource ds = null;
 	StoreLoginServiceDB slsdb;
-
+	private double lat;
+	private double lng;
 	
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
 
 	public StoreBeanDAO() {
 		try {
@@ -343,21 +360,36 @@ public class StoreBeanDAO {
 	}
 	
 	
+//	public List<StoreBean> getStoreFromUser(){
+//		double latitude = Double.parseDouble(lat);
+//		System.out.println("latitude= " + latitude);
+//		double longitude = Double.parseDouble(lng);
+//		System.out.println("longitude= " + longitude);
+//		List<StoreBean> listStore = getStoreFromUser(latitude,longitude);
+//		for(StoreBean sb:listStore){
+//			System.out.println(sb);
+//		}
+//		return listStore;
+//				
+//	}
+//	
 	/* ----------------------------------------------------------------------------------------
 	 *  Search store with user's location
 	 * */
 	public List<StoreBean> getStoreFromUser(double lat,double lng){
 		
 		String sql = "CALL get_Rest(?,?);";
+//		String sql = "select * from restaurant";
 				
 		List<StoreBean> listStore = new ArrayList<>();
-		System.out.println(lat+ "  " +lng);
-		try (Connection con = ds.getConnection();
+		try (
+			 Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);
-				) {
+		) {
+			
+			System.out.println("AA = "+lat+ "  " +lng);
 			pst.setDouble(1, lat);
 			pst.setDouble(2, lng);
-			Statement stmt = con.createStatement();
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				int rest_id = rs.getInt(1);
@@ -386,6 +418,7 @@ public class StoreBeanDAO {
 						rest_phone,rest_owner,rest_email,rest_username,rest_password,
 						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
 						rest_coverimage);
+				
 				listStore.add(sb);
 				
 				for(StoreBean sbn : listStore){

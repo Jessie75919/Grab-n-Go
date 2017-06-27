@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -22,6 +24,8 @@ import _01_Store_register.model.StoreBeanDAO;
 @WebServlet("/SaveLocation.do")
 public class SaveLocationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	double latitude = 0;
+	double longitude = 0;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,8 +33,8 @@ public class SaveLocationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		double latitude = 0;
-		double longitude = 0;
+		HttpSession session = request.getSession();
+		
 
 		try {
 			latitude = Double.parseDouble(request.getParameter("latitude"));
@@ -62,12 +66,20 @@ public class SaveLocationServlet extends HttpServlet {
 					System.out.println("隨機塞幾家餐廳回去");
 					StoreBeanDAO dao = new StoreBeanDAO();
 					List<StoreBean> storeList = dao.getAllStores();
-					Gson gson = new Gson();
-					String storeListJson = gson.toJson(storeList);
-					out.write(storeListJson);
-					out.flush();
+					session.setAttribute("stList", storeList);
+					
+					RequestDispatcher rd = 
+							request.getRequestDispatcher("indexA.jsp");
+					rd.forward(request, response);
+					return;
+					
+//					Gson gson = new Gson();
+//					String storeListJson = gson.toJson(storeList);
+//					out.write(storeListJson);
+//					out.flush();
 				}else{
-					getRestWithLocation(out);
+					
+					getRestWithLocation(out,request,response);
 
 				}
 			} catch (NumberFormatException e) {
@@ -86,23 +98,35 @@ public class SaveLocationServlet extends HttpServlet {
 			response.addCookie(lat);
 			response.addCookie(lng);
 			
-			getRestWithLocation(out);
+			getRestWithLocation(out,request,response);
 
 		}
-
 	}
-	private void getRestWithLocation(PrintWriter out){
+	private void getRestWithLocation(PrintWriter out,HttpServletRequest request, HttpServletResponse response){
 		/* get restaurant from user's Location */
 		StoreBeanDAO dao = new StoreBeanDAO();
 		// CALL get_Rest(25.0483199,121.5344137);
-		List<StoreBean> storeList = dao.getStoreFromUser(25.0483199, 121.5344137);
+		List<StoreBean> storeList = dao.getStoreFromUser(25.0572434, 121.54062429999999);
+		System.out.println("latitude=" + latitude);
+		System.out.println("longitude=" + longitude);
 		// List<StoreBean> storeList = dao.getStoreFromUser(latitude,
 		// longitude);
-		Gson gson = new Gson();
-		String storeListJson = gson.toJson(storeList);
-		System.out.println(storeListJson);
-		out.write(storeListJson);
-		out.flush();
+		HttpSession session = request.getSession();
+		session.setAttribute("stList", storeList);
+		try {
+			RequestDispatcher rd = 
+					request.getRequestDispatcher("indexA.jsp");
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
+//		Gson gson = new Gson();
+//		String storeListJson = gson.toJson(storeList);
+//		System.out.println(storeListJson);
+//		out.write(storeListJson);
+//		out.flush();
 	}
 	
 

@@ -41,7 +41,8 @@ public class AddNewType extends HttpServlet {
 		// check the row of count
 		if (count == 0) {
 			errorMsg.put("NeedOne", "至少需要填一個欄位喔~");
-			RequestDispatcher rd = request.getRequestDispatcher("_storeMenuProdType.jsp");
+			//RequestDispatcher rd = request.getRequestDispatcher("_storeMenuProdType.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeMenuInsertTypeA.jsp");
 			rd.forward(request, response);
 			System.out.println("need to fill");
 			return;
@@ -67,7 +68,8 @@ public class AddNewType extends HttpServlet {
 		System.out.println("全數新增成功~");
 
 		msgOK.put("OK", "新增成功囉~");
-		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuProdType.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("_storeMenuProdType.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuInsertTypeA.jsp");
 		rd.forward(request, response);
 		return;
 

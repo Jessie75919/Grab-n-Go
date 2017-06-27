@@ -6,63 +6,96 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
+<!--   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> -->
   <link rel="stylesheet" href="../css/_storeIndexAfterLogin.css" type="text/css">
+  <link rel="stylesheet" href="../css/_storeTest.css"type="text/css">
+<!--   <link rel="stylesheet" href="../css/bootstrap.min.css"type="text/css"> -->
   <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->
 <!-- 待處理訂單頁面 -->
 <body>
- <div class="py-5">
-   <!--  <div class="container">
-      <div class="row"> -->
-        <!-- <div class="col-md-12"> -->
-        <div>
-          <center>
-          <img width="350px" src="../images/share/logo.svg">
-          </center>
-        </div>
-        <!-- </div> -->
-      <!-- </div>
-      </div> -->
-      </div>
-      <div id="topBlock" class="topBlock">
-      	<h2>本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h2>
-      </div> 
-      <!-- <div class="row">
-        
-      </div>
-    </div>
-  </div> -->
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <!-- 店家profile -->
-        <div class="col-md-3">
-        <center>
-         <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
+<!-- logo -->
+<header>
+	<div class="logoArea">
+		<img src="../images/share/logo.svg">
+	</div>
+	<div class="topTitle">
+		<h2>本日訂單</h2>
+	</div>
+</header>
+<!-- 店家PROFILE -->
+<section class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<center> 
+<!--          <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
          <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo">
           <br>
          </center>
-        </div>
-        <div class="col-md-9">
-          <!-- <div>
-          	<br>
-          	<h3 id="formHeading">本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3>
-          </div>
-          <br>
-          <div id="orderStatusHeading">
-          	待處理訂單
-          </div>
-        </div> -->
-      </div>
-      <div id="leftMenu" class="row">
+		</div>
+		<div class="col-md-9">
+		<div>
+			<h3>待處理訂單</h3>
+		</div>
+	</div>
+</section>
+<!--  <div class="py-5"> -->
+<!--    <!--  <div class="container"> -->
+<!--       <div class="row"> --> 
+<!--         <div class="col-md-12"> -->
+<!--         <div> -->
+<!--           <center> -->
+<!--           <img width="350px" src="../images/share/logo.svg"> -->
+<!--           </center> -->
+<!--         </div> -->
+<!--         </div> -->
+<!--       </div>
+<!--       </div> --> 
+<!--       </div> -->
+<!--       <div id="topBlock" class="topBlock"> -->
+<!--       	<h2>本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h2> -->
+<!--       </div>  -->
+<!--       <div class="row">
+        
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> --> 
+<!--   <div class="py-5"> -->
+<!--     <div class="container"> -->
+<!--       <div class="row"> -->
+<!--         店家profile -->
+<!--         <div class="col-md-3"> -->
+<!--         <center> -->
+<!--          <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
+<%--          <img  src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo' alt="Photo" title="Photo"> --%>
+<!--           <br> -->
+<!--          </center> -->
+<!--         </div> -->
+<!--         <div class="col-md-9"> -->
+<!--           <div>
+<!--           	<br> -->
+<!--           	<h3 id="formHeading">本&nbsp&nbsp日&nbsp&nbsp訂&nbsp&nbsp單</h3> -->
+<!--           </div> -->
+<!--           <br> -->
+<!--           <div id="orderStatusHeading"> -->
+<!--           	待處理訂單 -->
+<!--           </div> -->
+<!--         </div> --> 
+<!--       </div> -->
+<!-- <section id="leftMenu" class="contianer"> -->
+      <div class="row">
         <!-- 左側列表 -->
         <jsp:include page="../_IncludeJsp/StoreLogin_Menu.jsp" />
         <!-- 訂單表格開始 -->
         <div id="middleForm" class="col-md-9" >
         <!-- 按鈕區塊 -->
           <div>
+          
+          
+          
+          
+          
             <ul class="nav nav-pills">
               <li id="leftOrderButtomGroup"><a href="#">待處理訂單</a></li>
               <li id="leftOrderButtomGroup"><a href="#">已完成訂單</a></li>
@@ -176,11 +209,13 @@
             <hr> 
         </div>
       </div>
+      </div>
       <div class="row">
         
       </div>
     </div>
   </div>
+  </section>
   <script type="text/javascript">
 
     // 觸發取消訂單事件

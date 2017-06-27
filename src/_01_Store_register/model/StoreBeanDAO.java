@@ -356,7 +356,9 @@ public class StoreBeanDAO {
 		String sql = "update restaurant set rest_password =?, rest_address=?, "
 				+ "rest_phone=?, rest_email=?, rest_url=?, rest_longitude=?, "
 				+ "rest_latitude=? where rest_username = ?";
-		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);
+		) {
 			int i = 0;
 			String pwEncryped = GlobalService.encryptString(sb.getRest_password());
 			pst.setString(++i, GlobalService.getMD5Endocing(pwEncryped));

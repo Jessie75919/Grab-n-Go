@@ -112,4 +112,13 @@
     <servlet-name>AppStoreProfileServlet</servlet-name>
     <servlet-class>_02_App_profile.controller.AppStoreProfileServlet</servlet-class>
   </servlet>
+  <filter>
+    <display-name>LoadingHomepage</display-name>
+    <filter-name>LoadingHomepage</filter-name>
+    <filter-class>_06_listRestaurants.controller.LoadingHomepage</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoadingHomepage</filter-name>
+    <url-pattern>/LoadingHomepage</url-pattern>
+  </filter-mapping>
 </web-app>

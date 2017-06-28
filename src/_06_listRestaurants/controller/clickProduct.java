@@ -23,8 +23,6 @@ public class clickProduct extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Wow  ~~!!");
-//		HttpSession session = request.getSession();
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
@@ -37,7 +35,6 @@ public class clickProduct extends HttpServlet {
 		ProductDAO dao = new ProductDAO(); 
 		Product pro = dao.getOneProduct(id);
 		System.out.println(pro);
-//		session.setAttribute("clickProd", pro);
 		
 		Gson gson = new Gson();
 		String proTxt = gson.toJson(pro);

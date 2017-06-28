@@ -25,8 +25,6 @@ public class GetImageFromDBA extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
-		System.out.println("HOHO~");
 		
 		Connection conn = null;
 		OutputStream os = null;

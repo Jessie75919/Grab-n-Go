@@ -59,7 +59,7 @@
 		<a href="#" title="搜尋"><i class="icon-search"></i></a>
 	</div>
 	<div class="rightBtn">
-		<a href="_04_ShoppingCart/cart.htm" title="購物車"><i
+		<a href="_04_ShoppingCart/cartA.jsp" title="購物車"><i
 			class="icon-bag"></i></a>
 	</div>
 	<div class="account">
@@ -127,8 +127,8 @@
 	<h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
 		"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?
 		<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
-		${cookie.lat.value}<br>
-		${cookie.lng.value}
+<%-- 		${cookie.lat.value}<br> --%>
+<%-- 		${cookie.lng.value} --%>
 	</h2>
 	</section>
 	 <!--標語 end--> 
@@ -146,7 +146,6 @@
 		</figure>
 		<div class="storeInfo">
 			<h2>
-			${restaurant.rest_id}
 				<a href="_07_storePage/storePage.jsp?restUser=${restaurant.rest_username}&restId=${restaurant.rest_id}&restName=${restaurant.rest_name}&restBranch=&{restaurant.rest_branch}&restType=${restaurant.rest_type}&restAddr=${restaurant.rest_address}&restPhone=${restaurant.rest_phone}&restMail=${restaurant.rest_email}&restUrl=${restaurant.rest_url}">${restaurant.rest_name}</a>
 			</h2>
 <!-- 			有亮的星星class要加上on -->

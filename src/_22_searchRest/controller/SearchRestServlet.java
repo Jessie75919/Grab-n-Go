@@ -26,6 +26,8 @@ public class SearchRestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		System.out.println("SearchRestServlet");
+		
 		String foodKind = "";
 		String storeName = "";
 		String foodName = "";
@@ -36,6 +38,10 @@ public class SearchRestServlet extends HttpServlet {
 		foodKind = request.getParameter("foodKind");
 		storeName = request.getParameter("storeName");
 		foodName = request.getParameter("foodName");
+		
+		System.out.println("foodKind = " + foodKind);
+		System.out.println("storeName = " + storeName);
+		System.out.println("foodName = " + foodName);
 		
 		//依欄位是否為空值做判斷，會得到不同的count值
 		//若非空值時才會丟給RestDAO

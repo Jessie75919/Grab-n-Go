@@ -9,9 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
-
 import _03_Product.model.Product;
 import _03_Product.model.ProductDAO;
 import _03_Product.model.ProductTypeDAO;
@@ -28,6 +28,9 @@ public class findAllProduct extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String typeFood = "";
 		int restId = Integer.parseInt(request.getParameter("id"));
+		String use = request.getParameter("use");
+		
+		
 		System.out.println("restId = " + restId);
 		try {
 			typeFood = request.getParameter("type");
@@ -52,10 +55,19 @@ public class findAllProduct extends HttpServlet {
 			try {
 				ProductDAO dao = new ProductDAO();
 				List<Product> list = dao.queryProducts(restId, typeFood);
-				String typeJson = new Gson().toJson(list); 
-				System.out.println(typeJson);
-	            out.write(typeJson);
-	            out.flush();
+				
+				if(use.equals("ajax")){
+					String typeJson = new Gson().toJson(list); 
+					System.out.println(typeJson);
+		            out.write(typeJson);
+		            out.flush();
+				}else if(use.equals("jsp")){
+					HttpSession session = request.getSession();
+					session.setAttribute("prodByType", list);
+				}
+				
+				
+				
 			} finally {
 				out.close();
 			}

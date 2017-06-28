@@ -50,7 +50,7 @@ function chooseType() {
 	var typeFood = document.getElementById("typeSelectA").value;
 	console.log("typeFood = " + typeFood.value);
 
-	xhr.open("GET", "findAllProduct.do?id=" + storeId + "&type=" + typeFood, true);
+	xhr.open("GET", "findAllProduct.do?id=" + storeId + "&type=" + typeFood+"&use=ajax", true);
 	xhr.send();
 
 	xhr.onreadystatechange = function () {

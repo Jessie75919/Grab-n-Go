@@ -19,9 +19,19 @@ import _00_init.GlobalService;
 public class ProductDAO implements ProductInterface{
 	private DataSource ds = null;
 	
+	private int prod_id;
 	private int rest_id;
 	private String typeName;
 	
+	
+
+	public int getProd_id() {
+		return prod_id;
+	}
+
+	public void setProd_id(int prod_id) {
+		this.prod_id = prod_id;
+	}
 
 	public int getRest_id() {
 		return rest_id;
@@ -156,6 +166,39 @@ public class ProductDAO implements ProductInterface{
 		List<Product> ptList = queryProducts(rest_id,typeName);
 		return ptList;
 	}
+	
+	public Product getOneProduct(int prod_id){
+		Product pro = null;
+		
+		String sql = "select * from product where prod_id = ?";
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1, prod_id);
+			System.out.println("------------------------------------");
+			
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				int prodId = rs.getInt(1);
+				int restId = rs.getInt(2);
+				String typeNameA = rs.getString(3);
+				String prodName = rs.getString(4);
+				int prodPrice = rs.getInt(5);
+				String prodDesc = rs.getString(6);
+				Blob prodImg = rs.getBlob(7);
+				String fileNmae = rs.getString(8);
+
+				pro = new Product(prodId, restId, typeNameA, prodName, prodPrice, prodDesc, prodImg, fileNmae);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("I am a SQLException !");
+		}
+		return pro;
+		
+		
+	}
+	
 
 	@Override
 	public List<Product> queryProducts(int rest_id, String typeName) {

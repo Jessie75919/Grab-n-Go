@@ -21,9 +21,13 @@ import javax.sql.DataSource;
 @WebServlet("/_00_init/getImage")
 public class GetImageFromDBA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
+		System.out.println("HOHO~");
+		
 		Connection conn = null;
 		OutputStream os = null;
 		InputStream is = null;

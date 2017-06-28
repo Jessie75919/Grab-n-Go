@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,6 @@ public class findAllProduct extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("findAllProduct~");
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -64,6 +64,9 @@ public class findAllProduct extends HttpServlet {
 				}else if(use.equals("jsp")){
 					HttpSession session = request.getSession();
 					session.setAttribute("prodByType", list);
+					RequestDispatcher rd = request.getRequestDispatcher("../_07_storePage/storePage.jsp");
+					rd.forward(request, response);
+					return;
 				}
 				
 				

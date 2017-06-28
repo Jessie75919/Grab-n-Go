@@ -31,13 +31,15 @@
     <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
     <c:set target="${prodType}" property="restNameA" value="${param.restName}"/>
     <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session"/>
-<%--     <c:set target="${product}" property="" value="" /> --%>
+    <c:set target="${product}" property="rest_id" value="${param.restId}"/>
+    
 </head>
 
 <body id="top" class="cbp-spmenu-push">
      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
      
     <div class="insideTitle">
+    
         <figure>
         <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${param.restUser}&type=restaurant&loc=main" alt="店家資訊" title="店家資訊">
         </figure>
@@ -58,149 +60,42 @@
         <!--店家資訊 end-->
     </div>
     <main>
-        <div class="brcame"><a href="../indexA.jsp">首頁</a> / ${param.restName}&nbsp;${param.restBranch}</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${param.restName}&nbsp;${param.restBranch}</div>
         <section class="content">
             <div class="tabs animated-fade">
                 <div class="tabArea">
+                    <c:set var="x" value="0"/>
                     <ul class="tabLinks slider">
                    	<c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
-                		<li <c:if test="${vs.first}"> class ="active"</c:if>><a href="#tab${foodType}">${foodType}</a></li>
+                		<li <c:if test="${vs.first}"> class ="active"</c:if>>
+                		<a href="#tab${x=x+1}">${foodType}</a></li>
                    	</c:forEach>
                     </ul>
                 </div>
                 
-                <div class="tab-content">
-                    <div id="tab0" class="tab active">
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        
-                        
-                        
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
 
-
+                <c:set var="y" value="0"/>
+                <c:forEach var="foodType2" items="${prodType.allProductType}" varStatus='vs'>
+                    <div class="tab-content">
+                    <div id="tab${y=y+1}"  class="tab<c:if test='${vs.first}'> active</c:if>">
+                        <c:set target="${product}" property="typeName" value="${foodType2}"/>
+                        <c:forEach var="food" items="${product.productByType}" varStatus='vs'>
+                            <div class="storeMenuList">
+                                <figure><img src=${pageContext.servletContext.contextPath}/_00_init/getImage?id=${food.prod_id}' alt="${food.prod_name}" title="${food.prod_name}">
+                                    <div class="mask" id="${food.prod_id}" onclick="clickMe(this)"><a href="#">我要訂餐</a></div>
+                                </figure>
+                                <div class="storeMenuName" id="${food.prod_id}" onclick="clickMe(this)"><a href="#">${food.prod_name}</a> </div>
+                                <div class="storeMenuDes">${food.prod_desc}</div>
+                                <div class="storeMenuPrice">$${food.prod_price}</div>
+                            </div>
+						</c:forEach>
                     </div>
-                    <div id="tab1" class="tab">
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                    </div>
-                    <div id="tab2" class="tab">
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic003.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic003.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic003.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                    </div>
-                    <div id="tab3" class="tab">
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                        <div class="storeMenuList">
-                            <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
-                                <div class="mask"><a href="#">我要訂餐</a></div>
-                            </figure>
-                            <div class="storeMenuName"><a href="#">香烤雞腿佐十品溫野菜</a> </div>
-                            <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
-                            <div class="storeMenuPrice">$360</div>
-                        </div>
-                    </div>
-
-                </div>
+					</div>
+				</c:forEach>
 
             </div>
-
         </section>
+        
     </main>
     <!--店家訂購內容-->
     <div class="menuDetail">
@@ -208,11 +103,11 @@
         <section class="searchContent">
             <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
             <form action="#" method="post">
-                <figure><img src="../images/productImageTest/af_menu_pic001.jpg" alt="香烤松阪豬青醬燉飯" title="香烤松阪豬青醬燉飯"></figure>
+                <figure><img id="proImg" src="" alt="香烤松阪豬青醬燉飯" title="香烤松阪豬青醬燉飯"></figure>
                 <div class="menuInfo">
-                    <h4>香烤松阪豬青醬燉飯</h4>
-                    <p class="wRed">$360</p>
-                    <p>松阪豬以特調醬汁醃漬入味，芫荽等香料及蜂蜜風味提點，香烤後 的獨特脆口感，搭配濃郁蘿勒風味燉飯，佐彩椒及蕃茄，點綴莫札 瑞拉起士清爽享用。
+                    <h4 id="title"></h4>
+                    <p class="wRed" id="price"></p>
+                    <p id="desc">
                     </p>
                     <p><textarea placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="else" id="else"></textarea></p>
                     <div class="menuCount">數量<input type="number" name="count" id="count" value="1" min="1"></div>
@@ -303,7 +198,7 @@
     <script src="../javascript/tabs.js"></script>
     <!--share js-->
     <script src="../javascript/share.js"></script>
-    <script src="../js/readProduct.js"></script>
+    <script src="../js/getProductInfo.js"></script>
 </body>
 
 </html>

@@ -89,15 +89,15 @@ public class SaveLocationServlet extends HttpServlet {
 			
 		} else { /* get the value of location from broswer */
 			/* store into Cookie */
-//			Cookie lat = new Cookie("lat", String.valueOf(latitude));
-//			lat.setMaxAge(30 * 60 * 60);
-//			lat.setPath(request.getContextPath());
-//			Cookie lng = new Cookie("lng", String.valueOf(longitude));
-//			lng.setMaxAge(30 * 60 * 60);
-//			lng.setPath(request.getContextPath());
-//			response.addCookie(lat);
-//			response.addCookie(lng);
-//			
+			Cookie lat = new Cookie("lat", String.valueOf(latitude));
+			lat.setMaxAge(30 * 60 * 60);
+			lat.setPath(request.getContextPath());
+			Cookie lng = new Cookie("lng", String.valueOf(longitude));
+			lng.setMaxAge(30 * 60 * 60);
+			lng.setPath(request.getContextPath());
+			response.addCookie(lat);
+			response.addCookie(lng);
+			
 			getRestWithLocation(out,request,response);
 
 		}
@@ -106,7 +106,7 @@ public class SaveLocationServlet extends HttpServlet {
 		/* get restaurant from user's Location */
 		StoreBeanDAO dao = new StoreBeanDAO();
 		// CALL get_Rest(25.0483199,121.5344137);
-		List<StoreBean> storeList = dao.getStoreFromUser(25.0483199, 121.5344137);
+		List<StoreBean> storeList = dao.getStoreFromUser(25.0572434, 121.54062429999999);
 		System.out.println("latitude=" + latitude);
 		System.out.println("longitude=" + longitude);
 		// List<StoreBean> storeList = dao.getStoreFromUser(latitude,

@@ -97,19 +97,19 @@
         </section>
         
     </main>
-    <!--店家訂購內容-->
+    <!--店家訂購內容 (用js塞值)-->
     <div class="menuDetail">
         <div class="searchBg"></div>
         <section class="searchContent">
             <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
-            <form action="#" method="post">
-                <figure><img id="proImg" src="" alt="香烤松阪豬青醬燉飯" title="香烤松阪豬青醬燉飯"></figure>
+            <form action="" method="post">
+                <figure><img id="proImg" src="" alt="" title=""></figure>
                 <div class="menuInfo">
                     <h4 id="title"></h4>
                     <p class="wRed" id="price"></p>
-                    <p id="desc">
-                    </p>
-                    <p><textarea placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="else" id="else"></textarea></p>
+                    <p id="desc"></p>
+                    <input type="text" id="idKey" value="">
+                    <p><textarea id="specialNeed" placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="else" id="else"></textarea></p>
                     <div class="menuCount">數量<input type="number" name="count" id="count" value="1" min="1"></div>
                     <div class="addBtn"><input name="submit" type="submit" id="submit" value="加入購物車"></div>
                 </div>

@@ -46,3 +46,16 @@ td{
 ul, li{
   font-size: 108%;
 }
+/*顯示新增餐點類別結果*/
+.ptResult{
+    margin-top:22%; 
+    border: 1px solid black;
+}
+
+/*訂單明細頁面 總金額&顧客結帳*/
+.totalPrice{
+        margin-left: 84%; 
+    }
+.checkOutBtn{
+        margin-left: 90.5%; 
+    }

@@ -69,6 +69,10 @@
 								class="btn btn-default">
 							<div>
 					</form>
+					<!-- 顯示已新增的餐點 -->
+					<div id="resultArea" style="border: 1px solid black; margin-top: 30%; font-weight: bold;">
+						<h5>	已新增的餐點類別：</h5>
+					</div>
 				</div>
 			</div>
         <div class="row">

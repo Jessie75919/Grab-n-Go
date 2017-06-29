@@ -108,7 +108,7 @@
                     <h4 id="title"></h4>
                     <p class="wRed" id="price"></p>
                     <p id="desc"></p>
-                    <input type="text" id="idKey" value="">
+                    <input type="hidden" id="idKey" value="">
                     <p><textarea id="specialNeed" placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="else" id="else"></textarea></p>
                     <div class="menuCount">數量<input type="number" name="count" id="count" value="1" min="1"></div>
                     <div class="addBtn"><input name="submit" type="submit" id="submit" value="加入購物車"></div>

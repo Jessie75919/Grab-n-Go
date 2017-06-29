@@ -102,7 +102,7 @@
         <div class="searchBg"></div>
         <section class="searchContent">
             <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
-            <form action="" method="post">
+            <form action="../addItem.do" method="POST">
                 <figure><img id="proImg" src="" alt="" title=""></figure>
                 <div class="menuInfo">
                     <h4 id="title"></h4>

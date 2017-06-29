@@ -25,10 +25,10 @@
                         <a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">已完成訂單</a>
+                        <a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">已付款訂單</a>
+                        <a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a>
                     </li>
                     <li class="list-group-item">
                         <a href="#">查詢訂單</a>

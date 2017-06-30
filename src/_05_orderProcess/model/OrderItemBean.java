@@ -22,6 +22,16 @@ public class OrderItemBean {
 		this.item_amount = item_amount;
 		this.item_note = item_note;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "OrderItemBean [serial_no=" + serial_no + ", ord_id=" + ord_id + ", prod_id=" + prod_id + ", item_name="
+				+ item_name + ", item_price=" + item_price + ", item_amount=" + item_amount + ", item_note=" + item_note
+				+ ", m_username=" + m_username + "]";
+	}
+
 	public int getSerial_no() {
 		return serial_no;
 	}

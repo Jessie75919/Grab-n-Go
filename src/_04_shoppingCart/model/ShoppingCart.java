@@ -28,7 +28,7 @@ public class ShoppingCart {
 		}else{
 			List<OrderItemBean> al = shoppingCart.get(prod_Id);
 			 /*if the amount of pro_id is the only one*/
-			if(al.size()==1){
+			if(al.size()==0){
 				List<OrderItemBean> a = new ArrayList<>();
 				a.add(odb);
 				shoppingCart.put(prod_Id, a);

@@ -31,10 +31,10 @@ public class clickProduct extends HttpServlet {
 		if(proId!=null && proId.length()>=0){
 			id = Integer.parseInt(proId);
 		}
-		System.out.println(proId);
+//		System.out.println(proId);
 		ProductDAO dao = new ProductDAO(); 
 		Product pro = dao.getOneProduct(id);
-		System.out.println(pro);
+//		System.out.println(pro);
 		
 		Gson gson = new Gson();
 		String proTxt = gson.toJson(pro);

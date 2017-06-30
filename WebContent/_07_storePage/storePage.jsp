@@ -62,6 +62,8 @@
     </div>
     <main>
         <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</div>
+<%--         <div>${msg}</div> --%>
+<%--         <div>${orderRest}</div> --%>
         <section class="content">
             <div class="tabs animated-fade">
                 <div class="tabArea">

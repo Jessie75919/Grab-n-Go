@@ -44,10 +44,12 @@ function clickMe(e) {
 }
 
 window.onload = function () {
-    var msg = document.getElementById("showMsg");
+    var msg = document.getElementById("showMsg").value;
+    console.log(msg);
     if(msg=="" || msg==null){
     }else{
-        alert(msg.value);
+        alert(msg);
+        msg = "";
     }
 }
 

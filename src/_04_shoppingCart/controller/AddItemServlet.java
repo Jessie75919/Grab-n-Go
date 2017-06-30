@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import _04_shoppingCart.model.ShoppingCart;
 
-@WebServlet("/addItem.do")
+@WebServlet("/_07_storePage/addItem.do")
 public class AddItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,7 +25,6 @@ public class AddItemServlet extends HttpServlet {
 		System.out.println("hi low~");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(false);
-		PrintWriter out = response.getWriter();
 		if (session == null) {      // 使用逾時
 			request.setAttribute("Errors", "使用逾時，請重新登入(BuyBookServlet:SessionTimeOut)");
 			RequestDispatcher rd = request.getRequestDispatcher("/_02_login/login.jsp");
@@ -34,7 +33,6 @@ public class AddItemServlet extends HttpServlet {
 		}
 		// 取出存放在session物件內的ShoppingCart物件
 		ShoppingCart cart = (ShoppingCart)session.getAttribute("ShoppingCart");
-		
 		
 		List<String> paraList = new ArrayList<>();
 		String prodId = request.getParameter("prod_id");
@@ -63,7 +61,7 @@ public class AddItemServlet extends HttpServlet {
 				System.out.println("count="+count);
 				session.setAttribute("OK", "OKKKKK");
 				
-				RequestDispatcher rd = request.getRequestDispatcher("_07_storePage/storePage.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("storePage.jsp");
 				rd.forward(request, response);
 				return;
 			}

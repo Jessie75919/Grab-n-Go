@@ -16,7 +16,7 @@ import _01_Store_register.model.StoreBeanDAO;
 /**
  * Servlet implementation class SaveLocationServlet
  */
-@WebServlet("/getOneRest.do")
+@WebServlet("/_07_storePage/getOneRest.do")
 public class clickRestaurant extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,8 @@ public class clickRestaurant extends HttpServlet {
 		StoreBean sb = dao.getStoreById(id);
 		session.setAttribute("clickRest", sb);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("_07_storePage/storePage.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("storePage.jsp");
+//		RequestDispatcher rd = request.getRequestDispatcher("test.jsp");
 		rd.forward(request, response);
 		return;
 		

@@ -1,6 +1,3 @@
-<%@page import="_01_Store_register.model.StoreBean"%>
-<%@page import="_22_searchRest.model.RestBean"%>
-<%@page import="_03_Product.model.ProductType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,9 +28,9 @@
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
     <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
-    <c:set target="${prodType}" property="restNameA" value="${param.restName}"/>
+    <c:set target="${prodType}" property="restNameA" value="${clickRest['rest_name']}"/>
     <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session"/>
-    <c:set target="${product}" property="rest_id" value="${param.restId}"/>
+    <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}"/>
 
     
 </head>
@@ -45,18 +42,18 @@
     <div class="insideTitle">
     
         <figure>
-        <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${param.restUser}&type=restaurant&loc=main" alt="店家資訊" title="店家資訊">
+        <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${clickRest.rest_username}&type=restaurant&loc=main" alt="店家資訊" title="店家資訊">
         </figure>
         <!--店家資訊-->
         <div class="storeTitle">
-            <div class="storeLogo"><img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${param.restUser}&type=restaurant&loc=logo" alt="${param.restName}" title="${param.restName}"></div>
+            <div class="storeLogo"><img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${clickRest.rest_username}&type=restaurant&loc=logo" alt="${clickRest.rest_name}" title="${clickRest.rest_name}"></div>
             <div class="storeRight">
-                <h3>${param.restName}<span>${param.restBranch}</span></h3>
+                <h3>${clickRest.rest_name}<span>${clickRest.rest_branch}</span></h3>
                 <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
-                <p><i class="icon-location"></i>${param.restAddr}</p>
-                <p><i class="icon-phone"></i>${param.restPhone}</p>
+                <p><i class="icon-location"></i>${clickRest.rest_address}</p>
+                <p><i class="icon-phone"></i>${clickRest.rest_phone}</p>
                 <div class="tagOrder">
-                    <div class="tag"><span>${param.restType}</span></div>
+                    <div class="tag"><span>${clickRest.rest_type}</span></div>
                     <div class="orderCount">目前訂單<span>999</span></div>
                 </div>
             </div>
@@ -64,7 +61,7 @@
         <!--店家資訊 end-->
     </div>
     <main>
-        <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${param.restName}&nbsp;${param.restBranch}</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</div>
         <section class="content">
             <div class="tabs animated-fade">
                 <div class="tabArea">
@@ -106,7 +103,7 @@
         <div class="searchBg"></div>
         <section class="searchContent">
             <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
-            <form action="../addItem.do" method="POST">
+            <form action="addItem.do" method="POST">
                 <figure><img id="proImg" src="" alt="" title=""></figure>
                 <div class="menuInfo">
                     <h4 id="title" ></h4>
@@ -115,7 +112,7 @@
                     <input type="hidden" id="idKey" name="prod_id" value="">
                     <input type="hidden" id="itemName" name="itemName" value="">
                     <input type="hidden" id="itemPrice" name="itemPrice" value="">
-                    <input type="hidden" id="restId" name="restId" value="${param.restId}">
+                    <input type="hidden" id="rest_id" name="rest_id" value="${clickRest.rest_id}">
                     <p><textarea id="specialNeed" placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="specialNeed" id="else"></textarea></p>
                     <div class="menuCount">數量<input type="number" name="count" id="count" value="1" min="1"></div>
                     <div class="addBtn">

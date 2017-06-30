@@ -134,15 +134,15 @@ public class RestDAO {
 				stmt.setString(1, foodKind);
 				break;
 			case 2:
-				sql = "SELECT * FROM restaurant WHERE rest_name = ?";
+				sql = "SELECT * FROM restaurant WHERE rest_name LIKE ?";
 				stmt = conn.prepareStatement(sql);
-				stmt.setString(1, storeName);
+				stmt.setString(1, "%" + storeName + "%");
 				break;
 			case 3:
-				sql = "SELECT * FROM restaurant WHERE rest_type = ? AND rest_name = ?";
+				sql = "SELECT * FROM restaurant WHERE rest_type = ? AND rest_name LIKE ?";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, foodKind);
-				stmt.setString(2, storeName);
+				stmt.setString(2, "%" + storeName + "%");
 				break;
 			case 4:
 				sql = "SELECT * FROM restaurant a JOIN product b ON a.rest_id = b.rest_id " +

@@ -184,7 +184,10 @@
 		<div class="closeBtn">
 			<i class="icon-close" title="關閉"></i>
 		</div>
-		<form action="_22_SearchRest/SearchRestServlet" method="get">
+		<form name="searchForm" action="_22_SearchRest/SearchRestServlet" onsubmit="return validateForm()" method="get">
+			<div style="margin-bottom: 15px;">
+			<span id="noCondition" class="wRed" ></span>
+			</div>
 			<div class="searchList">
 				<c:set target="${rt}" property="tagName" value='foodKind' />
 				${rt.selectTag}<br>
@@ -203,6 +206,18 @@
 					name="submit" type="submit" id="submit" value="搜尋">
 			</div>
 		</form>
+	<script>
+    function validateForm() {
+        var x = document.forms["searchForm"].foodKind.value;
+        var y = document.forms["searchForm"]["storeName"].value;
+        var z = document.forms["searchForm"]["foodName"].value;
+
+        if ((!x || /^\s*$/.test(x)) && (!y || /^\s*$/.test(y)) && (!z || /^\s*$/.test(z))) {
+            noCondition.innerHTML = "請至少給一個條件吧(╬ﾟдﾟ)"
+        return false;
+        }
+    }
+    </script>
 		</section>
 	</div>
 	<!--搜尋 end-->

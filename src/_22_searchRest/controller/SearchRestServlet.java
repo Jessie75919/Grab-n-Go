@@ -1,6 +1,7 @@
 package _22_searchRest.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -13,17 +14,13 @@ import _22_searchRest.model.RestBean;
 import _22_searchRest.model.RestDAO;
 
 
-@WebServlet("/SearchRestServlet")
+@WebServlet("/_22_SearchRest/SearchRestServlet")
 public class SearchRestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
 		
 		System.out.println("SearchRestServlet");
@@ -63,10 +60,17 @@ public class SearchRestServlet extends HttpServlet {
 		rd.setCount(count);
 		Collection<RestBean> coll = rd.searchRest();
 		if(coll != null){
+			System.out.println("搜尋結果筆數= " + coll.size());
+			request.setAttribute("resultSize", coll.size());
 			request.setAttribute("Restaurants", coll);
-			request.getRequestDispatcher("_22_SearchRest/result.jsp").forward(request, response);
+			request.getRequestDispatcher("/_10_search/search_result.jsp").forward(request, response);
 			return;
-		}
+		} 
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		
 	}
 

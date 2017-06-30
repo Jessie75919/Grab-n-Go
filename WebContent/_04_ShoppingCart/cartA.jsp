@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,26 +38,31 @@
         <section class="content">
             <form action="cart_success.htm" method="post" class="formcontent">
                 <div class="cartLeft">
-                    <h3>Afternoon Tea (三越南西門市)</h3>
+                    <h3>${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</h3>
                     <!--菜單列表-->
-                    <div class="foodList">
-                        <figure><img src="../images/restImage/fk_coverImg.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜"></figure>
+                    <c:set var="map" property="shoppingCart" value="${ShoppingCart}"/>
+                    <c:forEach var="list" items="${map.listAllMap}">
+                    	<div class="foodList">
+                    	${list.prod_id}<br>
+                        <figure><img src="../images/restImage/fk_coverImg.jpg" alt="${list.item_name}" title="${list.item_name}">
+                        </figure>
                         <div class="foodInfo">
-                            <h4>香烤雞腿佐十品溫野菜</h4>
-                            <p>數量 <input type="number" name="" id="" value="1" min="1"> <span class="price">NT$360</span></p>
-                            <textarea placeholder="特殊需求">不要辣，不要洋蔥</textarea>
+                            <h4>${list.item_name}</h4>
+                            <p>數量 <input type="number" name="" id="" value="${list.item_amount}" min="1"> 
+                            <span class="price">NT$${list.item_price}</span></p>
+                            <textarea placeholder="特殊需求">${list.item_note}</textarea>
                         </div>
                         <div class="closeBtn"><i class="icon-close" title="刪除"></i></div>
-                    </div>
-                    <div class="foodList">
-                        <figure><img src="../images/restImage/fk_coverImg.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜"></figure>
-                        <div class="foodInfo">
-                            <h4>香烤雞腿佐十品溫野菜</h4>
-                            <p>數量 <input type="number" name="" id="" value="1" min="1"> <span class="price">NT$360</span></p>
-                            <textarea placeholder="特殊需求">不要辣，不要洋蔥</textarea>
-                        </div>
-                        <div class="closeBtn"><i class="icon-close" title="刪除"></i></div>
-                    </div>
+                	    </div>
+                    </c:forEach>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <!--菜單列表 end-->
                     <div class="total">總計：NT$1000元</div>
                 </div>
@@ -65,15 +71,15 @@
                     <!--訂購人資訊-->
                     <div class="formList">
                         <div class="formTitle"><i class="icon-user"></i>訂購人</div>
-                        <div class="formInfo"><input type="text" name="name" id="name" value="謝宗哲" class="validate[required] text-input"></div>
+                        <div class="formInfo"><input type="text" name="name" id="name" value="${LoginOK.name}" class="validate[required] text-input"></div>
                     </div>
                     <div class="formList">
                         <div class="formTitle"><i class="icon-phone"></i>聯絡電話</div>
-                        <div class="formInfo"><input type="text" name="tel" id="tel" value="0932123456" class="validate[required,custom[phone]] text-input"></div>
+                        <div class="formInfo"><input type="text" name="tel" id="tel" value="${LoginOK.phone}" class="validate[required,custom[phone]] text-input"></div>
                     </div>
                     <div class="formList">
                         <div class="formTitle"><i class="icon-mail"></i>E-mail</div>
-                        <div class="formInfo"><input type="text" name="eMail" id="eMail" value="jessie@mail.com" class="validate[required,custom[email]] text-input"></div>
+                        <div class="formInfo"><input type="text" name="eMail" id="eMail" value="${LoginOK.email}" class="validate[required,custom[email]] text-input"></div>
                     </div>
                     <div class="formList">
                         <div class="formTitle"><i class="icon-birth"></i>預計取餐時間</div>

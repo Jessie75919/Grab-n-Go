@@ -107,18 +107,14 @@ public class AddItemServlet extends HttpServlet {
 		/* put OrderItemBean into shoppingCart */
 		cart.addToCart(prod_id, oid);
 		
+//		cart.getListAllMapToPrint(cart);
 		
-		System.out.println("===================================");
-		Map map = cart.getContent();
-		for(Object proId : map.keySet()){
-			System.out.println("proId = " + proId);
-			List<OrderItemBean> list = (List<OrderItemBean>) map.get(proId);
-			for(OrderItemBean oib :list){
-				System.out.println(oib);
-			}
+		System.out.println(cart.getItemNumber());
+		
+		List<OrderItemBean> list = cart.getListAllMap();
+		for(OrderItemBean oib : list){
+			System.out.println(oib);
 		}
-		System.out.println("===================================");
-		
 	}
 
 }

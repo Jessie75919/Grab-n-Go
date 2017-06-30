@@ -15,7 +15,7 @@
             <a href="${pageContext.servletContext.contextPath}/indexA.jsp"><img src="${pageContext.servletContext.contextPath}/images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
         </div>
         <div class="rightBtn searchItem"><a href="#" title="搜尋"><i class="icon-search"></i></a></div>
-        <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
+        <div class="rightBtn"><a href="${pageContext.servletContext.contextPath}/_04_ShoppingCart/cartA.jsp" title="購物車"><i class="icon-bag"></i></a></div>
         <div class="account">
 		<ul>
 			<!--未登入用這組-->

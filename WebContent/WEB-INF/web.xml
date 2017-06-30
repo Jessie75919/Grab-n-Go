@@ -122,4 +122,14 @@
     <servlet-name>AddItemServlet</servlet-name>
     <url-pattern>/AddItemServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppRevenueDailyServlet</display-name>
+    <servlet-name>AppRevenueDailyServlet</servlet-name>
+    <servlet-class>_23_App_StoreOrderAnalysis.controller.AppRevenueDailyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AppRevenueDailyServlet</servlet-name>
+    <url-pattern>/AppRevenueDailyServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

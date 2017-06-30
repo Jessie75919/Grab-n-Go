@@ -21,7 +21,7 @@
     <!--logo-->
     <header>
         <div class="logoArea">
-            <img src="image/logo.svg" alt="">
+            <img src="../images/share/logo.svg" alt="">
         </div>
         <!--進入區塊-->
         <div class="topTitle">
@@ -43,57 +43,14 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 訂單明細</h3>
-                    <h4>訂單編號：XX001</h4>
+                    <h4 style="font-weight: bolder;">訂單編號：XX001</h4>
                 </div>
             </div>
     </section>
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div id="topName"> R_name </div>
-                <ul id="leftMenu" class="list-group">
-                    <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
-                    <li class="list-group-item">
-                        <a href="#">修改個人資料</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">登出</a>
-                    </li>
-                    <li class="list-group-item"><i class="fa fa-file-text-o fa-fw"></i>本日訂單</li>
-                    <li class="list-group-item">
-                        <a href="#">待處理訂單</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">已完成訂單</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">已付款訂單</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">查詢訂單</a>
-                    </li>
-                    <li class="list-group-item"><i class="fa fa-hand-o-right fa-fw"></i>歷史訂單</li>
-                    <li class="list-group-item">
-                        <a href="#">歷史訂單查詢</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">餐點熱銷排行</a>
-                    </li>
-                    <li class="list-group-item"><i class="fa fa-pencil-square-o fa-fw"></i>菜單管理</li>
-                    <li class="list-group-item">
-                        <a href="#">新增餐點項目</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#">修改餐點項目</a>
-                    </li>
-                    <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
-                    <li class="list-group-item">
-                        <a href="#">營業額統計</a>
-                    </li>
-                </ul>
-            </div>
+        <jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">
                 <!--訂單狀態按鈕區塊-->
@@ -142,8 +99,10 @@
                 <hr>
                 <h4 class="totalPrice">總金額：＄450</h4>
             </div>
-            <div class="checkOutBtn" id="checkOut">
-             <input class="btn btn-primary" type="submit" value="顧客結帳">
+            <div id="checkOut" style="display: inline;">
+            <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->
+            <a href="_storeOrderPaid.jsp" class="btn btn-primary">顧客結帳</a>
+            <a href="../_02_storeLogin/_storeIndex.jsp" class="btn btn-primary">回本日訂單</a>
             </div>           
         </div>
         </div>

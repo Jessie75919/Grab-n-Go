@@ -42,6 +42,7 @@
                 <div>
                     <h3>> 已付款訂單</h3>
                     <!-- 訂單搜尋 -->
+                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -63,7 +64,7 @@
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
-                        <li role="presentation"><a href="_storeUnpaid.jsp">已完成訂單</a></li>
+                        <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation" class="active"><a href="#">已付款訂單</a></li>
                     </ul>
 
@@ -74,22 +75,20 @@
                 <table id="orderTable">
                     <tr>
                         <th>訂購日期</th>
-                        <th>顧客編號</th>
                         <th>取餐顧客</th>
                         <th>訂單編號</th>
                         <th>總金額</th>
                         <th>訂單狀態</th>
-                        <!-- <th>Action</th> -->
+                        <th>Action</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <tr>
                         <td nowrap="">2017/05/19 11:05:31</td>
-                        <td>A001</td>
                         <td>王小明</td>
-                        <td><a href="#">XX001</a></td>
+                        <td><a href="_storeOrderDetails.jsp">XX001</a></td>
                         <td>$250</td>
                         <td>已付款</td>
-                      <!--   <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td> -->
+                        <td id="cancelB"><a href="_storeOrderDetails.jsp">檢視明細</a></td>
                     </tr>
                 </table>
                 <hr>

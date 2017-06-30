@@ -41,6 +41,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 已完成訂單</h3>
+                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <!-- 訂單搜尋 -->
                     <form class="form-inline">
                             <div class="input-group">
@@ -74,7 +75,7 @@
                 <table id="orderTable">
                     <tr>
                         <th>訂購日期</th>
-                        <th>顧客編號</th>
+                        <th>取餐時間</th>
                         <th>取餐顧客</th>
                         <th>訂單編號</th>
                         <th>總金額</th>
@@ -83,13 +84,13 @@
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <tr>
-                        <td nowrap="">2017/05/19 11:05:31</td>
-                        <td>A001</td>
+                        <td nowrap="">2017/06/22 12:10:00</td>
+                        <td nowrap="">2017/06/22 13:00:00</td>
                         <td>王小明</td>
                         <td><a href="#">XX001</a></td>
                         <td>$250</td>
                         <td><a href="#">未付款</td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td><a href="_storeOrderPaid.jsp">結帳</a></td>
                     </tr>
                 </table>
                 <hr>

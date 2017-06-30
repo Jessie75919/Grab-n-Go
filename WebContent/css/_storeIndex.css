@@ -1,5 +1,5 @@
 /*設定字體*/
-ul, li, h2, h3, #middleForm, #leftMenu, #topBlock, #topName{
+ul, li, h2, h3, span, div, #middleForm, #leftMenu, #topBlock, #topName{
 font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 /*profile照片大小*/
@@ -56,6 +56,6 @@ ul, li{
 .totalPrice{
         margin-left: 84%; 
     }
-.checkOutBtn{
-        margin-left: 90.5%; 
+#checkOut{
+        margin-left: 57%; 
     }

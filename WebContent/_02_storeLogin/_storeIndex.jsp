@@ -43,6 +43,7 @@
                 <div>
                     <h3>> 待處理訂單</h3>
                     <!-- 訂單搜尋 -->
+                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -56,7 +57,7 @@
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-    	 <jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
+    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">
                 <!--訂單狀態按鈕區塊-->
@@ -75,7 +76,7 @@
                 <table id="orderTable">
                     <tr>
                         <th>訂購日期</th>
-                        <th>顧客編號</th>
+                        <th>取餐時間</th>
                         <th>取餐顧客</th>
                         <th>訂單編號</th>
                         <th>總金額</th>
@@ -84,8 +85,8 @@
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <tr>
-                        <td nowrap="">2017/05/19 11:05:31</td>
-                        <td>A001</td>
+                        <td nowrap="">2017/06/22 12:10:00</td>
+                        <td nowrap="">2017/06/22 13:00:00</td>
                         <td>王小明</td>
                         <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">XX001</a></td>
                         <td>$250</td>

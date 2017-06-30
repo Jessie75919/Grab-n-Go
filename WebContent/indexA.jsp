@@ -184,7 +184,7 @@
 		<div class="closeBtn">
 			<i class="icon-close" title="關閉"></i>
 		</div>
-		<form action="SearchRestServlet" method="post">
+		<form action="_22_SearchRest/SearchRestServlet" method="get">
 			<div class="searchList">
 				<c:set target="${rt}" property="tagName" value='foodKind' />
 				${rt.selectTag}<br>

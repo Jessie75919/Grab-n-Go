@@ -256,8 +256,8 @@ public class TableDAO {
 	}
 	//insert OrderMain 
 	public int insertOrder(){
-		String sql = "insert into order01 values(null,?,?,?,?,?)";
-		//ord_id, m_username, ord_time, rest_id, ord_totalPrice, ord_status
+		String sql = "insert into order01 values(null,?,?,?,?,?,?,?)";
+		//ord_id, m_username, m_pickupname, ord_time, ord_pickuptime, rest_id, ord_totalPrice, ord_status
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
 			BufferedReader br = new BufferedReader(new FileReader("WebContent/data/OrderMain.csv"));) {
@@ -268,19 +268,23 @@ public class TableDAO {
 				}
 				String[] segment = line.split(",");
 				pst.setString(1, segment[0]); 		// m_username
+				pst.setString(2, segment[1]);       // m_pickupname
+				java.sql.Timestamp ts1 = java.sql.Timestamp.valueOf(segment[2]);
+				pst.setTimestamp(3, ts1);				//ord_Time
 				
-				java.sql.Timestamp ts = java.sql.Timestamp.valueOf(segment[1]);
-				pst.setTimestamp(2, ts);				//ord_Time
-
-				pst.setString(3, segment[2]); 		// rest_id
-				Integer totalPrice = Integer.parseInt(segment[3]);
-				pst.setInt(4, totalPrice); 			// ord_totalPrice
-				pst.setString(5, segment[4]); 		// ord_status 
+				java.sql.Timestamp ts2 = java.sql.Timestamp.valueOf(segment[3]);
+				if(!ts2.equals("null")){
+				pst.setTimestamp(4, ts2);				//ord_pickuptime
+				}
+				pst.setString(5, segment[4]); 		// rest_id
+				Integer totalPrice = Integer.parseInt(segment[5]);
+				pst.setInt(6, totalPrice); 			// ord_totalPrice
+				pst.setString(7, segment[6]); 		// ord_status 
 				
 				result = pst.executeUpdate();
 
 				if (result == 1)
-					System.out.println(segment[1] + " - add success ");
+					System.out.println(ts2 + " - add success ");
 				else
 					System.out.println("table gets error");
 			}

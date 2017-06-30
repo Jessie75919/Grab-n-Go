@@ -85,7 +85,9 @@ CREATE TABLE restaurant (
 CREATE TABLE order01 (
 	ord_id INT AUTO_INCREMENT PRIMARY KEY ,
 	m_username VARCHAR(30) NOT NULL ,
+	m_pickupname VARCHAR(30),
 	ord_time DATETIME,
+	ord_pickuptime DATETIME,
 	rest_id INT NOT NULL,
 	ord_totalPrice MEDIUMINT NOT NULL,
 	ord_status VARCHAR(10) NOT NULL,

@@ -45,7 +45,8 @@ function clickMe(e) {
 
 window.onload = function () {
     var msg = document.getElementById("showMsg");
-    if(msg!=""){
+    if(msg=="" || msg==null){
+    }else{
         alert(msg.value);
     }
 }

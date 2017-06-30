@@ -37,7 +37,7 @@
 
 <body id="top" class="cbp-spmenu-push">
      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
-     <input type="hidden" id="showMsg" value="${OK}">
+     <input type="hidden" id="showMsg" value="${msg}">
      
     <div class="insideTitle">
     

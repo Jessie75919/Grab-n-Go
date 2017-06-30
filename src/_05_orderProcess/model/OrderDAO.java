@@ -1,11 +1,13 @@
 package _05_orderProcess.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -76,6 +78,28 @@ public class OrderDAO {
 			}
 		}
 
+		return coll;
+	}
+	
+	public Collection<OrderBean> getOrdersDate(String rest_name, 
+			Date ord_pickuptime_begin, Date ord_pickuptime_end) {
+		Collection<OrderBean> coll = new ArrayList<>();
+		try (Connection con = ds.getConnection();) {
+			String sql = "SELECT a.ord_pickuptime, a.ord_status"
+					+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
+					+ " WHERE b.rest_name = ? AND a.ord_pickuptime BETWEEN ? AND ?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				OrderBean ob = new OrderBean();
+				ob.setOrd_pickuptime(rs.getDate("ord_pickuptime"));
+				ob.setOrd_status(rs.getString("ord_status"));
+				
+				coll.add(ob);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 		return coll;
 	}
 

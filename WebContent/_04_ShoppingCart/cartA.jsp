@@ -43,28 +43,21 @@
                     <c:set var="map" property="shoppingCart" value="${ShoppingCart}"/>
                     <c:forEach var="list" items="${map.listAllMap}">
                     	<div class="foodList">
-                    	${list.prod_id}<br>
-                        <figure><img src="../images/restImage/fk_coverImg.jpg" alt="${list.item_name}" title="${list.item_name}">
+<%--                     	${list.prod_id}<br> --%>
+                        <figure><img src="${pageContext.servletContext.contextPath}/_00_init/getImage?id=${list.prod_id}' alt="${list.item_name}" title="${list.item_name}">
                         </figure>
                         <div class="foodInfo">
                             <h4>${list.item_name}</h4>
-                            <p>數量 <input type="number" name="" id="" value="${list.item_amount}" min="1"> 
+                            <p>數量 <input type="number" name="" id="" value="${list.item_amount}" onchange="modify(${list.prod_id})"  min="1"> 
                             <span class="price">NT$${list.item_price}</span></p>
                             <textarea placeholder="特殊需求">${list.item_note}</textarea>
                         </div>
-                        <div class="closeBtn"><i class="icon-close" title="刪除"></i></div>
+                        <div class="closeBtn"><i class="icon-close" title="刪除" onclick="delete(${list.prod_id},${list.item_note})"></i></div>
                 	    </div>
                     </c:forEach>
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     <!--菜單列表 end-->
-                    <div class="total">總計：NT$1000元</div>
+                    <div class="total">總計：NT$${map.subtotal}元</div>
                 </div>
                 <div class="cartRight">
                     <h3>訂購人資訊</h3>
@@ -110,6 +103,7 @@
     <!-- form check end-->
     <!--share js-->
     <script src="../javascript/share.js"></script>
+    <script src="../js/cartDAO.js"></script>
 </body>
 
 </html>

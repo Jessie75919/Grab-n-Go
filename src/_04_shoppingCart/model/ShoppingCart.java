@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import _05_orderProcess.model.OrderItemBean;
 
@@ -90,19 +91,47 @@ public class ShoppingCart {
 	/* return a list of the element of Map*/
 	public List<OrderItemBean> getListAllMap(){
 		Map<Integer, List<OrderItemBean>> map = getContent();
-		List<OrderItemBean> alllist = new ArrayList<>();
+		List<OrderItemBean> allList = new ArrayList<>();
 		for(Object proId : map.keySet()){
 //			System.out.println("proId = " + proId);
 			List<OrderItemBean> list = (List<OrderItemBean>) map.get(proId);
 			for(OrderItemBean oib :list){
-				alllist.add(oib);
+				allList.add(oib);
 //				System.out.println(oib);
 			}
 		}
-		return alllist;
+		return allList;
+	}
+
+	public void getSubtotalToPrint(ShoppingCart cart){
+		int subTotal = 0 ;
+		Map<Integer, List<OrderItemBean>> map = getContent();
+		List<OrderItemBean> allList = new ArrayList<>();
+		for(Object proId : map.keySet()){
+//			System.out.println("proId = " + proId);
+			List<OrderItemBean> list = (List<OrderItemBean>) map.get(proId);
+			for(OrderItemBean oib :list){
+				subTotal += oib.getItem_amount()*oib.getItem_price();
+			}
+		}
+//		return subTotal;
+		System.out.println("subTotal = "+subTotal);
 	}
 	
-	
+	public int getSubtotal(){
+		int subTotal = 0 ;
+		Map<Integer, List<OrderItemBean>> map = getContent();
+		List<OrderItemBean> allList = new ArrayList<>();
+		for(Object proId : map.keySet()){
+//			System.out.println("proId = " + proId);
+			List<OrderItemBean> list = (List<OrderItemBean>) map.get(proId);
+			for(OrderItemBean oib :list){
+				subTotal += oib.getItem_amount()*oib.getItem_price();
+			}
+		}
+		System.out.println("subTotal = "+subTotal);
+		return subTotal;
+	}
 
 	/*
 	 * public boolean modifyAmount(int prod_Id,OrderItemBean odb){ boolean

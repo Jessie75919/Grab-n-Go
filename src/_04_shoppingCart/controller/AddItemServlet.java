@@ -1,8 +1,6 @@
 package _04_shoppingCart.controller;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,6 +46,10 @@ public class AddItemServlet extends HttpServlet {
 			/* put shoppingCart into SessionObject */
 			cart = new ShoppingCart();
 			session.setAttribute("ShoppingCart", cart);
+		}else{
+			if(cart.getItemNumber()==0){
+				session.removeAttribute("orderRest");
+			}
 		}
 
 		try {
@@ -111,10 +113,12 @@ public class AddItemServlet extends HttpServlet {
 		
 		System.out.println(cart.getItemNumber());
 		
-		List<OrderItemBean> list = cart.getListAllMap();
+		/*List<OrderItemBean> list = cart.getListAllMap();
 		for(OrderItemBean oib : list){
 			System.out.println(oib);
-		}
+		}*/
+		
+		cart.getSubtotalToPrint(cart);
 	}
 
 }

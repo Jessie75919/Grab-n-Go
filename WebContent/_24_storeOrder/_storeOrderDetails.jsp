@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,11 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>Welcome to GrabAndGo</title>
+
+    <title>GrabAndGo Order Details</title>
 </head>
-<!-- 商家已登入頁面 -->
-<!-- 待處理訂單頁面 -->
+<!--點選訂單明細後的頁面-->
+<!--商家訂單明細頁面-->
 
 <body>
     <!--logo-->
@@ -41,32 +42,24 @@
             </div>
             <div class="col-md-9">
                 <div>
-                    <h3>> 待處理訂單</h3>
-                    <!-- 訂單搜尋 -->
-                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
-                    <form class="form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="訂單編號/顧客姓名">
-                            </div>
-                        <input type="submit" class="btn btn-primary" value="搜尋"></input>
-                    </form>
+                    <h3>> 訂單明細</h3>
+                    <h4 style="font-weight: bolder;">訂單編號：XX001</h4>
                 </div>
             </div>
     </section>
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
+        <jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">
                 <!--訂單狀態按鈕區塊-->
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                        <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
+                        <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
+                        <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
+                        <li role="presentation"><a href="_storeOrderPaid.jsp">已付款訂單</a></li>
                     </ul>
 
                 </div>
@@ -75,27 +68,42 @@
             <!--<div class="orderTable" >-->
                 <table id="orderTable">
                     <tr>
-                        <th>訂購日期</th>
-                        <th>取餐時間</th>
-                        <th>取餐顧客</th>
-                        <th>訂單編號</th>
-                        <th>總金額</th>
-                        <th>訂單狀態</th>
-                        <th>Action</th>
+                        <th>顧客名稱</th>
+                        <th>餐點名稱</th>
+                        <th>餐點編號</th>
+                        <th>備註</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>Subtotal</th>
                     </tr>
-                    <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
+                    <!-- 訂單明細-->
                     <tr>
-                        <td nowrap="">2017/06/22 12:10:00</td>
-                        <td nowrap="">2017/06/22 13:00:00</td>
                         <td>王小明</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">XX001</a></td>
-                        <td>$250</td>
-                        <td>處理中</td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td>雞腿飯</td>
+                        <td>A001</td>
+                        <td></td>
+                        <td>1</td>
+                        <td>$90</td>
+                        <td>$90</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>紅燒牛肉麵</td>
+                        <td>A002</td>
+                        <td>三個都不加蔥</td>
+                        <td>1</td>
+                        <td>$120</td>
+                        <td>$360</td>
                     </tr>
                 </table>
                 <hr>
+                <h4 class="totalPrice">總金額：＄450</h4>
             </div>
+            <div id="checkOut" style="display: inline;">
+            <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->
+            <a href="_storeOrderPaid.jsp" class="btn btn-primary">顧客結帳</a>
+            <a href="../_02_storeLogin/_storeIndex.jsp" class="btn btn-primary">回本日訂單</a>
+            </div>           
         </div>
         </div>
         <div class="row">

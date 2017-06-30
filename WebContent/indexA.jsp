@@ -141,12 +141,12 @@
 		<figure>
 			<img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${restaurant.rest_username}&type=restaurant&loc=cover" alt="${restaurant.rest_name}" title="${restaurant.rest_name}">
 			<div class="mask">
-				<a href="_07_storePage/storePage.jsp?restUser=${restaurant.rest_username}&restId=${restaurant.rest_id}&restName=${restaurant.rest_name}&restBranch=&{restaurant.rest_branch}&restType=${restaurant.rest_type}&restAddr=${restaurant.rest_address}&restPhone=${restaurant.rest_phone}&restMail=${restaurant.rest_email}&restUrl=${restaurant.rest_url}">觀看菜單</a>
+				<a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${restaurant.rest_id}">觀看菜單</a>
 			</div>
 		</figure>
 		<div class="storeInfo">
 			<h2>
-				<a href="_07_storePage/storePage.jsp?restUser=${restaurant.rest_username}&restId=${restaurant.rest_id}&restName=${restaurant.rest_name}&restBranch=&{restaurant.rest_branch}&restType=${restaurant.rest_type}&restAddr=${restaurant.rest_address}&restPhone=${restaurant.rest_phone}&restMail=${restaurant.rest_email}&restUrl=${restaurant.rest_url}">${restaurant.rest_name}</a>
+				<a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${restaurant.rest_id}">${restaurant.rest_name}</a>
 			</h2>
 <!-- 			有亮的星星class要加上on -->
 			<div class="star">

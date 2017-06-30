@@ -6,58 +6,53 @@ var price = document.getElementById("price");
 var desc = document.getElementById("desc");
 var proImg = document.getElementById("proImg");
 var idKey = document.getElementById("idKey");
+var itemName = document.getElementById("itemName");
+var itemPrice = document.getElementById("itemPrice");
 var specialNeed = document.getElementById("specialNeed");
 var count = document.getElementById("count");
 var btn = document.getElementById("submit");
 
 var stroage = localStorage;
-var iNo = 0 ;
-var iName,iPrice,iQty,iSpecialNeed;
+var iNo = 0;
+var iName, iPrice, iQty, iSpecialNeed;
 
 function clickMe(e) {
     // alert(e.id);
     var xhr = new XMLHttpRequest();
-    xhr.open("GET","../getOneProduct.do?proId="+e.id,"true");
+    xhr.open("GET", "../getOneProduct.do?proId=" + e.id, "true");
     xhr.send();
 
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState==4 && xhr.status==200){
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             var product = JSON.parse(xhr.responseText);
-            proImg.src="/_Grab_Go/_00_init/getImage?id="+product.prod_id;
+            proImg.src = "/_Grab_Go/_00_init/getImage?id=" + product.prod_id;
             title.innerText = product.prod_name;
             price.innerText = "$" + product.prod_price;
-            desc.innerText =  product.prod_desc;
+            desc.innerText = product.prod_desc;
+            count.value = 1;
+            specialNeed.value ="";
             idKey.value = e.id;
+            itemName.value = product.prod_name;
+            itemPrice.value = product.prod_price;
         }
-        // btn.onclick = function(){
-        //     iQty = count.value;
-        //     console.log("iQty=" + iQty);
-        //     iSpecialNeed = specialNeed.value;
-        //     console.log("iSpecialNeed=" + iSpecialNeed);
-        //     ++iNo;
-        //     var item = new Item(iNo,e.id,product.prod_name, product.prod_price,iQty,iSpecialNeed );
-        //     var txt = iNo+","+e.id+","+product.prod_name+","+product.prod_price+","+iQty+","+iSpecialNeed;
-
-        //     alert(txt);
-        //     alert( JSON.stringify(item))
-            
-        //     // var text += JSON.stringify(item);
-
-        //     localStorage.setItem = ( 'aa' , text);
-            
-        //     var retrieve = localStorage.getItem('aa');
-
-        //     alert("retrieve = " + JSON.parse(retrieve));
+    }
+        // btn.onclick = function () {
+        //     var xhr1 = new XMLHttpRequest();
+        //     xhr1.open("GET", "../addItem.do?proId=" + e.id, "true");
+        //     xhr1.send();
         // };
+}
 
+window.onload = function () {
+    var msg = document.getElementById("showMsg");
+    if(msg!=""){
+        alert(msg.value);
     }
 }
 
 
-
-
-
-function Item(no,proId,itemName,itemPrice,itemQty,itemNeed) {
+/*  
+function Item(no, proId, itemName, itemPrice, itemQty, itemNeed) {
     this.no = no;
     this.proId = proId;
     this.itemName = itemName;
@@ -68,3 +63,4 @@ function Item(no,proId,itemName,itemPrice,itemQty,itemNeed) {
         return this.itemQty * this.itemPrice;
     };
 };
+*/

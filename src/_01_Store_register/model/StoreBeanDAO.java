@@ -198,7 +198,6 @@ public class StoreBeanDAO {
 	public StoreBean getStoreById(int rest_id){
 		
 		String sql = "select * from restaurant where rest_id = ? " ;
-		List<StoreBean> listStore = new ArrayList<>();
 		StoreBean sb = null;
 		try (Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);

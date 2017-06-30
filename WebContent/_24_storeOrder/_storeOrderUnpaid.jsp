@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <title>Welcome to GrabAndGo</title>
 </head>
-<!-- 商家已登入頁面 -->
-<!-- 待處理訂單頁面 -->
-
+<!--商家登入成功-->
+<!--已完成訂單頁面-->
 <body>
     <!--logo-->
     <header>
@@ -41,9 +40,9 @@
             </div>
             <div class="col-md-9">
                 <div>
-                    <h3>> 待處理訂單</h3>
-                    <!-- 訂單搜尋 -->
+                    <h3>> 已完成訂單</h3>
                     <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
+                    <!-- 訂單搜尋 -->
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -57,16 +56,16 @@
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
+    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp"/>
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">
                 <!--訂單狀態按鈕區塊-->
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                        <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
+                        <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
+                        <li role="presentation" class="active"><a href="#">已完成訂單</a></li>
+                        <li role="presentation"><a href="_storeOrderPaid.jsp">已付款訂單</a></li>
                     </ul>
 
                 </div>
@@ -88,10 +87,10 @@
                         <td nowrap="">2017/06/22 12:10:00</td>
                         <td nowrap="">2017/06/22 13:00:00</td>
                         <td>王小明</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">XX001</a></td>
+                        <td><a href="#">XX001</a></td>
                         <td>$250</td>
-                        <td>處理中</td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td><a href="#">未付款</td>
+                        <td><a href="_storeOrderPaid.jsp">結帳</a></td>
                     </tr>
                 </table>
                 <hr>

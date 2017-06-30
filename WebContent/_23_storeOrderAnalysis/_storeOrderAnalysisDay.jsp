@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="../css/_storeOrderAnalysisDay.css">
+  <link rel="stylesheet" href="../css/_storeIndex.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <!-- 載入圓餅圖js -->
   <script src="https://d3js.org/d3.v4.min.js"></script>

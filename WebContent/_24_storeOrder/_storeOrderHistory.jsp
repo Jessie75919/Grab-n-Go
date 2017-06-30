@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <title>Welcome to GrabAndGo</title>
 </head>
-<!-- 商家已登入頁面 -->
-<!-- 待處理訂單頁面 -->
+<!--商家登入成功-->
+<!--歷史訂單查詢頁面-->
 
 <body>
     <!--logo-->
@@ -24,7 +24,7 @@
         </div>
         <!--進入區塊-->
         <div class="topTitle">
-            <h2>本日訂單</h2>
+            <h2>歷史訂單</h2>
         </div>
     </header>
     <!--店家profile-->
@@ -41,14 +41,30 @@
             </div>
             <div class="col-md-9">
                 <div>
-                    <h3>> 待處理訂單</h3>
+                    <h3>> 歷史訂單查詢</h3>
                     <!-- 訂單搜尋 -->
-                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
+                    <span><h4>請選擇欲查詢的訂單月份：</h4></span>
+                    <br>
                     <form class="form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="訂單編號/顧客姓名">
-                            </div>
+                        <!--月份搜尋-->
+                        <select name="">
+                            <option value="January">一月</option>
+                            <option value="Feburary">二月</option>
+                            <option value="March">三月</option>
+                            <option value="April">四月</option>
+                            <option value="May">五月</option>
+                            <option value="June">六月</option>
+                            <option value="July">七月</option>
+                            <option value="August">八月</option>
+                            <option value="September">九月</option>
+                            <option value="October">十月</option>
+                            <option value="November">十一月</option>
+                            <option value="December">十二月</option>                      
+                        </select>&nbsp
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <input type="search" class="form-control" id="" placeholder="顧客姓名">
+                        </div>
                         <input type="submit" class="btn btn-primary" value="搜尋"></input>
                     </form>
                 </div>
@@ -57,41 +73,27 @@
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
-            <!-- 表格開始 -->
+        <jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
+            <!-- 搜尋結果顯示表格開始 -->
             <div id="middleForm" class="col-md-9">
-                <!--訂單狀態按鈕區塊-->
-                <div>
-                    <!--<ul class="nav nav-tabs nav-justified">-->
-                    <ul class="nav nav-pills nav-justified">
-                        <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
-                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
-                    </ul>
-
-                </div>
-                <hr>
+            <span><h4>搜尋結果：</h4></span>
+                <hr style="color: rgb(213, 141, 60);">
                 <!--</div>-->
-            <!--<div class="orderTable" >-->
+                <!--<div class="orderTable" >-->
                 <table id="orderTable">
                     <tr>
                         <th>訂購日期</th>
-                        <th>取餐時間</th>
                         <th>取餐顧客</th>
                         <th>訂單編號</th>
                         <th>總金額</th>
                         <th>訂單狀態</th>
-                        <th>Action</th>
                     </tr>
-                    <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <tr>
-                        <td nowrap="">2017/06/22 12:10:00</td>
-                        <td nowrap="">2017/06/22 13:00:00</td>
+                        <td nowrap="">2017/05/19 11:05:31</td>
                         <td>王小明</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">XX001</a></td>
+                        <td><a href="_storeOrderDetails.jsp">XX001</a></td>
                         <td>$250</td>
-                        <td>處理中</td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td>已付款</td>
                     </tr>
                 </table>
                 <hr>

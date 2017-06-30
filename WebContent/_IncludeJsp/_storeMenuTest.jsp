@@ -25,21 +25,23 @@
                         <a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">已完成訂單</a>
+                        <a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="#">已付款訂單</a>
+                        <a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a>
                     </li>
-                    <li class="list-group-item">
+                    <!-- 查詢訂單功能放入本日訂單頁面 -->
+                    <!-- <li class="list-group-item">
                         <a href="#">查詢訂單</a>
-                    </li>
+                    </li> -->
                     <li class="list-group-item"><i class="fa fa-hand-o-right fa-fw"></i>歷史訂單</li>
                     <li class="list-group-item">
-                        <a href="#">歷史訂單查詢</a>
+                        <a href="../_24_storeOrder/_storeOrderHistory.jsp">歷史訂單查詢</a>
                     </li>
-                    <li class="list-group-item">
+                    <!-- 餐點熱銷排行一併和日營業總額呈現 -->
+                    <!-- <li class="list-group-item">
                         <a href="#">餐點熱銷排行</a>
-                    </li>
+                    </li> -->
                     <li class="list-group-item"><i class="fa fa-pencil-square-o fa-fw"></i>菜單管理</li>
                     <li class="list-group-item">
                         <a href="../_21_storeMenuSystem/_storeMenuInsertTypeA.jsp">新增餐點類別</a>
@@ -52,7 +54,7 @@
                     </li>
                     <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
                     <li class="list-group-item">
-                        <a href="../_23_storeOrderAnalysis/_storeOrderAnalysisMonthly.jsp">營業額統計</a>
+                        <a href="../_23_storeOrderAnalysis/_storeOrderAnalysisDay.jsp">營業額統計</a>
                     </li>
                 </ul>
             </div>

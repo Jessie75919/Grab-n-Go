@@ -112,4 +112,14 @@
     <servlet-name>AppStoreProfileServlet</servlet-name>
     <servlet-class>_02_App_profile.controller.AppStoreProfileServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>AddItemServlet</display-name>
+    <servlet-name>AddItemServlet</servlet-name>
+    <servlet-class>_04_shoppingCart.controller.AddItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddItemServlet</servlet-name>
+    <url-pattern>/AddItemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

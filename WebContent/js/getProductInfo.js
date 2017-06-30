@@ -6,6 +6,8 @@ var price = document.getElementById("price");
 var desc = document.getElementById("desc");
 var proImg = document.getElementById("proImg");
 var idKey = document.getElementById("idKey");
+var itemName = document.getElementById("itemName");
+var itemPrice = document.getElementById("itemPrice");
 var specialNeed = document.getElementById("specialNeed");
 var count = document.getElementById("count");
 var btn = document.getElementById("submit");
@@ -27,9 +29,12 @@ function clickMe(e) {
             title.innerText = product.prod_name;
             price.innerText = "$" + product.prod_price;
             desc.innerText = product.prod_desc;
+            count.value = 1;
+            specialNeed.value ="";
             idKey.value = e.id;
+            itemName.value = product.prod_name;
+            itemPrice.value = product.prod_price;
         }
-
     }
         // btn.onclick = function () {
         //     var xhr1 = new XMLHttpRequest();
@@ -38,10 +43,15 @@ function clickMe(e) {
         // };
 }
 
+window.onload = function () {
+    var msg = document.getElementById("showMsg");
+    if(msg!=""){
+        alert(msg.value);
+    }
+}
 
 
-
-
+/*  
 function Item(no, proId, itemName, itemPrice, itemQty, itemNeed) {
     this.no = no;
     this.proId = proId;
@@ -53,3 +63,4 @@ function Item(no, proId, itemName, itemPrice, itemQty, itemNeed) {
         return this.itemQty * this.itemPrice;
     };
 };
+*/

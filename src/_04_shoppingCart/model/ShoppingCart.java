@@ -142,8 +142,8 @@ public class ShoppingCart {
 	 
 */
 	 
-	public void deleteItem(int prod_Id, String itemNote) {
-		
+	public int deleteItem(int prod_Id, String itemNote) {
+		int n = -1;
 		List<OrderItemBean> oldList = shoppingCart.get(prod_Id);
 		int[] result = findOIBPosition(itemNote, oldList);
 		// result[0] : 0 == 不存在 ; 1== 已存在
@@ -151,7 +151,9 @@ public class ShoppingCart {
 			System.out.println("品項不存在");
 		} else {
 			oldList.remove(result[1]);
+			n = 1;
 		}
+		return n;
 	}
 	
 	

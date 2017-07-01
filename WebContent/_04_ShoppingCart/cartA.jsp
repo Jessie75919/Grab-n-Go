@@ -52,7 +52,7 @@
 	                            <span class="price">NT$${list.item_price}</span></p>
 	                            <textarea placeholder="特殊需求">${list.item_note}</textarea>
 	                        </div>
-	                        <div class="closeBtn"><i  class="icon-close" title="刪除" onclick="deleteF(${list.prod_id},${list.item_note})"></i></div>
+	                        <div class="closeBtn"><i  class="icon-close" title="刪除" onClick="deleteF(${list.prod_id},'${list.item_note}')"></i></div>
                 	    </div>
                     </c:forEach>
                     

@@ -2,6 +2,7 @@ package _01_App_register.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,12 +52,15 @@ public class AppIdCheckServlet extends HttpServlet {
 					
 		StoreBean sb = slsdb.checkPW(username, pwEncryped);
 		Map<String, String> map = new HashMap<>();
+		PrintWriter out = response.getWriter();
 		if (sb != null) {
 			map.put("loginCheckMessage", "LoginInformationOK");
 			System.out.println("帳號密碼驗證OK");
 		} else {
 			map.put("loginCheckMessage", "LoginInformationError");
 		}
+		out.println(gson.toJson(map));
+		out.close();
 		
 	}
 

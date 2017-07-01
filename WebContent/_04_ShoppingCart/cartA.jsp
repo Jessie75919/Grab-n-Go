@@ -37,22 +37,22 @@
         <div class="brcame"><a href="../index.jsp">首頁</a> / 購物車</div>
         <section class="content">
             <form action="cart_success.htm" method="post" class="formcontent">
-                <div class="cartLeft">
+                <div id="cartLeft" class="cartLeft">
                     <h3>${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</h3>
                     <!--菜單列表-->
                     <c:set var="map" property="shoppingCart" value="${ShoppingCart}"/>
                     <c:forEach var="list" items="${map.listAllMap}">
-                    	<div class="foodList">
+                    	<div id="List${list.prod_id}"class="foodList">
 <%--                     	${list.prod_id}<br> --%>
-                        <figure><img src="${pageContext.servletContext.contextPath}/_00_init/getImage?id=${list.prod_id}' alt="${list.item_name}" title="${list.item_name}">
-                        </figure>
-                        <div class="foodInfo">
-                            <h4>${list.item_name}</h4>
-                            <p>數量 <input type="number" name="" id="" value="${list.item_amount}" onchange="modify(${list.prod_id})"  min="1"> 
-                            <span class="price">NT$${list.item_price}</span></p>
-                            <textarea placeholder="特殊需求">${list.item_note}</textarea>
-                        </div>
-                        <div class="closeBtn"><i class="icon-close" title="刪除" onclick="delete(${list.prod_id},${list.item_note})"></i></div>
+	                        <figure><img src="${pageContext.servletContext.contextPath}/_00_init/getImage?id=${list.prod_id}' alt="${list.item_name}" title="${list.item_name}">
+	                        </figure>
+	                        <div class="foodInfo">
+	                            <h4>${list.item_name}</h4>
+	                            <p>數量 <input type="number" name="" id="" value="${list.item_amount}" onchange="modify(${list.prod_id})"  min="1"> 
+	                            <span class="price">NT$${list.item_price}</span></p>
+	                            <textarea placeholder="特殊需求">${list.item_note}</textarea>
+	                        </div>
+	                        <div class="closeBtn"><i  class="icon-close" title="刪除" onclick="deleteF(${list.prod_id},${list.item_note})"></i></div>
                 	    </div>
                     </c:forEach>
                     

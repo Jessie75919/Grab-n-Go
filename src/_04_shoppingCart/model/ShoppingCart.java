@@ -11,21 +11,27 @@ import _05_orderProcess.model.OrderItemBean;
 public class ShoppingCart {
 
 	private Map<Integer, List<OrderItemBean>> shoppingCart = new HashMap<>();
+	
 
 	public Map<Integer, List<OrderItemBean>> getShoppingCart() {
 		return shoppingCart;
 	}
+	
+	
 
 	public void setShoppingCart(Map<Integer, List<OrderItemBean>> shoppingCart) {
 		this.shoppingCart = shoppingCart;
 	}
+	
 
 	public ShoppingCart() {
 	}
+	
 
 	public Map<Integer, List<OrderItemBean>> getContent() {
 		return shoppingCart;
 	}
+	
 
 	public void addToCart(int prod_Id, OrderItemBean odb) {
 
@@ -47,19 +53,7 @@ public class ShoppingCart {
 		}
 	}
 
-	public int[] isExist(OrderItemBean newOid, List<OrderItemBean> oldList) {
-		int[] result = new int[2];
-		for (int i = 0; i < oldList.size(); i++) {
-			if (oldList.get(i).getItem_note().equals(newOid.getItem_note())) {
-				result[0] = 1;
-				result[1] = i;
-				break;
-			} else {
-				result[0] = 0;
-			}
-		}
-		return result;
-	}
+	
 	
 	public int getItemNumber(){   // ShoppingCart.itemNumber
 		int count =0;
@@ -102,6 +96,7 @@ public class ShoppingCart {
 		}
 		return allList;
 	}
+	
 
 	public void getSubtotalToPrint(ShoppingCart cart){
 		int subTotal = 0 ;
@@ -118,6 +113,7 @@ public class ShoppingCart {
 		System.out.println("subTotal = "+subTotal);
 	}
 	
+	
 	public int getSubtotal(){
 		int subTotal = 0 ;
 		Map<Integer, List<OrderItemBean>> map = getContent();
@@ -133,25 +129,62 @@ public class ShoppingCart {
 		return subTotal;
 	}
 
-	/*
-	 * public boolean modifyAmount(int prod_Id,OrderItemBean odb){ boolean
-	 * result = false; if(shoppingCart.get(prod_Id)!=null){
-	 * shoppingCart.put(prod_Id, odb); result = true; } return result; }
-	 * 
-	 * public boolean modifyAmount(int prod_Id,int newAmount){ boolean result =
-	 * false; if(shoppingCart.get(prod_Id)!=null){ OrderItemBean oib =
-	 * shoppingCart.get(prod_Id); oib.setItem_amount(newAmount); result = true;
-	 * } return result; }
-	 * 
-	 * public int deleteItem(int serialNo,int prod_Id){ int n = -1;
-	 * if(shoppingCart.get(prod_Id)!=null){
-	 * 
-	 * }
-	 * 
-	 * 
-	 * return n;
-	 * 
-	 * }
-	 */
+	
+/* 
+	 public boolean modifyAmount(int prod_Id,OrderItemBean odb){ boolean
+	 result = false; if(shoppingCart.get(prod_Id)!=null){
+	 shoppingCart.put(prod_Id, odb); result = true; } return result; }
+	 
+	 public boolean modifyAmount(int prod_Id,int newAmount){ boolean result =
+	 false; if(shoppingCart.get(prod_Id)!=null){ OrderItemBean oib =
+	 shoppingCart.get(prod_Id); oib.setItem_amount(newAmount); result = true;
+	 } return result; }
+	 
+*/
+	 
+	public void deleteItem(int prod_Id, String itemNote) {
+		
+		List<OrderItemBean> oldList = shoppingCart.get(prod_Id);
+		int[] result = findOIBPosition(itemNote, oldList);
+		// result[0] : 0 == 不存在 ; 1== 已存在
+		if (result[0] == 0) {
+			System.out.println("品項不存在");
+		} else {
+			oldList.remove(result[1]);
+		}
+	}
+	
+	
+	// 檢查新的品項是否已經在舊的品項存在了
+	public int[] isExist(OrderItemBean newOid, List<OrderItemBean> oldList) {
+		int[] result = new int[2];
+		for (int i = 0; i < oldList.size(); i++) {
+			if (oldList.get(i).getItem_note().equals(newOid.getItem_note())) {
+				result[0] = 1;
+				result[1] = i;
+				break;
+			} else {
+				result[0] = 0;
+			}
+		}
+		return result;
+	}
+	
+	
+	// 找尋有這個備註的餐點品項是在第幾個位置
+	public int[] findOIBPosition(String ItemNote, List<OrderItemBean> oldList) {
+		int[] result = new int[2];
+		for (int i = 0; i < oldList.size(); i++) {
+			if (oldList.get(i).getItem_note().equals(ItemNote)) {
+				result[0] = 1;
+				result[1] = i;
+				break;
+			} else {
+				result[0] = 0;
+			}
+		}
+		return result;
+	}
+	 
 
 }

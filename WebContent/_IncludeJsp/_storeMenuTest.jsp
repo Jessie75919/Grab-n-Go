@@ -38,10 +38,9 @@
                     <li class="list-group-item">
                         <a href="../_24_storeOrder/_storeOrderHistory.jsp">歷史訂單查詢</a>
                     </li>
-                    <!-- 餐點熱銷排行一併和日營業總額呈現 -->
-                    <!-- <li class="list-group-item">
-                        <a href="#">餐點熱銷排行</a>
-                    </li> -->
+                   <li class="list-group-item">
+                        <a href="../_24_storeOrder/_storeSalesRankD.jsp">餐點熱銷排行</a>
+                    </li>
                     <li class="list-group-item"><i class="fa fa-pencil-square-o fa-fw"></i>菜單管理</li>
                     <li class="list-group-item">
                         <a href="../_21_storeMenuSystem/_storeMenuInsertTypeA.jsp">新增餐點類別</a>

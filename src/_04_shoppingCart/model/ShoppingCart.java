@@ -129,21 +129,50 @@ public class ShoppingCart {
 		return subTotal;
 	}
 
+	/*
+	public boolean modifyAmount(int prod_Id, OrderItemBean odb) {
+		boolean result = false;
+		if (shoppingCart.get(prod_Id) != null) {
+			shoppingCart.put(prod_Id, odb);
+			result = true;
+		}
+		return result;
+	}
+	*/
 	
-/* 
-	 public boolean modifyAmount(int prod_Id,OrderItemBean odb){ boolean
-	 result = false; if(shoppingCart.get(prod_Id)!=null){
-	 shoppingCart.put(prod_Id, odb); result = true; } return result; }
+
+	public int modifyAmount(int prod_Id, String itemNote, int newAmount) {
+		int ans = -1;
+		List<OrderItemBean> oldList = shoppingCart.get(prod_Id);
+		int[] result = findOIBPosition(itemNote, oldList);
+		// result[0] : 0 == 不存在 ; 1== 已存在
+		if (result[0] == 0) {
+			System.out.println("品項不存在");
+		} else {
+			oldList.get(result[1]).setItem_amount(newAmount);
+			ans = 1;
+		}
+		return ans;
+	}
+	
+	
+	public int modifyNote(int prod_Id, String oldItemNote, String newItemNote) {
+		int ans = -1;
+		List<OrderItemBean> oldList = shoppingCart.get(prod_Id);
+		int[] result = findOIBPosition(oldItemNote, oldList);
+		// result[0] : 0 == 不存在 ; 1== 已存在
+		if (result[0] == 0) {
+			System.out.println("品項不存在");
+		} else {
+			oldList.get(result[1]).setItem_note(newItemNote);
+			ans = 1;
+		}
+		return ans;
+	}
 	 
-	 public boolean modifyAmount(int prod_Id,int newAmount){ boolean result =
-	 false; if(shoppingCart.get(prod_Id)!=null){ OrderItemBean oib =
-	 shoppingCart.get(prod_Id); oib.setItem_amount(newAmount); result = true;
-	 } return result; }
 	 
-*/
-	 
-	public void deleteItem(int prod_Id, String itemNote) {
-		
+	public int deleteItem(int prod_Id, String itemNote) {
+		int n = -1;
 		List<OrderItemBean> oldList = shoppingCart.get(prod_Id);
 		int[] result = findOIBPosition(itemNote, oldList);
 		// result[0] : 0 == 不存在 ; 1== 已存在
@@ -151,7 +180,9 @@ public class ShoppingCart {
 			System.out.println("品項不存在");
 		} else {
 			oldList.remove(result[1]);
+			n = 1;
 		}
+		return n;
 	}
 	
 	

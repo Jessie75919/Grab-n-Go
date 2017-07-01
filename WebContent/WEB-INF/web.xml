@@ -128,4 +128,10 @@
     <servlet-name>AppRevenueDailyServlet</servlet-name>
     <servlet-class>_23_App_StoreOrderAnalysis.controller.AppRevenueDailyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>AppIdCheckServlet</display-name>
+    <servlet-name>AppIdCheckServlet</servlet-name>
+    <servlet-class>_01_App_register.controller.AppIdCheckServlet</servlet-class>
+  </servlet>
 </web-app>

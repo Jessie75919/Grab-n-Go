@@ -8,7 +8,7 @@ public class OrderBean {
 	String m_username;
 	String m_pickupname;
 	Timestamp ord_time;
-	Date ord_pickuptime;
+	Timestamp ord_pickuptime;
 	int rest_id;
 	int ord_totalPrice;
 	String ord_status;
@@ -82,11 +82,11 @@ public class OrderBean {
 		this.m_pickupname = m_pickupname;
 	}
 
-	public Date getOrd_pickuptime() {
+	public Timestamp getOrd_pickuptime() {
 		return ord_pickuptime;
 	}
 
-	public void setOrd_pickuptime(Date ord_pickuptime) {
+	public void setOrd_pickuptime(Timestamp ord_pickuptime) {
 		this.ord_pickuptime = ord_pickuptime;
 	}
 

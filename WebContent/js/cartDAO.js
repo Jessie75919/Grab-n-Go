@@ -54,52 +54,43 @@ function modifyNote(e, proId, itemNote) {
     // alert("previousElementSibling = "+notes[0].previousElementSibling.firstElementChild)
 
 
+    // result [0]是否重複  / [1]重複的位置 / [2]重複加起來的值 / [3]出現重複的全部位置
     var result = isExist(notes, newNote);
-
-
 
     // 如果有重複 -> 合併變成一欄
     if (result[0] == 1) {
         alert("find the same one!!, it's position = " + result[1]);
 
-        var repeatNum = result[3];
-        var delTarget = 0;
-        for (var i = 0; i < repeatNum.length; i++) {
+        var repeatNum = result[3]; //出現重複的全部位置
 
-            if (result[1] != repeatNum[i]) {
-                delTarget = i;
-            }
-        }
+        notes[repeatNum[1]].parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+        notes[repeatNum[0]].previousElementSibling.firstElementChild.value = result[2]; // 數量
 
-        notes[delTarget].parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+        // 更新數量
+        var newCount = result[2]; // 數量
+        var note = notes[repeatNum[0]].value; // 備註
+        // var proId = notes[repeatNum[0]].previousElementSibling.firstElementChild.id;
 
-        var target = document.getElementById("count" + proId + itemNote)
-        target.value = result[2];
+        var xhr_mod = new XMLHttpRequest();
+        xhr_mod.open("GET", "ModifyOrderItem.do?cmd=modAcount&proId=" + proId + "&itemNote=" + note + "&count=" + newCount, true);
+        xhr_mod.send();
+
+        // 刪除有舊的備註那個品項
+        var xhr_del = new XMLHttpRequest();
+        xhr_del.open("GET", "ModifyOrderItem.do?cmd=del&proId=" + proId + "&itemNote=" + itemNote, true);
+        xhr_del.send();
+
+
+    }else{
         // e.previousElementSibling.firstElementChild.value  = result[2];
+        var xhr_modNote = new XMLHttpRequest();
+        xhr_modNote.open("GET", "ModifyOrderItem.do?cmd=modNote&proId=" + proId + "&itemNote=" + itemNote + "&newNote=" + newNote, true);
+        xhr_modNote.send();
+
     }
-
-    // var xhr_mod = new XMLHttpRequest();
-    // 	xhr_mod.open("GET", "ModifyOrderItem.do?cmd=modNote&proId=" + proId + "&itemNote=" + itemNote+"&newNote="+newNote, true);
-    // 	xhr_mod.send();
-
-
-
-    // var items = document.getElementsByName("prod_"+proId+itemNote);
-    // console.log("items.length = "+items.length);
-    // if(items.length!=1){
-    //     var fistCount = items[0].firstChild.nextSibling.nextSibling.firstChild.value;
-    //     alert(fistCount)
-    //     var secondCount = items[0].firstChild.nextSibling.nextSibling.firstChild.value;
-    //     alert(secondCount)
-
-    //     var totalCount = fistCount + secondCount;
-    //     alert(totalCount);
-    // }
-
-
 }
 
-// 如何扣除自己之後再判斷是否有重複 ??
+
 
 function isExist(notes, newNote) {
     var result = [];

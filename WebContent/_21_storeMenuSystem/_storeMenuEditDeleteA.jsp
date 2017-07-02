@@ -71,7 +71,7 @@
 				<input id="updateList" name="updateList" value="0" style="display:none;">
 				</table>
             <hr> 
-           <div id="insertButton" class="btn btn-default">
+           <div id="insertButton">
 				<input
 					type="submit" name="Submit" value="確定修改"
 					class="btn btn-default">

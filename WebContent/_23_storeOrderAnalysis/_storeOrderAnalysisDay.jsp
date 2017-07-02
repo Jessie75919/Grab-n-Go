@@ -19,13 +19,13 @@
   <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <!--<script>
+  <script>
   $(document).ready(function() {
     $(function() {
     $( "#datepickerTest" ).datepicker();
   })
   });
-  </script>-->
+  </script>
   <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->
@@ -118,36 +118,9 @@
   
   <script type="text/javascript">
 
-// 圓餅圖 
-    var pie = new d3pie("pieChart", {
-      "header": {
-        "title": {
-          "text": "",
-          "fontSize": 22,
-          "font": "Microsoft JhengHei"
-        },
-        "subtitle": {
-          "text": "",
-          "color": "#999999",
-          "fontSize": 10,
-          "font": "verdana"
-        },
-        "titleSubtitlePadding": 12
-      },
-      "footer": {
-        "text": "統計日期：2017/06/22",
-        "color": "#999999",
-        "fontSize": 14,
-        "font": "Microsoft JhengHei",
-        "location": "bottom-center"
-      },
-      "size": {
-        "canvasHeight": 400,
-        "canvasWidth": 500,
-        "pieOuterRadius": "100%"
-      },
-      "data": {
-        "content": [
+// 圓餅圖 js
+	//資料
+	var content = [
           {
             "label": "牛肉麵",
             "value": 8,
@@ -183,7 +156,36 @@
             "value": 3,
             "color": "#e98125"
           }
-        ]
+        ];
+    var pie = new d3pie("pieChart", {
+      "header": {
+        "title": {
+          "text": "",
+          "fontSize": 22,
+          "font": "Microsoft JhengHei"
+        },
+        "subtitle": {
+          "text": "",
+          "color": "#999999",
+          "fontSize": 10,
+          "font": "verdana"
+        },
+        "titleSubtitlePadding": 12
+      },
+      "footer": {
+        "text": "統計日期：2017/06/22",
+        "color": "#999999",
+        "fontSize": 14,
+        "font": "Microsoft JhengHei",
+        "location": "bottom-center"
+      },
+      "size": {
+        "canvasHeight": 400,
+        "canvasWidth": 500,
+        "pieOuterRadius": "100%"
+      },
+      "data": {
+        content
       },
       "labels": {
         "outer": {

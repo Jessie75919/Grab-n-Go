@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -27,6 +28,9 @@
             <h2>本日訂單</h2>
         </div>
     </header>
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
+<!-- 商家 -->
+<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
     <!--店家profile-->
     <section class="container">
         <div class="row">
@@ -83,16 +87,19 @@
                         <th>訂單狀態</th>
                         <th>Action</th>
                     </tr>
-                    <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
+                    <!-- 顯示訂單資訊 -->
+                    <!-- 取得訂單 -->
+                   <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrders}">
                     <tr>
-                        <td nowrap="">2017/06/22 12:10:00</td>
-                        <td nowrap="">2017/06/22 13:00:00</td>
-                        <td>王小明</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">XX001</a></td>
-                        <td>$250</td>
-                        <td>處理中</td>
+                        <td nowrap="">${anOrderBean.ord_time}</td>
+                        <td nowrap="">${anOrderBean.ord_pickuptime}</td>
+                        <td>${anOrderBean.m_pickupname}</td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">${anOrderBean.ord_id}</a></td>
+                        <td>${anOrderBean.ord_totalPrice}</td>
+                        <td>${anOrderBean.ord_status}</td>
                         <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
                     </tr>
+                    </c:forEach> 
                 </table>
                 <hr>
             </div>

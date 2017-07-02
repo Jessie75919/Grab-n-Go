@@ -20,9 +20,14 @@ public class OrderDAO {
 
 	private DataSource ds;
 	private String username;
+	private String restUsername;
 	
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public void setRestUsername(String restUsername){
+		this.restUsername = restUsername;
 	}
 
 	public OrderDAO() {
@@ -103,6 +108,56 @@ public class OrderDAO {
 			ex.printStackTrace();
 		}
 		return coll;
+	}
+	
+	public Collection<OrderBean> getStoreOrders(){
+		Connection conn = null;
+		Collection<OrderBean> coll = new ArrayList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status"
+					+ "FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
+					+ "WHERE b.rest_username = ?";
+
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, restUsername);
+			System.out.println("Hello");
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				OrderBean ob = new OrderBean();
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setM_pickupname(rs.getString("m_pickuptime"));
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_status(rs.getString("ord_status"));
+
+				coll.add(ob);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return coll;
+		
 	}
 
 }

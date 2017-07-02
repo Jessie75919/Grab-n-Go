@@ -49,7 +49,9 @@ window.onload = function () {
     if(msg=="" || msg==null){
     }else{
         alert(msg);
+//        window.location.href = "_07_storePage/getOneRest.do?id=";
         msg = "";
+        return;
     }
 }
 

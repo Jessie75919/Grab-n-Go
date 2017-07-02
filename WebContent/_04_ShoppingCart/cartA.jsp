@@ -34,7 +34,7 @@
         <h2>購物車</h2>
     </div>
     <main>
-        <div class="brcame"><a href="../index.jsp">首頁</a> / 購物車</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a> / 購物車</div>
         <section class="content">
             <form action="cart_success.htm" method="post" class="formcontent">
                 <div id="cartLeft" class="cartLeft">
@@ -50,7 +50,7 @@
 	                            <h4>${list.item_name}</h4>
 	                            <input type="hidden" id="proId" value="${list.prod_id}">
 	                            <p>數量 
-	                            	<input type="number" name="" id="count${list.prod_id}${list.item_note}" value="${list.item_amount}" onchange="modifyAmount(${list.prod_id},'${list.item_note}')"  min="1"> 
+	                            	<input type="number" class="count" id="count${list.prod_id}${list.item_note}" value="${list.item_amount}" onchange="modifyAmount(${list.prod_id},'${list.item_note}')"  min="1"> 
 	                            	<span class="price" >NT$${list.item_price}</span>
 	                            </p>
 	                            <textarea class="note" id="note${list.prod_id}${list.item_note}" placeholder="特殊需求" onchange="modifyNote(this,${list.prod_id},'${list.item_note}')">${list.item_note}</textarea>
@@ -60,7 +60,7 @@
                     </c:forEach>
                     
                     <!--菜單列表 end-->
-                    <div class="total">總計：NT$${map.subtotal}元</div>
+                    <div class="total" id="subtotal">總計：NT$${map.subtotal}元</div>
                 </div>
                 <div class="cartRight">
                     <h3>訂購人資訊</h3>

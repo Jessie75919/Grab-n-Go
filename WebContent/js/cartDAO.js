@@ -1,4 +1,4 @@
-
+var total = document.getElementById("subtotal");
 
 function deleteF(proId, itemNote) {
     var cartLeft = document.getElementById("cartLeft");
@@ -17,15 +17,25 @@ function deleteF(proId, itemNote) {
                 // alert(txt);
                 if (txt == "刪除成功") {
                     cartLeft.removeChild(wholeItem);
+                    var counts = document.getElementsByClassName("count");
+                    if (counts.length == 0) {
+                        var xhr_delSession = new XMLHttpRequest();
+                        xhr_delSession.open("GET", "ModifyOrderItem.do?cmd=delOrderRest", true);
+                        xhr_delSession.send();
+                        window.location.href = "../indexA.jsp";
+                        return;
+                    }
+                    getSubtotal();
                 }
             }
         }
+
     }
 }
 
 function modifyAmount(proId, itemNote) {
     var count = document.getElementById("count" + proId + itemNote).value;
-
+    getSubtotal();
     var xhr_mod = new XMLHttpRequest();
     xhr_mod.open("GET", "ModifyOrderItem.do?cmd=modAcount&proId=" + proId + "&itemNote=" + itemNote + "&count=" + count, true);
     xhr_mod.send();
@@ -59,10 +69,8 @@ function modifyNote(e, proId, itemNote) {
 
     // 如果有重複 -> 合併變成一欄
     if (result[0] == 1) {
-        alert("find the same one!!, it's position = " + result[1]);
-
+        // alert("find the same one!!, it's position = " + result[1]);
         var repeatNum = result[3]; //出現重複的全部位置
-
         notes[repeatNum[1]].parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
         notes[repeatNum[0]].previousElementSibling.firstElementChild.value = result[2]; // 數量
 
@@ -80,16 +88,29 @@ function modifyNote(e, proId, itemNote) {
         xhr_del.open("GET", "ModifyOrderItem.do?cmd=del&proId=" + proId + "&itemNote=" + itemNote, true);
         xhr_del.send();
 
-
-    }else{
+        getSubtotal();
+    } else {
         // e.previousElementSibling.firstElementChild.value  = result[2];
         var xhr_modNote = new XMLHttpRequest();
         xhr_modNote.open("GET", "ModifyOrderItem.do?cmd=modNote&proId=" + proId + "&itemNote=" + itemNote + "&newNote=" + newNote, true);
         xhr_modNote.send();
 
+        getSubtotal();
     }
 }
 
+function getSubtotal() {
+    var counts = document.getElementsByClassName("count");
+    var prices = document.getElementsByClassName("price");
+    var subtotal = 0;
+    for (var i = 0; i < counts.length; i++) {
+        priceStr = prices[i].innerText;
+        price = priceStr.substring(3);
+        subtotal += (counts[i].value * price);
+    }
+
+    total.innerText = "總計：NT$" + subtotal + "元";
+}
 
 
 function isExist(notes, newNote) {
@@ -118,6 +139,5 @@ function isExist(notes, newNote) {
         // 扣除算到自己的那一次
         result[0] = 0;
     }
-    console.log("count = " + allCount);
     return result;
 }

@@ -82,6 +82,10 @@ public class ModifyOrderItem extends HttpServlet {
 			} else {
 				System.out.println("Something gets wrong");
 			}
+		} else if(cmd.equalsIgnoreCase("delOrderRest")){
+			session.removeAttribute("orderRest");
+			session.removeAttribute("ShoppingCart");
+			
 		}
 
 		//

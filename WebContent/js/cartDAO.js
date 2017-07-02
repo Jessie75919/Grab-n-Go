@@ -46,23 +46,39 @@ function modify(proId,itemNote) {
 
 function modifyNote(e,proId,itemNote) {
     var newNote = e.value;
-    alert(e.value); // newNote
-    alert(itemNote); // oldNote
-    alert(proId);
+    // alert(e.value); // newNote
+    // alert(itemNote); // oldNote
+    // alert(proId);
 
     var notes = document.getElementsByClassName("note");
+    // alert("previousElementSibling = "+notes[0].previousElementSibling.firstElementChild)
+
 
     var result = isExist(notes,newNote);
-    if(result[0]==1){
-        // 找到新的包含 <textarea> 的count值
-        var newCount = e.parentNode.firstChild.nextSibling.nextSibling.firstChild.value;
-        alert(newCount)
-        // 找到包含相同備註的那個<textarea> 的count值 ，並且加上新的數量
-        var oldCount = notes[result[1]].previousSibling.firstChild.value += newCount;
-        alert(oldCount)
 
+
+
+    // 如果有重複 -> 合併變成一欄
+    if(result[0]==1){
+        alert("find the same one!!, it's position = " + result[1] );
+        // 找到新的包含 <textarea> 的count值
+
+        var newCountStr = e.previousElementSibling.firstElementChild.value;
+        var newCount = parseInt(newCountStr);
+        alert("newCount ="+newCount);
+        // 找到包含相同備註的那個<textarea> 的count值 ，並且加上新的數量
+        var oldCountStr = notes[result[1]].previousElementSibling.firstElementChild.value;
+        alert("oldCountStr = "+oldCountStr);
+        var oldCount = parseInt(oldCountStr) ;
+        oldCount += newCount ;
+        alert("oldCount = "+oldCount);
+        oldCountStr.value = oldCount;
+        // e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
     }
 
+    // var xhr_mod = new XMLHttpRequest();
+	// 	xhr_mod.open("GET", "ModifyOrderItem.do?cmd=modNote&proId=" + proId + "&itemNote=" + itemNote+"&newNote="+newNote, true);
+	// 	xhr_mod.send();
 
 
 
@@ -78,21 +94,28 @@ function modifyNote(e,proId,itemNote) {
     //     alert(totalCount);
     // }
 
-    // var xhr_mod = new XMLHttpRequest();
-	// 	xhr_mod.open("GET", "ModifyOrderItem.do?cmd=modNote&proId=" + proId + "&itemNote=" + itemNote+"&newNote="+newNote, true);
-	// 	xhr_mod.send();
 
 }
 
+// 如何扣除自己之後再判斷是否有重複 ??
+
 function isExist(notes,newNote) {
-    var result = [] ;
+    var result = [];
+    var allCount = 0;
     result[0] = 0;
+        console.log("newNote = " +newNote);
     for(var i=0;i<notes.length;i++){
+        console.log(i+" = " +notes[i].value);
         if(notes[i].value == newNote){
+            var countStr = notes[i].previousElementSibling.firstElementChild.value;
+            count = parseInt(countStr);
+            allCount+=count;
             result[0] = 1;
             result[1] = i;
-            break;
+            result[2] = allCount;
+            // break;
         }
     }
+    console.log("count = "+allCount);
     return result;
 }

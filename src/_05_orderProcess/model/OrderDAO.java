@@ -48,6 +48,7 @@ public class OrderDAO {
 		String sql = "SELECT a.ord_id, a.ord_time, b.rest_name, a.ord_totalPrice, a.ord_status"
 				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
 				+ " WHERE m_username = ?";
+		
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -115,10 +116,11 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
-		String sql = "SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status"
-					+ "FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
-					+ "WHERE b.rest_username = ?";
+		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
+				+ " WHERE b.rest_username = ? ";
+//		String sql = "SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+//				+ " FROM order01 a inner JOIN restaurant b ON a.rest_id = b.rest_id ";
 
 		try {
 			conn = ds.getConnection();
@@ -130,7 +132,7 @@ public class OrderDAO {
 				OrderBean ob = new OrderBean();
 				ob.setOrd_time(rs.getTimestamp("ord_time"));
 				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
-				ob.setM_pickupname(rs.getString("m_pickuptime"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));

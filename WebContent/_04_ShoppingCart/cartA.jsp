@@ -50,7 +50,7 @@
 	                            <h4>${list.item_name}</h4>
 	                            <input type="hidden" id="proId" value="${list.prod_id}">
 	                            <p>數量 
-	                            	<input type="number" name="" id="count${list.prod_id}${list.item_note}" value="${list.item_amount}" onchange="modify(${list.prod_id},'${list.item_note}')"  min="1"> 
+	                            	<input type="number" name="" id="count${list.prod_id}${list.item_note}" value="${list.item_amount}" onchange="modifyAmount(${list.prod_id},'${list.item_note}')"  min="1"> 
 	                            	<span class="price" >NT$${list.item_price}</span>
 	                            </p>
 	                            <textarea class="note" id="note${list.prod_id}${list.item_note}" placeholder="特殊需求" onchange="modifyNote(this,${list.prod_id},'${list.item_note}')">${list.item_note}</textarea>

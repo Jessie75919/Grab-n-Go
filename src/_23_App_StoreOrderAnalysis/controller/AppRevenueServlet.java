@@ -41,17 +41,24 @@ public class AppRevenueServlet extends HttpServlet {
 		
 		//判斷送來的請求為要求revernueDate或是orderInformation
 		String param = jsonObject.get("param").getAsString();
-		Collection<OrderItemBean> coll = new ArrayList<>();
+		Collection<OrderItemBean> coll_daily = new ArrayList<>();
+		Collection<OrderItemBean> coll_monthly = new ArrayList<>();
+		Collection<OrderItemBean> coll_yearly = new ArrayList<>();
 		if (param.equals("getOrderData")) {
 			String rest_name = jsonObject.get("rest_name").getAsString();
 			OrderItemDAO dao = new OrderItemDAO();
-			coll = dao.getOrdersItemDataForApp(rest_name);
+			coll_daily = dao.getOrdersItemDataForApp(rest_name, "daily");
+			System.out.println("coll_daily = " + gson.toJson(coll_daily));
+			coll_monthly = dao.getOrdersItemDataForApp(rest_name, "monthly");
+			System.out.println("coll_monthly = " + gson.toJson(coll_monthly));
+			coll_yearly = dao.getOrdersItemDataForApp(rest_name, "yearly");
+			System.out.println("coll_yearly = " + gson.toJson(coll_yearly));
 		}
-		
+		String[] sa = {gson.toJson(coll_daily), gson.toJson(coll_monthly), gson.toJson(coll_yearly)};
 		//將訂單資料送回App
 		PrintWriter out = response.getWriter();
-		out.println(gson.toJson(coll));
-		System.out.println("gson.toJson(coll) = " + gson.toJson(coll));
+		out.println(gson.toJson(sa));
+		System.out.println("gson.toJson(sa) = " + gson.toJson(sa));
 		out.close();
 	}
 

@@ -58,10 +58,12 @@
 	<div class="rightBtn searchItem">
 		<a href="#" title="搜尋"><i class="icon-search"></i></a>
 	</div>
-	<div class="rightBtn">
-		<a href="_04_ShoppingCart/cartA.jsp" title="購物車"><i
-			class="icon-bag"></i></a>
-	</div>
+	<c:if test="${! empty cart}">
+		<div class="rightBtn">
+			<a href="_04_ShoppingCart/cartA.jsp" title="購物車"><i
+				class="icon-bag"></i></a>
+		</div>
+	</c:if>
 	<div class="account">
 		<ul>
 			<!--未登入用這組-->

@@ -25,7 +25,15 @@ public class StoreBeanDAO {
 	StoreLoginServiceDB slsdb;
 	private double lat;
 	private double lng;
-	
+	private int rest_id;
+
+	public int getRest_id() {
+		return rest_id;
+	}
+
+	public void setRest_id(int rest_id) {
+		this.rest_id = rest_id;
+	}
 
 	public double getLat() {
 		return lat;
@@ -195,6 +203,44 @@ public class StoreBeanDAO {
 	/* ----------------------------------------------------------------------------------------
 	 *  Search by id 
 	 * */
+	public StoreBean getStoreById(){
+		
+		String sql = "select * from restaurant where rest_id = ? " ;
+		StoreBean sb = null;
+		try (Connection con = ds.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+				) {
+			pst.setInt(1, rest_id);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				String rest_type = rs.getString("rest_type");
+				String rest_name = rs.getString("rest_name");
+				String rest_branch = rs.getString("rest_branch");
+				String rest_address = rs.getString("rest_address");
+				String rest_phone = rs.getString("rest_phone");
+				String rest_owner = rs.getString("rest_owner");
+				String rest_email = rs.getString("rest_email");
+				String rest_username = rs.getString("rest_username");
+				String rest_password = rs.getString("rest_password");
+				String rest_url = rs.getString("rest_url");
+				double rest_longitude = rs.getDouble("rest_longitude");
+				double rest_latitude = rs.getDouble("rest_latitude");
+				Blob rest_mainbanner = rs.getBlob("rest_mainbanner");
+				Blob rest_logo = rs.getBlob("rest_logo");
+				Blob rest_coverimage = rs.getBlob("rest_coverimage");
+				
+				sb = new StoreBean(
+						rest_id,rest_type,rest_name,rest_branch,rest_address,
+						rest_phone,rest_owner,rest_email,rest_username,rest_password,
+						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
+						rest_coverimage);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sb;
+	}
 	public StoreBean getStoreById(int rest_id){
 		
 		String sql = "select * from restaurant where rest_id = ? " ;

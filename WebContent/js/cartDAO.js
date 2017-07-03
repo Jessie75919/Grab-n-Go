@@ -20,10 +20,21 @@ function deleteF(proId, itemNote) {
                     var counts = document.getElementsByClassName("count");
                     if (counts.length == 0) {
                         var xhr_delSession = new XMLHttpRequest();
-                        xhr_delSession.open("GET", "ModifyOrderItem.do?cmd=delOrderRest", true);
+                        xhr_delSession.open("GET", "ModifyOrderItem.do?cmd=delOrderRest&proId=0&itemNote=", true);
                         xhr_delSession.send();
-                        window.location.href = "../indexA.jsp";
-                        return;
+
+                        xhr_delSession.onreadystatechange = function () {
+                        
+                             if (xhr_delSession.readyState == 4 && xhr_delSession.status == 200) {
+                                var msg = JSON.parse(xhr_delSession.responseText)
+                                if(msg=="sessionClear"){
+                                    window.location.href = "../indexA.jsp";
+                                    return;
+
+                                }
+                             }
+                        }
+
                     }
                     getSubtotal();
                 }

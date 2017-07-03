@@ -36,7 +36,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<img width="400" src="../images/share/logo.svg">
+					<a href="${pageContext.request.contextPath}/indexA.jsp"><img width="30%" src="../images/share/logo.svg"></a>
 				</div>
 			</div>
 		</div>

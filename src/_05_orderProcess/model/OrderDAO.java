@@ -160,11 +160,13 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getStoreOrdersInPgogress() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		try (Connection conn = ds.getConnection();) {
-			String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-						+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-						+ " WHERE a.ord_status = 'inprogress' and b.rest_username = ? ";
+		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " WHERE a.ord_status = 'inprogress' and b.rest_username = ? ";
+		try (
+			Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -188,11 +190,12 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getStoreOrdersUnpaid() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		try (Connection conn = ds.getConnection();) {
-			String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-						+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-						+ " WHERE a.ord_status = 'unpaid' and b.rest_username = ? ";
+		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " WHERE a.ord_status = 'unpaid' and b.rest_username = ? ";
+		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -215,11 +218,12 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getStoreOrdersPaid() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		try (Connection conn = ds.getConnection();) {
-			String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-						+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-						+ " WHERE a.ord_status = 'paid' and b.rest_username = ? ";
+		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " WHERE a.ord_status = 'paid' and b.rest_username = ? ";
+		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {

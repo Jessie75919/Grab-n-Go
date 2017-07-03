@@ -18,11 +18,15 @@ import _00_init.GlobalService;
 public class OrderItemDAO {
 	private DataSource ds;
 	private int ord_id;
+	private String restUsername;
 	
 	
 
 	public void setOrd_id(int ord_id) {
 		this.ord_id = ord_id;
+	}
+	public void setRestUsername(String restUsername){
+		this.restUsername = restUsername;
 	}
 
 	public OrderItemDAO() {
@@ -129,4 +133,44 @@ public class OrderItemDAO {
 		return coll;
 	}
 	
+	//
+	public Collection<OrderItemBean> getOrderDetailsForStore(){
+		Collection<OrderItemBean> coll = new ArrayList();
+//		String sql = " SELECT m_pickupname, item_name, prod_id, item_note, item_amount, item_price, b.ord_id " 
+//				   + " FROM Grab_n_Go.restaurant a JOIN Grab_n_Go.order01 b ON a.rest_id = b.rest_id "
+//				   + " JOIN Grab_n_Go.order_item c on b.ord_id = c.ord_id "
+//				   + " WHERE b.ord_id = ? ";
+		
+		String sql = " SELECT m_pickupname, item_name, prod_id, item_note, item_amount, item_price, b.ord_id " 
+				   + " FROM Grab_n_Go.restaurant a Join Grab_n_Go.order01 b ON a.rest_id = b.rest_id "
+				   + " Join Grab_n_Go.order_item c on b.ord_id = c.ord_id "
+				   + " where a.rest_username = ? And b.ord_id = ? ";
+
+		try(Connection conn = ds.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+				){
+			System.out.println("Hello!!");
+			stmt.setString(1, restUsername);
+			stmt.setInt(2, ord_id);
+			ResultSet rs = stmt.executeQuery();
+			if( rs == null){
+				System.out.println("not found");
+			}
+			while(rs.next()){
+				OrderItemBean oib = new OrderItemBean();
+				oib.setM_pickupname(rs.getString("m_pickupname"));
+				oib.setItem_name(rs.getString("item_name"));
+				oib.setProd_id(rs.getInt("prod_id"));
+				oib.setItem_note(rs.getString("item_note"));
+				oib.setItem_amount(rs.getInt("item_amount"));
+				oib.setItem_price(rs.getInt("item_price"));
+				oib.setOrd_id(rs.getInt("ord_id"));
+				System.out.println(oib);
+				coll.add(oib);
+			}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
+		return coll;
+	}
 }

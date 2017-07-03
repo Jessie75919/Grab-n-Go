@@ -1,6 +1,8 @@
 package _05_orderProcess.model;
 
-public class OrderItemBean {
+import java.io.Serializable;
+
+public class OrderItemBean implements Serializable{
 	int serial_no;
 	int ord_id;
 	int prod_id;
@@ -9,7 +11,11 @@ public class OrderItemBean {
 	int item_amount;
 	String item_note;
 	String m_username;
+	String m_pickupname;
 	
+
+	
+
 	public OrderItemBean() {
 	}
 	
@@ -21,6 +27,7 @@ public class OrderItemBean {
 		this.item_price = item_price;
 		this.item_amount = item_amount;
 		this.item_note = item_note;
+		
 	}
 	
 	public OrderItemBean(int prod_id, String item_name, int item_price, int item_amount) {
@@ -86,6 +93,14 @@ public class OrderItemBean {
 	public void setM_username(String m_username) {
 		this.m_username = m_username;
 	}
+	public String getM_pickupname() {
+		return m_pickupname;
+	}
+
+	public void setM_pickupname(String m_pickupname) {
+		this.m_pickupname = m_pickupname;
+	}
+
 	
 	
 }

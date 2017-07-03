@@ -28,7 +28,7 @@
             <h2>本日訂單</h2>
         </div>
     </header>
-<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO"/>
 <!-- 商家 -->
 <c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
     <!--店家profile-->
@@ -51,7 +51,7 @@
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="訂單編號/顧客姓名">
+                                <input type="search" class="form-control" id="" placeholder="顧客姓名">
                             </div>
                         <input type="submit" class="btn btn-primary" value="搜尋"></input>
                     </form>
@@ -94,9 +94,9 @@
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td nowrap="">${anOrderBean.ord_pickuptime}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp">${anOrderBean.ord_id}</a></td>
-                        <td>${anOrderBean.ord_totalPrice}</td>
-                        <td>${anOrderBean.ord_status}</td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${param.ord_id}&m_pickupname=${anOrderBean.m_pickupname}">${anOrderBean.ord_id}</a></td>
+                        <td> $${anOrderBean.ord_totalPrice}</td>
+                        <td><a href="#">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
                     </tr>
                     </c:forEach> 

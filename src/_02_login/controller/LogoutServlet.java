@@ -17,6 +17,9 @@ public class LogoutServlet extends HttpServlet {
 		System.out.println("I am here"); 
 		request.getSession().removeAttribute("LoginOK");
 		request.getSession().invalidate();
+		HttpSession session = request.getSession();
+		session.removeAttribute("orderRest");
+		session.removeAttribute("cart");
 		response.sendRedirect("indexA.jsp"); 
 		
 	}

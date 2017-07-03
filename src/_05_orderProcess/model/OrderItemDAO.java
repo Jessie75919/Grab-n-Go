@@ -1,12 +1,12 @@
 package _05_orderProcess.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -83,8 +83,8 @@ public class OrderItemDAO {
 		return coll;
 	}
 
-	public Collection<OrderItemBean> getOrdersItemDataForApp(String rest_name ,String interval) {
-		Collection<OrderItemBean> coll = new ArrayList<>();
+	public List<OrderItemBean> getOrdersItemDataForApp(String rest_name ,String interval) {
+		List<OrderItemBean> coll = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";

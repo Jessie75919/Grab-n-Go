@@ -12,7 +12,7 @@ import _01_register.model.*;
 		urlPatterns = { "/*" }, 
 		initParams = { 
 				@WebInitParam(name = "mustLogin1", value = "/_06_member/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/_04_ShoppingCart/cart_success.jsp"), 
+				@WebInitParam(name = "mustLogin2", value = "/_04_ShoppingCart/PayBill.do"), 
 				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
 				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
 		})

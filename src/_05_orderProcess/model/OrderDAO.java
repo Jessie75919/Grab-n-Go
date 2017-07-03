@@ -1,10 +1,10 @@
 package _05_orderProcess.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -39,6 +39,77 @@ public class OrderDAO {
 		}
 
 	}
+	
+	public int insertOrder(OrderBean ob){
+		int n = -1;
+		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?)";
+		String sqlOrderItem = "insert into order_item values (null,?,?,?,?,?,?,?)";
+		try(
+				Connection con = ds.getConnection();
+				PreparedStatement pst1 = con.prepareStatement(sqlOrder,Statement.RETURN_GENERATED_KEYS);
+				
+		){
+			ResultSet rsGenerateKeys = null ;
+			try{
+				con.setAutoCommit(false);
+				System.out.println(ob.getM_username());
+				System.out.println(ob.getM_pickupname());
+				System.out.println(ob.getOrd_time());
+				System.out.println(ob.getOrd_pickuptime());
+				System.out.println(ob.getRest_id());
+				System.out.println(ob.getOrd_totalPrice());
+				System.out.println(ob.getOrd_status());
+			//==============================================
+				pst1.setString(1, ob.getM_username());
+				pst1.setString(2, ob.getM_pickupname());
+				pst1.setTimestamp(3, ob.getOrd_time());
+				pst1.setTimestamp(4, ob.getOrd_pickuptime());
+				pst1.setInt(5, ob.getRest_id());
+				pst1.setInt(6, ob.getOrd_totalPrice());
+				pst1.setString(7, ob.getOrd_status());
+				n = pst1.executeUpdate();
+				int orderId_Pk = 0; 
+				rsGenerateKeys = pst1.getGeneratedKeys();
+				if(rsGenerateKeys.next()){
+					orderId_Pk = rsGenerateKeys.getInt(1);
+				}else{
+					throw new SQLException("create fail,no generateKey");
+				}
+				
+				PreparedStatement pst2 = con.prepareStatement(sqlOrderItem);
+				int k = 0;
+				List<OrderItemBean> list = ob.getItems();
+				for(OrderItemBean oib:list){
+					pst2.setInt(1	, orderId_Pk);
+					pst2.setInt(2	, oib.getProd_id());
+					pst2.setString(3, oib.getItem_name());
+					pst2.setInt(4, oib.getItem_price());
+					pst2.setInt(5, oib.getItem_amount());
+					pst2.setString(6, oib.getItem_note());
+					pst2.setString(7, ob.getM_username());
+					k = pst2.executeUpdate();
+					pst2.clearParameters();
+				}
+				
+				con.commit();
+				con.setAutoCommit(true);
+				if(k==1){
+					n = 1;
+				}
+			}catch (Exception e) {
+				System.out.println("Rollback");
+				if(con!=null){
+					con.rollback();
+				}
+				e.printStackTrace();
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
 
 	public Collection<OrderBean> getMemberOrders() {
 		Connection conn = null;

@@ -12,7 +12,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>Welcome to GrabAndGo</title>
+    <title>已付款訂單|本日訂單-Grab &amp; Go</title>
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -49,7 +49,7 @@
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="訂單編號/顧客姓名">
+                                <input type="search" class="form-control" id="" placeholder="顧客姓名">
                             </div>
                         <input type="submit" class="btn btn-primary" value="搜尋"></input>
                     </form>
@@ -89,10 +89,10 @@
                     <tr>
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="_storeOrderDetails.jsp">${anOrderBean.ord_id}</a></td>
-                        <td>${anOrderBean.ord_totalPrice}</td>
+                        <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">H00${anOrderBean.ord_id}</a></td>
+                        <td>$${anOrderBean.ord_totalPrice}</td>
                         <td>${anOrderBean.ord_status}</td>
-                        <td id="cancelB"><a href="_storeOrderDetails.jsp">檢視明細</a></td>
+                        <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td>
                     </tr>
                     </c:forEach>
                 </table>

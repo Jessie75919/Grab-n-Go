@@ -12,7 +12,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>Welcome to GrabAndGo</title>
+    <title>待處理訂單|本日訂單-Grab &amp; Go</title>
 </head>
 <!-- 商家已登入頁面 -->
 <!-- 待處理訂單頁面 -->
@@ -68,6 +68,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
+                     	<li role="presentation"><a href="#">訂單查詢</a></li>
                         <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
@@ -89,12 +90,12 @@
                     </tr>
                     <!-- 顯示訂單資訊 -->
                     <!-- 取得訂單 -->
-                   <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersInPgogress}">
+                   <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersInPgogress}">
                     <tr>
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td nowrap="">${anOrderBean.ord_pickuptime}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}">${anOrderBean.ord_id}</a></td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">H00${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
                         <td><a href="#">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>

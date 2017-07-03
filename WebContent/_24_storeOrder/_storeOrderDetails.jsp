@@ -15,7 +15,7 @@
     <jsp:useBean id="orderDetailsDAOBean" class="_05_orderProcess.model.OrderItemDAO" />
     <c:set target="${orderDetailsDAOBean}" property="ord_id" value="${param.ord_id}"></c:set>
 
-    <title>GrabAndGo Order Details </title>
+    <title>訂單明細|本日訂單-Grab &amp; Go</title>
 </head>
 <!--點選訂單明細後的頁面-->
 <!--商家訂單明細頁面-->
@@ -46,7 +46,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 訂單明細</h3>
-                    <h4 style="font-weight: bolder;">訂單編號：${param.ord_id}</h4>
+                    <h4 style="font-weight: bolder;">訂單編號：H00${param.ord_id}</h4>
                 </div>
             </div>
     </section>
@@ -83,17 +83,17 @@
                     <c:forEach  var="orderDetailsBean" items="${orderDetailsDAOBean.orderDetailsForStore}">
                     <tr>
                         <td>${orderDetailsBean.m_pickupname}</td>
-                        <td>${orderDetailsBean.item_name}</td>
-                        <td>${orderDetailsBean.prod_id}</td>
-                        <td>${orderDetailsBean.item_note}</td>
+                        <td nowrap="">${orderDetailsBean.item_name}</td>
+                        <td>A00${orderDetailsBean.prod_id}</td>
+                        <td nowrap="">${orderDetailsBean.item_note}</td>
                         <td>${orderDetailsBean.item_amount}</td>
                         <td>${orderDetailsBean.item_price}</td>
-                        <td>${orderDetailsBean.item_price}</td>
+                        <td>${orderDetailsBean.item_amount*orderDetailsBean.item_price}</td>
                     </tr>
                     </c:forEach>
                 </table>
                 <hr>
-                <h4 class="totalPrice">總金額：＄${param.totalPrice}</h4>
+                <h4 class="totalPrice">總金額：＄${param.ord_totalPrice}</h4>
             </div>
             <div id="checkOut" style="display: inline;">
             <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->

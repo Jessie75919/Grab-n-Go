@@ -11,7 +11,9 @@
 <body>
 <div class="row">
             <div class="col-md-3">
-                <div id="topName"> ${StoreLoginOK['rest_username']} </div>
+            	<center>
+                <div id="topName"> <h4> ${StoreLoginOK['rest_username']} </h4></div>
+            </center>
                 <ul id="leftMenu" class="list-group">
                     <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i>Profile</li>
                     <li class="list-group-item">

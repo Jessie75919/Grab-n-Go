@@ -23,8 +23,14 @@ public class OrderItemBean {
 		this.item_note = item_note;
 	}
 	
-	
-	
+	public OrderItemBean(int prod_id, String item_name, int item_price, int item_amount) {
+		super();
+		this.prod_id = prod_id;
+		this.item_name = item_name;
+		this.item_price = item_price;
+		this.item_amount = item_amount;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderItemBean [serial_no=" + serial_no + ", ord_id=" + ord_id + ", prod_id=" + prod_id + ", item_name="

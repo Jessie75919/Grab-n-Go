@@ -23,8 +23,8 @@ import com.google.gson.JsonObject;
 import _05_orderProcess.model.OrderBean;
 
 @SuppressWarnings("serial")
-@WebServlet("/AppRevenueDailyServlet")
-public class AppRevenueDailyServlet extends HttpServlet {
+@WebServlet("/AppRevenueServlet")
+public class AppRevenueServlet extends HttpServlet {
 	private final static String CONTENT_TYPE = "text/html; charset=UTF-8";
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

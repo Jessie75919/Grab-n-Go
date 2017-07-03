@@ -87,30 +87,6 @@ public class OrderDAO {
 		return coll;
 	}
 	
-	public Collection<OrderBean> getOrdersDate(String rest_name, 
-			Date now, Date monthsAgo) {
-		Collection<OrderBean> coll = new ArrayList<>();
-		try (Connection con = ds.getConnection();) {
-			String sql = "SELECT Date_format(a.ord_time, '%Y-%c-%d')"
-					+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
-					+ " WHERE b.rest_name = ? WHERE a.ord_time BETWEEN ? AND ?"
-					+ " WHERE a.ord_status = 'paid' ";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, rest_name);
-			stmt.setDate(2, now);
-			stmt.setDate(3, monthsAgo);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				OrderBean ob = new OrderBean();
-				ob.setOrd_time(rs.getTimestamp("ord_time"));
-				coll.add(ob);
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return coll;
-	}
-	
 	public Collection<OrderBean> getStoreOrders(){
 		Connection conn = null;
 		Collection<OrderBean> coll = new ArrayList<>();

@@ -35,13 +35,13 @@
         <h2>購物車</h2>
     </div>
     <main>
-        <div class="brcame"><a href="../indexA.jsp">首頁</a> / <a href="cartA.jsp">購物車</a> / 訂購成功</div>
+        <div class="brcame"><a href="../indexA.jsp">首頁</a> / <a href="#">購物車</a> / 訂購成功</div>
         <section class="content">
             <div class="cartSuccess">
                 <h3>訂購成功</h3>
                 <p>訂餐已經傳送至店家囉，店家將立即著手準備您的餐點，請耐心等候，感謝您的配合。</p>
                 <div class="formBtn">
-                    <a href="../index.htm">逛逛Grab &amp; Go</a>
+                    <a href="../indexA.jsp">逛逛Grab &amp; Go</a>
                 </div>
             </div>
         </section>

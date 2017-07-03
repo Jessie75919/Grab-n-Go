@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,6 +32,9 @@
 </head>
 <jsp:useBean id="orderItemDAOBean" class="_05_orderProcess.model.OrderItemDAO"/>
 <c:set target="${orderItemDAOBean}" property="ord_id" value="${param.ordId}"/>
+<jsp:useBean id="orderBean" class="_05_orderProcess.model.OrderDAO"/>
+<c:set target="${orderBean}" property="ord_id" value="${param.ordId}"/>
+<c:set var="ob"  value="${orderBean.storeOrdersById}"/>
 <body id="top" class="cbp-spmenu-push">
  <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
     <div class="insideTitle">
@@ -72,7 +77,9 @@
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-birth"></i>預計取餐時間</div>
-                    <div class="formInfo noform">下午1:30</div>
+                    <div class="formInfo noform">
+                    <fmt:formatDate type = "both"  pattern="yyyy-MM-dd HH:mm" value ="${ob.ord_pickuptime}" />
+                    </div>
                 </div>
                 <!--訂購人資訊 end-->
                 <div class="formBtn">

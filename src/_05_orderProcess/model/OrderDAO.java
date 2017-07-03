@@ -21,7 +21,18 @@ public class OrderDAO {
 	private DataSource ds;
 	private String username;
 	private String restUsername;
+	private int ord_id;
 	
+	
+	
+	public int getOrd_id() {
+		return ord_id;
+	}
+
+	public void setOrd_id(int ord_id) {
+		this.ord_id = ord_id;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -242,6 +253,32 @@ public class OrderDAO {
 
 		}
 		return coll;
+	}
+	
+	
+	
+	public OrderBean getStoreOrdersById() {
+		String sql = " SELECT * from order01  WHERE ord_id = ? ";
+		OrderBean ob = null;
+		try (Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
+			stmt.setInt(1, ord_id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				ob = new OrderBean();
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_status(rs.getString("ord_status"));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			
+		}
+		return ob;
 	}
 
 }

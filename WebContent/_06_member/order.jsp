@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,7 +51,8 @@
           <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.memberOrders}">
           <div class="orderList">
               <div class="order nNumber">${anOrderBean.ord_id}</div>
-              <div class="order date">${anOrderBean.ord_time}</div>
+              
+              <div class="order date"><fmt:formatDate type = "both"  pattern="yyyy-MM-dd HH:mm" value ="${anOrderBean.ord_time}" /></div>
               <div class="order store">${anOrderBean.rest_name}</div>
               <div class="order price">${anOrderBean.ord_totalPrice}</div>
               <div class="order status">${anOrderBean.ord_status}</div>

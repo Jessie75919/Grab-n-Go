@@ -89,7 +89,7 @@
                     </tr>
                     <!-- 顯示訂單資訊 -->
                     <!-- 取得訂單 -->
-                   <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrders}">
+                   <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersInPgogress}">
                     <tr>
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td nowrap="">${anOrderBean.ord_pickuptime}</td>

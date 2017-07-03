@@ -8,7 +8,7 @@ font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 /*logo*/
 .logoArea{
-    width: 20%;
+    width: 16%;
     margin: 0 auto;
     padding-top: 34px;
 }
@@ -17,7 +17,7 @@ font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
     position: relative;
     background-color: #fff;
     text-align: center;
-    padding: 20px 0% 0px 0%;
+    padding: 16px 0% 0px 0%;
    
 }
 .topTitle h2 {
@@ -59,3 +59,10 @@ ul, li{
 #checkOut{
         margin-left: 57%; 
     }
+span h4{
+	font-weight: bold;
+}
+/*搜尋欄位*/
+form{
+	margin-bottom: 2%;
+}

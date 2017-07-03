@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,6 +27,8 @@
             <h2>本日訂單</h2>
         </div>
     </header>
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
+<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
     <!--店家profile-->
     <section class="container">
         <div class="row">
@@ -82,14 +85,16 @@
                         <th>Action</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
+                    <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersPaid}">
                     <tr>
-                        <td nowrap="">2017/05/19 11:05:31</td>
-                        <td>王小明</td>
-                        <td><a href="_storeOrderDetails.jsp">XX001</a></td>
-                        <td>$250</td>
-                        <td>已付款</td>
+                        <td nowrap="">${anOrderBean.ord_time}</td>
+                        <td>${anOrderBean.m_pickupname}</td>
+                        <td><a href="_storeOrderDetails.jsp">${anOrderBean.ord_id}</a></td>
+                        <td>${anOrderBean.ord_totalPrice}</td>
+                        <td>${anOrderBean.ord_status}</td>
                         <td id="cancelB"><a href="_storeOrderDetails.jsp">檢視明細</a></td>
                     </tr>
+                    </c:forEach>
                 </table>
                 <hr>
             </div>

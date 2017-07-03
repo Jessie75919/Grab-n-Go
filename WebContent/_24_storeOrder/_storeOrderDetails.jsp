@@ -15,7 +15,7 @@
     <jsp:useBean id="orderDetailsDAOBean" class="_05_orderProcess.model.OrderItemDAO" />
     <c:set target="${orderDetailsDAOBean}" property="ord_id" value="${param.ord_id}"></c:set>
 
-    <title>GrabAndGo Order Details</title>
+    <title>GrabAndGo Order Details </title>
 </head>
 <!--點選訂單明細後的頁面-->
 <!--商家訂單明細頁面-->
@@ -28,7 +28,7 @@
         </div>
         <!--進入區塊-->
         <div class="topTitle">
-            <h2>本日訂單</h2>
+            <h2>本日訂單${param.ord_id}</h2>
         </div>
     </header>
     <!--店家profile-->

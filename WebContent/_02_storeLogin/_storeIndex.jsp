@@ -94,7 +94,7 @@
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td nowrap="">${anOrderBean.ord_pickuptime}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${param.ord_id}&m_pickupname=${anOrderBean.m_pickupname}">${anOrderBean.ord_id}</a></td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}">${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
                         <td><a href="#">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>

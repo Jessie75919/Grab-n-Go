@@ -83,22 +83,47 @@ public class OrderItemDAO {
 		return coll;
 	}
 
-	public Collection<OrderItemBean> getOrdersItemDataForApp(String rest_name) {
+	public Collection<OrderItemBean> getOrdersItemDataForApp(String rest_name ,String interval) {
 		Collection<OrderItemBean> coll = new ArrayList<>();
 		OrderItemBean oib = null;
-		String sql = "SELECT a.prod_id, a.item_name, a.item_price, a.item_amount "
-				+ " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
-				+ " JOIN restaurant r ON b.rest_id = r.rest_id " + " WHERE r.rest_name = ? ";
-		try (Connection con = ds.getConnection(); PreparedStatement stmt = con.prepareStatement(sql);) {
+		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
+		String sql2 = "";
+		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
+					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
+					+ " WHERE r.rest_name = ? "
+					+ " GROUP BY a.prod_id ";
+		String sql4 = "";
+		if (interval.equals("daily")){
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%m-%d') daily ";
+			sql4 = " , daily ; ";
+		} else if (interval.equals("mobthly")) {
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%m') monthly ";
+			sql4 = " , monthly ; ";
+		} else if (interval.equals("yearly")) {
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y') yearly ";
+			sql4 = " , yearly ; ";
+		}
+		String sql = sql1 + sql2 + sql3 + sql4;
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+		) {
 			stmt.setString(1, rest_name);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				int prod_id = rs.getInt("prod_id");
-				String item_name = rs.getString("item_name");
-				int item_price = rs.getInt("item_price");
-				int item_amount = rs.getInt("item_amount");
-
-				oib = new OrderItemBean(prod_id, item_name, item_price, item_amount);
+				int prod_id = rs.getInt("a.prod_id");
+				String item_name = rs.getString("a.item_name");
+				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
+				String s = "";
+				if (interval.equals("daily")){
+					s = rs.getString("daily");
+				} else if (interval.equals("mobthly")) {
+					s = rs.getString("mobthly");
+				} else if (interval.equals("yearly")) {
+					s = rs.getString("yearly");
+				}
+				oib = new OrderItemBean(prod_id, item_name, item_price_sum, item_amount_sum, s);
 				coll.add(oib);
 			}
 		} catch (Exception ex) {

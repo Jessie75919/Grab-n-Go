@@ -38,7 +38,7 @@
         <section class="content">
             <form action="cart_success.htm" method="post" class="formcontent">
                 <div id="cartLeft" class="cartLeft">
-                    <h3>${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</h3>
+                    <h3><a href="../_07_storePage/storePage.jsp">${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</a></h3>
                     <!--菜單列表-->
                     <c:set var="map" property="shoppingCart" value="${ShoppingCart}"/>
                     <c:forEach var="list" items="${map.listAllMap}">

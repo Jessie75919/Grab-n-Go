@@ -1,6 +1,9 @@
 package _05_orderProcess.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class OrderBean {
 	int ord_id;
@@ -12,6 +15,32 @@ public class OrderBean {
 	int ord_totalPrice;
 	String ord_status;
 	String rest_name;
+	List<OrderItemBean> items = new ArrayList<OrderItemBean>();
+	
+
+	public OrderBean(String m_username, String m_pickupname, Timestamp ord_time, Timestamp ord_pickuptime, int rest_id,
+			int ord_totalPrice, String ord_status, List<OrderItemBean> items) {
+		super();
+		this.m_username = m_username;
+		this.m_pickupname = m_pickupname;
+		this.ord_time = ord_time;
+		this.ord_pickuptime = ord_pickuptime;
+		this.rest_id = rest_id;
+		this.ord_totalPrice = ord_totalPrice;
+		this.ord_status = ord_status;
+		this.items = items;
+	}
+	
+	
+
+	public List<OrderItemBean> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItemBean> items) {
+		this.items = items;
+	}
+
 
 	public OrderBean() {
 		super();

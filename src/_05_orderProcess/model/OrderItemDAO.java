@@ -90,14 +90,14 @@ public class OrderItemDAO {
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
-					+ " WHERE r.rest_name = ? "
+					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' "
 					+ " GROUP BY a.prod_id ";
 		String sql4 = "";
 		if (interval.equals("daily")){
-			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%m-%d') daily ";
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily ; ";
 		} else if (interval.equals("mobthly")) {
-			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%m') monthly ";
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
 			sql4 = " , monthly ; ";
 		} else if (interval.equals("yearly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y') yearly ";

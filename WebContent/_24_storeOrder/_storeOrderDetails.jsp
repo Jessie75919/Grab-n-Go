@@ -28,7 +28,7 @@
         </div>
         <!--進入區塊-->
         <div class="topTitle">
-            <h2>本日訂單${param.ord_id}</h2>
+            <h2>本日訂單</h2>
         </div>
     </header>
     <!--店家profile-->
@@ -88,8 +88,8 @@
                         <td>${orderDetailsBean.prod_id}</td>
                         <td nowrap="">${orderDetailsBean.item_note}</td>
                         <td>${orderDetailsBean.item_amount}</td>
-                        <td>${orderDetailsBean.item_price}</td>
-                        <td>${orderDetailsBean.item_amount*orderDetailsBean.item_price}</td>
+                        <td>$${orderDetailsBean.item_price}</td>
+                        <td>$${orderDetailsBean.item_amount*orderDetailsBean.item_price}</td>
                     </tr>
                     </c:forEach>
                 </table>

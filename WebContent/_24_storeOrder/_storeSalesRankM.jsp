@@ -26,7 +26,7 @@
             color:white;
         }    
     </style>
-    <title>Welcome to GrabAndGo</title>
+    <title>餐點熱銷排行(月)|歷史訂單-Grab &amp; Go</title>
 </head>
 <!--商家餐點熱銷排行 （月）-->
 <!--以橫向長條圖顯示-->

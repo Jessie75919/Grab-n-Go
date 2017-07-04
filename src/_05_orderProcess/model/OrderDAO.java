@@ -21,6 +21,8 @@ public class OrderDAO {
 	private DataSource ds;
 	private String username;
 	private String restUsername;
+	private int restId;
+	private int month;
 	
 	public void setUsername(String username) {
 		this.username = username;
@@ -28,6 +30,14 @@ public class OrderDAO {
 	
 	public void setRestUsername(String restUsername){
 		this.restUsername = restUsername;
+	}
+
+	public void setRestId(int restId) {
+		this.restId = restId;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
 	}
 
 	public OrderDAO() {
@@ -160,6 +170,55 @@ public class OrderDAO {
 		
 		return coll;
 		
+	}
+	
+	public Collection<OrderBean> getStoreOrdersByMonth(){
+		Connection conn = null;
+		Collection<OrderBean> coll = new ArrayList<>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM order01 WHERE rest_id = ? AND MONTH(ord_time) = ?";
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, restId);
+			stmt.setInt(2, month);
+			
+			rs = stmt.executeQuery();
+			
+			while(rs.next()){
+				OrderBean ob = new OrderBean();
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				//ob.setRest_name(rs.getString("rest_name"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_status(rs.getString("ord_status"));
+				coll.add(ob);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return coll;
 	}
 
 }

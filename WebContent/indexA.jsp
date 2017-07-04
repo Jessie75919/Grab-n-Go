@@ -55,7 +55,8 @@
                     </div>
                     <c:if test="${! empty cart}">
                         <div class="rightBtn">
-                            <a href="_04_ShoppingCart/cartA.jsp" title="購物車"><i class="icon-bag"></i></a><span>99</span>
+                            <a href="_04_ShoppingCart/cartA.jsp" title="購物車"><i class="icon-bag"></i></a>
+                            <span>${cart.itemNumber}</span>
                         </div>
                     </c:if>
                     <div class="account">

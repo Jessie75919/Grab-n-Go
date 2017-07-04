@@ -88,7 +88,7 @@ public class payBill extends HttpServlet {
 
 		String status = "inprogress";
 		OrderBean ob = new OrderBean(mb.getMemberId(), pickName, orderTime, pickTime, orderRest, total, status,
-				items);
+				items,tel,eMail);
 
 		OrderDAO dao = new OrderDAO();
 		int n = dao.insertOrder(ob);
@@ -100,6 +100,11 @@ public class payBill extends HttpServlet {
 			response.sendRedirect(response.encodeRedirectURL("cart_success.jsp"));
 		}
 
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req,resp);
 	}
 
 }

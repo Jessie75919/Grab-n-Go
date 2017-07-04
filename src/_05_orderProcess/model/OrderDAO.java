@@ -53,7 +53,7 @@ public class OrderDAO {
 	
 	public int insertOrder(OrderBean ob){
 		int n = -1;
-		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?)";
+		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?)";
 		String sqlOrderItem = "insert into order_item values (null,?,?,?,?,?,?,?)";
 		try(
 				Connection con = ds.getConnection();
@@ -78,6 +78,8 @@ public class OrderDAO {
 				pst1.setInt(5, ob.getRest_id());
 				pst1.setInt(6, ob.getOrd_totalPrice());
 				pst1.setString(7, ob.getOrd_status());
+				pst1.setString(8, ob.getOrd_tel());
+				pst1.setString(9, ob.getOrd_email());
 				n = pst1.executeUpdate();
 				int orderId_Pk = 0; 
 				rsGenerateKeys = pst1.getGeneratedKeys();
@@ -273,6 +275,8 @@ public class OrderDAO {
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
+				ob.setOrd_tel(rs.getString("ord_tel"));
+				ob.setOrd_email(rs.getString("ord_Email"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

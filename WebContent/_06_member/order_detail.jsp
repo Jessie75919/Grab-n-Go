@@ -65,15 +65,15 @@
                 <!--訂購人資訊-->
                 <div class="formList">
                     <div class="formTitle"><i class="icon-user"></i>訂購人</div>
-                    <div class="formInfo noform">${LoginOK.name}</div>
+                    <div class="formInfo noform">${ob.m_pickupname}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-phone"></i>聯絡電話</div>
-                    <div class="formInfo noform">${LoginOK.phone}</div>
+                    <div class="formInfo noform">${ob.ord_tel}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-mail"></i>E-mail</div>
-                    <div class="formInfo noform">${LoginOK.email}</div>
+                    <div class="formInfo noform">${ob.ord_email}</div>
                 </div>
                 <div class="formList">
                     <div class="formTitle"><i class="icon-birth"></i>預計取餐時間</div>

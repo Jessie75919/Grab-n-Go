@@ -48,12 +48,13 @@
                     <h3>> 待處理訂單</h3>
                     <!-- 訂單搜尋 -->
                     <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
-                    <form class="form-inline">
+                    <form class="form-inline" action="SearchOrder.do" method="get">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="顧客姓名">
-                            </div>
-                        <input type="submit" class="btn btn-primary" value="搜尋"></input>
+                                <input type="text" class="form-control" name= "mPickupName" id="mPickupName" placeholder="顧客姓名">
+                           		<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}">
+                            </div>											                   
+                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="搜尋"></input>
                     </form>
                 </div>
             </div>
@@ -68,7 +69,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                     	<li role="presentation"><a href="#">訂單查詢</a></li>
+                     	<li role="presentation"><a href="../_24_storeOrder/_storeOrderSearch.jsp">訂單查詢</a></li>
                         <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
@@ -95,7 +96,7 @@
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td nowrap="">${anOrderBean.ord_pickuptime}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">H00${anOrderBean.ord_id}</a></td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
                         <td><a href="#">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>

@@ -22,7 +22,7 @@ public class OrderDAO {
 	private String username;
 	private String restUsername;
 	private int ord_id;
-	
+	private String mPickupName;
 	
 	
 	public int getOrd_id() {
@@ -39,6 +39,10 @@ public class OrderDAO {
 	
 	public void setRestUsername(String restUsername){
 		this.restUsername = restUsername;
+	}
+	
+	public void setMPickupName(String mPickupName){
+		this.mPickupName = mPickupName;
 	}
 
 	public OrderDAO() {
@@ -192,8 +196,9 @@ public class OrderDAO {
 				ob.setOrd_status(rs.getString("ord_status"));
 
 				coll.add(ob);
+				System.out.println(ob);
 			}
-			System.out.println(rs);
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -283,6 +288,40 @@ public class OrderDAO {
 			
 		}
 		return ob;
+	}
+	
+	//
+	public Collection<OrderBean> getStoreOrdersByMpickupName() {
+		Collection<OrderBean> coll = new ArrayList<>();
+//		String sql = " SELECT * FROM order01 "
+//				   + " WHERE m_pickupname =? ";
+		String sql = " SELECT * "
+				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
+				   + " WHERE m_pickupname = ? AND rest_username = ? ";
+		
+		
+		try (Connection conn = ds.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			) {
+			stmt.setString(1, mPickupName);
+			stmt.setString(2, restUsername);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				OrderBean ob = new OrderBean();
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_status(rs.getString("ord_status"));
+				coll.add(ob);
+				System.out.println(ob);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+
+		}
+		return coll;
 	}
 
 }

@@ -44,15 +44,16 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 已付款訂單</h3>
-                    <!-- 訂單搜尋 -->
-                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
+                    <!-- 本日訂單搜尋 -->
+                    <jsp:include page="../_IncludeJsp/StoreOrder_search.jsp"/>
+                    <!-- <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 <input type="search" class="form-control" id="" placeholder="顧客姓名">
                             </div>
                         <input type="submit" class="btn btn-primary" value="搜尋"></input>
-                    </form>
+                    </form> -->
                 </div>
             </div>
     </section>
@@ -66,6 +67,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
+                    		<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation" class="active"><a href="#">已付款訂單</a></li>
@@ -85,11 +87,11 @@
                         <th>Action</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
-                    <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersPaid}">
+                    <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersPaid}">
                     <tr>
                         <td nowrap="">${anOrderBean.ord_time}</td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">H00${anOrderBean.ord_id}</a></td>
+                        <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>
                         <td>${anOrderBean.ord_status}</td>
                         <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td>

@@ -46,7 +46,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 訂單明細</h3>
-                    <h4 style="font-weight: bolder;">訂單編號：H00${param.ord_id}</h4>
+                    <h4 style="font-weight: bolder;">訂單編號：${param.ord_id}</h4>
                 </div>
             </div>
     </section>
@@ -60,6 +60,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
+                    	<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="_storeOrderPaid.jsp">已付款訂單</a></li>
@@ -84,7 +85,7 @@
                     <tr>
                         <td>${orderDetailsBean.m_pickupname}</td>
                         <td nowrap="">${orderDetailsBean.item_name}</td>
-                        <td>A00${orderDetailsBean.prod_id}</td>
+                        <td>${orderDetailsBean.prod_id}</td>
                         <td nowrap="">${orderDetailsBean.item_note}</td>
                         <td>${orderDetailsBean.item_amount}</td>
                         <td>${orderDetailsBean.item_price}</td>

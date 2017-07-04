@@ -26,6 +26,9 @@
     <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
     <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
+    <jsp:useBean id="bindRest" class="_01_Store_register.model.StoreBeanDAO" scope="session"></jsp:useBean>
+    <c:set target="${bindRest}" property="rest_id" value="${orderRest}"></c:set>
+    <c:set var="ordRB"  value="${bindRest.storeById}"></c:set>
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -36,11 +39,11 @@
     <main>
         <div class="brcame"><a href="../indexA.jsp">首頁</a> / 購物車</div>
         <section class="content">
-            <form action="cart_success.htm" method="post" class="formcontent">
+            <form action="PayBill.do" method="post" class="formcontent">
                 <div id="cartLeft" class="cartLeft">
-                    <h3>${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</h3>
+                    <h3><a href="../_07_storePage/storePage.jsp">${ordRB.rest_name}&nbsp;${ordRB.rest_branch}</a></h3>
                     <!--菜單列表-->
-                    <c:set var="map" property="shoppingCart" value="${ShoppingCart}"/>
+                    <c:set var="map" property="shoppingCart" value="${cart}"/>
                     <c:forEach var="list" items="${map.listAllMap}">
                     	<div id="List${list.prod_id}"class="foodList">
 <%--                     	${list.prod_id}<br> --%>

@@ -118,21 +118,17 @@ public class LoginServlet extends HttpServlet {
 			// 此時不要用下面兩個敘述，因為網址列的URL不會改變
 			// RequestDispatcher rd = request.getRequestDispatcher("...");
 			// rd.forward(request, response);
-			response.sendRedirect(response.encodeRedirectURL("../indexA.jsp"));
-			return;
+			System.out.println("requestURI="+requestURI);
 			
-			
-//			System.out.println("requestURI="+requestURI);
-//			if (requestURI != null) {
-//				requestURI = (requestURI.length() == 0 ? request
-//						.getContextPath() : requestURI);
-//				response.sendRedirect(response.encodeRedirectURL(requestURI));
-//				return;
-//			} else {
-//				response.sendRedirect(response.encodeRedirectURL(request
-//						.getContextPath()));
-//				return;
-//			}
+			if (requestURI != null) {
+				requestURI = (requestURI.length() == 0 ? request
+						.getContextPath() : requestURI);
+				response.sendRedirect(response.encodeRedirectURL(requestURI));
+				return;
+			} else {
+				response.sendRedirect(response.encodeRedirectURL("../indexA.jsp"));
+				return;
+			}
 		} else {
 			// 如果errorMsgMap不是空的，表示有錯誤，交棒給login.jsp
 			RequestDispatcher rd = request.getRequestDispatcher("loginA.jsp");

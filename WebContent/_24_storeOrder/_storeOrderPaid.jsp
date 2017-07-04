@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>Welcome to GrabAndGo</title>
+    <title>已付款訂單|本日訂單-Grab &amp; Go</title>
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -26,6 +27,8 @@
             <h2>本日訂單</h2>
         </div>
     </header>
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
+<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
     <!--店家profile-->
     <section class="container">
         <div class="row">
@@ -41,15 +44,16 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 已付款訂單</h3>
-                    <!-- 訂單搜尋 -->
-                    <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
+                    <!-- 本日訂單搜尋 -->
+                    <jsp:include page="../_IncludeJsp/StoreOrder_search.jsp"/>
+                    <!-- <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="訂單編號/顧客姓名">
+                                <input type="search" class="form-control" id="" placeholder="顧客姓名">
                             </div>
                         <input type="submit" class="btn btn-primary" value="搜尋"></input>
-                    </form>
+                    </form> -->
                 </div>
             </div>
     </section>
@@ -63,6 +67,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
+                    		<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation" class="active"><a href="#">已付款訂單</a></li>
@@ -82,14 +87,16 @@
                         <th>Action</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
+                    <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersPaid}">
                     <tr>
-                        <td nowrap="">2017/05/19 11:05:31</td>
-                        <td>王小明</td>
-                        <td><a href="_storeOrderDetails.jsp">XX001</a></td>
-                        <td>$250</td>
-                        <td>已付款</td>
-                        <td id="cancelB"><a href="_storeOrderDetails.jsp">檢視明細</a></td>
+                        <td nowrap="">${anOrderBean.ord_time}</td>
+                        <td>${anOrderBean.m_pickupname}</td>
+                        <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <td>$${anOrderBean.ord_totalPrice}</td>
+                        <td>${anOrderBean.ord_status}</td>
+                        <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td>
                     </tr>
+                    </c:forEach>
                 </table>
                 <hr>
             </div>

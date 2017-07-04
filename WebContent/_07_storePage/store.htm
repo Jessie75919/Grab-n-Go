@@ -29,7 +29,6 @@
 </head>
 
 <body id="top" class="cbp-spmenu-push">
-<!--      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" /> -->
     <header>
         <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
         <div class="storeBtn"><a href="../_09_storeSys/index.htm">我是店家</a></div>
@@ -40,13 +39,13 @@
         <div class="rightBtn"><a href="../_04_ShoppingCart/cart.htm" title="購物車"><i class="icon-bag"></i></a></div>
         <div class="account">
             <ul>
-<!--                                 未登入用這組 -->
+                <!-- 未登入用這組 -->
                 <li><a href="../_02_login/login.htm">登入</a></li>
-<!--                                 未登入用這組 end -->
-<!--                                 已登入用這組 -->
+                <!--                                 未登入用這組 end -->
+                <!--                                 已登入用這組 -->
                 <li><a href="../_06_member/member.htm">Juicekuo</a></li>
                 <li><a href="#">登出</a></li>
-<!--                                 已登入用這組 end -->
+                <!--                                 已登入用這組 end -->
             </ul>
         </div>
     </header>
@@ -146,8 +145,6 @@
                             <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
                             <div class="storeMenuPrice">$360</div>
                         </div>
-
-
                     </div>
                     <div id="tab2" class="tab">
                         <div class="storeMenuList">
@@ -166,7 +163,7 @@
                             <div class="storeMenuDes">雞腿肉以香辛料醃漬一天入味後，烘烤為金黃多汁烤雞，搭配十種野菜，先煎炒再拌入特製巴薩米克酒醋醬，溫熱酸香滋味引誘夏季食慾。</div>
                             <div class="storeMenuPrice">$360</div>
                         </div>
-                        <div class="storeMenuList">
+                        <div class="storeMenuList two">
                             <figure><img src="../images/productImageTest/af_menu_pic002.jpg" alt="香烤雞腿佐十品溫野菜" title="香烤雞腿佐十品溫野菜">
                                 <div class="mask"><a href="#">我要訂餐</a></div>
                             </figure>
@@ -227,11 +224,8 @@
                             <div class="storeMenuPrice">$360</div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
     </main>
     <!--店家訂購內容-->
@@ -244,8 +238,7 @@
                 <div class="menuInfo">
                     <h4>香烤松阪豬青醬燉飯</h4>
                     <p class="wRed">$360</p>
-                    <p>松阪豬以特調醬汁醃漬入味，芫荽等香料及蜂蜜風味提點，香烤後 的獨特脆口感，搭配濃郁蘿勒風味燉飯，佐彩椒及蕃茄，點綴莫札 瑞拉起士清爽享用。
-                    </p>
+                    <p>松阪豬以特調醬汁醃漬入味，芫荽等香料及蜂蜜風味提點，香烤後 的獨特脆口感，搭配濃郁蘿勒風味燉飯，佐彩椒及蕃茄，點綴莫札 瑞拉起士清爽享用。</p>
                     <p><textarea placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="else" id="else"></textarea></p>
                     <div class="menuCount">數量<input type="number" name="count" id="count" value="1" min="1"></div>
                     <div class="addBtn"><input name="submit" type="submit" id="submit" value="加入購物車"></div>
@@ -261,26 +254,10 @@
             <h2>Hello! 今天想吃什麼呢?</h2>
             <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
             <form action="#" method="post">
-                <div class="searchList">
-                    <select name="foodKind" id="foodKind">
-                           <option value="日式料理">日式料理</option>
-                           <option value="中式料理">中式料理</option>
-                           <option value="義式料理">義式料理</option>
-                           <option value="早午餐/下午茶">早午餐/下午茶</option>
-                           <option value="暗黑料理">暗黑料理</option>
-                           <option value="台灣小吃">台灣小吃</option>
-                       </select>
-                </div>
-                <div class="searchList">
-                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
-                </div>
-                <div class="searchList">
-                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
-                </div>
-                <div class="searchBtn">
-                    <input name="reset" type="reset" id="reset" value="重填">
-                    <input name="submit" type="submit" id="submit" value="搜尋">
-                </div>
+                <div class="searchList"><select name="foodKind" id="foodKind"><option value="日式料理">日式料理</option><option value="中式料理">中式料理</option><option value="義式料理">義式料理</option><option value="早午餐/下午茶">早午餐/下午茶</option><option value="暗黑料理">暗黑料理</option><option value="台灣小吃">台灣小吃</option></select></div>
+                <div class="searchList"><input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱"></div>
+                <div class="searchList"><input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱"></div>
+                <div class="searchBtn"><input name="reset" type="reset" id="reset" value="重填"><input name="submit" type="submit" id="submit" value="搜尋"></div>
             </form>
         </section>
     </div>
@@ -330,6 +307,7 @@
                 }]
             });
         });
+
     </script>
     <!--tabs-->
     <script src="../javascript/tabs.js"></script>

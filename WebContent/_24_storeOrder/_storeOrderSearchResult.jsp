@@ -1,8 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,11 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>已完成訂單|本日訂單-Grab &amp; Go</title>
+    <title>查詢訂單|本日訂單-Grab &amp; Go</title>
 </head>
-<!--商家登入成功-->
-<!--已完成訂單頁面-->
+<!-- 商家已登入頁面 -->
+<!-- 查詢訂單, 顯示結果頁面 -->
+
 <body>
     <!--logo-->
     <header>
@@ -27,8 +28,9 @@
             <h2>本日訂單</h2>
         </div>
     </header>
-<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
-<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO"/>
+<!-- 商家 -->
+<%-- <c:set target="${orderBeans}" property="mPickupName" value="${param.mPickupName}"/> --%>
     <!--店家profile-->
     <section class="container">
         <div class="row">
@@ -43,11 +45,10 @@
             </div>
             <div class="col-md-9">
                 <div>
-                    <h3>> 已完成訂單</h3>
-                    <!-- <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span> -->
-                    <!-- 本日訂單搜尋 -->
-                    <jsp:include page="../_IncludeJsp/StoreOrder_search.jsp"/>
-                    <!-- <form class="form-inline">
+                    <h3>> 查詢訂單</h3>
+                    <!-- 訂單搜尋 -->
+                    <!-- <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
+                    <form class="form-inline">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
                                 <input type="search" class="form-control" id="" placeholder="顧客姓名">
@@ -60,20 +61,21 @@
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
-    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp"/>
+    		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">
                 <!--訂單狀態按鈕區塊-->
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                    		<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
-                        <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
-                        <li role="presentation" class="active"><a href="#">已完成訂單</a></li>
-                        <li role="presentation"><a href="_storeOrderPaid.jsp">已付款訂單</a></li>
+                     	<li role="presentation" class="active"><a href="#">查詢訂單</a></li>
+                        <li role="presentation"><a href="#">待處理訂單</a></li>
+                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
+                        <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
                     </ul>
-
                 </div>
+                <br>
+                <span><h4>搜尋結果：</h4></span>
                 <hr>
                 <!--</div>-->
             <!--<div class="orderTable" >-->
@@ -87,17 +89,19 @@
                         <th>訂單狀態</th>
                         <th>Action</th>
                     </tr>
-            		<c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersUnpaid}">
+                    <!-- 顯示訂單資訊 -->
+                    <!-- 取得訂單 -->
+                   <c:forEach var="orderSearch" items="${mPickupName}">
                     <tr>
-                        <td nowrap="">${anOrderBean.ord_time}</td>
-                        <td nowrap="">${anOrderBean.ord_pickuptime}</td>
-                        <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
-                        <td>$${anOrderBean.ord_totalPrice}</td>
-                        <td><a href="#">${anOrderBean.ord_status}</a></td>
-                        <td><a href="_storeOrderPaid.jsp">結帳</a></td>
+                        <td nowrap="">${orderSearch.ord_time}</td>
+                        <td nowrap="">${orderSearch.ord_pickuptime}</td>
+                        <td>${orderSearch.m_pickupname}</td>
+                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">H00${orderSearch.ord_id}</a></td>
+                        <td> $${orderSearch.ord_totalPrice}</td>
+                        <td><a href="#">${orderSearch.ord_status}</a></td>
+                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
                     </tr>
-                   </c:forEach> 
+                    </c:forEach>
                 </table>
                 <hr>
             </div>

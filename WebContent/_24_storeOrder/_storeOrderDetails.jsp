@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,8 +12,10 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
+    <jsp:useBean id="orderDetailsDAOBean" class="_05_orderProcess.model.OrderItemDAO" />
+    <c:set target="${orderDetailsDAOBean}" property="ord_id" value="${param.ord_id}"></c:set>
 
-    <title>GrabAndGo Order Details</title>
+    <title>訂單明細|本日訂單-Grab &amp; Go</title>
 </head>
 <!--點選訂單明細後的頁面-->
 <!--商家訂單明細頁面-->
@@ -25,7 +28,7 @@
         </div>
         <!--進入區塊-->
         <div class="topTitle">
-            <h2>本日訂單</h2>
+            <h2>本日訂單${param.ord_id}</h2>
         </div>
     </header>
     <!--店家profile-->
@@ -43,7 +46,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 訂單明細</h3>
-                    <h4 style="font-weight: bolder;">訂單編號：XX001</h4>
+                    <h4 style="font-weight: bolder;">訂單編號：${param.ord_id}</h4>
                 </div>
             </div>
     </section>
@@ -57,6 +60,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
+                    	<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="_storeOrderPaid.jsp">已付款訂單</a></li>
@@ -68,7 +72,7 @@
             <!--<div class="orderTable" >-->
                 <table id="orderTable">
                     <tr>
-                        <th>顧客名稱</th>
+                        <th>取餐顧客</th>
                         <th>餐點名稱</th>
                         <th>餐點編號</th>
                         <th>備註</th>
@@ -77,27 +81,20 @@
                         <th>Subtotal</th>
                     </tr>
                     <!-- 訂單明細-->
+                    <c:forEach  var="orderDetailsBean" items="${orderDetailsDAOBean.orderDetailsForStore}">
                     <tr>
-                        <td>王小明</td>
-                        <td>雞腿飯</td>
-                        <td>A001</td>
-                        <td></td>
-                        <td>1</td>
-                        <td>$90</td>
-                        <td>$90</td>
+                        <td>${orderDetailsBean.m_pickupname}</td>
+                        <td nowrap="">${orderDetailsBean.item_name}</td>
+                        <td>${orderDetailsBean.prod_id}</td>
+                        <td nowrap="">${orderDetailsBean.item_note}</td>
+                        <td>${orderDetailsBean.item_amount}</td>
+                        <td>${orderDetailsBean.item_price}</td>
+                        <td>${orderDetailsBean.item_amount*orderDetailsBean.item_price}</td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td>紅燒牛肉麵</td>
-                        <td>A002</td>
-                        <td>三個都不加蔥</td>
-                        <td>1</td>
-                        <td>$120</td>
-                        <td>$360</td>
-                    </tr>
+                    </c:forEach>
                 </table>
                 <hr>
-                <h4 class="totalPrice">總金額：＄450</h4>
+                <h4 class="totalPrice">總金額：＄${param.ord_totalPrice}</h4>
             </div>
             <div id="checkOut" style="display: inline;">
             <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->

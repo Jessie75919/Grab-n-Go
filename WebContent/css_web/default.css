@@ -351,7 +351,20 @@ header:after {
     padding: 0;
     font-size: 1.2em;
 }
-
+.rightBtn span{
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: #ec8e26;
+    color: #fff;
+    border-radius: 50%;
+    top: 10px;
+    right: -5px;
+    font-size: 0.8em;
+    line-height: 20px;
+}
 
 /*footer*/
 

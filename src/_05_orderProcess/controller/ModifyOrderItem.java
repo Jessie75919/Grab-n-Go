@@ -34,7 +34,7 @@ public class ModifyOrderItem extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 		if (shoppingCart == null) {
 			// 如果找不到購物車(通常是Session逾時)，沒有必要往下執行 ，導向首頁
 			response.sendRedirect(getServletContext().getContextPath() + "/indexA.jsp");
@@ -83,8 +83,12 @@ public class ModifyOrderItem extends HttpServlet {
 				System.out.println("Something gets wrong");
 			}
 		} else if(cmd.equalsIgnoreCase("delOrderRest")){
+			System.out.println("Im delOrderRest ~ ");
 			session.removeAttribute("orderRest");
-			session.removeAttribute("ShoppingCart");
+			session.removeAttribute("cart");
+			String result = new Gson().toJson("sessionClear");
+			out.write(result);
+			out.flush();
 			
 		}
 

@@ -40,12 +40,12 @@ public class AddItemServlet extends HttpServlet {
 		
 		request.setAttribute("msg", "");
 		// 取出存放在session物件內的ShoppingCart物件
-		cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+		cart = (ShoppingCart) session.getAttribute("cart");
 		// check state of cart
 		if (cart == null) {
 			/* put shoppingCart into SessionObject */
 			cart = new ShoppingCart();
-			session.setAttribute("ShoppingCart", cart);
+			session.setAttribute("cart", cart);
 		}else{
 			if(cart.getItemNumber()==0){
 				session.removeAttribute("orderRest");
@@ -109,7 +109,7 @@ public class AddItemServlet extends HttpServlet {
 		/* put OrderItemBean into shoppingCart */
 		cart.addToCart(prod_id, oid);
 		
-//		cart.getListAllMapToPrint(cart);
+		cart.getListAllMapToPrint(cart);
 		
 		System.out.println(cart.getItemNumber());
 		

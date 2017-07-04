@@ -256,7 +256,7 @@ public class TableDAO {
 	}
 	//insert OrderMain 
 	public int insertOrder(){
-		String sql = "insert into order01 values(null,?,?,?,?,?,?,?)";
+		String sql = "insert into order01 values(null,?,?,?,?,?,?,?,?,?)";
 		//ord_id, m_username, m_pickupname, ord_time, ord_pickuptime, rest_id, ord_totalPrice, ord_status
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -280,6 +280,8 @@ public class TableDAO {
 				Integer totalPrice = Integer.parseInt(segment[5]);
 				pst.setInt(6, totalPrice); 			// ord_totalPrice
 				pst.setString(7, segment[6]); 		// ord_status 
+				pst.setString(8, segment[7]); 		// ord_status 
+				pst.setString(9, segment[8]); 		// ord_status 
 				
 				result = pst.executeUpdate();
 

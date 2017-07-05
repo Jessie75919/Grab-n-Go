@@ -78,7 +78,7 @@ public class StoreUpdate extends HttpServlet {
 		
 		if (!errorMsg.isEmpty()) {
 			// 導向原來輸入資料的畫面，這次會顯示錯誤訊息
-			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEditA.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -101,12 +101,12 @@ public class StoreUpdate extends HttpServlet {
 		if (n == 1) {
 			session.setAttribute("StoreLoginOK", new_sb);
 			msgOK.put("UpdateOk", "您的更新已成功囉~");
-			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEditA.jsp");
 			rd.forward(request, response);
 
 		} else {
 			msgOK.put("UpdateFail", "您的更新失敗了...");
-			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEdit.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("_storeLoginProfileEditA.jsp");
 			rd.forward(request, response);
 		}
 		

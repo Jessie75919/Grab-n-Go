@@ -86,13 +86,13 @@
 		<!--</div>-->
 		<!--<div class="orderTable" >-->
 		<table id="orderTable">
-			<tr>
-				<th>訂購日期</th>
-				<th>取餐顧客</th>
-				<th>訂單編號</th>
-				<th>總金額</th>
-				<th>訂單狀態</th>
-			</tr>
+<!-- 			<tr> -->
+<!-- 				<th>訂購日期</th> -->
+<!-- 				<th>取餐顧客</th> -->
+<!-- 				<th>訂單編號</th> -->
+<!-- 				<th>總金額</th> -->
+<!-- 				<th>訂單狀態</th> -->
+<!-- 			</tr> -->
 <!-- 			<tr> -->
 <!-- 				<td>2017/05/19 11:05:31</td> -->
 <!-- 				<td>王小明</td> -->
@@ -152,10 +152,10 @@
 									// 									alert(xhr.responseText);
 									var monthlyOrders = JSON
 											.parse(xhr.responseText);
+									table.innerHTML = "<tr><th>訂購日期</th><th>取餐顧客</th><th>訂單編號</th><th>總金額</th><th>訂單狀態</th></tr>";
 									if (monthlyOrders.length == 0) {
 										alert("沒東西啦");
 									} else {
-										//table.innerHTML = "";
 										for (var j = 0; j < monthlyOrders.length; j++) {
 											var tr = document.createElement("tr");
 											

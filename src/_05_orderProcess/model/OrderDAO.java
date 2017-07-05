@@ -25,8 +25,7 @@ public class OrderDAO {
 	private int month;
 	private int ord_id;
 	private String mPickupName;
-	
-	
+
 	public int getOrd_id() {
 		return ord_id;
 	}
@@ -38,12 +37,12 @@ public class OrderDAO {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	public void setRestUsername(String restUsername){
+
+	public void setRestUsername(String restUsername) {
 		this.restUsername = restUsername;
 	}
-	
-	public void setMPickupName(String mPickupName){
+
+	public void setMPickupName(String mPickupName) {
 		this.mPickupName = mPickupName;
 	}
 
@@ -65,26 +64,25 @@ public class OrderDAO {
 
 	}
 	
-	public int insertOrder(OrderBean ob){
+	
+
+	public int insertOrder(OrderBean ob) {
 		int n = -1;
 		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?)";
 		String sqlOrderItem = "insert into order_item values (null,?,?,?,?,?,?,?)";
-		try(
-				Connection con = ds.getConnection();
-				PreparedStatement pst1 = con.prepareStatement(sqlOrder,Statement.RETURN_GENERATED_KEYS);
-				
-		){
-			ResultSet rsGenerateKeys = null ;
-			try{
+		try (Connection con = ds.getConnection();
+				PreparedStatement pst1 = con.prepareStatement(sqlOrder, Statement.RETURN_GENERATED_KEYS);) {
+			ResultSet rsGenerateKeys = null;
+			try {
 				con.setAutoCommit(false);
-				System.out.println(ob.getM_username());
-				System.out.println(ob.getM_pickupname());
-				System.out.println(ob.getOrd_time());
-				System.out.println(ob.getOrd_pickuptime());
-				System.out.println(ob.getRest_id());
-				System.out.println(ob.getOrd_totalPrice());
-				System.out.println(ob.getOrd_status());
-			//==============================================
+				// System.out.println(ob.getM_username());
+				// System.out.println(ob.getM_pickupname());
+				// System.out.println(ob.getOrd_time());
+				// System.out.println(ob.getOrd_pickuptime());
+				// System.out.println(ob.getRest_id());
+				// System.out.println(ob.getOrd_totalPrice());
+				// System.out.println(ob.getOrd_status());
+				// ==============================================
 				pst1.setString(1, ob.getM_username());
 				pst1.setString(2, ob.getM_pickupname());
 				pst1.setTimestamp(3, ob.getOrd_time());
@@ -95,20 +93,20 @@ public class OrderDAO {
 				pst1.setString(8, ob.getOrd_tel());
 				pst1.setString(9, ob.getOrd_email());
 				n = pst1.executeUpdate();
-				int orderId_Pk = 0; 
+				int orderId_Pk = 0;
 				rsGenerateKeys = pst1.getGeneratedKeys();
-				if(rsGenerateKeys.next()){
+				if (rsGenerateKeys.next()) {
 					orderId_Pk = rsGenerateKeys.getInt(1);
-				}else{
+				} else {
 					throw new SQLException("create fail,no generateKey");
 				}
-				
+
 				PreparedStatement pst2 = con.prepareStatement(sqlOrderItem);
 				int k = 0;
 				List<OrderItemBean> list = ob.getItems();
-				for(OrderItemBean oib:list){
-					pst2.setInt(1	, orderId_Pk);
-					pst2.setInt(2	, oib.getProd_id());
+				for (OrderItemBean oib : list) {
+					pst2.setInt(1, orderId_Pk);
+					pst2.setInt(2, oib.getProd_id());
 					pst2.setString(3, oib.getItem_name());
 					pst2.setInt(4, oib.getItem_price());
 					pst2.setInt(5, oib.getItem_amount());
@@ -117,24 +115,146 @@ public class OrderDAO {
 					k = pst2.executeUpdate();
 					pst2.clearParameters();
 				}
-				
+
 				con.commit();
 				con.setAutoCommit(true);
-				if(k==1){
+				if (k == 1) {
 					n = 1;
 				}
-			}catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("Rollback");
-				if(con!=null){
+				if (con != null) {
 					con.rollback();
 				}
 				e.printStackTrace();
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return n;
 	}
+	
+	
+	
+	public int updateOrderStatus(String status) {
+		int n = -1;
+		String sql = "update order01 set ord_status = ?";
+		try (Connection con = ds.getConnection();
+				PreparedStatement pst1 = con.prepareStatement(sql);
+		) {
+				pst1.setString(1, status);
+				n = pst1.executeUpdate();
+				if(n==1){
+					System.out.println("更新成功");
+				}else{
+					System.out.println("更新失敗");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
+
+	public int deleteOrder(int ord_id) {
+		int n = -1;
+		String sqlOrder = "delete from order01 where ord_id= ?";
+		String sqlOrderItem = "delete from order_item where ord_id = ?";
+		try (Connection con = ds.getConnection(); PreparedStatement pst1 = con.prepareStatement(sqlOrder);) {
+			try {
+				con.setAutoCommit(false);
+				pst1.setInt(1, ord_id);
+				n = pst1.executeUpdate();
+				PreparedStatement pst2 = con.prepareStatement(sqlOrderItem);
+				int k = 0;
+				pst2.setInt(1, ord_id);
+				k = pst2.executeUpdate();
+				pst2.clearParameters();
+				con.commit();
+				con.setAutoCommit(true);
+				if (k == 1 && n ==1) {
+					System.out.println("刪除成功");
+				}
+			} catch (Exception e) {
+				System.out.println("Rollback");
+				if (con != null) {
+					System.out.println("刪除失敗");
+					con.rollback();
+				}
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
+	
+	public int deleteOrderItem(int ord_id, int prod_id, String item_note) {
+		int n = -1;
+		String sqlOrderItem = "delete from order_item where ord_id = ? and prod_id =? and item_note = ?";
+		try (Connection con = ds.getConnection(); PreparedStatement pst1 = con.prepareStatement(sqlOrderItem);) {
+			try {
+				con.setAutoCommit(false);
+				pst1.setInt(1, ord_id);
+				pst1.setInt(2, prod_id);
+				pst1.setString(3, item_note);
+				n = pst1.executeUpdate();
+				
+				con.commit();
+				con.setAutoCommit(true);
+				if ( n ==1) {
+					System.out.println("刪除成功");
+				}
+			} catch (Exception e) {
+				System.out.println("Rollback");
+				if (con != null) {
+					System.out.println("刪除失敗");
+					con.rollback();
+				}
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
+	
+	public int UpdateOrderItem(int ord_id, int prod_id, String item_note) {
+		int n = -1;
+		String sqlOrderItem = "update order_item set  "
+				+ "where ord_id = ? and prod_id =? and item_note = ?";
+		try (Connection con = ds.getConnection(); PreparedStatement pst1 = con.prepareStatement(sqlOrderItem);) {
+			try {
+				con.setAutoCommit(false);
+				pst1.setInt(1, ord_id);
+				pst1.setInt(2, prod_id);
+				pst1.setString(3, item_note);
+				n = pst1.executeUpdate();
+				
+				con.commit();
+				con.setAutoCommit(true);
+				if ( n ==1) {
+					System.out.println("刪除成功");
+				}
+			} catch (Exception e) {
+				System.out.println("Rollback");
+				if (con != null) {
+					System.out.println("刪除失敗");
+					con.rollback();
+				}
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
 	
 	
 
@@ -144,9 +264,8 @@ public class OrderDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT a.ord_id, a.ord_time, b.rest_name, a.ord_totalPrice, a.ord_status"
-				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
-				+ " WHERE m_username = ?";
-		
+				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id" + " WHERE m_username = ?";
+
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
@@ -184,16 +303,13 @@ public class OrderDAO {
 
 		return coll;
 	}
-	
+
 	public Collection<OrderBean> getStoreOrdersInPgogress() {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id "
 				+ " WHERE a.ord_status = 'inprogress' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
-		try (
-			Connection conn = ds.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-				) {
+		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -208,22 +324,20 @@ public class OrderDAO {
 				coll.add(ob);
 				System.out.println(ob);
 			}
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
 		}
 		return coll;
 	}
-	
+
 	public Collection<OrderBean> getStoreOrdersUnpaid() {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id "
 				+ " WHERE a.ord_status = 'unpaid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
-		try (Connection conn = ds.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-				) {
+		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -243,15 +357,13 @@ public class OrderDAO {
 		}
 		return coll;
 	}
-	
+
 	public Collection<OrderBean> getStoreOrdersPaid() {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
-				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
+				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id "
 				+ " WHERE a.ord_status = 'paid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
-		try (Connection conn = ds.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			) {
+		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setString(1, restUsername);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -271,15 +383,11 @@ public class OrderDAO {
 		}
 		return coll;
 	}
-	
-	
-	
+
 	public OrderBean getStoreOrdersById() {
 		String sql = " SELECT * from order01  WHERE ord_id = ? ";
 		OrderBean ob = null;
-		try (Connection conn = ds.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				) {
+		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setInt(1, ord_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -295,24 +403,20 @@ public class OrderDAO {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			
+
 		}
 		return ob;
 	}
-	
+
 	//
 	public Collection<OrderBean> getStoreOrdersByMpickupName() {
 		Collection<OrderBean> coll = new ArrayList<>();
-//		String sql = " SELECT * FROM order01 "
-//				   + " WHERE m_pickupname =? ";
-		String sql = " SELECT * "
-				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
-				   + " WHERE m_pickupname = ? AND rest_username = ? ";
-		
-		
-		try (Connection conn = ds.getConnection();
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			) {
+		// String sql = " SELECT * FROM order01 "
+		// + " WHERE m_pickupname =? ";
+		String sql = " SELECT * " + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
+				+ " WHERE m_pickupname = ? AND rest_username = ? ";
+
+		try (Connection conn = ds.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);) {
 			stmt.setString(1, mPickupName);
 			stmt.setString(2, restUsername);
 			ResultSet rs = stmt.executeQuery();
@@ -333,34 +437,33 @@ public class OrderDAO {
 		}
 		return coll;
 	}
-	
-	public Collection<OrderBean> getStoreOrdersByMonth(){
+
+	public Collection<OrderBean> getStoreOrdersByMonth() {
 		Connection conn = null;
 		Collection<OrderBean> coll = new ArrayList<>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM order01 WHERE rest_id = ? AND MONTH(ord_time) = ?";
-		
+
 		try {
 			conn = ds.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, restId);
 			stmt.setInt(2, month);
-			
+
 			rs = stmt.executeQuery();
-			
-			while(rs.next()){
+
+			while (rs.next()) {
 				OrderBean ob = new OrderBean();
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setM_pickupname(rs.getString("m_pickupname"));
 				ob.setOrd_time(rs.getTimestamp("ord_time"));
-				//ob.setRest_name(rs.getString("rest_name"));
+				// ob.setRest_name(rs.getString("rest_name"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
 				coll.add(ob);
 			}
-			
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -378,8 +481,7 @@ public class OrderDAO {
 				e.printStackTrace();
 			}
 		}
-		
-		
+
 		return coll;
 	}
 

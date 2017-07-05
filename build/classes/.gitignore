@@ -1,6 +1,6 @@
+/_00_init/
 /_00_AppGlobal/
 /_00_Database_ver01/
-/_00_init/
 /_01_App_register/
 /_01_Store_register/
 /_01_register/
@@ -15,3 +15,4 @@
 /_06_listRestaurants/
 /_22_searchRest/
 /_23_App_StoreOrderAnalysis/
+/hibernate.cfg.xml

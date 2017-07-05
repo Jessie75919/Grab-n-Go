@@ -63,45 +63,8 @@
 						<!--                             <option value="December">十二月</option>                       -->
 
 					</select>&nbsp
-<!-- 					<div id='resp'>test</div> -->
-					<script type="text/javascript">
-						var id = ${StoreLoginOK.rest_id};
-						var div1 = document.getElementById("resp");
-						var ms = document.getElementById("monthSelector");
-						var d = new Date();
-						var currentMonth = d.getMonth();
-						var months = [ "一月", "二月", "三月", "四月", "五月", "六月",
-								"七月", "八月", "九月", "十月", "十一月", "十二月" ];
-						for (var i = 0; i < months.length; i++) {
-							var op = document.createElement("option");
-							op.value = i;
-							op.text = months[i];
-							ms.appendChild(op);
-							if (i == currentMonth) {
-								ms.value = i;
-							}
-						}
-						ms.setAttribute("onchange", "getMonthlyOrders()");
-						// 						function test() {
-						// 							alert(ms.value);
-						// 						}
-						// 						test();
-
-						function getMonthlyOrders() {
-							alert(id);
-							alert(ms.value);
-							var xhr = new XMLHttpRequest();
-							xhr.open("GET", "../MonthlyOrders.json?id=" + id + "&month=" + ms.value,  true);
-							xhr.send();
-							xhr.onreadystatechange = function() {
-								if (xhr.readyState == 4 && xhr.status == 200) {
-									alert(xhr.responseText);
-								}
-							}
-
-						}
-						getMonthlyOrders();
-					</script>
+					<!-- 					<div id='resp'>test</div> -->
+					
 					<div class="input-group">
 						<div class="input-group-addon">
 							<i class="fa fa-search" aria-hidden="true"></i>
@@ -130,13 +93,14 @@
 				<th>總金額</th>
 				<th>訂單狀態</th>
 			</tr>
-			<tr>
-				<td nowrap="">2017/05/19 11:05:31</td>
-				<td>王小明</td>
-				<td><a href="_storeOrderDetails.jsp">XX001</a></td>
-				<td>$250</td>
-				<td>已付款</td>
-			</tr>
+<!-- 			<tr> -->
+<!-- 				<td>2017/05/19 11:05:31</td> -->
+<!-- 				<td>王小明</td> -->
+<!-- 				<td><a href="_storeOrderDetails.jsp">XX001</a></td> -->
+<!-- 				<td>$250</td> -->
+<!-- 				<td>已付款</td> -->
+<!-- 			</tr> -->
+			
 		</table>
 		<hr>
 	</div>
@@ -146,6 +110,86 @@
 	</div>
 	</div>
 	</section>
+	
+	<script type="text/javascript">
+						var id = ${StoreLoginOK.rest_id};
+						var div1 = document.getElementById("resp");
+						var ms = document.getElementById("monthSelector");
+						var d = new Date();
+						var currentMonth = d.getMonth();
+						var months = [ "一月", "二月", "三月", "四月", "五月", "六月",
+								"七月", "八月", "九月", "十月", "十一月", "十二月" ];
+						var table = document.getElementById("orderTable");
+						for (var i = 0; i < months.length; i++) {
+							var op = document.createElement("option");
+							op.value = i;
+							op.text = months[i];
+							ms.appendChild(op);
+							if (i == currentMonth) {
+								ms.value = i;
+							}
+						}
+						ms.setAttribute("onchange", "getMonthlyOrders()");
+						
+						function formatDate(date){
+							var year = date.getFullYear();
+							var month = (date.getMonth() < 9) ? "0" + (date.getMonth() + 1) : date.getMonth();
+							var day = (date.getDate() < 10) ? "0" + date.getDate() : date.getDate();
+							var hour = (date.getHours() < 10) ? "0" + date.getHours() : date.getHours();
+							var minute = (date.getMinutes() < 10) ? "0" + date.getMinutes() : date.getMinutes();
+							return year + "-" + month + "-" +day + " " + hour + ":" + minute;
+						}
+
+						function getMonthlyOrders() {
+							alert(id);
+							alert(ms.value);
+							var xhr = new XMLHttpRequest();
+							xhr.open("GET", "../MonthlyOrders.json?id=" + id
+									+ "&month=" + ms.value, true);
+							xhr.send();
+							xhr.onreadystatechange = function() {
+								if (xhr.readyState == 4 && xhr.status == 200) {
+									// 									alert(xhr.responseText);
+									var monthlyOrders = JSON
+											.parse(xhr.responseText);
+									if (monthlyOrders.length == 0) {
+										alert("沒東西啦");
+									} else {
+										//table.innerHTML = "";
+										for (var j = 0; j < monthlyOrders.length; j++) {
+											var tr = document.createElement("tr");
+											
+											var td1 = document.createElement("td");
+											//td1.setAttribute("")
+											td1.textContent = formatDate(new Date(monthlyOrders[j].ord_time));
+											//alert(monthlyOrders[j].ord_time);
+											
+											var td2 = document.createElement("td");
+											td2.textContent = monthlyOrders[j].m_pickupname;
+											
+											var td3 = document.createElement("td");
+											td3.textContent = monthlyOrders[j].ord_id;
+											
+											var td4 = document.createElement("td");
+											td4.textContent = monthlyOrders[j].ord_totalPrice;
+											
+											var td5 = document.createElement("td");
+											td5.textContent = monthlyOrders[j].ord_status;
+											
+											tr.appendChild(td1);
+											tr.appendChild(td2);
+											tr.appendChild(td3);
+											tr.appendChild(td4);
+											tr.appendChild(td5);
+											table.appendChild(tr);
+										}
+									}
+								}
+							}
+
+						}
+						getMonthlyOrders();
+					</script>
 
 </body>
 

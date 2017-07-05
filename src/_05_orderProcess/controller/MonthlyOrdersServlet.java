@@ -38,23 +38,27 @@ public class MonthlyOrdersServlet extends HttpServlet {
 //			throw new ServletException(e);
 //		}
 		request.setCharacterEncoding("UTF-8");
-		//response.setContentType("application/json; charset=UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
+		//response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String month = request.getParameter("month");
-		System.out.println(id);
-		System.out.println(month);
+		String name = request.getParameter("name");
+		System.out.println("查詢每月訂單");
+		System.out.println("餐廳: " + id);
+		System.out.println("月份: " + month + "+1");
+		System.out.println("姓名: " + name);
 		
 		try {
 			OrderDAO od = new OrderDAO();
 			od.setRestId(Integer.parseInt(id.trim()));
 			od.setMonth(Integer.parseInt(month.trim()) + 1);
+			od.setMPickupName(name.trim());
 			Collection<OrderBean> list = od.getStoreOrdersByMonth();
 			String monthlyOrdersJson = new Gson().toJson(list);
 			System.out.println(monthlyOrdersJson);
-			out.println(monthlyOrdersJson);
-//			out.write(monthlyOrdersJson);
+			//out.println(monthlyOrdersJson);
+			out.write(monthlyOrdersJson);
 			out.flush();
 		} finally {
 			out.close();

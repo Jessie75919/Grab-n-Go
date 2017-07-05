@@ -29,10 +29,12 @@ function formatDate(date) {
 }
 
 function getMonthlyOrders() {
+	var name = document.getElementById("pickupname").value;
 	// alert(id);
 	// alert(ms.value);
+	alert(name);
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "../MonthlyOrders.json?id=" + id + "&month=" + ms.value,
+	xhr.open("GET", "../MonthlyOrders.json?id=" + id + "&month=" + ms.value + "&name=" + name,
 			true);
 	xhr.send();
 	xhr.onreadystatechange = function() {

@@ -68,9 +68,11 @@
 						<div class="input-group-addon">
 							<i class="fa fa-search" aria-hidden="true"></i>
 						</div>
-						<input type="search" class="form-control" id="" placeholder="顧客姓名">
+						<input type="text" class="form-control" id="pickupname" placeholder="顧客姓名"/>
+						<input style="display: none;" type="text" placeholder="讓按下enter後不自動submit"/> 
 					</div>
-					<input type="submit" class="btn btn-primary" value="搜尋"></input>
+<!-- 					<input type="submit" class="btn btn-primary" value="搜尋"></input> -->
+				<span  class="btn btn-primary" onclick="getMonthlyOrders()">搜尋</span>
 				</form>
 			</div>
 		</div>

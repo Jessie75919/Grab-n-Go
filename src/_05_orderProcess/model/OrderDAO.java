@@ -339,13 +339,23 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM order01 WHERE rest_id = ? AND MONTH(ord_time) = ?";
+		String sql = "";
 		
 		try {
 			conn = ds.getConnection();
-			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, restId);
-			stmt.setInt(2, month);
+			
+			if(mPickupName.length() == 0){
+				sql = "SELECT * FROM order01 WHERE rest_id = ? AND MONTH(ord_time) = ?";
+				stmt = conn.prepareStatement(sql);
+				stmt.setInt(1, restId);
+				stmt.setInt(2, month);
+			} else{
+				sql = "SELECT * FROM order01 WHERE rest_id = ? AND MONTH(ord_time) = ? AND m_pickupname LIKE ?";
+				stmt = conn.prepareStatement(sql);
+				stmt.setInt(1, restId);
+				stmt.setInt(2, month);
+				stmt.setString(3, "%" + mPickupName + "%");
+			}
 			
 			rs = stmt.executeQuery();
 			

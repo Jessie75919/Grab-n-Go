@@ -189,7 +189,7 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'inprogress' and b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'inprogress' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
 		try (
 			Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -220,7 +220,7 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'unpaid' and b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'unpaid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 				) {
@@ -248,7 +248,7 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'paid' and b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'paid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			) {

@@ -1,8 +1,8 @@
 var EvaRestName;
 var EvaOrd_id;
-var EvaUserName;
-var score = document.getElementById("score");
-var comment =document.getElementById("comment");
+// var EvaUserName;
+// var score = document.getElementById("score");
+// var comment =document.getElementById("comment");
 // var submit = document.getElementById("vvv");
 
 function clikeMe(e) {
@@ -11,16 +11,16 @@ function clikeMe(e) {
     var parent = e.parentNode.parentNode;
     // alert(parent.className);
     var getOrdId = parent.firstElementChild.innerText;
-    alert(getOrdId);
+    // alert(getOrdId);
     var getRestId = parent.firstElementChild.nextSibling.nextSibling.nextSibling.nextSibling.value;
-    alert("id = "+getRestId);
+    // alert("id = "+getRestId);
 
     EvaRestId = document.getElementById("EvaRestId");
     EvaRestId.value = getRestId;
-    alert(EvaRestId.value);
+    // alert(EvaRestId.value);
     EvaOrd_id = document.getElementById("EvaOrd_id");
     EvaOrd_id.value = getOrdId;
-    alert(EvaOrd_id.value);
+    // alert(EvaOrd_id.value);
 
 }
 

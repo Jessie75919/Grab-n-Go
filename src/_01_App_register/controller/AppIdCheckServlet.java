@@ -39,6 +39,7 @@ public class AppIdCheckServlet extends HttpServlet {
 				JsonObject.class);
 		String username = jsonObject.get("username").getAsString();
 		String password = jsonObject.get("password").getAsString();
+		System.out.println("username = " + username + ", password = " + password);
 		
 		// 將LoginServiceDB類別new為物件，存放物件參考的變數為 lsdb
 		StoreLoginServiceDB slsdb;
@@ -58,10 +59,9 @@ public class AppIdCheckServlet extends HttpServlet {
 			System.out.println("帳號密碼驗證OK");
 		} else {
 			map.put("loginCheckMessage", "LoginInformationError");
+			System.out.println("帳號密碼驗證失敗");
 		}
 		out.println(gson.toJson(map));
 		out.close();
-		
 	}
-
 }

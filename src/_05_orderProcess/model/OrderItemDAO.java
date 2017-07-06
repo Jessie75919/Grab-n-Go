@@ -90,7 +90,7 @@ public class OrderItemDAO {
 	}
 
 	public List<OrderItemBean> getOrdersItemDataForApp(String rest_name ,String interval) {
-		List<OrderItemBean> coll = new ArrayList<>();
+		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";
@@ -130,16 +130,16 @@ public class OrderItemDAO {
 					s = rs.getString("yearly");
 				}
 				oib = new OrderItemBean(prod_id, item_name, item_price_sum, item_amount_sum, s);
-				coll.add(oib);
+				list.add(oib);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return coll;
+		return list;
 	}
 	
 	public List<OrderItemBean> getOrdersRevenueDataForApp(String rest_name ,String interval) {
-		List<OrderItemBean> coll = new ArrayList<>();
+		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";
@@ -173,12 +173,65 @@ public class OrderItemDAO {
 					s = rs.getString("month_yearly") + "/" + rs.getString("yearly");
 				}
 				oib = new OrderItemBean(item_price_sum, item_amount_sum, s);
-				coll.add(oib);
+				list.add(oib);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return coll;
+		return list;
+	}
+	
+	public List<OrderItemBean> getSalesChartsForApp(String rest_name, 
+			String interval, int limitCount) {
+		List<OrderItemBean> list = new ArrayList<>();
+		OrderItemBean oib = null;
+		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
+		String sql2 = "";
+		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
+					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
+					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' "
+					+ " GROUP BY a.prod_id ";
+		String sql4 = "";
+		String sql5 = " ORDER BY 3 DESC "
+					+ " LIMIT ? ;";
+		if (interval.equals("daily")){
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
+			sql4 = " , daily  ";
+		} else if (interval.equals("mobthly")) {
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
+			sql4 = " , monthly  ";
+		} else if (interval.equals("yearly")) {
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y') yearly ";
+			sql4 = " , yearly  ";
+		}
+		String sql = sql1 + sql2 + sql3 + sql4 + sql5;
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+		) {
+			stmt.setString(1, rest_name);
+			stmt.setInt(1, limitCount);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int prod_id = rs.getInt("a.prod_id");
+				String item_name = rs.getString("a.item_name");
+				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
+				String s = "";
+				if (interval.equals("daily")){
+					s = rs.getString("daily");
+				} else if (interval.equals("mobthly")) {
+					s = rs.getString("mobthly");
+				} else if (interval.equals("yearly")) {
+					s = rs.getString("yearly");
+				}
+				oib = new OrderItemBean(prod_id, item_name, item_price_sum, item_amount_sum, s);
+				list.add(oib);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
 	}
 
 	//

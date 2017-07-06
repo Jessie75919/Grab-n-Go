@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -16,11 +17,24 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
 <script src="../js/d3pie.js"></script>
+<!-- 載入datePicker -->
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
 <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->
 <!-- 帳務分析頁面/ 每日訂單統計(一併呈現當日餐點熱銷) -->
-
+<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderItemDAO"/>
+<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
 <body>
 	<!--logo-->
 	<header>
@@ -48,16 +62,18 @@
 			<div>
 				<h3>> 本日訂單統計</h3>
 				<!-- 指定日期 -->
-				<div class="col-xs-4">
 					<span><h4>請選擇欲查詢的日期：</h4></span>
-					<div id="dateSelector"></div>
-					<form action="" method="">
-						<select class="form-control" name="">
-							<option value="2017-06-01">2017-06-01</option>
-						</select>
-					</form>
-				</div>
+					<!-- <div id="dateSelector"></div> -->
+					<form class="form-inline">
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+						<input id="datepicker" name="datepicker" type="text" class="form-control" /> 
+						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
+					</div>
+				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
+				</form>
 			</div>
+		</div>
 	</section>
 
 	<!--左側列表-->
@@ -105,8 +121,8 @@
 	</div>
 	</div>
 	</section>
-<!-- 圓餅圖 js -->
-  <script src="../js/storeDailyAnalysis.js"></script>
+	<!-- 圓餅圖 js -->
+	<script src="../js/storeDailyAnalysis.js"></script>
 </body>
 
 </html>

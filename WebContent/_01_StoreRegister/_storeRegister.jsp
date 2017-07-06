@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-md-12">
           <!-- <h1 class="text-primary">Logo</h1> -->
-          <img width="400" src="../images/share/logo.svg">
+          <img width="30%" src="../images/share/logo.svg">
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-center my-0"> Sign up As Restaurant </h1>
+          <h1 class="text-center my-0"> Sign up as Restaurant </h1>
           <br> </div>
       </div>
       <div class="row">

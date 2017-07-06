@@ -69,7 +69,7 @@
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
                      	<li role="presentation" class="active"><a href="#">查詢訂單</a></li>
-                        <li role="presentation"><a href="#">待處理訂單</a></li>
+                        <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
                     </ul>

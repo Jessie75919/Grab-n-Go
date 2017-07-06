@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,13 +48,6 @@
                     <!-- <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span> -->
                     <!-- 本日訂單搜尋 -->
                     <jsp:include page="../_IncludeJsp/StoreOrder_search.jsp"/>
-                    <!-- <form class="form-inline">
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="search" class="form-control" id="" placeholder="顧客姓名">
-                            </div>
-                        <input type="submit" class="btn btn-primary" value="搜尋"></input>
-                    </form> -->
                 </div>
             </div>
     </section>
@@ -89,8 +83,8 @@
                     </tr>
             		<c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersUnpaid}">
                     <tr>
-                        <td nowrap="">${anOrderBean.ord_time}</td>
-                        <td nowrap="">${anOrderBean.ord_pickuptime}</td>
+                        <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
+                        <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_pickuptime}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
                         <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>

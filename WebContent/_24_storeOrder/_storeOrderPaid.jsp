@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,7 +68,7 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                    		<li role="presentation"><a href="_storeOrderSearch.jsp">訂單查詢</a></li>
+                    		<li role="presentation"><a href="_storeOrderSearchResult.jsp">訂單查詢</a></li>
                         <li role="presentation"><a href="../_02_storeLogin/_storeIndex.jsp">待處理訂單</a></li>
                         <li role="presentation"><a href="_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation" class="active"><a href="#">已付款訂單</a></li>
@@ -89,7 +90,7 @@
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersPaid}">
                     <tr>
-                        <td nowrap="">${anOrderBean.ord_time}</td>
+                        <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
                         <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>

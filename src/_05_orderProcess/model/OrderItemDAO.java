@@ -1,6 +1,7 @@
 package _05_orderProcess.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ public class OrderItemDAO {
 	private DataSource ds;
 	private int ord_id;
 	private String restUsername;
+	private Date ordPickuptime;
 
 	public void setOrd_id(int ord_id) {
 		this.ord_id = ord_id;
@@ -26,6 +28,10 @@ public class OrderItemDAO {
 
 	public void setRestUsername(String restUsername) {
 		this.restUsername = restUsername;
+	}
+	
+	public void setOrdPickuptime(Date ordPickuptime){
+		this.ordPickuptime = ordPickuptime;
 	}
 
 	public OrderItemDAO() {
@@ -172,6 +178,36 @@ public class OrderItemDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return coll;
+	}
+	
+	public Collection<OrderItemBean> getOrderItemsByDate(){
+		Collection<OrderItemBean> coll = new ArrayList();
+		String sql = " SELECT b.ord_pickuptime, c.type_name, a.item_amount, a.item_price "
+				+ " FROM order_item a JOIN order01 b on a.ord_id = "
+				+ " JOIN product c on a.prod_id = c.prod_id"
+				+ " WHERE b.ord_pickuptime like '?%' ";
+//		SELECT b.ord_pickuptime, c.type_name, a.item_name, a.item_amount, a.item_price 
+//		FROM Grab_n_Go.order_item a join Grab_n_Go.order01 b on a.ord_id = b.ord_id
+//									join Grab_n_Go.product c on a.prod_id = c.prod_id
+//		Where b.ord_pickuptime like '2017-06-01%';
+//		try(
+//				Connection conn = ds.getConnection();
+//				PreparedStatement stmt = conn.prepareStatement(sql);
+//				){
+//			System.out.println("Hello, OrderItemDAO");
+//			stmt.setDate(1, ordPickuptime);
+//			ResultSet rs = stmt.executeQuery();
+//			if(rs == null){
+//				System.out.println("not found");
+//			}
+//			while(rs.next()){
+//				OrderItemBean oib = new OrderItemBean();
+//			}
+//			
+//		}
+
+		
 		return coll;
 	}
 }

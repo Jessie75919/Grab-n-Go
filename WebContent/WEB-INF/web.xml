@@ -134,4 +134,14 @@
     <servlet-name>AppIdCheckServlet</servlet-name>
     <servlet-class>_01_App_register.controller.AppIdCheckServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>RatingServlet</display-name>
+    <servlet-name>RatingServlet</servlet-name>
+    <servlet-class>_07_Rating.controller.RatingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RatingServlet</servlet-name>
+    <url-pattern>/RatingServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

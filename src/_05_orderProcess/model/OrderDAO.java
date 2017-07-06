@@ -67,7 +67,7 @@ public class OrderDAO {
 	
 	public int insertOrder(OrderBean ob){
 		int n = -1;
-		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?)";
+		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?,?)";
 		String sqlOrderItem = "insert into order_item values (null,?,?,?,?,?,?,?)";
 		try(
 				Connection con = ds.getConnection();
@@ -94,6 +94,7 @@ public class OrderDAO {
 				pst1.setString(7, ob.getOrd_status());
 				pst1.setString(8, ob.getOrd_tel());
 				pst1.setString(9, ob.getOrd_email());
+				pst1.setInt(10, ob.getOrd_evalued());
 				n = pst1.executeUpdate();
 				int orderId_Pk = 0; 
 				rsGenerateKeys = pst1.getGeneratedKeys();
@@ -137,13 +138,15 @@ public class OrderDAO {
 	}
 	
 	
-	public int updateOrderStatus(String status) {
+	public int updateOrderStatus(int ord_id,String status) {
 		int n = -1;
-		String sql = "update order01 set ord_status = ?";
+		String sql = "update order01 set ord_status = ? where ord_id =?";
 		try (Connection con = ds.getConnection();
 				PreparedStatement pst1 = con.prepareStatement(sql);
 		) {
 				pst1.setString(1, status);
+				pst1.setInt(1, ord_id);
+				
 				n = pst1.executeUpdate();
 				if(n==1){
 					System.out.println("更新成功");
@@ -263,7 +266,7 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT a.ord_id, a.ord_time, b.rest_name, a.ord_totalPrice, a.ord_status"
+		String sql = "SELECT a.ord_id, a.ord_time, b.rest_name, a.ord_totalPrice, a.ord_status, a.rest_id , a.ord_evalued "
 				+ " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id"
 				+ " WHERE m_username = ?";
 		
@@ -280,7 +283,8 @@ public class OrderDAO {
 				ob.setRest_name(rs.getString("rest_name"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
-
+				ob.setRest_id(rs.getInt("rest_id"));
+				ob.setOrd_evalued(rs.getInt("ord_evalued"));
 				coll.add(ob);
 			}
 

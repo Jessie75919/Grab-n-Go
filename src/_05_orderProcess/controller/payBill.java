@@ -88,7 +88,7 @@ public class payBill extends HttpServlet {
 
 		String status = "inprogress";
 		OrderBean ob = new OrderBean(mb.getMemberId(), pickName, orderTime, pickTime, orderRest, total, status,
-				items,tel,eMail);
+				items,tel,eMail,0);
 
 		OrderDAO dao = new OrderDAO();
 		int n = dao.insertOrder(ob);

@@ -47,6 +47,16 @@ $(window).load(function () {
         return false;
     });
     
+    /*評價*/
+    $('.giveRating').click(function () {
+    	$('.rating').fadeIn();
+    	return false;
+    });
+    $('.closeBtn2, .searchBg').click(function () {
+    	$('.rating').fadeOut();
+    	return false;
+    });
+    
     /*店家訂購內容*/
     $('.storeMenuList .mask, .storeMenuList .storeMenuName a').click(function () {
         $('.menuDetail').fadeIn();

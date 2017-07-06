@@ -18,11 +18,12 @@ public class OrderBean {
 	List<OrderItemBean> items = new ArrayList<OrderItemBean>();
 	String ord_tel;
 	String ord_email;
+	int ord_evalued;
 	
 
 	public OrderBean(String m_username, String m_pickupname, Timestamp ord_time, Timestamp ord_pickuptime, int rest_id,
 			int ord_totalPrice, String ord_status, List<OrderItemBean> items,
-			String ord_tel,String ord_email) {
+			String ord_tel,String ord_email,int ord_evalued) {
 		super();
 		this.m_username = m_username;
 		this.m_pickupname = m_pickupname;
@@ -34,9 +35,20 @@ public class OrderBean {
 		this.items = items;
 		this.ord_tel = ord_tel;
 		this.ord_email = ord_email;
-		
+		this.ord_evalued = ord_evalued;
+	
 	}
 	
+
+	public int getOrd_evalued() {
+		return ord_evalued;
+	}
+
+
+	public void setOrd_evalued(int ord_evalued) {
+		this.ord_evalued = ord_evalued;
+	}
+
 
 	public String getOrd_tel() {
 		return ord_tel;

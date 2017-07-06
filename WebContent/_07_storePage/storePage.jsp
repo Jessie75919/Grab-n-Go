@@ -31,6 +31,8 @@
     <c:set target="${prodType}" property="restNameA" value="${clickRest['rest_name']}"/>
     <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session"/>
     <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}"/>
+    <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session"/>
+    <c:set target="${rating}" property="rest_Id" value="${clickRest.rest_id}"/>
 
     
 </head>
@@ -51,7 +53,19 @@
             <div class="storeLogo"><img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${clickRest.rest_username}&type=restaurant&loc=logo" alt="${clickRest.rest_name}" title="${clickRest.rest_name}"></div>
             <div class="storeRight">
                 <h3>${clickRest.rest_name}<span>${clickRest.rest_branch}</span></h3>
-                <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+                <div class="star">
+                
+                <c:set var="x" value="${5-rating.restEva}"/>
+                <c:forEach begin="1" end="${rating.restEva}" step="1">
+                 	<i class="icon-star on"></i> 
+                </c:forEach>
+                 <c:forEach begin="1" end="${x}" step="1">
+               		 <i class="icon-star"></i> 
+                </c:forEach>
+<!--                 <i class="icon-star on"></i>  -->
+<!--                 <i class="icon-star on"></i>  -->
+<!--                 <i class="icon-star"></i> -->
+                </div>
                 <p><i class="icon-location"></i>${clickRest.rest_address}</p>
                 <p><i class="icon-phone"></i>${clickRest.rest_phone}</p>
                 <div class="tagOrder">

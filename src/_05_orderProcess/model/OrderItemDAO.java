@@ -181,8 +181,7 @@ public class OrderItemDAO {
 		return list;
 	}
 	
-	public List<OrderItemBean> getSalesChartsForApp(String rest_name, 
-			String interval, int limitCount) {
+	public List<OrderItemBean> getSalesChartsForApp(String rest_name, String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
@@ -192,8 +191,7 @@ public class OrderItemDAO {
 					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' "
 					+ " GROUP BY a.prod_id ";
 		String sql4 = "";
-		String sql5 = " ORDER BY 3 DESC "
-					+ " LIMIT ? ;";
+		String sql5 = " ORDER BY 3 DESC ; ";
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily  ";
@@ -210,7 +208,6 @@ public class OrderItemDAO {
 			PreparedStatement stmt = con.prepareStatement(sql);
 		) {
 			stmt.setString(1, rest_name);
-			stmt.setInt(1, limitCount);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				int prod_id = rs.getInt("a.prod_id");

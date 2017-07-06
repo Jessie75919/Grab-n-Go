@@ -167,7 +167,7 @@ public class OrderItemDAO {
 				int item_price_sum = rs.getInt("SUM(a.item_price)");
 				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
 				String s = "";
-				if (interval.equals("mobthly")){
+				if (interval.equals("monthly")){
 					s = rs.getString("date_monthly") + "/" + rs.getString("monthly");
 				} else if (interval.equals("yearly")) {
 					s = rs.getString("month_yearly") + "/" + rs.getString("yearly");

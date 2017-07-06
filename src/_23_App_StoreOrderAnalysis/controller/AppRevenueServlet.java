@@ -44,7 +44,11 @@ public class AppRevenueServlet extends HttpServlet {
 		if (param.equals("getOrderData")) {
 			String rest_name = jsonObject.get("rest_name").getAsString();
 			OrderItemDAO dao = new OrderItemDAO();
-			list = dao.getOrdersItemDataForApp(rest_name, interval);
+			if (interval.equals("daily")) {
+				list = dao.getOrdersItemDataForApp(rest_name, interval);
+			} else if (interval.equals("monthly") || interval.equals("yearly")){
+				list = dao.getOrdersRevenueDataForApp(rest_name, interval);
+			}
 		}
 	
 		//將訂單資料送回App

@@ -313,7 +313,8 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'inprogress' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'inprogress' AND a.ord_pickuptime >= now() AND b.rest_username = ? "
+				+ " ORDER BY a.ord_pickuptime ASC ";
 		try (
 			Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -344,7 +345,8 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'unpaid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'unpaid' AND a.ord_pickuptime >= now() AND b.rest_username = ? "
+				+ " ORDER BY a.ord_pickuptime ASC ";
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 				) {
@@ -372,7 +374,8 @@ public class OrderDAO {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
-				+ " WHERE a.ord_status = 'paid' AND a.ord_pickuptime >= now() AND b.rest_username = ? ";
+				+ " WHERE a.ord_status = 'paid' AND a.ord_pickuptime >= now() AND b.rest_username = ? "
+				+ " ORDER BY a.ord_pickuptime ASC ";
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			) {
@@ -431,7 +434,8 @@ public class OrderDAO {
 //				   + " WHERE m_pickupname =? ";
 		String sql = " SELECT * "
 				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
-				   + " WHERE m_pickupname = ? AND rest_username = ? ";
+				   + " WHERE m_pickupname = ? AND rest_username = ? AND a.ord_pickuptime >= now()"
+				   + " ORDER BY a.ord_pickuptime ASC";
 		
 		
 		try (Connection conn = ds.getConnection();

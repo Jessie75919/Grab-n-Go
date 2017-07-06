@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -21,12 +22,14 @@
 <link rel="stylesheet"
 	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$("#datepicker").datepicker();
+		$("#datepicker").datepicker({
+			dateFormat: "yy-mm-dd"
+		});
 	});
 </script>
 <title>Welcome to GrabAndGo</title>
@@ -34,7 +37,6 @@
 <!-- 商家登入成功畫面 -->
 <!-- 帳務分析頁面/ 每日訂單統計(一併呈現當日餐點熱銷) -->
 <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderItemDAO"/>
-<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
 <body>
 	<!--logo-->
 	<header>
@@ -77,8 +79,9 @@
 	</section>
 
 	<!--左側列表-->
-	<section id="leftMenu" class="container"> <jsp:include
-		page="../_IncludeJsp/_storeMenuTest.jsp" /> <!-- 表格開始 -->
+	<section id="leftMenu" class="container"> 
+	<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" /> 
+	<!-- 表格開始 -->
 	<div id="middleForm" class="col-md-9">
 		<!--帳務分析按鈕區塊-->
 		<br>
@@ -105,13 +108,15 @@
 				<th>銷售總額</th>
 			</tr>
 			<!-- 日營業額統計細項 -->
+			<c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
 			<tr>
-				<td nowrap="">2017/05/19 11:05:31</td>
-				<td>主餐</td>
-				<td>西班牙海鮮燉飯</td>
-				<td>100</td>
-				<td>$33000</td>
+				<td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd" value="${dtBean.ord_pickuptime}"/></td>
+				<td>${dtBean.item_name}</td>
+				<td>${dtBean.item_name}</td>
+				<td>${dtBean.item_amount}</td>
+				<td>＄${dtBean.item_price}</td>
 			</tr>
+			</c:forEach>
 		</table>
 		<hr>
 	</div>

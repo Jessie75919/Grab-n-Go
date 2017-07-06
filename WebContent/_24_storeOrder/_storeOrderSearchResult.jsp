@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -93,8 +94,8 @@
                     <!-- 取得訂單 -->
                    <c:forEach var="orderSearch" items="${mPickupName}">
                     <tr>
-                        <td nowrap="">${orderSearch.ord_time}</td>
-                        <td nowrap="">${orderSearch.ord_pickuptime}</td>
+                        <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${orderSearch.ord_time}"/></td>
+                        <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${orderSearch.ord_pickuptime}"/></td>
                         <td>${orderSearch.m_pickupname}</td>
                         <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${orderSearch.ord_id}&ord_totalPrice=${orderSearch.ord_totalPrice}">${orderSearch.ord_id}</a></td>
                         <td> $${orderSearch.ord_totalPrice}</td>

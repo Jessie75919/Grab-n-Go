@@ -47,7 +47,7 @@
                     <div class="rating">
                         <div class="searchBg"></div>
                         <section class="searchContent">
-                            <h2> 今天還滿意嗎 ? </h2>
+                            <h2> 還吃的習慣嗎 ? </h2>
                             <div class="closeBtn">
                                 <i class="icon-close" title="關閉"></i>
                             </div>
@@ -56,8 +56,12 @@
                                     <input id="userName" type="hidden" name=username value="${LoginOK.memberId}">
                                     <input id="EvaRestId" type="hidden" name=restId value="">
                                     <input id="EvaOrd_id" type="hidden" name=ord_Id value=""> <span>評分</span>
-                                    <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
-                                    <!--<input type="text" name="score" id="score" placeholder="請給予評分">-->
+                                    <i id="1" class="icon-star"></i>
+                                    <i id="2" class="icon-star"></i>
+                                    <i id="3" class="icon-star"></i>
+                                    <i id="4" class="icon-star"></i>
+                                    <i id="5" class="icon-star"></i>
+                                    <input type="hidden" name="score" id="score" value="">
                                 </div>
                                 <div class="searchList">
                                     <textarea name="comment" id="comment" placeholder="請給予評價"></textarea>
@@ -92,10 +96,12 @@
                                 <div class="order status">${anOrderBean.ord_status}</div>
                                 <div class="order rate">
                                     <c:if test="${anOrderBean.ord_status=='paid'}">
+                                        <c:if test="${anOrderBean.ord_evalued=='1'}">已評價</c:if>
                                         <c:if test="${anOrderBean.ord_evalued=='0'}">
                                             <a href="#" title="評價" onclick="clikeMe(this)">未評價</a>
                                         </c:if>
                                     </c:if>
+                                     <c:if test="${anOrderBean.ord_status!='paid' }"> -- </c:if>
                                 </div>
                                 <div class="order detail">
                                     <a href="order_detail.jsp?ordId=${anOrderBean.ord_id}&restName=${anOrderBean.rest_name}&totalPrice=${anOrderBean.ord_totalPrice}">檢視</a>

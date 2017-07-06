@@ -1609,6 +1609,7 @@ main.login input[type="reset"]:hover {
 .order.rate,
 .order.detail {
     width: 10%;
+    text-align: center;
 }
 
 .order a {

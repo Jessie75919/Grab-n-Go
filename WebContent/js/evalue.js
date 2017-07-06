@@ -1,7 +1,7 @@
 var EvaRestName;
 var EvaOrd_id;
 // var EvaUserName;
-// var score = document.getElementById("score");
+var score = document.getElementById("score");
 // var comment =document.getElementById("comment");
 // var submit = document.getElementById("vvv");
 
@@ -22,6 +22,25 @@ function clikeMe(e) {
     EvaOrd_id.value = getOrdId;
     // alert(EvaOrd_id.value);
 
+}
+
+
+var starArr = document.querySelectorAll('.icon-star');
+
+for (var i = 0; i < 5; i++) {
+    starArr[i].addEventListener('click', function () {
+        for (var j = 0; j < 5; j++) {
+            starArr[j].className = "icon-star";
+        }
+        // alert(this.id);
+        score.value = this.id;
+
+        for (var j = 0; j < score.value; j++) {
+            starArr[j].className = "icon-star on";
+        }
+
+        alert(score.value);
+    })
 }
 
 

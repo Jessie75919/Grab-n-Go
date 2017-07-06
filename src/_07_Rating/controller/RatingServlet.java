@@ -29,11 +29,25 @@ public class RatingServlet extends HttpServlet {
 		String EvaUserName = request.getParameter("username");
 		String score = request.getParameter("score");
 		String comment = request.getParameter("comment");
+		String[] data = new String[]{
+			EvaOrd_id,
+			EvaRestId,
+			EvaUserName,
+			score,
+			comment
+		};
 		System.out.println("EvaOrd_id=" + EvaOrd_id);
 		System.out.println("EvaRestId=" + EvaRestId);
 		System.out.println("EvaUserName=" + EvaUserName);
 		System.out.println("score=" + score);
 		System.out.println("comment=" + comment);
+		
+		for(String st : data){
+			if(st==null || st.length()==0){
+				System.out.println("取值錯誤 in RatingServlet");
+				return;
+			}
+		}
 
 		RestRatingBeanDAO dao = new RestRatingBeanDAO();
 		RestRatingBean rrb = new RestRatingBean(Integer.parseInt(EvaOrd_id), Integer.parseInt(EvaRestId), Integer.parseInt(score),

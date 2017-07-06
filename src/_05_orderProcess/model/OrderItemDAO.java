@@ -137,6 +137,49 @@ public class OrderItemDAO {
 		}
 		return coll;
 	}
+	
+	public List<OrderItemBean> getOrdersRevenueDataForApp(String rest_name ,String interval) {
+		List<OrderItemBean> coll = new ArrayList<>();
+		OrderItemBean oib = null;
+		String sql1 = " SELECT SUM(a.item_price), SUM(a.item_amount) ";
+		String sql2 = "";
+		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
+					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
+					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' ";
+		String sql4 = "";
+		if (interval.equals("monthly")){
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%e') date_monthly "
+					+ " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
+			sql4 = " GROUP BY date_monthly ; ";
+		} else if (interval.equals("yearly")) {
+			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%c') month_yearly "
+					+ " , DATE_FORMAT(b.ord_pickuptime, '%Y') yearly ";
+			sql4 = " GROUP BY month_yearly ; ";
+		}
+		String sql = sql1 + sql2 + sql3 + sql4;
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+		) {
+			stmt.setString(1, rest_name);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
+				String s = "";
+				if (interval.equals("mobthly")){
+					s = rs.getString("date_monthly") + "/" + rs.getString("monthly");
+				} else if (interval.equals("yearly")) {
+					s = rs.getString("month_yearly") + "/" + rs.getString("yearly");
+				}
+				oib = new OrderItemBean(item_price_sum, item_amount_sum, s);
+				coll.add(oib);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return coll;
+	}
 
 	//
 	public Collection<OrderItemBean> getOrderDetailsForStore() {

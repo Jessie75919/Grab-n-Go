@@ -48,11 +48,11 @@ $(window).load(function () {
     });
     
     /*評價*/
-    $('.giveRating').click(function () {
+    $('.order.rate a').click(function () {
     	$('.rating').fadeIn();
     	return false;
     });
-    $('.closeBtn2, .searchBg').click(function () {
+    $('.closeBtn, .searchBg').click(function () {
     	$('.rating').fadeOut();
     	return false;
     });

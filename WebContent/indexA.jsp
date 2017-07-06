@@ -5,8 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:useBean id="SYSTEM" class="_00_init.GlobalService"
 	scope="application" />
-<jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO"
-	scope="session" />
+<jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
 
 
 <html>

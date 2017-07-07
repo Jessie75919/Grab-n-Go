@@ -25,7 +25,7 @@ public class OrderDAO {
 	private int month;
 	private int ord_id;
 	private String mPickupName;
-	
+	private String selectMonth;
 	
 	public int getOrd_id() {
 		return ord_id;
@@ -53,6 +53,10 @@ public class OrderDAO {
 
 	public void setMonth(int month) {
 		this.month = month;
+	}
+	
+	public void setMonthSelect(String selectMonth) {
+		this.selectMonth = selectMonth;
 	}
 
 	public OrderDAO() {
@@ -520,5 +524,43 @@ public class OrderDAO {
 		
 		return coll;
 	}
+	
+	public List<OrderBean> getStoreOrdersByMonthForApp(){
+		List<OrderBean> list = new ArrayList<>();
+		String sql1 = " SELECT * FROM order01 WHERE rest_id = ? "
+					+ " AND DATE_FORMAT(b.ord_pickuptime, '%Y-%c') = ? ";
+		String sql2 = "";
+		if(mPickupName.length() != 0){
+			sql2 = " AND m_pickupname LIKE ? ";
+		}
+		String sql = sql1 + sql2;
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);	
+		){
+			if(mPickupName.length() == 0){
+				stmt.setInt(1, restId);
+				stmt.setString(2, selectMonth);
+			} else{
+				stmt.setInt(1, restId);
+				stmt.setString(2, selectMonth);
+				stmt.setString(3, "%" + mPickupName + "%");
+			}
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				OrderBean ob = new OrderBean();
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_status(rs.getString("ord_status"));
+				list.add(ob);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 
 }

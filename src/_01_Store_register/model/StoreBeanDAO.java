@@ -511,6 +511,8 @@ public class StoreBeanDAO {
 //		String sql = "select * from restaurant";
 				
 		List<StoreBean> listStore = new ArrayList<>();
+		
+		System.out.println("listStore in StoreBeanDAO");
 		try (
 			 Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);
@@ -522,10 +524,10 @@ public class StoreBeanDAO {
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()){
 				int rest_id = rs.getInt(1);
-				System.out.println("rest_id = " + rest_id);
+//				System.out.println("rest_id = " + rest_id);
 				String rest_type = rs.getString("a.rest_type");
 				String rest_name = rs.getString("rest_name");
-				System.out.println("rest_name = " + rest_name);
+//				System.out.println("rest_name = " + rest_name);
 				String rest_branch = rs.getString("rest_branch");
 				String rest_address = rs.getString("rest_address");
 				String rest_phone = rs.getString("rest_phone");
@@ -540,19 +542,20 @@ public class StoreBeanDAO {
 				Blob rest_logo = rs.getBlob("rest_logo");
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 				double distance = Math.round(rs.getDouble("distance_in_km")*1000.0); // toMeter
-				System.out.println(distance);
+//				System.out.println(distance);
 			
 				StoreBean sb = new StoreBean(
 						rest_id,rest_type,rest_name,rest_branch,rest_address,
 						rest_phone,rest_owner,rest_email,rest_username,rest_password,
 						rest_url,rest_longitude,rest_latitude,rest_mainbanner,rest_logo,
 						rest_coverimage);
+				sb.setDistance(distance);
 				
 				listStore.add(sb);
 				
-				for(StoreBean sbn : listStore){
-					System.out.println( "in StoreBeanDAO : "+sbn);
-				}
+//				for(StoreBean sbn : listStore){
+//					System.out.println( "in StoreBeanDAO : "+sbn);
+//				}
 				
 			}
 		} catch (SQLException e) {

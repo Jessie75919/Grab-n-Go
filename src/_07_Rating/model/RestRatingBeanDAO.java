@@ -172,7 +172,7 @@ public class RestRatingBeanDAO {
 		int count = 0;
 		double total = 0;
 		int score = 0;
-		System.out.println("rest_id = " + rest_Id );
+//		System.out.println("rest_id = " + rest_Id );
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setInt(1, rest_Id);
@@ -181,14 +181,14 @@ public class RestRatingBeanDAO {
 			while (rs.next()) {
 				count++;
 				int restEva_star = rs.getInt("restEva_star");
-				System.out.println("restEva_star"+restEva_star);
+//				System.out.println("restEva_star"+restEva_star);
 				total += restEva_star;
 			}
-			System.out.println("count = "+count);
-			System.out.println("total = "+total);
+//			System.out.println("count = "+count);
+//			System.out.println("total = "+total);
 
 			score = (int) Math.round(total / count);
-			System.out.println("get the evalue data");
+//			System.out.println("get the evalue data");
 				
 		} catch (Exception e) {
 			System.out.println("get wrong in getRestEva");

@@ -434,6 +434,16 @@ public class StoreBean implements Serializable {
 	public void setRest_validate(boolean rest_validate) {
 		this.rest_validate = rest_validate;
 	}
+	
+	
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
 
 	@Override
 	public String toString() {

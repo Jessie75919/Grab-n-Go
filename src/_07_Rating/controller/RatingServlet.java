@@ -22,7 +22,7 @@ public class RatingServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		System.out.println("HI Rating");
+//		System.out.println("HI Rating");
 
 		String EvaOrd_id = request.getParameter("ord_Id");
 		String EvaRestId = request.getParameter("restId");

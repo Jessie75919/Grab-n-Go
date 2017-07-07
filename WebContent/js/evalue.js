@@ -49,6 +49,10 @@ $('#reset').bind('click', function () {
     for (var j = 0; j < 5; j++) {
         starArr[j].className = "icon-star";
     }
+
+    var a = 'HELLO';
+    a.to
+
 });
 
 function words_deal() {
@@ -67,9 +71,10 @@ function words_deal() {
 function validate() {
     // alert(score.value);
     if(parseInt(score.value)==0 ){
-         alert("stop1");
+        //  alert("stop1");
         $('#msg').html("貼心小提醒 : 請記得填寫評分喔");
          return false;
+
     }
     
 }

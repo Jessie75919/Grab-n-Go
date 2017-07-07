@@ -97,7 +97,7 @@
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_pickuptime}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><input id="ordId" name="ordId" style="display:none;" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <td><input style="display:none;" id="ordId" name="ordId" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
                         <td><a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" onClick="ordStatus()">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="ordCancel()">取消訂單</a></td>
@@ -113,11 +113,16 @@
         </div>
         </div>
     </section>
-    <script>
     
-    	<!-- 訂單狀態改變 js -->
+    <script>
+    var ordId = document.getElementById("ordId").value;
+ 	/* 訂單狀態改變 */
     		function ordStatus(){
     			if(confirm("餐點完成了嗎？ 可以等待顧客來取餐囉 ~")){
+    				//訂單已完成
+    				var xhr = new XMLHttpRequest();
+    				xhr.open('GET','updateStatusUnpaid.do?ordId=' + ordId,true);
+    				xhr.send();
     	             alert("餐點確定完成！")
     	         }else{
     	             alert("餐點尚未完成")
@@ -129,7 +134,7 @@
     		if(confirm("確定取消此筆訂單嗎？")){
     			//ajax 取消訂單
     			var xhr = new XMLHttpRequest();
-    			xhr.open('GET','CancelOrder.do',true);
+    			xhr.open('GET','CancelOrder.do?ordId=' + ordId,true);
     			xhr.send();
     			
     			
@@ -137,9 +142,6 @@
     				xhr.onreadystatechange = function(){
     					if(xhr.readyState == 4 && xhr.status == 200){
     						//處理伺服器送回的回應資料
-    						var ordId = document.getElementById("ordId").value;
-    						ordId.setAttribute("name", "ordId");
-    						ordId.setAttribute("id", "ordId");
     					}
     				}
     				

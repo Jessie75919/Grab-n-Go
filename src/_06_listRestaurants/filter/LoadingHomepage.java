@@ -18,9 +18,6 @@ import javax.servlet.http.HttpSession;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
-/**
- * Servlet Filter implementation class LoadingHomepage
- */
 @WebFilter({"/indexA.jsp","/SaveLocation.do"})
 public class LoadingHomepage implements Filter {
 
@@ -35,7 +32,7 @@ public class LoadingHomepage implements Filter {
 		double latitude = 0;
 		double longitude = 0;
 		String contextPath = servletRequest.getContextPath();
-		System.out.println(contextPath + " in LoadingHomepage");
+//		System.out.println(contextPath + " in LoadingHomepage");
 		Cookie[] coks = servletRequest.getCookies();
 		// System.out.println("here ??");
 		for (Cookie cok : coks) {
@@ -64,7 +61,6 @@ public class LoadingHomepage implements Filter {
 				
 				chain.doFilter(servletRequest, servletResponse);
 				
-				System.out.println(" holy shit in LoadingHomepageFilter");
 //				servletResponse.sendRedirect("/_Grab_Go/WebContent/indexA.jsp");
 //				servletRequest.getRequestDispatcher(contextPath+"/indexA.jsp").forward(servletRequest, servletResponse);
 //				return;

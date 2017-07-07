@@ -530,10 +530,11 @@ public class OrderDAO {
 		String sql1 = " SELECT * FROM order01 WHERE rest_id = ? "
 					+ " AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? ";
 		String sql2 = "";
+		String sql3 = " ORDER BY ord_pickuptime DESC ";
 		if(mPickupName.length() != 0){
 			sql2 = " AND m_pickupname LIKE ? ";
 		}
-		String sql = sql1 + sql2;
+		String sql = sql1 + sql2 + sql3;
 		try (
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);	
@@ -554,6 +555,7 @@ public class OrderDAO {
 				ob.setOrd_time(rs.getTimestamp("ord_time"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
+				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
 				list.add(ob);
 			}
 		} catch (SQLException e) {

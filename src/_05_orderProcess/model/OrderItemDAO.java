@@ -102,7 +102,7 @@ public class OrderItemDAO {
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily ; ";
-		} else if (interval.equals("mobthly")) {
+		} else if (interval.equals("monthly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
 			sql4 = " , monthly ; ";
 		} else if (interval.equals("yearly")) {
@@ -124,8 +124,8 @@ public class OrderItemDAO {
 				String s = "";
 				if (interval.equals("daily")){
 					s = rs.getString("daily");
-				} else if (interval.equals("mobthly")) {
-					s = rs.getString("mobthly");
+				} else if (interval.equals("monthly")) {
+					s = rs.getString("monthly");
 				} else if (interval.equals("yearly")) {
 					s = rs.getString("yearly");
 				}
@@ -195,7 +195,7 @@ public class OrderItemDAO {
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily  ";
-		} else if (interval.equals("mobthly")) {
+		} else if (interval.equals("monthly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
 			sql4 = " , monthly  ";
 		} else if (interval.equals("yearly")) {
@@ -217,8 +217,8 @@ public class OrderItemDAO {
 				String s = "";
 				if (interval.equals("daily")){
 					s = rs.getString("daily");
-				} else if (interval.equals("mobthly")) {
-					s = rs.getString("mobthly");
+				} else if (interval.equals("monthly")) {
+					s = rs.getString("monthly");
 				} else if (interval.equals("yearly")) {
 					s = rs.getString("yearly");
 				}

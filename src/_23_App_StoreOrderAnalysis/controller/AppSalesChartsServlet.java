@@ -40,7 +40,7 @@ public class AppSalesChartsServlet extends HttpServlet {
 		String interval = jsonObject.get("interval").getAsString();
 		String param = jsonObject.get("param").getAsString();
 		List<OrderItemBean> list = new ArrayList<>();
-		if (param.equals("getSalesChartsData")) {
+		if (param.equals("FinancialSalesChartsActivity")) {
 			String rest_name = jsonObject.get("rest_name").getAsString();
 //			String limitCount_s = jsonObject.get("limitCount").getAsString();
 //			int limitCount = Integer.parseInt(limitCount_s);

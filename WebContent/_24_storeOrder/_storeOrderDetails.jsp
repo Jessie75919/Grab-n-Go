@@ -98,8 +98,9 @@
             </div>
             <div id="checkOut" style="display: inline;">
             <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->
-            <a href="_storeOrderPaid.jsp" class="btn btn-primary">顧客結帳</a>
-            <a href="../_02_storeLogin/_storeIndex.jsp" class="btn btn-primary">回本日訂單</a>
+            <a href="#" class="btn btn-primary">餐點完成</a>
+            <a href="_storeOrderPaid.jsp" class="btn btn-default">顧客結帳</a>
+            <a href="../_02_storeLogin/_storeIndex.jsp" class="btn btn-primary">本日訂單</a>
             </div>           
         </div>
         </div>

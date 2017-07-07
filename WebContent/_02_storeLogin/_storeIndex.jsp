@@ -97,10 +97,10 @@
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_pickuptime}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <td><input id="ordId" name="ordId" style="display:none;" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
-                        <td><a href="#">${anOrderBean.ord_status}</a></td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td><a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" onClick="ordStatus()">${anOrderBean.ord_status}</a></td>
+                        <td id="cancelB"><a href="#" onclick="ordCancel()">取消訂單</a></td>
                     </tr>
                     </c:forEach> 
                 </table>
@@ -109,11 +109,49 @@
         </div>
         </div>
         <div class="row">
-
         </div>
         </div>
         </div>
     </section>
+    <script>
+    
+    	<!-- 訂單狀態改變 js -->
+    		function ordStatus(){
+    			if(confirm("餐點完成了嗎？ 可以等待顧客來取餐囉 ~")){
+    	             alert("餐點確定完成！")
+    	         }else{
+    	             alert("餐點尚未完成")
+    	         }
+    		} 
+    		
+    	/* 取消訂單 */
+    	function ordCancel(){
+    		if(confirm("確定取消此筆訂單嗎？")){
+    			//ajax 取消訂單
+    			var xhr = new XMLHttpRequest();
+    			xhr.open('GET','CancelOrder.do',true);
+    			xhr.send();
+    			
+    			
+    			if(xhr != null){
+    				xhr.onreadystatechange = function(){
+    					if(xhr.readyState == 4 && xhr.status == 200){
+    						//處理伺服器送回的回應資料
+    						var ordId = document.getElementById("ordId").value;
+    						ordId.setAttribute("name", "ordId");
+    						ordId.setAttribute("id", "ordId");
+    					}
+    				}
+    				
+    				
+    			}
+    			alert(" 訂單已取消囉！")	
+    		}else{
+    			alert("請繼續完成訂單呦 ~")
+    		}
+    	}
+    
+    </script>
 
 </body>
 

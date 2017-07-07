@@ -25,6 +25,7 @@ function clikeMe(e) {
 }
 
 
+
 var starArr = document.querySelectorAll('.icon-star');
 
 for (var i = 0; i < 5; i++) {
@@ -39,9 +40,18 @@ for (var i = 0; i < 5; i++) {
             starArr[j].className = "icon-star on";
         }
 
-        alert(score.value);
-    })
+        // alert(score.value);
+    });
 }
+
+
+
+var resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click',function () {
+     for (var j = 0; j < 5; j++) {
+            starArr[j].className = "icon-star";
+        }
+});
 
 
 // submit.onclick = function () {

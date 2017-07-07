@@ -33,8 +33,7 @@ public class RatingServlet extends HttpServlet {
 			EvaOrd_id,
 			EvaRestId,
 			EvaUserName,
-			score,
-			comment
+			score
 		};
 		System.out.println("EvaOrd_id=" + EvaOrd_id);
 		System.out.println("EvaRestId=" + EvaRestId);

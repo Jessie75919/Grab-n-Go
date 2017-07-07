@@ -41,7 +41,7 @@ public class AppRevenueServlet extends HttpServlet {
 		String param = jsonObject.get("param").getAsString();
 		String interval = jsonObject.get("interval").getAsString();
 		List<OrderItemBean> list = new ArrayList<>();
-		if (param.equals("getOrderData")) {
+		if (param.equals("FinancialRevenueActivity")) {
 			String rest_name = jsonObject.get("rest_name").getAsString();
 			OrderItemDAO dao = new OrderItemDAO();
 			if (interval.equals("daily")) {

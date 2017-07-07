@@ -37,20 +37,21 @@ public class AppSalesChartsServlet extends HttpServlet {
 		}
 		System.out.println("jsonIn = " + jsonIn);
 		JsonObject jsonObject = gson.fromJson(jsonIn.toString(), JsonObject.class);
-		
-		String param = jsonObject.get("param").getAsString();
 		String interval = jsonObject.get("interval").getAsString();
+		String param = jsonObject.get("param").getAsString();
 		List<OrderItemBean> list = new ArrayList<>();
 		if (param.equals("getSalesChartsData")) {
 			String rest_name = jsonObject.get("rest_name").getAsString();
+//			String limitCount_s = jsonObject.get("limitCount").getAsString();
+//			int limitCount = Integer.parseInt(limitCount_s);
 			OrderItemDAO dao = new OrderItemDAO();
-			list = dao.getOrdersItemDataForApp(rest_name, interval);
+			list = dao.getSalesChartsForApp(rest_name, interval);
 		}
 	
 		//將訂單資料送回App
 		PrintWriter out = response.getWriter();
 		out.println(gson.toJson(list));
-		System.out.println("coll(" + interval + ") = " + list);
+		System.out.println("list(" + interval + ") = " + list);
 		out.close();
 	}
 

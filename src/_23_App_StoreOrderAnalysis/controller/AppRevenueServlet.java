@@ -54,7 +54,7 @@ public class AppRevenueServlet extends HttpServlet {
 		//將訂單資料送回App
 		PrintWriter out = response.getWriter();
 		out.println(gson.toJson(list));
-		System.out.println("coll(" + interval + ") = " + list);
+		System.out.println("list(" + interval + ") = " + list);
 		out.close();
 	}
 

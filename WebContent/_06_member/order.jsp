@@ -48,10 +48,11 @@
                         <div class="searchBg"></div>
                         <section class="searchContent">
                             <h2> 還吃的習慣嗎 ? </h2>
+                            <div id="msg"></div>
                             <div class="closeBtn">
                                 <i class="icon-close" title="關閉"></i>
                             </div>
-                            <form name="searchForm" action="rating.do" method="get">
+                            <form name="searchForm" id="valueForm" action="rating.do" method="get" onsubmit="return validate()">
                                 <div class="searchList">
                                     <input id="userName" type="hidden" name=username value="${LoginOK.memberId}">
                                     <input id="EvaRestId" type="hidden" name=restId value="">
@@ -64,11 +65,11 @@
                                     <input type="hidden" name="score" id="score" value="">
                                 </div>
                                 <div class="searchList">
-                                    <textarea name="comment" id="comment" placeholder="請給予評價"></textarea>
+                                    <textarea name="comment" id="comment" onkeyup="words_deal();" placeholder="請給予評價"></textarea>
                                 </div>
                                 <div class="searchBtn">
                                     <input name="reset" type="reset" id="reset" value="重填">
-                                    <input name="submit" type="submit" id="submit" value="給評價">
+                                    <input name="submit" type="submit" id="submit"  value="給評價">
                                 </div>
                             </form>
                         </section>

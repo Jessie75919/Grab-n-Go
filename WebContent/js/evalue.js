@@ -21,9 +21,9 @@ function clikeMe(e) {
     EvaOrd_id = document.getElementById("EvaOrd_id");
     EvaOrd_id.value = getOrdId;
     // alert(EvaOrd_id.value);
+    score.value = 0 ;
 
 }
-
 
 
 var starArr = document.querySelectorAll('.icon-star');
@@ -45,13 +45,41 @@ for (var i = 0; i < 5; i++) {
 }
 
 
-
-var resetBtn = document.querySelector('#reset');
-resetBtn.addEventListener('click',function () {
-     for (var j = 0; j < 5; j++) {
-            starArr[j].className = "icon-star";
-        }
+$('#reset').bind('click', function () {
+    for (var j = 0; j < 5; j++) {
+        starArr[j].className = "icon-star";
+    }
 });
+
+function words_deal() {
+	var curLength = $("#comment").val().length;
+	if (curLength > 100) {
+		var num = $("#comment").val().substr(0, 75);
+		$("#comment").val(num);
+		alert("貼心小提醒 : 評論不可以超過75個字喔");
+	} else {
+		$("#textCount").text(5 - $("#TextArea1").val().length);
+	}
+}
+
+
+
+function validate() {
+    // alert(score.value);
+    if(parseInt(score.value)==0 ){
+         alert("stop1");
+        $('#msg').html("貼心小提醒 : 請記得填寫評分喔");
+         return false;
+    }
+    
+}
+
+// var resetBtn = document.querySelector('#reset');
+// resetBtn.addEventListener('click',function () {
+//      for (var j = 0; j < 5; j++) {
+//             starArr[j].className = "icon-star";
+//         }
+// });
 
 
 // submit.onclick = function () {

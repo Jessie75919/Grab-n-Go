@@ -528,7 +528,7 @@ public class OrderDAO {
 	public List<OrderBean> getStoreOrdersByMonthForApp(){
 		List<OrderBean> list = new ArrayList<>();
 		String sql1 = " SELECT * FROM order01 WHERE rest_id = ? "
-					+ " AND DATE_FORMAT(b.ord_pickuptime, '%Y-%c') = ? ";
+					+ " AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? ";
 		String sql2 = "";
 		if(mPickupName.length() != 0){
 			sql2 = " AND m_pickupname LIKE ? ";

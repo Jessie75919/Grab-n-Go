@@ -40,6 +40,7 @@ public class SaveLocationServlet extends HttpServlet {
 		}
 
 		System.out.println("Hello ? in SaveLocationServlet");
+		response.sendRedirect("index.jsp");
 //
 	}
 

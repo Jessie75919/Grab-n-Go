@@ -42,12 +42,12 @@ public class AppRevenueServlet extends HttpServlet {
 		String interval = jsonObject.get("interval").getAsString();
 		List<OrderItemBean> list = new ArrayList<>();
 		if (param.equals("FinancialRevenueActivity")) {
-			String rest_name = jsonObject.get("rest_name").getAsString();
+			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
 			OrderItemDAO dao = new OrderItemDAO();
 			if (interval.equals("daily")) {
-				list = dao.getOrdersItemDataForApp(rest_name, interval);
+				list = dao.getOrdersItemDataForApp(rest_id, interval);
 			} else if (interval.equals("monthly") || interval.equals("yearly")){
-				list = dao.getOrdersRevenueDataForApp(rest_name, interval);
+				list = dao.getOrdersRevenueDataForApp(rest_id, interval);
 			}
 		}
 	

@@ -41,11 +41,11 @@ public class AppSalesChartsServlet extends HttpServlet {
 		String param = jsonObject.get("param").getAsString();
 		List<OrderItemBean> list = new ArrayList<>();
 		if (param.equals("FinancialSalesChartsActivity")) {
-			String rest_name = jsonObject.get("rest_name").getAsString();
+			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
 //			String limitCount_s = jsonObject.get("limitCount").getAsString();
 //			int limitCount = Integer.parseInt(limitCount_s);
 			OrderItemDAO dao = new OrderItemDAO();
-			list = dao.getSalesChartsForApp(rest_name, interval);
+			list = dao.getSalesChartsForApp(rest_id, interval);
 		}
 	
 		//將訂單資料送回App

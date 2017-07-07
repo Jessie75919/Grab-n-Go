@@ -426,7 +426,7 @@ public class StoreBeanDAO {
 	}
 	
 	public List<StoreBean> getNameBranchLogoValidate(String rest_username){
-		String sql = "SELECT rest_name, rest_branch, rest_logo, rest_validate "
+		String sql = "SELECT rest_name, rest_branch, rest_logo, rest_validate , rest_id"
 				+ " FROM restaurant WHERE rest_username = ?" ;
 		List<StoreBean> listStore = new ArrayList<>();
 		try (
@@ -441,8 +441,9 @@ public class StoreBeanDAO {
 				String rest_branch = rs.getString("rest_branch");
 				Blob rest_logo = rs.getBlob("rest_logo");
 				boolean rest_validate = rs.getBoolean("rest_validate");
+				int rest_id = rs.getInt("rest_id");
 			
-				StoreBean sb = new StoreBean(rest_name,rest_branch,rest_logo,rest_validate);
+				StoreBean sb = new StoreBean(rest_name,rest_branch,rest_logo,rest_validate,rest_id);
 				
 				listStore.add(sb);
 			}

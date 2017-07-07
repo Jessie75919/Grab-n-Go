@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <!-- 載入 d3.js -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <!-- 載入datePicker -->
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$("#datepicker").datepicker({
+			dateFormat: "yy-mm-dd"
+		});
+	});
+</script>
     <style>
         .chart{
             margin-top: 30px;
@@ -26,6 +40,7 @@
             color:white;
         }    
     </style>
+    <jsp:useBean id="ordItemBeans" class="_05_orderProcess.model.OrderItemDAO"/>
     <title>餐點熱銷排行(日)|歷史訂單-Grab &amp; Go</title>
 </head>
 <!--商家餐點熱銷排行 （日）-->
@@ -57,13 +72,17 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 餐點熱銷排行</h3><br>
-                    <!-- 欲查詢的日期 -->
-                    <form class="form-inline">
-                        <span><h5>請選擇欲查詢的日期：</span>
-                        <select>
-                                <option value="0601">0601</option>
-                            </select>
-                    </form>
+                    <!-- 指定日期 -->
+					<span><h4>請選擇欲查詢的日期：</h4></span>
+					<!-- <div id="dateSelector"></div> -->
+					<form class="form-inline" action="SalesRankDay.do" method="get">
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+						<input id="datepicker" name="datepicker" type="text" class="form-control" /> 
+						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
+					</div>
+				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
+				</form>
                 </div>
             </div>
     </section>
@@ -96,14 +115,15 @@
                         <th>銷售總額</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
+                    <c:forEach var="anOrderBean"  items="${ordItemBeans.salesRankD}">
                     <tr>
                         <td>1</td>
-                        <td>火雞胸肉潛艇堡</td>
-                        <td>$109</td>
-                        <td>100</td>
-                        <td>$10900</td>
+                        <td>${anOrderBean.item_name}</td>
+                        <td>${anOrderBean.item_price}</td>
+                        <td>${anOrderBean.item_amount}</td>
+                        <td>${anOrderBean.item_amount * anOrderBean.item_price}</td>
                     </tr>
-
+                    </c:forEach>
                 </table>
                 <hr>
             </div>

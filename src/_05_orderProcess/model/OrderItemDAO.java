@@ -305,9 +305,47 @@ public class OrderItemDAO {
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-
-		
+		}		
+		return coll;
+	}
+	
+	public Collection<OrderItemBean> getSalesRankD(String restUsername, String datePick) {
+		Collection<OrderItemBean> coll = new ArrayList();
+		String sql = " SELECT b.item_name, SUM(b.item_price), SUM(b.item_amount) "
+				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
+				+ " JOIN restaurant c ON a.rest_id = c.rest_id "
+				+ " WHERE c.rest_username = ? AND a.ord_pickuptime like '?%' AND a.ord_status = 'paid' "
+				+ " GROUP BY b.item_name "
+				+ " ORDER BY SUM(b.item_amount) DESC";
+//		select b.item_name, sum(b.item_price), sum(b.item_amount)
+//		from Grab_n_Go.order01 a join Grab_n_Go.order_item b on a.ord_id = b.ord_id
+//								 join Grab_n_Go.restaurant c on a.rest_id = c.rest_id
+//		where c.rest_username = 'afternoontea' and a.ord_pickuptime like '2017-06-01%' and a.ord_status = 'paid'
+//		group by b.item_name
+//		order by sum(b.item_amount) desc;
+		try(
+				Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				){
+			System.out.println("Hello, OrderItemDAO");
+			stmt.setString(1, restUsername);
+			stmt.setString(2, datePick);
+			ResultSet rs = stmt.executeQuery();
+			if(rs == null){
+				System.out.println("not found");
+			}
+			while(rs.next()){
+				OrderItemBean oib = new OrderItemBean();
+				oib.setItem_name(rs.getString("b.item_name"));
+				oib.setItem_amount(rs.getInt("SUM(b.item_amount)"));
+				oib.setItem_price(rs.getInt("SUM(b.item_price)"));
+				System.out.println(oib);
+				coll.add(oib);	
+				
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		return coll;
 	}
 }

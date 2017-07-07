@@ -138,14 +138,14 @@ public class OrderDAO {
 	}
 	
 	
-	public int updateOrderStatus(int ord_id,String status) {
+	public int updateOrderStatus(String status, int ord_id) {
 		int n = -1;
 		String sql = "update order01 set ord_status = ? where ord_id =?";
 		try (Connection con = ds.getConnection();
 				PreparedStatement pst1 = con.prepareStatement(sql);
 		) {
 				pst1.setString(1, status);
-				pst1.setInt(1, ord_id);
+				pst1.setInt(2, ord_id);
 				
 				n = pst1.executeUpdate();
 				if(n==1){

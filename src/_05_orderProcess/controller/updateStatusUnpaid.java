@@ -12,36 +12,40 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import _05_orderProcess.model.OrderDAO;
-@WebServlet("/_02_storeLogin/CancelOrder.do")
-public class CancelOrderServlet extends HttpServlet {
+
+@WebServlet("/_02_storeLogin/updateStatusUnpaid.do")
+public class updateStatusUnpaid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Hello! CancelOrder.do");
+		System.out.println("Hello! updateStatusUnpaid.do");
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String ordId = request.getParameter("ordId");
-		System.out.println("欲取消的訂單：" + ordId);
+		String status = "unpaid";
+		System.out.println("已完成的訂單編號：" + ordId);
 		
-		try{
+		try {
 			OrderDAO od = new OrderDAO();
-//			od.setOrd_id();
-//			Integer orderCancel = od.deleteOrder(Integer.parseInt(ordId.trim()));
-//			String ordCancel = new Gson().toJson(orderCancel);
-			int n = od.deleteOrder(Integer.parseInt(ordId.trim()));
+			System.out.println("ready to update order status to unpaid!");
+			int n = od.updateOrderStatus(status, Integer.parseInt(ordId.trim()));
+			System.out.println(n);
 			if( n == 1 ){
-				String result = new Gson().toJson("刪除成功"); 
+				String result = new Gson().toJson("更新成功"); 
 				out.write(result);
 				out.flush();
 			}else{
 				System.out.println("error!!!");
 			}
-		} finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
 			out.close();
 		}
 		
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

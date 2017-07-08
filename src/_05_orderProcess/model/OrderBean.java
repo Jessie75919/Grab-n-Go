@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class OrderBean {
 	int ord_id;
 	String m_username;
@@ -19,11 +18,10 @@ public class OrderBean {
 	String ord_tel;
 	String ord_email;
 	int ord_evalued;
-	
 
 	public OrderBean(String m_username, String m_pickupname, Timestamp ord_time, Timestamp ord_pickuptime, int rest_id,
-			int ord_totalPrice, String ord_status, List<OrderItemBean> items,
-			String ord_tel,String ord_email,int ord_evalued) {
+			int ord_totalPrice, String ord_status, List<OrderItemBean> items, String ord_tel, String ord_email,
+			int ord_evalued) {
 		super();
 		this.m_username = m_username;
 		this.m_pickupname = m_pickupname;
@@ -36,47 +34,32 @@ public class OrderBean {
 		this.ord_tel = ord_tel;
 		this.ord_email = ord_email;
 		this.ord_evalued = ord_evalued;
-	
+
 	}
-	
 
 	public int getOrd_evalued() {
 		return ord_evalued;
 	}
 
-
 	public void setOrd_evalued(int ord_evalued) {
 		this.ord_evalued = ord_evalued;
 	}
-
 
 	public String getOrd_tel() {
 		return ord_tel;
 	}
 
-
-
-
 	public void setOrd_tel(String ord_tel) {
 		this.ord_tel = ord_tel;
 	}
-
-
-
 
 	public String getOrd_email() {
 		return ord_email;
 	}
 
-
-
-
 	public void setOrd_email(String ord_email) {
 		this.ord_email = ord_email;
 	}
-
-
-
 
 	public List<OrderItemBean> getItems() {
 		return items;
@@ -85,7 +68,6 @@ public class OrderBean {
 	public void setItems(List<OrderItemBean> items) {
 		this.items = items;
 	}
-
 
 	public OrderBean() {
 		super();
@@ -162,7 +144,7 @@ public class OrderBean {
 	public void setOrd_pickuptime(Timestamp ord_pickuptime) {
 		this.ord_pickuptime = ord_pickuptime;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "OrderBean [ord_id=" + ord_id + ", m_username=" + m_username + ", m_pickupname=" + m_pickupname
@@ -171,6 +153,5 @@ public class OrderBean {
 				+ ", items=" + items + ", ord_tel=" + ord_tel + ", ord_email=" + ord_email + ", ord_evalued="
 				+ ord_evalued + "]";
 	}
-
 
 }

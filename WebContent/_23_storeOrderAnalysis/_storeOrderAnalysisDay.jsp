@@ -11,13 +11,13 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../css/_storeOrderAnalysisDay.css">
-<link rel="stylesheet" href="../css/_storeIndex.css">
-<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/_storeOrderAnalysisDay.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/_storeIndex.css">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css">
 <!-- 載入圓餅圖js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
-<script src="../js/d3pie.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/d3pie.js"></script>
 <!-- 載入datePicker -->
 <link rel="stylesheet"
 	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -41,7 +41,7 @@
 	<!--logo-->
 	<header>
 	<div class="logoArea">
-		<img src="../images/share/logo.svg" alt="">
+		<img src="${pageContext.servletContext.contextPath}/images/share/logo.svg" alt="">
 	</div>
 	<!--進入區塊-->
 	<div class="topTitle">
@@ -66,7 +66,7 @@
 				<!-- 指定日期 -->
 					<span><h4>請選擇欲查詢的日期：</h4></span>
 					<!-- <div id="dateSelector"></div> -->
-					<form class="form-inline">
+					<form class="form-inline" action="../DailyRevenue.do" method="get">
 					<div class="input-group">
 						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 						<input id="datepicker" name="datepicker" type="text" class="form-control" /> 
@@ -110,7 +110,7 @@
 			<!-- 日營業額統計細項 -->
 			<c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
 			<tr>
-				<td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd" value="${dtBean.ord_pickuptime}"/></td>
+				<td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd" value="${dtBean.ordPickuptime}"/></td>
 				<td>${dtBean.item_name}</td>
 				<td>${dtBean.item_name}</td>
 				<td>${dtBean.item_amount}</td>

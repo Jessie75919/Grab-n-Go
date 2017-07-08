@@ -71,7 +71,7 @@
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
                      	<li role="presentation"><a href="../_24_storeOrder/_storeOrderSearchResult.jsp">訂單查詢</a></li>
-                        <li role="presentation" class="active"><a href="#">待處理訂單</a></li>
+                        <li id="ordInProgress" role="presentation" class="active"><a href="#">待處理訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp">已完成訂單</a></li>
                         <li role="presentation"><a href="../_24_storeOrder/_storeOrderPaid.jsp">已付款訂單</a></li>
                     </ul>
@@ -79,7 +79,7 @@
                 </div>
                 <hr>
                 <!--</div>-->
-            <!--<div class="orderTable" >-->
+           <!--  <div id="orderResult" ></div> -->
                 <table id="orderTable">
                     <tr>
                         <th>訂購日期</th>
@@ -117,7 +117,8 @@
     <script>
     var ordId = document.getElementById("ordId").value;
     var ordStatus = document.getElementById("ordStatus").value;
-    
+    var restUsername = document.getElementById("restUsername").value;
+     
  	/* 訂單狀態改變 */
     		function updateOrdStatus(){
     			if(confirm("餐點完成了嗎？ 可以等待顧客來取餐囉 ~")){
@@ -139,16 +140,6 @@
     			xhr.open('GET','CancelOrder.do?ordId=' + ordId,true);
     			xhr.send();
     			
-    			
-    			if(xhr != null){
-    				xhr.onreadystatechange = function(){
-    					if(xhr.readyState == 4 && xhr.status == 200){
-    						//處理伺服器送回的回應資料
-    					}
-    				}
-    				
-    				
-    			}
     			alert(" 訂單已取消囉！")	
     		}else{
     			alert("請繼續完成訂單呦 ~")

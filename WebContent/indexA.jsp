@@ -6,6 +6,7 @@
 <jsp:useBean id="SYSTEM" class="_00_init.GlobalService"
 	scope="application" />
 <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
+<jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 
 
 <html>
@@ -162,9 +163,6 @@
                  <c:forEach begin="1" end="${x}" step="1">
                		 <i class="icon-star"></i> 
                 </c:forEach>
-<!-- 					<i class="icon-star on"></i> <i class="icon-star on"></i> <i -->
-<!-- 						class="icon-star on"></i> <i class="icon-star"></i> <i -->
-<!-- 						class="icon-star"></i> -->
 				</div>
 				<div class="dist">
 					<c:set var="string1" value="${restaurant.rest_address}" />
@@ -176,7 +174,8 @@
 						<span>${restaurant.rest_type}</span>
 					</div>
 					<div class="orderCount">
-						目前訂單<span>999</span>
+					<c:set target="${order}" property="restId" value="${restaurant.rest_id}"/>
+						目前訂單<span>${order.orderInProgressCountByRestId}</span>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,8 @@
     <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}"/>
     <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session"/>
     <c:set target="${rating}" property="rest_Id" value="${clickRest.rest_id}"/>
-
+<jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
+<c:set target="${order}" property="restId" value="${clickRest.rest_id}"/>
     
 </head>
 
@@ -70,7 +71,7 @@
                 <p><i class="icon-phone"></i>${clickRest.rest_phone}</p>
                 <div class="tagOrder">
                     <div class="tag"><span>${clickRest.rest_type}</span></div>
-                    <div class="orderCount">目前訂單<span>999</span></div>
+                    <div class="orderCount">目前訂單<span>${order.orderInProgressCountByRestId}</span></div>
                 </div>
             </div>
         </div>

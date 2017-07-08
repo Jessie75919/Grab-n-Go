@@ -431,6 +431,29 @@ public class OrderDAO {
 		return ob;
 	}
 	
+	
+	
+	public int getOrderInProgressCountByRestId() {
+		String sql = " SELECT * from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
+		int count = 0;
+		System.out.println("restId = " + restId);
+		try (Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
+			stmt.setInt(1, restId);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				++count;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			
+		}
+		System.out.println(count +" in OrderDAO");
+		return count;
+	}
+	
 	//
 	public Collection<OrderBean> getStoreOrdersByMpickupName() {
 		Collection<OrderBean> coll = new ArrayList<>();

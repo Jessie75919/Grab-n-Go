@@ -27,7 +27,7 @@ class MailBean {
 
 	public void sendMail() {
 		try {
-			String host = "smtp.gmail.com";
+			String host = "mail.smtp.host";
 			int port = 587;
 			final String username = "jessie75919@gmail.com";
 			final String password = "";

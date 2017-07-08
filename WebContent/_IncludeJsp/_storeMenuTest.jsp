@@ -55,7 +55,7 @@
                     </li>
                     <li class="list-group-item"><i class="fa fa-usd fa-fw"></i>帳務分析</li>
                     <li class="list-group-item">
-                        <a href="../_23_storeOrderAnalysis/_storeOrderAnalysisDay.jsp">營業額統計</a>
+                        <a href="../_23_storeOrderAnalysis/_storeOrderAnalysisDay.jsp?restUsername=${StoreLoginOK['rest_username']}">營業額統計</a>
                     </li>
                 </ul>
             </div>

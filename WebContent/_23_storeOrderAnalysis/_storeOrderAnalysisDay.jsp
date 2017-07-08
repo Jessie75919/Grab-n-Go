@@ -36,7 +36,7 @@
 </head>
 <!-- 商家登入成功畫面 -->
 <!-- 帳務分析頁面/ 每日訂單統計(一併呈現當日餐點熱銷) -->
-<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderItemDAO"/>
+<%-- <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderItemDAO"/> --%>
 <body>
 	<!--logo-->
 	<header>
@@ -66,14 +66,16 @@
 				<!-- 指定日期 -->
 					<span><h4>請選擇欲查詢的日期：</h4></span>
 					<!-- <div id="dateSelector"></div> -->
-					<form class="form-inline" action="../DailyRevenue.do" method="get">
+					<!-- <form class="form-inline" action="../DailyRevenue.do" method="get"> -->
+					<div class="form-inline">
 					<div class="input-group">
 						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-						<input id="datepicker" name="datepicker" type="text" class="form-control" /> 
+						<input type="text" id="datepicker" name="datepicker" class="form-control" /> 
 						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
 					</div>
 				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
-				</form>
+				<!-- </form> -->
+				</div>
 			</div>
 		</div>
 	</section>
@@ -98,15 +100,15 @@
 		<!--圖表區塊, 動態產生-->
 		<div id="pieChart">Chart goes here!</div>
 		<hr>
-
+		<!-- <div id="resultArea"></div> -->
 		<table id="orderTable">
-			<tr>
+			<!-- <tr>
 				<th>訂購日期</th>
 				<th>餐點種類</th>
 				<th>餐點名稱</th>
 				<th>銷售數量</th>
 				<th>銷售總額</th>
-			</tr>
+			</tr> -->
 			<!-- 日營業額統計細項 -->
 			<c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
 			<tr>
@@ -126,6 +128,31 @@
 	</div>
 	</div>
 	</section>
+	<script>
+	
+	var restUsername = document.getElementById("restUsername").value;
+	var table = document.getElementById("orderTable");
+	
+	var submitBtn = document.getElementById("submit");
+	submitBtn.onclick = function(){
+		alert("Hello");
+		var datepicker = document.getElementById("datepicker").value;
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET","../DailyRevenue.do?datepicker=" + datepicker + "&restUsername=" + restUsername,true);
+		xhr.send();
+		
+		xhr.onreadystatechange = function(){
+			if( xhr.readyState == 4 && xhr.status == 200){
+				alert("Got you!");
+				var dailyOrders = JSON.parse(xhr.responseText);
+				//alert(dailyOrders);
+				table.innerHTML = "<tr><th>訂購日期</th><th>餐點名稱</th><th>銷售數量</th><th>銷售總額</th></tr>";
+			}
+		}
+	}
+	
+	
+	</script>
 	<!-- 圓餅圖 js -->
 	<script src="../js/storeDailyAnalysis.js"></script>
 </body>

@@ -68,7 +68,6 @@ public class AddNewType extends HttpServlet {
 		System.out.println("全數新增成功~");
 
 		msgOK.put("OK", "新增成功囉~");
-		//RequestDispatcher rd = request.getRequestDispatcher("_storeMenuProdType.jsp");
 		RequestDispatcher rd = request.getRequestDispatcher("_storeMenuInsertTypeA.jsp");
 		rd.forward(request, response);
 		return;

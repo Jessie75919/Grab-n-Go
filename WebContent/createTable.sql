@@ -120,6 +120,7 @@ CREATE TABLE rest_evaluate (
 
 
 CREATE TABLE product_type (
+	type_no INT,
 	type_name VARCHAR(50) ,
 	rest_name VARCHAR(32) ,
 	PRIMARY KEY(type_name,rest_name),

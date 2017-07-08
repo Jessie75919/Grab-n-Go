@@ -35,7 +35,7 @@ xhr1.onreadystatechange = function () {
 
 		for (var j = 0; j < typeArr.length; j++) {
 			// console.log(typeArr[j]);
-			var option = new Option(typeArr[j], typeArr[j]);
+			var option = new Option(typeArr[j].prod_typeName, typeArr[j].prod_typeName);
 			typeSelect.options[typeSelect.options.length] = option;
 		}
 
@@ -99,7 +99,7 @@ function chooseType() {
 
 
 				for (var j = 0; j < typeArr.length; j++) {
-					var option = new Option(typeArr[j]);
+					var option = new Option(typeArr[j].prod_typeName);
 					if (option.value == productByType[i].type_name) {
 						option.setAttribute("selected", true);
 					}
@@ -225,7 +225,7 @@ xhr.onreadystatechange = function () {
 
 
 			for (var j = 0; j < typeArr.length; j++) {
-				var option = new Option(typeArr[j]);
+				var option = new Option(typeArr[j].prod_typeName);
 				if (option.value == productArr[i].type_name) {
 					option.setAttribute("selected", true);
 				}
@@ -334,14 +334,14 @@ function modeifiedMark(mark) {
 	// alert("updateDishName = "+updateDishName);
 
 	marks.push(updateDishName);
-	// console.log("marks = " + marks);
+	console.log("marks = " + marks);
 
 	// get unique element
 	function onlyUnique(value, index, self) {
 		return self.indexOf(value) === index;
 	}
 	unique = marks.filter(onlyUnique);
-	// console.log("unique = " + unique);
+	console.log("unique = " + unique);
 
 	updateList.value = unique.toString();
 	console.log(updateList.value);
@@ -356,13 +356,13 @@ function validateForm(event) {
 	console.log("result =" + result.value);
 
 	for (var i = 1; i <= count; i++) {
-		var dishName = document.getElementById("dishName" + i);
+		var dishName = document.getElementById("dishType" + i);
 		console.log("dishName =" + dishName.value);
 		try {
 			if (!dishName.value || dishName.value == "") {
 				hasErr = true;
 				console.log("貼心小提醒")
-				result.innerHTML = "<span>貼心小提醒 : 請檢查欄位是否有空白喔~~</span>";
+				result.innerHTML = "<span>貼心小提醒 : 請檢查是否有空白欄位喔~~</span>";
 
 			} else {
 				result.innerHTML = "";

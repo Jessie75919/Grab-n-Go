@@ -58,7 +58,7 @@ addBtn.onclick = function() {
 	dishType.style.width = "150px";
 
 	for (var i = 0; i < typeArr.length; i++) {
-		var option = new Option(typeArr[i]);
+		var option = new Option(typeArr[i].prod_typeName);
 		dishType.options[dishType.options.length] = option;
 	}
 

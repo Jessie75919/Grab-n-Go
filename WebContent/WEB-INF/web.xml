@@ -150,4 +150,14 @@
     <servlet-name>AppStoreHistoryServlet</servlet-name>
     <servlet-class>_24_App_storeOrder.AppStoreHistoryServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>deletProductType</display-name>
+    <servlet-name>deletProductType</servlet-name>
+    <servlet-class>_03_Product.controller.deletProductType</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deletProductType</servlet-name>
+    <url-pattern>/deletProductType</url-pattern>
+  </servlet-mapping>
 </web-app>

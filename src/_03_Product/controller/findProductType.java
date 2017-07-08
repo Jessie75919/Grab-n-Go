@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import _03_Product.model.ProductType;
 import _03_Product.model.ProductTypeDAO;
 
 @WebServlet("/_21_storeMenuSystem/findProductType.do")
@@ -31,7 +32,7 @@ public class findProductType extends HttpServlet {
 		try {
 			
 			ProductTypeDAO dao = new ProductTypeDAO();
-			List<String> list = dao.queryAllProductType(restName);
+			List<ProductType> list = dao.queryAllProductType(restName);
 			String typeJson = new Gson().toJson(list); 
 			System.out.println();
             out.write(typeJson);

@@ -185,20 +185,22 @@ public class TableDAO {
 	 *  inflate productType data
 	 * */
 	public void insertProductType(){
-		String sql = "insert into product_type values(?,?)";
+		String sql = "insert into product_type values(?,?,?)";
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
 				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/productType.csv"));) {
 			String line = "";
+			int count = 0;
 			while ((line = br.readLine()) != null) {
 				if (line.startsWith(UTF8_BOM)) {
 					line = line.substring(1);
 				}
 				String[] segment = line.split(",");
 				
-				pst.setString(1, segment[0]);  // type_name
-				pst.setString(2, segment[1]);  // rest_name
-				System.out.println("ABCCCCC");
+				pst.setInt(1, ++count);  // type_name
+				pst.setString(2, segment[0]);  // type_name
+				pst.setString(3, segment[1]);  // rest_name
+//				System.out.println("ABCCCCC");
 				result =  pst.executeUpdate();
 				if (result == 1)
 					System.out.println(segment[1] +" : " + segment[0]  + " - add success ");

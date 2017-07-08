@@ -66,7 +66,7 @@ public class UpdateProduct extends HttpServlet {
 
 			for (int j = 0; j < updateLists.length; j++) {
 				if (updateLists[j].equals(row[0])) {
-//					System.out.println(" select = " + updateLists[j] + " = " + row[0]);
+					System.out.println(" select = " + updateLists[j] + " = " + row[0]);
 					row[1] = request.getParameter("dishType" + i);
 					row[2] = request.getParameter("dishDesc" + i);
 					row[3] = request.getParameter("dishPrice" + i);

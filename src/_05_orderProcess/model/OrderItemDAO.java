@@ -233,7 +233,7 @@ public class OrderItemDAO {
 
 	//
 	public Collection<OrderItemBean> getOrderDetailsForStore() {
-		Collection<OrderItemBean> coll = new ArrayList();
+		Collection<OrderItemBean> coll = new ArrayList<>();
 		// String sql = " SELECT m_pickupname, item_name, prod_id, item_note,
 		// item_amount, item_price, b.ord_id "
 		// + " FROM Grab_n_Go.restaurant a JOIN Grab_n_Go.order01 b ON a.rest_id

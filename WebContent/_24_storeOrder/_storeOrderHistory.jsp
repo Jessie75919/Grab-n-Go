@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/_storeIndex.css">
 <title>Welcome to GrabAndGo</title>
+<script src="../javascript/jquery-3.2.1.min.js"></script>
 </head>
 <!--商家登入成功-->
 <!--歷史訂單查詢頁面-->
@@ -83,6 +84,7 @@
 		page="../_IncludeJsp/_storeMenuTest.jsp" /> <!-- 搜尋結果顯示表格開始 -->
 	<div id="middleForm" class="col-md-9">
 		<span><h4>搜尋結果：</h4></span>
+		<span id="result"></span>
 		<hr style="color: rgb(213, 141, 60);">
 		<!--</div>-->
 		<!--<div class="orderTable" >-->

@@ -130,6 +130,7 @@
                     <p id="desc"></p>
                     <input type="hidden" id="idKey" name="prod_id" value="">
                     <input type="hidden" id="itemName" name="itemName" value="">
+                    <input type="hidden" id="itemType" name="itemType" value="">
                     <input type="hidden" id="itemPrice" name="itemPrice" value="">
                     <input type="hidden" id="rest_id" name="rest_id" value="${clickRest.rest_id}">
                     <p><textarea id="specialNeed" placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3" rows="3" name="specialNeed" id="else"></textarea></p>

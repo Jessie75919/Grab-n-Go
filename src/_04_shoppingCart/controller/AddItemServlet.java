@@ -23,6 +23,7 @@ public class AddItemServlet extends HttpServlet {
 	String specialNeed = "";
 	String count = "";
 	String restId = "";
+	String itemType = "";
 	ShoppingCart cart = null;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,6 +38,10 @@ public class AddItemServlet extends HttpServlet {
 			return;
 		}
 		
+		itemType = request.getParameter("itemType");
+		System.out.println("itemType = "+itemType + "  in AddItemServlet" );
+		
+		session.setAttribute("currentType", itemType);
 		
 		request.setAttribute("msg", "");
 		// 取出存放在session物件內的ShoppingCart物件

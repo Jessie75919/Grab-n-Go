@@ -230,6 +230,35 @@ public class OrderItemDAO {
 		}
 		return list;
 	}
+	
+	public List<OrderItemBean> getOrderDetailForApp() {
+		List<OrderItemBean> list = new ArrayList<>();
+		String sql = " SELECT prod_id, item_name, item_price, item_amount, "
+					+ " item_note, m_username "
+					+ " FROM order_item "
+					+ " WHERE ord_id = ? ";
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+		) {
+			stmt.setInt(1, ord_id);
+			System.out.println("ord_id = " + ord_id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				OrderItemBean oib = new OrderItemBean();
+				oib.setProd_id(rs.getInt("prod_id"));
+				oib.setItem_name(rs.getString("item_name"));
+				oib.setItem_price(rs.getInt("item_price"));
+				oib.setItem_amount(rs.getInt("item_amount"));
+				oib.setItem_note(rs.getString("item_note"));
+				oib.setM_username(rs.getString("m_username"));
+				list.add(oib);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return list;
+	}
 
 	//
 	public Collection<OrderItemBean> getOrderDetailsForStore() {

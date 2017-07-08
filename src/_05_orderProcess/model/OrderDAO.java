@@ -528,10 +528,9 @@ public class OrderDAO {
 	public List<OrderBean> getStoreOrdersByMonthForApp(){
 		List<OrderBean> obl = new ArrayList<>();
 		List<OrderItemBean> oibl = new ArrayList<>();
-		String sql1 = " SELECT o.ord_id, o.m_pickupname, o.ord_time, o.ord_totalPrice, "
-					+ " o.ord_tel, o.ord_status, o.ord_pickuptime, i.prod_id, "
-					+ " i.item_name, i.item_price, i.item_amount, i.item_note, i.m_username "
-					+ " FROM order01 o JOIN order_item i ON o.ord_id = i.ord_id"
+		String sql1 = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
+					+ " ord_tel, ord_status, ord_pickuptime "
+					+ " FROM order01 "
 					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? ";
 		String sql2 = "";
 		String sql3 = " ORDER BY ord_pickuptime DESC ";
@@ -553,18 +552,11 @@ public class OrderDAO {
 			}
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
+				OrderItemDAO dao = new OrderItemDAO();
+				dao.setOrd_id(rs.getInt("ord_id"));
+				oibl = dao.getOrderDetailForApp();
+				
 				OrderBean ob = new OrderBean();
-				
-				OrderItemBean oib = new OrderItemBean();
-				oib.setProd_id(rs.getInt("prod_id"));
-				oib.setItem_name(rs.getString("item_name"));
-				oib.setItem_price(rs.getInt("item_price"));
-				oib.setItem_amount(rs.getInt("item_amount"));
-				oib.setItem_note(rs.getString("item_note"));
-				oib.setM_username(rs.getString("m_username"));
-				oibl.add(oib);
-				ob.setItems(oibl);
-				
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setM_pickupname(rs.getString("m_pickupname"));
 				ob.setOrd_time(rs.getTimestamp("ord_time"));
@@ -572,6 +564,7 @@ public class OrderDAO {
 				ob.setOrd_tel(rs.getString("ord_tel"));
 				ob.setOrd_status(rs.getString("ord_status"));
 				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setItems(oibl);
 				obl.add(ob);
 			}
 		} catch (SQLException e) {

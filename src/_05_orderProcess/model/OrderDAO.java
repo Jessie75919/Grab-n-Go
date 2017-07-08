@@ -444,9 +444,9 @@ public class OrderDAO {
 	
 	
 	public int getOrderInProgressCountByRestId() {
-		String sql = " SELECT * from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
+		String sql = " SELECT count(*) from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
 		int count = 0;
-		System.out.println("restId = " + restId);
+//		System.out.println("restId = " + restId);
 		try (Connection conn = ds.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				) {
@@ -454,13 +454,14 @@ public class OrderDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				++count;
+//				++count;
+				count = rs.getInt(1);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			
 		}
-		System.out.println(count +" in OrderDAO");
+//		System.out.println(count +" in OrderDAO");
 		return count;
 	}
 	
@@ -613,27 +614,26 @@ public class OrderDAO {
 		String sql1 = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
 					+ " ord_tel, ord_status, ord_pickuptime , ord_evalued "
 					+ " FROM order01 "
-					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c-%e') "
-					+ " <= AND DATE_FORMAT(NOW(), '%Y-%c-%e') "
+					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
 					+ " AND ord_status IN (?) ";
 		String sql2 = "";
 		String sql3 = " ORDER BY ord_pickuptime DESC ";
-		if(mPickupName.length() != 0){
-			sql2 = " AND m_pickupname LIKE ? ";
-		}
+//		if(mPickupName.length() != 0){
+//			sql2 = " AND m_pickupname LIKE ? ";
+//		}
 		String sql = sql1 + sql2 + sql3;
 		try (
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);	
 		){
-			if(mPickupName.length() == 0){
+//			if(mPickupName.length() == 0){
 				stmt.setInt(1, restId);
 				stmt.setString(2, ord_status);
-			} else{
-				stmt.setInt(1, restId);
-				stmt.setString(2, ord_status);
-				stmt.setString(3, "%" + mPickupName + "%");
-			}
+//			} else{
+//				stmt.setInt(1, restId);
+//				stmt.setString(2, ord_status);
+//				stmt.setString(3, "%" + mPickupName + "%");
+//			}
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				OrderItemDAO dao = new OrderItemDAO();

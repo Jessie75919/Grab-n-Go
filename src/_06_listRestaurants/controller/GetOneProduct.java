@@ -18,7 +18,7 @@ import _03_Product.model.ProductDAO;
  * Servlet implementation class SaveLocationServlet
  */
 @WebServlet("/getOneProduct.do")
-public class clickProduct extends HttpServlet {
+public class GetOneProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

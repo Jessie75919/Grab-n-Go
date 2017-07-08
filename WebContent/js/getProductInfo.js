@@ -7,6 +7,7 @@ var desc = document.getElementById("desc");
 var proImg = document.getElementById("proImg");
 var idKey = document.getElementById("idKey");
 var itemName = document.getElementById("itemName");
+var itemType = document.getElementById("itemType");
 var itemPrice = document.getElementById("itemPrice");
 var specialNeed = document.getElementById("specialNeed");
 var count = document.getElementById("count");
@@ -22,6 +23,10 @@ function clickMe(e) {
     xhr.open("GET", "../getOneProduct.do?proId=" + e.id, "true");
     xhr.send();
 
+    var tab = e.parentNode.parentNode.parentNode.id;
+    alert('tab = ' + tab);
+
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var product = JSON.parse(xhr.responseText);
@@ -30,17 +35,13 @@ function clickMe(e) {
             price.innerText = "$" + product.prod_price;
             desc.innerText = product.prod_desc;
             count.value = 1;
+            itemType.value = tab;
             specialNeed.value ="";
             idKey.value = e.id;
             itemName.value = product.prod_name;
             itemPrice.value = product.prod_price;
         }
     }
-        // btn.onclick = function () {
-        //     var xhr1 = new XMLHttpRequest();
-        //     xhr1.open("GET", "../addItem.do?proId=" + e.id, "true");
-        //     xhr1.send();
-        // };
 }
 
 window.onload = function () {

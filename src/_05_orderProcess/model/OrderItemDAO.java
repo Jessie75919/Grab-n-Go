@@ -89,20 +89,20 @@ public class OrderItemDAO {
 		return coll;
 	}
 
-	public List<OrderItemBean> getOrdersItemDataForApp(String rest_name ,String interval) {
+	public List<OrderItemBean> getOrdersItemDataForApp(int rest_id ,String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
-					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' "
+					+ " WHERE r.rest_id = ? AND b.ord_status = 'paid' "
 					+ " GROUP BY a.prod_id ";
 		String sql4 = "";
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily ; ";
-		} else if (interval.equals("mobthly")) {
+		} else if (interval.equals("monthly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
 			sql4 = " , monthly ; ";
 		} else if (interval.equals("yearly")) {
@@ -114,7 +114,7 @@ public class OrderItemDAO {
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 		) {
-			stmt.setString(1, rest_name);
+			stmt.setInt(1, rest_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				int prod_id = rs.getInt("a.prod_id");
@@ -124,8 +124,8 @@ public class OrderItemDAO {
 				String s = "";
 				if (interval.equals("daily")){
 					s = rs.getString("daily");
-				} else if (interval.equals("mobthly")) {
-					s = rs.getString("mobthly");
+				} else if (interval.equals("monthly")) {
+					s = rs.getString("monthly");
 				} else if (interval.equals("yearly")) {
 					s = rs.getString("yearly");
 				}
@@ -138,14 +138,14 @@ public class OrderItemDAO {
 		return list;
 	}
 	
-	public List<OrderItemBean> getOrdersRevenueDataForApp(String rest_name ,String interval) {
+	public List<OrderItemBean> getOrdersRevenueDataForApp(int rest_id ,String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
-					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' ";
+					+ " WHERE r.rest_id = ? AND b.ord_status = 'paid' ";
 		String sql4 = "";
 		if (interval.equals("monthly")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%e') date_monthly "
@@ -161,7 +161,7 @@ public class OrderItemDAO {
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 		) {
-			stmt.setString(1, rest_name);
+			stmt.setInt(1, rest_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				int item_price_sum = rs.getInt("SUM(a.item_price)");
@@ -181,21 +181,21 @@ public class OrderItemDAO {
 		return list;
 	}
 	
-	public List<OrderItemBean> getSalesChartsForApp(String rest_name, String interval) {
+	public List<OrderItemBean> getSalesChartsForApp(int rest_id, String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
 		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
-					+ " WHERE r.rest_name = ? AND b.ord_status = 'paid' "
+					+ " WHERE r.rest_id = ? AND b.ord_status = 'paid' "
 					+ " GROUP BY a.prod_id ";
 		String sql4 = "";
 		String sql5 = " ORDER BY 3 DESC ; ";
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily  ";
-		} else if (interval.equals("mobthly")) {
+		} else if (interval.equals("monthly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
 			sql4 = " , monthly  ";
 		} else if (interval.equals("yearly")) {
@@ -207,7 +207,7 @@ public class OrderItemDAO {
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 		) {
-			stmt.setString(1, rest_name);
+			stmt.setInt(1, rest_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				int prod_id = rs.getInt("a.prod_id");
@@ -217,8 +217,8 @@ public class OrderItemDAO {
 				String s = "";
 				if (interval.equals("daily")){
 					s = rs.getString("daily");
-				} else if (interval.equals("mobthly")) {
-					s = rs.getString("mobthly");
+				} else if (interval.equals("monthly")) {
+					s = rs.getString("monthly");
 				} else if (interval.equals("yearly")) {
 					s = rs.getString("yearly");
 				}
@@ -305,9 +305,47 @@ public class OrderItemDAO {
 			}	
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-
-		
+		}		
+		return coll;
+	}
+	
+	public Collection<OrderItemBean> getSalesRankD(String restUsername, String datePick) {
+		Collection<OrderItemBean> coll = new ArrayList();
+		String sql = " SELECT b.item_name, SUM(b.item_price), SUM(b.item_amount) "
+				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
+				+ " JOIN restaurant c ON a.rest_id = c.rest_id "
+				+ " WHERE c.rest_username = ? AND a.ord_pickuptime like '?%' AND a.ord_status = 'paid' "
+				+ " GROUP BY b.item_name "
+				+ " ORDER BY SUM(b.item_amount) DESC";
+//		select b.item_name, sum(b.item_price), sum(b.item_amount)
+//		from Grab_n_Go.order01 a join Grab_n_Go.order_item b on a.ord_id = b.ord_id
+//								 join Grab_n_Go.restaurant c on a.rest_id = c.rest_id
+//		where c.rest_username = 'afternoontea' and a.ord_pickuptime like '2017-06-01%' and a.ord_status = 'paid'
+//		group by b.item_name
+//		order by sum(b.item_amount) desc;
+		try(
+				Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				){
+			System.out.println("Hello, OrderItemDAO");
+			stmt.setString(1, restUsername);
+			stmt.setString(2, datePick);
+			ResultSet rs = stmt.executeQuery();
+			if(rs == null){
+				System.out.println("not found");
+			}
+			while(rs.next()){
+				OrderItemBean oib = new OrderItemBean();
+				oib.setItem_name(rs.getString("b.item_name"));
+				oib.setItem_amount(rs.getInt("SUM(b.item_amount)"));
+				oib.setItem_price(rs.getInt("SUM(b.item_price)"));
+				System.out.println(oib);
+				coll.add(oib);	
+				
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		return coll;
 	}
 }

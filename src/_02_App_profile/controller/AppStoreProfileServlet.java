@@ -181,6 +181,10 @@ public class AppStoreProfileServlet extends HttpServlet {
 						String rest_validate = String.valueOf(store.get(0).isRest_validate());
 						System.out.println(rest_validate);
 						map.put("rest_validate", rest_validate);
+						
+						String rest_id = String.valueOf(store.get(0).getRest_id());
+						System.out.println(rest_id);
+						map.put("rest_id", rest_id);
 					} else {
 						map.put("UpdateProfileMessage", "UpdateProfileError");
 					}

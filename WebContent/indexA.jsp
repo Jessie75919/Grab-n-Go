@@ -131,9 +131,13 @@
 		<%-- 		${cookie.lat.value}<br> --%>
 		<%-- 		${cookie.lng.value} --%>
 	</h2>
-	</section> <!--標語 end--> <!--瀑布流--> <c:set var="x" value="${stList}" /> <section
-		class="grid slider wow fadeIn" id="container"> <!-- 	// CALL get_Rest(25.0483199,121.5344137); -->
-	<c:forEach var="restaurant" items="${x}" varStatus='vs'>
+	</section> <!--標語 end--> 
+	<!--瀑布流--> 
+<%-- 	<c:set var="x" value="${stList}" />  --%>
+	<section
+		class="grid slider wow fadeIn" id="container">
+	 <!-- 	// CALL get_Rest(25.0483199,121.5344137); -->
+	<c:forEach var="restaurant" items="${stList}" varStatus='vs'>
 		<div class="gridItem">
 			<figure> <img
 				src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${restaurant.rest_username}&type=restaurant&loc=cover"

@@ -162,5 +162,15 @@ public class OrderBean {
 	public void setOrd_pickuptime(Timestamp ord_pickuptime) {
 		this.ord_pickuptime = ord_pickuptime;
 	}
+	
+	@Override
+	public String toString() {
+		return "OrderBean [ord_id=" + ord_id + ", m_username=" + m_username + ", m_pickupname=" + m_pickupname
+				+ ", ord_time=" + ord_time + ", ord_pickuptime=" + ord_pickuptime + ", rest_id=" + rest_id
+				+ ", ord_totalPrice=" + ord_totalPrice + ", ord_status=" + ord_status + ", rest_name=" + rest_name
+				+ ", items=" + items + ", ord_tel=" + ord_tel + ", ord_email=" + ord_email + ", ord_evalued="
+				+ ord_evalued + "]";
+	}
+
 
 }

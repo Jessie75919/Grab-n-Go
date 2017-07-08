@@ -144,4 +144,10 @@
     <servlet-name>RatingServlet</servlet-name>
     <url-pattern>/RatingServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppStoreHistoryServlet</display-name>
+    <servlet-name>AppStoreHistoryServlet</servlet-name>
+    <servlet-class>_24_App_storeOrder.AppStoreHistoryServlet</servlet-class>
+  </servlet>
 </web-app>

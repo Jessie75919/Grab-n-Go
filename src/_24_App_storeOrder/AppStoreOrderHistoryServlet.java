@@ -1,4 +1,4 @@
-package _23_App_StoreOrderAnalysis.controller;
+package _24_App_storeOrder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,14 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import _05_orderProcess.model.OrderItemBean;
-import _05_orderProcess.model.OrderItemDAO;
+import _05_orderProcess.model.OrderBean;
+import _05_orderProcess.model.OrderDAO;
 
 @SuppressWarnings("serial")
-@WebServlet("/AppRevenueServlet")
-public class AppRevenueServlet extends HttpServlet {
+@WebServlet("/AppStoreOrderHistoryServlet")
+public class AppStoreOrderHistoryServlet extends HttpServlet {
 	private final static String CONTENT_TYPE = "text/html; charset=UTF-8";
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType(CONTENT_TYPE);
@@ -39,23 +39,22 @@ public class AppRevenueServlet extends HttpServlet {
 		JsonObject jsonObject = gson.fromJson(jsonIn.toString(), JsonObject.class);
 		
 		String param = jsonObject.get("param").getAsString();
-		String interval = jsonObject.get("interval").getAsString();
-		List<OrderItemBean> list = new ArrayList<>();
-		if (param.equals("FinancialRevenueActivity")) {
+		List<OrderBean> list = new ArrayList<>();
+		if (param.equals("HistoryOrder")) {
 			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
-			OrderItemDAO dao = new OrderItemDAO();
-			if (interval.equals("daily")) {
-				list = dao.getOrdersItemDataForApp(rest_id, interval);
-			} else if (interval.equals("monthly") || interval.equals("yearly")){
-				list = dao.getOrdersRevenueDataForApp(rest_id, interval);
-			}
+			String selectMonth = jsonObject.get("selectMonth").getAsString();
+			String customer = jsonObject.get("customer").getAsString();			
+			OrderDAO dao = new OrderDAO();
+			dao.setRestId(rest_id);
+			dao.setMonthSelect(selectMonth);
+			dao.setMPickupName(customer);
+			list = dao.getStoreOrdersByMonthForApp();
 		}
-	
+		
 		//將訂單資料送回App
 		PrintWriter out = response.getWriter();
 		out.println(gson.toJson(list));
-		System.out.println("list(" + interval + ") = " + list);
+		System.out.println("list = " + list);
 		out.close();
 	}
-
 }

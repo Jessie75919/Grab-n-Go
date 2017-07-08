@@ -41,7 +41,7 @@ public class AddItemServlet extends HttpServlet {
 		itemType = request.getParameter("itemType");
 		System.out.println("itemType = "+itemType + "  in AddItemServlet" );
 		
-		session.setAttribute("currentType", itemType);
+		session.setAttribute("anchor", itemType);
 		
 		request.setAttribute("msg", "");
 		// 取出存放在session物件內的ShoppingCart物件
@@ -64,13 +64,13 @@ public class AddItemServlet extends HttpServlet {
 			specialNeed = request.getParameter("specialNeed");
 			count = request.getParameter("count");
 			restId = request.getParameter("rest_id");
-
-			// System.out.println("restId="+restId);
-			// System.out.println("prodId="+prodId);
-			// System.out.println("itemName="+itemName);
-			// System.out.println("itemPrice="+itemPrice);
-			// System.out.println("specialNeed="+specialNeed);
-			// System.out.println("count="+count);
+//
+//			 System.out.println("restId="+restId);
+//			 System.out.println("prodId="+prodId);
+//			 System.out.println("itemName="+itemName);
+//			 System.out.println("itemPrice="+itemPrice);
+//			 System.out.println("specialNeed="+specialNeed);
+//			 System.out.println("count="+count);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

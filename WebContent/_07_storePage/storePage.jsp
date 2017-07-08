@@ -34,6 +34,7 @@
             <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}" />
             <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
             <c:set target="${rating}" property="rest_Id" value="${clickRest.rest_id}" />
+            <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 
 
         </head>
@@ -43,6 +44,7 @@
             <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
 
             <input type="hidden" id="showMsg" value="${msg}">
+            <input type="hidden" id="anchor" value="${anchor}">
 
             <div class="insideTitle">
 
@@ -68,7 +70,8 @@
                         <p><i class="icon-phone"></i>${clickRest.rest_phone}</p>
                         <div class="tagOrder">
                             <div class="tag"><span>${clickRest.rest_type}</span></div>
-                            <div class="orderCount">目前訂單<span>999</span></div>
+                            <c:set target="${order}" property="restId" value="${clickRest.rest_id}"/>
+                            <div class="orderCount">目前訂單<span>${order.orderInProgressCountByRestId}</span></div>
                         </div>
                     </div>
                 </div>
@@ -84,8 +87,9 @@
                                     <c:set var="x" value="0" />
                                     <ul class="tabLinks slider">
                                         <c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
-                                            <li <c:if test="${vs.first}"> class ="active"</c:if>>
-                                                <a href="#tab${x=x+1}">${foodType}</a></li>
+                                        
+                                        
+		<li <c:if test="${vs.first}"> class ="active"</c:if>> <a href="#tab${x=x+1}">${foodType}</a></li>
                                         </c:forEach>
                                     </ul>
                                 </div>

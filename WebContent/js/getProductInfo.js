@@ -12,6 +12,7 @@ var itemPrice = document.getElementById("itemPrice");
 var specialNeed = document.getElementById("specialNeed");
 var count = document.getElementById("count");
 var btn = document.getElementById("submit");
+var tabA;
 
 var stroage = localStorage;
 var iNo = 0;
@@ -23,8 +24,8 @@ function clickMe(e) {
     xhr.open("GET", "../getOneProduct.do?proId=" + e.id, "true");
     xhr.send();
 
-    var tab = e.parentNode.parentNode.parentNode.id;
-    alert('tab = ' + tab);
+    tabA = e.parentNode.parentNode.parentNode.id;
+    alert('tab = ' + tabA);
 
 
     xhr.onreadystatechange = function () {
@@ -35,7 +36,7 @@ function clickMe(e) {
             price.innerText = "$" + product.prod_price;
             desc.innerText = product.prod_desc;
             count.value = 1;
-            itemType.value = tab;
+            itemType.value = tabA;
             specialNeed.value ="";
             idKey.value = e.id;
             itemName.value = product.prod_name;
@@ -46,6 +47,15 @@ function clickMe(e) {
 
 window.onload = function () {
     var msg = document.getElementById("showMsg").value;
+    var anchor = document.getElementById("anchor").value;
+    alert('anchor = ' + anchor);
+    // var anchorHash = 'references';
+    // document.getElementById(anchor).scrollIntoView();
+    window.location.href ="storePage.jsp#"+anchor;
+    // $('a[href="#' + tabA + '"]').tab('show');
+
+
+
     console.log(msg);
     if(msg=="" || msg==null){
     }else{

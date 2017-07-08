@@ -48,7 +48,6 @@
                         <div class="searchBg"></div>
                         <section class="searchContent">
                             <h2> 還吃的習慣嗎 ? </h2>
-                            <div id="msg"></div>
                             <div class="closeBtn">
                                 <i class="icon-close" title="關閉"></i>
                             </div>

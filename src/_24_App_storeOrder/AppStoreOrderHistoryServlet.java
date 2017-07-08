@@ -41,10 +41,14 @@ public class AppStoreOrderHistoryServlet extends HttpServlet {
 		String param = jsonObject.get("param").getAsString();
 		List<OrderBean> list = new ArrayList<>();
 		if (param.equals("HistoryOrder")) {
-			String rest_name = jsonObject.get("rest_name").getAsString();
-			
+			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
+			String selectMonth = jsonObject.get("selectMonth").getAsString();
+			String customer = jsonObject.get("customer").getAsString();			
 			OrderDAO dao = new OrderDAO();
-			
+			dao.setRestId(rest_id);
+			dao.setMonthSelect(selectMonth);
+			dao.setMPickupName(customer);
+			list = dao.getStoreOrdersByMonthForApp();
 		}
 		
 		//將訂單資料送回App

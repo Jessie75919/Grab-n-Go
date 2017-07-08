@@ -99,7 +99,7 @@
                         <td>${anOrderBean.m_pickupname}</td>
                         <td><input style="display:none;" id="ordId" name="ordId" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td> $${anOrderBean.ord_totalPrice}</td>
-                        <td><a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" onClick="ordStatus()">${anOrderBean.ord_status}</a></td>
+                        <td><input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}"><a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" onClick="updateOrdStatus()">${anOrderBean.ord_status}</a></td>
                         <td id="cancelB"><a href="#" onclick="ordCancel()">取消訂單</a></td>
                     </tr>
                     </c:forEach> 
@@ -116,12 +116,14 @@
     
     <script>
     var ordId = document.getElementById("ordId").value;
+    var ordStatus = document.getElementById("ordStatus").value;
+    
  	/* 訂單狀態改變 */
-    		function ordStatus(){
+    		function updateOrdStatus(){
     			if(confirm("餐點完成了嗎？ 可以等待顧客來取餐囉 ~")){
     				//訂單已完成
     				var xhr = new XMLHttpRequest();
-    				xhr.open('GET','updateStatusUnpaid.do?ordId=' + ordId,true);
+    				xhr.open('GET','../updateOrderStatus.do?ordId=' + ordId + '&ordStatus=' + ordStatus,true);
     				xhr.send();
     	             alert("餐點確定完成！")
     	         }else{

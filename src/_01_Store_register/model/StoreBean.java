@@ -127,12 +127,13 @@ public class StoreBean implements Serializable {
 		this.rest_latitude = rest_latitude;
 	}
 
-	public StoreBean(String rest_name, String rest_branch, Blob rest_logo, boolean rest_validate) {
+	public StoreBean(String rest_name, String rest_branch, Blob rest_logo, boolean rest_validate, int rest_id) {
 		super();
 		this.rest_name = rest_name;
 		this.rest_branch = rest_branch;
 		this.rest_logo = rest_logo;
 		this.rest_validate = rest_validate;
+		this.rest_id = rest_id;
 	}
 
 	public StoreBean(String rest_address, String rest_phone, String rest_email, String rest_username,

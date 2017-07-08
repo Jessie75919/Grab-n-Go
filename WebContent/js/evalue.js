@@ -72,8 +72,10 @@ function validate() {
     // alert(score.value);
     if(parseInt(score.value)==0 ){
         //  alert("stop1");
-        $('#msg').html("貼心小提醒 : 請記得填寫評分喔");
+        alert("貼心小提醒 : 請記得填寫評分喔");
          return false;
+
+         
 
     }
     

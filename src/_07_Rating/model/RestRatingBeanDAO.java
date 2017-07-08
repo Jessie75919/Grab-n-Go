@@ -112,9 +112,27 @@ public class RestRatingBeanDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return list;
 	}
+	
+	
+	public int getAllRestEvaCountByRestId() {
+		String sql = "select count(*) from rest_evaluate where rest_id = ?";
+		int count = 0;
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1, rest_Id);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	
 
 	public List<Integer> getAllRestEvaOrderIdByUser(String username) {
 		String sql = "select ord_id from rest_evaluate where m_username = ?";

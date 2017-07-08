@@ -444,9 +444,9 @@ public class OrderDAO {
 	
 	
 	public int getOrderInProgressCountByRestId() {
-		String sql = " SELECT * from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
+		String sql = " SELECT count(*) from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
 		int count = 0;
-		System.out.println("restId = " + restId);
+//		System.out.println("restId = " + restId);
 		try (Connection conn = ds.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				) {
@@ -454,13 +454,14 @@ public class OrderDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				++count;
+//				++count;
+				count = rs.getInt(1);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			
 		}
-		System.out.println(count +" in OrderDAO");
+//		System.out.println(count +" in OrderDAO");
 		return count;
 	}
 	

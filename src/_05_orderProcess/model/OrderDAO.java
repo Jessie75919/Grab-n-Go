@@ -531,7 +531,8 @@ public class OrderDAO {
 		String sql1 = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
 					+ " ord_tel, ord_status, ord_pickuptime "
 					+ " FROM order01 "
-					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? ";
+					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? "
+					+ " AND ord_status IN ('paid', 'fail') ";
 		String sql2 = "";
 		String sql3 = " ORDER BY ord_pickuptime DESC ";
 		if(mPickupName.length() != 0){

@@ -26,6 +26,8 @@ public class OrderDAO {
 	private int ord_id;
 	private String mPickupName;
 	private String selectMonth;
+	String ord_status;
+	int ord_evalued;
 	
 	public int getOrd_id() {
 		return ord_id;
@@ -57,6 +59,14 @@ public class OrderDAO {
 	
 	public void setMonthSelect(String selectMonth) {
 		this.selectMonth = selectMonth;
+	}
+
+	public void setOrd_status(String ord_status) {
+		this.ord_status = ord_status;
+	}
+
+	public void setOrd_evalued(int ord_evalued) {
+		this.ord_evalued = ord_evalued;
 	}
 
 	public OrderDAO() {
@@ -597,5 +607,54 @@ public class OrderDAO {
 		return obl;
 	}
 	
-
+	public List<OrderBean> getStoreOrdersDailyForApp(){
+		List<OrderBean> obl = new ArrayList<>();
+		List<OrderItemBean> oibl = new ArrayList<>();
+		String sql1 = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
+					+ " ord_tel, ord_status, ord_pickuptime , ord_evalued "
+					+ " FROM order01 "
+					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c-%e') "
+					+ " <= AND DATE_FORMAT(NOW(), '%Y-%c-%e') "
+					+ " AND ord_status IN (?) ";
+		String sql2 = "";
+		String sql3 = " ORDER BY ord_pickuptime DESC ";
+		if(mPickupName.length() != 0){
+			sql2 = " AND m_pickupname LIKE ? ";
+		}
+		String sql = sql1 + sql2 + sql3;
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);	
+		){
+			if(mPickupName.length() == 0){
+				stmt.setInt(1, restId);
+				stmt.setString(2, ord_status);
+			} else{
+				stmt.setInt(1, restId);
+				stmt.setString(2, ord_status);
+				stmt.setString(3, "%" + mPickupName + "%");
+			}
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				OrderItemDAO dao = new OrderItemDAO();
+				dao.setOrd_id(rs.getInt("ord_id"));
+				oibl = dao.getOrderDetailForApp();
+				
+				OrderBean ob = new OrderBean();
+				ob.setOrd_id(rs.getInt("ord_id"));
+				ob.setM_pickupname(rs.getString("m_pickupname"));
+				ob.setOrd_time(rs.getTimestamp("ord_time"));
+				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_tel(rs.getString("ord_tel"));
+				ob.setOrd_status(rs.getString("ord_status"));
+				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setOrd_evalued(rs.getInt("ord_evalued"));
+				ob.setItems(oibl);
+				obl.add(ob);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return obl;
+	}
 }

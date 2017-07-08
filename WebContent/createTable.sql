@@ -164,6 +164,17 @@ CREATE TABLE order_item (
 )  CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
+CREATE TABLE notification (
+	serial_no INT PRIMARY KEY AUTO_INCREMENT,
+	m_username VARCHAR(30) NOT NULL,
+	rest_id INT NOT NULL,
+	msg VARCHAR(100) NOT NULL,
+	is_readed TINYINT(1) ,
+	CONSTRAINT notif_rest_id FOREIGN KEY(rest_id) REFERENCES restaurant(rest_id)ON DELETE CASCADE,
+	CONSTRAINT notif_m_username_FK FOREIGN KEY(m_username) REFERENCES member(m_username)ON DELETE CASCADE
+)  CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS get_Rest //

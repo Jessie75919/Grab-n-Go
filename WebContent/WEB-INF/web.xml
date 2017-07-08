@@ -160,4 +160,20 @@
     <servlet-name>deletProductType</servlet-name>
     <url-pattern>/deletProductType</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SendMainServlet</display-name>
+    <servlet-name>SendMainServlet</servlet-name>
+    <servlet-class>_08_mail.controller.SendMainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendMainServlet</servlet-name>
+    <url-pattern>/SendMainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppStoreOrderDailyServlet</display-name>
+    <servlet-name>AppStoreOrderDailyServlet</servlet-name>
+    <servlet-class>_24_App_storeOrder.AppStoreOrderDailyServlet</servlet-class>
+  </servlet>
 </web-app>

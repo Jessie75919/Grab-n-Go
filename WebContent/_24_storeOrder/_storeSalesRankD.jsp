@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -75,11 +76,11 @@
                     <!-- 指定日期 -->
 					<span><h4>請選擇欲查詢的日期：</h4></span>
 					<!-- <div id="dateSelector"></div> -->
-					<form class="form-inline" action="SalesRankDay.do" method="get">
+					<form class="form-inline" action="SalesRankDaily.do" method="get">
 					<div class="input-group">
 						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 						<input id="datepicker" name="datepicker" type="text" class="form-control" /> 
-						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
+						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}}"/>
 					</div>
 				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
 				</form>

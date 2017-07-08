@@ -529,8 +529,8 @@ public class OrderDAO {
 		List<OrderBean> obl = new ArrayList<>();
 		List<OrderItemBean> oibl = new ArrayList<>();
 		String sql1 = " SELECT o.ord_id, o.m_pickupname, o.ord_time, o.ord_totalPrice, "
-					+ " o.ord_status, o.ord_pickuptime, i.prod_id, i.item_name, "
-					+ " i.item_price, i.item_amount, i.item_note, i.m_username "
+					+ " o.ord_tel, o.ord_status, o.ord_pickuptime, i.prod_id, "
+					+ " i.item_name, i.item_price, i.item_amount, i.item_note, i.m_username "
 					+ " FROM order01 o JOIN order_item i ON o.ord_id = i.ord_id"
 					+ " WHERE rest_id = ? AND DATE_FORMAT(ord_pickuptime, '%Y-%c') = ? ";
 		String sql2 = "";
@@ -569,6 +569,7 @@ public class OrderDAO {
 				ob.setM_pickupname(rs.getString("m_pickupname"));
 				ob.setOrd_time(rs.getTimestamp("ord_time"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+				ob.setOrd_tel(rs.getString("ord_tel"));
 				ob.setOrd_status(rs.getString("ord_status"));
 				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
 				obl.add(ob);

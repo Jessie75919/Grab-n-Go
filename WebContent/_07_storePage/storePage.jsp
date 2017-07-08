@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +39,7 @@
     
 </head>
 
-<body id="top" class="cbp-spmenu-push">
+
 
      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
      
@@ -67,41 +68,41 @@
 <!--                 <i class="icon-star on"></i>  -->
 <!--                 <i class="icon-star"></i> -->
                 </div>
+                  <div class="commentBtn"><a href="storeComment.htm">查看商家評語 (<span>25</span>)</a></div>
                 <p><i class="icon-location"></i>${clickRest.rest_address}</p>
                 <p><i class="icon-phone"></i>${clickRest.rest_phone}</p>
                 <div class="tagOrder">
                     <div class="tag"><span>${clickRest.rest_type}</span></div>
                     <div class="orderCount">目前訂單<span>${order.orderInProgressCountByRestId}</span></div>
                 </div>
+                <!--店家資訊 end-->
             </div>
-        </div>
-        <!--店家資訊 end-->
-    </div>
-    <main>
-        <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</div>
-<%--         <div>${msg}</div> --%>
-<%--         <div>${orderRest}</div> --%>
-        <section class="content">
-            <div class="tabs animated-fade">
-                <div class="tabArea">
-                    <c:set var="x" value="0"/>
-                    <ul class="tabLinks slider">
-                   	<c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
-                		<li <c:if test="${vs.first}"> class ="active"</c:if>>
-                		<a href="#tab${x=x+1}">${foodType}</a></li>
-                   	</c:forEach>
-                    </ul>
-                </div>
-                
+            <main>
+                <div class="brcame"><a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;${clickRest.rest_branch}</div>
+                <%--         <div>${msg}</div> --%>
+                    <%--         <div>${orderRest}</div> --%>
+                        <section class="content">
+                            <div class="tabs animated-fade">
+                                <div class="tabArea">
+                                    <c:set var="x" value="0" />
+                                    <ul class="tabLinks slider">
+                                        <c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
+                                            <li <c:if test="${vs.first}"> class ="active"</c:if>>
+                                                <a href="#tab${x=x+1}">${foodType}</a></li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
 
-                <c:set var="y" value="0"/>
-                    <div class="tab-content">
-                <c:forEach var="foodType2" items="${prodType.allProductType}" varStatus='vs'>
-                    <div id="tab${y=y+1}"  class="tab<c:if test='${vs.first}'> active</c:if>">
-                        <c:set target="${product}" property="typeName" value="${foodType2}"/>
-                        <c:forEach var="food" items="${product.productByType}" varStatus='vs'>
-                            <div class="storeMenuList">
-                                <figure><img src=${pageContext.servletContext.contextPath}/_00_init/getImage?id=${food.prod_id}' alt="${food.prod_name}" title="${food.prod_name}">
+
+                                <c:set var="y" value="0" />
+                                <div class="tab-content">
+                                    <c:forEach var="foodType2" items="${prodType.allProductType}" varStatus='vs'>
+                                        <div id="tab${y=y+1}" class="tab<c:if test='${vs.first}'> active</c:if>">
+                                            <c:set target="${product}" property="typeName" value="${foodType2}" />
+                                            <c:forEach var="food" items="${product.productByType}" varStatus='vs'>
+                                                <div class="storeMenuList">
+                                                    <figure>
+                                                        <img src=${pageContext.servletContext.contextPath}/_00_init/getImage?id=${food.prod_id} ' alt="${food.prod_name}" title="${food.prod_name}">
                                     <div class="mask" id="${food.prod_id}" onclick="clickMe(this)"><a href="#">我要訂餐</a></div>
                                 </figure>
                                 <div class="storeMenuName" id="${food.prod_id}" onclick="clickMe(this)"><a href="#">${food.prod_name}</a> </div>

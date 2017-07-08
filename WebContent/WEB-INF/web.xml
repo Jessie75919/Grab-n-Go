@@ -170,4 +170,10 @@
     <servlet-name>SendMainServlet</servlet-name>
     <url-pattern>/SendMainServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppStoreOrderDailyServlet</display-name>
+    <servlet-name>AppStoreOrderDailyServlet</servlet-name>
+    <servlet-class>_24_App_storeOrder.AppStoreOrderDailyServlet</servlet-class>
+  </servlet>
 </web-app>

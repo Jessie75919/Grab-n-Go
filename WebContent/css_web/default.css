@@ -1044,6 +1044,25 @@ section.content .gridItem .storeInfo h2 {
     padding-left: 0px;
 }
 
+.commentBtn {
+    position: absolute;
+    display: block;
+    top: 48px;
+    right: 15px;
+}
+
+.commentBtn a {
+    display: block;
+    background-color: #eb503c;
+    border-radius: 3px;
+    color: #fff;
+    padding: 2px 5px;
+}
+
+.commentBtn a:hover {
+    background-color: #ec8e26;
+}
+
 
 /*菜單分類tab*/
 
@@ -1264,6 +1283,73 @@ ul.tabLinks li.active a:hover {
     width: 48%;
     float: right;
     text-align: right;
+}
+
+
+/*店家評價*/
+
+.commentDes {
+    position: relative;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.commentList {
+    position: relative;
+    width: 800px;
+    max-width: 90%;
+    margin: 0 auto 15px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.commentList:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.userInfo {
+    position: relative;
+    width: 100px;
+    float: left;
+    text-align: center;
+}
+
+.userInfo figure {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userInfo figure img {
+    width: 100%;
+    height: auto;
+}
+
+.commentRight {
+    position: relative;
+    width: 86%;
+    float: left;
+    padding: 0px 0px 0px 30px;
+    box-sizing: border-box;
+}
+
+.commentRight time {
+    position: relative;
+    padding-bottom: 5px;
+    color: #eb503c;
+    text-align: right;
+}
+
+.commentRight .star {
+    position: relative;
+    width: 100%;
+    float: none;
 }
 
 

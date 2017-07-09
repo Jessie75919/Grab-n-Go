@@ -3,7 +3,7 @@ package _01_Store_register.model;
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class StoreBean implements Serializable {
+public class StoreBean  {
 
 	private int rest_id;
 	private String rest_type;

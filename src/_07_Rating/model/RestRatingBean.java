@@ -1,11 +1,14 @@
 package _07_Rating.model;
 
+import java.sql.Date;
+
 public class RestRatingBean {
 	private int ord_id;
 	private int rest_id;
 	private int restEva_star;
 	private String m_username;
 	private String restEva_comment;
+	private Date eva_date;
 	
 	
 	public RestRatingBean() {
@@ -13,13 +16,25 @@ public class RestRatingBean {
 	}
 	
 	
-	public RestRatingBean(int ord_id, int rest_id, int restEva_star, String m_username, String restEva_comment) {
+	public RestRatingBean(int ord_id, int rest_id, int restEva_star, String m_username, 
+			String restEva_comment,Date eva_date) {
 		super();
 		this.ord_id = ord_id;
 		this.rest_id = rest_id;
 		this.restEva_star = restEva_star;
 		this.m_username = m_username;
 		this.restEva_comment = restEva_comment;
+		this.eva_date = eva_date;
+	}
+
+
+	public Date getEva_date() {
+		return eva_date;
+	}
+
+
+	public void setEva_date(Date eva_date) {
+		this.eva_date = eva_date;
 	}
 
 

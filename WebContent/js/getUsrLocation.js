@@ -50,7 +50,7 @@ window.onload = function () {
 
     function errorFunction() {
         localStorage['authorizedGeoLocation'] = 0;
-        alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
+        // alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
 
         delete_cookie('lat');
         delete_cookie('lng');

@@ -109,6 +109,7 @@ CREATE TABLE rest_evaluate (
 	restEva_star TINYINT NOT NULL,
 	m_username VARCHAR(30) NOT NULL,
 	restEva_comment TINYTEXT ,
+	eva_date DATE,
 	CONSTRAINT rest_evaluate_rest_id_FK FOREIGN KEY(rest_id) REFERENCES restaurant(rest_id) ON DELETE CASCADE,
 	CONSTRAINT rest_evaluate_m_username_FK FOREIGN KEY(m_username) REFERENCES Member(m_username) ON DELETE CASCADE
 )  CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -170,6 +171,7 @@ CREATE TABLE notification (
 	rest_id INT NOT NULL,
 	msg VARCHAR(100) NOT NULL,
 	is_readed TINYINT(1) ,
+	
 	CONSTRAINT notif_rest_id FOREIGN KEY(rest_id) REFERENCES restaurant(rest_id)ON DELETE CASCADE,
 	CONSTRAINT notif_m_username_FK FOREIGN KEY(m_username) REFERENCES member(m_username)ON DELETE CASCADE
 )  CHARACTER SET utf8 COLLATE utf8_general_ci;

@@ -39,7 +39,7 @@ public class RestRatingBeanDAO {
 	}
 
 	public int insertRestEva(RestRatingBean rrb) {
-		String sqlRestEva = "insert into rest_evaluate values(?,?,?,?,?) ";
+		String sqlRestEva = "insert into rest_evaluate values(?,?,?,?,?,?) ";
 		String updateOrderEva = "update order01 set ord_evalued = 1 where ord_id = ?";
 		int x = -1;
 		try (	Connection con = ds.getConnection();
@@ -52,6 +52,7 @@ public class RestRatingBeanDAO {
 				pst.setInt(3, rrb.getRestEva_star());
 				pst.setString(4, rrb.getM_username());
 				pst.setString(5, rrb.getRestEva_comment());
+				pst.setDate(6, rrb.getEva_date());
 				int n = pst.executeUpdate();
 
 				if (n == 1) {
@@ -101,7 +102,34 @@ public class RestRatingBeanDAO {
 
 			while (rs.next()) {
 				RestRatingBean rrb = new RestRatingBean(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4),
-						rs.getString(5));
+						rs.getString(5),rs.getDate(6));
+				list.add(rrb);
+			}
+			if (list.size() == 0) {
+				System.out.println("get the evalue data");
+			} else {
+				System.out.println("get Nothing");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	public List<RestRatingBean> getAllRestEvaByRestId() {
+		String sql = "select * from rest_evaluate where rest_id = ?";
+		List<RestRatingBean> list = new ArrayList<>();
+		int count = 0;
+		double total = 0;
+		int score = 0;
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setInt(1, rest_Id);
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				RestRatingBean rrb = new RestRatingBean(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4),
+						rs.getString(5),rs.getDate(6));
 				list.add(rrb);
 			}
 			if (list.size() == 0) {
@@ -134,56 +162,56 @@ public class RestRatingBeanDAO {
 	
 	
 
-	public List<Integer> getAllRestEvaOrderIdByUser(String username) {
-		String sql = "select ord_id from rest_evaluate where m_username = ?";
-		List<Integer> listEvalued = new ArrayList<>();
-		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
-			pst.setString(1, username);
-			ResultSet rs = pst.executeQuery();
-			while (rs.next()) {
-				listEvalued.add(rs.getInt(1));
-			}
-
-			if (listEvalued.size() == 0) {
-				System.out.println("get Nothing ");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return listEvalued;
-
-	}
-
-	public List<Integer> getOrderIdNotEvalued(String username) {
-
-		OrderDAO ordDAO = new OrderDAO();
-		// 以使用者帳號抓取所有的訂單編號
-		Collection<OrderBean> ordList = ordDAO.getMemberOrders();
-		List<Integer> ordListNotEva = new ArrayList<>();
-		for (OrderBean ob : ordList) {
-			// 判斷是否有存在評價過的訂單編號中，如果沒有就塞入ordListNotEva
-			if (!isExist(ob.getOrd_id(), username)) {
-				ordListNotEva.add(ob.getOrd_id());
-			}
-		}
-		return ordListNotEva;
-	}
-
-	private boolean isExist(int ord_id, String username) {
-		boolean result = true;
-		// 以使用者帳號抓取所有評價過的訂單編號
-		List<Integer> ordIdEvalued = getAllRestEvaOrderIdByUser(username);
-		for (Integer ordIdEva : ordIdEvalued) {
-			if (ord_id != ordIdEva) {
-				result = false;
-			} else {
-				result = true;
-				break;
-			}
-		}
-
-		return result;
-	}
+//	public List<Integer> getAllRestEvaOrderIdByUser(String username) {
+//		String sql = "select ord_id from rest_evaluate where m_username = ?";
+//		List<Integer> listEvalued = new ArrayList<>();
+//		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+//			pst.setString(1, username);
+//			ResultSet rs = pst.executeQuery();
+//			while (rs.next()) {
+//				listEvalued.add(rs.getInt(1));
+//			}
+//
+//			if (listEvalued.size() == 0) {
+//				System.out.println("get Nothing ");
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return listEvalued;
+//
+//	}
+//
+//	public List<Integer> getOrderIdNotEvalued(String username) {
+//
+//		OrderDAO ordDAO = new OrderDAO();
+//		// 以使用者帳號抓取所有的訂單編號
+//		Collection<OrderBean> ordList = ordDAO.getMemberOrders();
+//		List<Integer> ordListNotEva = new ArrayList<>();
+//		for (OrderBean ob : ordList) {
+//			// 判斷是否有存在評價過的訂單編號中，如果沒有就塞入ordListNotEva
+//			if (!isExist(ob.getOrd_id(), username)) {
+//				ordListNotEva.add(ob.getOrd_id());
+//			}
+//		}
+//		return ordListNotEva;
+//	}
+//
+//	private boolean isExist(int ord_id, String username) {
+//		boolean result = true;
+//		// 以使用者帳號抓取所有評價過的訂單編號
+//		List<Integer> ordIdEvalued = getAllRestEvaOrderIdByUser(username);
+//		for (Integer ordIdEva : ordIdEvalued) {
+//			if (ord_id != ordIdEva) {
+//				result = false;
+//			} else {
+//				result = true;
+//				break;
+//			}
+//		}
+//
+//		return result;
+//	}
 
 	public int getRestEva() {
 		String sql = "select * from rest_evaluate where rest_id = ?";

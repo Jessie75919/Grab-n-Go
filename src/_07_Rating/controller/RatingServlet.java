@@ -1,6 +1,7 @@
 package _07_Rating.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import _01_Store_register.model.StoreBean;
-import _01_Store_register.model.StoreBeanDAO;
 import _07_Rating.model.RestRatingBean;
 import _07_Rating.model.RestRatingBeanDAO;
 
@@ -47,10 +46,13 @@ public class RatingServlet extends HttpServlet {
 				return;
 			}
 		}
+		
+		long lg = System.currentTimeMillis();
+		Date d = new Date(lg);
 
 		RestRatingBeanDAO dao = new RestRatingBeanDAO();
 		RestRatingBean rrb = new RestRatingBean(Integer.parseInt(EvaOrd_id), Integer.parseInt(EvaRestId), Integer.parseInt(score),
-				EvaUserName, comment);
+				EvaUserName, comment,d);
 		int result = dao.insertRestEva(rrb);
 		if(result ==1){
 			System.out.println("評價新增成功");

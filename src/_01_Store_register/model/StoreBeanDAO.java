@@ -566,7 +566,6 @@ public class StoreBeanDAO {
 				System.out.println("sb = " +sb);
 			}
 			
-			
 			if(listStore.size()==0){
 //				System.out.println("get Nothing [getStoreFromUser] <StoreBeanDAO>");
 				logger.error("Get Nothing");

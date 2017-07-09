@@ -5,7 +5,13 @@ var score = document.getElementById("score");
 // var comment =document.getElementById("comment");
 // var submit = document.getElementById("vvv");
 
+var starArr = document.querySelectorAll('.icon-star');
+
 function clikeMe(e) {
+    score.value = 0;
+    for (var i = 0; i < 5; i++) {
+         starArr[i].className = "icon-star";
+    }
 
     // alert(e.title);
     var parent = e.parentNode.parentNode;
@@ -21,12 +27,12 @@ function clikeMe(e) {
     EvaOrd_id = document.getElementById("EvaOrd_id");
     EvaOrd_id.value = getOrdId;
     // alert(EvaOrd_id.value);
-    score.value = 0 ;
+    score.value = 0;
 
 }
 
 
-var starArr = document.querySelectorAll('.icon-star');
+
 
 for (var i = 0; i < 5; i++) {
     starArr[i].addEventListener('click', function () {
@@ -50,35 +56,35 @@ $('#reset').bind('click', function () {
         starArr[j].className = "icon-star";
     }
 
-    var a = 'HELLO';
-    a.to
+    // var a = 'HELLO';
+    // a.to
 
 });
 
 function words_deal() {
-	var curLength = $("#comment").val().length;
-	if (curLength > 100) {
-		var num = $("#comment").val().substr(0, 75);
-		$("#comment").val(num);
-		alert("貼心小提醒 : 評論不可以超過75個字喔");
-	} else {
-		$("#textCount").text(5 - $("#TextArea1").val().length);
-	}
+    var curLength = $("#comment").val().length;
+    if (curLength > 100) {
+        var num = $("#comment").val().substr(0, 75);
+        $("#comment").val(num);
+        alert("貼心小提醒 : 評論不可以超過75個字喔");
+    } else {
+        $("#textCount").text(5 - $("#TextArea1").val().length);
+    }
 }
 
 
 
 function validate() {
     // alert(score.value);
-    if(parseInt(score.value)==0 ){
+    if (parseInt(score.value) == 0) {
         //  alert("stop1");
         alert("貼心小提醒 : 請記得填寫評分喔");
-         return false;
+        return false;
 
-         
+
 
     }
-    
+
 }
 
 // var resetBtn = document.querySelector('#reset');

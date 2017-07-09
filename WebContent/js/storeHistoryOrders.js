@@ -51,6 +51,9 @@ function getMonthlyOrders() {
 				//alert(monthlyOrders.length);
 				for (var j = 0; j < monthlyOrders.length; j++) {
 					var tr = document.createElement("tr");
+					tr.style.cursor = "pointer";
+					tr.onmouseover = function(){this.style.backgroundColor = "#ddffcc"};
+					tr.onmouseout = function(){this.style.backgroundColor = "#fff"};
 					var toggleTr = document.createElement("tr");
 					//toggleTr.id = "inTr" + monthlyOrders[j].ord_id;
 					var toggleTd = document.createElement("td");

@@ -41,7 +41,7 @@
             color:white;
         }    
     </style>
-    <jsp:useBean id="ordItemBeans" class="_05_orderProcess.model.OrderItemDAO"/>
+<%--     <jsp:useBean id="ordItemBeans" class="_05_orderProcess.model.OrderItemDAO"/> --%>
     <title>餐點熱銷排行(日)|歷史訂單-Grab &amp; Go</title>
 </head>
 <!--商家餐點熱銷排行 （日）-->
@@ -116,15 +116,15 @@
                         <th>銷售總額</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
-                    <c:forEach var="anOrderBean"  items="${ordItemBeans.salesRankD}">
-                    <tr>
-                        <td>1</td>
-                        <td>${anOrderBean.item_name}</td>
-                        <td>${anOrderBean.item_price}</td>
-                        <td>${anOrderBean.item_amount}</td>
-                        <td>${anOrderBean.item_amount * anOrderBean.item_price}</td>
-                    </tr>
-                    </c:forEach>
+<%--                     <c:forEach var="anOrderBean"  items="${ordItemBeans.salesRankD}"> --%>
+<!--                     <tr> -->
+<!--                         <td>1</td> -->
+<%--                         <td>${anOrderBean.item_name}</td> --%>
+<%--                         <td>${anOrderBean.item_price}</td> --%>
+<%--                         <td>${anOrderBean.item_amount}</td> --%>
+<%--                         <td>${anOrderBean.item_amount * anOrderBean.item_price}</td> --%>
+<!--                     </tr> -->
+<%--                     </c:forEach> --%>
                 </table>
                 <hr>
             </div>

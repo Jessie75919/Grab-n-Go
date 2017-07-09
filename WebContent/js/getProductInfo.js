@@ -25,7 +25,7 @@ function clickMe(e) {
     xhr.send();
 
     tabA = e.parentNode.parentNode.parentNode.id;
-    alert('tab = ' + tabA);
+    // alert('tab = ' + tabA);
 
 
     xhr.onreadystatechange = function () {
@@ -48,7 +48,7 @@ function clickMe(e) {
 window.onload = function () {
     var msg = document.getElementById("showMsg").value;
     var anchor = document.getElementById("anchor").value;
-    alert('anchor = ' + anchor);
+    // alert('anchor = ' + anchor);
     // var anchorHash = 'references';
     // document.getElementById(anchor).scrollIntoView();
     window.location.href ="storePage.jsp#"+anchor;

@@ -44,10 +44,12 @@
 		<div class="col-md-9">
 			<div>
 				<h3>> 本月訂單統計</h3><br>
-				 <span>請選擇月份：</span>
+				 <span><h4>&nbsp&nbsp&nbsp請選擇欲查詢的月份：</h4></span>
 				<!--選擇月份-->
-				<select name="">
-					<option value="January">一月</option>
+				<div class="col-xs-3">
+				<input style="display: none;" id="restUsername" name="restUsername" value="${StoreLoginOK['rest_username']}"/>
+				<select id="monthSelector" class="form-control">
+					<!-- <option value="January">一月</option>
 					<option value="Feburary">二月</option>
 					<option value="March">三月</option>
 					<option value="April">四月</option>
@@ -58,8 +60,9 @@
 					<option value="September">九月</option>
 					<option value="October">十月</option>
 					<option value="November">十一月</option>
-					<option value="December">十二月</option>
+					<option value="December">十二月</option> -->
 				</select>&nbsp
+				</div>
 			</div>
 		</div>
 	</section>
@@ -116,245 +119,31 @@
 	</div>
 	</div>
 	</section>
-
 	<script type="text/javascript">
-		// 折線圖 
-		// 建立資料
-		var data = [ {
-			x : 1,
-			y : 20
-		}, {
-			x : 2,
-			y : 40
-		}, {
-			x : 3,
-			y : 60
-		}, {
-			x : 4,
-			y : 50
-		}, {
-			x : 5,
-			y : 90
-		},
-
-		{
-			x : 6,
-			y : 80
-		}, {
-			x : 7,
-			y : 70
-		}, {
-			x : 8,
-			y : 90
-		}, {
-			x : 9,
-			y : 30
-		}, {
-			x : 10,
-			y : 40
-		},
-
-		{
-			x : 11,
-			y : 90
-		}, {
-			x : 12,
-			y : 50
-		}, {
-			x : 13,
-			y : 80
-		}, {
-			x : 14,
-			y : 70
-		}, {
-			x : 15,
-			y : 90
-		},
-
-		{
-			x : 16,
-			y : 20
-		}, {
-			x : 17,
-			y : 40
-		}, {
-			x : 18,
-			y : 60
-		}, {
-			x : 19,
-			y : 50
-		}, {
-			x : 20,
-			y : 90
-		},
-
-		{
-			x : 21,
-			y : 80
-		}, {
-			x : 22,
-			y : 70
-		}, {
-			x : 23,
-			y : 90
-		}, {
-			x : 24,
-			y : 30
-		}, {
-			x : 25,
-			y : 40
-		},
-
-		{
-			x : 26,
-			y : 90
-		}, {
-			x : 27,
-			y : 50
-		}, {
-			x : 28,
-			y : 80
-		}, {
-			x : 29,
-			y : 70
-		}, {
-			x : 30,
-			y : 90
+	var restUsername = document.getElementById("restUsername").value;
+	
+	var ms = document.getElementById("monthSelector");
+	var d = new Date();
+	var currentMonth = d.getMonth();
+	var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
+			"十一月", "十二月" ];
+	for (var i = 0; i < months.length; i++) {
+		var op = document.createElement("option");
+		op.value = i;
+		op.text = months[i];
+		ms.appendChild(op);
+		if (i == currentMonth) {
+			ms.value = i;
 		}
-
-		];
-		// 設定長寬
-		var width = 600, height = 240;
-
-		var scaleX = d3.scale.linear()
-
-		.range([ 0, width ])
-
-		.domain([ 1, 30 ]); //x資料的範圍
-
-		var scaleY = d3.scale.linear()
-
-		.range([ height, 0 ])
-
-		.domain([ 0, 100 ]); //Y的資料範圍
-
-		var s = d3.select('#lineChart'); //取得SVG的物件
-
-		s.attr({
-
-			'width' : 680, //設定畫布範圍
-
-			'height' : 300,
-
-		})
-
-		//  .style({
-
-		//       'border':'1px dotted #aaa'
-
-		//     });
-
-		var line = d3.svg.line()
-
-		.x(function(d) {
-
-			return scaleX(d.x);
-
-		}).y(function(d) {
-
-			return scaleY(d.y);
-
-		});
-
-		var axisX = d3.svg.axis()
-
-		.scale(scaleX)
-
-		.ticks(20) //刻度大小
-
-		.orient("bottom"); //X軸數字的位置
-
-		var axisY = d3.svg.axis()
-
-		.scale(scaleY)
-
-		.ticks(10) //刻度大小
-
-		.orient("left"); //Y軸數字的位置
-
-		s.append('path')
-
-		.attr({
-
-			'd' : line(data),
-
-			'stroke' : '#09c',
-
-			'fill' : 'none',
-
-			'transform' : 'translate(35,20)' //偏移
-
-		});
-
-		s.append('g')
-
-		.call(axisX)
-
-		.attr({
-
-			'fill' : 'none', //空心，但是字要另外處理
-
-			'stroke' : '#000',
-
-			'transform' : 'translate(35,' + (height + 20) + ')' //偏移
-
-		})
-
-		.selectAll('text') //字也會套用空心，另外處理
-
-		.attr({
-
-			'fill' : '#000',
-
-			'stroke' : 'none',
-
-		}).style({
-
-			'font-size' : '11px'
-
-		});
-
-		s.append('g')
-
-		.call(axisY)
-
-		.attr({
-
-			'fill' : 'none',
-
-			'stroke' : '#000',
-
-			'transform' : 'translate(35,20)'
-
-		})
-
-		.selectAll('text')
-
-		.attr({
-
-			'fill' : '#000',
-
-			'stroke' : 'none',
-
-		}).style({
-
-			'font-size' : '11px'
-
-		});
+	}
+	ms.setAttribute("onchange", "getMonthlyOrders()");
+	
+	function getMonthlyOrders(){
+		alert("選取的月份：" + ms.value);
+	}
+	
 	</script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-</body>
+	<script src="../js/storeMonthlyAnalysis.js"></script>
+	</body>
 
 </html>

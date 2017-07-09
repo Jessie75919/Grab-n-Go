@@ -61,8 +61,12 @@
                      <c:if test="${! empty LoginOK}">
 	                    <!--訊息-->
 	                    <c:set target="${notif}" property="username" value="${LoginOK.memberId}"/>
-	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息"><i class="icon-bubble"></i></a>
-	                    <span>${notif.queryNoticationCountByUserNoRead}</span></div>
+	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息">
+	                    <i class="icon-bubble"></i></a>
+	                    <c:if test="${notif.queryNoticationCountByUserNoRead!=0}">
+	                   		 <span>${notif.queryNoticationCountByUserNoRead}</span>
+	                    </c:if>
+	                   	</div>
 	                    <!--訊息 end-->
                      </c:if>
                     <c:if test="${! empty cart}">
@@ -101,19 +105,8 @@
                     <ul>
                         <li><a href="_06_member/memberA.jsp"><i class="icon-user"></i>檢視/編輯個人資料</a></li>
                         <li><a href="_06_member/order.jsp"><i class="icon-list"></i>訂購紀錄</a></li>
-                        <li><a href="_08_about/about.htm"><i class="icon-gg"></i>關於Grab
-				&amp; Go</a></li>
+                        <li><a href="_08_about/about.htm"><i class="icon-gg"></i>關於Grab &amp; Go</a></li>
                     </ul>
-                    <!-- AddToAny BEGIN--
-                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-                        <a class="a2a_button_facebook"></a>
-                        <a class="a2a_button_line"></a>
-                        <a class="a2a_button_google_plus"></a>
-                        <a class="a2a_button_twitter"></a>
-                        <a class="a2a_button_email"></a>
-                    </div>
-                    <script async src="https://static.addtoany.com/menu/page.js"></script>
-                    <!-- AddToAny END -->
                 </nav>
                 <div class="mainBanner">
                     <h1 class="slider wow fadeInDown" data-wow-delay="0.3s">
@@ -135,13 +128,10 @@
                     <section class="content bgRed">
                         <h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
                             "短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? <br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
-                            <%-- 		${cookie.lat.value}<br> --%>
-                                <%-- 		${cookie.lng.value} --%>
                         </h2>
                     </section>
                     <!--標語 end-->
                     <!--瀑布流-->
-                    <%-- 	<c:set var="x" value="${stList}" />  --%>
                         <section class="grid slider wow fadeIn" id="container">
                             <!-- 	// CALL get_Rest(25.0483199,121.5344137); -->
                             <c:forEach var="restaurant" items="${stList}" varStatus='vs'>
@@ -234,6 +224,9 @@
                     <div class="searchBg"></div>
                     <section class="searchContent">
                         <h2>您的提醒訊息</h2>
+                        <c:if test="${notif.queryNoticationCountByUserNoRead==0}">
+                        	<p style="text-align: center">您現在沒有訊息喔~</p>
+                        </c:if>
                         <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
                         <!--訊息列表 最多5則-->
                         <c:set var="notifList" value="${notif.queryNoticationByUserNoRead}"/>
@@ -244,18 +237,18 @@
                         
                         <div class="massageList">
                             <figure>
+                            <a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${rest.rest_id}">
                             <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${rest.rest_name}&type=restaurant&loc=logo" 
-                            alt="${rest.rest_name}" title="${rest.rest_name}"></figure>
+                            alt="${rest.rest_name}" title="${rest.rest_name}"></a></figure>
                             <div class="massageInfo">
                                 <h3>訂購店家：${rest.rest_name}</h3>
-                                <p>訂單編號：${notification.ord_id}</p>
+                                <p>訂單編號：<a href="_06_member/order_detail.jsp?ordId=${notification.ord_id}&restName=${rest.rest_name}">${notification.ord_id}</a></p>
                                 <p>訊息時間：<fmt:formatDate type = "both"  pattern="yyyy-MM-dd HH:mm" 
                                 value ="${notification.noti_time}" /></p>
                                 <p>${notification.msg}</p>
                             </div>
                         </div>
                         </c:forEach>
-                        
                         
                         <!--訊息列表 最多5則 end-->
                     </section>

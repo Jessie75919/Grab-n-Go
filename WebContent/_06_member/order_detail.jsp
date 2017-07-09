@@ -58,7 +58,7 @@
                 </div>
                 </c:forEach>
                 <!--菜單列表 end-->
-                <div class="total">總計：NT$${param.totalPrice}元</div>
+                <div class="total">總計：NT$${ob.ord_totalPrice}元</div>
             </div>
             <div class="cartRight">
                 <h3>訂購人資訊</h3>

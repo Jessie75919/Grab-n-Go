@@ -53,8 +53,9 @@ public class LoadingHomepage implements Filter {
 		if (latitude != 0 && longitude != 0) {
 			StoreBeanDAO dao = new StoreBeanDAO();
 			List<StoreBean> storeList = dao.getStoreFromUser(latitude, longitude);
-			if(storeList == null){
+			if(storeList.size()==0){
 				System.out.println("get nothing from dao.getStoreFromUser in LoadingHomepageFilter");
+				return;
 			}else{
 				System.out.println("get Loc in in LoadingHomepageFilter");
 				session.setAttribute("stList", storeList);

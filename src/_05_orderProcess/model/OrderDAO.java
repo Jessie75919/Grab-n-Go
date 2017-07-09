@@ -619,7 +619,7 @@ public class OrderDAO {
 					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
 					+ " AND ord_status IN (?) ";
 		String sql2 = "";
-		String sql3 = " ORDER BY ord_pickuptime DESC ";
+		String sql3 = " ORDER BY ord_pickuptime ASC ";
 //		if(mPickupName.length() != 0){
 //			sql2 = " AND m_pickupname LIKE ? ";
 //		}

@@ -71,13 +71,13 @@
 #pieChart{
   /*height: 50px;*/
   margin-left: 10%;
-  border:1px solid powderblue;
+  /* border:1px solid powderblue; */
 }
 #middleForm{
 font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 #orderTable{
-  border:1px solid powderblue;
+ /*  border:1px solid powderblue; */
 }
 table{
   margin-left: 50px;

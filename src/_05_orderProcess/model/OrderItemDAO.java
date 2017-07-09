@@ -308,7 +308,7 @@ public class OrderItemDAO {
 		String sql = " SELECT b.item_name, SUM(b.item_price), SUM(b.item_amount) "
 				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id"
 				+ " JOIN restaurant c ON a.rest_id = c.rest_id "
-				+ " WHERE a.ord_pickuptime like ? AND a.ord_status = 'paid' "
+				+ " WHERE c.rest_username = ? AND a.ord_pickuptime like ? AND a.ord_status = 'paid' "
 				+ " GROUP BY b.item_name "
 				+ " ORDER BY SUM(b.item_amount) DESC ";
 //		select b.item_name, sum(b.item_price), sum(b.item_amount)
@@ -319,11 +319,12 @@ public class OrderItemDAO {
 //		order by sum(b.item_amount) desc;
 
 		try(
-				Connection conn = ds.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				){
+			Connection conn = ds.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+		){
 			System.out.println("Hello, OrderItemDAO");
-			stmt.setString(1, ordPickuptime + "%");
+			stmt.setString(1, restUsername);
+			stmt.setString(2, ordPickuptime + "%");
 			ResultSet rs = stmt.executeQuery();
 			if(rs == null){
 				System.out.println("not found");

@@ -98,7 +98,7 @@
 		</div>
 		<br>
 		<!--圖表區塊, 動態產生-->
-		<div id="pieChart">Chart goes here!</div>
+		<div id="pieChart"></div>
 		<hr>
 		<!-- <div id="resultArea"></div> -->
 		<table id="orderTable">
@@ -110,7 +110,7 @@
 				<th>銷售總額</th>
 			</tr> -->
 			<!-- 日營業額統計細項 -->
-			<c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
+			<%-- <c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
 			<tr>
 				<td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd" value="${dtBean.ordPickuptime}"/></td>
 				<td>${dtBean.item_name}</td>
@@ -118,7 +118,7 @@
 				<td>${dtBean.item_amount}</td>
 				<td>＄${dtBean.item_price}</td>
 			</tr>
-			</c:forEach>
+			</c:forEach> --%>
 		</table>
 		<hr>
 	</div>
@@ -128,31 +128,6 @@
 	</div>
 	</div>
 	</section>
-	<script>
-	
-	var restUsername = document.getElementById("restUsername").value;
-	var table = document.getElementById("orderTable");
-	
-	var submitBtn = document.getElementById("submit");
-	submitBtn.onclick = function(){
-		alert("Hello");
-		var datepicker = document.getElementById("datepicker").value;
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET","../DailyRevenue.do?datepicker=" + datepicker + "&restUsername=" + restUsername,true);
-		xhr.send();
-		
-		xhr.onreadystatechange = function(){
-			if( xhr.readyState == 4 && xhr.status == 200){
-				alert("Got you!");
-				var dailyOrders = JSON.parse(xhr.responseText);
-				//alert(dailyOrders);
-				table.innerHTML = "<tr><th>訂購日期</th><th>餐點名稱</th><th>銷售數量</th><th>銷售總額</th></tr>";
-			}
-		}
-	}
-	
-	
-	</script>
 	<!-- 圓餅圖 js -->
 	<script src="../js/storeDailyAnalysis.js"></script>
 </body>

@@ -98,8 +98,8 @@
             </div>
             <div id="checkOut" style="display: inline;">
             <!--  <input class="btn btn-primary" type="submit" value="顧客結帳"> -->
-            <a href="#" class="btn btn-primary">餐點完成</a>
-            <a href="_storeOrderPaid.jsp" class="btn btn-default">顧客結帳</a>
+            <a href="_storeOrderUnpaid.jsp?ordId=${param.ord_id}" onClick="updateStatus(${param.ord_id})" class="btn btn-primary">餐點完成</a>
+            <a href="_storeOrderPaid.jsp?ordId=${param.ord_id}" onClick="checkOut(${param.ord_id})" class="btn btn-default">顧客結帳</a>
             <a href="../_02_storeLogin/_storeIndex.jsp" class="btn btn-primary">本日訂單</a>
             </div>           
         </div>
@@ -110,6 +110,35 @@
         </div>
         </div>
     </section>
+    <script>
+    /* 訂單狀態改變 */
+    function updateStatus(ordId){
+	    	alert("餐點完成的ordId#: " + ordId);
+	    	if(confirm("結帳嗎？")){
+				//訂單已完成
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET','../updateOrderStatus.do?ordId=' + ordId + '&ordStatus=inprogress',true);
+				xhr.send();
+	             alert("餐點已完成囉！")
+	         }else{
+	             alert("餐點尚未完成呦～")
+	         }
+    }
+    
+    /* 顧客結帳 */
+    function checkOut(ordId){
+    	alert("ordId #:" + ordId);
+		if(confirm("結帳嗎？")){
+			//訂單已完成
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET','../updateOrderStatus.do?ordId=' + ordId + '&ordStatus=unpaid',true);
+			xhr.send();
+             alert("顧客已付款囉！")
+         }else{
+             alert("顧客尚未付款呦～")
+         }
+    }
+    </script>
 
 </body>
 

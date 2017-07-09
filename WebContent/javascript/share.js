@@ -47,6 +47,16 @@ $(window).load(function () {
         return false;
     });
     
+    /*訊息*/
+    $('.msgItem').click(function () {
+        $('.massage').fadeIn();
+        return false;
+    });
+    $('.closeBtn, .searchBg').click(function () {
+        $('.massage').fadeOut();
+        return false;
+    });
+    
     /*評價*/
     $('.order.rate a').click(function () {
     	$('.rating').fadeIn();

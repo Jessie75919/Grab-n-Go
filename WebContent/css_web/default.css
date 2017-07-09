@@ -476,7 +476,10 @@ header:after {
     padding: 0;
     font-size: 1.2em;
 }
-
+.rightBtn a i.icon-bubble {
+    
+    font-size: 1.4em;
+}
 .rightBtn span {
     position: absolute;
     display: block;
@@ -616,7 +619,58 @@ section.searchContent .closeBtn:hover i {
     text-align: center;
 }
 
+/*站內訊息*/
 
+.massage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+}
+.massage section.searchContent {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.massageList{
+    position: relative;
+    padding: 15px 0;
+    border-bottom: #ccc solid 1px;
+}
+.massageList:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.massageList:last-child {
+    border-bottom: none;
+}
+.massageList figure{
+    position: relative;
+    width: 20%;
+    float: left;
+}
+.massageList figure img{
+    width: 100%;
+    height: auto;
+}
+.massageInfo{
+    position: relative;
+    width: 76%;
+    float: right;
+}
+.massageInfo h3{
+    padding-top: 0;
+    color: #eb503c;
+    font-weight: normal;
+}
+.massageInfo p{
+    padding: 2px 0;
+    font-size: 0.95em;
+}
 /*主要框架*/
 
 main {

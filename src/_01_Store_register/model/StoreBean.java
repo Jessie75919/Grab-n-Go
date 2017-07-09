@@ -453,7 +453,7 @@ public class StoreBean implements Serializable {
 				+ ", rest_owner=" + rest_owner + ", rest_email=" + rest_email + ", rest_username=" + rest_username
 				+ ", rest_password=" + rest_password + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
 				+ ", rest_latitude=" + rest_latitude + ", rest_mainbanner=" + rest_mainbanner + ", rest_logo="
-				+ rest_logo + ", rest_coverimage=" + rest_coverimage + ", rest_validate=" + rest_validate + "]";
+				+ rest_logo + ", rest_coverimage=" + rest_coverimage + ", rest_validate=" + rest_validate + ", distance=" + distance +  "]";
 	}
 
 }

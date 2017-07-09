@@ -15,12 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
 @WebFilter({"/indexA.jsp","/SaveLocation.do"})
 public class LoadingHomepage implements Filter {
 
+	Logger logger = Logger.getLogger(LoadingHomepage.class);
 	public void destroy() {
 	}
 
@@ -55,7 +58,11 @@ public class LoadingHomepage implements Filter {
 			List<StoreBean> storeList = dao.getStoreFromUser(latitude, longitude);
 			if(storeList.size()==0){
 				System.out.println("get nothing from dao.getStoreFromUser in LoadingHomepageFilter");
+				
 				return;
+//				List<StoreBean> storeListAll = dao.getAllStores();
+//				session.setAttribute("stList", storeListAll);
+//				chain.doFilter(request, response);
 			}else{
 				System.out.println("get Loc in in LoadingHomepageFilter");
 				session.setAttribute("stList", storeList);

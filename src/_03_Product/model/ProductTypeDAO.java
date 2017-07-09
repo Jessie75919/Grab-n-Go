@@ -11,9 +11,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
 import _00_init.GlobalService;
 
 public class ProductTypeDAO {
+	
+	Logger log = Logger.getLogger(ProductTypeDAO.class);
 	private DataSource ds = null;
 	String restNameA;
 	
@@ -136,24 +140,56 @@ public class ProductTypeDAO {
 		return ptList;
 	}
 	
+	
+	// this is method was mass up by jc..... so if any quesiton ask him please. 
 	public int updateAllProductType(ProductType pt, int typeNo) {
 		
-		String sql = "update product_type set type_name = ? where type_no=?";
+		String sql_oldTypeName = "select type_name from product_type where type_no=?";
+		String oldTypeName ="";
+		
+		String sqlRemoveFK = "SET foreign_key_checks = 0; ";
+		String sql =  "update product_type set type_name = ? where type_no=?";
+		String sqlAddFK	=	"SET foreign_key_checks = 1;";
 		int result = -1;
 		
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
+				PreparedStatement pstOldName = con.prepareStatement(sql_oldTypeName);
+				pstOldName.setInt(1, typeNo);
+				
+				ResultSet rs = pstOldName.executeQuery();
+				
+				while(rs.next()){
+					oldTypeName = rs.getString(1);
+//					log.info("oldTypeName = " + oldTypeName);
+				}
 			
-			System.out.println(pt.getProd_typeName());
-			pst.setString(1,pt.getProd_typeName());
-			pst.setInt(2,typeNo);
-			result = pst.executeUpdate();
-			
+				PreparedStatement pst0 = con.prepareStatement(sqlRemoveFK);
+				pst0.executeUpdate();
+				System.out.println(pt.getProd_typeName());
+				pst.setString(1,pt.getProd_typeName());
+				pst.setInt(2,typeNo);
+				result = pst.executeUpdate();
+				PreparedStatement pst1 = con.prepareStatement(sqlAddFK);
+				pst1.executeUpdate();
+//				
+				String sqlUpdateProduct = "update product set type_name = "
+						+ "case type_name when ? then ? end where type_name in( ? )";
+				PreparedStatement pstA = con.prepareStatement(sqlRemoveFK);
+				pst0.executeUpdate();
+				PreparedStatement pst2 = con.prepareStatement(sqlUpdateProduct);
+				pst2.setString(1,oldTypeName);
+				pst2.setString(2,pt.getProd_typeName());
+				pst2.setString(3,oldTypeName);
+				result = pst2.executeUpdate();
+				PreparedStatement pstB = con.prepareStatement(sqlAddFK);
+				pst1.executeUpdate();
 			
 			if (result == 1) {
 				System.out.println(typeNo + ": 修改成功");
 			} else {
-				System.out.println(typeNo + ": 修改失敗");
+//				log.error("Update fail");
+//				System.out.println(typeNo + ": 修改失敗");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

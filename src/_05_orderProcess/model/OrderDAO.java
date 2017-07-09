@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -162,6 +163,7 @@ public class OrderDAO {
 				pst1.setInt(2, ord_id);
 				
 				n = pst1.executeUpdate();
+				
 				if(n==1){
 					System.out.println("更新成功");
 				}else{

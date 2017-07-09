@@ -116,6 +116,8 @@
                 </main>
                 <!--搜尋-->
                 <jsp:include page="../_IncludeJsp/User_search.jsp" />
+                <!--訊息-->
+   <jsp:include page="../_IncludeJsp/User_NotificationPanel.jsp" />
 
                 <footer>
                     <figure>

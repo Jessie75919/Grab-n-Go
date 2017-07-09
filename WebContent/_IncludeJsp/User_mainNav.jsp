@@ -23,6 +23,11 @@
                 <div class="rightBtn searchItem">
                     <a href="#" title="搜尋"><i class="icon-search"></i></a>
                 </div>
+                 <c:if test="${! empty LoginOK}">
+	                    <!--訊息-->
+	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息"><i class="icon-bubble"></i></a><span>2</span></div>
+	                    <!--訊息 end-->
+                 </c:if>
 
                 <c:if test="${! empty cart}">
                     <div class="rightBtn">

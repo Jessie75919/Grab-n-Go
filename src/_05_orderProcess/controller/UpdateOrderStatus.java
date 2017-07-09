@@ -9,12 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 
 import _05_orderProcess.model.OrderDAO;
+import _09_notification.model.NotificationBean;
+import _09_notification.model.NotificationDAO;
 
 @WebServlet("/updateOrderStatus.do")
 public class UpdateOrderStatus extends HttpServlet {
+	Logger lg = Logger.getLogger(UpdateOrderStatus.class);
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,8 +45,17 @@ public class UpdateOrderStatus extends HttpServlet {
 				int n = od.updateOrderStatus(status2, Integer.parseInt(ordId.trim()));
 				System.out.println(n);
 				
+				// send a message to User
+				NotificationDAO nfDao = new NotificationDAO();
+				int x = nfDao.insertNotification(Integer.parseInt(ordId.trim()));
+				if(x==1){
+					lg.info("訊息新增成功");
+				}else lg.error("訊息新增失敗");
+				
 			} else if (ordStatus.equalsIgnoreCase(status2)) {
 				int n = od.updateOrderStatus(status3, Integer.parseInt(ordId.trim()));
+				
+				
 				System.out.println(n);
 				
 				if (n == 1) {
@@ -51,6 +65,7 @@ public class UpdateOrderStatus extends HttpServlet {
 				} else {
 					System.out.println("error!!!");
 				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -60,9 +75,5 @@ public class UpdateOrderStatus extends HttpServlet {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
 
 }

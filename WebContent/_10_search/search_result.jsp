@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO"
 	scope="session" />
+	 <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -70,8 +71,8 @@
 				<!--有亮的星星class要加上on-->
 				<c:set target="${rating}" property="rest_Id" value="${rest.rest_Id}" />
 				 <div class="star">
-	                    	<c:set var="yy" value="${5-x.restEva_star}" />
-                            <c:forEach begin="1" end="${x.restEva_star}" step="1">
+	                    	<c:set var="yy" value="${5-rating.restEva}" />
+                            <c:forEach begin="1" end="${rating.restEva}" step="1">
                                 <i class="icon-star on"></i>
                             </c:forEach>
                             <c:forEach begin="1" end="${yy}" step="1">
@@ -84,6 +85,7 @@
 					<div class="tag">
 						<span>${rest.rest_typeId}</span>
 					</div>
+					<c:set target="${order}" property="restId" value="${rest.rest_Id}"/>
 					<div class="orderCount">
 						目前訂單<span>${order.orderInProgressCountByRestId}</span>
 					</div>

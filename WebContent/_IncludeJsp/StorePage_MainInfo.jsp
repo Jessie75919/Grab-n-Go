@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+  <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
 <c:set target="${rating}" property="rest_Id" value="${clickRest.rest_id}" />
 <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

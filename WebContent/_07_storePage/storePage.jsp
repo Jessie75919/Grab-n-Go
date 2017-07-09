@@ -32,8 +32,7 @@
             <c:set target="${prodType}" property="restNameA" value="${clickRest['rest_name']}" />
             <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session" />
             <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}" />
-            <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
-            <c:set target="${rating}" property="rest_Id" value="${clickRest.rest_id}" />
+           
             <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 
 

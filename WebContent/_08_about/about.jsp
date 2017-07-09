@@ -43,37 +43,10 @@
             </div>
         </section>
     </main>
-    <!--搜尋-->
-    <div class="search">
-        <div class="searchBg"></div>
-        <section class="searchContent">
-            <h2>Hello! 今天想吃什麼呢?</h2>
-            <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
-            <form action="#" method="post">
-                <div class="searchList">
-                    <select name="foodKind" id="foodKind">
-                           <option value="日式料理">日式料理</option>
-                           <option value="中式料理">中式料理</option>
-                           <option value="義式料理">義式料理</option>
-                           <option value="早午餐/下午茶">早午餐/下午茶</option>
-                           <option value="暗黑料理">暗黑料理</option>
-                           <option value="台灣小吃">台灣小吃</option>
-                       </select>
-                </div>
-                <div class="searchList">
-                    <input type="text" name="storeName" id="storeName" placeholder="請輸入店家名稱">
-                </div>
-                <div class="searchList">
-                    <input type="text" name="foodName" id="foodName" placeholder="請輸入料理名稱">
-                </div>
-                <div class="searchBtn">
-                    <input name="reset" type="reset" id="reset" value="重填">
-                    <input name="submit" type="submit" id="submit" value="搜尋">
-                </div>
-            </form>
-        </section>
-    </div>
-    <!--搜尋 end-->
+     <!--搜尋-->
+                <jsp:include page="../_IncludeJsp/User_search.jsp" />
+    <!--訊息-->
+   <jsp:include page="../_IncludeJsp/User_NotificationPanel.jsp" />
     <footer>
         <figure><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
         <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>

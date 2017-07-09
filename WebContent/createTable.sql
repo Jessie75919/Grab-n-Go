@@ -171,7 +171,8 @@ CREATE TABLE notification (
 	rest_id INT NOT NULL,
 	msg VARCHAR(100) NOT NULL,
 	is_readed TINYINT(1) ,
-	
+	noti_time DATETIME,
+	ord_id INT,
 	CONSTRAINT notif_rest_id FOREIGN KEY(rest_id) REFERENCES restaurant(rest_id)ON DELETE CASCADE,
 	CONSTRAINT notif_m_username_FK FOREIGN KEY(m_username) REFERENCES member(m_username)ON DELETE CASCADE
 )  CHARACTER SET utf8 COLLATE utf8_general_ci;

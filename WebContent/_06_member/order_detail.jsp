@@ -58,7 +58,7 @@
                 </div>
                 </c:forEach>
                 <!--菜單列表 end-->
-                <div class="total">總計：NT$${param.totalPrice}元</div>
+                <div class="total">總計：NT$${ob.ord_totalPrice}元</div>
             </div>
             <div class="cartRight">
                 <h3>訂購人資訊</h3>
@@ -91,6 +91,8 @@
     </main>
      <!--搜尋-->
    <jsp:include page="../_IncludeJsp/User_search.jsp" />
+   <!--訊息-->
+   <jsp:include page="../_IncludeJsp/User_NotificationPanel.jsp" />
    
     <footer>
         <figure><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>

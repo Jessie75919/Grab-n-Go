@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+     <jsp:useBean id="notif" class="_09_notification.model.NotificationDAO" scope="session" />
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
         <html>
 
@@ -23,6 +24,18 @@
                 <div class="rightBtn searchItem">
                     <a href="#" title="搜尋"><i class="icon-search"></i></a>
                 </div>
+                 <c:if test="${! empty LoginOK}">
+                 
+	                    <!--訊息-->
+						   <c:set target="${notif}" property="username" value="${LoginOK.memberId}"/>
+	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息">
+	                    <i class="icon-bubble"></i></a>
+	                    <c:if test="${notif.queryNoticationCountByUserNoRead!=0}">
+	                   		 <span>${notif.queryNoticationCountByUserNoRead}</span>
+	                    </c:if>
+	                   	</div>	                    
+	                    <!--訊息 end-->
+                 </c:if>
 
                 <c:if test="${! empty cart}">
                     <div class="rightBtn">

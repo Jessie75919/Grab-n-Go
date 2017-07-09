@@ -99,14 +99,14 @@
                         <td >${anOrderBean.m_pickupname}</td>
                         <td >
                             <input style="display:none;" id="${anOrderBean.ord_id}" name="ordId" value="${anOrderBean.ord_id}">
-                            <a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a>
+                            <a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}&ordStatus=${anOrderBean.ord_status}">${anOrderBean.ord_id}</a>
                         </td>
                         <td > $${anOrderBean.ord_totalPrice}</td>
                         <td >
                             <input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}">
                             <a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
-                        <td id="cancelB"><a href="#" onclick="ordCancel()">取消訂單</a></td>
+                        <td id="cancelB"><a href="#" onclick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
                     </tr>
                     </c:forEach> 
                 </table>
@@ -133,20 +133,20 @@
     				var xhr = new XMLHttpRequest();
     				xhr.open('GET','../updateOrderStatus.do?ordId=' + tt + '&ordStatus=' + ordStatus,true);
     				xhr.send();
-    	             alert("餐點確定完成！")
+    	             //alert("餐點確定完成！")
     	         }else{
     	             alert("餐點尚未完成")
     	         }
     		} 
     		
     	/* 取消訂單 */
-    	function ordCancel(){
+    	function ordCancel(cancelBtn){
     		if(confirm("確定取消此筆訂單嗎？")){
-    			//ajax 取消訂單
+    			//var cancelBtn = 
+    			alert('cancel order #: ' + cancelBtn);
     			var xhr = new XMLHttpRequest();
-    			xhr.open('GET','CancelOrder.do?ordId=' + ordId,true);
+    			xhr.open('GET','CancelOrder.do?ordId=' + cancelBtn,true);
     			xhr.send();
-    			
     			alert(" 訂單已取消囉！")	
     		}else{
     			alert("請繼續完成訂單呦 ~")

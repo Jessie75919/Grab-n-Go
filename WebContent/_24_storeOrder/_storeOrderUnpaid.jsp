@@ -81,15 +81,15 @@
                         <th>訂單狀態</th>
                         <th>Action</th>
                     </tr>
-            		<c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.storeOrdersUnpaid}">
+            		<c:forEach var="anOrderBean" items="${orderBeans.storeOrdersUnpaid}">
                     <tr>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_pickuptime}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><input style="display:none;" id="ordId" name="ordId" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <td><input style="display:none;" id="${anOrderBean.ord_id}" name="ordId" value="${anOrderBean.ord_id}"><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>
-                        <td><input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}"><a href="_storeOrderPaid.jsp?" onClick="updateOrdStatus()">${anOrderBean.ord_status}</a></td>
-                        <td><a href="_storeOrderPaid.jsp" onClick="updateOrdStatus()">結帳</a></td>
+                        <td><input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}"><a href="_storeOrderPaid.jsp?" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a></td>
+                        <td><a href="_storeOrderPaid.jsp" onClick="updateOrdStatus(${anOrderBean.ord_id})">結帳</a></td>
                     </tr>
                    </c:forEach> 
                 </table>
@@ -104,11 +104,12 @@
         </div>
     </section>
     <script>
-    var ordId = document.getElementById("ordId").value;
+   /*  var ordId = document.getElementById("ordId").value; */
     var ordStatus = document.getElementById("ordStatus").value;
     
  	/* 訂單狀態改變 */
-    		function updateOrdStatus(){
+    		function updateOrdStatus(ordId){
+ 		alert("ordId #:" + ordId);
     			if(confirm("結帳嗎？")){
     				//訂單已完成
     				var xhr = new XMLHttpRequest();

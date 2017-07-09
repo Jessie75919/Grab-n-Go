@@ -30,7 +30,7 @@ public class SalesRankD extends HttpServlet {
 		try{
 			OrderItemDAO od = new OrderItemDAO();
 			System.out.println("ready to get daily sales rank data!");
-			Collection<OrderItemBean> oib = od.getSalesRankD();
+			Collection<OrderItemBean> oib = od.getSalesRankD(restUsername, datepicker);
 			od.setOrdPickuptime(datepicker);
 			od.setRestUsername(restUsername);
 			

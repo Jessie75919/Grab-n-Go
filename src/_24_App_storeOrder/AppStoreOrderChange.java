@@ -3,6 +3,8 @@ package _24_App_storeOrder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,18 +47,19 @@ public class AppStoreOrderChange extends HttpServlet {
 			String changeStatus = "unpaid";
 			n = dao.updateOrderStatus(changeStatus, ord_id);
 		}
-		
 		String changeResult = "";
 		if (n == 1) {
 			changeResult = "ok";
 		} else if (n == -1) {
 			changeResult = "fail";
 		}
+		Map<String, String> map = new HashMap<>();
+		map.put("changeResult", changeResult);
 		
 		//將變動結果送回App
 		PrintWriter out = response.getWriter();
-		out.println(gson.toJson(changeResult));
-		System.out.println("changeResult = " + changeResult);
+		out.println(gson.toJson(map));
+		System.out.println("changeResult(map) = " + map);
 		out.close();
 	}
 

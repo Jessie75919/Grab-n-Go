@@ -1,6 +1,7 @@
 package _00_Database_ver01;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,9 +11,8 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
+import org.apache.log4j.Logger;
 
 import _00_init.GlobalService;
 
@@ -21,6 +21,8 @@ public class TableDAO {
 	public static final String UTF8_BOM = "\uFEFF"; // 定義 UTF-8的BOM字元
 	Connection con;
 	PreparedStatement pst;
+	
+	Logger lg = Logger.getLogger(TableDAO.class);
 	
 	
 
@@ -72,6 +74,9 @@ public class TableDAO {
 				pst.setDate(7, Date.valueOf(segment[6])); // m_birthday
 				System.out.println("image : " + segment[7]);
 				InputStream is = new FileInputStream("WebContent/images/userImage/" + segment[7] + ".jpg");
+				File f = new File("./");
+				lg.info(f.getAbsolutePath());
+				
 				pst.setBlob(8, is); // m_picture
 				pst.setString(9, segment[7]+".jpg"); // m_fileName
 				boolean b = false;

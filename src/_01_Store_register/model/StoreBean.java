@@ -1,5 +1,6 @@
 package _01_Store_register.model;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 
@@ -23,13 +24,54 @@ public class StoreBean  {
 	private Blob rest_coverimage;
 	private boolean rest_validate;
 	private double distance;
+	private InputStream logo;
+	private InputStream cover;
+	private InputStream mainBanner;
 
 	public StoreBean() {
 		super();
 	}
+	
+	
 
 	/*---------------------------------------------------------------------------------
 	 * */
+
+	public InputStream getLogo() {
+		return logo;
+	}
+
+
+
+	public void setLogo(InputStream logo) {
+		this.logo = logo;
+	}
+
+
+
+	public InputStream getCover() {
+		return cover;
+	}
+
+
+
+	public void setCover(InputStream cover) {
+		this.cover = cover;
+	}
+
+
+
+	public InputStream getMainBanner() {
+		return mainBanner;
+	}
+
+
+
+	public void setMainBanner(InputStream mainBanner) {
+		this.mainBanner = mainBanner;
+	}
+
+
 
 	public StoreBean(int rest_id, String rest_type, String rest_name, String rest_branch, String rest_address,
 			String rest_phone, String rest_owner, String rest_email, String rest_username, String rest_password,

@@ -26,9 +26,7 @@ import _02_Store_login.model.StoreLoginServiceDB;
 
 public class StoreBeanDAO {
 	
-	
-	Logger logger = Logger.getLogger(StoreBeanDAO.class); 
-	
+	Logger lg = Logger.getLogger(StoreBeanDAO.class); 
 	
 	private List<StoreBean> storeList;
 	private DataSource ds = null;
@@ -67,6 +65,8 @@ public class StoreBeanDAO {
 			ds = (DataSource) ctx.lookup(GlobalService.JNDI_DB_NAME);
 			slsdb = new StoreLoginServiceDB();
 			storeList = slsdb.getAllStoreList();
+//			File file = new File("./");
+//			logger.info(file.getAbsolutePath());
 
 		} catch (NamingException e) {
 			System.out.println("JNDI gets wrong ");
@@ -107,22 +107,6 @@ public class StoreBeanDAO {
 		InputStream logo =null;
 		InputStream banner =null;
 //			InputStream is = new FileInputStream("WebContent/images/userImage/" + segment[7] + ".jpg");
-		try {
-			
-			cover = new FileInputStream("WebContent/images/restImage/test_coverImg.JPG");
-//			logo = new FileInputStream("WebContent/images/restImage/test_logo.JPG");
-//			banner = new FileInputStream("WebContent/images/restImage/test_mBanner.jpg");
-			logger.info("getPics");
-			int coverSize = cover.available(); 
-			logger.info("coverSize = " + coverSize);
-			
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
@@ -144,12 +128,12 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_url());
 			pst.setDouble(++i, sb.getRest_longitude()); 
 			pst.setDouble(++i, sb.getRest_latitude());
-//			/_Grab_Go/WebContent/images/restImage/test_coverImg.JPG
-//			/Grab_Go_5/WebContent/images/restImage/test_coverImg.JPG
 			
-			pst.setBlob(++i, banner); //rest_mainbanner
-			pst.setBlob(++i, logo); //rest_logo
-			pst.setBlob(++i, cover); //rest_coverimage
+			File file = new File("./");
+			lg.info(file.getAbsolutePath());
+			pst.setBlob(++i, sb.getMainBanner()); //rest_mainbanner
+			pst.setBlob(++i, sb.getLogo()); //rest_logo
+			pst.setBlob(++i, sb.getCover()); //rest_coverimage
 			pst.setBoolean(++i, false);		//rest_validate於註冊完成時應為未驗證
 
 			result = pst.executeUpdate();
@@ -600,7 +584,7 @@ public class StoreBeanDAO {
 			
 			if(listStore.size()==0){
 //				System.out.println("get Nothing [getStoreFromUser] <StoreBeanDAO>");
-				logger.error("Get Nothing");
+				lg.error("Get Nothing");
 			}
 			
 		} catch (SQLException e) {

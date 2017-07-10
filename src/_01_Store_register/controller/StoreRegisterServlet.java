@@ -1,10 +1,13 @@
 package _01_Store_register.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
 
 @WebServlet("/_01_StoreRegister/StoreRegister.do")
 public class StoreRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger lg = Logger.getLogger(StoreRegisterServlet.class);
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -73,8 +79,22 @@ public class StoreRegisterServlet extends HttpServlet {
 			if (sbdao.isUserExists(memberID)) {
 				msgErr.put("idRepeat", "此帳號已存在，請換新帳號");
 			} else {
+				
+				
+				File file = new File("./");
+				lg.info(file.getAbsolutePath());
+				lg.info(request.getRequestURI());
+				lg.info(request.getContextPath());
+				InputStream cover = getServletContext().getResourceAsStream("/images/restImage/test_coverImg.JPG");
+				InputStream logo = getServletContext().getResourceAsStream("/images/restImage/test_logo.JPG");
+				InputStream banner = getServletContext().getResourceAsStream("/images/restImage/test_mBanner.jpg");
+				
+				
 				StoreBean sb = new StoreBean(type, StoreName, branch, addr, tel, owner, email, memberID, password, url,
 						langitude, latitude);
+				sb.setCover(cover);
+				sb.setLogo(logo);
+				sb.setMainBanner(banner);
 
 				int n = sbdao.insertShopData(sb);
 				if (n == 1) {

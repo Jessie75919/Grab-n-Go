@@ -121,9 +121,9 @@ public class NotificationDAO {
 			n = pst.executeUpdate();
 //			log.info("n = " + n);
 			if(n>0){
-				log.error("setReaded fail");
-			}else{
 				log.info("setReaded OK");
+			}else{
+				log.error("setReaded fail");
 			}
 			
 		} catch (SQLException e) {

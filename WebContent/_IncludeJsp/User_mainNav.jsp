@@ -28,10 +28,11 @@
                  
 	                    <!--訊息-->
 						   <c:set target="${notif}" property="username" value="${LoginOK.memberId}"/>
-	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息">
+	                    <div class="rightBtn msgItem" onclick="readMsgA('${LoginOK.memberId}')">
+	                    <a href="#" title="查看訊息" >
 	                    <i class="icon-bubble"></i></a>
 	                    <c:if test="${notif.queryNoticationCountByUserNoRead!=0}">
-	                   		 <span>${notif.queryNoticationCountByUserNoRead}</span>
+	                   		 <span id="msgCount">${notif.queryNoticationCountByUserNoRead}</span>
 	                    </c:if>
 	                   	</div>	                    
 	                    <!--訊息 end-->
@@ -89,5 +90,6 @@
                 <!-- AddToAny END -->
             </nav>
         </body>
+        <script src="${pageContext.servletContext.contextPath}/js/readMsg.js"></script>
 
         </html>

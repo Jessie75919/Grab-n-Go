@@ -48,11 +48,17 @@ function clickMe(e) {
 window.onload = function () {
     var msg = document.getElementById("showMsg").value;
     var anchor = document.getElementById("anchor").value;
+
+    if(anchor==""){
+        anchor = 'tab2';
+    }
+
     // alert('anchor = ' + anchor);
     // var anchorHash = 'references';
     // document.getElementById(anchor).scrollIntoView();
-    window.location.href ="storePage.jsp#"+anchor;
+    // window.location.href ="storePage.jsp?id=" +anchor;
     // $('a[href="#' + tabA + '"]').tab('show');
+
 
 
 

@@ -3,8 +3,7 @@
 import java.io.*;
 import java.sql.*;
 
-public class MemberBean implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class MemberBean  {
 	
 	String memberId;
 	String password;

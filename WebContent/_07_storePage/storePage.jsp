@@ -70,7 +70,7 @@
                                 <c:set var="y" value="0" />
                                 <div class="tab-content">
                                     <c:forEach var="foodType2" items="${prodType.allProductType}" varStatus='vs'>
-                                        <div id="tab${y=y+1}" class="tab<c:if test='${vs.first}'> active</c:if>">
+                                        <div id="tab${y=y+1}"  class="tab<c:if test='${vs.first}'> active</c:if>">
                                             <c:set target="${product}" property="typeName" value="${foodType2}" />
                                             <c:forEach var="food" items="${product.productByType}" varStatus='vs'>
                                                 <div class="storeMenuList">

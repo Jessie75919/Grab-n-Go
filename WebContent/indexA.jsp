@@ -61,10 +61,11 @@
                      <c:if test="${! empty LoginOK}">
 	                    <!--訊息-->
 	                    <c:set target="${notif}" property="username" value="${LoginOK.memberId}"/>
-	                    <div class="rightBtn msgItem"><a href="#" title="查看訊息">
+	                    <div class="rightBtn msgItem" onclick="readMsg('${LoginOK.memberId}')">
+	                    <a href="#" title="查看訊息">
 	                    <i class="icon-bubble"></i></a>
 	                    <c:if test="${notif.queryNoticationCountByUserNoRead!=0}">
-	                   		 <span>${notif.queryNoticationCountByUserNoRead}</span>
+	                   		 <span id="msgCount">${notif.queryNoticationCountByUserNoRead}</span>
 	                    </c:if>
 	                   	</div>
 	                    <!--訊息 end-->
@@ -296,6 +297,7 @@
                 <script src="javascript/share.js"></script>
                 <!-- 取得使用者位置 -->
                 <script src="js/getUsrLocation.js"></script>
+                <script src="js/readMsg.js"></script>
             </body>
 
             </html>

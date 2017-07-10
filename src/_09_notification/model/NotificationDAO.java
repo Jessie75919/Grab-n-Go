@@ -112,6 +112,26 @@ public class NotificationDAO {
 		}
 		return n;
 	}
+	
+	public int setNoticationReaded(String username) {
+		String sql = "update notification set is_readed = 1 where m_username = ?";
+		int n = -1;
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1, username);
+			n = pst.executeUpdate();
+//			log.info("n = " + n);
+			if(n>0){
+				log.error("setReaded fail");
+			}else{
+				log.info("setReaded OK");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
 
 	public List<NotificationBean> getQueryNoticationByUser() {
 		List<NotificationBean> list = new ArrayList<>();

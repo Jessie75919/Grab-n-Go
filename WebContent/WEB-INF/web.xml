@@ -176,4 +176,14 @@
     <servlet-name>AppStoreOrderDailyServlet</servlet-name>
     <servlet-class>_24_App_storeOrder.AppStoreOrderDailyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>SetReaded</display-name>
+    <servlet-name>SetReaded</servlet-name>
+    <servlet-class>_09_notification.controller.SetReaded</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetReaded</servlet-name>
+    <url-pattern>/SetReaded</url-pattern>
+  </servlet-mapping>
 </web-app>

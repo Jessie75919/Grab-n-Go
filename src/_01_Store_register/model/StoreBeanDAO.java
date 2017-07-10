@@ -1,12 +1,15 @@
 package _01_Store_register.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,6 @@ import org.apache.log4j.Logger;
 import _00_AppGlobal.Common;
 import _00_init.GlobalService;
 import _02_Store_login.model.StoreLoginServiceDB;
-import _06_listRestaurants.filter.LoadingHomepage;
 
 public class StoreBeanDAO {
 	
@@ -89,15 +91,39 @@ public class StoreBeanDAO {
 	/*---------------------------------------------------------------------------------
 	 * */
 
-	synchronized public int insertShopData(StoreBean sb) {
+	synchronized public int insertShopData(StoreBean sb) throws FileNotFoundException {
 		int result = 0;
 		System.out.println("------------------------------------");
 		System.out.println(sb.toString());
 		System.out.println("owner = "+sb.getRest_owner());
 		
-		String sql = "insert into restaurant "+
-				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,rest_validate)"
-				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into restaurant values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//		String sql = "insert into restaurant "+
+//				"(rest_id,rest_type,rest_name,rest_branch,rest_address,rest_phone,rest_owner,"
+//				+ "rest_email,rest_username,rest_password,rest_url,rest_longitude,rest_latitude,"
+//				+ "rest_mainbanner,rest_logo,rest_coverimage,rest_validate)"
+//				+ "values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		InputStream cover = null;
+		InputStream logo =null;
+		InputStream banner =null;
+//			InputStream is = new FileInputStream("WebContent/images/userImage/" + segment[7] + ".jpg");
+		try {
+			
+			cover = new FileInputStream("WebContent/images/restImage/test_coverImg.JPG");
+//			logo = new FileInputStream("WebContent/images/restImage/test_logo.JPG");
+//			banner = new FileInputStream("WebContent/images/restImage/test_mBanner.jpg");
+			logger.info("getPics");
+			int coverSize = cover.available(); 
+			logger.info("coverSize = " + coverSize);
+			
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
 			int i = 0;
 			System.out.println("------------------------------------");
@@ -118,6 +144,12 @@ public class StoreBeanDAO {
 			pst.setString(++i, sb.getRest_url());
 			pst.setDouble(++i, sb.getRest_longitude()); 
 			pst.setDouble(++i, sb.getRest_latitude());
+//			/_Grab_Go/WebContent/images/restImage/test_coverImg.JPG
+//			/Grab_Go_5/WebContent/images/restImage/test_coverImg.JPG
+			
+			pst.setBlob(++i, banner); //rest_mainbanner
+			pst.setBlob(++i, logo); //rest_logo
+			pst.setBlob(++i, cover); //rest_coverimage
 			pst.setBoolean(++i, false);		//rest_validate於註冊完成時應為未驗證
 
 			result = pst.executeUpdate();

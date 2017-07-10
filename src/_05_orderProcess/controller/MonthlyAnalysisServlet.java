@@ -34,7 +34,9 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 			OrderDAO od = new OrderDAO();
 			od.setRestUsername(restUsername);
 			od.setMonthSelect(month);
-			Collection<OrderBean> list = od.getStoreOrdersByMonth();
+			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
+			od.setRestUsername(restUsername);
+			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			String monthlyRevenueList = new Gson().toJson(list);
 			System.out.println(monthlyRevenueList);
 			

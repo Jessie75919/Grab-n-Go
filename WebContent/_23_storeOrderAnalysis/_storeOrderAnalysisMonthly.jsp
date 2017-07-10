@@ -94,22 +94,22 @@
 		</div>
 		<hr>
 
-		<table id="orderTable">
-			<tr>
+		<table id="orderTableM">
+			<!-- <tr>
 				<th>訂單日期</th>
-				<!--<th>餐點種類</th>
+				<th>餐點種類</th>
             <th>餐點名稱</th>
-            <th>銷售數量</th>-->
+            <th>銷售數量</th>
 				<th>營業總額</th>
 			</tr>
-			<!-- 日營業額統計細項 -->
+			日營業額統計細項
 			<tr>
 				<td nowrap="">2017/05/19 11:05:31</td>
-				<!--<td>主餐</td>
+				<td>主餐</td>
             <td>西班牙海鮮燉飯</td>
-            <td>100</td>-->
+            <td>100</td>
 				<td>$33000</td>
-			</tr>
+			</tr> -->
 		</table>
 		<hr>
 	</div>
@@ -124,6 +124,7 @@
 	
 	var ms = document.getElementById("monthSelector");
 	var d = new Date();
+	var year = d.getFullYear();
 	var currentMonth = d.getMonth();
 	var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
 			"十一月", "十二月" ];
@@ -140,6 +141,41 @@
 	
 	function getMonthlyOrders(){
 		alert("選取的月份：" + ms.value);
+		alert("年份: " + year);
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + ms.value,true);
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if( xhr.readyState == 4 && xhr.status == 200){
+				alert("Got MonthlyRevenue.do!");
+				//處理回應
+				var monthlyOrders = JSON.parse(xhr.responseText);
+				var table = document.getElementById("orderTableM");
+				
+				table.innerHTML = "<tr><th>訂購日期</th><th>營業總額</th></tr>";
+				for( var i = 0; i < monthlyOrders.length; i++){
+					
+					  /* console.log("date = " + monthlyOrders[i].ord_pickuptime 
+							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); */
+					 var tr = document.createElement("tr");
+					
+					 var td1 = document.createElement("td");
+					 td1.textContent = monthlyOrders[i].ord_pickuptime;
+					 
+					 var td2 = document.createElement("td");
+					 td2.textContent = "$" + monthlyOrders[i].ord_totalPrice;
+					 
+					 tr.appendChild(td1);
+					 tr.appendChild(td2);
+					 
+					 table.appendChild(tr);
+					 
+					
+				}
+			
+			}
+		}
 	}
 	
 	</script>

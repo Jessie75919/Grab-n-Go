@@ -106,7 +106,7 @@
                             <input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}">
                             <a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
-                        <td id="cancelB"><a href="#" onclick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
+                        <td id="cancelB"><a href="_storeIndex.jsp" onClick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
                     </tr>
                     </c:forEach> 
                 </table>

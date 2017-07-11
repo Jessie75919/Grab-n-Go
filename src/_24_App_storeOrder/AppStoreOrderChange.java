@@ -46,6 +46,9 @@ public class AppStoreOrderChange extends HttpServlet {
 		} else if (param.equals("toComplete")) {
 			String changeStatus = "unpaid";
 			n = dao.updateOrderStatus(changeStatus, ord_id);
+		} else if (param.equals("toPaid")) {
+			String changeStatus = "paid";
+			n = dao.updateOrderStatus(changeStatus, ord_id);
 		}
 		String changeResult = "";
 		if (n == 1) {

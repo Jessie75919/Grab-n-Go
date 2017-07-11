@@ -46,7 +46,6 @@ public class AppStoreOrderDailyServlet extends HttpServlet {
 			OrderDAO dao = new OrderDAO();
 			dao.setRestId(rest_id);
 			dao.setOrd_status(status);
-//			dao.setMPickupName(customer);
 			list = dao.getStoreOrdersDailyForApp();
 		}
 		

@@ -618,29 +618,18 @@ public class OrderDAO {
 	public List<OrderBean> getStoreOrdersDailyForApp(){
 		List<OrderBean> obl = new ArrayList<>();
 		List<OrderItemBean> oibl = new ArrayList<>();
-		String sql1 = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
+		String sql = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
 					+ " ord_tel, ord_status, ord_pickuptime , ord_evalued "
 					+ " FROM order01 "
 					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
-					+ " AND ord_status IN (?) ";
-		String sql2 = "";
-		String sql3 = " ORDER BY ord_pickuptime ASC ";
-//		if(mPickupName.length() != 0){
-//			sql2 = " AND m_pickupname LIKE ? ";
-//		}
-		String sql = sql1 + sql2 + sql3;
+					+ " AND ord_status IN (?) "
+					+ " ORDER BY ord_pickuptime ASC ";
 		try (
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);	
 		){
-//			if(mPickupName.length() == 0){
-				stmt.setInt(1, restId);
-				stmt.setString(2, ord_status);
-//			} else{
-//				stmt.setInt(1, restId);
-//				stmt.setString(2, ord_status);
-//				stmt.setString(3, "%" + mPickupName + "%");
-//			}
+			stmt.setInt(1, restId);
+			stmt.setString(2, ord_status);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				OrderItemDAO dao = new OrderItemDAO();

@@ -23,7 +23,7 @@ import _01_Store_register.model.StoreBeanDAO;
 @WebFilter({"/indexA.jsp","/SaveLocation.do"})
 public class LoadingHomepage implements Filter {
 
-	Logger logger = Logger.getLogger(LoadingHomepage.class);
+	Logger lg = Logger.getLogger(LoadingHomepage.class);
 	public void destroy() {
 	}
 
@@ -36,6 +36,7 @@ public class LoadingHomepage implements Filter {
 		double longitude = 0;
 		String contextPath = servletRequest.getContextPath();
 //		System.out.println(contextPath + " in LoadingHomepage");
+		lg.info(contextPath);
 		Cookie[] coks = servletRequest.getCookies();
 		// System.out.println("here ??");
 		for (Cookie cok : coks) {

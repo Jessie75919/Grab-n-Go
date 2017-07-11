@@ -87,7 +87,7 @@ public class AddNewDish extends HttpServlet {
 					fileName = GlobalService.adjustFileName(fileName, GlobalService.IMAGE_FILENAME_LENGTH);
 					is = filePart.getInputStream();
 				} else {
-					String path = "/images/productImageTest/1_人氣精選_01.jpg";
+					String path = "/images/NoImage.jpg";
 					String realPath = getServletContext().getRealPath(path);
 					System.out.println(realPath);
 					File file = new File(realPath);

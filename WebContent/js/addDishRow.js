@@ -112,20 +112,39 @@ function validateForm(event) {
 	event.preventDefault();
 	var hasErr = false;
 	var result = document.getElementById("showMsg");
+	var errCount = 0;
 
 	for (var i = 1; i <= count; i++) {
 		var dishName = document.getElementById("dishName" + i);
 		try {
 			if (!dishName.value) {
 				hasErr = true;
-				result.innerHTML = "<span>貼心小提醒 : 請刪除不必要的欄位喔~</span>";
-			} else {
-				result.innerHTML = "";
-			}
+				alert('請刪除不必要的欄位喔~');
+				errCount = 1;
+				break;
+			} 
 		} catch (err) {
+			errCount=0;
 			// alert("not Found");
 		}
 	}
+
+	if(errCount!=1){
+		for (var i = 1; i <= count; i++) {
+			var dishPrice = document.getElementById("dishPrice" + i);
+			try {
+				if (!dishPrice.value) {
+					hasErr = true;
+					alert('請記得填寫餐點價格喔');
+					break;
+				} 
+			} catch (err) {
+				// alert("not Found");
+			}
+		}
+
+	}
+
 
 	if (hasErr) {
 		return false

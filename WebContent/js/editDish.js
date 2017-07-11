@@ -204,7 +204,7 @@ xhr.onreadystatechange = function () {
 			deleBtn.setAttribute("class", "fa fa-minus-square");
 			deleBtn.setAttribute("name", "deleBtn" + count);
 			deleBtn.setAttribute("id", "deleBtn" + count);
-			deleBtn.setAttribute("onClick", "deleteRow(this)");
+			deleBtn.setAttribute("onClick", "deleteRow(this,"+productArr[i].prod_id+")");
 
 			var td1 = document.createElement("td");
 			var dishName = document.createElement("input");
@@ -291,9 +291,9 @@ xhr.onreadystatechange = function () {
 	}
 }
 
-function deleteRow(me) {
+function deleteRow(me,id) {
 	// alert("AAAA");
-	// alert(me.id);
+	// alert(me);
 	var delBtn = document.getElementById(me.id);
 	var selDishName = delBtn.parentNode.nextSibling.firstChild.value;
 	var selDishType = delBtn.parentNode.nextSibling.nextSibling.firstChild.value;
@@ -304,18 +304,20 @@ function deleteRow(me) {
 	if (r == true) {
 
 		var xhr_del = new XMLHttpRequest();
-		xhr_del.open("GET", "delProduct.do?dishName=" + selDishName + "&dishType=" + selDishType, true);
+		xhr_del.open("GET", "delProduct.do?dishId=" + id , true);
 		xhr_del.send();
 
 		xhr_del.onreadystatechange = function () {
 			if (xhr_del.readyState == 4 && xhr_del.status == 200) {
 				// alert("in AJAX");
 				txt = JSON.parse(xhr_del.responseText);
-				alert(tex);
+				// alert(txt);
+				if(txt=='delOK'){
+					table.removeChild(delBtn.parentNode.parentNode);
+				}
 			}
 		}
 
-		table.removeChild(delBtn.parentNode.parentNode);
 
 	} else {
 		// txt = "You pressed Cancel!";

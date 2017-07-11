@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 
 import _03_Product.model.Product;
@@ -20,7 +22,7 @@ import _03_Product.model.ProductTypeDAO;
 public class deleteProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
+	Logger lg = Logger.getLogger(deleteProduct.class);
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,17 +31,20 @@ public class deleteProduct extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		String dishName = request.getParameter("dishName").trim();
-		String dishType = request.getParameter("dishType").trim();
-		System.out.println(dishName);
-		System.out.println(dishType);
+		String dishIdStr = request.getParameter("dishId").trim();
+		if(dishIdStr == null) {
+			lg.error("get Nothing");
+			return;
+		}
+		int dishId = Integer.parseInt(dishIdStr);
+		System.out.println(dishId);
 //		
 		try {
 			ProductDAO dao = new ProductDAO();
-			int n = dao.deleteProduct(dishName, dishType);
+			int n = dao.deleteProduct(dishId);
 			
 			if(n==1){
-				String result = new Gson().toJson("刪除成功"); 
+				String result = new Gson().toJson("delOK"); 
 				out.write(result);
 				out.flush();
 			}else{

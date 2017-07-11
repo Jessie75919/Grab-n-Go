@@ -14,10 +14,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
 import _00_init.GlobalService;
 
 public class ProductDAO implements ProductInterface{
 	private DataSource ds = null;
+	Logger lg = Logger.getLogger(ProductDAO.class);
 	
 	private int prod_id;
 	private int rest_id;
@@ -141,19 +144,18 @@ public class ProductDAO implements ProductInterface{
 	}
 
 	@Override
-	public int deleteProduct(String prod_name,String type_name) {
-		String sql = "delete from product where prod_name=? and type_name = ?";
+	public int deleteProduct(int prod_Id) {
+		String sql = "delete from product where prod_id=?";
 		int result = -1;
-
+		lg.info("prod_Id = " + prod_Id);
 		try (Connection con = ds.getConnection(); 
 				PreparedStatement pst = con.prepareStatement(sql);) {
-			pst.setString(1,prod_name);
-			pst.setString(2,type_name);
+			pst.setInt(1,prod_Id);
 			result = pst.executeUpdate();
 			if (result == 1) {
-				System.out.println(prod_name + ": 刪除成功");
+				System.out.println(prod_Id + ": 刪除成功");
 			} else {
-				System.out.println(prod_name + ": 刪除失敗");
+				System.out.println(prod_Id + ": 刪除失敗");
 			}
 
 		} catch (Exception e) {

@@ -43,11 +43,11 @@ public class AppStoreOrderHistoryServlet extends HttpServlet {
 		if (param.equals("HistoryOrder")) {
 			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
 			String selectMonth = jsonObject.get("selectMonth").getAsString();
-			String customer = jsonObject.get("customer").getAsString();			
+			String searchPhone = jsonObject.get("searchPhone").getAsString();			
 			OrderDAO dao = new OrderDAO();
 			dao.setRestId(rest_id);
 			dao.setMonthSelect(selectMonth);
-			dao.setMPickupName(customer);
+			dao.setOrd_tel(searchPhone);
 			list = dao.getStoreOrdersByMonthForApp();
 		}
 		

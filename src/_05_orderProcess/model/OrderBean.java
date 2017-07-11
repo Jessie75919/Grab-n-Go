@@ -18,6 +18,17 @@ public class OrderBean {
 	String ord_tel;
 	String ord_email;
 	int ord_evalued;
+	int monthDay;
+	
+	
+
+	public int getMonthDay() {
+		return monthDay;
+	}
+
+	public void setMonthDay(int monthDay) {
+		this.monthDay = monthDay;
+	}
 
 	public OrderBean(String m_username, String m_pickupname, Timestamp ord_time, Timestamp ord_pickuptime, int rest_id,
 			int ord_totalPrice, String ord_status, List<OrderItemBean> items, String ord_tel, String ord_email,

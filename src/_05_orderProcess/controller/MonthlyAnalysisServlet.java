@@ -2,6 +2,7 @@ package _05_orderProcess.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -35,6 +36,23 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 			od.setRestUsername(restUsername);
 			od.setMonthSelect(month);
 			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
+			
+			int count = list.size();
+			for(int i=0;i<(30-count);i++){
+				OrderBean ob = new OrderBean();
+				Timestamp ts = new Timestamp(System.currentTimeMillis()); 
+				String tsStr = "2017-06-09 11:49:45";  
+			        try {  
+			            ts = Timestamp.valueOf(tsStr);  
+			            System.out.println(ts);  
+			        } catch (Exception e) {  
+			            e.printStackTrace();  
+			        }  
+				
+				ob.setOrd_pickuptime(ts);
+				list.add(ob);
+			}
+			
 			od.setRestUsername(restUsername);
 			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			String monthlyRevenueList = new Gson().toJson(list);

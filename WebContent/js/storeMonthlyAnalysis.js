@@ -42,14 +42,13 @@ s.attr({ 'width' : 680,'height' : 300,})
 				
 				for( var i = 0; i < 30 ; i++){
 					
-					if( monthlyOrders[i].ord_pickuptime == null){
-						monthlyOrders[i].ord_totalPrice = 0;
+					if( monthlyOrders[i] == null){
 					}
 					
 					   console.log("date = " + monthlyOrders[i].ord_pickuptime 
 							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
+
 					 var tr = document.createElement("tr");
-					
 					 var td1 = document.createElement("td");
 					 td1.textContent = monthlyOrders[i].ord_pickuptime;
 					 
@@ -85,9 +84,9 @@ s.attr({ 'width' : 680,'height' : 300,})
 				//Y的資料範圍
 				var scaleY = d3.scale.linear().range([ height, 0 ]).domain([ 0, 1000]); 
 				var data = [];
-				for( var j=0; j<monthlyOrders.length; j++){
+				for( var j=1; j<=30; j++){
 					data.push(
-					{ x: monthlyOrders[j].ord_pickuptime,  y:monthlyOrders[j].ord_totalPrice}		
+					{ x: j,  y:monthlyOrders[j-1].ord_totalPrice}		
 					);
 				}
 				console.log(data)

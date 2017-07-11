@@ -192,4 +192,14 @@
     <servlet-name>AppStoreOrderChange</servlet-name>
     <servlet-class>_24_App_storeOrder.AppStoreOrderChange</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ValidateServlet</display-name>
+    <servlet-name>ValidateServlet</servlet-name>
+    <servlet-class>_00_init.ValidateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateServlet</servlet-name>
+    <url-pattern>/ValidateServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -86,8 +86,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class JavaMailUtil {
-	private static String userid;
-	private static String password;
+	private static String userid = "grabngojava@gmail.com";
+	private static String password = "20170726";
 
 	MimeMessage message;
 	String from;
@@ -268,8 +268,8 @@ public class JavaMailUtil {
 	}
 
 	static {
-		userid = System.getProperty("JavaMailUserId");
-		password = System.getProperty("JavaMailPassword");
+//		userid = System.getProperty("JavaMailUserId");
+//		password = System.getProperty("JavaMailPassword");
 		
 	}
 }

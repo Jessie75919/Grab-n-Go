@@ -3,8 +3,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -24,6 +26,7 @@ import _00_init.GlobalService;
 import _01_register.model.MemberBean;
 import _01_register.model.RegisterServiceDAO;
 import _01_register.model.RegisterServiceDAO_JDBC;
+import _08_mail.controller.JavaMailUtil;
 /*
  * 本程式讀取使用者輸入資料，進行必要的資料轉換，檢查使用者輸入資料，
  * 進行Business Logic運算，依照Business Logic運算結果來挑選適當的畫面
@@ -60,6 +63,7 @@ maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet("/_01_register/register.do")
 public class RegisterServletMP extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
+	Logger lg = Logger.getLogger(RegisterServletMP.class);
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws IOException, ServletException {
@@ -165,7 +169,12 @@ public class RegisterServletMP extends HttpServlet {
 					// 將MemberBean mem立即寫入Database				
 					System.out.println("filename:" + fileName);
 					int n = rs.saveMember(mem, is, sizeInBytes, fileName);
-					if ( n == 1) {
+					int x = sendMail(email,memberID);
+					
+					if ( n == 1 ) {
+						if(x!=1){
+							lg.error("驗證信失敗");
+						}
 						response.sendRedirect("register_success.jsp");
 						return;
 					} else {
@@ -186,4 +195,27 @@ public class RegisterServletMP extends HttpServlet {
 			rd.forward(request, response);
 		}		
      }
+    
+    
+    public int  sendMail(String mailAddress,String memberID){
+    	int n = -1;
+    	String from = "grabngojava@gmail.com";
+		List<String> to = Arrays.asList(new String[]{mailAddress});
+		String subject = "歡迎加入會員";
+		String text = 
+		  "<h1>謝謝您加入會員</h1>" +
+		  "<h2>您可以按下列連結感受最新的體驗</h2>" +
+	      "<a href='http://localhost:8080/_Grab_Go/validate.do?user="+ memberID+ "'>認證信</a><br>" +
+	      "<a href='http://www.google.com'>google</a><br>" +
+          "<br><br><font color='blue'> 再次感謝, </font><br>工作小組敬上";
+		
+		JavaMailUtil  util = new JavaMailUtil(from, to, null, null, subject, text ,null);
+		if (util.send()){
+		   n=1;
+		   System.out.println("發信成功");
+		} else {
+		   System.out.println("發信失敗");
+		}
+    	return n;
+    }
 }   

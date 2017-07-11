@@ -27,7 +27,6 @@ public class UserIdcheckServlet extends HttpServlet {
 		PrintWriter out =  response.getWriter();
 		String idQuery =  request.getParameter("id");
 		
-		try {
 			RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
 			Boolean result = dao.idExists(idQuery);
 			String resultTxt = "";
@@ -40,12 +39,6 @@ public class UserIdcheckServlet extends HttpServlet {
 			Gson gs = new Gson();
 			out.print(gs.toJson(resultTxt));
 			out.flush();
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		
 	}

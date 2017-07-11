@@ -108,7 +108,7 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		if(mode==1){
 			 sql = "update Member set m_validate = 1 where m_username = ?";
 		}else if(mode==2){
-			 sql = "update Member set rest_validate = 1 where rest_id = ?";
+			 sql = "update restaurant set rest_validate = 1 where rest_id = ?";
 		}
 		try(
 				Connection conn = ds.getConnection();
@@ -136,8 +136,48 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 			}
 			
 		}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return n;
 	}
+		
+		
+		
+		public boolean isValidated(String username,int mode){
+			boolean isValid = false;
+			String sql ="";
+			ResultSet rs = null;
+			if(mode==1){
+				 sql = "select m_validate from Member where m_username = ?";
+			}else if(mode==2){
+				 sql = "select rest_validate from restaurant where rest_id = ?";
+			}
+			try(
+					Connection conn = ds.getConnection();
+					PreparedStatement pstmt1 = conn.prepareStatement(sql);
+					){
+				
+				// 使用者
+				if (mode==1) {
+					pstmt1.setString(1, username);
+					rs = pstmt1.executeQuery();
+					while(rs.next()){
+						isValid = true;
+					}
+				// 商家
+				}else if(mode==2){
+					pstmt1.setString(1, username);
+					pstmt1.setString(1, username);
+					rs = pstmt1.executeQuery();
+					while(rs.next()){
+						isValid = true;
+					}
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return isValid;
+			
+		}
 }

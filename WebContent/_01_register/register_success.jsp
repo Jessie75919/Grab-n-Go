@@ -32,7 +32,7 @@
         <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
     </div>
     <main class="login">
-        <h2>註冊成功</h2>
+        <h2>認證信已發送</h2>
         <p>我們已經寄出一封認證信至您的信箱，請點擊認證信中的連結開通您的帳號，感謝您的配合。</p>
         <div class="formBtn">
             <a href="../indexA.jsp">逛逛Grab &amp; Go</a>

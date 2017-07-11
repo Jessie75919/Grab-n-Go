@@ -85,6 +85,7 @@
                             <!--未登入用這組 end-->
                             <!--已登入用這組-->
                             <c:if test="${! empty LoginOK}">
+                           		 <input id="usrName" type="hidden" value="${LoginOK.memberId}">
                                 <li><a href="_06_member/memberA.jsp">${LoginOK.memberId}</a></li>
                                 <li><a href="logout.do">登出</a></li>
                                 <!--已登入用這組 end-->
@@ -98,6 +99,7 @@
                         <div class="memberLogin">
                             <figure> <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo"> </figure>
                             <p>
+                            	 
                                 ${LoginOK.memberId}<a href="logout.do">登出</a>
                             </p>
                         </div>
@@ -114,6 +116,7 @@
                         What do you want<br> <span class="wBig">TO EAT</span><br> <span class="wSmall">today?</span><br> <span class="wRed">今天想吃什麼</span>
                     </h1>
                     <!--main banner 輪播-->
+                        
                     <div class="banner slider wow fadeIn">
                         <div>
                             <img src="images/banner/main_banner20170610001.jpg" alt="Grab &amp; Go" title="Grab &amp; Go">
@@ -130,6 +133,13 @@
                         <h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
                             "短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? <br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
                         </h2>
+                         <div id="validMsg">
+                        	您好像還沒有認證，請盡快認證以享受Grab & Go帶給您的優質服務喔 ~<br>
+                        	或是請至您的 "個人資料" 進行認證<br>
+                        	<a href="validate.do?user="${LoginOK.memberId}>點我認證</a>
+                        	<a href="#" onclick="closePanel()">下次再說</a>
+                 </div>
+                    
                     </section>
                     <!--標語 end-->
                     <!--瀑布流-->
@@ -297,7 +307,7 @@
                 <script src="javascript/share.js"></script>
                 <!-- 取得使用者位置 -->
                 <script src="js/getUsrLocation.js"></script>
-                <script src="js/readMsg.js"></script>
+                <script src="js/indexUse.js"></script>
             </body>
 
             </html>

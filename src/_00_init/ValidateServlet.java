@@ -21,43 +21,51 @@ import _01_register.model.RegisterServiceDAO_JDBC;
 public class ValidateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Logger lg = Logger.getLogger(ValidateServlet.class);
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		String username = request.getParameter("user");
 		HttpSession session = request.getSession();
-		Map<String,String> msg = new HashMap<>();
-		String ctxPath = getServletContext().getContextPath()+"/";
-		session.setAttribute("MSG",msg);
-		if(username==null){
+		Map<String, String> msg = new HashMap<>();
+		
+		String ctxPath = getServletContext().getContextPath() + "/";
+		session.setAttribute("MSG", msg);
+		if (username == null) {
 			msg.put("getNameFail", "抓不到值");
 			lg.error("抓不到值");
 			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
 			return;
 		}
-		
-		lg.info("username : "+username);
-		
-			RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
-			if (!dao.idExists(username)) {
-				msg.put("noUser", "查無使用者");
-				lg.error("查無使用者");
-				request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
-				return;
-			}
-			
-			int n = dao.validate(username,1);
-			if(n==1){
-				response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
-				return;
-			}else{
-				msg.put("validateFail", "驗證失敗請重新驗證");
-				lg.error("驗證失敗請重新驗證");
-				response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
-				return;
-			}
-			
-			
+
+		lg.info("username : " + username);
+
+		RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
+		if (!dao.idExists(username)) {
+			msg.put("noUser", "查無使用者");
+			lg.error("查無使用者");
+			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			return;
+		}
+
+		if (dao.isValidated(username, 1)) {
+			msg.put("alreadyValid", "已經驗證過囉");
+			lg.error("已經驗證過囉");
+			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			return;
+		}
+
+		int n = dao.validate(username, 1);
+		if (n == 1) {
+			response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
+			return;
+		} else {
+			msg.put("validateFail", "驗證失敗請重新驗證");
+			lg.error("驗證失敗請重新驗證");
+			response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
+			return;
+		}
+
 	}
 
 }

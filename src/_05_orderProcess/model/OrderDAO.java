@@ -29,6 +29,7 @@ public class OrderDAO {
 	private String selectMonth;
 	String ord_status;
 	int ord_evalued;
+	private String ord_tel;
 	
 	public int getOrd_id() {
 		return ord_id;
@@ -68,6 +69,10 @@ public class OrderDAO {
 
 	public void setOrd_evalued(int ord_evalued) {
 		this.ord_evalued = ord_evalued;
+	}
+
+	public void setOrd_tel(String ord_tel) {
+		this.ord_tel = ord_tel;
 	}
 
 	public OrderDAO() {
@@ -571,21 +576,21 @@ public class OrderDAO {
 					+ " AND ord_status IN ('paid', 'fail') ";
 		String sql2 = "";
 		String sql3 = " ORDER BY ord_pickuptime DESC ";
-		if(mPickupName.length() != 0){
-			sql2 = " AND m_pickupname LIKE ? ";
+		if(ord_tel.length() != 0){
+			sql2 = " AND ord_tel = ? ";
 		}
 		String sql = sql1 + sql2 + sql3;
 		try (
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);	
 		){
-			if(mPickupName.length() == 0){
+			if(ord_tel.length() == 0){
 				stmt.setInt(1, restId);
 				stmt.setString(2, selectMonth);
 			} else{
 				stmt.setInt(1, restId);
 				stmt.setString(2, selectMonth);
-				stmt.setString(3, "%" + mPickupName + "%");
+				stmt.setString(3, ord_tel);
 			}
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){

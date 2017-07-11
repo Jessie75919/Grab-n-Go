@@ -656,7 +656,7 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getMonthlyStoreRevenue() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		String sql = " SELECT a.ord_pickuptime, SUM(a.ord_totalPrice) "
+		String sql = " SELECT DATE_FORMAT(a.ord_pickuptime, '%Y-%m-%d'), SUM(a.ord_totalPrice) "
 				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
 				   + " WHERE b.rest_username = ? AND a.ord_status = 'paid' AND a.ord_pickuptime LIKE ?"
 				   + " GROUP BY a.ord_pickuptime "
@@ -675,7 +675,7 @@ public class OrderDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				OrderBean ob = new OrderBean();
-				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+				ob.setOrd_pickuptime(rs.getTimestamp("DATE_FORMAT(a.ord_pickuptime, '%Y-%m-%d')"));
 				ob.setOrd_totalPrice(rs.getInt("SUM(a.ord_totalPrice)"));
 				coll.add(ob);
 				System.out.println(ob);

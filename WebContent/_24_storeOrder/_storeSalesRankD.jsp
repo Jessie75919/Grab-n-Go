@@ -89,6 +89,7 @@
 				</form>
 			</div>
 		</div>
+		
 	</section>
 	<!--左側列表-->
 	<section id="leftMenu" class="container"> <jsp:include
@@ -98,11 +99,8 @@
 		<div>
 			<!--<ul class="nav nav-tabs nav-justified">-->
 			<ul class="nav nav-pills nav-justified">
-<!-- 				<li role="presentation" class="active"><a href="#">餐點熱銷排行（單位：日）</a></li> -->
-<!-- 				<li role="presentation"><a href="_storeSalesRankM.jsp">餐點熱銷排行（單位：月）</a></li> -->
-				<li style="padding:5px;" role="presentation" class="active"><input class="btn btn-default btn-lg btn-block" type="button" value="餐點熱銷排行（單位：日）"></li>
-                <li style="padding:5px;" role="presentation"><input class="btn btn-primary btn-lg btn-block" type="submit" value="餐點熱銷排行（單位：月）"></li>
-				
+				<li role="presentation" class="active"><a href="#">餐點熱銷排行（單位：日）</a></li>
+				<li role="presentation"><a href="_storeSalesRankM.jsp">餐點熱銷排行（單位：月）</a></li>
 			</ul>
 		</div>
 		<!--圖表區塊, 動態產生-->
@@ -137,21 +135,7 @@
 	</div>
 	</div>
 	</section>
-	<script>
-		$(document).ready(function() {
-			$("#datepicker").datepicker({
-				dateFormat : "yy-mm-dd",
-				onSelect : function(date) {
-					alert(date);
-					getStoreSalesRankD(date);
-				}
-			});
-
-			$("#datepicker").datepicker("setDate", new Date());
-			alert($("#datepicker").val());
-			getStoreSalesRankD($("#datepicker").val());
-		});
-	</script>
+	
 	<script type="text/javascript">
 // 		var data = [ 365, 303, 281, 168, 80, 25 ];
 
@@ -163,17 +147,22 @@
 // 				}).attr("font-family", "Tahoma").attr("font-size", "20px");
 	</script>
 	<script type="text/javascript">
-		var id = ${StoreLoginOK.rest_id};
-		$("li.active").click(function(){
-			$(this).siblings().toggleClass("active");
+		$(document).ready(function() {
+			$("#datepicker").datepicker({
+				dateFormat : "yy-mm-dd",
+				onSelect : function(date) {
+					//alert(date);
+					getStoreSalesRankD(date);
+				}
+			});
+	
+			$("#datepicker").datepicker("setDate", new Date());
+			//alert($("#datepicker").val());
+			getStoreSalesRankD($("#datepicker").val());
 		});
-// 		alert(id);
+	
+		var id = ${StoreLoginOK.rest_id};
 
-// 		$(document).ready(function() {
-// 			$('#comfirm').click(function() {
-// 				alert($( "#datepicker" ).val());
-// 			});
-// 		});
 	</script>
 	<script src="../js/storeSalesRankD.js"></script>
 </body>

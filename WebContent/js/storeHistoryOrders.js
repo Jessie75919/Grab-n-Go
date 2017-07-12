@@ -1,11 +1,11 @@
 //var id = ${StoreLoginOK.rest_id};
+var table = document.getElementById("orderTable");
 //建立月份下拉選單
 var ms = document.getElementById("monthSelector");
 var d = new Date();
 var currentMonth = d.getMonth();
 var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
 		"十一月", "十二月" ];
-var table = document.getElementById("orderTable");
 for (var i = 0; i < months.length; i++) {
 	var op = document.createElement("option");
 	op.value = i;

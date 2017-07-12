@@ -22,6 +22,7 @@
 <link rel="stylesheet"
 	href="https://pingendo.github.io/templates/blank/theme.css"
 	type="text/css">
+<link href="../css_web/default.css" rel="stylesheet" type="text/css" />
 <title>Welcome to GrabAndGo</title>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -36,7 +37,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="${pageContext.request.contextPath}/indexA.jsp"><img width="30%" src="../images/share/logo.svg"></a>
+					<a href="${pageContext.request.contextPath}/indexA.jsp"><img
+						width="30%" src="../images/share/logo.svg"></a>
 				</div>
 			</div>
 		</div>
@@ -50,19 +52,23 @@
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
 							<label>Username </label> <input type="text" id="usr"
-								name="username" value="${param.username}${sessionScope.StoreUser}"
+								name="username" value="${sessionScope.StoreUser}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
 							<label>Password</label> <input type="password" id="pw"
 								name="password" class="form-control"
-								value="${param.password}${sessionScope.StorePassword}"> <span id="pwRes"
+								value="${sessionScope.StorePassword}"> <span id="pwRes"
 								style="height: 10px;"></span>
 						</div>
 						<div>
-							<font size="-1" color="FF0000"> ${ErrorMsgKey.LoginError}
-							</font>
+							<font size="-1" color="FF0000">
+								${ErrorMsgKey.LoginError}${ErrorMsgKey.validError} </font>
+							<c:if test="${!empty ErrorMsgKey.validError}">
+								<a id="resendValid"
+									href="../sendValidMail.do?mode=2&user=${sessionScope.StoreUser}">重寄認證信</a>
+							</c:if>
 						</div>
 						<!-- 機器人驗證 -->
 						<div class="form-group my-1">
@@ -83,12 +89,19 @@
 								class="btn btn-block my-1 btn-warning">Sign in</button>
 					</form>
 					<div class="btn btn-primary btn-block my-2">
-					<a style="color:#fff;text-decoration:none;"  
-					href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a></div>
+						<a style="color: #fff; text-decoration: none;"
+							href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a>
+					</div>
 				</div>
 				<div class="col-md-4 w-25"></div>
 			</div>
 		</div>
+	</div>
+	<!--loading與驗證-->
+	<div id="ttt" class="loading">
+		<div class="loadDotted"></div>
+		<div class="loadDotted"></div>
+		<div class="loadDotted"></div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script

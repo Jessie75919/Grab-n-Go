@@ -13,13 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import _00_init.GlobalService;
+import _00_init.ValidateServlet;
 import _01_Store_register.model.StoreBean;
+import _01_register.model.RegisterServiceDAO_JDBC;
 import _02_Store_login.model.StoreLoginServiceDB;
 
 @WebServlet("/_02_storeLogin/Storelogin.do")
 public class StoreLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger lg = Logger.getLogger(StoreLoginServlet.class);
 	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -99,12 +104,27 @@ public class StoreLoginServlet extends HttpServlet {
 			
 			StoreBean sb = slsdb.checkPW(userId,password);
 			
+			RegisterServiceDAO_JDBC rsdao = new RegisterServiceDAO_JDBC();
+			
+			
 			if (sb != null) {
 //				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"
 				session.setAttribute("StoreLoginOK", sb);
 			} else {
 				// NG, userid與密碼的組合錯誤，放一個錯誤訊息到 errorMsgMap 之內
 				errorMsgMap.put("LoginError", "該帳號不存在或密碼錯誤");
+				RequestDispatcher rd = request.getRequestDispatcher("StoreLogin.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			
+			if(rsdao.isValidated(userId, 2)==0){
+				errorMsgMap.put("validError", "此帳號尚未驗證");
+				lg.error("此帳號尚未驗證");
+				RequestDispatcher rd = request.getRequestDispatcher("StoreLogin.jsp");
+				rd.forward(request, response);
+				return;
+				
 			}
 			
 //

@@ -136,7 +136,7 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		if (mode == 1) {
 			sql = "select m_validate from Member where m_username = ?";
 		} else if (mode == 2) {
-			sql = "select rest_validate from restaurant where rest_id = ?";
+			sql = "select rest_validate from restaurant where rest_username = ?";
 		}
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt1 = conn.prepareStatement(sql);) {
 			pstmt1.setString(1, username);

@@ -1,8 +1,12 @@
-//function doFirst() {
-//   alert("H");
-//
-//
-//}
+
+
+$(document).ready(function () {
+	$('#ttt').hide();
+    $('#resendValid').click(function () { 
+		$('#ttt').show();
+    });
+
+});
 
 function validateForm(event) {
 
@@ -40,6 +44,3 @@ function validateForm(event) {
 }
 
 
-
-
-//window.addEventListener('load', doFirst, false);

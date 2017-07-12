@@ -15,6 +15,16 @@ function addressToLanlng(addr) {
 	});
 }
 
+
+
+$(document).ready(function () {
+	$('#ttt').hide();
+	
+});
+
+
+
+
 //----------------------------------------------------------
 var MapStatus ;
 var sendBtn = document.getElementById("holyshit");
@@ -87,7 +97,7 @@ window.onload = function () {
 }
 
 function validateForm(event) {
-
+	addressToLanlng(address.value);
 	event.preventDefault(); // this will prevent the submit event.
 	var hasErr = false;
 
@@ -173,17 +183,21 @@ function validateForm(event) {
 	if (hasErr) {
 		return false;
 	} else {
-		formA.submit();
-		console.log(account.value);
-		console.log(password.value);
-		console.log(password2.value);
-		console.log(StoreName.value);
-		console.log(address.value);
-		console.log(tel.value);
-		console.log(owner.value);
-		console.log(owner.value);
-		console.log(langitude.value);
-		console.log(langitude.value);
+		$('#ttt').show();
+		setTimeout(function() {
+			formA.submit();
+		}, 100);
+
+		// console.log(account.value);
+		// console.log(password.value);
+		// console.log(password2.value);
+		// console.log(StoreName.value);
+		// console.log(address.value);
+		// console.log(tel.value);
+		// console.log(owner.value);
+		// console.log(owner.value);
+		// console.log(langitude.value);
+		// console.log(langitude.value);
 	}
 
 

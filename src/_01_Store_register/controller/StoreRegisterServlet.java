@@ -56,6 +56,8 @@ public class StoreRegisterServlet extends HttpServlet {
 		try {
 			langitude = Float.parseFloat(request.getParameter("langitude"));
 			latitude = Float.parseFloat(request.getParameter("latitude"));
+			lg.info("langitude :" +langitude);
+			lg.info("latitude :" +latitude);
 		} catch (Exception e) {
 			System.out.println("langitude & latitude got wrong");
 			e.printStackTrace();

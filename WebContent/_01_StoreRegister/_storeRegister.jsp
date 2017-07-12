@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="../css/_signup.css" type="text/css">
+   <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <title>Welcome GrabAndGo</title>
 </head>
@@ -63,11 +64,11 @@
               </div>
               <!-- 顯示程式執行後的訊息 -->
               <div>
-                <font size="-1" color="FF0000"> ${MsgMap.InsertNG}${MsgMap.errorSaveData} </font>
+                <font size="-1" color="FF0000"> ${msgErr.InsertNG}${msgErr.errorSaveData} </font>
               </div>
               <!-- 錯誤訊息顯示 -->
               <div>
-                <font size="-1" color="#FF0000"> ${msgErr.idRepeat}${magErr.errorIDDup} </font>
+                <font size="-1" color="#FF0000"> ${msgErr.idRepeat}${msgErr.errorIDDup}</font>
               </div>
             </div>
             <div id="formRight">
@@ -127,7 +128,14 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+   <!--loading與驗證-->
+	<div id="ttt" class="loading">
+		<div class="loadDotted"></div>
+		<div class="loadDotted"></div>
+		<div class="loadDotted"></div>
+	</div>
+   <!--loading與驗證-->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
   <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
   <!-- google 機器人驗證 -->

@@ -40,12 +40,14 @@ s.attr({ 'width' : 680,'height' : 300,})
 				
 				table.innerHTML = "<tr><th>訂購日期</th><th>營業總額</th></tr>";
 				
-				for( var i = 0; i < 30 ; i++){
-					
+				//alert(monthlyOrders.length);
+				var monthDays = monthlyOrders.length;
+				var priceMax = Math.max(monthlyOrders.ord_totalPrice);
+				
+				for( var i = 0; i < monthDays ; i++){
+					console.log("date = " + monthlyOrders[i].ord_pickuptime 
+							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
 					if( monthlyOrders[i].ord_totalPrice != 0){
-						console.log("date = " + monthlyOrders[i].ord_pickuptime 
-								  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
-
 						 var tr = document.createElement("tr");
 						 var td1 = document.createElement("td");
 						 td1.textContent = monthlyOrders[i].ord_pickuptime;
@@ -80,12 +82,13 @@ s.attr({ 'width' : 680,'height' : 300,})
 //				}
 				 //---------- 折線圖
 				
+				var parseDate = d3.time.format("%Y-%m-%d").parse;
 			    //x資料的範圍
-				var scaleX = d3.scale.linear().range([ 0, width ]).domain([ 1, 30 ]); 
+				var scaleX = d3.scale.linear().range([ 0, width ]).domain([ 1, monthDays]); 
 				//Y的資料範圍
 				var scaleY = d3.scale.linear().range([ height, 0 ]).domain([ 0, 1000]); 
 				var data = [];
-				for( var j=1; j<=30; j++){
+				for( var j=1; j<=monthDays; j++){
 					data.push(
 					{ x: j,  y:monthlyOrders[j-1].ord_totalPrice}		
 					);
@@ -108,6 +111,7 @@ s.attr({ 'width' : 680,'height' : 300,})
 				.attr({
 					'd' : line(data),
 					'stroke' : '#09c',
+					'stroke-width': '2px',
 					'fill' : 'none',
 					'transform' : 'translate(35,20)' //偏移
 				});

@@ -43,8 +43,8 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 			//取得所選月份天數  
 			Calendar cal =   Calendar.getInstance();     
 			cal.set(Calendar.YEAR,Integer.valueOf(year));			//年份 
-			cal.set(Calendar.MONTH,Integer.valueOf(month)); //設定月  
-			int maxDate = cal.getActualMaximum(Calendar.DATE);//當月天數  
+			cal.set(Calendar.MONTH,Integer.valueOf(month)); 			//設定月  
+			int maxDate = cal.getActualMaximum(Calendar.DATE);		//當月天數  
 			System.out.println(maxDate);
 			int count = list.size();
 			
@@ -73,9 +73,6 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 //				ob.getOrd_pickuptime();
 //				list.add(ob);
 //			}
-			
-//			od.setRestUsername(restUsername);
-//			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			String monthlyRevenueList = new Gson().toJson(list);
 			System.out.println(monthlyRevenueList);
 			
@@ -90,11 +87,5 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
-	
-//	public static int getdaysInMonth(int month){
-//		int n = 0;
-//		
-//		return n ;
-//	}
 
 }

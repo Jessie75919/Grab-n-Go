@@ -82,7 +82,7 @@
 			<!--<ul class="nav nav-tabs nav-justified">-->
 			<ul class="nav nav-pills nav-justified">
 				<li role="presentation"><a href="_storeOrderAnalysisDay.jsp">當日訂單統計</a></li>
-				<li role="presentation" class="active"><a href="#">當月訂單統計</a></li>
+				<li role="presentation" class="active"><a href="_storeOrderAnalysisMonthly.jsp">當月訂單統計</a></li>
 				<li role="presentation"><a href="_storeOrderAnalysisYear.jsp">當年訂單統計</a></li>
 			</ul>
 		</div>

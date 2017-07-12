@@ -9,7 +9,7 @@ window.onload = function () {
     // alert('usrname=' + $('#usrName').val());
     // alert('status :' + status);
     if ($('#usrName').val() != null) {
-        $.getJSON("checkValidate.do", { user: $('#usrName').val() },
+        $.getJSON("checkValidate.do", { user: $('#usrName').val() , mode:1},
             function (data, textStatus, jqXHR) {
                 if (data == "NotValid") {
                     if (status == null) {

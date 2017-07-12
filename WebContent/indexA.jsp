@@ -140,7 +140,7 @@
                          <div id="validMsg">
                         	您好像還沒有認證，請盡快認證以享受Grab & Go帶給您的優質服務喔 ~<br>
                         	或是請至您的 "個人資料" 進行認證<br>
-                        	<a id="validBtn" href="sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
+                        	<a id="validBtn" href="sendValidMail.do?mode=1&user=${LoginOK.memberId}">點我認證</a>
                         	<a href="#" onclick="closePanel()">下次再說</a>
                 		 </div>
                     

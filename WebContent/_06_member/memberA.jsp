@@ -75,7 +75,7 @@
                     <div class="formTitle"><i class="icon-birth"></i>認證狀態</div>
                     <c:if test="${LoginOK.m_validate==0}">
 	                    <div class="formInfo">未認證 
-	                    	<a  id="validBtn" style="padding:8px;" href="../sendValidMail.do?user=${LoginOK.memberId}"> 點我認證</a>
+	                    	<a  id="validBtn" style="padding:8px;" href="../sendValidMail.do?mode=1&user=${LoginOK.memberId}"> 點我認證</a>
 	                   		<div  id="ttt" >
                     		<img alt="loading" style="width:80px;" src="../images/Spinner.gif">
                     		</div>	

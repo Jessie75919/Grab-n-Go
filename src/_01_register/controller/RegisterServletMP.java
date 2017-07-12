@@ -211,7 +211,7 @@ public class RegisterServletMP extends HttpServlet {
 	           + "font-size: 16px;'>"
 	           + "    <p>親愛的 Garb and Go 會員您好：</p> "
 	           + "     <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
-	            + "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?user=" + memberID + "''>點我驗證</a></p> "
+	            + "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?mode=1&user=" + memberID + "''>點我驗證</a></p> "
 	            + "</td> "
 	       + " </tr> "
 	       + " <tr> "

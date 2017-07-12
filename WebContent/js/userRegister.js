@@ -4,6 +4,24 @@
 var idcheck = document.getElementById("accountlink");
 var account = document.getElementById("userId");
 
+
+$(document).ready(function () {
+	$('#ttt').hide();
+});
+
+
+
+// $('#sub').on('submit', function (e) {
+	
+// });
+
+$("#sub").submit(function(e){
+	$('#ttt').show();
+  alert("Submitted");
+});
+
+
+
 idcheck.onclick = function () {
 		var applyAcc = account.value;
 		if (!applyAcc) {

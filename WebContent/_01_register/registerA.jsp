@@ -40,6 +40,9 @@
                     <span id="accountlink" class="checkBtn">檢查帳號</span>
                     <span id="midResult"></span> <span>${MsgMap.errorIDEmpty}${MsgMap.errorIDDup}</span>
                 </div>
+                <div  id="ttt" >
+                    		<img alt="loading" style="width:80px;" src="../images/Spinner.gif">
+				</div>
                 <div class="loginList">
                     <input type="password" name="pswd" id="pswd" value="${param.pswd}" placeholder="密碼*" class="validate[required] text-input">
                 </div>
@@ -70,7 +73,7 @@
                 </div>
                 <div class="loginBtn">
                     <input name="reset" type="reset" id="reset" value="重填">
-                    <input name="submit" type="submit" id="submit" value="註冊">
+                    <input name="submit" type="submit" id="sub" value="註冊">
                     <p>已有帳號? <a href="../_02_login/loginA.jsp">立即登入</a></p>
                 </div>
             </form>

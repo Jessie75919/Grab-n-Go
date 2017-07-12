@@ -27,7 +27,7 @@ public class SendValidMail extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		lg.info("hihi");
-		
+		String modeStr = request.getParameter("mode");
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		String username = request.getParameter("user");
 		String ctxPath = getServletContext().getContextPath() + "/";
@@ -45,6 +45,13 @@ public class SendValidMail extends HttpServlet {
 			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
 			return;
 		}
+		if (modeStr == null) {
+			lg.error("抓不到值");
+			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			return;
+		}
+		
+		int mode = Integer.parseInt(modeStr);
 
 		if (dao.isValidated(username, 1) == 1) {
 			lg.error("已經驗證過囉");
@@ -57,7 +64,7 @@ public class SendValidMail extends HttpServlet {
 			LoginServiceDB lsdb = new LoginServiceDB();
 			mb = lsdb.getMemberFromId(username);
 			lg.info("mail = "+mb.getEmail());
-			int x = sendMail(mb.getEmail(),username);
+			int x = sendMail(mb.getEmail(),username,mode);
 			
 			if(x!=1){
 				lg.error("驗證信失敗");
@@ -78,7 +85,7 @@ public class SendValidMail extends HttpServlet {
 	
 	
 
-	public int sendMail(String mailAddress, String memberID) {
+	public int sendMail(String mailAddress, String memberID,int mode) {
 		int n = -1;
 		String from = "grabngojava@gmail.com";
 		List<String> to = Arrays.asList(new String[] { mailAddress });
@@ -92,7 +99,7 @@ public class SendValidMail extends HttpServlet {
            + "font-size: 16px;'>"
            + "    <p>親愛的 Garb and Go 會員您好：</p> "
            + "     <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
-            + "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?user=" + memberID + "''>點我驗證</a></p> "
+            + "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?mode="+mode+"&user=" + memberID + "''>點我驗證</a></p> "
             + "</td> "
        + " </tr> "
        + " <tr> "

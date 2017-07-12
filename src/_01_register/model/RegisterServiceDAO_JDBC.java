@@ -14,7 +14,7 @@ import _02_login.model.*;
 
 public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 	Logger lg = Logger.getLogger(ValidateServlet.class);
-	
+
 	private List<MemberBean> memberList;
 	LoginServiceDB lsdb;
 	private DataSource ds = null;
@@ -42,20 +42,18 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		return exist;
 	}
 
-	synchronized public int saveMember(MemberBean mb, InputStream is,
-			long size, String filename) throws SQLException {
+	synchronized public int saveMember(MemberBean mb, InputStream is, long size, String filename) throws SQLException {
 		PreparedStatement pstmt1 = null;
 		Connection conn = ds.getConnection();
 		int r = 0;
 		try {
 			String sql1 = "insert into Member "
 					+ " (m_username, m_password, m_name, m_phone, m_email, m_address, m_birthday, "
-					+ " m_picture, m_fileName,m_validate) "
-					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+					+ " m_picture, m_fileName,m_validate) " + " values (?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 			pstmt1 = conn.prepareStatement(sql1);
 			pstmt1.setString(1, mb.getMemberId());
-			
+
 			String encrypedString = GlobalService.encryptString(mb.getPassword());
 			pstmt1.setString(2, GlobalService.getMD5Endocing(encrypedString));
 			pstmt1.setString(3, mb.getName());
@@ -63,10 +61,10 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 			pstmt1.setString(5, mb.getEmail());
 			pstmt1.setString(6, mb.getAddress());
 			pstmt1.setDate(7, mb.getBirthday());
-//			java.sql.Timestamp now = new java.sql.Timestamp(
-//					System.currentTimeMillis());
-//			pstmt1.setTimestamp(9, now);
-//			pstmt1.setDouble(10, mb.totalAmt);
+			// java.sql.Timestamp now = new java.sql.Timestamp(
+			// System.currentTimeMillis());
+			// pstmt1.setTimestamp(9, now);
+			// pstmt1.setDouble(10, mb.totalAmt);
 			// 設定Image欄位
 			// pstmt1.setBlob(11, is, size); // 此方法目前未支援
 			pstmt1.setBinaryStream(8, is, size);
@@ -101,80 +99,53 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		}
 		return r;
 	}
-	
-	public int validate(String username,int mode){
-		int n =-1;
-		String sql ="";
-		if(mode==1){
-			 sql = "update Member set m_validate = 1 where m_username = ?";
-		}else if(mode==2){
-			 sql = "update restaurant set rest_validate = 1 where rest_id = ?";
+
+	public int validate(String username, int mode) {
+		int n = -1;
+		String sql = "";
+		if (mode == 1) {
+			sql = "update Member set m_validate = 1 where m_username = ?";
+		} else if (mode == 2) {
+			sql = "update restaurant set rest_validate = 1 where rest_id = ?";
 		}
-		try(
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt1 = conn.prepareStatement(sql);
-				){
-			
-			// 使用者
-			if (mode==1) {
-				pstmt1.setString(1, username);
-				n = pstmt1.executeUpdate();
-				if (n == 1) {
-					lg.info("驗證成功");
-				} else {
-					lg.error("驗證失敗");
-				} 
-			// 商家
-			}else if(mode==2){
-				pstmt1.setString(1, username);
-				n = pstmt1.executeUpdate();
-				if (n == 1) {
-					lg.info("驗證成功");
-				} else {
-					lg.error("驗證失敗");
-				} 
+		try (Connection conn = ds.getConnection(); PreparedStatement pstmt1 = conn.prepareStatement(sql);) {
+
+			pstmt1.setString(1, username);
+			n = pstmt1.executeUpdate();
+
+			if (n == 1) {
+				lg.info("驗證成功");
+			} else {
+				lg.error("驗證失敗");
 			}
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return n;
 	}
-		
-		
-		
-		public int isValidated(String username,int mode){
-			int isValid = 0;
-			String sql ="";
-			ResultSet rs = null;
-			if(mode==1){
-				 sql = "select m_validate from Member where m_username = ?";
-			}else if(mode==2){
-				 sql = "select rest_validate from restaurant where rest_id = ?";
-			}
-			try(
-					Connection conn = ds.getConnection();
-					PreparedStatement pstmt1 = conn.prepareStatement(sql);
-					){
-				pstmt1.setString(1, username);
-				rs = pstmt1.executeQuery();
-				
-				// 使用者
-				if (mode==1) {
-					while(rs.next()){
-						isValid = rs.getInt("m_validate");
-					}
-				// 商家
-				}else if(mode==2){
-					while(rs.next()){
-						isValid = rs.getInt("rest_validate");
-					}
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			lg.info("isValid = "+isValid);
-			return isValid;
-			
+
+	public int isValidated(String username, int mode) {
+		int isValid = 0;
+		String sql = "";
+		ResultSet rs = null;
+		if (mode == 1) {
+			sql = "select m_validate from Member where m_username = ?";
+		} else if (mode == 2) {
+			sql = "select rest_validate from restaurant where rest_id = ?";
 		}
+		try (Connection conn = ds.getConnection(); PreparedStatement pstmt1 = conn.prepareStatement(sql);) {
+			pstmt1.setString(1, username);
+			rs = pstmt1.executeQuery();
+
+			while (rs.next()) {
+				isValid = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		lg.info("isValid = " + isValid);
+		return isValid;
+
+	}
 }

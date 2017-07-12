@@ -48,24 +48,28 @@ public class ValidateServlet extends HttpServlet {
 		lg.info("username : " + username);
 		lg.info("mode : " + mode);
 		int modeNum = Integer.parseInt(mode);
-		
-
-		RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
-		if (!dao.idExists(username)) {
-			msg.put("noUser", "查無使用者");
-			lg.error("查無使用者");
-			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
-			return;
+		int n = 0;
+		if(modeNum==1){
+			RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
+			if (!dao.idExists(username)) {
+				msg.put("noUser", "查無使用者");
+				lg.error("查無使用者");
+				request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+				return;
+			}
+			
+			if (dao.isValidated(username, modeNum)==1) {
+				msg.put("alreadyValid", "已經驗證過囉");
+				lg.error("已經驗證過囉");
+				request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+				return;
+			}
+			
+			n = dao.validate(username, modeNum);
+		}else if(modeNum==2){
+			
+			
 		}
-
-		if (dao.isValidated(username, modeNum)==1) {
-			msg.put("alreadyValid", "已經驗證過囉");
-			lg.error("已經驗證過囉");
-			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
-			return;
-		}
-
-		int n = dao.validate(username, modeNum);
 		if (n == 1) {
 			if(modeNum==1){
 				response.sendRedirect(response.encodeRedirectURL(ctxPath + "_01_register/valid_success.jsp"));

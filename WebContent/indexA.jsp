@@ -266,6 +266,11 @@
                         <div class="loadDotted"></div>
                         <div class="loadDotted"></div>
                     </div>
+                    <div id="loading" class="loading">
+                        <div class="loadDotted"></div>
+                        <div class="loadDotted"></div>
+                        <div class="loadDotted"></div>
+                    </div>
                     <div id="validMsg">
                         您好像還沒有認證，請盡快認證以享受Grab & Go帶給您的優質服務喔 ~<br> 或是請至您的 "個人資料" 進行認證<br>
                         <a id="validBtn" href="sendValidMail.do?mode=1&user=${LoginOK.memberId}">點我認證</a>
@@ -308,6 +313,13 @@
                                 percentPosition: true,
                             });
                         });
+
+                    </script>
+                    <!--loading js-->
+                    <script>
+                        $(window).load(function() {
+                            $("#loading").fadeOut(500);
+                        })
 
                     </script>
                     <!--share js-->

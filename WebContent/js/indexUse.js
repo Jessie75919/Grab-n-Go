@@ -26,7 +26,7 @@ window.onload = function () {
                             "left": "50%",
                             "border-radius": "5px",
                             "margin-left": "-300px",
-                            "z-index": "99999"
+                            "z-index": "9999"
                         }).fadeIn();
                         $('#validMsg a').css({
                             "text-decoration": "none",

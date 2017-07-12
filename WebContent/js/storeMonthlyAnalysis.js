@@ -29,7 +29,7 @@ s.attr({ 'width' : 680,'height' : 300,})
 		alert("年份: " + year);
 		
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + ms.value,true);
+		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + ms.value + "&year=" + year,true);
 		xhr.send();
 		xhr.onreadystatechange = function(){
 			if( xhr.readyState == 4 && xhr.status == 200){
@@ -42,23 +42,24 @@ s.attr({ 'width' : 680,'height' : 300,})
 				
 				for( var i = 0; i < 30 ; i++){
 					
-					if( monthlyOrders[i] == null){
+					if( monthlyOrders[i].ord_totalPrice != 0){
+						console.log("date = " + monthlyOrders[i].ord_pickuptime 
+								  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
+
+						 var tr = document.createElement("tr");
+						 var td1 = document.createElement("td");
+						 td1.textContent = monthlyOrders[i].ord_pickuptime;
+						 
+						 var td2 = document.createElement("td");
+						 td2.textContent = "$" + monthlyOrders[i].ord_totalPrice;
+						 
+						 tr.appendChild(td1);
+						 tr.appendChild(td2);
+						 
+						 table.appendChild(tr);
 					}
 					
-					   console.log("date = " + monthlyOrders[i].ord_pickuptime 
-							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
-
-					 var tr = document.createElement("tr");
-					 var td1 = document.createElement("td");
-					 td1.textContent = monthlyOrders[i].ord_pickuptime;
-					 
-					 var td2 = document.createElement("td");
-					 td2.textContent = "$" + monthlyOrders[i].ord_totalPrice;
-					 
-					 tr.appendChild(td1);
-					 tr.appendChild(td2);
-					 
-					 table.appendChild(tr);
+					   
 				}
 //				for( var i = 0; i < monthlyOrders.length; i++){
 //					

@@ -3,6 +3,7 @@ package _05_orderProcess.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -30,31 +31,51 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 		System.out.println("欲查詢的商家：" + restUsername);
 		String month = request.getParameter("month");
 		System.out.println("欲查詢的月份: " + month + "+1");
+		String year = request.getParameter("year");
+		System.out.println("欲查詢的年份：" + year);
 		
 		try {
 			OrderDAO od = new OrderDAO();
 			od.setRestUsername(restUsername);
-			od.setMonthSelect(month);
+			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
 			
+			//取得所選月份天數  
+			Calendar cal =   Calendar.getInstance();     
+			cal.set(Calendar.YEAR,Integer.valueOf(year));			//年份 
+			cal.set(Calendar.MONTH,Integer.valueOf(month)); //設定月  
+			int maxDate = cal.getActualMaximum(Calendar.DATE);//當月天數  
+			System.out.println(maxDate);
 			int count = list.size();
-			for(int i=0;i<(30-count);i++){
-				OrderBean ob = new OrderBean();
-				Timestamp ts = new Timestamp(System.currentTimeMillis()); 
-				String tsStr = "2017-06-09 11:49:45";  
-			        try {  
-			            ts = Timestamp.valueOf(tsStr);  
-			            System.out.println(ts);  
-			        } catch (Exception e) {  
-			            e.printStackTrace();  
-			        }  
-				
-				ob.setOrd_pickuptime(ts);
-				list.add(ob);
-			}
 			
-			od.setRestUsername(restUsername);
-			od.setMonth(Integer.parseInt(month.trim()) + 1);
+			for(int i=0; i<maxDate-count; i++){
+				OrderBean ob = new OrderBean();
+				if( ob.getOrd_totalPrice() == 0 ){
+					ob.getOrd_pickuptime();
+				}
+				ob.getOrd_pickuptime();
+				list.add(ob);
+				
+			}
+
+//			for(int i=0;i<(maxDate-count);i++){
+//				OrderBean ob = new OrderBean();
+////				Timestamp ts = new Timestamp(System.currentTimeMillis()); 
+////				//String tsStr = "";  
+////				//ob.setOrd_totalPrice(0);
+////			        try {  
+////			            ts = Timestamp.valueOf(String.valueOf(maxDate));  
+////			            System.out.println(ts);  
+////			        } catch (Exception e) {  
+////			            e.printStackTrace();  
+////			        }  
+//				
+//				ob.getOrd_pickuptime();
+//				list.add(ob);
+//			}
+			
+//			od.setRestUsername(restUsername);
+//			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			String monthlyRevenueList = new Gson().toJson(list);
 			System.out.println(monthlyRevenueList);
 			
@@ -69,5 +90,11 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
+	
+//	public static int getdaysInMonth(int month){
+//		int n = 0;
+//		
+//		return n ;
+//	}
 
 }

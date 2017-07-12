@@ -69,7 +69,7 @@
                     上傳個人照片 <input type="file" name="file1" id="file1">
                 </div>
                 <div class="loginList">
-                    <input type="checkbox">我同意<a href="#">隱私權政策</a>與<a href="#">服務條款</a>!
+                    <input type="checkbox">我同意<a id="helper" href="#">隱私權政策</a>與<a href="#">服務條款</a>!
                 </div>
                 <div class="loginBtn">
                     <input name="reset" type="reset" id="reset" value="重填">

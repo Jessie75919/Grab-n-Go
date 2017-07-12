@@ -75,14 +75,12 @@ public class StoreLoginServiceDB {
 	}
 	
 	
-	private void getStoreById() {
-		String sql = "select * from restaurant";
-		
+	private StoreBean getStoreById(int rest_id) {
+		String sql = "select * from restaurant where rest_id = ?";
+		StoreBean sb = null;
 		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
-			
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
-				int rest_id = rs.getInt("rest_id");
 				String rest_type = rs.getString("rest_type");
 				String rest_name = rs.getString("rest_name");
 				String rest_branch = rs.getString("rest_branch");
@@ -99,20 +97,17 @@ public class StoreLoginServiceDB {
 				Blob rest_logo = rs.getBlob("rest_logo");
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
 				
-				StoreBean sb = new StoreBean(rest_id, rest_type, rest_name, rest_branch, rest_address, rest_phone,
+				sb = new StoreBean(rest_id, rest_type, rest_name, rest_branch, rest_address, rest_phone,
 						rest_owner, rest_email, rest_username, rest_password, rest_url, rest_longitude, rest_latitude,
 						rest_mainbanner, rest_logo, rest_coverimage);
-				
-				storeList.add(sb);
 				
 			}
 			
 		} catch (Exception e) {
 			System.out.println("populateStoreList() gots wrong");
-			System.out.println(e.getMessage());;
 			e.printStackTrace();
 		}
-		
+		return sb;
 	}
 
 	public List<StoreBean> getAllStoreList() {

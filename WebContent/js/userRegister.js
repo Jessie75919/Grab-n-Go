@@ -7,17 +7,23 @@ var account = document.getElementById("userId");
 
 $(document).ready(function () {
 	$('#ttt').hide();
+	$("form").submit(function (e) {
+		$('#ttt').show();
+		// alert("Submitted");
+	});
 });
 
 
 
-// $('#sub').on('submit', function (e) {
-	
-// });
-
-$("#sub").submit(function(e){
-	$('#ttt').show();
-  alert("Submitted");
+$('#helper').click(function () { 
+	$('#userId').val("GrabnGo");
+	$('#pswd').val("1111");
+	$('#password2').val("1111");
+	$('#name').val("LuLuMi");
+	$('#address').val("台北科技大學-光華館");
+	$('#tel').val("0911123456");
+	$('#eMail').val("javazh005@gmail.com");
+	$('#birthday').val("1986-07-26");
 });
 
 

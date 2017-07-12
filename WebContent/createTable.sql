@@ -35,7 +35,7 @@ CREATE TABLE member (
 	m_address VARCHAR(50),
 	m_birthday DATE,
 	m_picture LONGBLOB ,
-	m_filename VARCHAR(15) ,
+	m_filename VARCHAR(100) ,
 	m_validate BOOLEAN NOT NULL
 	
 	

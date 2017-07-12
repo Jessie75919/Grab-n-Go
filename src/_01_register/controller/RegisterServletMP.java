@@ -125,8 +125,9 @@ public class RegisterServletMP extends HttpServlet {
 						is = p.getInputStream();
 					} else {
 						//errorMsg.put("errorPicture", "必須挑選圖片檔");
-						String path = "/images/restImage/test_coverImg.jpg";
+						String path = "/images/restImage/test_coverImg.JPG";
 						String realPath = getServletContext().getRealPath(path);
+						lg.info(realPath);
 						File file = new File(realPath);
 						fileName = file.getName();
 						is = new FileInputStream(file);

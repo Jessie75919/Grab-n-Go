@@ -1,116 +1,77 @@
-var container = document.getElementById("container");
+// var container = document.getElementById("container");
 
-var lat = 0;
-var lng = 0;
+// var lat = 0;
+// var lng = 0;
 
-window.onload = function () {
-
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition
-            (successFunction, errorFunction);
-    }
-
-    //Get latitude and longitude;
-    function successFunction(position) {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-
-        //  alert("in successFunction");
-        setCookie("lat", lat);
-        setCookie("lng", lng);
-        //  alert("lat" + lat + ",  long" + long);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "SaveLocation.do?latitude=" + lat
-            + "&longitude=" + lng, false);
-        xhr.send();
-
-        // window.location.replace("indexA.jsp");
+// window.onload = function () {
 
 
-        /*
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var storeList = JSON.parse(xhr.responseText);
-                    console.log(storeList);
-                    //  alert(storeList[0].rest_name);
-    
-                     for(var i=0;i<storeList.length;i++){
-                        createStoreList(storeList[i]);
-                     }
-    
-                }
-    
-            }
-        */
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition
+//             (successFunction, errorFunction);
+//     }
 
-        localStorage['authorizedGeoLocation'] = 1;
-    }
+//     //Get latitude and longitude;
+//     function successFunction(position) {
+//         lat = position.coords.latitude;
+//         lng = position.coords.longitude;
 
-    function errorFunction() {
-        localStorage['authorizedGeoLocation'] = 0;
-        // alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
+//         //  alert("in successFunction");
+//         setCookie("lat", lat);
+//         setCookie("lng", lng);
+//         //  alert("lat" + lat + ",  long" + long);
 
-        delete_cookie('lat');
-        delete_cookie('lng');
+//         var xhr = new XMLHttpRequest();
+//         xhr.open("GET", "SaveLocation.do?latitude=" + lat
+//             + "&longitude=" + lng, false);
+//         xhr.send();
 
 
-        /* 
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "SaveLocation.do?latitude=" + lat
-            + "&longitude=" + long, true);
-        xhr.send();
-        
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var storeList = JSON.parse(xhr.responseText);
-                console.log(storeList);
-                //  alert(storeList[0].rest_name);
+//         localStorage['authorizedGeoLocation'] = 1;
+//     }
 
-                 for(var i=0;i<storeList.length;i++){
-                    createStoreList(storeList[i]);
-                 }
+//     function errorFunction() {
+//         localStorage['authorizedGeoLocation'] = 0;
+//         // alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
 
-            }
+//         delete_cookie('lat');
+//         delete_cookie('lng');
 
-        }
-        */
-    }
+//     }
 
 
-    var delete_cookie = function (name) {
-        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    };
+//     var delete_cookie = function (name) {
+//         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+//     };
 
 
-    function checkauthorizedGeoLocation() { // you can use this function to know if geoLocation was previously allowed
-        if (typeof localStorage['authorizedGeoLocation'] == "undefined" || localStorage['authorizedGeoLocation'] == "0")
-            return false;
-        else
-            return true;
-    }
+//     function checkauthorizedGeoLocation() { // you can use this function to know if geoLocation was previously allowed
+//         if (typeof localStorage['authorizedGeoLocation'] == "undefined" || localStorage['authorizedGeoLocation'] == "0")
+//             return false;
+//         else
+//             return true;
+//     }
 
 
-}
+// }
 
-function setCookie(name, value) {
-    var cookieName = name;
-    if (document.cookie.indexOf(cookieName) >= 0) {
-        var expD = new Date();
-        expD.setTime(expD.getTime() + (-1 * 24 * 60 * 60 * 1000));
-        var uexpires = "expires=" + expD.toUTCString();
-        document.cookie = cookieName + "=" + value + "; " + uexpires;
-    }
-    /*第二段*/
-    //設定cookie值
-    var d = new Date();
-    var exdays = 7;
-    //可以自行修改此段，將過期週期設為符合需求的格式
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cookieName + "=" + value + "; " + expires;
-}
+// function setCookie(name, value) {
+//     var cookieName = name;
+//     if (document.cookie.indexOf(cookieName) >= 0) {
+//         var expD = new Date();
+//         expD.setTime(expD.getTime() + (-1 * 24 * 60 * 60 * 1000));
+//         var uexpires = "expires=" + expD.toUTCString();
+//         document.cookie = cookieName + "=" + value + "; " + uexpires;
+//     }
+//     /*第二段*/
+//     //設定cookie值
+//     var d = new Date();
+//     var exdays = 7;
+//     //可以自行修改此段，將過期週期設為符合需求的格式
+//     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+//     var expires = "expires=" + d.toUTCString();
+//     document.cookie = cookieName + "=" + value + "; " + expires;
+// }
 
 
 

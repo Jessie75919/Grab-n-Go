@@ -134,10 +134,13 @@
                         <h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">
                             "短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? <br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"<br>
                         </h2>
+                    	<div  id="ttt" >
+                    		<img alt="loading" style="width:80px;" src="images/Spinner.gif">
+                    	</div>
                          <div id="validMsg">
                         	您好像還沒有認證，請盡快認證以享受Grab & Go帶給您的優質服務喔 ~<br>
                         	或是請至您的 "個人資料" 進行認證<br>
-                        	<a href="sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
+                        	<a id="validBtn" href="sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
                         	<a href="#" onclick="closePanel()">下次再說</a>
                 		 </div>
                     

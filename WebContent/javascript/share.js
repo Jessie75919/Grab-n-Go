@@ -46,7 +46,7 @@ $(window).load(function () {
         $('.search').fadeOut();
         return false;
     });
-    
+
     /*訊息*/
     $('.msgItem').click(function () {
         $('.massage').fadeIn();
@@ -56,17 +56,17 @@ $(window).load(function () {
         $('.massage').fadeOut();
         return false;
     });
-    
+
     /*評價*/
     $('.order.rate a').click(function () {
-    	$('.rating').fadeIn();
-    	return false;
+        $('.rating').fadeIn();
+        return false;
     });
     $('.closeBtn, .searchBg').click(function () {
-    	$('.rating').fadeOut();
-    	return false;
+        $('.rating').fadeOut();
+        return false;
     });
-    
+
     /*店家訂購內容*/
     $('.storeMenuList .mask, .storeMenuList .storeMenuName a').click(function () {
         $('.menuDetail').fadeIn();
@@ -76,7 +76,30 @@ $(window).load(function () {
         $('.menuDetail').fadeOut();
         return false;
     });
-    
+
+    /*轉盤*/
+    $('.zoomBtn').click(function () {
+        $('.circleArea').css({
+            "z-index": "9999",
+            "backgroundColor": "rgba(255, 255, 255, 0.7)",
+        })
+        $('.circleContent').animate({
+            "width": "600px",
+            "height": "600px",
+            "border-radius": "50%",
+            "top": "50%",
+            "margin-left": "-300px",
+            "margin-top": "-300px",
+        })
+    })
+
+
+
+
+
+
+
+
     /*animation*/
     new WOW().init();
 })
@@ -87,5 +110,5 @@ $(document).ready(function () {
     $(".formcontent").validationEngine("attach", {
         promptPosition: "topLeft"
     });
-    
+
 });

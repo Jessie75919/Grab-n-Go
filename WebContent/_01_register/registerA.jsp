@@ -40,9 +40,6 @@
                     <span id="accountlink" class="checkBtn">檢查帳號</span>
                     <span id="midResult"></span> <span>${MsgMap.errorIDEmpty}${MsgMap.errorIDDup}</span>
                 </div>
-                <div  id="ttt" >
-                    		<img alt="loading" style="width:80px;" src="../images/Spinner.gif">
-				</div>
                 <div class="loginList">
                     <input type="password" name="pswd" id="pswd" value="${param.pswd}" placeholder="密碼*" class="validate[required] text-input">
                 </div>
@@ -78,6 +75,13 @@
                 </div>
             </form>
         </main>
+        <!--loading-->
+        <div id="ttt" class="loading">
+            <div class="loadDotted"></div>
+            <div class="loadDotted"></div>
+            <div class="loadDotted"></div>
+        </div>
+        <!--loading end-->
         <footer>
             <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
         <!--main js-->

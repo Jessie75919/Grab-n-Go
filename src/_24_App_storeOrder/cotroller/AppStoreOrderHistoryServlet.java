@@ -1,4 +1,4 @@
-package _24_App_storeOrder;
+package _24_App_storeOrder.cotroller;
 
 import java.io.BufferedReader;
 import java.io.IOException;

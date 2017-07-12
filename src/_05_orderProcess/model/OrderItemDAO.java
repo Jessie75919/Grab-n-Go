@@ -19,9 +19,9 @@ import _00_init.GlobalService;
 public class OrderItemDAO {
 	private DataSource ds;
 	private int ord_id;
-	private int rest_id;
 	private String restUsername;
 	private String ordPickuptime;
+	private int rest_id;
 
 	public void setOrd_id(int ord_id) {
 		this.ord_id = ord_id;
@@ -97,7 +97,7 @@ public class OrderItemDAO {
 	public List<OrderItemBean> getOrdersItemDataForApp(int rest_id ,String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
-		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
+		String sql1 = " SELECT a.prod_id, a.item_name, a.item_price, SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
@@ -124,7 +124,7 @@ public class OrderItemDAO {
 			while (rs.next()) {
 				int prod_id = rs.getInt("a.prod_id");
 				String item_name = rs.getString("a.item_name");
-				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_price_sum = rs.getInt("a.item_price");
 				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
 				String s = "";
 				if (interval.equals("daily")){
@@ -146,7 +146,7 @@ public class OrderItemDAO {
 	public List<OrderItemBean> getOrdersRevenueDataForApp(int rest_id ,String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
-		String sql1 = " SELECT SUM(a.item_price), SUM(a.item_amount) ";
+		String sql1 = " SELECT SUM(a.item_price* a.item_amount) subtotal, SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
@@ -169,7 +169,7 @@ public class OrderItemDAO {
 			stmt.setInt(1, rest_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_price_sum = rs.getInt("subtotal");
 				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
 				String s = "";
 				if (interval.equals("monthly")){
@@ -189,14 +189,14 @@ public class OrderItemDAO {
 	public List<OrderItemBean> getSalesChartsForApp(int rest_id, String interval) {
 		List<OrderItemBean> list = new ArrayList<>();
 		OrderItemBean oib = null;
-		String sql1 = " SELECT a.prod_id, a.item_name, SUM(a.item_price), SUM(a.item_amount) ";
+		String sql1 = " SELECT a.prod_id, a.item_name, a.item_price, SUM(a.item_amount) ";
 		String sql2 = "";
 		String sql3 = " FROM order01 b JOIN order_item a ON a.ord_id = b.ord_id "
 					+ " JOIN restaurant r ON b.rest_id = r.rest_id "
 					+ " WHERE r.rest_id = ? AND b.ord_status = 'paid' "
 					+ " GROUP BY a.prod_id ";
 		String sql4 = "";
-		String sql5 = " ORDER BY 3 DESC ; ";
+		String sql5 = " ORDER BY ( a.item_price * SUM(a.item_amount) ) DESC ; ";
 		if (interval.equals("daily")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c-%e') daily ";
 			sql4 = " , daily  ";
@@ -217,7 +217,7 @@ public class OrderItemDAO {
 			while (rs.next()) {
 				int prod_id = rs.getInt("a.prod_id");
 				String item_name = rs.getString("a.item_name");
-				int item_price_sum = rs.getInt("SUM(a.item_price)");
+				int item_price_sum = rs.getInt("a.item_price");
 				int item_amount_sum = rs.getInt("SUM(a.item_amount)");
 				String s = "";
 				if (interval.equals("daily")){
@@ -380,6 +380,4 @@ public class OrderItemDAO {
 		}		
 		return coll;
 	}
-	
-	
 }

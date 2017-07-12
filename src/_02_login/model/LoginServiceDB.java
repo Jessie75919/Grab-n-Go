@@ -46,9 +46,52 @@ public class LoginServiceDB implements LoginServiceDAO {
 				Date birthday = rs.getDate("m_birthday");
 				Blob userImage = rs.getBlob("m_picture");
 				String filename = rs.getString("m_filename").trim();
+				int m_validate = rs.getInt("m_validate");
 				mb = new MemberBean
 						(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb.setM_validate(m_validate);
 
+			}
+		} finally {
+			if (rs != null) {
+				rs.close();
+			}
+			if (connection != null) {
+				connection.close();
+			}
+		}
+		return mb;
+	}
+	
+	
+	
+	public MemberBean getMemberFromId(String user) throws SQLException {
+		String sql = "SELECT * From member where m_username = ?";
+		Connection connection = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		MemberBean mb = null;
+		try {
+			connection = ds.getConnection();
+			pStmt = connection.prepareStatement(sql);
+			pStmt.setString(1, user);
+			rs = pStmt.executeQuery();
+			
+			if (rs.next()) {
+				String id = rs.getString("m_username").trim(); 
+				// 必須確定rs.getString("memberID") not null
+				String pswd = rs.getString("m_password").trim();
+				String name = rs.getString("m_name").trim();
+				String phone = rs.getString("m_phone").trim();
+				String email = rs.getString("m_email").trim();
+				String addr = rs.getString("m_address").trim();
+				Date birthday = rs.getDate("m_birthday");
+				Blob userImage = rs.getBlob("m_picture");
+				String filename = rs.getString("m_filename").trim();
+				int m_validate = rs.getInt("m_validate");
+				mb = new MemberBean
+						(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb.setM_validate(m_validate);
 			}
 		} finally {
 			if (rs != null) {
@@ -81,7 +124,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 				Date birthday = rs.getDate("m_birthday");
 				Blob userImage = rs.getBlob("m_picture");
 				String filename = rs.getString("m_filename").trim();
+				int m_validate = rs.getInt("m_validate");
 				MemberBean mb = new MemberBean(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb.setM_validate(m_validate);
 				memberList.add(mb);
 			}
 		} finally {

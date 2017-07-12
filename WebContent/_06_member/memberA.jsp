@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,6 +70,17 @@
                 <div class="formList">
                     <div class="formTitle"><i class="icon-birth"></i>生日</div>
                     <div class="formInfo">${LoginOK.birthday}</div>
+                </div>
+                <div class="formList">
+                    <div class="formTitle"><i class="icon-birth"></i>認證狀態</div>
+                    <c:if test="${LoginOK.m_validate==0}">
+	                    <div class="formInfo">未認證 
+	                    	<a style="padding:8px;" href="../sendValidMail.do?user=${LoginOK.memberId}"> 點我認證</a>
+	                    </div>
+                    </c:if>
+                    <c:if test="${LoginOK.m_validate==1}">
+	                    <div class="formInfo">已認證</div>
+                    </c:if>
                 </div>
             </div>
             </div>

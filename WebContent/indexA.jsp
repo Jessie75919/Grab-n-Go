@@ -7,8 +7,9 @@
             <jsp:useBean id="SYSTEM" class="_00_init.GlobalService" scope="application" />
             <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
             <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
+             <c:if test="${! empty LoginOK}">
             <jsp:useBean id="notif" class="_09_notification.model.NotificationDAO" scope="session" />
-
+			</c:if>
 
             <html>
 
@@ -136,7 +137,7 @@
                          <div id="validMsg">
                         	您好像還沒有認證，請盡快認證以享受Grab & Go帶給您的優質服務喔 ~<br>
                         	或是請至您的 "個人資料" 進行認證<br>
-                        	<a href="validate.do?user="${LoginOK.memberId}>點我認證</a>
+                        	<a href="sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
                         	<a href="#" onclick="closePanel()">下次再說</a>
                  </div>
                     
@@ -231,6 +232,7 @@
                 </div>
                 <!--搜尋 end-->
                <!--站內訊息-->
+                  <c:if test="${!empty LoginOK}">
                 <div class="massage">
                     <div class="searchBg"></div>
                     <section class="searchContent">
@@ -260,7 +262,7 @@
                             </div>
                         </div>
                         </c:forEach>
-                        
+                        </c:if>
                         <!--訊息列表 最多5則 end-->
                     </section>
                 </div>

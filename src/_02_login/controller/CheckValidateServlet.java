@@ -38,7 +38,7 @@ public class CheckValidateServlet extends HttpServlet {
 		RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
 
 		try(PrintWriter out = response.getWriter();){
-			if (dao.isValidated(username, 1)) {
+			if (dao.isValidated(username, 1)==0) {
 				String msg = new Gson().toJson("NotValid");
 				out.write(msg);
 				out.flush();

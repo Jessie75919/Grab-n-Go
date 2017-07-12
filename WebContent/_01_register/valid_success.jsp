@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>認證信已發送-Grab &amp; Go</title>
+    <title>認證已成功-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -32,11 +32,11 @@
         <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
     </div>
     <main class="login">
-        <h2>認證信已發送</h2>
-        <p>我們已經寄出一封認證信至您的信箱，請點擊認證信中的連結開通您的帳號，感謝您的配合。</p>
+        <h2>認證成功囉!!</h2>
+        <p style="text-align:center;">感謝您進行認證，認證已經成功囉。<br>
+        	趕快進來享受Grab & Go的優質服務吧。</p>
         <div class="formBtn">
-            <a href="../indexA.jsp">逛逛Grab &amp; Go</a>
-<!--             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=email@domain.com">到信箱收信</a> -->
+            <a href="../indexA.jsp">進入Grab &amp; Go</a>
         </div>
     </main>
     <footer>

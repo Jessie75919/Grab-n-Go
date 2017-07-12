@@ -48,7 +48,7 @@ public class ValidateServlet extends HttpServlet {
 			return;
 		}
 
-		if (dao.isValidated(username, 1)) {
+		if (dao.isValidated(username, 1)==1) {
 			msg.put("alreadyValid", "已經驗證過囉");
 			lg.error("已經驗證過囉");
 			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
@@ -57,7 +57,7 @@ public class ValidateServlet extends HttpServlet {
 
 		int n = dao.validate(username, 1);
 		if (n == 1) {
-			response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
+			response.sendRedirect(response.encodeRedirectURL(ctxPath + "_01_register/valid_success.jsp"));
 			return;
 		} else {
 			msg.put("validateFail", "驗證失敗請重新驗證");

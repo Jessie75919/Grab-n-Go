@@ -143,8 +143,8 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		
 		
 		
-		public boolean isValidated(String username,int mode){
-			boolean isValid = false;
+		public int isValidated(String username,int mode){
+			int isValid = 0;
 			String sql ="";
 			ResultSet rs = null;
 			if(mode==1){
@@ -156,27 +156,24 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 					Connection conn = ds.getConnection();
 					PreparedStatement pstmt1 = conn.prepareStatement(sql);
 					){
+				pstmt1.setString(1, username);
+				rs = pstmt1.executeQuery();
 				
 				// 使用者
 				if (mode==1) {
-					pstmt1.setString(1, username);
-					rs = pstmt1.executeQuery();
 					while(rs.next()){
-						isValid = true;
+						isValid = rs.getInt("m_validate");
 					}
 				// 商家
 				}else if(mode==2){
-					pstmt1.setString(1, username);
-					pstmt1.setString(1, username);
-					rs = pstmt1.executeQuery();
 					while(rs.next()){
-						isValid = true;
+						isValid = rs.getInt("rest_validate");
 					}
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			lg.info("isValid = "+isValid);
 			return isValid;
 			
 		}

@@ -14,6 +14,7 @@ public class MemberBean  {
 	Date birthday;
 	Blob memberImage;
 	String fileName;
+	int m_validate;
 	
 	public MemberBean() {
 		super();
@@ -43,6 +44,16 @@ public class MemberBean  {
 		this.email = email;
 		this.phone = phone;
 		this.birthday = birthday;
+	}
+
+	
+	
+	public int getM_validate() {
+		return m_validate;
+	}
+
+	public void setM_validate(int m_validate) {
+		this.m_validate = m_validate;
 	}
 
 	public String getMemberId() {

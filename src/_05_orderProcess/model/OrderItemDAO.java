@@ -22,6 +22,7 @@ public class OrderItemDAO {
 	private String restUsername;
 	private String ordPickuptime;
 	private int rest_id;
+	private int month;
 
 	public void setOrd_id(int ord_id) {
 		this.ord_id = ord_id;
@@ -37,6 +38,10 @@ public class OrderItemDAO {
 
 	public void setRest_id(int rest_id) {
 		this.rest_id = rest_id;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
 	}
 
 	public OrderItemDAO() {
@@ -355,23 +360,77 @@ public class OrderItemDAO {
 				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
 				+ " WHERE a.rest_id = ? AND a.ord_pickuptime LIKE ? "
 				+ " GROUP BY b.item_name ORDER BY total DESC";
-
+		int count = 1;
+		int prevTotal = 0;
+		int totalAmount = 0;
+		int itemPrice = 0;
+		int curTotal =0;
 		try(
 				Connection conn = ds.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				){
 			System.out.println("Hello, OrderItemDAO");
 			stmt.setInt(1, rest_id);
-			System.out.println(rest_id);
+			//System.out.println(rest_id);
 			stmt.setString(2, ordPickuptime + "%");
-			System.out.println(ordPickuptime);
+			//System.out.println(ordPickuptime);
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()){
+			while(rs.next() && count <= 10){
+					totalAmount = rs.getInt("SUM(b.item_amount)");
+					itemPrice = rs.getInt("item_price");
+					curTotal = itemPrice * totalAmount;
+					if(prevTotal != curTotal){
+						prevTotal = curTotal;
+						count++;
+					}
+					OrderItemBean oib = new OrderItemBean();
+					oib.setItem_name(rs.getString("item_name"));
+					oib.setItem_amount(totalAmount);
+					oib.setItem_price(itemPrice);
+					//System.out.println(oib);
+					coll.add(oib);	
+				
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return coll;
+	}
+	
+	public Collection<OrderItemBean> getSalesRankM() {
+		Collection<OrderItemBean> coll = new ArrayList<>();
+		String sql = "SELECT b.item_name, b.item_price, SUM(b.item_amount), b.item_price*SUM(b.item_amount) AS total "
+				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
+				+ " WHERE a.rest_id = ? AND MONTH(a.ord_pickuptime) = ? "
+				+ " GROUP BY b.item_name ORDER BY total DESC";
+		int count = 1;
+		int prevTotal = 0;
+		int totalAmount = 0;
+		int itemPrice = 0;
+		int curTotal =0;
+		try(
+				Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				){
+			System.out.println("Hello, OrderItemDAO");
+			stmt.setInt(1, rest_id);
+			//System.out.println(rest_id);
+			stmt.setInt(2, month);
+			//System.out.println(month);
+			ResultSet rs = stmt.executeQuery();
+			while(count <= 10 && rs.next()){
+				totalAmount = rs.getInt("SUM(b.item_amount)");
+				itemPrice = rs.getInt("item_price");
+				curTotal = itemPrice * totalAmount;
+				if(prevTotal != curTotal){
+					prevTotal = curTotal;
+					count++;
+				}
 				OrderItemBean oib = new OrderItemBean();
 				oib.setItem_name(rs.getString("item_name"));
-				oib.setItem_amount(rs.getInt("SUM(b.item_amount)"));
-				oib.setItem_price(rs.getInt("item_price"));
-				System.out.println(oib);
+				oib.setItem_amount(totalAmount);
+				oib.setItem_price(itemPrice);
+				//System.out.println(oib);
 				coll.add(oib);	
 				
 			}	

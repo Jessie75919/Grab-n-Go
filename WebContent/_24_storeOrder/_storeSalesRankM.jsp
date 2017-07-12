@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <!-- 載入 d3.js -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <style>
         .chart{
             margin-top: 30px;
@@ -59,11 +60,10 @@
                     <h3>> 餐點熱銷排行</h3><br>
                     <!-- 欲查詢的日期 -->
                     <form class="form-inline">
-                        <span><h5>請選擇欲查詢的月份：</span>
-                        <select>
-                                <option value="January">一月</option>
-                                <option value="Feburary">二月</option>
-                            </select>
+                        <span><h4>請選擇欲查詢的月份：</h4></span>
+                        <select id="monthSelector">
+                                
+                        </select>
                     </form>
                 </div>
             </div>
@@ -116,27 +116,11 @@
         </div>
         </div>
     </section>
-    <script type="text/javascript">
-    var data = [365, 303, 281, 168, 80, 25];
 
-    d3.select(".chart")
-      .selectAll("div")
-      .data(data)
-      .enter()
-      .append("div")
-      .style("width", function(d){
-          return d + "px";
-      })
-      .text(function(d){
-          return '$' + d;
-      })
-      .attr("font-family", "Tahoma")
-      .attr("font-size", "20px");
-    
-    </script>
-
-
-    
+	<script type="text/javascript">
+		var id = ${StoreLoginOK.rest_id};
+	</script>
+    <script src="../js/storeSalesRankM.js"></script>
 </body>
 
 </html>

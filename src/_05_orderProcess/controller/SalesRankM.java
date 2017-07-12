@@ -15,8 +15,8 @@ import com.google.gson.Gson;
 import _05_orderProcess.model.OrderItemBean;
 import _05_orderProcess.model.OrderItemDAO;
 
-@WebServlet("/SalesRankD.json")
-public class SalesRankD extends HttpServlet {
+@WebServlet("/SalesRankM.json")
+public class SalesRankM extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,20 +26,20 @@ public class SalesRankD extends HttpServlet {
 		response.setContentType("application/json; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		// 取日期的值
-		String datepicker = request.getParameter("date");
-		System.out.println("商家欲查詢的日期為" + datepicker);
+		String month = request.getParameter("month");
+		System.out.println("商家欲查詢的月份為" + month + "+1");
 		String restId = request.getParameter("id");
 		System.out.println("商家：" + restId);
 
 		try {
 			OrderItemDAO oid = new OrderItemDAO();
-			System.out.println("ready to get daily sales rank data!");
+			System.out.println("ready to get monthly sales rank data!");
 			oid.setRest_id(Integer.parseInt(restId.trim()));
-			oid.setOrdPickuptime(datepicker);
-			Collection<OrderItemBean> list = oid.getSalesRankD();
-			String dailySales = new Gson().toJson(list);
-			//System.out.println(dailySales);
-			out.write(dailySales);
+			oid.setMonth(Integer.parseInt(month.trim()) + 1);
+			Collection<OrderItemBean> list = oid.getSalesRankM();
+			String monthlySales = new Gson().toJson(list);
+			//System.out.println(monthlySales);
+			out.write(monthlySales);
 			out.flush();
 
 		} finally {

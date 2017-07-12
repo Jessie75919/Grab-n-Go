@@ -1,13 +1,25 @@
 var table = document.getElementById("orderTable");
 
-//$("document").ready(function(){
-//	var chartWidth = $(".chart").width();
-//	alert("chartWidth: " + chartWidth);
-//});
+//建立月份下拉選單
+var ms = document.getElementById("monthSelector");
+var d = new Date();
+var currentMonth = d.getMonth();
+var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
+		"十一月", "十二月" ];
+for (var i = 0; i < months.length; i++) {
+	var op = document.createElement("option");
+	op.value = i;
+	op.text = months[i];
+	ms.appendChild(op);
+	if (i == currentMonth) {
+		ms.value = i;
+	}
+}
+ms.setAttribute("onchange", "getStoreSalesRankM()");
 
-function getStoreSalesRankD(date) {
+function getStoreSalesRankM() {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET","../SalesRankD.json?date=" + date + "&id=" + id, true);
+	xhr.open("GET","../SalesRankM.json?month=" + ms.value + "&id=" + id, true);
 	xhr.send();
 	var rank = 0;
 	var prevTotal = null;
@@ -15,16 +27,15 @@ function getStoreSalesRankD(date) {
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			//alert(xhr.responseText);
-			var dailySales = JSON.parse(xhr.responseText);
+			var monthlySales = JSON.parse(xhr.responseText);
 			table.innerHTML = "<tr><th>銷售排行</th><th>餐點名稱</th><th>餐點單價</th><th>銷售數量</th><th>銷售總額</th></tr>";
 //			var data =[];
-//			var maxTotal = dailySales[0].item_price * dailySales[0].item_amount;
-			for(var i = 0; i < dailySales.length; i++){
+			for(var i = 0; i < monthlySales.length; i++){
 				if(i == 0){
-					var maxTotal = dailySales[i].item_price * dailySales[i].item_amount;
+					var maxTotal = monthlySales[i].item_price * monthlySales[i].item_amount;
 				}
-				var total = dailySales[i].item_price * dailySales[i].item_amount;
-
+				var total = monthlySales[i].item_price * monthlySales[i].item_amount;
+				
 //				塞銷售總額給data陣列, 直接塞json給d3後用不到了
 //				data.push(total);
 				
@@ -36,13 +47,13 @@ function getStoreSalesRankD(date) {
 				
 				var td2 = document.createElement("td");
 				td2.setAttribute("nowrap", "");
-				td2.textContent = dailySales[i].item_name;
+				td2.textContent = monthlySales[i].item_name;
 				
 				var td3 = document.createElement("td");
-				td3.textContent = dailySales[i].item_price;
+				td3.textContent = monthlySales[i].item_price;
 				
 				var td4 = document.createElement("td");
-				td4.textContent = dailySales[i].item_amount;
+				td4.textContent = monthlySales[i].item_amount;
 				
 				var td5 = document.createElement("td");
 				td5.textContent = total;
@@ -61,7 +72,7 @@ function getStoreSalesRankD(date) {
 			rank = 0;
 			prevTotal = null;
 			d3.select(".chart").selectAll("div").remove();
-			d3.select(".chart").selectAll("div").data(dailySales).enter().append("div")
+			d3.select(".chart").selectAll("div").data(monthlySales).enter().append("div")
 			.style("background-color", function(d){
 				switch(getRank(d.item_price * d.item_amount)){
 					case 1:
@@ -100,3 +111,4 @@ function getStoreSalesRankD(date) {
 		}
 	}
 }
+getStoreSalesRankM();

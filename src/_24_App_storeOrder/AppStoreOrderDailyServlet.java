@@ -40,19 +40,29 @@ public class AppStoreOrderDailyServlet extends HttpServlet {
 		
 		String param = jsonObject.get("param").getAsString();
 		List<OrderBean> list = new ArrayList<>();
+		List<String> itemSummary = new ArrayList<>();
+		OrderDAO dao = new OrderDAO();
 		if (param.equals("DailyOrdersActivity")) {
 			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
 			String status = jsonObject.get("status").getAsString();			
-			OrderDAO dao = new OrderDAO();
 			dao.setRestId(rest_id);
 			dao.setOrd_status(status);
 			list = dao.getStoreOrdersDailyForApp();
+		} else if (param.equals("InprogressOrderItemSummaryActivity")) {
+			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
+			itemSummary = dao.getStoreOrdersDetailsForApp();
+			
 		}
 		
 		//將訂單資料送回App
 		PrintWriter out = response.getWriter();
-		out.println(gson.toJson(list));
-		System.out.println("list = " + list);
+		if (param.equals("DailyOrdersActivity")) {
+			out.println(gson.toJson(list));
+			System.out.println("list = " + list);
+		} else if (param.equals("InprogressOrderItemSummaryActivity")) {
+			out.println(gson.toJson(itemSummary));
+			System.out.println("itemSummary = " + itemSummary);
+		}
 		out.close();
 	}
 }

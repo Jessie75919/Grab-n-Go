@@ -654,6 +654,33 @@ public class OrderDAO {
 		return obl;
 	}
 	
+	public List<String> getStoreOrdersDetailsForApp(){
+		List<String> itemSummary = new ArrayList<>();
+		String sql = " SELECT i.prod_id, i.item_name, i.ord_id, o.ord_pickuptime, "
+					+ " i.item_amount, i.item_note "
+					+ " FROM order01 o JOIN order_item i ON o.ord_id = i.ord_id "
+					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
+					+ " ORDER BY i.prod_id ASC ";
+		try (
+			Connection con = ds.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);	
+		){
+			stmt.setInt(1, restId);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				itemSummary.add(String.valueOf(rs.getInt("i.prod_id")));
+				itemSummary.add(rs.getString("i.item_name"));
+				itemSummary.add(String.valueOf(rs.getInt("i.ord_id")));
+				itemSummary.add(String.valueOf(rs.getTimestamp("o.ord_pickuptime")));
+				itemSummary.add(String.valueOf(rs.getInt("i.item_amount")));
+				itemSummary.add(rs.getString("i.item_note"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return itemSummary;
+	}
+	
 	public Collection<OrderBean> getMonthlyStoreRevenue() {
 		Collection<OrderBean> coll = new ArrayList<>();
 		String sql = " SELECT DATE_FORMAT(a.ord_pickuptime, '%Y-%m-%d'), SUM(a.ord_totalPrice) "

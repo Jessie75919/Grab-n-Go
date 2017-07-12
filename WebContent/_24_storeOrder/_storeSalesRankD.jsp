@@ -96,8 +96,10 @@
                 <div>
                     <!--<ul class="nav nav-tabs nav-justified">-->
                     <ul class="nav nav-pills nav-justified">
-                        <li role="presentation" class="active"><a href="#">餐點熱銷排行（單位：日）</a></li>
-                        <li role="presentation"><a href="_storeSalesRankM.jsp">餐點熱銷排行（單位：月）</a></li>
+                        <li style="padding:5px;" role="presentation" class="active"><input class="btn btn-default btn-lg btn-block" type="button" value="餐點熱銷排行（單位：日）"></li>
+                        <li style="padding:5px;" role="presentation"><input class="btn btn-primary btn-lg btn-block" type="submit" value="餐點熱銷排行（單位：月）"></li>
+                        
+                     
                     </ul>
                 </div>
                 <!--圖表區塊, 動態產生-->

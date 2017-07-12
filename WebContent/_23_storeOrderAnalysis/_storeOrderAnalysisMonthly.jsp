@@ -49,18 +49,18 @@
 				<div class="col-xs-3">
 				<input style="display: none;" id="restUsername" name="restUsername" value="${StoreLoginOK['rest_username']}"/>
 				<select id="monthSelector" class="form-control">
-					<!-- <option value="January">一月</option>
-					<option value="Feburary">二月</option>
-					<option value="March">三月</option>
-					<option value="April">四月</option>
-					<option value="May">五月</option>
-					<option value="June">六月</option>
-					<option value="July">七月</option>
-					<option value="August">八月</option>
-					<option value="September">九月</option>
-					<option value="October">十月</option>
-					<option value="November">十一月</option>
-					<option value="December">十二月</option> -->
+					<option value="01">一月</option>
+					<option value="02">二月</option>
+					<option value="03">三月</option>
+					<option value="04">四月</option>
+					<option value="05">五月</option>
+					<option value="06">六月</option>
+					<option value="07">七月</option>
+					<option value="08">八月</option>
+					<option value="09">九月</option>
+					<option value="10">十月</option>
+					<option value="11">十一月</option>
+					<option value="12">十二月</option>
 				</select>&nbsp
 				</div>
 			</div>

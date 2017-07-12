@@ -30,14 +30,16 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 		String restUsername = request.getParameter("restUsername");
 		System.out.println("欲查詢的商家：" + restUsername);
 		String month = request.getParameter("month");
-		System.out.println("欲查詢的月份: " + month + "+1");
+		System.out.println("欲查詢的月份+年的字串: " + month);
 		String year = request.getParameter("year");
 		System.out.println("欲查詢的年份：" + year);
 		
 		try {
 			OrderDAO od = new OrderDAO();
 			od.setRestUsername(restUsername);
-			od.setMonth(Integer.parseInt(month.trim()) + 1);
+			od.setMonthSelect(month);
+			//od.setMonth(Integer.parseInt(month.trim()) + 1);
+			//od.setMonthSelect(month);
 			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
 			
 			//取得所選月份天數  

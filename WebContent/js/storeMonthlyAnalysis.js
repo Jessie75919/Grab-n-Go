@@ -1,5 +1,4 @@
 var restUsername = document.getElementById("restUsername").value;
-
 //設定長寬
 var width = 600, height = 240;
 //取得SVG的物件
@@ -13,23 +12,24 @@ s.attr({ 'width' : 680,'height' : 300,})
 	var currentMonth = d.getMonth();
 	var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
 			"十一月", "十二月" ];
-	for (var i = 0; i < months.length; i++) {
-		var op = document.createElement("option");
-		op.value = i;
-		op.text = months[i];
-		ms.appendChild(op);
-		if (i == currentMonth) {
-			ms.value = i;
-		}
-	}
+//	for (var i = 0; i < months.length; i++) {
+//		var op = document.createElement("option");
+//		op.value = i;
+//		op.text = months[i];
+//		ms.appendChild(op);
+//		if (i == currentMonth) {
+//			ms.value = i;
+//		}
+//	}
 	ms.setAttribute("onchange", "getMonthlyOrders()");
-
+	
 	function getMonthlyOrders(){
 		alert("選取的月份：" + ms.value);
 		alert("年份: " + year);
-		
+		var msStr =  year + "-" + ms.value;
+		alert("傳回字串：" + msStr);
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + ms.value + "&year=" + year,true);
+		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + msStr + "year=" + year,true);
 		xhr.send();
 		xhr.onreadystatechange = function(){
 			if( xhr.readyState == 4 && xhr.status == 200){

@@ -42,7 +42,7 @@
           <div id="validMsg">
                         	您好像還沒有認證，請盡快認證才能繼續訂餐喔 ~<br>
                         	或是請至您的 "個人資料" 進行認證<br>
-                        	<a href="../sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
+                        	<a id="validBth" href="../sendValidMail.do?mode=1&user=${LoginOK.memberId}">點我認證</a>
                         	<a href="#" onclick="closePanel()">下次再說</a>
 		</div>
         <section class="content">
@@ -99,6 +99,12 @@
             </form>
         </section>
     </main>
+      <!--loading與驗證-->
+                    <div id="ttt" class="loading">
+                        <div class="loadDotted"></div>
+                        <div class="loadDotted"></div>
+                        <div class="loadDotted"></div>
+                    </div>
       <!--搜尋-->
    <jsp:include page="../_IncludeJsp/User_search.jsp" />  <!--搜尋 end-->
     <footer>

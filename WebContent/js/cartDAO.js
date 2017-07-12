@@ -155,6 +155,12 @@ function isExist(notes, newNote) {
 
 window.onload = function () {
     $('#validMsg').css("display", "none");
+    $('#ttt').hide();
+
+    $('#validBth').click(function () { 
+        $('#ttt').show();
+    });
+
 
 }
 
@@ -167,7 +173,7 @@ function validCheck(event) {
     var hasErr = true;
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "../checkValidate.do?user=" + user, true);
+    xhr.open("GET", "../checkValidate.do?mode=1&user=" + user, true);
     xhr.send();
 
     xhr.onreadystatechange = function () {

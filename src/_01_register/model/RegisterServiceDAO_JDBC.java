@@ -102,15 +102,19 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 
 	public int validate(String username, int mode) {
 		int n = -1;
+		lg.info(username);
 		String sql = "";
 		if (mode == 1) {
+			lg.info("mode=1");
 			sql = "update Member set m_validate = 1 where m_username = ?";
 		} else if (mode == 2) {
-			sql = "update restaurant set rest_validate = 1 where rest_id = ?";
+			lg.info("mode=2");
+			sql = "update restaurant set rest_validate = 1 where rest_username = ?";
 		}
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt1 = conn.prepareStatement(sql);) {
 
-			pstmt1.setString(1, username);
+				pstmt1.setString(1, username);
+				
 			n = pstmt1.executeUpdate();
 
 			if (n == 1) {

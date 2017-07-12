@@ -128,7 +128,16 @@ function getDailyRevenue(date){
 		      },
 		      "callbacks": {}
 		    });
-			    divPie.appendChild(pie);
+			    //不保留原本的chart, 會重畫
+			    $(function() {
+			    	$("#submit").on("click", function(e) {
+			    		if (pie !== null) {
+			    			pie.destroy();
+			    			pie = null;
+			    		}
+			    	});
+			    });
+			  //  divPie.appendChild(pie);
 			}
 		}
 	}

@@ -660,7 +660,8 @@ public class OrderDAO {
 					+ " i.item_amount, i.item_note "
 					+ " FROM order01 o JOIN order_item i ON o.ord_id = i.ord_id "
 					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
-					+ " ORDER BY i.prod_id ASC ";
+					+ " AND o.ord_status = 'inprogress' "
+					+ " ORDER BY 1 DESC , 4 DESC ";
 		try (
 			Connection con = ds.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);	

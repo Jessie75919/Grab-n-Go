@@ -1,9 +1,11 @@
 //抓取訂單明細(daily)
 var restUsername = document.getElementById("restUsername").value;
 	
-	var submitBtn = document.getElementById("submit");
-	submitBtn.onclick = function(){
-		alert("Hello");
+//var submitBtn = document.getElementById("submit");
+//submitBtn.onclick = 
+
+function getDailyRevenue(date){
+		//alert("Hello");
 		var datepicker = document.getElementById("datepicker").value;
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","../DailyRevenue.do?datepicker=" + datepicker + "&restUsername=" + restUsername,true);

@@ -1,4 +1,4 @@
-package _24_App_storeOrder;
+package _24_App_storeOrder.cotroller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class AppStoreOrderDailyServlet extends HttpServlet {
 		
 		String param = jsonObject.get("param").getAsString();
 		List<OrderBean> list = new ArrayList<>();
-		List<String> itemSummary = new ArrayList<>();
+		List<List<String>> itemSummary = new ArrayList<List<String>>();
 		OrderDAO dao = new OrderDAO();
 		if (param.equals("DailyOrdersActivity")) {
 			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
@@ -50,8 +50,8 @@ public class AppStoreOrderDailyServlet extends HttpServlet {
 			list = dao.getStoreOrdersDailyForApp();
 		} else if (param.equals("InprogressOrderItemSummaryActivity")) {
 			int rest_id = Integer.parseInt(jsonObject.get("rest_id").getAsString());
+			dao.setRestId(rest_id);
 			itemSummary = dao.getStoreOrdersDetailsForApp();
-			
 		}
 		
 		//將訂單資料送回App

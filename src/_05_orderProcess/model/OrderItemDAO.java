@@ -21,6 +21,7 @@ public class OrderItemDAO {
 	private int ord_id;
 	private String restUsername;
 	private String ordPickuptime;
+	private int rest_id;
 
 	public void setOrd_id(int ord_id) {
 		this.ord_id = ord_id;
@@ -32,6 +33,10 @@ public class OrderItemDAO {
 	
 	public void setOrdPickuptime(String ordPickuptime){
 		this.ordPickuptime = ordPickuptime;
+	}
+
+	public void setRest_id(int rest_id) {
+		this.rest_id = rest_id;
 	}
 
 	public OrderItemDAO() {
@@ -344,36 +349,28 @@ public class OrderItemDAO {
 		return coll;
 	}
 	
-	public Collection<OrderItemBean> getSalesRankD(String restUsername, String datePick) {
-		Collection<OrderItemBean> coll = new ArrayList();
-		String sql = " SELECT b.item_name, SUM(b.item_price), SUM(b.item_amount) "
+	public Collection<OrderItemBean> getSalesRankD() {
+		Collection<OrderItemBean> coll = new ArrayList<>();
+		String sql = "SELECT b.item_name, b.item_price, SUM(b.item_amount), b.item_price*SUM(b.item_amount) AS total "
 				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
-				+ " JOIN restaurant c ON a.rest_id = c.rest_id "
-				+ " WHERE c.rest_username = ? AND a.ord_pickuptime like '?%' AND a.ord_status = 'paid' "
-				+ " GROUP BY b.item_name "
-				+ " ORDER BY SUM(b.item_amount) DESC";
-//		select b.item_name, sum(b.item_price), sum(b.item_amount)
-//		from Grab_n_Go.order01 a join Grab_n_Go.order_item b on a.ord_id = b.ord_id
-//								 join Grab_n_Go.restaurant c on a.rest_id = c.rest_id
-//		where c.rest_username = 'afternoontea' and a.ord_pickuptime like '2017-06-01%' and a.ord_status = 'paid'
-//		group by b.item_name
-//		order by sum(b.item_amount) desc;
+				+ " WHERE a.rest_id = ? AND a.ord_pickuptime LIKE ? "
+				+ " GROUP BY b.item_name ORDER BY total DESC";
+
 		try(
 				Connection conn = ds.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				){
 			System.out.println("Hello, OrderItemDAO");
-			stmt.setString(1, restUsername);
-			stmt.setString(2, datePick);
+			stmt.setInt(1, rest_id);
+			System.out.println(rest_id);
+			stmt.setString(2, ordPickuptime + "%");
+			System.out.println(ordPickuptime);
 			ResultSet rs = stmt.executeQuery();
-			if(rs == null){
-				System.out.println("not found");
-			}
 			while(rs.next()){
 				OrderItemBean oib = new OrderItemBean();
-				oib.setItem_name(rs.getString("b.item_name"));
+				oib.setItem_name(rs.getString("item_name"));
 				oib.setItem_amount(rs.getInt("SUM(b.item_amount)"));
-				oib.setItem_price(rs.getInt("SUM(b.item_price)"));
+				oib.setItem_price(rs.getInt("item_price"));
 				System.out.println(oib);
 				coll.add(oib);	
 				

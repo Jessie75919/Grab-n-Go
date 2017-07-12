@@ -30,21 +30,23 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 		String restUsername = request.getParameter("restUsername");
 		System.out.println("欲查詢的商家：" + restUsername);
 		String month = request.getParameter("month");
-		System.out.println("欲查詢的月份: " + month + "+1");
+		System.out.println("欲查詢的月份+年的字串: " + month);
 		String year = request.getParameter("year");
 		System.out.println("欲查詢的年份：" + year);
 		
 		try {
 			OrderDAO od = new OrderDAO();
 			od.setRestUsername(restUsername);
-			od.setMonth(Integer.parseInt(month.trim()) + 1);
+			od.setMonthSelect(month);
+			//od.setMonth(Integer.parseInt(month.trim()) + 1);
+			//od.setMonthSelect(month);
 			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
 			
 			//取得所選月份天數  
 			Calendar cal =   Calendar.getInstance();     
 			cal.set(Calendar.YEAR,Integer.valueOf(year));			//年份 
-			cal.set(Calendar.MONTH,Integer.valueOf(month)); //設定月  
-			int maxDate = cal.getActualMaximum(Calendar.DATE);//當月天數  
+			cal.set(Calendar.MONTH,Integer.valueOf(month)); 			//設定月  
+			int maxDate = cal.getActualMaximum(Calendar.DATE);		//當月天數  
 			System.out.println(maxDate);
 			int count = list.size();
 			
@@ -73,9 +75,6 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 //				ob.getOrd_pickuptime();
 //				list.add(ob);
 //			}
-			
-//			od.setRestUsername(restUsername);
-//			od.setMonth(Integer.parseInt(month.trim()) + 1);
 			String monthlyRevenueList = new Gson().toJson(list);
 			System.out.println(monthlyRevenueList);
 			
@@ -90,11 +89,5 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
-	
-//	public static int getdaysInMonth(int month){
-//		int n = 0;
-//		
-//		return n ;
-//	}
 
 }

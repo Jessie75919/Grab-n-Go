@@ -27,9 +27,17 @@
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$("#datepicker").datepicker({
-			dateFormat: "yy-mm-dd"
+		$("#datepicker").datepicker({ 
+			dateFormat: "yy-mm-dd",
+			onSelect: function(date){
+				//alert(date);
+				getDailyRevenue(date);
+			}
 		});
+		//預設值取當日
+		$("#datepicker").datepicker("setDate", new Date());
+		//alert($("#datepicker").val());
+		getDailyRevenue($("#datepicker").val());
 	});
 </script>
 <title>Welcome to GrabAndGo</title>
@@ -70,7 +78,7 @@
 					<div class="form-inline">
 					<div class="input-group">
 						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-						<input type="text" id="datepicker" name="datepicker" class="form-control" /> 
+						<input type="text" id="datepicker" name="datepicker" class="form-control" value="" /> 
 						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
 					</div>
 				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>

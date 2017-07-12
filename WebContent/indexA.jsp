@@ -8,7 +8,7 @@
                 <jsp:useBean id="rating" class="_07_Rating.model.RestRatingBeanDAO" scope="session" />
                 <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
                 <c:if test="${! empty LoginOK}">
-                    <jsp:useBean id="notif" class="_09_notification.model.NotificationDAO" scope="session" />
+                 <jsp:useBean id="notif" class="_09_notification.model.NotificationDAO" scope="session" />
                 </c:if>
 
                 <html>

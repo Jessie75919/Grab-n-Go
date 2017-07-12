@@ -656,7 +656,7 @@ public class OrderDAO {
 	
 	public List<List<String>> getStoreOrdersDetailsForApp(){
 		List<List<String>> itemSummary = new ArrayList<List<String>>();
-		String sql = " SELECT i.prod_id, i.item_name, i.ord_id, o.ord_pickuptime, "
+		String sql = " SELECT i.prod_id, i.item_name, i.ord_id, DATE_FORMAT(o.ord_pickuptime, '%H:%i') pickuptime, "
 					+ " i.item_amount, i.item_note "
 					+ " FROM order01 o JOIN order_item i ON o.ord_id = i.ord_id "
 					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
@@ -673,7 +673,7 @@ public class OrderDAO {
 				itemDetail.add(String.valueOf(rs.getInt("i.prod_id")));
 				itemDetail.add(rs.getString("i.item_name"));
 				itemDetail.add(String.valueOf(rs.getInt("i.ord_id")));
-				itemDetail.add(String.valueOf(rs.getTimestamp("o.ord_pickuptime")));
+				itemDetail.add(rs.getString("pickuptime"));
 				itemDetail.add(String.valueOf(rs.getInt("i.item_amount")));
 				itemDetail.add(rs.getString("i.item_note"));
 				itemSummary.add(i, itemDetail);

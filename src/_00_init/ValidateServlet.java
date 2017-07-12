@@ -26,6 +26,7 @@ public class ValidateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		String username = request.getParameter("user");
+		String mode = request.getParameter("mode");
 		HttpSession session = request.getSession();
 		Map<String, String> msg = new HashMap<>();
 		
@@ -37,8 +38,17 @@ public class ValidateServlet extends HttpServlet {
 			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
 			return;
 		}
+		if (mode == null) {
+			msg.put("getNameFail", "抓不到值");
+			lg.error("抓不到值");
+			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			return;
+		}
 
 		lg.info("username : " + username);
+		lg.info("mode : " + mode);
+		int modeNum = Integer.parseInt(mode);
+		
 
 		RegisterServiceDAO_JDBC dao = new RegisterServiceDAO_JDBC();
 		if (!dao.idExists(username)) {
@@ -48,17 +58,22 @@ public class ValidateServlet extends HttpServlet {
 			return;
 		}
 
-		if (dao.isValidated(username, 1)==1) {
+		if (dao.isValidated(username, modeNum)==1) {
 			msg.put("alreadyValid", "已經驗證過囉");
 			lg.error("已經驗證過囉");
 			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
 			return;
 		}
 
-		int n = dao.validate(username, 1);
+		int n = dao.validate(username, modeNum);
 		if (n == 1) {
-			response.sendRedirect(response.encodeRedirectURL(ctxPath + "_01_register/valid_success.jsp"));
-			return;
+			if(modeNum==1){
+				response.sendRedirect(response.encodeRedirectURL(ctxPath + "_01_register/valid_success.jsp"));
+				return;
+			}else if(modeNum==2){
+				response.sendRedirect(response.encodeRedirectURL(ctxPath + "_01_register/valid_success.jsp"));
+				return;
+			}
 		} else {
 			msg.put("validateFail", "驗證失敗請重新驗證");
 			lg.error("驗證失敗請重新驗證");

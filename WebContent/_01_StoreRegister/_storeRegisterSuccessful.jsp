@@ -47,7 +47,7 @@
         <div class="col-md-12">
           <div id="textSet"> 
           	<br>
-          <h2 id="textSet">註冊成功 !</h2>
+          <h2 id="textSet">發送驗證信 !</h2>
             <br>
             <br>
             我們已經寄出一封認證信至您的信箱，請點擊認證信中的連結開通您的帳戶開始上架產品喔。

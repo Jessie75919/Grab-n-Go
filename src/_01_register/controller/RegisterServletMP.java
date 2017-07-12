@@ -178,7 +178,7 @@ public class RegisterServletMP extends HttpServlet {
 						response.sendRedirect("register_success.jsp");
 						return;
 					} else {
-						errorMsg.put("errorIDDup","新增此筆資料有誤(RegisterServlet)");
+						errorMsg.put("errorValid","驗證信失敗");
 					}
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
@@ -201,7 +201,7 @@ public class RegisterServletMP extends HttpServlet {
     	int n = -1;
     	String from = "grabngojava@gmail.com";
 		List<String> to = Arrays.asList(new String[]{mailAddress});
-		String subject = "歡迎加入會員";
+		String subject = "歡迎加入Grab & Go會員";
 		String text = " <table width='600' border='0' align='center' cellpadding='10' cellspacing='0'>" 
 	              + " <tr><td align='center' style='padding: 20px 0;'><img src='http://lovegreenfood.com/gg/logo.png' "
 	              + "alt='Garb and Go' width='251' height='54' title='Garb and Go'></td></tr><tr> "

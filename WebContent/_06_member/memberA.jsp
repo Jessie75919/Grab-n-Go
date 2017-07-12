@@ -72,7 +72,7 @@
                     <div class="formInfo">${LoginOK.birthday}</div>
                 </div>
                 <div class="formList">
-                    <div class="formTitle"><i class="icon-birth"></i>認證狀態</div>
+                    <div class="formTitle"><i class="icon-birth"></i>認證狀態${LoginOK.m_validate}</div>
                     <c:if test="${LoginOK.m_validate==0}">
 	                    <div class="formInfo">未認證 
 	                    	<a style="padding:8px;" href="../sendValidMail.do?user=${LoginOK.memberId}"> 點我認證</a>

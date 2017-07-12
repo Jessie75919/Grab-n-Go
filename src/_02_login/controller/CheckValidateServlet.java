@@ -42,6 +42,10 @@ public class CheckValidateServlet extends HttpServlet {
 				String msg = new Gson().toJson("NotValid");
 				out.write(msg);
 				out.flush();
+			}else{
+				String msg = new Gson().toJson("ValidOK");
+				out.write(msg);
+				out.flush();
 			}
 			
 		}

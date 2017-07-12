@@ -139,7 +139,7 @@
                         	或是請至您的 "個人資料" 進行認證<br>
                         	<a href="sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
                         	<a href="#" onclick="closePanel()">下次再說</a>
-                 </div>
+                		 </div>
                     
                     </section>
                     <!--標語 end-->

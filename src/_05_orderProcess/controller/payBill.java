@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import _01_register.model.MemberBean;
 import _04_shoppingCart.model.ShoppingCart;
 import _05_orderProcess.model.OrderBean;
@@ -24,12 +26,13 @@ import _05_orderProcess.model.OrderItemBean;
 @WebServlet("/_04_ShoppingCart/PayBill.do")
 public class payBill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger lg = Logger.getLogger(payBill.class);
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// System.out.println("ModifyOrderItem.do!!!!");
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
-
+		lg.info("hihi");
+		
 		HttpSession session = request.getSession(false);
 
 		// validate session

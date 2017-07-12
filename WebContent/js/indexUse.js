@@ -2,11 +2,13 @@
 
 
 window.onload = function () {
+    $('#ttt').hide();
+
     $('#validMsg').css("display", "none");
     var status = sessionStorage.getItem("valid")
     // alert('usrname=' + $('#usrName').val());
     // alert('status :' + status);
-    if($('#usrName').val()!=null){
+    if ($('#usrName').val() != null) {
         $.getJSON("checkValidate.do", { user: $('#usrName').val() },
             function (data, textStatus, jqXHR) {
                 if (data == "NotValid") {
@@ -39,7 +41,7 @@ window.onload = function () {
                     }
                 }
             });
-        }
+    }
 }
 
 
@@ -82,4 +84,11 @@ function readMsgA(user) {
 
 
 }
+
+
+$('#validBtn').on('click', function () {
+    $('#ttt').show();
+   
+});
+
 

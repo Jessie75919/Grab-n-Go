@@ -79,7 +79,7 @@ window.onload = function () {
 		StoreType.value = "台式餐廳";
 		address.value = "台北市中山區長安東路二段92號1樓";
 		tel.value = "(02)2517-7667";
-		eMail.value = "grabngo@gmail.com";
+		eMail.value = "javazh005@gmail.com";
 		owner.value = "哈大胖";
 		url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
 	}

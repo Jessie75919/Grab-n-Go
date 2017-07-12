@@ -1,9 +1,11 @@
 //抓取訂單明細(daily)
 var restUsername = document.getElementById("restUsername").value;
 	
-	var submitBtn = document.getElementById("submit");
-	submitBtn.onclick = function(){
-		alert("Hello");
+//var submitBtn = document.getElementById("submit");
+//submitBtn.onclick = 
+
+function getDailyRevenue(date){
+		//alert("Hello");
 		var datepicker = document.getElementById("datepicker").value;
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","../DailyRevenue.do?datepicker=" + datepicker + "&restUsername=" + restUsername,true);
@@ -126,7 +128,16 @@ var restUsername = document.getElementById("restUsername").value;
 		      },
 		      "callbacks": {}
 		    });
-			    divPie.appendChild(pie);
+			    //不保留原本的chart, 會重畫
+			    $(function() {
+			    	$("#submit").on("click", function(e) {
+			    		if (pie !== null) {
+			    			pie.destroy();
+			    			pie = null;
+			    		}
+			    	});
+			    });
+			  //  divPie.appendChild(pie);
 			}
 		}
 	}

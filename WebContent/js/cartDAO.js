@@ -24,15 +24,15 @@ function deleteF(proId, itemNote) {
                         xhr_delSession.send();
 
                         xhr_delSession.onreadystatechange = function () {
-                        
-                             if (xhr_delSession.readyState == 4 && xhr_delSession.status == 200) {
+
+                            if (xhr_delSession.readyState == 4 && xhr_delSession.status == 200) {
                                 var msg = JSON.parse(xhr_delSession.responseText)
-                                if(msg=="sessionClear"){
+                                if (msg == "sessionClear") {
                                     window.location.href = "../indexA.jsp";
                                     return;
 
                                 }
-                             }
+                            }
                         }
 
                     }
@@ -152,3 +152,78 @@ function isExist(notes, newNote) {
     }
     return result;
 }
+
+window.onload = function () {
+    $('#validMsg').css("display", "none");
+
+}
+
+
+
+function validCheck(event) {
+
+    event.preventDefault();
+    var user = $('#username').val();
+    var hasErr = true;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../checkValidate.do?user=" + user, true);
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var data = JSON.parse(xhr.responseText);
+            // alert('data = ' + data);
+            if (data == "NotValid") {
+                $('#validMsg').css({
+                    "color": "#fff",
+                    "text-align": "center",
+                    "background": "rgba(235,80,60,0.8)",
+                    "width": "600px",
+                    "padding": "20px",
+                    "position": "fixed",
+                    "top": "120px",
+                    "left": "50%",
+                    "border-radius": "5px",
+                    "margin-left": "-300px",
+                    "z-index": "99999"
+                }).fadeIn();
+                $('#validMsg a').css({
+                    "text-decoration": "none",
+                    "color": "rgb(235,80,60)",
+                    "border-radius": "20px",
+                    "margin": "10px 2px 0px 2px",
+                    "display": "inline-block",
+                    "width": "100px",
+                    "padding": "3px 10px",
+                    "background": "#fff"
+                });
+
+                hasErr = true;
+            } else {
+                hasErr = false;
+            }
+        }
+    }
+
+    setTimeout(function () {
+        if (hasErr) {
+            return false;
+        } else {
+            var form = document.getElementById("theForm");
+            form.submit();
+        }
+    }, 100);
+
+}
+
+
+
+
+
+
+function closePanel() {
+    $('#validMsg').fadeOut();
+}
+
+

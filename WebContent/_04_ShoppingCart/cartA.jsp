@@ -35,11 +35,18 @@
      <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
     <div class="insideTitle">
         <h2>購物車</h2>
+        <input type="hidden" id='username' value="${LoginOK.memberId}">
     </div>
     <main>
         <div class="brcame"><a href="../indexA.jsp">首頁</a> / 購物車</div>
+          <div id="validMsg">
+                        	您好像還沒有認證，請盡快認證才能繼續訂餐喔 ~<br>
+                        	或是請至您的 "個人資料" 進行認證<br>
+                        	<a href="../sendValidMail.do?user=${LoginOK.memberId}">點我認證</a>
+                        	<a href="#" onclick="closePanel()">下次再說</a>
+		</div>
         <section class="content">
-            <form action="PayBill.do" method="post" class="formcontent">
+            <form id="theForm" action="PayBill.do" method="post" class="formcontent"  onsubmit="return validCheck(event);">
                 <div id="cartLeft" class="cartLeft">
                     <h3><a href="../_07_storePage/storePage.jsp">${ordRB.rest_name}&nbsp;${ordRB.rest_branch}</a></h3>
                     <!--菜單列表-->
@@ -86,7 +93,7 @@
                     </div>
                     <!--訂購人資訊 end-->
                     <div class="formBtn">
-                        <p><a href="../indexA.jsp">繼續逛逛</a> <input name="submit" type="submit" id="submit" value="送出訂單"></p>
+                        <p><a href="../indexA.jsp">繼續逛逛</a> <input name="sub" type="submit" id="sub"  value="送出訂單"></p>
                     </div>
                 </div>
             </form>

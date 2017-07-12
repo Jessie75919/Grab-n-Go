@@ -178,7 +178,7 @@ public class RegisterServletMP extends HttpServlet {
 						response.sendRedirect("register_success.jsp");
 						return;
 					} else {
-						errorMsg.put("errorIDDup","新增此筆資料有誤(RegisterServlet)");
+						errorMsg.put("errorValid","驗證信失敗");
 					}
 			}
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
@@ -201,13 +201,27 @@ public class RegisterServletMP extends HttpServlet {
     	int n = -1;
     	String from = "grabngojava@gmail.com";
 		List<String> to = Arrays.asList(new String[]{mailAddress});
-		String subject = "歡迎加入會員";
-		String text = 
-		  "<h1>謝謝您加入會員</h1>" +
-		  "<h2>您可以按下列連結感受最新的體驗</h2>" +
-	      "<a href='http://localhost:8080/_Grab_Go/validate.do?user="+ memberID+ "'>認證信</a><br>" +
-	      "<a href='http://www.google.com'>google</a><br>" +
-          "<br><br><font color='blue'> 再次感謝, </font><br>工作小組敬上";
+		String subject = "歡迎加入Grab & Go會員";
+		String text = " <table width='600' border='0' align='center' cellpadding='10' cellspacing='0'>" 
+	              + " <tr><td align='center' style='padding: 20px 0;'><img src='http://lovegreenfood.com/gg/logo.png' "
+	              + "alt='Garb and Go' width='251' height='54' title='Garb and Go'></td></tr><tr> "
+	           + " <td align='center' bgcolor='#EB503C' style='font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; "
+	           + "color: #ffffff; font-size: 16px;'>Garb and Go 會員註冊確認信</td></tr><tr> "
+	           + " <td align='left' style='font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; "
+	           + "font-size: 16px;'>"
+	           + "    <p>親愛的 Garb and Go 會員您好：</p> "
+	           + "     <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
+	            + "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?user=" + memberID + "''>點我驗證</a></p> "
+	            + "</td> "
+	       + " </tr> "
+	       + " <tr> "
+	          + "  <td align='left' bgcolor='#f5f5f5' style='font-family:Arial, '微軟正黑體', "
+	          + "'Microsoft YaHei', '新細明體'; color: #000000; font-size: 14px;'> "
+	          + "       <p>本e-mail系統通知由系統直接寄發，請勿直接回覆，若您對以上內容有任何問題，"
+	          + "歡迎聯絡我們或洽 Garb and Go 客服中心</p> "
+	          + "      <p>Copyright © Garb and Go All rights reserved.</p> "
+	         + "   </td> "
+	      + "  </tr></table>" ;
 		
 		JavaMailUtil  util = new JavaMailUtil(from, to, null, null, subject, text ,null);
 		if (util.send()){

@@ -202,4 +202,10 @@
     <servlet-name>ValidateServlet</servlet-name>
     <url-pattern>/ValidateServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppStoreResendEmailServlet</display-name>
+    <servlet-name>AppStoreResendEmailServlet</servlet-name>
+    <servlet-class>_01_App_register.controller.AppStoreResendEmailServlet</servlet-class>
+  </servlet>
 </web-app>

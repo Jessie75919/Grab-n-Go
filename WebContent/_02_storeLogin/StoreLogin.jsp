@@ -30,15 +30,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script
 	src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+<style>
+</style>
 </head>
 
-<body>
+<body style="font-family: 微軟正黑體, Microsoft JhengHei,arial,helvetica,sans-serif;">
 	<div class="py-5 section text-center">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+				<center>
 					<a href="${pageContext.request.contextPath}/indexA.jsp"><img
 						width="30%" src="../images/share/logo.svg"></a>
+				</center>
 				</div>
 			</div>
 		</div>
@@ -51,13 +55,13 @@
 					<form method="POST" action="Storelogin.do" id="theForm"
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
-							<label>Username </label> <input type="text" id="usr"
+							<label style="padding: 5px;">Username :</label><br> <input type="text" id="usr"
 								name="username" value="${sessionScope.StoreUser}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
-							<label>Password</label> <input type="password" id="pw"
+							<label style="padding: 5px;">Password :</label><br> <input type="password" id="pw"
 								name="password" class="form-control"
 								value="${sessionScope.StorePassword}"> <span id="pwRes"
 								style="height: 10px;"></span>
@@ -77,7 +81,7 @@
 								data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"></div>
 							<!-- <label>I am not Robot! Enter the text:&nbsp;</label>
               <input type="text" class="form-control" placeholder="">  -->
-							<div class="form-check">
+							<div style="padding: 10px;" class="form-check">
 								<label class="form-check-label"> <input
 									name="rememberMe" class="form-check-input" type="checkbox"
 									id="rm"
@@ -86,11 +90,11 @@
 								</label>
 							</div>
 							<button type="submit" id="signInBtn"
-								class="btn btn-block my-1 btn-warning">Sign in</button>
+								class="btn btn-block my-1 btn-warning">登入</button>
 					</form>
 					<div class="btn btn-primary btn-block my-2">
 						<a style="color: #fff; text-decoration: none;"
-							href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a>
+							href="../_01_StoreRegister/_storeRegister.jsp">註冊</a>
 					</div>
 				</div>
 				<div class="col-md-4 w-25"></div>

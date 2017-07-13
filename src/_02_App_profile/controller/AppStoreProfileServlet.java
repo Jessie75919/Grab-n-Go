@@ -86,6 +86,10 @@ public class AppStoreProfileServlet extends HttpServlet {
 				System.out.println(encodedImage);
 				map.put("rest_logo", encodedImage);
 				
+				String rest_validate = String.valueOf(sb.isRest_validate());
+				System.out.println(rest_validate);
+				map.put("rest_validate", rest_validate);
+				
 			} else if (param.equals("updateProfile")) {
 				System.out.println("開始updateProfile");
 				String newPassword = jsonObject.get("newPassword").getAsString();

@@ -24,6 +24,7 @@ import com.google.gson.JsonObject;
 import _01_Store_register.model.RestaurantTypeDAO;
 import _01_Store_register.model.StoreBean;
 import _01_Store_register.model.StoreBeanDAO;
+import _01_register.controller.SendValidMail;
 import _02_App_login.model.ImageUtil;
 
 @SuppressWarnings("serial")
@@ -207,6 +208,11 @@ public class AppStoreRegisterServlet extends HttpServlet {
 					String rest_id = String.valueOf(store.get(0).getRest_id());
 					System.out.println(rest_id);
 					map.put("rest_id", rest_id);
+					
+					//寄送驗證信
+					SendValidMail sendValidMail = new SendValidMail();
+					int n_sendMail = sendValidMail.sendMail(email, username, 2);
+					//String mailAddress, String memberID, int mode
 				}
 			}
 			System.out.println(map);

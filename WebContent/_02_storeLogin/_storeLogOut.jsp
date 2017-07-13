@@ -8,9 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> 
-<!--   <link rel="stylesheet" href="../css/_signOut.css" type="text/css"> -->
   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="../css/_storeFontDefault.css" type="text/css">
   <title> Sign Out </title>
 </head>
 <c:remove var="StoreLoginOK" scope="session" />
@@ -18,13 +16,13 @@
 <!-- 下列敘述設定變數funcName的值為OUT，top.jsp 會用到此變數 -->
 <c:set var="funcName" value="OUT" scope="session"/>
 
-<body>
+<body style="font-family: 微軟正黑體, Microsoft JhengHei,arial,helvetica,sans-serif;">
   <div class="py-5 section text-center">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <!-- <h1 class="text-primary">Logo</h1> -->
-          <img width="350px" src="../images/share/logo.svg">
+          <img width="30%" src="../images/share/logo.svg">
           <p class="lead"></p>
         </div>
       </div>
@@ -52,11 +50,11 @@
 
 						<p>
 						
-						<div id="textSet" class="btn btn-default">
+						<div id="textSet" class="btn btn-default btn-lg">
 							<a style=" text-decoration: none;"
 								href="../indexA.jsp">狠心離開</a>
 						</div>
-						<div id="textSet" class="btn btn-warning">
+						<div id="textSet" class="btn btn-warning btn-lg">
 							<a style="color: #fff; text-decoration: none;"
 								href="StoreLogin.jsp">再次登入</a>
 						</div>

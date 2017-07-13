@@ -141,10 +141,11 @@ public class StoreLoginServiceDB {
 				Blob rest_mainbanner = rs.getBlob("rest_mainbanner");
 				Blob rest_logo = rs.getBlob("rest_logo");
 				Blob rest_coverimage = rs.getBlob("rest_coverimage");
+				boolean rest_validate = rs.getBoolean("rest_validate");
 
 				sb = new StoreBean(rest_id, rest_type, rest_name, rest_branch, rest_address, rest_phone, rest_owner,
 						rest_email, rest_username, rest_password, rest_url, rest_longitude, rest_latitude,
-						rest_mainbanner, rest_logo, rest_coverimage);
+						rest_mainbanner, rest_logo, rest_coverimage, rest_validate);
 
 			}
 		} catch (Exception e) {

@@ -55,13 +55,13 @@
 					<form method="POST" action="Storelogin.do" id="theForm"
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
-							<label>Username </label> <input type="text" id="usr"
+							<label style="padding: 5px;">Username :</label><br> <input type="text" id="usr"
 								name="username" value="${sessionScope.StoreUser}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
-							<label>Password</label> <input type="password" id="pw"
+							<label style="padding: 5px;">Password :</label><br> <input type="password" id="pw"
 								name="password" class="form-control"
 								value="${sessionScope.StorePassword}"> <span id="pwRes"
 								style="height: 10px;"></span>
@@ -81,7 +81,7 @@
 								data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"></div>
 							<!-- <label>I am not Robot! Enter the text:&nbsp;</label>
               <input type="text" class="form-control" placeholder="">  -->
-							<div class="form-check">
+							<div style="padding: 10px;" class="form-check">
 								<label class="form-check-label"> <input
 									name="rememberMe" class="form-check-input" type="checkbox"
 									id="rm"

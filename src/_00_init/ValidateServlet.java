@@ -30,17 +30,18 @@ public class ValidateServlet extends HttpServlet {
 		Map<String, String> msg = new HashMap<>();
 		
 		String ctxPath = getServletContext().getContextPath() + "/";
+		lg.info("ctxPath = " +ctxPath);
 		session.setAttribute("MSG", msg);
 		if (username == null) {
 			msg.put("getNameFail", "抓不到值");
 			lg.error("抓不到值");
-			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			request.getRequestDispatcher("indexA.jsp").forward(request, response);
 			return;
 		}
 		if (mode == null) {
 			msg.put("getNameFail", "抓不到值");
 			lg.error("抓不到值");
-			request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+			request.getRequestDispatcher("indexA.jsp").forward(request, response);
 			return;
 		}
 
@@ -55,7 +56,7 @@ public class ValidateServlet extends HttpServlet {
 			if (!dao.idExists(username)) {
 				msg.put("noUser", "查無使用者");
 				lg.error("查無使用者");
-				request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+				request.getRequestDispatcher("indexA.jsp").forward(request, response);
 				return;
 			}
 			
@@ -72,7 +73,7 @@ public class ValidateServlet extends HttpServlet {
 			if (dao.isValidated(username, modeNum)==1) {
 				msg.put("alreadyValid", "已經驗證過囉");
 				lg.error("已經驗證過囉");
-				request.getRequestDispatcher(ctxPath + "indexA.jsp").forward(request, response);
+				request.getRequestDispatcher("indexA.jsp").forward(request, response);
 				return;
 			}
 			n = dao.validate(username, modeNum);
@@ -89,7 +90,7 @@ public class ValidateServlet extends HttpServlet {
 		} else {
 			msg.put("validateFail", "驗證失敗請重新驗證");
 			lg.error("驗證失敗請重新驗證");
-			response.sendRedirect(response.encodeRedirectURL(ctxPath + "indexA.jsp"));
+			response.sendRedirect(response.encodeRedirectURL("indexA.jsp"));
 			return;
 		}
 

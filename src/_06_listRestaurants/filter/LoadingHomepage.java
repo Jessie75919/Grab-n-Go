@@ -39,16 +39,19 @@ public class LoadingHomepage implements Filter {
 		lg.info(contextPath);
 		Cookie[] coks = servletRequest.getCookies();
 		// System.out.println("here ??");
-		for (Cookie cok : coks) {
-			if (cok.getName().equals("lat")) {
-				if(cok.getValue()!=null){
-					latitude = Double.parseDouble(cok.getValue());
-					System.out.println("latitude= " + latitude + " in LoadingHomepageFilter");
-				}
-			} else if (cok.getName().equals("lng")) {
-				if(cok.getValue()!=null){
-					longitude = Double.parseDouble(cok.getValue()); 
-					System.out.println("latitude= " + longitude + " in LoadingHomepageFilter");
+		
+		if(coks!=null){
+			for (Cookie cok : coks) {
+				if (cok.getName().equals("lat")) {
+					if(cok.getValue()!=null){
+						latitude = Double.parseDouble(cok.getValue());
+						System.out.println("latitude= " + latitude + " in LoadingHomepageFilter");
+					}
+				} else if (cok.getName().equals("lng")) {
+					if(cok.getValue()!=null){
+						longitude = Double.parseDouble(cok.getValue()); 
+						System.out.println("latitude= " + longitude + " in LoadingHomepageFilter");
+					}
 				}
 			}
 		}

@@ -30,14 +30,22 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 		String restUsername = request.getParameter("restUsername");
 		System.out.println("欲查詢的商家：" + restUsername);
 		String month = request.getParameter("month");
-		System.out.println("欲查詢的月份+年的字串: " + month);
+		
+		String monthT ="";
+		if ( Integer.parseInt(month) <= 9){
+			monthT = "0" + month;
+		}else{
+			monthT = month;
+		}
+		System.out.println("欲查詢的月份+年的字串: " + month + "+1");
 		String year = request.getParameter("year");
 		System.out.println("欲查詢的年份：" + year);
 		
 		try {
 			OrderDAO od = new OrderDAO();
 			od.setRestUsername(restUsername);
-			od.setMonthSelect(month);
+			od.setMonth(Integer.parseInt(monthT.trim()) + 1);
+			//od.setMonthSelect(month);
 			//od.setMonth(Integer.parseInt(month.trim()) + 1);
 			//od.setMonthSelect(month);
 			Collection<OrderBean> list = od.getMonthlyStoreRevenue();
@@ -52,9 +60,10 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 			
 			for(int i=0; i<maxDate-count; i++){
 				OrderBean ob = new OrderBean();
-				if( ob.getOrd_totalPrice() == 0 ){
-					ob.getOrd_pickuptime();
-				}
+				ob.setOrd_totalPrice(0);
+//				if( ob.getOrd_totalPrice() == 0 ){
+//					ob.getOrd_pickuptime();
+//				}
 				ob.getOrd_pickuptime();
 				list.add(ob);
 				

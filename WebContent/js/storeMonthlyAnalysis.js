@@ -8,28 +8,40 @@ s.attr({ 'width' : 680,'height' : 300,})
 
 	var ms = document.getElementById("monthSelector");
 	var d = new Date();
-	var year = d.getFullYear();
 	var currentMonth = d.getMonth();
 	var months = [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月",
 			"十一月", "十二月" ];
-//	for (var i = 0; i < months.length; i++) {
-//		var op = document.createElement("option");
-//		op.value = i;
-//		op.text = months[i];
-//		ms.appendChild(op);
-//		if (i == currentMonth) {
-//			ms.value = i;
-//		}
-//	}
+	for (var i = 0; i < months.length; i++) {
+		var op = document.createElement("option");
+		op.value = i;
+		op.text = months[i];
+		ms.appendChild(op);
+		if (i == currentMonth) {
+			ms.value = i;
+		}
+	}
 	ms.setAttribute("onchange", "getMonthlyOrders()");
+//	年
+	var ys = document.getElementById("yearSelector");
+	var year = d.getFullYear();
+	var years = ["2017","2016","2015","2018"];
+	for (var y = 0; y < years.length; y++) {
+		var yp = document.createElement("option");
+		yp.value = y;
+		yp.text = years[y];
+		ys.appendChild(yp);
+		if (y == year) {
+			ys.value = y;
+		}
+	}
 	
 	function getMonthlyOrders(){
 		alert("選取的月份：" + ms.value);
 		alert("年份: " + year);
-		var msStr =  year + "-" + ms.value;
-		alert("傳回字串：" + msStr);
+//		var msStr =  year + "-" + ms.value;
+//		alert("傳回字串：" + msStr);
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + msStr + "year=" + year,true);
+		xhr.open("GET","../MonthlyRevenue.do?restUsername=" + restUsername + "&month=" + ms.value + "&year=" + year,true);
 		xhr.send();
 		xhr.onreadystatechange = function(){
 			if( xhr.readyState == 4 && xhr.status == 200){
@@ -42,7 +54,6 @@ s.attr({ 'width' : 680,'height' : 300,})
 				
 				//alert(monthlyOrders.length);
 				var monthDays = monthlyOrders.length;
-				var priceMax = Math.max(monthlyOrders.ord_totalPrice);
 				
 				for( var i = 0; i < monthDays ; i++){
 					console.log("date = " + monthlyOrders[i].ord_pickuptime 
@@ -88,6 +99,15 @@ s.attr({ 'width' : 680,'height' : 300,})
 				//Y的資料範圍
 				var scaleY = d3.scale.linear().range([ height, 0 ]).domain([ 0, 1000]); 
 				var data = [];
+				
+				
+				//先清空
+//				for( var j=1; j<=monthDays; j++){
+//					data.push(
+//							{ x: j,  y:0}		
+//					);
+//				}
+				
 				for( var j=1; j<=monthDays; j++){
 					data.push(
 					{ x: j,  y:monthlyOrders[j-1].ord_totalPrice}		
@@ -144,6 +164,7 @@ s.attr({ 'width' : 680,'height' : 300,})
 					'font-size' : '12px'
 				});
 			
+				
 			}
 		}
 	}

@@ -46,10 +46,12 @@
 				<h3>> 本月訂單統計</h3><br>
 				 <span><h4>&nbsp&nbsp&nbsp請選擇欲查詢的月份：</h4></span>
 				<!--選擇月份-->
-				<div class="col-xs-3">
+				<div class="col-xs-6">
+				<div class="form-inline">
 				<input style="display: none;" id="restUsername" name="restUsername" value="${StoreLoginOK['rest_username']}"/>
+				<select id="yearSelector" class="form-control"></select>
 				<select id="monthSelector" class="form-control">
-					<option value="01">一月</option>
+					<!-- <option value="01">一月</option>
 					<option value="02">二月</option>
 					<option value="03">三月</option>
 					<option value="04">四月</option>
@@ -60,8 +62,9 @@
 					<option value="09">九月</option>
 					<option value="10">十月</option>
 					<option value="11">十一月</option>
-					<option value="12">十二月</option>
+					<option value="12">十二月</option> -->
 				</select>&nbsp
+				</div>
 				</div>
 			</div>
 		</div>

@@ -74,23 +74,15 @@ s.attr({ 'width' : 680,'height' : 300,})
 					
 					   
 				}
-//				for( var i = 0; i < monthlyOrders.length; i++){
-//					
-//					  /* console.log("date = " + monthlyOrders[i].ord_pickuptime 
-//							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); */
-//					 var tr = document.createElement("tr");
-//					
-//					 var td1 = document.createElement("td");
-//					 td1.textContent = monthlyOrders[i].ord_pickuptime;
-//					 
-//					 var td2 = document.createElement("td");
-//					 td2.textContent = "$" + monthlyOrders[i].ord_totalPrice;
-//					 
-//					 tr.appendChild(td1);
-//					 tr.appendChild(td2);
-//					 
-//					 table.appendChild(tr);
-//				}
+
+				// -----------清空折線圖
+				// d3.select("svg").remove();
+				d3.selectAll("svg > *").remove();
+
+
+				// -----------清空折線圖 end
+
+
 				 //---------- 折線圖
 				
 				var parseDate = d3.time.format("%Y-%m-%d").parse;
@@ -101,19 +93,16 @@ s.attr({ 'width' : 680,'height' : 300,})
 				var data = [];
 				
 				
-				//先清空
-//				for( var j=1; j<=monthDays; j++){
-//					data.push(
-//							{ x: j,  y:0}		
-//					);
-//				}
-				
 				for( var j=1; j<=monthDays; j++){
 					data.push(
 					{ x: j,  y:monthlyOrders[j-1].ord_totalPrice}		
 					);
 				}
+
 				console.log(data)
+
+
+				// 畫面生成
 				var line = d3.svg.line().x(function(d) {
 					return scaleX(d.x);
 				}).y(function(d) {
@@ -163,7 +152,10 @@ s.attr({ 'width' : 680,'height' : 300,})
 				}).style({
 					'font-size' : '12px'
 				});
-			
+
+				// 畫面生成
+
+
 				
 			}
 		}

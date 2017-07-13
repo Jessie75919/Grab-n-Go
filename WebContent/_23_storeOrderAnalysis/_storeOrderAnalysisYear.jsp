@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <!-- 載入d3.js -->
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="../javascript/jquery-3.2.1.min.js"></script>
+  <script>
+  $(document).ready(function(){
+		  alert("預設選取的年份：" + $("#yearSelected").val());
+		  getYearOrders();
+  });
+  </script>
   <title>Welcome to GrabAndGo</title>
 </head>
 <!--商家帳務分析-->
@@ -42,6 +49,15 @@
       <div class="col-md-9">
         <div>
           <h3>> 年度訂單統計</h3>
+          <span><h4>請選擇欲查看的年份:</h4></span>
+          <input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
+          <div class="form-inline">
+          <select id="yearSelected" class="form-control">
+          	<option value="2016">2016</option>
+          	<option value="2017" Selected>2017</option>
+          	<option value="2018">2018</option>
+          </select>
+          </div>
         </div>
       </div>
   </section>
@@ -54,11 +70,10 @@
         <!--帳務分析按鈕區塊-->
         <br>
         <div>
-          <!--<ul class="nav nav-tabs nav-justified">-->
           <ul class="nav nav-pills nav-justified">
             <li role="presentation"><a href="_storeOrderAnalysisDay.jsp">當日訂單統計</a></li>
             <li role="presentation"><a href="_storeOrderAnalysisMonthly.jsp">當月訂單統計</a></li>
-            <li role="presentation"  class="active"><a href="#">當年訂單統計</a></li>
+            <li role="presentation" class="active"><a href="#">當年訂單統計</a></li>
           </ul>
         </div>
         <br>
@@ -95,79 +110,10 @@
     </div>
   </section>
   
-  <!--長條圖 js-->
-    <script type="text/javascript">
-        // 設定svg長寬
-        var svg_width = 500;
-        var svg_height = 300;
-        //設定padding (長條之間的間隔)
-        var bar_padding = 5;
-
-        //需要視覺化的data
-        var dataset = [30, 20, 10, 40, 45, 25, 15, 35, 18, 50, 30, 25];
-
-        //開始設定svg
-        var svg = d3.select("body").selectAll("#barChart")
-            .append("svg")
-            .attr("width", svg_width)
-            .attr("height", svg_height);
-
-        //呈現data
-        //.data(dataset)
-        //要呈現的data是dataset裡的數值
-        //.enter()像是過濾器的功用
-        //宣告 x, y座標
-        // .attr("x", function (d, i), d-> 30; i-> 0
-        //設定長條圖中值的寬高
-        //.attr("width", svg_width / dataset.length)
-        //設定顏色, rgb顏色跟著值做改變
-        //.attr("fill", function(d)
-        svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x", function (d, i) {
-                // body...
-                return i * (svg_width / dataset.length);
-            })
-            .attr("y", function (d) {
-                // body...
-                return svg_height - (d * 4);
-            })
-            .attr("width", svg_width / dataset.length - bar_padding)
-            .attr("height", function (d) {
-                // body...
-                return d * 4;
-            })
-            .attr("fill", function (d) {
-                return "rgb(" + d * 5 + ",0 , 0)";
-            })
-
-        //將文字顯示在長條圖上 
-        //設定x, y 的座標-> 目的是告訴文字的顯示位置
-        svg.selectAll("text")
-            .data(dataset)
-            .enter()
-            .append("text")
-            .text(function (d) {
-                return d;
-            })
-            .attr("text-anchor", "middle")
-            .attr("x", function (d, i) {
-                return i * (svg_width / dataset.length) + (svg_width / dataset.length - bar_padding) / 2;
-            })
-            .attr("y", function (d) {
-                return svg_height - 5 ;
-                //return svg_height- (d * 4) + 20
-            })
-            .attr("font-family", "Tahoma")
-            .attr("font-size", "20px")
-            .attr("fill", "white")
-
-    </script>
     <!--載入js-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/storeYearAnalysis.js"></script>
 
 </body>
 

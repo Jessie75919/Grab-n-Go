@@ -48,7 +48,8 @@
         <section class="content">
             <form id="theForm" action="PayBill.do" method="post" class="formcontent"  onsubmit="return validCheck(event);">
                 <div id="cartLeft" class="cartLeft">
-                    <h3><a href="../_07_storePage/storePage.jsp">${ordRB.rest_name}&nbsp;${ordRB.rest_branch}</a></h3>
+                    <h3><a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${bindRest.rest_id}">${ordRB.rest_name}&nbsp;
+                    <c:if test="${ordRB.rest_branch!='null'}">${ordRB.rest_branch}</c:if></a></h3>
                     <!--菜單列表-->
                     <c:set var="map" property="shoppingCart" value="${cart}"/>
                     <c:forEach var="list" items="${map.listAllMap}">

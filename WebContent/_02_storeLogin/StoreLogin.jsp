@@ -30,15 +30,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script
 	src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+<style>
+</style>
 </head>
 
-<body>
+<body style="font-family: 微軟正黑體, Microsoft JhengHei,arial,helvetica,sans-serif;">
 	<div class="py-5 section text-center">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
+				<center>
 					<a href="${pageContext.request.contextPath}/indexA.jsp"><img
 						width="30%" src="../images/share/logo.svg"></a>
+				</center>
 				</div>
 			</div>
 		</div>
@@ -86,11 +90,11 @@
 								</label>
 							</div>
 							<button type="submit" id="signInBtn"
-								class="btn btn-block my-1 btn-warning">Sign in</button>
+								class="btn btn-block my-1 btn-warning">登入</button>
 					</form>
 					<div class="btn btn-primary btn-block my-2">
 						<a style="color: #fff; text-decoration: none;"
-							href="../_01_StoreRegister/_storeRegister.jsp">Sign up</a>
+							href="../_01_StoreRegister/_storeRegister.jsp">註冊</a>
 					</div>
 				</div>
 				<div class="col-md-4 w-25"></div>

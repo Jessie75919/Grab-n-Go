@@ -7,5 +7,5 @@ public class Common {
 			+ "  a.rest_latitude , a.rest_mainbanner , a.rest_logo , a.rest_coverimage , a.rest_validate , "
 			+ " 111.111 * " + " DEGREES(ACOS(COS(RADIANS(a.rest_latitude)) " + " * COS(RADIANS(?)) "
 			+ "  * COS(RADIANS(a.rest_longitude - ?)) " + " + SIN(RADIANS(a.rest_latitude)) "
-			+ " * SIN(RADIANS(?)))) AS distance_in_km " + " FROM restaurant AS a " + " HAVING distance_in_km < 3; ";
+			+ " * SIN(RADIANS(?)))) AS distance_in_km " + " FROM restaurant AS a " + " HAVING distance_in_km < 1; ";
 }

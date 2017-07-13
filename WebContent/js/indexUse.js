@@ -13,7 +13,7 @@ window.onload = function () {
     // alert('usrname=' + $('#usrName').val());
     // alert('status :' + status);
     if ($('#usrName').val() != null) {
-        $.getJSON("checkValidate.do", { user: $('#usrName').val() , mode:1},
+        $.getJSON("checkValidate.do", { user: $('#usrName').val(), mode: 1 },
             function (data, textStatus, jqXHR) {
                 if (data == "NotValid") {
                     if (status == null) {
@@ -47,38 +47,38 @@ window.onload = function () {
             });
     }
 
+
     if (navigator.geolocation) {
+
         navigator.geolocation.getCurrentPosition
-            (successFunction, errorFunction);
-    }
+            (function successFunction(position) {
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                var accu = position.coords.accuracy;
 
-    //Get latitude and longitude;
-    function successFunction(position) {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-
-        //  alert("in successFunction");
-        setCookie("lat", lat);
-        setCookie("lng", lng);
-        //  alert("lat" + lat + ",  long" + long);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "SaveLocation.do?latitude=" + lat
-            + "&longitude=" + lng, false);
-        xhr.send();
+                //  alert("in successFunction");
+                setCookie("lat", lat);
+                setCookie("lng", lng);
+                alert("lat" + lat + ",  lng" + lng);
+                alert("accu = " + accu);
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "SaveLocation.do?latitude=" + lat
+                    + "&longitude=" + lng, true);
+                xhr.send();
 
 
-        localStorage['authorizedGeoLocation'] = 1;
-    }
 
-    function errorFunction() {
-        localStorage['authorizedGeoLocation'] = 0;
-        // alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
+                localStorage['authorizedGeoLocation'] = 1;
+            }, function errorFunction() {
+                localStorage['authorizedGeoLocation'] = 0;
+                // alert("請允許我們知道你的位置才能替您選出附近的餐廳唷~");
 
-        delete_cookie('lat');
-        delete_cookie('lng');
+                delete_cookie('lat');
+                delete_cookie('lng');
+            }, { maximumAge: 600, timeout: 5000, enableHighAccuracy: true });
 
     }
+
 
 
     var delete_cookie = function (name) {
@@ -160,7 +160,7 @@ function readMsgA(user) {
 
 $('#validBtn').on('click', function () {
     $('#ttt').show();
-   
+
 });
 
 

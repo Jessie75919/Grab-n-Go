@@ -14,10 +14,13 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="../javascript/jquery-3.2.1.min.js"></script>
   <script>
-  $(document).ready(function(){
-		  alert("預設選取的年份：" + $("#yearSelected").val());
-		  getYearOrders();
-  });
+  /* $(document).ready(function(){
+		  //alert("預設選取的年份：" + $("#yearSelected").val());
+	  if( $("#yearSelected").val() == null){ 
+		  alert("還沒選年度喔!"); 
+		  }
+		  //getYearOrders();
+  }); */
   </script>
   <title>Welcome to GrabAndGo</title>
 </head>
@@ -53,8 +56,8 @@
           <input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
           <div class="form-inline">
           <select id="yearSelected" class="form-control">
-          	<option value="2016">2016</option>
-          	<option value="2017" Selected>2017</option>
+          	<option value="2016" selected="true">2016</option>
+          	<option value="2017">2017</option>
           	<option value="2018">2018</option>
           </select>
           </div>
@@ -82,22 +85,22 @@
         </div>
         <hr>
 
-        <table id="orderTable">
-          <tr>
+        <table id="orderTableY">
+          <!-- <tr>
             <th>訂單月份</th>
             <th>餐點種類</th>
             <th>餐點名稱</th>
             <th>銷售數量</th>
             <th>營業總額</th>
           </tr>
-          <!-- 日營業額統計細項 -->
+          日營業額統計細項
           <tr>
             <td nowrap="">2017/05/19 11:05:31</td>
             <td>主餐</td>
             <td>西班牙海鮮燉飯</td>
             <td>100</td>
             <td>$33000</td>
-          </tr>
+          </tr> -->
         </table>
         <hr>
       </div>

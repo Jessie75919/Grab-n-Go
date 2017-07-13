@@ -19,8 +19,18 @@ public class OrderBean {
 	String ord_email;
 	int ord_evalued;
 	int monthDay;
+	String ordPickuptime;
 	
 	
+	
+
+	public String getOrdPickuptime() {
+		return ordPickuptime;
+	}
+
+	public void setOrdPickuptime(String ordPickuptime) {
+		this.ordPickuptime = ordPickuptime;
+	}
 
 	public int getMonthDay() {
 		return monthDay;
@@ -162,7 +172,7 @@ public class OrderBean {
 				+ ", ord_time=" + ord_time + ", ord_pickuptime=" + ord_pickuptime + ", rest_id=" + rest_id
 				+ ", ord_totalPrice=" + ord_totalPrice + ", ord_status=" + ord_status + ", rest_name=" + rest_name
 				+ ", items=" + items + ", ord_tel=" + ord_tel + ", ord_email=" + ord_email + ", ord_evalued="
-				+ ord_evalued + "]";
+				+ ord_evalued + "ordPickupTime" + ordPickuptime + "]";
 	}
 
 }

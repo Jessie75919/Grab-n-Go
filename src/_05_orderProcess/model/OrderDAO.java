@@ -726,26 +726,27 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getStoreYearRevenue() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		String sql = " SELECT DATE_FORMAT(a.ord_pickuptime, '%Y-%m'), SUM(a.ord_totalPrice) "
+		String sql = " SELECT DATE_FORMAT(a.ord_pickuptime, '%Y-%m') month_year, SUM(a.ord_totalPrice) "
 				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
 				   + " WHERE b.rest_username = ? AND a.ord_status = 'paid' AND a.ord_pickuptime LIKE ? "
-				   + " GROUP BY a.ord_pickuptime "
-				   + " ORDER BY a.ord_pickuptime ";
-//		SELECT date_format(a.ord_pickuptime, '%Y-%m'), sum(a.ord_totalPrice)
+				   + " GROUP BY month_year "
+				   + " ORDER BY month_year ASC";
+//		SELECT date_format(a.ord_pickuptime, '%Y-%m') month_year ,sum(a.ord_totalPrice)
 //		FROM Grab_n_Go.order01 a join Grab_n_Go.restaurant b On a.rest_id = b.rest_id
-//		where b.rest_username = 'subway' and a.ord_status = 'paid' and a.ord_pickuptime like '2017-%'
-//		group by a.ord_pickuptime
-//		order by a.ord_pickuptime ;
+//		where b.rest_username = 'subway' and a.ord_status = 'paid' and a.ord_pickuptime like '2017%'
+//		group by month_year
+//		order by month_year;
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
 				) {
 			stmt.setString(1, restUsername);
 			stmt.setString(2, yearSelect + "%");
-			System.out.println("從店家得到的年份" + yearSelect);
+			System.out.println("從店家得到的年份:" + yearSelect);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				OrderBean ob = new OrderBean();
-				ob.setOrd_pickuptime(rs.getTimestamp("DATE_FORMAT(a.ord_pickuptime, '%Y-%m')"));
+				//ob.setOrd_pickuptime(rs.getDate("DATE_FORMAT(a.ord_pickuptime, '%Y-%m-%')"));
+				ob.setOrdPickuptime(rs.getString("month_year"));
 				ob.setOrd_totalPrice(rs.getInt("SUM(a.ord_totalPrice)"));
 				coll.add(ob);
 				System.out.println(ob);

@@ -50,7 +50,7 @@
                         <div class="memberRight">
                             <div class="memberInfo">
                                 <h3>${LoginOK.memberId}</h3>
-                                <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+<!--                                 <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div> -->
                             </div>
                             <div class="formList">
                                 <div class="formTitle"><i class="icon-user"></i>姓名</div>

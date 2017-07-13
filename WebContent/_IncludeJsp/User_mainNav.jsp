@@ -64,6 +64,7 @@
             <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                 <!--已登入用這組 未登入的話這塊隱藏-->
                 <c:if test="${!empty LoginOK}">
+                    
                     <div class="memberLogin">
                         <figure> <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo"> </figure>
                         <p>
@@ -77,6 +78,15 @@
 				class="icon-user"></i>檢視/編輯個人資料</a></li>
                     <li><a href="${pageContext.servletContext.contextPath}/_06_member/order.jsp"><i
 				class="icon-list"></i>訂購紀錄</a></li>
+                <c:if test="${empty LoginOK}">
+                    <li><a href="${pageContext.servletContext.contextPath}/_02_login/forget_passwordA.jsp"><i
+				class="icon-list"></i>忘記密碼</a></li>
+                </c:if>
+                <c:if test="${! empty LoginOK}">
+                  <li><a
+				href="${pageContext.servletContext.contextPath}/_06_member/updatePassword.jsp"><i
+					class="icon-list"></i>修改密碼</a></li>
+                </c:if>
                     <li><a href="${pageContext.servletContext.contextPath}/_08_about/about.jsp"><i
 				class="icon-gg"></i>關於Grab &amp; Go</a></li>
                 </ul>

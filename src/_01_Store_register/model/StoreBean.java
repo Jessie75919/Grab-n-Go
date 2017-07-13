@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class StoreBean  {
+public class StoreBean implements Serializable {
 
 	private int rest_id;
 	private String rest_type;

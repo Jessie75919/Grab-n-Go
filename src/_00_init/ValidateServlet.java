@@ -26,12 +26,11 @@ public class ValidateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 文字資料轉內碼
 		String username = request.getParameter("user");
 		String mode = request.getParameter("mode");
-		HttpSession session = request.getSession();
 		Map<String, String> msg = new HashMap<>();
 		
 		String ctxPath = getServletContext().getContextPath() + "/";
 		lg.info("ctxPath = " +ctxPath);
-		session.setAttribute("MSG", msg);
+		request.setAttribute("MSG", msg);
 		if (username == null) {
 			msg.put("getNameFail", "抓不到值");
 			lg.error("抓不到值");

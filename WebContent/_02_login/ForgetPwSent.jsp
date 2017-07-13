@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>忘記密碼-Grab &amp; Go</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>新密碼已發送-Grab &amp; Go</title>
     <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
     <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
     <meta name="author" content="Grab &amp; Go">
@@ -28,40 +29,25 @@
 
 <body>
     <div class="loginLogo">
-        <a href="../index.htm"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
+        <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
     </div>
     <main class="login">
-        <h2>忘記密碼</h2>
-        <p>請填寫以下欄位，我們將發送一封新密碼至您註冊的信箱，收到密碼後請重新登入修改您的密碼，謝謝。</p>
-        <form action="ForgetPassword.do" method="post" class="formcontent" >
-            <div class="loginList">
-                <input type="text" name="eMail" id="eMail" placeholder="請輸入您的E-mail" class="validate[required, custom[email]] text-input">
-            	<span  style="margin:4px 0 0 0;" id="checkMail"></span>
-            </div>
-            <div class="loginBtn">
-                <input name="reset" type="reset" id="reset" value="重填">
-                <input name="submit" type="submit" id="sub" value="送出">
-            </div>
-        </form>
+        <h2>新密碼已發送</h2>
+        <p>我們已經寄出一組新的密碼至您的信箱，請用信箱中的新密碼登入您的帳號，感謝您的配合。</p>
+        <div class="formBtn">
+            <a href="../indexA.jsp">逛逛Grab &amp; Go</a>
+<!--             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=email@domain.com">到信箱收信</a> -->
+        </div>
     </main>
-      <div id="ttt" class="loading">
-                        <div class="loadDotted"></div>
-                        <div class="loadDotted"></div>
-                        <div class="loadDotted"></div>
-                    </div>
     <footer>
         <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
     <!--main js-->
     <!--[if lt IE 8]><script type="text/javascript" src="../javascript/html5.js"></script><![endif]-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <!-- form check-->
-    <link rel="stylesheet" href="../javascript/validation/validationEngine.jquery.css">
-    <script type="text/javascript" charset="utf-8" src="../javascript/validation/languages/jquery.validationEngine-zh_TW.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
-    <!-- form check end-->
     <!--share js-->
     <script src="../javascript/share.js"></script>
-    <script src="../js/forgetPW.js"></script>
+
+
 </body>
 
 </html>

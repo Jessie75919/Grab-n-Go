@@ -25,3 +25,14 @@ $('form').submit(function (e) {
     }
 });
 
+
+$(document).ready(function () {
+      $('#ttt').hide();
+});
+
+
+
+$('#sub').on('click', function () {
+    $('#ttt').show();
+
+});

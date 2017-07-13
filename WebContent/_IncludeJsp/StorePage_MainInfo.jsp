@@ -18,7 +18,9 @@
                 </figure>
                 <!--店家資訊-->
                 <div class="storeTitle">
+                <a href="${clickRest.rest_url}">
                     <div class="storeLogo"><img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${clickRest.rest_username}&type=restaurant&loc=logo" alt="${clickRest.rest_name}" title="${clickRest.rest_name}"></div>
+                </a>
                     <div class="storeRight">
                         <h3>${clickRest.rest_name}<span><c:if test="${clickRest.rest_branch!='null'}">${clickRest.rest_branch}</c:if></span></h3>
                         <div class="star">

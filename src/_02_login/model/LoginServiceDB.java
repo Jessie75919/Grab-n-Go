@@ -36,7 +36,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 			rs = pStmt.executeQuery();
 
 			if (rs.next()) {
-				String id = rs.getString("m_username").trim(); 
+				String id = rs.getString("m_username").trim();
 				// 必須確定rs.getString("memberID") not null
 				String pswd = rs.getString("m_password").trim();
 				String name = rs.getString("m_name").trim();
@@ -47,8 +47,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 				Blob userImage = rs.getBlob("m_picture");
 				String filename = rs.getString("m_filename").trim();
 				int m_validate = rs.getInt("m_validate");
-				mb = new MemberBean
-						(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb = new MemberBean(id, pswd, name, phone, email, addr, birthday, userImage, filename);
 				mb.setM_validate(m_validate);
 
 			}
@@ -62,9 +61,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 		}
 		return mb;
 	}
-	
-	
-	
+
 	public MemberBean getMemberFromId(String user) throws SQLException {
 		String sql = "SELECT * From member where m_username = ?";
 		Connection connection = null;
@@ -76,9 +73,9 @@ public class LoginServiceDB implements LoginServiceDAO {
 			pStmt = connection.prepareStatement(sql);
 			pStmt.setString(1, user);
 			rs = pStmt.executeQuery();
-			
+
 			if (rs.next()) {
-				String id = rs.getString("m_username").trim(); 
+				String id = rs.getString("m_username").trim();
 				// 必須確定rs.getString("memberID") not null
 				String pswd = rs.getString("m_password").trim();
 				String name = rs.getString("m_name").trim();
@@ -89,8 +86,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 				Blob userImage = rs.getBlob("m_picture");
 				String filename = rs.getString("m_filename").trim();
 				int m_validate = rs.getInt("m_validate");
-				mb = new MemberBean
-						(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb = new MemberBean(id, pswd, name, phone, email, addr, birthday, userImage, filename);
 				mb.setM_validate(m_validate);
 			}
 		} finally {
@@ -115,7 +111,7 @@ public class LoginServiceDB implements LoginServiceDAO {
 			pStmt = connection.prepareStatement(sql);
 			rs = pStmt.executeQuery();
 			while (rs.next()) {
-				String id = rs.getString("m_username").trim(); // 必須確定rs.getString("memberID") not null
+				String id = rs.getString("m_username").trim(); // 必須確定rs.getString("memberID")
 				String pswd = rs.getString("m_password").trim();
 				String name = rs.getString("m_name").trim();
 				String phone = rs.getString("m_phone").trim();
@@ -150,6 +146,92 @@ public class LoginServiceDB implements LoginServiceDAO {
 			}
 		}
 		return null;
+	}
+
+	public int checkEmail(String Email) {
+		String sql = "SELECT m_email From member where m_email = ?";
+		Connection connection = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		int n = 0;
+		String email = null;
+		try {
+			connection = ds.getConnection();
+			pStmt = connection.prepareStatement(sql);
+			pStmt.setString(1, Email);
+			rs = pStmt.executeQuery();
+			while (rs.next()) {
+				email = rs.getString("m_email").trim();
+			}
+			if (email != null)
+				n = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (connection != null)
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return n;
+	}
+	
+	
+	public MemberBean getMemberByEmail(String Email) {
+		String sql = "SELECT * From member where m_email = ?";
+		Connection connection = null;
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		MemberBean mb = null;
+		int n = 0;
+		try {
+			connection = ds.getConnection();
+			pStmt = connection.prepareStatement(sql);
+			pStmt.setString(1, Email);
+			rs = pStmt.executeQuery();
+			
+			
+			while(rs.next()){
+				String id = rs.getString("m_username").trim(); // 必須確定rs.getString("memberID")
+				String pswd = rs.getString("m_password").trim();
+				String name = rs.getString("m_name").trim();
+				String phone = rs.getString("m_phone").trim();
+				String email = rs.getString("m_email").trim();
+				String addr = rs.getString("m_address").trim();
+				Date birthday = rs.getDate("m_birthday");
+				Blob userImage = rs.getBlob("m_picture");
+				String filename = rs.getString("m_filename").trim();
+				int m_validate = rs.getInt("m_validate");
+				mb = new MemberBean(id, pswd, name, phone, email, addr, birthday, userImage, filename);
+				mb.setM_validate(m_validate);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			if (connection != null)
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return mb;
 	}
 
 	public List<MemberBean> getMemberList() {

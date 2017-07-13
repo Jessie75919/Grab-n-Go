@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -135,4 +136,32 @@ public class SendValidMail extends HttpServlet {
 		}
 		return n;
 	}
+	
+	
+	public String randomPassword(){
+		StringBuilder sb = new StringBuilder();
+		String [] lowerCase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		String[] number = {"0","1","2","3","4","5","6","7","8","9"};
+		Random rd = new Random();
+		for(int i=0;i<10;i++){
+			int chooseMode = rd.nextInt(2);
+			if(chooseMode==1){
+				lg.info("chooseMode = "+chooseMode);
+				int chooseCase = rd.nextInt(2);
+				lg.info("chooseCase = " + chooseCase);
+				if(chooseCase==1){
+					int chooseChar = rd.nextInt(25);
+					sb.append(lowerCase[chooseChar].toUpperCase());
+				}
+			}else if(chooseMode==2){
+				lg.info("chooseMode = " +chooseMode);
+				int chooseNum = rd.nextInt(9);
+				sb.append(lowerCase[chooseNum]);
+			}
+		}
+		lg.info(sb.toString());
+		
+		return sb.toString();
+	}
+	
 }

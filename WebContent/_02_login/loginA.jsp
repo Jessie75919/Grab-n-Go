@@ -68,7 +68,7 @@
                     <div class="loginBtn">
                         <input name="reset" type="reset" id="reset" value="重填">
                         <input name="submit" type="submit" id="submit" value="登入">
-                        <p><a href="forget_password.htm">忘記密碼</a> | <a href="../_01_register/registerA.jsp">註冊新會員</a></p>
+                        <p><a href="forget_passwordA.jsp">忘記密碼</a> | <a href="../_01_register/registerA.jsp">註冊新會員</a></p>
                     </div>
                 </form>
             </main>

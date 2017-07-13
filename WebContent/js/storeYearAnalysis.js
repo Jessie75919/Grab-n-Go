@@ -1,8 +1,42 @@
+var restUsername = document.getElementById("restUsername").value;
 var ys = document.getElementById("yearSelected");
 ys.setAttribute("onchange", "getYearOrders()");
 
 function getYearOrders(){
 	alert("商家選擇的年份：" + ys.value);
+	//alert("!" + year.value);
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET","../YearRevenue.do?restUsername=" + restUsername + "&yearVal=" + ys.value, true);
+	xhr.send();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			alert("Got YearRevenue.do!");
+			var yearOrders = JSON.parse(xhr.responseText);
+			var table = document.getElementById("orderTableY");
+			table.innerHTML = "<tr><th>訂單月份</th><th>銷售總額</th></tr>";
+			
+			for(var i = 0; i < yearOrders.length; i++ ){
+				console.log("orderMonth = " + yearOrders[i].ordPickuptime
+						    + "revenue = " + yearOrders[i].ord_totalPrice);
+//				if(yearOrders[i].ord_totalPrice != 0){
+					var tr = document.getElementById("tr");
+					var td1 = document.getElementById("td");
+					td1.textContent = yearOrders[i].ordPickuptime;
+					
+					var td2 = document.getElementById("td");
+					td2.textContent = "$" + yearOrders[i].ord_totalPrice;
+					
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					
+					table.appendChild(tr);
+//				}
+			}
+			
+		}
+	}
+	
+	//柱狀圖
 	getChart();
 }
 

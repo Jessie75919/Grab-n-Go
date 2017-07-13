@@ -12,22 +12,21 @@ var itemPrice = document.getElementById("itemPrice");
 var specialNeed = document.getElementById("specialNeed");
 var count = document.getElementById("count");
 var btn = document.getElementById("submit");
+var currentStoreId = document.getElementById('rest').value;
 var tabA;
 
-var stroage = localStorage;
-var iNo = 0;
-var iName, iPrice, iQty, iSpecialNeed;
 
+
+// <start> 找尋點擊的那筆商品的資料 & 塞入跳出的訂購頁面
 function clickMe(e) {
     // alert(e.id);
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "../getOneProduct.do?proId=" + e.id, "true");
     xhr.send();
-
+    
     tabA = e.parentNode.parentNode.parentNode.id;
     // alert('tab = ' + tabA);
-
-
+    
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var product = JSON.parse(xhr.responseText);
@@ -37,52 +36,58 @@ function clickMe(e) {
             desc.innerText = product.prod_desc;
             count.value = 1;
             itemType.value = tabA;
-            specialNeed.value ="";
+            specialNeed.value = "";
             idKey.value = e.id;
             itemName.value = product.prod_name;
             itemPrice.value = product.prod_price;
         }
     }
 }
+// <end> 找尋點擊的那筆商品的資料 & 塞入跳出的訂購頁面
+
+
 
 window.onload = function () {
-    var msg = document.getElementById("showMsg").value;
-    var anchor = document.getElementById("anchor").value;
 
-    if(anchor==""){
-        anchor = 'tab2';
+    // <start> 下定購物車之後回到下訂前的那個標籤 
+    var anchor = document.getElementById("anchor").value;
+    var info = anchor.split("|");
+    var typeLast = info[0];
+    var storeIdLast = info[1];
+
+    // alert('achor = ' +anchor);
+    // alert('typeLast = '+typeLast); 
+    // alert('storeIdLast = '+storeIdLast); 
+    // alert('currentStoreId = '+currentStoreId); 
+
+    if (storeIdLast == currentStoreId) {
+        if (anchor != "") {
+
+            $('#tab1').css('dsiplay', 'none').removeClass('tab active').addClass('tab');
+            $('#tab1A').removeClass('slick-slide slick-active active').addClass('slick-slide slick-active');
+
+
+            $('#' + typeLast).css({
+                display: "block"
+            }).addClass('tab active');
+            $('#' + typeLast + 'A').removeClass('slick-slide slick-active').addClass('slick-slide slick-active active');
+        }
+
     }
 
-    // alert('anchor = ' + anchor);
-    // var anchorHash = 'references';
-    // document.getElementById(anchor).scrollIntoView();
-    // window.location.href ="storePage.jsp?id=" +anchor;
-    // $('a[href="#' + tabA + '"]').tab('show');
+    // <end> 下定購物車之後回到下訂前的那個標籤 
 
 
-
+    // ========= 如果訂了A餐廳卻又下定了B餐廳跳出不可重複訂餐的訊息 <s>
+    var msg = document.getElementById("showMsg").value;
 
     console.log(msg);
-    if(msg=="" || msg==null){
-    }else{
+    if (msg == "" || msg == null) {
+    } else {
         alert(msg);
-//        window.location.href = "_07_storePage/getOneRest.do?id=";
+        //        window.location.href = "_07_storePage/getOneRest.do?id=";
         msg = "";
         return;
     }
+    // ========= 如果訂了A餐廳卻又下定了B餐廳跳出不可重複訂餐的訊息 <e>
 }
-
-
-/*  
-function Item(no, proId, itemName, itemPrice, itemQty, itemNeed) {
-    this.no = no;
-    this.proId = proId;
-    this.itemName = itemName;
-    this.itemPrice = itemPrice;
-    this.itemQty = itemQty;
-    this.itemNeed = itemNeed;
-    this.subTotalCompute = function () {
-        return this.itemQty * this.itemPrice;
-    };
-};
-*/

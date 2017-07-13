@@ -90,6 +90,6 @@
                 <!-- AddToAny END -->
             </nav>
         </body>
-        <script src="${pageContext.servletContext.contextPath}/js/readMsg.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/js/indexUse.js"></script>
 
         </html>

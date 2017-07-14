@@ -578,13 +578,13 @@ public class StoreBeanDAO {
 				
 		List<StoreBean> listStore = new ArrayList<>();
 		StoreBean sb = null;
-		System.out.println("listStore in StoreBeanDAO");
+//		System.out.println("listStore in StoreBeanDAO");
 		try (
 			 Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);
 		) {
 			
-			System.out.println("AA = "+lat+ "  " +lng);
+//			System.out.println("AA = "+lat+ "  " +lng);
 			pst.setDouble(1, lat);
 			pst.setDouble(2, lng);
 			pst.setDouble(3, lat);

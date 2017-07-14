@@ -238,4 +238,14 @@
     <servlet-name>UpdatePassword</servlet-name>
     <url-pattern>/UpdatePassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PickRestServlet</display-name>
+    <servlet-name>PickRestServlet</servlet-name>
+    <servlet-class>_10_pickRest.controller.PickRestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PickRestServlet</servlet-name>
+    <url-pattern>/PickRestServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

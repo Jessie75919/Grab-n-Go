@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 
 
 import _00_init.GlobalService;
-import _03_listBooks.model.CompanyBean;
 
 public class RestDAO {
 	

@@ -46,7 +46,7 @@
                 <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
             </div>
             <main class="login">
-                <div class="googleBtn"><a href="#"><i class="icon-google"></i>GOOGLE 登入</a></div>
+<!--                 <div class="googleBtn"><a href="#"><i class="icon-google"></i>GOOGLE 登入</a></div> -->
                 <h2>會員帳號登入</h2>
                 <form action="<c:url value='userLogin.do' />" method="POST" name="loginForm" class="formcontent">
                     <div class="loginList">

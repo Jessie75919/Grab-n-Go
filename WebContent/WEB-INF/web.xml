@@ -218,4 +218,14 @@
     <servlet-name>ForgetPassword</servlet-name>
     <url-pattern>/ForgetPassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValidatePW</display-name>
+    <servlet-name>ValidatePW</servlet-name>
+    <servlet-class>_02_login.controller.ValidatePW</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidatePW</servlet-name>
+    <url-pattern>/ValidatePW</url-pattern>
+  </servlet-mapping>
 </web-app>

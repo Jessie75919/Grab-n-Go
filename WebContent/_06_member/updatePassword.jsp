@@ -36,7 +36,7 @@
         <p>請填寫以下欄位修改您的登入密碼。</p>
         <form action="UpdatePassword.do" method="post" class="formcontent" >
             <div class="loginList">
-        	<input type="hidden" id="oldPW" value="${sessionScope.password}">
+        	<input type="text" id="userId" value="${LoginOK.memberId}">
             </div>
             <div class="loginList">
                 <input type="text" name="oldPWInput" id="oldPWInput" placeholder="請輸入舊密碼" class="">

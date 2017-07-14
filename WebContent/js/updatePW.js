@@ -15,20 +15,20 @@ function showMgs() {
         "margin-left": "-300px",
         "z-index": "9999"
     }).fadeIn();
-    $('#validMsg a').css({
-        "text-decoration": "none",
-        "color": "rgb(235,80,60)",
-        "border-radius": "20px",
-        "margin": "10px 2px 0px 2px",
-        "display": "inline-block",
-        "width": "100px",
-        "padding": "3px 10px",
-        "background": "#fff"
-    });
+   
 }
 
 
 $('#oldPWInput').blur(function () {
+
+    $.getJSON("url", {userId:$('#userId').val(),},
+        function (data, textStatus, jqXHR) {
+            
+        }
+    );
+
+
+
     if ($('#oldPWInput').val() != $('#oldPW').val()) {
         $('#newPW').hide();
         $('#newPW2').hide();
@@ -51,9 +51,6 @@ $(document).ready(function () {
 });
 
 
-function closePanel() {
-    $('#validMsg').fadeOut()
-}
 
 $('form').submit(function (e) {
     if ($('#newPW').val() != $('#newPW2').val()) {

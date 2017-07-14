@@ -619,7 +619,7 @@ public class StoreBeanDAO {
 				sb.setDistance(distance);
 				
 				listStore.add(sb);
-				System.out.println("sb = " +sb);
+//				System.out.println("sb = " +sb);
 			}
 			
 			if(listStore.size()==0){

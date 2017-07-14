@@ -166,6 +166,7 @@ public class SendValidMail extends HttpServlet {
 	
 	public int sendForgetPWMail(String mailAddress, String memberID, int mode , String newPW) {
 		int n = -1;
+		lg.info("newPW = " + newPW);
 		String from = "grabngojava@gmail.com";
 		List<String> to = Arrays.asList(new String[] { mailAddress });
 		String subject = "Grab & Go會員 - 忘記密碼";
@@ -208,25 +209,25 @@ public class SendValidMail extends HttpServlet {
 		String[] number = {"0","1","2","3","4","5","6","7","8","9"};
 		Random rd = new Random();
 		int count = (int)(Math.random()*15+10);
-		lg.info(count);
+//		lg.info(count);
 		for(int i=0;i<count;i++){
 			int chooseMode = rd.nextInt(100);
 			if(chooseMode%2==0){
-				lg.info("chooseModeChar = "+chooseMode);
+//				lg.info("chooseModeChar = "+chooseMode);
 				int chooseCase = rd.nextInt(100);
-				lg.info("chooseCase = " + chooseCase);
+//				lg.info("chooseCase = " + chooseCase);
 				int chooseChar = rd.nextInt(25);
 				if(chooseCase%2==0){
 					sb.append(lowerCase[chooseChar].toUpperCase());
 				}
 				sb.append(lowerCase[chooseChar]);
 			}else {
-				lg.info("chooseModeNum = " +chooseMode);
+//				lg.info("chooseModeNum = " +chooseMode);
 				int chooseNum = rd.nextInt(9);
 				sb.append(number[chooseNum]);
 			}
 		}
-		lg.info(sb.toString());
+//		lg.info(sb.toString());
 		return sb.toString();
 	}
 	

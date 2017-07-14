@@ -27,7 +27,7 @@ public class SaveLocationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Hello!! SaveLocationServlet ");
+//		System.out.println("Hello!! SaveLocationServlet ");
 		request.setCharacterEncoding("UTF-8");
 //		HttpSession session = request.getSession();
 
@@ -39,7 +39,7 @@ public class SaveLocationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		System.out.println("Hello ? in SaveLocationServlet");
+//		System.out.println("Hello ? in SaveLocationServlet");
 		response.sendRedirect("index.jsp");
 //
 	}

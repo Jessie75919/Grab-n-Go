@@ -53,13 +53,15 @@ $(document).ready(function () {
 
 
 
-$('#sub').on('click', function () {
+$('#eMail').on('blur', function () {
     $.getJSON("checkEailExist.do", { email:$("#eMail").val()},
     function (data, textStatus, jqXHR) {
         if(data==0){
             showMgs();
             $('#validMsg').html('找不到這個信箱喔~').delay(1000).fadeOut();
+            hasErr =1;
         }else{
+           
             hasErr = 0;
         }
     }

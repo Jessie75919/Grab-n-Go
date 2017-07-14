@@ -34,9 +34,10 @@
     <main class="login">
         <h2>修改密碼</h2>
         <p>請填寫以下欄位修改您的登入密碼。</p>
-        <form action="UpdatePassword.do" method="post" class="formcontent" >
+        <form action="userUpdatePassword.do" method="post" class="formcontent" >
             <div class="loginList">
-        	<input type="hidden" id="userId" value="${LoginOK.memberId}">
+        	<input type="hidden" id="msg" value="${msg}">
+        	<input type="hidden" name="userId" id="userId" value="${LoginOK.memberId}">
             </div>
             <div class="loginList">
                 <input type="text" name="oldPWInput" id="oldPWInput" placeholder="請輸入舊密碼" class="">

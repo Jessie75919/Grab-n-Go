@@ -39,11 +39,15 @@ public class ForgetPassword extends HttpServlet {
 				SendValidMail sm = new SendValidMail();
 				String newPw = sm.getRandomPassword();
 				
+				lg.info("newPw =" + newPw);
+				
 				RegisterServiceDAO_JDBC jdbc = new RegisterServiceDAO_JDBC();
 				 
 				String encrypPW = GlobalService.getMD5Endocing(GlobalService.encryptString(newPw));
+				lg.info("encrypPW =" + encrypPW);
 				int x = jdbc.updatePassword(mb.getMemberId(), encrypPW);
 				if(x==1){
+					lg.info("newPw =" + newPw);
 					int n = sm.sendForgetPWMail(email, mb.getMemberId(), 1, newPw);
 					if(n==1){
 						lg.info("寄信成功");

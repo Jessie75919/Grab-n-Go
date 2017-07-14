@@ -228,4 +228,14 @@
     <servlet-name>ValidatePW</servlet-name>
     <url-pattern>/ValidatePW</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdatePassword</display-name>
+    <servlet-name>UpdatePassword</servlet-name>
+    <servlet-class>_02_login.controller.UpdatePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePassword</servlet-name>
+    <url-pattern>/UpdatePassword</url-pattern>
+  </servlet-mapping>
 </web-app>

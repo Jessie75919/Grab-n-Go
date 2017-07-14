@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 
 import _05_orderProcess.model.OrderBean;
@@ -19,6 +21,7 @@ import _05_orderProcess.model.OrderDAO;
 @WebServlet("/YearRevenue.do")
 public class YearAnalysisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+//	Logger lg = Logger.getLogger(clazz)
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -46,10 +49,16 @@ public class YearAnalysisServlet extends HttpServlet {
 			System.out.println("資料庫取得的筆數：" + count);
 			for(int i= 0; i< maxMonth-count ; i++){
 				OrderBean ob = new OrderBean();
-				if(ob.getOrdPickuptime() == null){
-				ob.getOrdPickuptime();	
-				ob.setOrd_totalPrice(0);
+				if(ob.getOrd_totalPrice() == 0){
+					ob.getOrdPickuptime();
+					ob.setOrd_totalPrice(0);
 				}
+				
+				
+//				if(ob.getOrdPickuptime() == null){
+//				ob.getOrdPickuptime();	
+//				ob.setOrd_totalPrice(0);
+//				}
 				
 				coll.add(ob);
 			}

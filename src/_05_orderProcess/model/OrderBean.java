@@ -1,10 +1,11 @@
 package _05_orderProcess.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderBean {
+public class OrderBean implements Serializable {
 	int ord_id;
 	String m_username;
 	String m_pickupname;
@@ -172,7 +173,7 @@ public class OrderBean {
 				+ ", ord_time=" + ord_time + ", ord_pickuptime=" + ord_pickuptime + ", rest_id=" + rest_id
 				+ ", ord_totalPrice=" + ord_totalPrice + ", ord_status=" + ord_status + ", rest_name=" + rest_name
 				+ ", items=" + items + ", ord_tel=" + ord_tel + ", ord_email=" + ord_email + ", ord_evalued="
-				+ ord_evalued + "ordPickupTime" + ordPickuptime + "]";
+				+ ord_evalued + ", ordPickuptime =" + ordPickuptime + "]";
 	}
 
 }

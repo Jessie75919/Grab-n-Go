@@ -57,9 +57,17 @@
 	<div id="showLeftPush" class="menuBtn">
 		<i class="icon-menu" title="Menu"></i>
 	</div>
+	
+	<c:if test="${empty StoreLoginOK}">
 	<div class="storeBtn">
 		<a href="_02_storeLogin/StoreLogin.jsp">我是店家</a>
 	</div>
+	</c:if>
+	<c:if test="${! empty StoreLoginOK}">
+	<div class="storeBtn">
+		<a href="_02_storeLogin/_storeIndex.jsp">店家管理頁面</a>
+	</div>
+	</c:if>
 	<div class="logo">
 		<a href="indexA.jsp"><img src="images/share/logo.svg"
 			alt="Grab &amp; Go" title="Grab &amp; Go"></a>

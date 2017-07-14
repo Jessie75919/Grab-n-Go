@@ -11,6 +11,8 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.apache.log4j.Logger;
 
@@ -183,6 +185,44 @@ public class TableDAO {
 			System.out.println("SQLException | IOException ");
 			e.printStackTrace();
 		}
+		return result;
+	}
+	
+	
+	/*--------------------------------------------------------------------------
+	 *  inflater restaurant data
+	 * */
+	public int insertRestaurantEvalueTable() {
+		String sql = "insert into rest_evaluate values(?,?,?,?,?,?)";
+		int result = -1;
+		try (PreparedStatement pst = con.prepareStatement(sql);
+				BufferedReader br = new BufferedReader(new FileReader("WebContent/data/EvalueMain.csv"));) {
+			String line = "";
+			while ((line = br.readLine()) != null) {
+				if (line.startsWith(UTF8_BOM)) {
+					line = line.substring(1);
+				}
+				String[] segment = line.split(",");
+				pst.setInt(1, Integer.parseInt(segment[0])); // ord_id
+				pst.setInt(2, Integer.parseInt(segment[1])); // rest_id
+				pst.setInt(3, Integer.parseInt(segment[2])); // restEva_star
+				pst.setString(4, segment[3]); // m_username
+				if(segment[4].equals("null")){
+					segment[4] ="";
+				}
+				pst.setString(5, segment[4]); // restEva_comment
+				pst.setDate(6, Date.valueOf(segment[5])); // eva_date
+				result = pst.executeUpdate();
+				
+				if (result == 1)
+					System.out.println(segment[1] + " - 評價新增 ");
+				else
+					System.out.println("table gets error");
+			}
+		} catch (SQLException | IOException e) {
+			System.out.println("SQLException | IOException ");
+			e.printStackTrace();
+		} 
 		return result;
 	}
 

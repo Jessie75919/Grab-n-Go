@@ -11,6 +11,7 @@ public class InitData_Main {
 		dao.insertProduct();
 		dao.insertOrder();
 		dao.insertOrderItems();
+		dao.insertRestaurantEvalueTable();
 	}
 
 }

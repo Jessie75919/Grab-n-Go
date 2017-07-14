@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <!-- 載入d3.js -->
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="../javascript/jquery-3.2.1.min.js"></script>
+  <script>
+$(document).ready(function(){
+		  getMonthlyOrders();
+  }); 
+  </script>
 <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->

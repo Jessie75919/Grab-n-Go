@@ -44,10 +44,11 @@ function getYearOrders(){
 				dataset.push(yearOrders[v].ord_totalPrice);
 			}
 			// 設定svg長寬
-	        var svg_width = 500;
+			var svg_margin = 10;
+	        var svg_width = 600;
 	        var svg_height = 300;
 	        //設定padding (長條之間的間隔)
-	        var bar_padding = 5;
+	        var bar_padding = 6;
 
 	        //需要視覺化的data
 	        //var dataset = [30, 20, 10, 40, 45, 25, 15, 35, 18, 50, 30, 25];
@@ -55,6 +56,7 @@ function getYearOrders(){
 	        //開始設定svg
 	        var svg = d3.select("body").selectAll("#barChart")
 	            .append("svg")
+	            .attr("margin", svg_margin)
 	            .attr("width", svg_width)
 	            .attr("height", svg_height);
 
@@ -78,7 +80,7 @@ function getYearOrders(){
 	            })
 	            .attr("y", function (d) {
 	                // body...
-	                return svg_height - (d * 4);
+	                return svg_height - (d * 0.3);
 	            })
 	            .attr("width", svg_width / dataset.length - bar_padding)
 	            .attr("height", function (d) {
@@ -86,7 +88,7 @@ function getYearOrders(){
 	                return d * 4;
 	            })
 	            .attr("fill", function (d) {
-	                return "rgb(" + d * 5 + ",0 , 0)";
+	                return "rgb(" + d * 0.5 + ",100 , 100)";
 	            })
 
 	        //將文字顯示在長條圖上 
@@ -96,7 +98,7 @@ function getYearOrders(){
 	            .enter()
 	            .append("text")
 	            .text(function (d) {
-	                return d;
+	                return "$" + d;
 	            })
 	            .attr("text-anchor", "middle")
 	            .attr("x", function (d, i) {

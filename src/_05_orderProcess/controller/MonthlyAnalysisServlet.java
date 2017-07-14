@@ -60,11 +60,10 @@ public class MonthlyAnalysisServlet extends HttpServlet {
 			
 			for(int i=0; i<maxDate-count; i++){
 				OrderBean ob = new OrderBean();
-				ob.setOrd_totalPrice(0);
-//				if( ob.getOrd_totalPrice() == 0 ){
-//					ob.getOrd_pickuptime();
-//				}
-				ob.getOrd_pickuptime();
+				if(ob.getOrd_totalPrice() == 0){
+					ob.getOrdPickuptime();
+					ob.setOrd_totalPrice(0);
+				}
 				list.add(ob);
 				
 			}

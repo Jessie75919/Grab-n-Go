@@ -7,12 +7,16 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import javax.sql.*;
+
+import org.apache.log4j.Logger;
 //本類別會依據傳入的書籍編號(BookID)讀取eBook表格內CoverImage欄位內的圖片，
 //然後傳回給提出請求的瀏覽器
 @WebServlet("/_00_init/getImageA")
 public class GetImageFromDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	Logger lg = Logger.getLogger(GetImageFromDB.class);
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Connection conn = null;
@@ -21,13 +25,13 @@ public class GetImageFromDB extends HttpServlet {
 		try {
 			// 讀取瀏覽器傳送來的書籍代號(BookID)
 			String id = request.getParameter("id");
-//			System.out.println("id = "+id);
+//			lg.info("id = "+id);
 			// 分辨讀取哪個表格的圖片欄位
 			String type = request.getParameter("type"); 
-//			System.out.println("type = "+type);
+//			lg.info("type = "+type);
 			// 取得能夠執行JNDI的Context物件
 			String location = request.getParameter("loc");
-//			System.out.println("location = "+location);
+//			lg.info("location = "+location);
 			String mimeType ="";
 			Context context = new InitialContext();
 			// 透過JNDI取得DataSource物件
@@ -38,7 +42,9 @@ public class GetImageFromDB extends HttpServlet {
 			//System.out.println("GetImageFromDB, Type==>" + type);
 			//System.out.println("GetImageFromDB, ID==>" + id);
 			if (type.equalsIgnoreCase("restaurant")) {  // 讀取eBook表格
+				
 				if(location.equalsIgnoreCase("logo")){
+//					lg.info("in logo");
 					pstmt = conn.prepareStatement(
 							"SELECT rest_name,rest_logo from restaurant where rest_username = ?");
 				}else if(location.equalsIgnoreCase("main")){

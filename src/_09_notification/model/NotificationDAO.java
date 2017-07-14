@@ -172,6 +172,27 @@ public class NotificationDAO {
 		}
 		return list;
 	}
+	
+	
+	public List<NotificationBean> getQueryTodayNoticationByUser() {
+		List<NotificationBean> list = new ArrayList<>();
+		String sql = "select * from notification where m_username = ? and date(noti_time) = CURDATE()";
+		try (Connection con = ds.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+			pst.setString(1, username);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				NotificationBean nb = new NotificationBean(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4),
+						rs.getByte(5), rs.getTimestamp(6), rs.getInt(7));
+				list.add(nb);
+			}
+			if (list.size() == 0) {
+				System.out.println("get Nothing in NotificationDAO");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public int getQueryNoticationCountByUserNoRead() {
 		String sql = "select count(*) from notification where m_username = ? and is_readed = 0 and noti_time <= now() " ;

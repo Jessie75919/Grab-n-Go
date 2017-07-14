@@ -263,7 +263,7 @@
 				<i class="icon-close" title="關閉"></i>
 			</div>
 			<!--訊息列表 最多5則--> <c:set var="notifList"
-				value="${notif.queryNoticationByUserNoRead}" /> <c:forEach
+				value="${notif.queryTodayNoticationByUser}" /> <c:forEach
 				var="notification" items="${notifList}">
 				<jsp:useBean id="restDAO"
 					class="_01_Store_register.model.StoreBeanDAO" scope="page" />
@@ -275,7 +275,7 @@
 					<figure> <a
 						href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${rest.rest_id}">
 						<img
-						src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${rest.rest_name}&type=restaurant&loc=logo"
+						src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${rest.rest_username}&type=restaurant&loc=logo"
 						alt="${rest.rest_name}" title="${rest.rest_name}">
 					</a> </figure>
 					<div class="massageInfo">

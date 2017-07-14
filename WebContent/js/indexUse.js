@@ -127,9 +127,6 @@ function closePanel() {
 }
 
 
-
-
-
 function readMsg(user) {
     // alert('uesr = ' + user);
 
@@ -155,8 +152,6 @@ function readMsgA(user) {
             }
         }
     );
-
-
 }
 
 

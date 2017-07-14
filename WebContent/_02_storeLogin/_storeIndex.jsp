@@ -66,6 +66,7 @@
 
     <!--左側列表-->
     <section id="leftMenu" class="container">
+    		
     		<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp" />
             <!-- 表格開始 -->
             <div id="middleForm" class="col-md-9">

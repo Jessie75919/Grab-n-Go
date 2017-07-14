@@ -33,15 +33,8 @@
     <!--店家profile-->
     <section class="container">
         <div class="row">
-            <!-- 店家profile -->
-            <div class="col-md-3">
-                <center>
-                    <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-                    <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-                        alt="Photo" title="Photo">
-                    <br>
-                </center>
-            </div>
+           <!-- 店家profile -->
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
             <div class="col-md-9">
                 <div>
                     <h3>> 已完成訂單</h3>

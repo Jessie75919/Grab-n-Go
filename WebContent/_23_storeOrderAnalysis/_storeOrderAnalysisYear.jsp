@@ -14,13 +14,12 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="../javascript/jquery-3.2.1.min.js"></script>
   <script>
-  /* $(document).ready(function(){
-		  //alert("預設選取的年份：" + $("#yearSelected").val());
-	  if( $("#yearSelected").val() == null){ 
-		  alert("還沒選年度喔!"); 
-		  }
-		  //getYearOrders();
-  }); */
+  $(document).ready(function(){
+		  $("#yearSelected option").eq(1).prop("selected",true);
+		  //alert($("#yearSelected").val());
+		  //alert(ys.value)
+		  getYearOrders(ys.value);
+  }); 
   </script>
   <title>Welcome to GrabAndGo</title>
 </head>
@@ -55,8 +54,8 @@
           <span><h4>請選擇欲查看的年份:</h4></span>
           <input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
           <div class="form-inline">
-          <select id="yearSelected" class="form-control">
-          	<option value="2016" selected="true">2016</option>
+          <select id="yearSelected" name="yearSelector" class="form-control">
+          	<option value="2016">2016</option>
           	<option value="2017">2017</option>
           	<option value="2018">2018</option>
           </select>

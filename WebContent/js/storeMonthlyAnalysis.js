@@ -56,12 +56,12 @@ s.attr({ 'width' : 680,'height' : 300,})
 				var monthDays = monthlyOrders.length;
 				
 				for( var i = 0; i < monthDays ; i++){
-					console.log("date = " + monthlyOrders[i].ord_pickuptime 
+					console.log("date = " + monthlyOrders[i].ordPickuptime 
 							  + ", itemTotalPrice = " + monthlyOrders[i].ord_totalPrice); 
 					if( monthlyOrders[i].ord_totalPrice != 0){
 						 var tr = document.createElement("tr");
 						 var td1 = document.createElement("td");
-						 td1.textContent = monthlyOrders[i].ord_pickuptime;
+						 td1.textContent = monthlyOrders[i].ordPickuptime;
 						 
 						 var td2 = document.createElement("td");
 						 td2.textContent = "$" + monthlyOrders[i].ord_totalPrice;

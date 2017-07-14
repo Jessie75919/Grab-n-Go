@@ -16,8 +16,6 @@
   <script>
   $(document).ready(function(){
 		  $("#yearSelected option").eq(1).prop("selected",true);
-		  //alert($("#yearSelected").val());
-		  //alert(ys.value)
 		  getYearOrders(ys.value);
   }); 
   </script>

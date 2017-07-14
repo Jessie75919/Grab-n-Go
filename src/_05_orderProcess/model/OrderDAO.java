@@ -692,16 +692,16 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getMonthlyStoreRevenue() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		String sql = " SELECT a.ord_pickuptime, SUM(a.ord_totalPrice) "
+		String sql = " SELECT DATE_FORMAT(a.ord_pickuptime, '%Y-%m-%d') date_month, SUM(a.ord_totalPrice) "
 				   + " FROM order01 a JOIN restaurant b ON a.rest_id = b.rest_id "
 				   + " WHERE b.rest_username = ? AND a.ord_status = 'paid' AND a.ord_pickuptime LIKE ?"
-				   + " GROUP BY a.ord_pickuptime "
-				   + " ORDER BY a.ord_pickuptime ";
-//		SELECT a.ord_pickuptime, sum(a.ord_totalPrice) revenue 
+				   + " GROUP BY date_month "
+				   + " ORDER BY date_month ";
+//		SELECT date_format(a.ord_pickuptime, '%Y-%m-%d') date_month ,sum(a.ord_totalPrice)
 //		FROM Grab_n_Go.order01 a join Grab_n_Go.restaurant b On a.rest_id = b.rest_id
 //		where b.rest_username = 'subway' and a.ord_status = 'paid' and a.ord_pickuptime like '2017-06%'
-//		group by a.ord_pickuptime
-//		order by a.ord_pickuptime ;
+//		group by date_month
+//		order by date_month;
 		
 		try (Connection conn = ds.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -712,7 +712,8 @@ public class OrderDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				OrderBean ob = new OrderBean();
-				ob.setOrd_pickuptime(rs.getTimestamp("a.ord_pickuptime"));
+				//ob.setOrd_pickuptime(rs.getTimestamp("a.ord_pickuptime"));
+				ob.setOrdPickuptime(rs.getString("date_month"));
 				ob.setOrd_totalPrice(rs.getInt("SUM(a.ord_totalPrice)"));
 				coll.add(ob);
 				System.out.println(ob);

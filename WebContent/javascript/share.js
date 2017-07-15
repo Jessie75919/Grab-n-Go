@@ -78,27 +78,24 @@ $(window).load(function () {
     });
 
     /*轉盤*/
-    $('.zoomBtn').click(function () {
-        $('.circleArea').css({
-            "z-index": "9999",
-            "backgroundColor": "rgba(255, 255, 255, 0.7)",
-        })
-        $('.circleContent').animate({
-            "width": "600px",
-            "height": "600px",
-            "border-radius": "50%",
-            "top": "50%",
-            "margin-left": "-300px",
-            "margin-top": "-300px",
-        })
+    $('.zoomBtn a.go').click(function () {
+        $(".circle").removeClass("end").addClass("open");
+        $(".circleBg").fadeIn();
+        $(".zoomBtn a.go").fadeOut(200);
+        $(".zoomBtn a.end").delay(600).fadeIn();
+        $("#wheel").delay(1000).fadeIn(200);
+        $(".goBtn a").fadeIn();
+        return false;
+    });
+    $('.zoomBtn a.end, .circleBg').click(function () {
+        $(".circle").removeClass("open").addClass("end");
+        $(".circleBg").fadeOut(600).delay(300);
+        $(".zoomBtn a.end").fadeOut(200);
+        $(".zoomBtn a.go").delay(600).fadeIn();
+        $("#wheel").fadeOut();
+        $(".goBtn a").fadeOut();
+        return false;
     })
-
-
-
-
-
-
-
 
     /*animation*/
     new WOW().init();

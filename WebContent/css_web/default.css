@@ -792,7 +792,8 @@ section.content h2 span {
     width: 75%;
     float: right;
 }
-.formInfo a{
+
+.formInfo a {
     display: inline-block;
     padding: 0 10px;
     border: #eb503c solid 1px;
@@ -800,10 +801,12 @@ section.content h2 span {
     border-radius: 20px;
     margin-left: 10px;
 }
-.formInfo a:hover{
+
+.formInfo a:hover {
     color: #fff;
     background-color: #eb503c;
 }
+
 .formInfo.noform {
     padding-top: 10px;
 }
@@ -1834,7 +1837,8 @@ main.login input[type="reset"]:hover {
     border-radius: 10px;
     z-index: 99999;
 }
-.loading:after{
+
+.loading:after {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -1843,6 +1847,7 @@ main.login input[type="reset"]:hover {
     left: 0;
     content: "";
 }
+
 .loadDotted {
     position: relative;
     display: inline-block;
@@ -1917,28 +1922,248 @@ main.login input[type="reset"]:hover {
 
 /*----------轉盤----------*/
 
-.circleArea {
+.circle {
+    position: relative;
+}
+
+.circleBg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /*z-index: 9999;
-    background-color: rgba(255, 255, 255, 0.7);*/
-    /*display: none;*/
-    transition: ease 0.3s;
+    z-index: 9997;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
 }
 
-section.circleContent {
-    position: absolute;
+.circleContent {
+    position: fixed;
     width: 100px;
     height: 50px;
-    background-color: #eb503c;
+    background-color: #f8604d;
     border-radius: 0 0 100px 100px;
     top: 100px;
     left: 50%;
     margin-left: -50px;
     transition: linear 0.2s 0.1s;
+    z-index: 9998;
+}
+
+.circle.end .circleContent {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -300px;
+    border-radius: 50%;
+    background-color: #f8604d;
+    transition: linear 0.2s 0.1s;
+    z-index: 9998;
+}
+
+.circle.open .circleContent {
+    animation: go 1s ease 0.2s;
+    -webket-animation: go 1s ease 0.2s;
+    -moz-animation: go 1s ease 0.2s;
+    -o-animation: go 1s ease 0.2s;
+    animation-fill-mode: forwards;
+    -webket-animation-fill-mode: forwards;
+}
+
+.circle.end .circleContent {
+    animation: end 0.8s ease 0.2s;
+    -webket-animation: end 0.8s ease 0.2s;
+    -moz-animation: end 0.8s ease 0.2s;
+    -o-animation: end 0.8s ease 0.2s;
+    animation-fill-mode: forwards;
+    -webket-animation-fill-mode: forwards;
+}
+
+@keyframes go {
+    0% {}
+    25% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: -300px;
+        border-radius: 50%;
+    }
+}
+
+-webket-@keyframes go {
+    0% {}
+    25% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: -300px;
+        border-radius: 50%;
+    }
+}
+
+-moz-@keyframes go {
+    0% {}
+    25% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: -300px;
+        border-radius: 50%;
+    }
+}
+
+-o-@keyframes go {
+    0% {}
+    25% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 600px;
+        height: 600px;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: -300px;
+        border-radius: 50%;
+    }
+}
+
+@keyframes end {
+    0% {}
+    75% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 100px;
+        height: 50px;
+        background-color: #f8604d;
+        border-radius: 0 0 100px 100px;
+        top: 100px;
+        margin-top: auto;
+        left: 50%;
+        margin-left: -50px;
+        z-index: 9998;
+    }
+}
+
+-webket-@keyframes end {
+    0% {}
+    75% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 100px;
+        height: 50px;
+        background-color: #f8604d;
+        border-radius: 0 0 100px 100px;
+        top: 100px;
+        margin-top: auto;
+        left: 50%;
+        margin-left: -50px;
+        z-index: 9998;
+    }
+}
+
+-moz-@keyframes end {
+    0% {}
+    75% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 100px;
+        height: 50px;
+        background-color: #f8604d;
+        border-radius: 0 0 100px 100px;
+        top: 100px;
+        margin-top: auto;
+        left: 50%;
+        margin-left: -50px;
+        z-index: 9998;
+    }
+}
+
+-o-@keyframes end {
+    0% {}
+    75% {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -50px;
+    }
+    100% {
+        width: 100px;
+        height: 50px;
+        background-color: #f8604d;
+        border-radius: 0 0 100px 100px;
+        top: 100px;
+        margin-top: auto;
+        left: 50%;
+        margin-left: -50px;
+        z-index: 9998;
+    }
 }
 
 .zoomBtn {
@@ -1950,4 +2175,51 @@ section.circleContent {
 
 .zoomBtn a {
     color: #fff;
+}
+
+.zoomBtn a i {
+    padding: 0;
+    font-size: 24px;
+}
+.zoomBtn a i.icon-close {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    z-index: 9;
+}
+.zoomBtn a.end {
+    display: none;
+}
+.goBtn a{
+    display: block;
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    text-align: center;
+    background-color: #eb503c;
+    color: #fff;
+    width: 200px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin: 0 0 0 -100px;
+    display: none;
+}
+.goBtn a:hover{
+    background-color: #ec8e26;
+}
+#venues{
+    display: none;
+}
+#wheel {
+    position: fixed;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -300px;
+    display: none;
+    
+    
+    
 }

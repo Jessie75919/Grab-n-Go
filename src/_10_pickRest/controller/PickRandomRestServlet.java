@@ -68,7 +68,10 @@ public class PickRandomRestServlet extends HttpServlet {
 					} else {
 						lastNum = rdNum;
 						pickOneRound.add(rdNum);
-						chooseStore.add(storeList.get(rdNum));
+						StoreBean sb = storeList.get(rdNum);
+						int angle = 0;
+						sb.setAngle(angle+=60);
+						chooseStore.add(sb);
 						i++;
 					}
 				}

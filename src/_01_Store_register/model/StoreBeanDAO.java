@@ -659,7 +659,7 @@ public class StoreBeanDAO {
 				
 				StoreBeanSmSize sbsm = new StoreBeanSmSize();
 				sbsm.setName(rest_name);
-				
+				sbsm.setRest_id(rest_id);
 				
 				listStore.add(sbsm);
 //				System.out.println("sb = " +sb);

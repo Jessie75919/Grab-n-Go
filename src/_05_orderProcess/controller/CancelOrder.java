@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 
 import _05_orderProcess.model.OrderDAO;
@@ -33,6 +35,7 @@ public class CancelOrder extends HttpServlet {
 			int n = od.deleteOrder(Integer.parseInt(ordId.trim()));
 			if( n == 1 ){
 				String result = new Gson().toJson("刪除成功"); 
+				
 				out.write(result);
 				out.flush();
 			}else{

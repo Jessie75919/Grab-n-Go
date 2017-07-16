@@ -1,16 +1,19 @@
 var restUsername = document.getElementById("restUsername").value;
 var ys = document.getElementById("yearSelected");
 ys.setAttribute("onchange", "getYearOrders()");
+var loadIcon = document.getElementById("spinner");
 
 function getYearOrders(){
-	alert("商家選擇的年份：" + ys.value);
+	//alert("商家選擇的年份：" + ys.value);
 	//alert("!" + year.value);
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET","../YearRevenue.do?restUsername=" + restUsername + "&yearVal=" + ys.value, true);
 	xhr.send();
+	loadIcon.style.display ="inline";
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			alert("Got YearRevenue.do!");
+			//alert("Got YearRevenue.do!");
+			loadIcon.style.display ="none";
 			var yearOrders = JSON.parse(xhr.responseText);
 			var table = document.getElementById("orderTableY");
 			table.innerHTML = "<tr><th>訂單月份</th><th>銷售總額</th></tr>";
@@ -38,7 +41,7 @@ function getYearOrders(){
 			// -----------清空柱狀圖 end
 			//柱狀圖開始
 			var yearsOrderL = yearOrders.length;
-			alert("資料筆數：" + yearsOrderL);
+			//alert("資料筆數：" + yearsOrderL);
 			var dataset = [];
 			for(var v=0; v< yearsOrderL ; v++){
 				dataset.push(yearOrders[v].ord_totalPrice);

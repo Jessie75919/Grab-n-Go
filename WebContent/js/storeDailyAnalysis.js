@@ -1,8 +1,6 @@
 //抓取訂單明細(daily)
 var restUsername = document.getElementById("restUsername").value;
-	
-//var submitBtn = document.getElementById("submit");
-//submitBtn.onclick = 
+var spinIcon = document.getElementById("spinner");
 
 function getDailyRevenue(date){
 		//alert("Hello");
@@ -10,14 +8,19 @@ function getDailyRevenue(date){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","../DailyRevenue.do?datepicker=" + datepicker + "&restUsername=" + restUsername,true);
 		xhr.send();
-		
+		spinIcon.style.display = "inline";
 		xhr.onreadystatechange = function(){
 			if( xhr.readyState == 4 && xhr.status == 200){
-				alert("Got you!");
+				spinIcon.style.display = "none";
+				//alert("Got you!");
 				var dailyOrders = JSON.parse(xhr.responseText);
 				var table = document.getElementById("orderTable");
 				var divPie = document.getElementById("pieChart");
 				
+				
+				if(dailyOrders.length == 0){
+					alert("目前尚未有訂單記錄喔");
+				}
 				table.innerHTML = "<tr><th>訂購日期</th><th>餐點名稱</th><th>銷售數量</th><th>銷售總額</th></tr>";
 				for (var i=0; i < dailyOrders.length ; i++ ){ 
 					/*
@@ -49,7 +52,8 @@ function getDailyRevenue(date){
 					
 					
 				 }  
-// 圓餅圖
+				
+// 圓餅圖開始
 				var contentSize = dailyOrders.length;
 				var content = [];
 				for(var j=0; j<contentSize ; j++) {
@@ -59,6 +63,7 @@ function getDailyRevenue(date){
 					"color": "#" + dailyOrders[j].item_price}) ;
 					
 				}
+
 			    var pie = new d3pie("pieChart", {
 		      "header": {
 		        "title": {
@@ -87,6 +92,7 @@ function getDailyRevenue(date){
 		        "pieOuterRadius": "100%"
 		      },
 		      "data": {
+		    	    sortOrder: "value-desc",
 		        content
 		      },
 		      "labels": {
@@ -128,16 +134,17 @@ function getDailyRevenue(date){
 		      },
 		      "callbacks": {}
 		    });
-			    //不保留原本的chart, 會重畫
+//			    //不保留原本的chart, 會重畫
 			    $(function() {
-			    	$("#submit").on("click", function(e) {
+			    	$("#submit").on("click", function(date) {
+			    		
 			    		if (pie !== null) {
 			    			pie.destroy();
+			    			alert("請選擇日期呦！");
 			    			pie = null;
 			    		}
 			    	});
 			    });
-			  //  divPie.appendChild(pie);
 			}
 		}
 	}

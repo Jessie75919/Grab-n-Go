@@ -89,8 +89,13 @@ $(document).ready(function(){
 			</ul>
 		</div>
 		<br>
+		<!-- loading icon //預設dispay:none -->
+		<div id="spinnerArea">
+		<img id="spinner" src="${pageContext.servletContext.contextPath}/images/storeSpinner.gif"
+		style="display: none;">
+		</div>
 		<!--圖表區塊, 動態產生-->
-		<div style="margin-left: 20px;">
+		<div style="margin-left: 10%;">
 			<svg id="lineChart"></svg>
 		</div>
 		<hr>

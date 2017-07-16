@@ -17,22 +17,34 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint("/AppStoreWebSocketServer/{rest_id}")
 public class AppStoreWebSocketServer {
 	
+	private String message;
+	private Session userSession;
+	
+	public void setMessage(String message) {
+		this.message = message;
+		onMessage(userSession, message);
+	}
+	
 	private static final Set<Session> connectedSessions = 
 			Collections.synchronizedSet(new HashSet<>());
 	
 	@OnOpen
 	public void onOpen(@PathParam("rest_id") String rest_id, Session userSession) throws IOException {
-		connectedSessions.add(userSession);
-		String text = String.format("Session ID = %s, connected; rest_id = %s", 
-				userSession.getId(), rest_id);
-		System.out.println(text);
+		if (rest_id.equals("NA")) {
+			//不連線
+		} else {
+			connectedSessions.add(userSession);
+			String text = String.format("Session ID = %s, connected; rest_id = %s", 
+					userSession.getId(), rest_id);
+			System.out.println(text);
+		}
 	}
 
 	@OnMessage
 	public void onMessage(Session userSession, String message) {
+		System.out.println("onMessage start");
 		for (Session session : connectedSessions) {
 			if (session.isOpen())
-				message = "Got It!!!!!";
 				session.getAsyncRemote().sendText(message);
 		}
 		System.out.println("Message received: " + message);

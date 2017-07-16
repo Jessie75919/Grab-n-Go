@@ -1,11 +1,12 @@
 package _05_orderProcess.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,11 +18,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.google.gson.Gson;
+
 import _01_register.model.MemberBean;
 import _04_shoppingCart.model.ShoppingCart;
 import _05_orderProcess.model.OrderBean;
 import _05_orderProcess.model.OrderDAO;
 import _05_orderProcess.model.OrderItemBean;
+import _24_App_storeOrder.cotroller.AppStoreWebSocketServer;
 
 @WebServlet("/_04_ShoppingCart/PayBill.do")
 public class payBill extends HttpServlet {
@@ -99,6 +103,17 @@ public class payBill extends HttpServlet {
 			System.out.println("訂單新增成功");
 			session.removeAttribute("orderRest");
 			session.removeAttribute("cart");
+			
+			//送webSocketMessage至App
+			AppStoreWebSocketServer socketServer = new AppStoreWebSocketServer();
+			String messageTitle = "您有一筆新訂單";
+			String messageBody = "取餐時間為: " + time;
+			Map<String, String> map = new HashMap<>();
+			map.put("messageTitle", messageTitle);
+			map.put("messageBody", messageBody);
+			Gson gson = new Gson();
+			String json = gson.toJson(map);
+			socketServer.setMessage(json);
 			
 			response.sendRedirect(response.encodeRedirectURL("cart_success.jsp"));
 		}

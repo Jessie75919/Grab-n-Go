@@ -74,7 +74,7 @@
 		style="display: none;">
 		</div>
         <!--圖表區塊, 動態產生-->
-        <div id="barChart" style="margin-left: 18%;">
+        <div id="barChart" style="margin-left: 16%;">
         </div>
         <hr>
 

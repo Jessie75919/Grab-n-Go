@@ -83,7 +83,7 @@ function getYearOrders(){
 	            })
 	            .attr("y", function (d) {
 	                // body...
-	                return svg_height - (d * 0.3);
+	                return svg_height - (d * 0.16);
 	            })
 	            .attr("width", svg_width / dataset.length - bar_padding)
 	            .attr("height", function (d) {

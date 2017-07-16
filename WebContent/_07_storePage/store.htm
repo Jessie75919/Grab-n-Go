@@ -23,9 +23,10 @@
     <link rel="icon" href="../images/favicon.ico" type="image/ico" />
     <!--main css-->
     <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-    <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+    <link href="../css_web/styles.css" rel="stylesheet">
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
+    <link href="../css_web/animate.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="top" class="cbp-spmenu-push">
@@ -75,7 +76,7 @@
     <div class="insideTitle">
         <figure><img src="../images/restImage/af_mBanner.jpg" alt="店家資訊" title="店家資訊"></figure>
         <!--店家資訊-->
-        <div class="storeTitle">
+        <div class="storeTitle wow slideInRight" data-wow-delay="0.3s">
             <div class="storeLogo"><img src="../images/restImage/af_logo.jpg" alt="Afternoon Tea" title="Afternoon Tea"></div>
             <div class="storeRight">
                 <h3>Afternoon Tea‧統一午茶風光<span>三越南西門市</span></h3>
@@ -270,6 +271,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!--nav-->
     <script type="text/javascript" src="../javascript/classie.js"></script>
+    <!--animation js-->
+    <script type="text/javascript" src="../javascript/wow.js"></script>
     <!--silder-->
     <script src="../javascript/slick.js"></script>
     <script>
@@ -311,6 +314,20 @@
     </script>
     <!--tabs-->
     <script src="../javascript/tabs.js"></script>
+    <!--瀑布流-->
+    <script src="../javascript/masonry.pkgd.min.js"></script>
+    <script src="../javascript/imagesloaded.js"></script>
+    <script src="../javascript/classie.js"></script>
+    <script src="../javascript/AnimOnScroll.js"></script>
+    <script src="../javascript/modernizr.custom.js"></script>
+    <script>
+        new AnimOnScroll(document.getElementsByClassName('tab'), {
+            minDuration: 0.4,
+            maxDuration: 0.7,
+            viewportFactor: 0.2
+        });
+
+    </script>
     <!--share js-->
     <script src="../javascript/share.js"></script>
 </body>

@@ -27,8 +27,9 @@
                 <link rel="icon" href="../images/favicon.ico" type="image/ico" />
                 <!--main css-->
                 <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-                <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+                <link href="../css_web/styles.css" rel="stylesheet">
                 <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
+                <link href="../css_web/animate.css" rel="stylesheet" type="text/css" />
             </head>
             <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page" />
             <c:set target="${orderBeans}" property="username" value="${LoginOK.memberId}" />
@@ -68,7 +69,7 @@
                                 </div>
                                 <div class="searchBtn">
                                     <input name="reset" type="reset" id="reset" value="重填">
-                                    <input name="submit" type="submit" id="submit"  value="給評價">
+                                    <input name="submit" type="submit" id="submit" value="給評價">
                                 </div>
                             </form>
                         </section>
@@ -85,7 +86,7 @@
                             <div class="order detail">訂單內容</div>
                         </div>
                         <c:forEach var="anOrderBean" varStatus="statusX" items="${orderBeans.memberOrders}">
-                            <div class="orderList">
+                            <div class="orderList wow fadeInUp">
                                 <div id="ordId" class="order nNumber">${anOrderBean.ord_id}</div>
                                 <div class="order date">
                                     <fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}" />
@@ -101,7 +102,7 @@
                                             <a href="#" title="評價" onclick="clikeMe(this)">未評價</a>
                                         </c:if>
                                     </c:if>
-                                     <c:if test="${anOrderBean.ord_status!='paid' }"> -- </c:if>
+                                    <c:if test="${anOrderBean.ord_status!='paid' }"> -- </c:if>
                                 </div>
                                 <div class="order detail">
                                     <a href="order_detail.jsp?ordId=${anOrderBean.ord_id}&restName=${anOrderBean.rest_name}&totalPrice=${anOrderBean.ord_totalPrice}">檢視</a>
@@ -117,7 +118,7 @@
                 <!--搜尋-->
                 <jsp:include page="../_IncludeJsp/User_search.jsp" />
                 <!--訊息-->
-   <jsp:include page="../_IncludeJsp/User_NotificationPanel.jsp" />
+                <jsp:include page="../_IncludeJsp/User_NotificationPanel.jsp" />
 
                 <footer>
                     <figure>
@@ -130,6 +131,17 @@
                 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <!--nav-->
                 <script type="text/javascript" src="../javascript/classie.js"></script>
+                <!--animation js-->
+                <script type="text/javascript" src="../javascript/wow.js"></script>
+                <!--loading js-->
+                <script>
+                    $(window).load(function() {
+                        $("#loading").fadeOut(500);
+                    })
+
+                </script>
+                <!--SmoothScroll js-->
+                <script type="text/javascript" src="../javascript/SmoothScroll_v1.2.1.js"></script>
                 <!--share js-->
                 <script src="../javascript/share.js"></script>
                 <script src="../js/evalue.js"></script>

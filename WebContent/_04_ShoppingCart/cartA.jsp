@@ -24,7 +24,7 @@
     <link rel="icon" href="../images/favicon.ico" type="image/ico" />
     <!--main css-->
     <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-    <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+    <link href="../css_web/styles.css" rel="stylesheet">
     <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
     <jsp:useBean id="bindRest" class="_01_Store_register.model.StoreBeanDAO" scope="session"></jsp:useBean>
     <c:set target="${bindRest}" property="rest_id" value="${orderRest}"></c:set>

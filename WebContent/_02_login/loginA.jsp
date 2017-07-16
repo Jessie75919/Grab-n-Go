@@ -27,7 +27,7 @@
             <link rel="icon" href="../images/favicon.ico" type="image/ico" />
             <!--main css-->
             <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-            <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+            <link href="../css_web/styles.css" rel="stylesheet">
             <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
             <script src='https://www.google.com/recaptcha/api.js'></script>
             <!--animation-->
@@ -45,8 +45,7 @@
             <div class="loginLogo">
                 <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
             </div>
-            <main class="login">
-<!--                 <div class="googleBtn"><a href="#"><i class="icon-google"></i>GOOGLE 登入</a></div> -->
+            <main class="login wow zoomIn">
                 <h2>會員帳號登入</h2>
                 <form action="<c:url value='userLogin.do' />" method="POST" name="loginForm" class="formcontent">
                     <div class="loginList">
@@ -79,15 +78,14 @@
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <!--animation js-->
             <script type="text/javascript" src="../javascript/wow.js"></script>
+            <!--SmoothScroll js-->
+            <script type="text/javascript" src="../javascript/SmoothScroll_v1.2.1.js"></script>
             <!-- form check-->
             <link rel="stylesheet" href="../javascript/validation/validationEngine.jquery.css">
             <script type="text/javascript" charset="utf-8" src="../javascript/validation/languages/jquery.validationEngine-zh_TW.js"></script>
             <script type="text/javascript" charset="utf-8" src="../javascript/validation/jquery.validationEngine.js"></script>
-            <script>
-
-
-            </script>
             <!-- form check end-->
+
             <!--share js-->
             <script src="../javascript/share.js"></script>
 

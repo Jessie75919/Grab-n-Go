@@ -1,98 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+        <html>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>店家資訊-Grab &amp; Go</title>
-<meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
-<meta name="description"
-	content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
-<meta name="author" content="Grab &amp; Go">
-<meta name="copyright" content="Grab &amp; Go">
-<meta name="robots" content="index, follow">
-<meta name="GOOGLEBOT" content="index, follow">
-<meta name="distribution" content="GLOBAL">
-<meta property="og:title" content="Grab &amp; Go " />
-<meta property="og:description"
-	content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
-<meta property="og:site_name" content="Grab &amp; Go" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.chewchew.com.tw" />
-<meta property="og:image" content="http://lovegreenfood.com/gg/fb.jpg" />
-<link rel="image_src" href="http://lovegreenfood.com/gg/fb.jpg" />
-<link rel="SHORTCUT ICON" href="../images/favicon.ico" />
-<link rel="icon" href="../images/favicon.ico" type="image/ico" />
-<!--main css-->
-<link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-<link
-	href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css"
-	rel="stylesheet">
-<link href="../css_web/component.css" rel="stylesheet" type="text/css" />
-<link href="../css_web/slick.css" rel="stylesheet" type="text/css">
-<jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO"
-	scope="session"></jsp:useBean>
-<c:set target="${prodType}" property="restNameA"
-	value="${clickRest['rest_name']}" />
-<jsp:useBean id="product" class="_03_Product.model.ProductDAO"
-	scope="session" />
-<c:set target="${product}" property="rest_id"
-	value="${clickRest.rest_id}" />
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>店家資訊-Grab &amp; Go</title>
+            <meta name="keywords" content="Grab &amp; Go, 訂餐, 帶著就走, 上班族" />
+            <meta name="description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
+            <meta name="author" content="Grab &amp; Go">
+            <meta name="copyright" content="Grab &amp; Go">
+            <meta name="robots" content="index, follow">
+            <meta name="GOOGLEBOT" content="index, follow">
+            <meta name="distribution" content="GLOBAL">
+            <meta property="og:title" content="Grab &amp; Go " />
+            <meta property="og:description" content="短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎? Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。" />
+            <meta property="og:site_name" content="Grab &amp; Go" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="http://www.chewchew.com.tw" />
+            <meta property="og:image" content="http://lovegreenfood.com/gg/fb.jpg" />
+            <link rel="image_src" href="http://lovegreenfood.com/gg/fb.jpg" />
+            <link rel="SHORTCUT ICON" href="../images/favicon.ico" />
+            <link rel="icon" href="../images/favicon.ico" type="image/ico" />
+            <!--main css-->
+            <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
+            <link href="../css_web/styles.css" rel="stylesheet">
+            <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
+            <link href="../css_web/slick.css" rel="stylesheet" type="text/css">
+            <link href="../css_web/animate.css" rel="stylesheet" type="text/css" />
+            <jsp:useBean id="prodType" class="_03_Product.model.ProductTypeDAO" scope="session"></jsp:useBean>
+            <c:set target="${prodType}" property="restNameA" value="${clickRest['rest_name']}" />
+            <jsp:useBean id="product" class="_03_Product.model.ProductDAO" scope="session" />
+            <c:set target="${product}" property="rest_id" value="${clickRest.rest_id}" />
 
-<jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO"
-	scope="session" />
+            <jsp:useBean id="order" class="_05_orderProcess.model.OrderDAO" scope="session" />
 
 
-</head>
+        </head>
 
-<body id="top" class="cbp-spmenu-push">
-
-	<jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
-
-	<input type="hidden" id="showMsg" value="${msg}">
-	<input type="hidden" id="anchor" value="${anchor}">
-	<input type="hidden" id="rest" value="${clickRest.rest_id}">
-
-
-	<!-- 店家資訊 -->
-	<jsp:include page="../_IncludeJsp/StorePage_MainInfo.jsp" />
-
-	<main>
-	<div class="brcame">
-		<a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;
-		<c:if test="${clickRest.rest_branch!='null'}">${clickRest.rest_branch}</c:if>
-	</div>
-	<%--         <div>${msg}</div> --%> <%--         <div>${orderRest}</div> --%>
-	<section class="content">
-	<div class="tabs animated-fade">
-		<div class="tabArea">
-			<c:set var="x" value="0" />
-			<ul class="tabLinks slider">
-				<c:forEach var="foodType" items="${prodType.allProductType}"
-					varStatus='vs'>
-				<c:set var="Num" value="${x=x+1}"/>
-					<li id="tab${Num}A" <c:if test="${vs.first}"> class ="active"</c:if>><a
-						href="#tab${Num}">${foodType}</a></li>
-				</c:forEach>
-			</ul>
-		</div>
+        <body id="top" class="cbp-spmenu-push">
+            <jsp:include page="../_IncludeJsp/User_mainNav.jsp" />
+            <input type="hidden" id="showMsg" value="${msg}">
+            <input type="hidden" id="anchor" value="${anchor}">
+            <input type="hidden" id="rest" value="${clickRest.rest_id}">
+            <!-- 店家資訊 -->
+            <jsp:include page="../_IncludeJsp/StorePage_MainInfo.jsp" />
+            <main>
+                <div class="brcame">
+                    <a href="../indexA.jsp">首頁</a>/ ${clickRest.rest_name}&nbsp;
+                    <c:if test="${clickRest.rest_branch!='null'}">${clickRest.rest_branch}</c:if>
+                </div>
+                <%--         <div>${msg}</div> --%>
+                    <%--         <div>${orderRest}</div> --%>
+                        <section class="content">
+                            <div class="tabs animated-fade">
+                                <div class="tabArea wow fadeInUp">
+                                    <c:set var="x" value="0" />
+                                    <ul class="tabLinks slider">
+                                        <c:forEach var="foodType" items="${prodType.allProductType}" varStatus='vs'>
+                                            <c:set var="Num" value="${x=x+1}" />
+                                            <li id="tab${Num}A" <c:if test="${vs.first}"> class ="active"</c:if>><a href="#tab${Num}">${foodType}</a></li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
 
 
-		<c:set var="y" value="0" />
-		<div class="tab-content">
-			<c:forEach var="foodType2" items="${prodType.allProductType}"
-				varStatus='vs'>
-				<div id="tab${y=y+1}"
-					class="tab<c:if test='${vs.first}'> active</c:if>">
-					<c:set target="${product}" property="typeName" value="${foodType2}" />
-					<c:forEach var="food" items="${product.productByType}"
-						varStatus='vs'>
-						<div class="storeMenuList">
-							<figure> <img
-								src=${pageContext.servletContext.contextPath}/_00_init/getImage?id=${food.prod_id}
-								' alt="${food.prod_name}" title="${food.prod_name}">
+                                <c:set var="y" value="0" />
+                                <div class="tab-content">
+                                    <c:forEach var="foodType2" items="${prodType.allProductType}" varStatus='vs'>
+                                        <div id="tab${y=y+1}" class="tab<c:if test='${vs.first}'> active</c:if>">
+                                            <c:set target="${product}" property="typeName" value="${foodType2}" />
+                                            <c:forEach var="food" items="${product.productByType}" varStatus='vs'>
+                                                <div class="storeMenuList wow fadeInUp">
+                                                    <figure>
+                                                        <img src=${pageContext.servletContext.contextPath}/_00_init/getImage?id=${food.prod_id} ' alt="${food.prod_name}" title="${food.prod_name}">
 							<div class="mask" id="${food.prod_id}" onclick="clickMe(this)">
 								<a href="#">我要訂餐</a>
 							</div>
@@ -159,6 +141,8 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<!--nav-->
 	<script type="text/javascript" src="../javascript/classie.js"></script>
+	<!--animation js-->
+    <script type="text/javascript" src="../javascript/wow.js"></script>
 	<!--silder-->
 	<script src="../javascript/slick.js"></script>
 	<script>
@@ -199,6 +183,14 @@
 	</script>
 	<!--tabs-->
 	<script src="../javascript/tabs.js"></script>
+	<!--loading js-->
+    <script>
+        $(window).load(function() {
+            $("#loading").fadeOut(500);
+        })
+    </script>
+    <!--SmoothScroll js-->
+    <script type="text/javascript" src="../javascript/SmoothScroll_v1.2.1.js"></script>
 	<!--share js-->
 	<script src="../javascript/share.js"></script>
 	<script src="../js/getProductInfo.js"></script>

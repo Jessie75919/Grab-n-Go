@@ -80,7 +80,7 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 			return ((this % n) + n) % n;
 		};
 
-		alert('');
+		//alert('');
 		// setTimeout(function() {
 		// 	;
 		// }, 1000);

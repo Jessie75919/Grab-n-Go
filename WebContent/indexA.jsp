@@ -326,7 +326,7 @@
 	<!--loading與驗證 end-->
 	 <!--轉盤-->
     <div class="circle">
-        <div class="circleContent">
+        <div  class="circleContent">
             <div class="zoomBtn">
             <a class="go" href="#">
             <i id="wheelClick" class="icon-down"></i>
@@ -343,7 +343,7 @@
                 <canvas id="canvas" width="1000" height="600"></canvas>
             </div>
             <div id="counter"></div>
-            <div class="goBtn"><a href="#">點我至Afternoon Tea</a></div>
+            <div class="goBtn"><a id="goGo" href="#">點我至Afternoon Tea</a></div>
         </div>
         <div class="circleBg"></div>
     </div>
@@ -392,7 +392,7 @@
 		})
 	</script>
 	   <!--轉盤-->
-    <script type="text/javascript" src="javascript/Wheel.js"></script>
+    <script type="text/javascript" src="javascript/Wheel2.js"></script>
 	<!--share js-->
 	<script src="javascript/share.js"></script>
 	<!-- 取得使用者位置 -->

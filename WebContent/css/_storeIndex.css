@@ -2,6 +2,10 @@
 ul, li, h2, h3, span, div, #middleForm, #leftMenu, #topBlock, #topName{
 font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
+/*字體大小*/
+ul, li{
+	font-weight: bold;
+}
 /*profile照片大小*/
 .col-md-3 img{
 	width: 200px

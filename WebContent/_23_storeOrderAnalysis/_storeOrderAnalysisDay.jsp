@@ -74,7 +74,7 @@
 						<input type="text" id="datepicker" name="datepicker" class="form-control" value="" /> 
 						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
 					</div>
-				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
+				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="清除"/>
 				<!-- </form> -->
 				</div>
 			</div>

@@ -52,7 +52,7 @@
 			<table id="productTypeTable">
 				<tr>
 					<!-- 								<th></th> -->
-					<th>建立餐點類別</th>
+					<th><h4>建立餐點類別</h4></th>
 				</tr>
 			</table>
 			<hr>

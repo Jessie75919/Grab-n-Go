@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <title>已付款訂單|本日訂單-Grab &amp; Go</title>
+    <script src="../javascript/jquery-3.2.1.min.js"></script>
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -78,17 +79,20 @@
                         <th>訂單編號</th>
                         <th>總金額</th>
                         <th>訂單狀態</th>
-                        <th>Action</th>
+                        <th>&nbspAction</th>
                     </tr>
                     <!-- 每筆訂單資訊, 預設一頁顯示15筆 -->
                     <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersPaid}">
                     <tr>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td>${anOrderBean.m_pickupname}</td>
-                        <td><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <td>
+                        <input style="display:none;" id="${anOrderBean.ord_id}" name="ordId" value="${anOrderBean.ord_id}">
+                        <a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>
                         <td>${anOrderBean.ord_status}</td>
-                        <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td>
+                        <td><input id="viewDetails" type="submit" class="btn btn-default" value="檢視明細"></td>
+                        <%-- <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td> --%>
                     </tr>
                     </c:forEach>
                 </table>
@@ -102,7 +106,33 @@
         </div>
         </div>
     </section>
-
+    
+    <script>
+    var toggleTr = document.createElement("tr");
+	//toggleTr.id = "inTr" + monthlyOrders[j].ord_id;
+	var toggleTd = document.createElement("td");
+	toggleTd.setAttribute("colspan", "6");
+	toggleTd.innerHTML = "<div style='display:none; background-color: #ffe0b3;'></div>"
+	var ordId = document.getElementById("").value;
+		<!-- 展開訂單明細 -->
+    $(document).ready(function(){
+    		$("#viewDetails").click(function(e){
+    			//alert("Hello");
+    			e.stopPropagation();
+    			if(e.target.nodeName == "TD"){
+    				var $target = $(e.target);
+    				if($target.closest("tr").next().find("div:empty").length != 0){
+    					var xhr = new XMLHttpRequest();
+    					xhr.open("GET", "", true);
+    				}
+    				
+    				
+    			}
+    		});
+    		
+					
+    });
+    </script>
 </body>
 
 </html>

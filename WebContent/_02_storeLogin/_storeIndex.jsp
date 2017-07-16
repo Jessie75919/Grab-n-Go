@@ -106,9 +106,9 @@
                             <a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}&ordStatus=${anOrderBean.ord_status}">${anOrderBean.ord_id}</a>
                         </td>
                         <td > $${anOrderBean.ord_totalPrice}</td>
-                        <td >
+                        <td>
                             <input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}">
-                            <a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
+                            <a href="_storeIndex.jsp" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
                         <td id="cancelB"><a href="_storeIndex.jsp" onClick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
                     </tr>
@@ -127,6 +127,7 @@
     <script>
     var ordStatus = document.getElementById("ordStatus").value;
     // var restUsername = document.getElementById("restUsername").value;
+    
      
  	/* 訂單狀態改變 */
     		function updateOrdStatus(tt){
@@ -137,9 +138,11 @@
     				var xhr = new XMLHttpRequest();
     				xhr.open('GET','../updateOrderStatus.do?ordId=' + tt + '&ordStatus=' + ordStatus,true);
     				xhr.send();
-    	             //alert("餐點確定完成！")
+    				//$(this).closest("tr").remove();
+    				
+    	             alert("餐點確定完成！");
     	         }else{
-    	             alert("餐點尚未完成")
+    	             alert("餐點尚未完成");
     	         }
     		} 
     		

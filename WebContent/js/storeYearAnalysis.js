@@ -112,14 +112,12 @@ function getYearOrders(){
 	                //return svg_height- (d * 4) + 20
 	            })
 	            .attr("font-family", "Tahoma")
-	            .attr("font-size", "16px")
-	            .attr("fill", "black")
+	            .attr("font-size", "14px")
+	            .attr("fill", "#bfbbb7")
 			
 		}
 	}
 	
-//	//柱狀圖
-//	getChart();
 }
 
 

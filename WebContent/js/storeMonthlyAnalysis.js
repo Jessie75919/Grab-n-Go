@@ -103,7 +103,7 @@ s.attr({ 'width' : 700,'height' : 330,})
 					return scaleY(d.y);
 				});
 				var axisX = d3.svg.axis().scale(scaleX)
-				.ticks(25) //刻度大小
+				.ticks(30) //刻度大小
 				.orient("bottom"); //X軸數字的位置
 
 				var axisY = d3.svg.axis().scale(scaleY)
@@ -114,7 +114,7 @@ s.attr({ 'width' : 700,'height' : 330,})
 				.attr({
 					'd' : line(data),
 					'stroke' : '#09c',
-					'stroke-width': '4px',
+					'stroke-width': '2px',
 					'fill' : 'none',
 					'transform' : 'translate(35,20)' //偏移
 				});

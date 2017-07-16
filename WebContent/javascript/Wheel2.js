@@ -1,24 +1,14 @@
 
-
-var venuesAA;
-window.onload = function () {
-
-}
-
-
 $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 	function (data, textStatus, jqXHR) {
 		// alert('hi');
-
-		$('body').haha(data);
-
-
-
 		// alert('data = '+JSON.stringify(data));
-
+		// var dataA = sessionStorage.getItem('data');
+		// setTimeout(function() {
+			$(document).haha(data);
+		// }, 1000);
 	}
 );
-
 
 
 
@@ -29,14 +19,14 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 	var venues;
 	$.fn.haha = function (params) {
 
-		var qq =
-			[{ "name": "Afternoon Tea" },
-			{ "name": "Subway" },
-			{ "name": "紗舞缡-極品集" },
-			{ "name": "老蔣" },
-			{ "name": "義大利麵" },
-			{ "name": "爆漿雞排" },
-			];
+		// var qq =
+		// 	[{ "name": "Afternoon Tea" },
+		// 	{ "name": "Subway" },
+		// 	{ "name": "紗舞缡-極品集" },
+		// 	{ "name": "老蔣" },
+		// 	{ "name": "義大利麵" },
+		// 	{ "name": "爆漿雞排" },
+		// 	];
 
 		venues = params;
 
@@ -47,34 +37,39 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 
 	var win = "";
 	// Helpers
-		var blackHex = '#fff',
-			whiteHex = '#fff',
-			halfPI = Math.PI / 2,
-			doublePI = Math.PI * 2;
-		shuffle = function (o) {
-			for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
-				;
-			return o;
+	var blackHex = '#fff',
+		whiteHex = '#fff',
+		halfPI = Math.PI / 2,
+		doublePI = Math.PI * 2;
+	shuffle = function (o) {
+		for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
+			;
+		return o;
+	}
+
+
+	String.prototype.hashCode = function () {
+		// See http://www.cse.yorku.ca/~oz/hash.html		
+		var hash = 5381,
+			i;
+		for (i = 0; i < this.length; i++) {
+			char = this.charCodeAt(i);
+			hash = ((hash << 5) + hash) + char;
+			hash = hash & hash; // Convert to 32bit integer
 		}
+		return hash;
+	};
 
+	Number.prototype.mod = function (n) {
+		return ((this % n) + n) % n;
+	};
 
-		String.prototype.hashCode = function () {
-			// See http://www.cse.yorku.ca/~oz/hash.html		
-			var hash = 5381,
-				i;
-			for (i = 0; i < this.length; i++) {
-				char = this.charCodeAt(i);
-				hash = ((hash << 5) + hash) + char;
-				hash = hash & hash; // Convert to 32bit integer
-			}
-			return hash;
-		};
+		// alert('');
 
-		Number.prototype.mod = function (n) {
-			return ((this % n) + n) % n;
-		};
+	// confirm("aaaa");
 
-	alert('');
+	// alert('kk=');
+	// console.log(kk);
 	// console.log("message", "optionalParams")
 
 
@@ -358,124 +353,121 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 	};
 
 
-	setTimeout(
-		$(function () {
-			// alert("GGGG");
-			var $venues = $('#venues'),
-				$venueName = $('#name'),
-				$venueType = $('#types'),
-				venueTypes = [],
-				$list = $('<ul/>'),
-				$types = $('<ul/>'),
-				$filterToggler = $('#filterToggle'),
-				arrayUnique = function (a) {
-					return a.reduce(function (p, c) {
-						if (p.indexOf(c) < 0) { p.push(c); }
-						return p;
-					}, []);
-				};
-
-			console.log("venues =", venues);
+	$(function () {
+		// alert("GGGG");
+		var $venues = $('#venues'),
+			$venueName = $('#name'),
+			$venueType = $('#types'),
+			venueTypes = [],
+			$list = $('<ul/>'),
+			$types = $('<ul/>'),
+			$filterToggler = $('#filterToggle'),
+			arrayUnique = function (a) {
+				return a.reduce(function (p, c) {
+					if (p.indexOf(c) < 0) { p.push(c); }
+					return p;
+				}, []);
+			};
 
 
-			$.each(venues, function (index, venue) {
-				$list.append(
-					$("<li/>")
-						.append(
-						$("<input />").attr({
-							id: 'venue-' + index
-							, name: venue.name
-							, value: venue.name
-							, type: 'checkbox'
-							, checked: true
+		$.each(venues, function (index, venue) {
+			$list.append(
+				$("<li/>")
+					.append(
+					$("<input />").attr({
+						id: 'venue-' + index
+						, name: venue.name
+						, value: venue.name
+						, type: 'checkbox'
+						, checked: true
+					})
+						.change(function () {
+							var cbox = this,
+								segments = wheel.segments,
+								i = segments.indexOf(cbox.value);
+
+							if (cbox.checked && i === -1) {
+								segments.push(cbox.value);
+							} else if (!cbox.checked && i !== -1) {
+								segments.splice(i, 1);
+							}
+
+							segments.sort();
+							wheel.update();
 						})
-							.change(function () {
-								var cbox = this,
-									segments = wheel.segments,
-									i = segments.indexOf(cbox.value);
 
-								if (cbox.checked && i === -1) {
-									segments.push(cbox.value);
-								} else if (!cbox.checked && i !== -1) {
-									segments.splice(i, 1);
+					).append(
+					$('<label />').attr({
+						'for': 'venue-' + index
+					})
+						.text(venue.name)
+					)
+			);
+			venueTypes.push(venue.type);
+		});
+
+
+		$.each(arrayUnique(venueTypes), function (index, venue) {
+			$types.append(
+				$("<li/>")
+					.append(
+					$("<input />").attr({
+						id: 'venue-type-' + index
+						, name: venue
+						, value: venue
+						, type: 'checkbox'
+						, checked: true
+					})
+						.change(function () {
+							var $this = $(this), i;
+							for (i = 0; i < venues.length; i++) {
+								if (venues[i].type === $this.val()) {
+									$('[name="' + venues[i].name + '"]').prop("checked", $this.prop('checked')).trigger('change');
 								}
-
-								segments.sort();
-								wheel.update();
-							})
-
-						).append(
-						$('<label />').attr({
-							'for': 'venue-' + index
+							}
 						})
-							.text(venue.name)
-						)
-				);
-				venueTypes.push(venue.type);
-			});
 
+					).append(
+					$('<label />').attr({
+						'for': 'venue-' + index
+					})
+						.text(venue)
+					)
+			)
+		});
 
-			$.each(arrayUnique(venueTypes), function (index, venue) {
-				$types.append(
-					$("<li/>")
-						.append(
-						$("<input />").attr({
-							id: 'venue-type-' + index
-							, name: venue
-							, value: venue
-							, type: 'checkbox'
-							, checked: true
-						})
-							.change(function () {
-								var $this = $(this), i;
-								for (i = 0; i < venues.length; i++) {
-									if (venues[i].type === $this.val()) {
-										$('[name="' + venues[i].name + '"]').prop("checked", $this.prop('checked')).trigger('change');
-									}
-								}
-							})
+		$venueName.append($list);
+		$venueType.append($types);
+		// Uses the tinysort plugin, but our array is sorted for now.
+		//$list.find('>li').tsort("input", {attr: "value"});
 
-						).append(
-						$('<label />').attr({
-							'for': 'venue-' + index
-						})
-							.text(venue)
-						)
-				)
-			});
+		wheel.init();
 
-			$venueName.append($list);
-			$venueType.append($types);
-			// Uses the tinysort plugin, but our array is sorted for now.
-			//$list.find('>li').tsort("input", {attr: "value"});
+		$.each($venueName.find('ul input:checked'), function (key, cbox) {
+			wheel.segments.push(cbox.value);
+		});
 
-			wheel.init();
+		wheel.update();
+		$venues.slideUp().data("open", false);
+		$filterToggler.on("click", function () {
+			if ($venues.data("open")) {
+				$venues.slideUp().data("open", false);
+				$filterToggler.removeClass("open");
+			} else {
+				$venues.slideDown().data("open", true);
+				$filterToggler.addClass("open");
+			}
+		});
 
-			$.each($venueName.find('ul input:checked'), function (key, cbox) {
-				wheel.segments.push(cbox.value);
-			});
-
-			wheel.update();
-			$venues.slideUp().data("open", false);
-			$filterToggler.on("click", function () {
-				if ($venues.data("open")) {
-					$venues.slideUp().data("open", false);
-					$filterToggler.removeClass("open");
-				} else {
-					$venues.slideDown().data("open", true);
-					$filterToggler.addClass("open");
-				}
-			});
-
-			$('.checkAll').on("click", function () {
-				$(this).parent().next('div').find('input').prop('checked', $(this).prop('checked')).trigger("change");
-			});
-		})
-		, 1000);
+		$('.checkAll').on("click", function () {
+			$(this).parent().next('div').find('input').prop('checked', $(this).prop('checked')).trigger("change");
+		});
+	})
 
 
 
 	// }
 
 }(jQuery))
-	// , 1000);
+
+	// , 10000);

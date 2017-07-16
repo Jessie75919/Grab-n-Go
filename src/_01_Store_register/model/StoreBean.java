@@ -27,7 +27,6 @@ public class StoreBean implements Serializable {
 	private InputStream logo;
 	private InputStream cover;
 	private InputStream mainBanner;
-	private float angle;
 
 	public StoreBean() {
 		super();
@@ -489,23 +488,13 @@ public class StoreBean implements Serializable {
 		this.distance = distance;
 	}
 
-	
-	public float getAngle() {
-		return angle;
-	}
-
-
-	public void setAngle(float angle) {
-		this.angle = angle;
-	}
-
 
 	@Override
 	public String toString() {
 		return "StoreBean [rest_id=" + rest_id + ", rest_type=" + rest_type + ", rest_name=" + rest_name
 				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_email=" + rest_email
 				+ ", rest_username=" + rest_username + ", rest_password=" + rest_password + ", rest_validate="
-				+ rest_validate + ", distance=" + distance + ", angle=" + angle + "]";
+				+ rest_validate + ", distance=" + distance + "]";
 	}
 
 

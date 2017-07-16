@@ -324,6 +324,30 @@
 			href="#" onclick="closePanel()">下次再說</a>
 	</div>
 	<!--loading與驗證 end-->
+	 <!--轉盤-->
+    <div class="circle">
+        <div class="circleContent">
+            <div class="zoomBtn">
+            <a class="go" href="#">
+            <i id="wheelClick" class="icon-down"></i>
+            </a>
+            <a class="end" href="#">
+            <i class="icon-close"></i>
+            </a>
+            </div>
+            <div id="venues">
+                <h2 class="venue-title">Venues</h2>
+                <div id="name"></div>
+            </div>
+            <div id="wheel">
+                <canvas id="canvas" width="1000" height="600"></canvas>
+            </div>
+            <div id="counter"></div>
+            <div class="goBtn"><a href="#">點我至Afternoon Tea</a></div>
+        </div>
+        <div class="circleBg"></div>
+    </div>
+  
 	<footer> <figure> <img src="images/share/logo.svg"
 		alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
 	<p>Copyright © Garb and Go All rights reserved.</p>
@@ -367,6 +391,8 @@
 			$("#loading").fadeOut(500);
 		})
 	</script>
+	   <!--轉盤-->
+    <script type="text/javascript" src="javascript/Wheel.js"></script>
 	<!--share js-->
 	<script src="javascript/share.js"></script>
 	<!-- 取得使用者位置 -->

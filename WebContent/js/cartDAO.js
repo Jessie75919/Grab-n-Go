@@ -5,6 +5,7 @@ function deleteF(proId, itemNote) {
     var wholeItem = document.getElementById("List" + proId);
 
     if (confirm("確認要刪除嗎??")) {
+        
 
         var xhr_del = new XMLHttpRequest();
         xhr_del.open("GET", "ModifyOrderItem.do?cmd=del&proId=" + proId + "&itemNote=" + itemNote, true);

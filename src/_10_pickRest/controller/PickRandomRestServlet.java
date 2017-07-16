@@ -30,7 +30,7 @@ public class PickRandomRestServlet extends HttpServlet {
 
 		Logger lg = Logger.getLogger(LoadingHomepage.class);
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json charset=utf-8");
+		response.setContentType("application/json; charset=utf-8");
 
 		String latitudeStr = request.getParameter("lat");
 		String longitudeStr = request.getParameter("lng");
@@ -49,10 +49,11 @@ public class PickRandomRestServlet extends HttpServlet {
 		}
 
 		if (latitude != 0 && longitude != 0) {
+			StoreBeanSmSize sbsm = new StoreBeanSmSize();
 			StoreBeanDAO dao = new StoreBeanDAO();
-			List<StoreBean> storeList = dao.getStoreFromUser(latitude, longitude);
+			List<StoreBeanSmSize> storeList = dao.getStoreFromUserLocForWheel(latitude, longitude);
 			List<Integer> pickOneRound = new ArrayList<>();
-			List<StoreBean> chooseStore = new ArrayList<>();
+			List<StoreBeanSmSize> chooseStore = new ArrayList<>();
 			if (storeList.size() == 0) {
 				System.out.println("get nothing from dao.getStoreFromUser in LoadingHomepageFilter");
 			} else {
@@ -68,9 +69,7 @@ public class PickRandomRestServlet extends HttpServlet {
 					} else {
 						lastNum = rdNum;
 						pickOneRound.add(rdNum);
-						StoreBean sb = storeList.get(rdNum);
-						int angle = 0;
-						sb.setAngle(angle+=60);
+						StoreBeanSmSize sb = storeList.get(rdNum);
 						chooseStore.add(sb);
 						i++;
 					}
@@ -78,15 +77,15 @@ public class PickRandomRestServlet extends HttpServlet {
 			}
 
 			lg.info(Arrays.toString(pickOneRound.toArray()));
-			for (StoreBean sb : chooseStore) {
+			for (StoreBeanSmSize sb : chooseStore) {
 				System.out.println(sb);
 			}
 			
-			/*try (PrintWriter out = response.getWriter();) {
+			try (PrintWriter out = response.getWriter();) {
 				String stChoose = new Gson().toJson(chooseStore);
 				out.write(stChoose);
 				out.flush();
-			}*/
+			}
 
 
 		}

@@ -46,22 +46,16 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 	}
 
 	var win = "";
-	var shuffle = function (o) {
-		for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
-			;
-		return o;
-	}
 	// Helpers
-	setTimeout(function () {
 		var blackHex = '#fff',
 			whiteHex = '#fff',
 			halfPI = Math.PI / 2,
 			doublePI = Math.PI * 2;
-		// shuffle = function (o) {
-		// 	for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
-		// 		;
-		// 	return o;
-		// }
+		shuffle = function (o) {
+			for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
+				;
+			return o;
+		}
 
 
 		String.prototype.hashCode = function () {
@@ -79,7 +73,6 @@ $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
 		Number.prototype.mod = function (n) {
 			return ((this % n) + n) % n;
 		};
-	}, 1000);
 
 	alert('');
 	// console.log("message", "optionalParams")

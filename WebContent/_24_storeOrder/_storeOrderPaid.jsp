@@ -17,6 +17,7 @@
     <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
 	<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
 	
+	
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -89,7 +90,9 @@
                         <td>${anOrderBean.m_pickupname}</td>
                         <td>
                         <input style="display:none;" id="${anOrderBean.ord_id}" name="ordId" value="${anOrderBean.ord_id}">
-                        <a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
+                        <a href="#" id="${anOrderBean.ord_id}" onclick="clickMe(${anOrderBean.ord_id})" data-toggle="modal" data-target=".bs-example-modal-lg">${anOrderBean.ord_id}</a>
+                       <%--  <a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a> --%>
+                        </td>
                         <td>$${anOrderBean.ord_totalPrice}</td>
                         <td>${anOrderBean.ord_status}</td>
                         <td><input id="${anOrderBean.ord_id}" onclick="clickMe(${anOrderBean.ord_id})" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" value="檢視明細"></td>
@@ -108,10 +111,10 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title">訂單明細</h4>
                             </div>
-                            <div id="detailsContent" style="padding: 30px;">
+                            <div id="detailsContent" style="padding: 15px;">
                                 <table id="tableD">
                                   <tr>
-                                        <!-- <th>顧客名稱</th> -->
+                                        <th>顧客名稱</th>
                                         <th>餐點名稱</th>
                                         <th>餐點編號</th>
                                         <th>備註</th>
@@ -120,8 +123,9 @@
                                         <th>Subtotal</th>
                                     </tr>
                                     <tr>
-                                    		<!-- <td id="dPickupname"></td> -->
-                                    		<td id="dItemname"></td>
+                        
+                                    		<td id="dPickupname"></td>
+                                    		<td nowrap="" id="dItemname"></td>
                                     		<td id="dProdid"></td>
                                     		<td id="dItemnote"></td>
                                     		<td id="dItemamount"></td>
@@ -130,7 +134,6 @@
                                     </tr> 
                                     
                                 	 </table>
-                                 <span><h4>總金額：</h4></span> 
                             </div>
                         </div>
                     </div>
@@ -147,10 +150,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script>
-    //var orderId = document.getElementById("ordId").value;
-/*     $(function() {
-        $('#detailsModal').on('show.bs.modal', */
-    /*  var detailsTable = document.getElementById("tableD"); */
     var mPickupname = document.getElementById("dPickupname");
     var itemName = document.getElementById("dItemname");
     	var prodId = document.getElementById("dProdid");
@@ -158,6 +157,7 @@
     var itemAmount = document.getElementById("dItemamount");
     	var itemPrice = document.getElementById("dItemprice");
     	var subTotal = document.getElementById("dSubprice");
+    	var dTotal = document.getElementById("dTotal");
     	
         function clickMe(e) {
         	//alert("target = " + e);
@@ -171,22 +171,21 @@
         			var paidOrders = JSON.parse(xhr.responseText);
         			alert(JSON.stringify(paidOrders));
         			//var tr = document.createElement("tr");
-        		 	itemName.innerHtml = paidOrders[0].item_name;
-        			prodId.html = paidOrders[0].prod_id;
-        			itemNote.value = paidOrders[0].item_note;
-        			itemAmount.value = paidOrders[0].item_amount;
-        			itemPrice.value = paidOrders[0].item_price;
-        			subTotal.value = paidOrders[0].item_price;
+        			for(var i = 0; i < paidOrders.length ; i++ ){
+        				mPickupname.innerHTML = paidOrders[i].m_pickupname;
+            		 	itemName.innerHTML = paidOrders[i].item_name;
+            			prodId.innerHTML = paidOrders[i].prod_id;
+            			itemNote.innerHTML = paidOrders[i].item_note;
+            			itemAmount.innerHTML = paidOrders[i].item_amount;
+            			itemPrice.innerHTML = paidOrders[i].item_price;
+            			subTotal.innerHTML = paidOrders[i].item_price * paidOrders[i].item_amount;
+            			
+        			}
         		}
         		
         	}
-        
-        	
-        	
         }
         	
-       /*  })
-    }); */
 </script>
 </body>
 

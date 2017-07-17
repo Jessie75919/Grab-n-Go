@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <title>已付款訂單|本日訂單-Grab &amp; Go</title>
-    <script src="../javascript/jquery-3.2.1.min.js"></script>
+    <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
+	<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -29,8 +30,7 @@
             <h2>本日訂單</h2>
         </div>
     </header>
-<jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
-<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
+
     <!--店家profile-->
     <section class="container">
         <div class="row">
@@ -91,14 +91,40 @@
                         <a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">${anOrderBean.ord_id}</a></td>
                         <td>$${anOrderBean.ord_totalPrice}</td>
                         <td>${anOrderBean.ord_status}</td>
-                        <td><input id="viewDetails" type="submit" class="btn btn-default" value="檢視明細"></td>
+                        <td><input id="${anOrderBean.ord_id}" onclick="clickMe(${anOrderBean.ord_id})" type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg" value="檢視明細"></td>
                         <%-- <td id="cancelB"><a href="_storeOrderDetails.jsp?ord_id=${anOrderBean.ord_id}&ord_totalPrice=${anOrderBean.ord_totalPrice}">檢視明細</a></td> --%>
                     </tr>
                     </c:forEach>
                 </table>
                 <hr>
+            <!-- 訂單明細  -->
+             <div id="detailsModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-md" role="document">
+                       <!--  popup 內容  -->
+                        <div class="modal-content">
+                            <!-- popup header --> 
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">訂單明細</h4>
+                            </div>
+                            <div id="detailsContent" style="padding: 30px;">
+                                <table id="tableD">
+                                    <tr>
+                                        <th>顧客名稱</th>
+                                        <th>餐點名稱</th>
+                                        <th>餐點編號</th>
+                                        <th>備註</th>
+                                        <th>數量</th>
+                                        <th>單價</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                	 </table>
+                                 <span><h4>總金額：</h4></span> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
         <div class="row">
 
@@ -107,32 +133,21 @@
         </div>
     </section>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script>
-    var toggleTr = document.createElement("tr");
-	//toggleTr.id = "inTr" + monthlyOrders[j].ord_id;
-	var toggleTd = document.createElement("td");
-	toggleTd.setAttribute("colspan", "6");
-	toggleTd.innerHTML = "<div style='display:none; background-color: #ffe0b3;'></div>"
-	var ordId = document.getElementById("").value;
-		<!-- 展開訂單明細 -->
-    $(document).ready(function(){
-    		$("#viewDetails").click(function(e){
-    			//alert("Hello");
-    			e.stopPropagation();
-    			if(e.target.nodeName == "TD"){
-    				var $target = $(e.target);
-    				if($target.closest("tr").next().find("div:empty").length != 0){
-    					var xhr = new XMLHttpRequest();
-    					xhr.open("GET", "", true);
-    				}
-    				
-    				
-    			}
-    		});
-    		
-					
-    });
-    </script>
+    //var orderId = document.getElementById("ordId").value;
+/*     $(function() {
+        $('#detailsModal').on('show.bs.modal', */
+     var detailsTable = document.getElementById("tableD");
+        function clickMe(e) {
+        	//alert("target = " + e);
+        	table.innerHTML = 
+        }
+        	
+       /*  })
+    }); */
+</script>
 </body>
 
 </html>

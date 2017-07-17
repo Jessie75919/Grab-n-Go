@@ -17,13 +17,13 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint("/AppStoreWebSocketServer/{rest_id}")
 public class AppStoreWebSocketServer {
 	
-	private String message;
 	private Session userSession;
+	private String message;
 	
-	public void setMessage(String message) {
-		this.message = message;
-		onMessage(userSession, message);
-	}
+//	public void setMessage(String message, String restId) {
+//		this.message = message;
+//		onMessage(restId, userSession, message);
+//	}
 	
 	private static final Set<Session> connectedSessions = 
 			Collections.synchronizedSet(new HashSet<>());
@@ -41,7 +41,7 @@ public class AppStoreWebSocketServer {
 	}
 
 	@OnMessage
-	public void onMessage(Session userSession, String message) {
+	public void onMessage(@PathParam("rest_id") String rest_id,Session userSession, String message) {
 		System.out.println("onMessage start");
 		for (Session session : connectedSessions) {
 			if (session.isOpen())

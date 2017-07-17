@@ -1,6 +1,8 @@
 package _05_orderProcess.controller;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.ContainerProvider;
+import javax.websocket.DeploymentException;
+import javax.websocket.Session;
+import javax.websocket.WebSocketContainer;
 
 import org.apache.log4j.Logger;
 
@@ -105,15 +111,31 @@ public class payBill extends HttpServlet {
 			session.removeAttribute("cart");
 			
 			//送webSocketMessage至App
-			AppStoreWebSocketServer socketServer = new AppStoreWebSocketServer();
+//			AppStoreWebSocketServer socketServer = new AppStoreWebSocketServer();
 			String messageTitle = "您有一筆新訂單";
 			String messageBody = "取餐時間為: " + time;
 			Map<String, String> map = new HashMap<>();
 			map.put("messageTitle", messageTitle);
 			map.put("messageBody", messageBody);
 			Gson gson = new Gson();
-			String json = gson.toJson(map);
-			socketServer.setMessage(json);
+//			String json = gson.toJson(map);
+			String message = gson.toJson(map);
+			String restId = String.valueOf(orderRest);
+//			socketServer.setMessage(json, restId);
+			
+			WebSocketContainer container = 
+					ContainerProvider.getWebSocketContainer();
+			try {
+				Session sess = container.connectToServer(AppStoreWebSocketServer.class, 
+						new URI("ws://10.0.2.2:8080/_Grab_Go/"
+								+ "AppStoreWebSocketServer/" + restId));
+				sess.getAsyncRemote().sendText(message);
+			} catch (DeploymentException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			}
+						
 			
 			response.sendRedirect(response.encodeRedirectURL("cart_success.jsp"));
 		}

@@ -160,11 +160,11 @@ public class OrderItemDAO {
 		if (interval.equals("monthly")){
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%e') date_monthly "
 					+ " , DATE_FORMAT(b.ord_pickuptime, '%Y-%c') monthly ";
-			sql4 = " GROUP BY date_monthly ; ";
+			sql4 = " GROUP BY date_monthly, monthly ; ";
 		} else if (interval.equals("yearly")) {
 			sql2 = " , DATE_FORMAT(b.ord_pickuptime, '%c') month_yearly "
 					+ " , DATE_FORMAT(b.ord_pickuptime, '%Y') yearly ";
-			sql4 = " GROUP BY month_yearly ; ";
+			sql4 = " GROUP BY month_yearly , yearly ; ";
 		}
 		String sql = sql1 + sql2 + sql3 + sql4;
 		try (

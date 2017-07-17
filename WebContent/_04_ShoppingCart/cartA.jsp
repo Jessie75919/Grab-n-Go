@@ -72,6 +72,7 @@
                 	    </div>
                     </c:forEach>
                     
+                    
                     <!--菜單列表 end-->
                     <div class="total " id="subtotal ">總計：NT$${map.subtotal}元</div>
                 </div>

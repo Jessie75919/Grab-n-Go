@@ -13,7 +13,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <script src="../javascript/jquery-3.2.1.min.js"></script>
+    <script src="../javascript/jquery.min_2.1.1.js"></script>
     <title>待處理訂單|本日訂單-Grab &amp; Go</title>
     
     <style type="text/css">

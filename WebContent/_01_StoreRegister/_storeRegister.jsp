@@ -20,7 +20,9 @@
       <div class="row">
         <div class="col-md-12">
           <!-- <h1 class="text-primary">Logo</h1> -->
-          <img width="30%" src="../images/share/logo.svg">
+          <center>
+          <img width="30%" style="top:90px;" src="../images/share/logo.svg">
+          </center>
         </div>
       </div>
     </div>
@@ -29,7 +31,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-center my-0"> Sign up as Restaurant </h1>
+          <h1 class="text-center my-0" style="font-family:微軟正黑體;  font-size:40px;"> 註冊成為商家 </h1>
           <br> </div>
       </div>
       <div class="row">
@@ -55,6 +57,9 @@
               <div class="form-group m-0"> <label>Re-type password</label>
                 <input type="text" name="password2" value="${param.password2}" id="password2" class="form-control" placeholder="">
                 <span id="password2Result" style="height:10px;"></span> </div>
+                  <div class="loginList">
+                    <input type="checkbox">我同意<a id="gygy" href="#">隱私權政策</a>與<a href="#">服務條款</a>!
+                </div>
               <!-- 驗證碼 -->
               <div class="form-group">
                 <br>
@@ -71,6 +76,7 @@
                 <font size="-1" color="#FF0000"> ${msgErr.idRepeat}${msgErr.errorIDDup}</font>
               </div>
             </div>
+           
             <div id="formRight">
               <!--               </div> -->
               <div class="form-group mx-2"> <label>Name of Restaurant</label>
@@ -80,16 +86,6 @@
               <div class="form-group mx-2" > <label >Cuisine type</label>
              <c:set target="${rtd}" property="tagName" value="StoreType"/>
                 ${rtd.selectTag}
-<!--                <select class="form-control" name="StoreType"  id="StoreType"> -->
-<!--                   <option value="台式餐廳">台式餐廳</option> -->
-<!--                   <option value="日式餐廳">日式餐廳</option> -->
-<!--                   <option value="韓式餐廳">韓式餐廳</option> -->
-<!--                   <option value="美式餐廳">美式餐廳</option> -->
-<!--                   <option value="義式餐廳">義式餐廳</option> -->
-<!--                   <option value="法式餐廳">法式餐廳</option> -->
-<!--                   <option value="泰式餐廳">泰式餐廳</option> -->
-<!--                   <option value="越式餐廳">越式餐廳</option> -->
-<!--                 </select> </div> -->
               <!-- 餐廳分店 -->
               <div class="form-group mx-2"> <label>Store Branch</label>
                 <input type="text" name="branch" value="${param.branch}" id="branch" class="form-control" placeholder=""> </div>
@@ -117,11 +113,11 @@
             </div>
             <div id="formButtom">
               <center>
-                <button type="submit" class="btn mx-2 btn-block w-50 btn-warning">Sign up</button>
+                <button type="submit" class="btn mx-2 btn-block w-50 btn-warning">註冊</button>
               </center>
             </div>
           </form>
-              <div id="gygy" >點我點我</div>
+<!--               <div id="gygy" >點我點我</div> -->
           <!-- 經緯度 -->
           <input type="text" name="langitude" style="display:none;" value="" id="langitude">
           <input type="text" name="latitude" style="display:none;" value="" id="latitude"> </div>

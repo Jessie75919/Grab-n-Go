@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="../css/_storeIndex.css">
     <script src="../javascript/jquery-3.2.1.min.js"></script>
     <title>待處理訂單|本日訂單-Grab &amp; Go</title>
+    
+    <style type="text/css">
+    	.new{
+    		background-color: #6699ff;
+    	}
+    </style>
 </head>
 <!-- 商家已登入頁面 -->
 <!-- 待處理訂單頁面 -->
@@ -48,6 +54,8 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 待處理訂單</h3>
+                    <span id="clickme">按我</span>
+                    <span id="countdown"></span>
                     <!-- 訂單搜尋 -->
                     <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
                     <form class="form-inline" action="SearchOrder.do" method="get">
@@ -105,7 +113,7 @@
                         <td > $${anOrderBean.ord_totalPrice}</td>
                         <td >
                             <input style="display:none;" id="ordStatus" name="ordStatus" value="${anOrderBean.ord_status}">
-                            <a href="../_24_storeOrder/_storeOrderUnpaid.jsp?" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
+                            <a href="_storeIndex.jsp" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
                         <td id="cancelB"><a href="_storeIndex.jsp" onClick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
                     </tr>
@@ -122,6 +130,8 @@
     </section>
     
     <script>
+    var restId = ${StoreLoginOK.rest_id};
+    alert(restId);
     var ordStatus = document.getElementById("ordStatus").value;
     // var restUsername = document.getElementById("restUsername").value;
      
@@ -134,7 +144,8 @@
     				var xhr = new XMLHttpRequest();
     				xhr.open('GET','../updateOrderStatus.do?ordId=' + tt + '&ordStatus=' + ordStatus,true);
     				xhr.send();
-    	             //alert("餐點確定完成！")
+
+    	             alert("餐點確定完成！")
     	         }else{
     	             alert("餐點尚未完成")
     	         }
@@ -155,7 +166,7 @@
     	}
     
     </script>
-
+	<script src="../js/syncStoreOrders.js"></script>
 </body>
 
 </html>

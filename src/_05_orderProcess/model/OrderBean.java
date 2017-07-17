@@ -19,6 +19,7 @@ public class OrderBean {
 	String ord_email;
 	int ord_evalued;
 	int monthDay;
+	int insertIndex;
 	
 	
 
@@ -154,6 +155,14 @@ public class OrderBean {
 
 	public void setOrd_pickuptime(Timestamp ord_pickuptime) {
 		this.ord_pickuptime = ord_pickuptime;
+	}
+
+	public int getInsertIndex() {
+		return insertIndex;
+	}
+
+	public void setInsertIndex(int insertIndex) {
+		this.insertIndex = insertIndex;
 	}
 
 	@Override

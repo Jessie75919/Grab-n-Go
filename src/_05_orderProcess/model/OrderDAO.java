@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class OrderDAO {
 	int ord_evalued;
 	private String ord_tel;
 	private String yearSelect;
+	private String ordIds;
 	
 	public int getOrd_id() {
 		return ord_id;
@@ -78,6 +80,10 @@ public class OrderDAO {
 	
 	public void setYearSelect(String yearSelect){
 		this.yearSelect = yearSelect;
+	}
+
+	public void setOrdIds(String ordIds) {
+		this.ordIds = ordIds;
 	}
 
 	public OrderDAO() {
@@ -755,6 +761,50 @@ public class OrderDAO {
 
 		}
 		
+		return coll;
+	}
+	
+	public Collection<OrderBean> getNewOrdersInProgress() {
+		Collection<OrderBean> coll = new ArrayList<>();
+		String sql = "SELECT * FROM order01 "
+				   + "WHERE ord_status = 'inprogress' AND ord_pickuptime >= now() AND rest_id = ? "
+				   + "ORDER BY ord_pickuptime";
+		//把ordIds字串轉成arraylist
+		ordIds = ordIds.replace("[", "");
+		ordIds = ordIds.replace("]", "");
+		ordIds = ordIds.replace("\"", "");
+		String[] ordIdArray = ordIds.split(",");
+		List<String> list = new ArrayList<>(Arrays.asList(ordIdArray));
+		
+		try (
+			Connection conn = ds.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sql);
+				) {
+			stmt.setInt(1, restId);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				if(!list.contains(String.valueOf(rs.getInt("ord_id")))){
+					//System.out.println(list);
+					//System.out.println("新的row在No." + rs.getRow());
+					OrderBean ob = new OrderBean();
+					ob.setOrd_time(rs.getTimestamp("ord_time"));
+					ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
+					ob.setM_pickupname(rs.getString("m_pickupname"));
+					ob.setOrd_id(rs.getInt("ord_id"));
+					ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
+					ob.setOrd_status(rs.getString("ord_status"));
+					ob.setInsertIndex(rs.getRow());
+					//System.out.println(ob);
+					coll.add(ob);
+				} else{
+					list.remove(String.valueOf(rs.getInt("ord_id")));
+				}
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+
+		}
 		return coll;
 	}
 }

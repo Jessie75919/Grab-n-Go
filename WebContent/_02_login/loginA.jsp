@@ -46,7 +46,7 @@
                 <a href="../indexA.jsp"><img src="../images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></a>
             </div>
             <main class="login wow zoomIn">
-                <h2>會員帳號登入</h2>
+                <h2 id="helper2">會員帳號登入</h2>
                 <form action="<c:url value='userLogin.do' />" method="POST" name="loginForm" class="formcontent">
                     <div class="loginList">
                         <input type="text" name="userId" id="userId" placeholder="帳號" value="${sessionScope.user}" class="validate[required] text-input">
@@ -72,7 +72,7 @@
                 </form>
             </main>
             <footer>
-                <p>Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
+                <p id="helper">Copyright © Garb and Go All rights reserved.</p><a href="#" class="backToTop">TOP</a></footer>
             <!--main js-->
             <!--[if lt IE 8]><script type="text/javascript" src="../javascript/html5.js"></script><![endif]-->
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

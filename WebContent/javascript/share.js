@@ -109,3 +109,14 @@ $(document).ready(function () {
     });
 
 });
+
+    
+    /*     使用者登入小幫手     */
+$('#helper').click(function () { 
+    $('#userId').val('grabngo');
+    $('#pswd').val('1111');
+});
+$('#helper2').click(function () { 
+    $('#userId').val('gg_jc');
+    $('#pswd').val('1111');
+});

@@ -1,11 +1,10 @@
 package _05_orderProcess.model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderBean implements Serializable {
+public class OrderBean {
 	int ord_id;
 	String m_username;
 	String m_pickupname;
@@ -20,6 +19,7 @@ public class OrderBean implements Serializable {
 	String ord_email;
 	int ord_evalued;
 	int monthDay;
+	int insertIndex;
 	String ordPickuptime;
 	
 	
@@ -167,13 +167,21 @@ public class OrderBean implements Serializable {
 		this.ord_pickuptime = ord_pickuptime;
 	}
 
+	public int getInsertIndex() {
+		return insertIndex;
+	}
+
+	public void setInsertIndex(int insertIndex) {
+		this.insertIndex = insertIndex;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderBean [ord_id=" + ord_id + ", m_username=" + m_username + ", m_pickupname=" + m_pickupname
 				+ ", ord_time=" + ord_time + ", ord_pickuptime=" + ord_pickuptime + ", rest_id=" + rest_id
 				+ ", ord_totalPrice=" + ord_totalPrice + ", ord_status=" + ord_status + ", rest_name=" + rest_name
 				+ ", items=" + items + ", ord_tel=" + ord_tel + ", ord_email=" + ord_email + ", ord_evalued="
-				+ ord_evalued + ", ordPickuptime =" + ordPickuptime + "]";
+				+ ord_evalued + "]";
 	}
 
 }

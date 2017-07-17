@@ -41,7 +41,7 @@ public class AppStoreWebSocketServer {
 	}
 
 	@OnMessage
-	public void onMessage(@PathParam("rest_id") String rest_id,Session userSession, String message) {
+	public void onMessage(Session userSession, String message) {
 		System.out.println("onMessage start");
 		for (Session session : connectedSessions) {
 			if (session.isOpen())

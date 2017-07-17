@@ -123,19 +123,36 @@ public class payBill extends HttpServlet {
 			String restId = String.valueOf(orderRest);
 //			socketServer.setMessage(json, restId);
 			
-			WebSocketContainer container = 
-					ContainerProvider.getWebSocketContainer();
+//			WebSocketContainer container = 
+//					ContainerProvider.getWebSocketContainer();
+//			try {
+//				Session sess = container.connectToServer(payBill.class, 
+//						new URI("ws://10.0.2.2:8080/_Grab_Go/"
+//								+ "AppStoreWebSocketServer/" + restId));
+//				sess.getAsyncRemote().sendText(message);
+//			} catch (DeploymentException e) {
+//				e.printStackTrace();
+//			} catch (URISyntaxException e) {
+//				e.printStackTrace();
+//			}
+			
 			try {
-				Session sess = container.connectToServer(AppStoreWebSocketServer.class, 
-						new URI("ws://10.0.2.2:8080/_Grab_Go/"
-								+ "AppStoreWebSocketServer/" + restId));
-				sess.getAsyncRemote().sendText(message);
-			} catch (DeploymentException e) {
-				e.printStackTrace();
+				WebsocketClientEndpoint clientEndpoint = new WebsocketClientEndpoint(
+						new URI("ws://10.0.2.2:8080/_Grab_Go/AppStoreWebSocketServer/" + restId));
+				clientEndpoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {
+					
+					@Override
+					public void handleMessage(String message) {
+						
+					}
+				});
+				clientEndpoint.sendMessage(message);
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-						
+			
+			
+			
 			
 			response.sendRedirect(response.encodeRedirectURL("cart_success.jsp"));
 		}

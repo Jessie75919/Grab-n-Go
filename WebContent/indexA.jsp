@@ -143,6 +143,8 @@
 				href="${pageContext.servletContext.contextPath}/_06_member/updatePassword.jsp"
 				target="_blank"><i class="icon-list"></i>修改密碼</a></li>
 		</c:if>
+		  <li><a href="${pageContext.servletContext.contextPath}/_08_about/about.jsp"><i
+				class="icon-gg"></i>關於Grab &amp; Go</a></li>
 	</ul>
 	</nav>
 	<div class="mainBanner">

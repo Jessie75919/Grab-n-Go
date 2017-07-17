@@ -1,14 +1,4 @@
 
-// $.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
-// 	function (data, textStatus, jqXHR) {
-// 		// alert('hi');
-// 		// alert('data = '+JSON.stringify(data));
-// 		// var dataA = sessionStorage.getItem('data');
-// 		// setTimeout(function() {
-// 			$(document).haha(data);
-// 		// }, 1000);
-// 	}
-// );
 
 
 
@@ -18,19 +8,19 @@
 	var mapId = new Map();
 	var venues;
 	$.fn.haha = function (params) {
+		// var qq =
+		// 	[{ "name": "Afternoon Tea","rest_id":"2" },
+		// 	{ "name": "Subway","rest_id":"1" },
+		// 	{ "name": "Campus Cafe","rest_id":"6" },
+		// 	{ "name": "麵家三士","rest_id":"8" },
+		// 	{ "name": "Burger Talks淘客美式漢堡" ,"rest_id":"9"},
+		// 	{ "name": "Omaya春川炒雞" ,"rest_id":"3"},
+		// 	];
+
+		venues = params;
 
 	}
-	
-	var qq =
-		[{ "name": "Afternoon Tea","rest_id":"2" },
-		{ "name": "Subway","rest_id":"1" },
-		{ "name": "Campus Cafe","rest_id":"6" },
-		{ "name": "麵家三士","rest_id":"8" },
-		{ "name": "Burger Talks淘客美式漢堡" ,"rest_id":"9"},
-		{ "name": "Omaya春川炒雞" ,"rest_id":"3"},
-		];
 
-	venues = qq;
 
 	$.each(qq, function (indexInArray, item) {
 		mapId.set(item.name, item.rest_id);
@@ -65,7 +55,7 @@
 		return ((this % n) + n) % n;
 	};
 
-		// alert('');
+	// alert('');
 
 	// confirm("aaaa");
 
@@ -354,7 +344,7 @@
 	};
 
 
-	$(function () {
+	var startWheel = function () {
 		// alert("GGGG");
 		var $venues = $('#venues'),
 			$venueName = $('#name'),
@@ -463,7 +453,24 @@
 		$('.checkAll').on("click", function () {
 			$(this).parent().next('div').find('input').prop('checked', $(this).prop('checked')).trigger("change");
 		});
-	})
+	};
+
+
+	$.getJSON("PickRandomRest.do", { lat: 25.044019, lng: 121.5332270000001 },
+		function (data, textStatus, jqXHR) {
+
+			$.each(data, function (key, val) { 
+				venues.push({name:val.name,type:val.rest_id});
+				alert('data=' + val.name);
+				 
+			});
+
+			startWheel();
+
+			// var dataA = sessionStorage.getItem('data');
+			// $(document).haha(data);
+		}
+	);
 
 
 

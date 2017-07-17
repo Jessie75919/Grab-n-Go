@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -106,25 +107,33 @@ public class SendValidMail extends HttpServlet {
 		String from = "grabngojava@gmail.com";
 		List<String> to = Arrays.asList(new String[] { mailAddress });
 		String subject = "歡迎加入Grab & Go會員";
-		String text = " <table width='600' border='0' align='center' cellpadding='10' cellspacing='0'>"
-				+ " <tr><td align='center' style='padding: 20px 0;'><img src='http://lovegreenfood.com/gg/logo.png' "
-				+ "alt='Garb and Go' width='251' height='54' title='Garb and Go'></td></tr><tr> "
-				+ " <td align='center' bgcolor='#EB503C' style='font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; "
-				+ "color: #ffffff; font-size: 16px;'>Garb and Go 會員註冊確認信</td></tr><tr> "
-				+ " <td align='left' style='font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; "
-				+ "font-size: 16px;'>" + "    <p>親愛的 Garb and Go 會員您好：</p> " + "     <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
-				+ "    <p><a href='http://localhost:8080/_Grab_Go/validate.do?mode=" + mode + "&user=" + memberID
-				+ "''>點我驗證</a></p> " + "</td> " + " </tr> " + " <tr> "
-				+ "  <td align='left' bgcolor='#f5f5f5' style='font-family:Arial, '微軟正黑體', "
-				+ "'Microsoft YaHei', '新細明體'; color: #000000; font-size: 14px;'> "
-				+ "       <p>本e-mail系統通知由系統直接寄發，請勿直接回覆，若您對以上內容有任何問題，" + "歡迎聯絡我們或洽 Garb and Go 客服中心</p> "
-				+ "      <p>Copyright © Garb and Go All rights reserved.</p> " + "   </td> " + "  </tr></table>";
+		
+		String text = " <table width='600' border='0' align='center' cellpadding='10' cellspacing='0'> "
+        +" <tr> "
+        +"     <td align='center' style='padding: 20px 0;'><img src='http://lovegreenfood.com/gg/logo.png' alt='Garb and Go' width='251' height='54' title='Garb and Go'></td> "
+        +" </tr> "
+        +" <tr> "
+        +"     <td align='center' bgcolor='#EB503C' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #ffffff; font-size: 16px;\">Garb and Go 會員註冊確認信</td> "
+        +" </tr> "
+        +" <tr> "
+        +"     <td align='left' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; font-size: 16px;\"> "
+        +"         <p>親愛的 Garb and Go 會員您好：</p> "
+        +"         <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
+        +"         <p><a href='http://localhost:8080/_Grab_Go/validate.do?mode=" + mode + "&user=" + memberID+"'>點我認證</a></p> "
+        +"     </td> "
+        +" </tr> "
+        +" <tr> "
+        +"     <td align='left' bgcolor='#f5f5f5' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; font-size: 14px;\"> "
+        +"         <p>本e-mail系統通知由系統直接寄發，請勿直接回覆，若您對以上內容有任何問題，歡迎聯絡我們或洽 Garb and Go 客服中心</p> "
+        +"         <p>Copyright © Garb and Go All rights reserved.</p> "
+        +"     </td> "
+        +" </tr> "
+        +" </table>";
+		
+		
+		
 
-		// String text = "<h1>謝謝您加入會員</h1>" + "<h2>您可以按下列連結感受最新的體驗</h2>"
-		// + "<a href='http://localhost:8080/_Grab_Go/validate.do?user=" +
-		// memberID + "'>認證信</a><br>"
-		// + "<a href='http://www.google.com'>google</a><br>"
-		// + "<br><br><font color='blue'> 再次感謝, </font><br>工作小組敬上";
+//		http://localhost:8080/_Grab_Go/validate.do?mode=" + mode + "&user=" + memberID
 
 		JavaMailUtil util = new JavaMailUtil(from, to, null, null, subject, text, null);
 		if (util.send()) {
@@ -135,4 +144,74 @@ public class SendValidMail extends HttpServlet {
 		}
 		return n;
 	}
+	
+	
+	
+	public int sendForgetPWMail(String mailAddress, String memberID, int mode , String newPW) {
+		int n = -1;
+		lg.info("newPW = " + newPW);
+		String from = "grabngojava@gmail.com";
+		List<String> to = Arrays.asList(new String[] { mailAddress });
+		String subject = "Grab & Go會員 - 忘記密碼";
+		String text = "<table width='600' border='0' align='center' cellpadding='10' cellspacing='0'>"
+        +"<tr> "
+        +"    <td align='center' style='padding: 20px 0;'><img src='http://lovegreenfood.com/gg/logo.png' alt='Garb and Go' width='251' height='54' title='Garb and Go'></td>  "
+        +"</tr> "
+        +"<tr> "
+        +"    <td align='center' bgcolor='#EB503C' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #ffffff; font-size: 16px;\">Garb and Go 忘記密碼</td> "
+		+"</tr> "
+        +"<tr> "
+        +"    <td align='left' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; font-size: 16px;\"> "
+		+"        <p>親愛的 Garb and Go 會員您好：</p> "
+        +"        <p>以下為您的新密碼，請以新密碼進行登入，謝謝！</p> "
+        +"        <p>您的Garb and Go新的密碼："+ newPW +"</p> "
+        +"    </td> "
+        +"</tr> "
+        +"<tr> "
+        +"    <td align='left' bgcolor='#f5f5f5' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; font-size: 14px;\"> "
+		+"        <p>本e-mail系統通知由系統直接寄發，請勿直接回覆，若您對以上內容有任何問題，歡迎聯絡我們或洽 Garb and Go 客服中心</p> "
+        +"        <p>Copyright © Garb and Go All rights reserved.</p> "
+        +"    </td> "
+        +"</tr> "
+        +" </table>";
+		
+		JavaMailUtil util = new JavaMailUtil(from, to, null, null, subject, text, null);
+		if (util.send()) {
+			n = 1;
+			System.out.println("發信成功");
+		} else {
+			System.out.println("發信失敗");
+		}
+		return n;
+	}
+	
+	
+	public String getRandomPassword(){
+		StringBuilder sb = new StringBuilder();
+		String [] lowerCase = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		String[] number = {"0","1","2","3","4","5","6","7","8","9"};
+		Random rd = new Random();
+		int count = (int)(Math.random()*15+10);
+//		lg.info(count);
+		for(int i=0;i<count;i++){
+			int chooseMode = rd.nextInt(100);
+			if(chooseMode%2==0){
+//				lg.info("chooseModeChar = "+chooseMode);
+				int chooseCase = rd.nextInt(100);
+//				lg.info("chooseCase = " + chooseCase);
+				int chooseChar = rd.nextInt(25);
+				if(chooseCase%2==0){
+					sb.append(lowerCase[chooseChar].toUpperCase());
+				}
+				sb.append(lowerCase[chooseChar]);
+			}else {
+//				lg.info("chooseModeNum = " +chooseMode);
+				int chooseNum = rd.nextInt(9);
+				sb.append(number[chooseNum]);
+			}
+		}
+//		lg.info(sb.toString());
+		return sb.toString();
+	}
+	
 }

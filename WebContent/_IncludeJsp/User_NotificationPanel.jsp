@@ -22,7 +22,7 @@
                         </c:if>
                         <div class="closeBtn"><i class="icon-close" title="關閉"></i></div>
                         <!--訊息列表 最多5則-->
-                        <c:set var="notifList" value="${notif.queryNoticationByUserNoRead}"/>
+                        <c:set var="notifList" value="${notif.queryTodayNoticationByUser}"/>
                         <c:forEach var="notification" items="${notifList}">
                         <jsp:useBean id="restDAO" class="_01_Store_register.model.StoreBeanDAO" scope="page"/>
                         <c:set target="${restDAO}" property="rest_id" value="${notification.rest_id}"/>
@@ -31,7 +31,7 @@
                         <div class="massageList">
                             <figure>
                             <a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${rest.rest_id}">
-                            <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${rest.rest_name}&type=restaurant&loc=logo" 
+                            <img src="${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${rest.rest_username}&type=restaurant&loc=logo" 
                             alt="${rest.rest_name}" title="${rest.rest_name}"></a></figure>
                             <div class="massageInfo">
                                 <h3>訂購店家：${rest.rest_name}</h3>

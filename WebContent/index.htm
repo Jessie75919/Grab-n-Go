@@ -23,7 +23,7 @@
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
     <!--main css-->
     <link href="css_web/default.css" rel="stylesheet" type="text/css" />
-    <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+    <link href="../css_web/styles.css" rel="stylesheet">
     <link href="css_web/component.css" rel="stylesheet" type="text/css" />
     <!--輪播 css-->
     <link href="css_web/slick.css" rel="stylesheet" type="text/css">
@@ -32,6 +32,17 @@
 </head>
 
 <body id="top" class="cbp-spmenu-push">
+    <!--[if (!IE) | (gte IE 10)]>-->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <![endif]-->
     <header>
         <div id="showLeftPush" class="menuBtn"><i class="icon-menu" title="Menu"></i></div>
         <div class="storeBtn"><a href="_09_storeSys/index.htm">我是店家</a></div>
@@ -88,11 +99,11 @@
     <main>
         <!--標語-->
         <section class="content bgRed">
-            <h2 class="slogan slider wow fadeIn" data-wow-delay="0.5s">"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"</h2>
+            <h2 class="slogan wow fadeInRight" data-wow-delay="0.6s">"短短的午休時間您受夠了在水深火熱中跟人家相爭排隊買午餐嗎?<br>Grab &amp; Go 預約訂餐系統讓您輕鬆帶著走。"</h2>
         </section>
         <!--標語 end-->
         <!--瀑布流-->
-        <section class="grid slider wow fadeIn" id="container">
+        <div class="grid" id="grid">
             <div class="gridItem">
                 <figure><img src="images/restImage/ss_coverImg.jpg" alt="紗舞缡-極品集" title="紗舞缡-極品集">
                     <div class="mask"><a href="_07_storePage/store.htm">觀看菜單</a></div>
@@ -233,7 +244,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
     <!--搜尋-->
     <div class="search">
@@ -280,13 +291,21 @@
     </div>
     <!--站內訊息 end-->
     <!--轉盤-->
-    <div class="circleArea">
-        <section class="circleContent">
-        <div class="zoomBtn"><a href="#">點我</a></div>
-        </section>
+    <div class="circle">
+        <div class="circleContent">
+            <div class="zoomBtn"><a class="go" href="#"><i class="icon-down"></i></a><a class="end" href="#"><i class="icon-close"></i></a></div>
+            <div id="venues">
+                <h2 class="venue-title">Venues</h2>
+                <div id="name"></div>
+            </div>
+            <div id="wheel">
+                <canvas id="canvas" width="1000" height="600"></canvas>
+            </div>
+            <div id="counter"></div>
+            <div class="goBtn"><a href="#">點我至Afternoon Tea</a></div>
+        </div>
+        <div class="circleBg"></div>
     </div>
-    
-    
     <!--轉盤 end-->
     <footer>
         <figure><img src="images/share/logo.svg" alt="Grab &amp; Go" title="Grab &amp; Go"></figure>
@@ -311,7 +330,7 @@
             });
         });
     </script>
-    <!--瀑布流-->
+    <!--瀑布流--
     <script src="javascript/masonry.pkgd.min.js"></script>
     <script src="javascript/imagesloaded.pkgd.min.js"></script>
     <script>
@@ -321,7 +340,30 @@
                 percentPosition: true,
             });
         });
+
+    </script>-->
+    <script src="javascript/masonry.pkgd.min.js"></script>
+    <script src="javascript/imagesloaded.js"></script>
+    <script src="javascript/classie.js"></script>
+    <script src="javascript/AnimOnScroll.js"></script>
+    <script src="javascript/modernizr.custom.js"></script>
+    <script>
+        new AnimOnScroll(document.getElementById('grid'), {
+            minDuration: 0.4,
+            maxDuration: 0.7,
+            viewportFactor: 0.2
+        });
     </script>
+    <!--轉盤-->
+    <script type="text/javascript" src="javascript/Wheel.js"></script>
+    <!--loading js-->
+    <script>
+        $(window).load(function() {
+            $("#loading").fadeOut(500);
+        })
+    </script>
+    <!--SmoothScroll js-->
+    <script type="text/javascript" src="javascript/SmoothScroll_v1.2.1.js"></script>
     <!--share js-->
     <script src="javascript/share.js"></script>
 </body>

@@ -9,3 +9,5 @@ WebContent/MultiplicationTable.jsp
 WebContent/test.jsp
 *.2017-07-10
 *.2017-07-11
+log/
+src/_00_AppGlobal/AjaxPicTest.java

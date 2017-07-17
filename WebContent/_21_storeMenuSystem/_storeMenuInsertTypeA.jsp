@@ -32,14 +32,7 @@
 	<section class="container">
 	<div class="row">
 		<!-- 店家profile -->
-		<div class="col-md-3">
-			<center>
-				<!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-				<img
-					src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-					alt="Photo" title="Photo"> <br>
-			</center>
-		</div>
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
 		<div class="col-md-9">
 			<div>
 				<h3>> 新增餐點類別</h3>
@@ -59,7 +52,7 @@
 			<table id="productTypeTable">
 				<tr>
 					<!-- 								<th></th> -->
-					<th>建立餐點類別</th>
+					<th><h4>建立餐點類別</h4></th>
 				</tr>
 			</table>
 			<hr>

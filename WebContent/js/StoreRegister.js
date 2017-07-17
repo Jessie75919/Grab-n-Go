@@ -87,11 +87,12 @@ window.onload = function () {
 		password2.value = "1111";
 		StoreName.value = "GrabAndGo";
 		StoreType.value = "台式餐廳";
-		address.value = "台北市中山區長安東路二段92號1樓";
+		address.value = "台北市大安區新生南路一段1號";
+		branch.value = "光華店";
 		tel.value = "(02)2517-7667";
 		eMail.value = "javazh005@gmail.com";
 		owner.value = "哈大胖";
-		url.value = "http://www.twsubway.com/tw/subway_store_findastore.php";
+		url.value = "http://www.grabngo.com";
 	}
 
 }

@@ -60,29 +60,19 @@
 	<section class="container">
 	<div class="row">
 		<!-- 店家profile -->
-		<div class="col-md-3">
-			<center>
-				<!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-				<img
-					src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-					alt="Photo" title="Photo"> <br>
-			</center>
-		</div>
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
 		<div class="col-md-9">
 			<div>
 				<h3>> 本日訂單統計</h3>
 				<!-- 指定日期 -->
 					<span><h4>請選擇欲查詢的日期：</h4></span>
-					<!-- <div id="dateSelector"></div> -->
-					<!-- <form class="form-inline" action="../DailyRevenue.do" method="get"> -->
 					<div class="form-inline">
 					<div class="input-group">
 						<div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 						<input type="text" id="datepicker" name="datepicker" class="form-control" value="" /> 
 						<input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
 					</div>
-				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="確定"/>
-				<!-- </form> -->
+				<input type="submit" id="submit" name="submit" class="btn btn-primary" value="重新查詢"/>
 				</div>
 			</div>
 		</div>
@@ -105,6 +95,11 @@
 			</ul>
 		</div>
 		<br>
+		<!-- loading icon //預設dispay:none -->
+		<div id="spinnerArea">
+		<img id="spinner" src="${pageContext.servletContext.contextPath}/images/storeSpinner.gif"
+		style="display: none;">
+		</div>
 		<!--圖表區塊, 動態產生-->
 		<div id="pieChart"></div>
 		<hr>

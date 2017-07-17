@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +14,9 @@
   <script src="../javascript/jquery-3.2.1.min.js"></script>
   <script>
   $(document).ready(function(){
-		  alert("預設選取的年份：" + $("#yearSelected").val());
-		  getYearOrders();
-  });
+		  $("#yearSelected option").eq(1).prop("selected",true);
+		  getYearOrders(ys.value);
+  }); 
   </script>
   <title>Welcome to GrabAndGo</title>
 </head>
@@ -37,31 +36,23 @@
   <!--店家profile-->
   <section class="container">
     <div class="row">
-      <!-- 店家profile -->
-      <div class="col-md-3">
-        <center>
-          <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-          <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-            alt="Photo" title="Photo">
-          <br>
-        </center>
-      </div>
+     <!-- 店家profile -->
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
       <div class="col-md-9">
         <div>
           <h3>> 年度訂單統計</h3>
           <span><h4>請選擇欲查看的年份:</h4></span>
           <input style="display: none;" type="text" name="restUsername" id="restUsername" value="${StoreLoginOK['rest_username']}"/>
           <div class="form-inline">
-          <select id="yearSelected" class="form-control">
+          <select id="yearSelected" name="yearSelector" class="form-control">
           	<option value="2016">2016</option>
-          	<option value="2017" Selected>2017</option>
+          	<option value="2017">2017</option>
           	<option value="2018">2018</option>
           </select>
           </div>
         </div>
       </div>
   </section>
-
   <!--左側列表-->
   <section id="leftMenu" class="container">
   	<jsp:include page="../_IncludeJsp/_storeMenuTest.jsp"/>
@@ -77,27 +68,32 @@
           </ul>
         </div>
         <br>
+        <!-- loading icon //預設dispay:none -->
+		<div id="spinnerArea">
+		<img id="spinner" src="${pageContext.servletContext.contextPath}/images/storeSpinner.gif"
+		style="display: none;">
+		</div>
         <!--圖表區塊, 動態產生-->
-        <div id="barChart">
+        <div id="barChart" style="margin-left: 16%;">
         </div>
         <hr>
 
-        <table id="orderTable">
-          <tr>
+        <table id="orderTableY">
+          <!-- <tr>
             <th>訂單月份</th>
             <th>餐點種類</th>
             <th>餐點名稱</th>
             <th>銷售數量</th>
             <th>營業總額</th>
           </tr>
-          <!-- 日營業額統計細項 -->
+          日營業額統計細項
           <tr>
             <td nowrap="">2017/05/19 11:05:31</td>
             <td>主餐</td>
             <td>西班牙海鮮燉飯</td>
             <td>100</td>
             <td>$33000</td>
-          </tr>
+          </tr> -->
         </table>
         <hr>
       </div>

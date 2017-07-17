@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <!-- 載入d3.js -->
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="../javascript/jquery-3.2.1.min.js"></script>
+  <script>
+$(document).ready(function(){
+		  getMonthlyOrders();
+  }); 
+  </script>
 <title>Welcome to GrabAndGo</title>
 </head>
 <!-- 商家登入成功畫面 -->
@@ -33,14 +39,7 @@
 	<section class="container">
 	<div class="row">
 		<!-- 店家profile -->
-		<div class="col-md-3">
-			<center>
-				<!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-				<img
-					src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-					alt="Photo" title="Photo"> <br>
-			</center>
-		</div>
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
 		<div class="col-md-9">
 			<div>
 				<h3>> 本月訂單統計</h3><br>
@@ -90,8 +89,13 @@
 			</ul>
 		</div>
 		<br>
+		<!-- loading icon //預設dispay:none -->
+		<div id="spinnerArea">
+		<img id="spinner" src="${pageContext.servletContext.contextPath}/images/storeSpinner.gif"
+		style="display: none;">
+		</div>
 		<!--圖表區塊, 動態產生-->
-		<div style="margin-left: 20px;">
+		<div style="margin-left: 10%;">
 			<svg id="lineChart"></svg>
 		</div>
 		<hr>

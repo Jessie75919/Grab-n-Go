@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "chewchew";
-  src:url("fonts/chewchew.eot");
-  src:url("fonts/chewchew.eot?#iefix") format("embedded-opentype"),
-    url("fonts/chewchew.woff") format("woff"),
-    url("fonts/chewchew.ttf") format("truetype"),
-    url("fonts/chewchew.svg#chewchew") format("svg");
+  font-family: "gg";
+  src:url("fonts/gg.eot");
+  src:url("fonts/gg.eot?#iefix") format("embedded-opentype"),
+    url("fonts/gg.woff") format("woff"),
+    url("fonts/gg.ttf") format("truetype"),
+    url("fonts/gg.svg#gg") format("svg");
   font-weight: normal;
   font-style: normal;
 
 }
 
 [data-icon]:before {
-  font-family: "chewchew" !important;
+  font-family: "gg" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -27,7 +27,7 @@
 
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "chewchew" !important;
+  font-family: "gg" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -38,15 +38,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-facebook:before {
+.icon-search:before {
   content: "\61";
 }
-.icon-instagram:before {
+.icon-location:before {
   content: "\62";
 }
-.icon-cart:before {
+.icon-bag:before {
   content: "\63";
 }
-.icon-arrow-down:before {
+.icon-menu:before {
   content: "\64";
+}
+.icon-user:before {
+  content: "\65";
+}
+.icon-list:before {
+  content: "\66";
+}
+.icon-gg:before {
+  content: "\67";
+}
+.icon-star:before {
+  content: "\68";
+}
+.icon-close:before {
+  content: "\69";
+}
+.icon-google:before {
+  content: "\6a";
+}
+.icon-birth:before {
+  content: "\6b";
+}
+.icon-phone:before {
+  content: "\6c";
+}
+.icon-mail:before {
+  content: "\6d";
+}
+.icon-info:before {
+  content: "\6e";
+}
+.icon-arrow-left:before {
+  content: "\6f";
+}
+.icon-arrow-right:before {
+  content: "\70";
+}
+.icon-time:before {
+  content: "\71";
+}
+.icon-bubble:before {
+  content: "\72";
+}
+.icon-check:before {
+  content: "\73";
+}
+.icon-down:before {
+  content: "\74";
 }

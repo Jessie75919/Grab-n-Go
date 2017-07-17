@@ -25,8 +25,9 @@
             <link rel="icon" href="../images/favicon.ico" type="image/ico" />
             <!--main css-->
             <link href="../css_web/default.css" rel="stylesheet" type="text/css" />
-            <link href="https://file.myfontastic.com/JgbKu4HBhSiTuUxrtB7R5d/icons.css" rel="stylesheet">
+            <link href="../css_web/styles.css" rel="stylesheet">
             <link href="../css_web/component.css" rel="stylesheet" type="text/css" />
+            <link href="../css_web/animate.css" rel="stylesheet" type="text/css" />
         </head>
 
         <body id="top" class="cbp-spmenu-push">
@@ -41,7 +42,7 @@
             <main>
                 <div class="brcame"><a href="../index.jsp">首頁</a> / 檢視個人資料</div>
                 <section class="content">
-                    <div class="memberAccount">
+                    <div class="memberAccount wow fadeInUp">
                         <div class="memberLeft">
                             <figure>
                                 <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${LoginOK.memberId}&type=MEMBER' alt="Photo" title="Photo">
@@ -50,7 +51,7 @@
                         <div class="memberRight">
                             <div class="memberInfo">
                                 <h3>${LoginOK.memberId}</h3>
-                                <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+                                <!--                                 <div class="star"><i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star on"></i> <i class="icon-star"></i> <i class="icon-star"></i></div> -->
                             </div>
                             <div class="formList">
                                 <div class="formTitle"><i class="icon-user"></i>姓名</div>
@@ -108,6 +109,17 @@
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <!--nav-->
             <script type="text/javascript" src="../javascript/classie.js"></script>
+            <!--animation js-->
+            <script type="text/javascript" src="../javascript/wow.js"></script>
+            <!--loading js-->
+            <script>
+                $(window).load(function() {
+                    $("#loading").fadeOut(500);
+                })
+
+            </script>
+            <!--SmoothScroll js-->
+            <script type="text/javascript" src="../javascript/SmoothScroll_v1.2.1.js"></script>
             <!--share js-->
             <script src="../javascript/share.js"></script>
             <script src="../js/indexUse.js"></script>

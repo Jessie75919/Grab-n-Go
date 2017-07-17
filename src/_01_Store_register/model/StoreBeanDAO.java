@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 import _00_AppGlobal.Common;
 import _00_init.GlobalService;
 import _02_Store_login.model.StoreLoginServiceDB;
+import _10_pickRest.controller.StoreBeanSmSize;
 
 public class StoreBeanDAO {
 	
@@ -578,13 +579,13 @@ public class StoreBeanDAO {
 				
 		List<StoreBean> listStore = new ArrayList<>();
 		StoreBean sb = null;
-		System.out.println("listStore in StoreBeanDAO");
+//		System.out.println("listStore in StoreBeanDAO");
 		try (
 			 Connection con = ds.getConnection();
 			 PreparedStatement pst = con.prepareStatement(sql);
 		) {
 			
-			System.out.println("AA = "+lat+ "  " +lng);
+//			System.out.println("AA = "+lat+ "  " +lng);
 			pst.setDouble(1, lat);
 			pst.setDouble(2, lng);
 			pst.setDouble(3, lat);
@@ -619,7 +620,49 @@ public class StoreBeanDAO {
 				sb.setDistance(distance);
 				
 				listStore.add(sb);
-				System.out.println("sb = " +sb);
+//				System.out.println("sb = " +sb);
+			}
+			
+			if(listStore.size()==0){
+//				System.out.println("get Nothing [getStoreFromUser] <StoreBeanDAO>");
+				lg.error("Get Nothing");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return listStore;
+	}
+	
+	
+	public List<StoreBeanSmSize> getStoreFromUserLocForWheel(double lat,double lng){
+		
+//		String sql = "CALL get_Rest(?,?);";
+		String sql = Common.getRestWithLoc;
+//		String sql = "select * from restaurant";
+		
+		List<StoreBeanSmSize> listStore = new ArrayList<>();
+		StoreBean sb = null;
+		try (
+				Connection con = ds.getConnection();
+				PreparedStatement pst = con.prepareStatement(sql);
+				) {
+			
+			pst.setDouble(1, lat);
+			pst.setDouble(2, lng);
+			pst.setDouble(3, lat);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				int rest_id = rs.getInt(1);
+				System.out.println("rest_id = " + rest_id);
+				String rest_name = rs.getString("rest_name");
+				
+				StoreBeanSmSize sbsm = new StoreBeanSmSize();
+				sbsm.setName(rest_name);
+				sbsm.setRest_id(rest_id);
+				
+				listStore.add(sbsm);
+//				System.out.println("sb = " +sb);
 			}
 			
 			if(listStore.size()==0){

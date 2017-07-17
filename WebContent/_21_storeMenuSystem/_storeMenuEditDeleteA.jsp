@@ -30,14 +30,7 @@
     <section class="container">
         <div class="row">
             <!-- 店家profile -->
-            <div class="col-md-3">
-                <center>
-                    <!-- <img class="img-rounded" src="../images/restImage/af_logo.jpg"> -->
-                    <img src='${pageContext.servletContext.contextPath}/_00_init/getImageA?id=${StoreLoginOK["rest_username"]}&type=restaurant&loc=logo'
-                        alt="Photo" title="Photo">
-                    <br>
-                </center>
-            </div>
+		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
             <div class="col-md-9">
                 <div>
                     <h3>> 刪除修改餐點項目</h3>

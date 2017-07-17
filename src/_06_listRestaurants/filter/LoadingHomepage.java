@@ -50,7 +50,7 @@ public class LoadingHomepage implements Filter {
 				} else if (cok.getName().equals("lng")) {
 					if(cok.getValue()!=null){
 						longitude = Double.parseDouble(cok.getValue()); 
-						System.out.println("latitude= " + longitude + " in LoadingHomepageFilter");
+						System.out.println("longitude= " + longitude + " in LoadingHomepageFilter");
 					}
 				}
 			}

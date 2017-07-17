@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class StoreBean  {
+public class StoreBean implements Serializable {
 
 	private int rest_id;
 	private String rest_type;
@@ -488,14 +488,17 @@ public class StoreBean  {
 		this.distance = distance;
 	}
 
+
 	@Override
 	public String toString() {
 		return "StoreBean [rest_id=" + rest_id + ", rest_type=" + rest_type + ", rest_name=" + rest_name
-				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_phone=" + rest_phone
-				+ ", rest_owner=" + rest_owner + ", rest_email=" + rest_email + ", rest_username=" + rest_username
-				+ ", rest_password=" + rest_password + ", rest_url=" + rest_url + ", rest_longitude=" + rest_longitude
-				+ ", rest_latitude=" + rest_latitude + ", rest_mainbanner=" + rest_mainbanner + ", rest_logo="
-				+ rest_logo + ", rest_coverimage=" + rest_coverimage + ", rest_validate=" + rest_validate + ", distance=" + distance +  "]";
+				+ ", rest_branch=" + rest_branch + ", rest_address=" + rest_address + ", rest_email=" + rest_email
+				+ ", rest_username=" + rest_username + ", rest_password=" + rest_password + ", rest_validate="
+				+ rest_validate + ", distance=" + distance + "]";
 	}
+
+
+
+	
 
 }

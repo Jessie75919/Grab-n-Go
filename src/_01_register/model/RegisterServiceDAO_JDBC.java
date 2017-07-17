@@ -99,7 +99,34 @@ public class RegisterServiceDAO_JDBC implements RegisterServiceDAO {
 		}
 		return r;
 	}
+	
 
+	public int updatePassword(String username, String newPw) {
+		int n = -1;
+		lg.info(username);
+		String sql = "update Member set m_password = ? where m_username = ?";
+		
+		try (Connection conn = ds.getConnection(); 
+				PreparedStatement pstmt1 = conn.prepareStatement(sql);) {
+			
+			pstmt1.setString(1, newPw);
+			pstmt1.setString(2, username);
+			
+			n = pstmt1.executeUpdate();
+			
+			if (n == 1) {
+				lg.info("更新密碼成功");
+			} else {
+				lg.error("更新密碼失敗");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	
+	
 	public int validate(String username, int mode) {
 		int n = -1;
 		lg.info(username);

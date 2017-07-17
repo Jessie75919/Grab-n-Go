@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
 
+import org.apache.log4j.Logger;
+
 import _00_init.GlobalService;
 
 @WebFilter("/_02_login/loginA.jsp")
@@ -30,6 +32,9 @@ public class FindUserPassword implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
+		
+		Logger lg = Logger.getLogger(FindUserPassword.class);
+		
 		// 執行_02_login/login.jsp前先執行本程式
 		if (request instanceof HttpServletRequest
 				&& response instanceof HttpServletResponse) {
@@ -54,6 +59,7 @@ public class FindUserPassword implements Filter {
 					} else if (cookieName.equals("password")) {
 						//找到password這個Cookie						
 						String tmp  = cookies[i].getValue();
+						lg.info("temp ="+ tmp);
 						if (tmp!= null){
 							//byte[] ba = Base64.decode(tmp);
 							password = 	GlobalService.decryptString(

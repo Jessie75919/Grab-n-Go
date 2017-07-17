@@ -50,23 +50,25 @@ window.onload = function () {
 
     if (navigator.geolocation) {
 
+
         navigator.geolocation.getCurrentPosition
             (function successFunction(position) {
-                lat = position.coords.latitude;
-                lng = position.coords.longitude;
-                var accu = position.coords.accuracy;
+                // lat = position.coords.latitude;
+                // lng = position.coords.longitude;
+                lat = 25.044019;
+                lng = 121.5332270000001;
+                
+                // var accu = position.coords.accuracy;
 
                 //  alert("in successFunction");
                 setCookie("lat", lat);
                 setCookie("lng", lng);
-                alert("lat" + lat + ",  lng" + lng);
-                alert("accu = " + accu);
+                // alert("lat" + lat + ",  lng" + lng);
+                // alert("accu = " + accu);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "SaveLocation.do?latitude=" + lat
                     + "&longitude=" + lng, true);
                 xhr.send();
-
-
 
                 localStorage['authorizedGeoLocation'] = 1;
             }, function errorFunction() {
@@ -125,9 +127,6 @@ function closePanel() {
 }
 
 
-
-
-
 function readMsg(user) {
     // alert('uesr = ' + user);
 
@@ -153,8 +152,6 @@ function readMsgA(user) {
             }
         }
     );
-
-
 }
 
 

@@ -5,7 +5,7 @@ function deleteF(proId, itemNote) {
     var wholeItem = document.getElementById("List" + proId);
 
     if (confirm("確認要刪除嗎??")) {
-        
+
 
         var xhr_del = new XMLHttpRequest();
         xhr_del.open("GET", "ModifyOrderItem.do?cmd=del&proId=" + proId + "&itemNote=" + itemNote, true);
@@ -158,7 +158,7 @@ window.onload = function () {
     $('#validMsg').css("display", "none");
     $('#ttt').hide();
 
-    $('#validBth').click(function () { 
+    $('#validBth').click(function () {
         $('#ttt').show();
     });
 
@@ -170,8 +170,10 @@ window.onload = function () {
 function validCheck(event) {
 
     event.preventDefault();
-    var user = $('#username').val();
     var hasErr = true;
+
+
+    var user = $('#username').val();
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "../checkValidate.do?mode=1&user=" + user, true);
@@ -213,7 +215,14 @@ function validCheck(event) {
         }
     }
 
+    var x = $('#time').val();
+
+    if (x == "") {
+        hasErr = true;
+    }
+
     setTimeout(function () {
+        alert('hasErr = ' + hasErr);
         if (hasErr) {
             return false;
         } else {
@@ -221,6 +230,8 @@ function validCheck(event) {
             form.submit();
         }
     }, 100);
+
+
 
 }
 

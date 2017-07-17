@@ -55,13 +55,13 @@
 					<form method="POST" action="Storelogin.do" id="theForm"
 						onsubmit="return validateForm(event);">
 						<div class="form-group my-1">
-							<label style="padding: 5px;">Username :</label><br> <input type="text" id="usr"
+							<label id="helper1" style="padding: 5px;">Username :</label><br> <input type="text" id="usr"
 								name="username" value="${sessionScope.StoreUser}"
 								class="form-control"> <span id="usrRes"
 								style="height: 10px;"></span>
 						</div>
 						<div class="form-group my-1">
-							<label style="padding: 5px;">Password :</label><br> <input type="password" id="pw"
+							<label id="helper2" style="padding: 5px;">Password :</label><br> <input type="password" id="pw"
 								name="password" class="form-control"
 								value="${sessionScope.StorePassword}"> <span id="pwRes"
 								style="height: 10px;"></span>

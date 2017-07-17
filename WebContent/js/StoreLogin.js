@@ -1,13 +1,26 @@
 
 
 $(document).ready(function () {
-	$('#ttt').hide();
-    $('#resendValid').click(function () { 
-		$('#ttt').show();
+    $('#ttt').hide();
+    $('#resendValid').click(function () {
+        $('#ttt').show();
     });
 
 });
 
+
+/*     使用者登入小幫手     */
+$('#helper1').click(function () {
+    $('#usr').val('afternoontea');
+    $('#pw').val('1111');
+});
+$('#helper2').click(function () {
+    $('#usr').val('bigbig');
+    $('#pw').val('1111');
+});
+
+
+/* 驗證所有表格 */
 function validateForm(event) {
 
     event.preventDefault(); // this will prevent the submit event.

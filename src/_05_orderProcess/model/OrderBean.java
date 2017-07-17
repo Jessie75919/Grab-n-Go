@@ -20,8 +20,18 @@ public class OrderBean {
 	int ord_evalued;
 	int monthDay;
 	int insertIndex;
+	String ordPickuptime;
 	
 	
+	
+
+	public String getOrdPickuptime() {
+		return ordPickuptime;
+	}
+
+	public void setOrdPickuptime(String ordPickuptime) {
+		this.ordPickuptime = ordPickuptime;
+	}
 
 	public int getMonthDay() {
 		return monthDay;

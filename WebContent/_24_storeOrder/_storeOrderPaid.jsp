@@ -16,6 +16,7 @@
     <title>已付款訂單|本日訂單-Grab &amp; Go</title>
     <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderDAO" scope="page"/>
 	<c:set target="${orderBeans}" property="restUsername" value="${StoreLoginOK['rest_username']}"/>
+	
 </head>
 <!--商家登入成功-->
 <!--已付款訂單頁面-->
@@ -109,8 +110,8 @@
                             </div>
                             <div id="detailsContent" style="padding: 30px;">
                                 <table id="tableD">
-                                    <tr>
-                                        <th>顧客名稱</th>
+                                  <tr>
+                                        <!-- <th>顧客名稱</th> -->
                                         <th>餐點名稱</th>
                                         <th>餐點編號</th>
                                         <th>備註</th>
@@ -118,6 +119,16 @@
                                         <th>單價</th>
                                         <th>Subtotal</th>
                                     </tr>
+                                    <tr>
+                                    		<!-- <td id="dPickupname"></td> -->
+                                    		<td id="dItemname"></td>
+                                    		<td id="dProdid"></td>
+                                    		<td id="dItemnote"></td>
+                                    		<td id="dItemamount"></td>
+                                    		<td id="dItemprice"></td>
+                                    		<td id="dSubprice"></td>
+                                    </tr> 
+                                    
                                 	 </table>
                                  <span><h4>總金額：</h4></span> 
                             </div>
@@ -139,10 +150,39 @@
     //var orderId = document.getElementById("ordId").value;
 /*     $(function() {
         $('#detailsModal').on('show.bs.modal', */
-     var detailsTable = document.getElementById("tableD");
+    /*  var detailsTable = document.getElementById("tableD"); */
+    var mPickupname = document.getElementById("dPickupname");
+    var itemName = document.getElementById("dItemname");
+    	var prodId = document.getElementById("dProdid");
+    	var itemNote = document.getElementById("dItemnote");
+    var itemAmount = document.getElementById("dItemamount");
+    	var itemPrice = document.getElementById("dItemprice");
+    	var subTotal = document.getElementById("dSubprice");
+    	
         function clickMe(e) {
         	//alert("target = " + e);
-        	table.innerHTML = 
+        	var xhr = new XMLHttpRequest();
+        	xhr.open("GET","../AppendOrderDetail.json?id=" + e, true);
+        	xhr.send();
+        	
+        	xhr.onreadystatechange = function(){
+        		if( xhr.readyState == 4 && xhr.status == 200){
+        			alert("Got AppendOrderDetail.json!");
+        			var paidOrders = JSON.parse(xhr.responseText);
+        			alert(JSON.stringify(paidOrders));
+        			//var tr = document.createElement("tr");
+        		 	itemName.innerHtml = paidOrders[0].item_name;
+        			prodId.html = paidOrders[0].prod_id;
+        			itemNote.value = paidOrders[0].item_note;
+        			itemAmount.value = paidOrders[0].item_amount;
+        			itemPrice.value = paidOrders[0].item_price;
+        			subTotal.value = paidOrders[0].item_price;
+        		}
+        		
+        	}
+        
+        	
+        	
         }
         	
        /*  })

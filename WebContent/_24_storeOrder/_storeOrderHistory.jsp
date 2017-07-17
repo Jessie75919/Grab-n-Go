@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/_storeIndex.css">
 <title>Welcome to GrabAndGo</title>
-<script src="../javascript/jquery-3.2.1.min.js"></script>
+<script src="../javascript/jquery.min_2.1.1.js"></script>
 </head>
 <!--商家登入成功-->
 <!--歷史訂單查詢頁面-->

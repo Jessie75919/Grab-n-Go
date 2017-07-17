@@ -82,17 +82,17 @@ window.onload = function () {
 
 	//----------------------------------------------------------
 	dateSet.onclick = function () {
-		account.value = "grabngo";
+		account.value = "packpack";
 		password.value = "1111";
 		password2.value = "1111";
-		StoreName.value = "GrabAndGo";
+		StoreName.value = "派克雞排";
 		StoreType.value = "台式餐廳";
 		address.value = "台北市大安區新生南路一段1號";
-		branch.value = "光華店";
+		branch.value = "北科大店";
 		tel.value = "(02)2517-7667";
 		eMail.value = "javazh005@gmail.com";
-		owner.value = "哈大胖";
-		url.value = "http://www.grabngo.com";
+		owner.value = "陳允豪";
+		url.value = "http://www.twopac.com.tw/index.php";
 	}
 
 }

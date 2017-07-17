@@ -225,6 +225,15 @@ function validateUpdateForm(event) {
 
 }
 
+
+$('#helper').click(function () { 
+    $('#typeName1').val('炸物');
+    $('#typeName2').val('燒烤');
+    $('#typeName3').val('其他');
+    
+});
+
+
 function validateForm(event) {
     // alert("validateForm");
     event.preventDefault();

@@ -35,7 +35,7 @@
 		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
 		<div class="col-md-9">
 			<div>
-				<h3>> 新增餐點類別</h3>
+				<h3 id="helper">新增餐點類別</h3>
 			</div>
 		</div>
 	</section>

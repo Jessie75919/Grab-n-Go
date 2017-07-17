@@ -23,7 +23,7 @@
         </div>
         <!--進入區塊-->
         <div class="topTitle">
-            <h2>菜單管理</h2>
+            <h2 id="addHelper">菜單管理</h2>
         </div>
     </header>
     <!--店家profile-->
@@ -33,7 +33,7 @@
 		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
             <div class="col-md-9">
                 <div>
-                    <h3>> 新增餐點項目</h3>
+                    <h3 id="helper"> 新增餐點項目</h3>
                 </div>
             </div>
     </section>
@@ -76,6 +76,8 @@
         </div>
         </div>
     </section>
+    	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- 載入新增餐點js -->
 	<script src="../js/addDishRow.js"></script>
 </body>

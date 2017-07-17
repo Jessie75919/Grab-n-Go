@@ -44,6 +44,46 @@ addBtn.onclick = function () {
 
 }
 
+
+function addHelper() {
+    count++;
+    countVar.value = count;
+
+    var tr = document.createElement("tr");
+    tr.setAttribute("id", "tr" + count);
+
+    var tda = document.createElement("td");
+    var showCot = document.createElement("span");
+    var t = document.createTextNode(count);
+    showCot.appendChild(t);
+    tda.appendChild(showCot);
+    tr.appendChild(tda);
+
+    var td0 = document.createElement("td");
+    var deleBtn = document.createElement("i");
+    deleBtn.setAttribute("class", "fa fa-minus-square");
+    deleBtn.setAttribute("name", "deleBtn" + count);
+    deleBtn.setAttribute("id", "deleBtn" + count);
+    deleBtn.setAttribute("onClick", "deleteRow(this,1)");
+
+
+    var td1 = document.createElement("td");
+    var typeName = document.createElement("input");
+    typeName.setAttribute("type", "text");
+    typeName.setAttribute("name", "typeName" + count);
+    typeName.setAttribute("id", "typeName" + count);
+
+    td0.appendChild(deleBtn);
+    td1.appendChild(typeName);
+
+    tr.appendChild(td0);
+    tr.appendChild(td1);
+
+    table.appendChild(tr);
+
+}
+
+
 $('document').ready(function () {
 
     $.getJSON("findProductType.do", {name:$('#restName').val()},
@@ -226,10 +266,19 @@ function validateUpdateForm(event) {
 }
 
 
+$('#addHelper').click(function () { 
+    for(var i=0;i<4;i++){
+        addHelper();
+    }
+});
+
+
+
 $('#helper').click(function () { 
-    $('#typeName1').val('炸物');
-    $('#typeName2').val('燒烤');
-    $('#typeName3').val('其他');
+    $('#typeName1').val('主食');
+    $('#typeName2').val('配餐');
+    $('#typeName3').val('點心');
+    $('#typeName4').val('飲料');
     
 });
 

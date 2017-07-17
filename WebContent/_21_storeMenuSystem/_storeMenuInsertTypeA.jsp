@@ -25,7 +25,7 @@
 	</div>
 	<!--進入區塊-->
 	<div class="topTitle">
-		<h2>菜單管理</h2>
+		<h2 id="addHelper">菜單管理</h2>
 	</div>
 	</header>
 	<!--店家profile-->

@@ -98,7 +98,7 @@ public class OrderDAO {
 	
 	public int insertOrder(OrderBean ob){
 		int n = -1;
-		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?,?)";
+		String sqlOrder = "insert into order01 values (null,?,?,?,?,?,?,?,?,?,?,?)";
 		String sqlOrderItem = "insert into order_item values (null,?,?,?,?,?,?,?)";
 		try(
 				Connection con = ds.getConnection();
@@ -126,6 +126,7 @@ public class OrderDAO {
 				pst1.setString(8, ob.getOrd_tel());
 				pst1.setString(9, ob.getOrd_email());
 				pst1.setInt(10, ob.getOrd_evalued());
+				pst1.setInt(11, ob.getIsRead());
 				n = pst1.executeUpdate();
 				int orderId_Pk = 0; 
 				rsGenerateKeys = pst1.getGeneratedKeys();
@@ -343,7 +344,7 @@ public class OrderDAO {
 	
 	public Collection<OrderBean> getStoreOrdersInPgogress() {
 		Collection<OrderBean> coll = new ArrayList<>();
-		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status "
+		String sql = " SELECT a.ord_time, a.ord_pickuptime, a.m_pickupname, a.ord_id, a.ord_totalPrice, a.ord_status, a.is_read "
 				+ " FROM order01 a INNER JOIN restaurant b ON a.rest_id = b.rest_id " 
 				+ " WHERE a.ord_status = 'inprogress' AND a.ord_pickuptime >= now() AND b.rest_username = ? "
 				+ " ORDER BY a.ord_pickuptime ASC ";
@@ -361,6 +362,7 @@ public class OrderDAO {
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
+				ob.setIsRead(rs.getInt("is_read"));
 
 				coll.add(ob);
 				System.out.println(ob);
@@ -796,6 +798,7 @@ public class OrderDAO {
 					ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 					ob.setOrd_status(rs.getString("ord_status"));
 					ob.setInsertIndex(rs.getRow());
+					ob.setIsRead(rs.getInt("is_read"));
 					//System.out.println(ob);
 					coll.add(ob);
 				} else{
@@ -808,5 +811,26 @@ public class OrderDAO {
 
 		}
 		return coll;
+	}
+	
+	public int readOrder(String id) {
+		int n = -1;
+		String sql = "update order01 set is_read = '1' where ord_id =?";
+		try (Connection con = ds.getConnection();
+				PreparedStatement pst1 = con.prepareStatement(sql);
+		) {
+				pst1.setString(1, id);
+				
+				n = pst1.executeUpdate();
+				
+				if(n==1){
+					System.out.println("更新成功");
+				}else{
+					System.out.println("更新失敗");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return n;
 	}
 }

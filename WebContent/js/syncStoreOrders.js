@@ -4,6 +4,24 @@ $(document).ready(function() {
 		idArray.push($(this).attr("id"));
 	});
 	
+	for(i = 0;i < $("td:hidden").length; i++){
+	     if($("td:hidden")[i].textContent == 0)$("td:hidden")[i].parentNode.setAttribute("class", "new");
+	}
+	
+	$("#orderTable input").next().click(function(){
+		if($(this).closest("tr").attr("class") == "new"){
+			readOrder($(this).closest("tr").attr("id"));
+		} else{
+			alert("已讀");
+		}
+		});
+	
+	function readOrder(id){
+		$.get("../ReadOrderServlet?ordId=" + id, function(data, status){
+	        //alert("Data: " + data + "\nStatus: " + status);
+	    });
+	}
+	
 //	setInterval(function(){
 //		$("#orderTable tr").removeClass("new");
 //		syncOrder();
@@ -11,7 +29,7 @@ $(document).ready(function() {
 
 	
 	$("#clickme").click(function(){
-		$("#orderTable tr").removeClass("new");
+//		$("#orderTable tr").removeClass("new");
 		syncOrder();
 //		$("#countdown").text(new Date());
 	});
@@ -51,6 +69,7 @@ function syncOrder() {
 		    		alert("insertAfterChild: " + data[i].insertIndex);
 		    		var tr = document.createElement("tr");
 		    		tr.setAttribute("class", "new");
+		    		tr.id = data[i].ore_id;
 		    		
 		    		var td1 = document.createElement("td");
 		    		td1.setAttribute("nowrap", "");
@@ -100,6 +119,10 @@ function syncOrder() {
 		    		a3.textContent = "取消訂單";
 		    		td7.appendChild(a3);
 		    		
+		    		var td8 = document.createElement("td");
+		    		td8.style.display = "none";
+		    		td8.textContent = data[i].isRead;
+		    		
 		    		tr.appendChild(td1);
 		    		tr.appendChild(td2);
 		    		tr.appendChild(td3);
@@ -107,6 +130,7 @@ function syncOrder() {
 		    		tr.appendChild(td5);
 		    		tr.appendChild(td6);
 		    		tr.appendChild(td7);
+		    		tr.appendChild(td8);
 		    		
 		    		$(tr).insertAfter("table tr:nth-child(" + data[i].insertIndex + ")");
 		    	}

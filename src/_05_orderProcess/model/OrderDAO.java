@@ -511,6 +511,7 @@ public class OrderDAO {
 				ob.setOrd_id(rs.getInt("ord_id"));
 				ob.setOrd_totalPrice(rs.getInt("ord_totalPrice"));
 				ob.setOrd_status(rs.getString("ord_status"));
+				ob.setIsRead(rs.getInt("is_read"));
 				coll.add(ob);
 				System.out.println(ob);
 			}

@@ -303,7 +303,7 @@ public class TableDAO {
 	}
 	//insert OrderMain 
 	public int insertOrder(){
-		String sql = "insert into order01 values(null,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into order01 values(null,?,?,?,?,?,?,?,?,?,?,?)";
 		//ord_id, m_username, m_pickupname, ord_time, ord_pickuptime, rest_id, ord_totalPrice, ord_status
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -330,7 +330,7 @@ public class TableDAO {
 				pst.setString(8, segment[7]); 		
 				pst.setString(9, segment[8]); 		
 				pst.setString(10, segment[9]); 		// ord_evalued
-				
+				pst.setInt(11, Integer.parseInt(segment[10])); //isread
 				result = pst.executeUpdate();
 
 				if (result == 1)

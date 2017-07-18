@@ -59,9 +59,8 @@ function getDailyRevenue(date){
 				for(var j=0; j<contentSize ; j++) {
 					content.push(
 					{"label":dailyOrders[j].item_name, 
-					"value":dailyOrders[j].item_amount, 
-					"color": "#" + dailyOrders[j].item_price}) ;
-					
+					"value":dailyOrders[j].item_amount}) ;
+//					,"color": "#" + dailyOrders[j].item_price
 				}
 
 			    var pie = new d3pie("pieChart", {
@@ -81,7 +80,7 @@ function getDailyRevenue(date){
 		      },
 		      "footer": {
 		        "text": "統計日期：" + datepicker,
-		        "color": "#999999",
+		        "color": "#4d4d4d",
 		        "fontSize": 16,
 		        "font": "Microsoft JhengHei",
 		        "location": "bottom-center"
@@ -113,9 +112,9 @@ function getDailyRevenue(date){
 		          "decimalPlaces": 0
 		        },
 		        "value": {
-		          "color": "#e1e1e1",
+		          "color": "black",
 		          "font": "verdana",
-		          "fontSize": 12,
+		          "fontSize": 14,
 		        },
 		        "lines": {
 		          "enabled": true,

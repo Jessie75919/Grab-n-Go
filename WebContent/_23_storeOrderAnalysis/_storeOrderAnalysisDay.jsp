@@ -44,7 +44,6 @@
 </head>
 <!-- 商家登入成功畫面 -->
 <!-- 帳務分析頁面/ 每日訂單統計(一併呈現當日餐點熱銷) -->
-<%-- <jsp:useBean id="orderBeans" class="_05_orderProcess.model.OrderItemDAO"/> --%>
 <body>
 	<!--logo-->
 	<header>
@@ -86,7 +85,6 @@
 		<!--帳務分析按鈕區塊-->
 		<br>
 		<div>
-			<!--<ul class="nav nav-tabs nav-justified">-->
 			<ul class="nav nav-pills nav-justified">
 				<li role="presentation" class="active"><a href="#">當日訂單統計</a></li>
 				<li role="presentation"><a
@@ -113,15 +111,6 @@
 				<th>銷售總額</th>
 			</tr> -->
 			<!-- 日營業額統計細項 -->
-			<%-- <c:forEach  var="dtBean" items="${orderBeans.orderItemsByDate}">
-			<tr>
-				<td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd" value="${dtBean.ordPickuptime}"/></td>
-				<td>${dtBean.item_name}</td>
-				<td>${dtBean.item_name}</td>
-				<td>${dtBean.item_amount}</td>
-				<td>＄${dtBean.item_price}</td>
-			</tr>
-			</c:forEach> --%>
 		</table>
 		<hr>
 	</div>

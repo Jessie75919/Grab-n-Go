@@ -15,7 +15,7 @@ $('#helper1').click(function () {
     $('#pw').val('1111');
 });
 $('#helper2').click(function () {
-    $('#usr').val('bigbig');
+    $('#usr').val('howbigbig');
     $('#pw').val('1111');
 });
 

@@ -136,20 +136,20 @@ public class payBill extends HttpServlet {
 //				e.printStackTrace();
 //			}
 			
-			try {
-				WebsocketClientEndpoint clientEndpoint = new WebsocketClientEndpoint(
-						new URI("ws://10.0.2.2:8080/_Grab_Go/AppStoreWebSocketServer/" + restId));
-				clientEndpoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {
-					
-					@Override
-					public void handleMessage(String message) {
-						
-					}
-				});
-				clientEndpoint.sendMessage(message);
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				WebsocketClientEndpoint clientEndpoint = new WebsocketClientEndpoint(
+//						new URI("ws://10.0.2.2:8080/_Grab_Go/AppStoreWebSocketServer/" + restId));
+//				clientEndpoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {
+//					
+//					@Override
+//					public void handleMessage(String message) {
+//						
+//					}
+//				});
+//				clientEndpoint.sendMessage(message);
+//			} catch (URISyntaxException e) {
+//				e.printStackTrace();
+//			}
 			
 			
 			

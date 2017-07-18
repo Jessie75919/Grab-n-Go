@@ -21,7 +21,7 @@ $('#helper').click(function () {
 	$('#password2').val("1111");
 	$('#name').val("LuLuMi");
 	$('#address').val("台北科技大學-光華館");
-	$('#tel').val("0911123456");
+	$('#tel').val("0919132237");
 	$('#eMail').val("javazh005@gmail.com");
 	$('#birthday').val("1986-07-26");
 });

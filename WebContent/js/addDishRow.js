@@ -205,9 +205,9 @@ $('#helper').click(function () {
 	$('#dishName1').val('大雞排');
 	$('#dishName2').val('脆皮雞排');
 	$('#dishName3').val('無骨雞排');
-	$('#dishType1').val('主食');
-	$('#dishType2').val('主食');
-	$('#dishType3').val('主食');
+	$('#dishType1').val('炸物');
+	$('#dishType2').val('炸物');
+	$('#dishType3').val('炸物');
 	$('#dishPrice1').val('70');
 	$('#dishPrice2').val('60');
 	$('#dishPrice3').val('60');

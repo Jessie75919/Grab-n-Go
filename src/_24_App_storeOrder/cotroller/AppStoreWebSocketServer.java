@@ -2,7 +2,9 @@ package _24_App_storeOrder.cotroller;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.websocket.CloseReason;
@@ -14,16 +16,15 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 @ServerEndpoint("/AppStoreWebSocketServer/{rest_id}")
 public class AppStoreWebSocketServer {
 	
 	private Session userSession;
 	private String message;
-	
-//	public void setMessage(String message, String restId) {
-//		this.message = message;
-//		onMessage(restId, userSession, message);
-//	}
+	private static Map<String, Session> map = new HashMap<String, Session>();
 	
 	private static final Set<Session> connectedSessions = 
 			Collections.synchronizedSet(new HashSet<>());
@@ -34,6 +35,7 @@ public class AppStoreWebSocketServer {
 			//不連線
 		} else {
 			connectedSessions.add(userSession);
+			map.put(rest_id, userSession);
 			String text = String.format("Session ID = %s, connected; rest_id = %s", 
 					userSession.getId(), rest_id);
 			System.out.println(text);
@@ -43,11 +45,14 @@ public class AppStoreWebSocketServer {
 	@OnMessage
 	public void onMessage(Session userSession, String message) {
 		System.out.println("onMessage start");
-		for (Session session : connectedSessions) {
-			if (session.isOpen())
-				session.getAsyncRemote().sendText(message);
+		Gson gson = new Gson();
+		JsonObject jsonObject = gson.fromJson(message.toString(), JsonObject.class);
+		String restId = jsonObject.get("restId").getAsString();
+		Session session2 = map.get(restId);
+		if (session2.isOpen()){
+			session2.getAsyncRemote().sendText(message);
+			System.out.println("Message received: " + message);
 		}
-		System.out.println("Message received: " + message);
 	}
 
 	@OnError

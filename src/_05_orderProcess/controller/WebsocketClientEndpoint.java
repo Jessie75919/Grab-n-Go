@@ -2,6 +2,8 @@ package _05_orderProcess.controller;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Map;
 
 import javax.websocket.ClientEndpoint;
 import javax.websocket.CloseReason;
@@ -19,13 +21,15 @@ public class WebsocketClientEndpoint {
 	Session userSession = null;
 	private MessageHandler messageHandler;
 	
-	public WebsocketClientEndpoint(URI uri) {
-		WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+	public WebsocketClientEndpoint(String uri) {	
 		try {
-			container.connectToServer(this, uri);
+			WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+				container.connectToServer(this, new URI(uri)); 
 		} catch (DeploymentException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}

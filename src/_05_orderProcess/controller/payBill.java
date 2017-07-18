@@ -31,7 +31,6 @@ import _04_shoppingCart.model.ShoppingCart;
 import _05_orderProcess.model.OrderBean;
 import _05_orderProcess.model.OrderDAO;
 import _05_orderProcess.model.OrderItemBean;
-import _24_App_storeOrder.cotroller.AppStoreWebSocketServer;
 
 @WebServlet("/_04_ShoppingCart/PayBill.do")
 public class payBill extends HttpServlet {
@@ -111,47 +110,27 @@ public class payBill extends HttpServlet {
 			session.removeAttribute("cart");
 			
 			//送webSocketMessage至App
-//			AppStoreWebSocketServer socketServer = new AppStoreWebSocketServer();
 			String messageTitle = "您有一筆新訂單";
 			String messageBody = "取餐時間為: " + time;
+			String restId = String.valueOf(orderRest);
 			Map<String, String> map = new HashMap<>();
 			map.put("messageTitle", messageTitle);
 			map.put("messageBody", messageBody);
+			map.put("restId", restId);
 			Gson gson = new Gson();
-//			String json = gson.toJson(map);
 			String message = gson.toJson(map);
-			String restId = String.valueOf(orderRest);
-//			socketServer.setMessage(json, restId);
-			
-//			WebSocketContainer container = 
-//					ContainerProvider.getWebSocketContainer();
-//			try {
-//				Session sess = container.connectToServer(payBill.class, 
-//						new URI("ws://10.0.2.2:8080/_Grab_Go/"
-//								+ "AppStoreWebSocketServer/" + restId));
-//				sess.getAsyncRemote().sendText(message);
-//			} catch (DeploymentException e) {
-//				e.printStackTrace();
-//			} catch (URISyntaxException e) {
-//				e.printStackTrace();
-//			}
-			
-//			try {
-//				WebsocketClientEndpoint clientEndpoint = new WebsocketClientEndpoint(
-//						new URI("ws://10.0.2.2:8080/_Grab_Go/AppStoreWebSocketServer/" + restId));
-//				clientEndpoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {
-//					
-//					@Override
-//					public void handleMessage(String message) {
-//						
-//					}
-//				});
-//				clientEndpoint.sendMessage(message);
-//			} catch (URISyntaxException e) {
-//				e.printStackTrace();
-//			}
 			
 			
+			final WebsocketClientEndpoint clientEndpoint = new WebsocketClientEndpoint(
+					"ws://localhost:8080/_Grab_Go/AppStoreWebSocketServer/order" + restId + "/");
+			clientEndpoint.addMessageHandler(new WebsocketClientEndpoint.MessageHandler() {	
+				@Override
+				public void handleMessage(String message) {
+					
+				}
+			});
+			clientEndpoint.sendMessage(message);
+			System.out.println("restId : " + restId + ", message : " + message);
 			
 			
 			response.sendRedirect(response.encodeRedirectURL("cart_success.jsp"));

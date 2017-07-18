@@ -215,11 +215,7 @@ function validCheck(event) {
         }
     }
 
-    var x = $('#time').val();
 
-    if (x == "") {
-        hasErr = true;
-    }
 
     setTimeout(function () {
         alert('hasErr = ' + hasErr);

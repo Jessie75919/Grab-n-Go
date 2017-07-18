@@ -462,7 +462,8 @@ public class OrderDAO {
 	
 	
 	public int getOrderInProgressCountByRestId() {
-		String sql = " SELECT count(*) from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
+//		String sql = " SELECT count(*) from order01  WHERE rest_id = ? and  ord_status = 'inprogress'";
+		String sql = " SELECT count(*) from order01  WHERE rest_id = ? ";
 		int count = 0;
 //		System.out.println("restId = " + restId);
 		try (Connection conn = ds.getConnection();

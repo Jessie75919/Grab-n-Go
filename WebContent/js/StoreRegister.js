@@ -82,7 +82,7 @@ window.onload = function () {
 
 	//----------------------------------------------------------
 	dateSet.onclick = function () {
-		account.value = "bigbig";
+		account.value = "howbigbig";
 		password.value = "1111";
 		password2.value = "1111";
 		StoreName.value = "好大大雞排";

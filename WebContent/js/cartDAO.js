@@ -218,7 +218,7 @@ function validCheck(event) {
 
 
     setTimeout(function () {
-        alert('hasErr = ' + hasErr);
+        // alert('hasErr = ' + hasErr);
         if (hasErr) {
             return false;
         } else {

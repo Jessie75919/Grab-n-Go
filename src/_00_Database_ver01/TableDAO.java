@@ -81,13 +81,13 @@ public class TableDAO {
 				
 				pst.setBlob(8, is); // m_picture
 				pst.setString(9, segment[7]+".jpg"); // m_fileName
-				boolean b = false;
-				if (segment.equals("1")) {
-					b = true ;
-				} else if (segment.equals("0")) {
-					b = false;
-				}
-				pst.setBoolean(10, b); // m_validate
+//				boolean b = false;
+//				if (segment[8].equals("1")) {
+//					b = true ;
+//				} else if (segment[8].equals("0")) {
+//					b = false;
+//				}
+				pst.setInt(10, Integer.parseInt(segment[8])); // m_validate
 				result = pst.executeUpdate();
 
 				if (result == 1)

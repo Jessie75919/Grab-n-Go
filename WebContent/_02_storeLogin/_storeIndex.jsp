@@ -18,7 +18,7 @@
     
     <style type="text/css">
     	.new{
-    		background-color: #6699ff;
+    		background-color: #ffb84d;
     	}
     </style>
 </head>
@@ -54,7 +54,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 待處理訂單</h3>
-                    <span id="clickme">按我</span>
+                    <span id="clickme" class="btn btn-primary">立即刷新訂單</span>
                     <span id="countdown"></span>
                     <!-- 訂單搜尋 -->
                     <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
@@ -116,7 +116,7 @@
                             <a href="_storeIndex.jsp" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
                         <td id="cancelB"><a href="_storeIndex.jsp" onClick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
-                        <td style="display: none;">${anOrderBean.isRead}</td>
+                        <td id="${anOrderBean.isRead}" style="color: red;"></td>
                     </tr>
                     </c:forEach> 
                 </table>

@@ -1,11 +1,16 @@
 $(document).ready(function() {
-	var idArray = [];
-	$("table input:even").each(function() {
-		idArray.push($(this).attr("id"));
-	});
-	
-	for(i = 0;i < $("td:hidden").length; i++){
-	     if($("td:hidden")[i].textContent == 0)$("td:hidden")[i].parentNode.setAttribute("class", "new");
+//	var idArray = [];
+//	$("table input:even").each(function() {
+//		idArray.push($(this).attr("id"));
+//	});
+	//頁面載入後幫未讀的訂單加上class="new"
+	var $td = $("#orderTable tr td:last-child");
+	//alert($td.length);
+	for(i = 0;i < $td.length; i++){
+	     if($td[i].id == 0){
+	    	 $td[i].parentNode.setAttribute("class", "new");
+	    	 $td[i].textContent = "New!";
+	     }
 	}
 	
 	$("#orderTable input").next().click(function(){
@@ -25,7 +30,7 @@ $(document).ready(function() {
 //	setInterval(function(){
 //		$("#orderTable tr").removeClass("new");
 //		syncOrder();
-//	}, 10000);
+//	}, 1000);
 
 	
 	$("#clickme").click(function(){
@@ -54,7 +59,7 @@ function syncOrder() {
 	$("table input:even").each(function() {
 		idArray.push($(this).attr("id"));
 	});
-	alert(idArray);
+	//alert(idArray);
 	
 	//jQuery ajax
 	$.post("SyncOrders.json",
@@ -120,8 +125,9 @@ function syncOrder() {
 		    		td7.appendChild(a3);
 		    		
 		    		var td8 = document.createElement("td");
-		    		td8.style.display = "none";
-		    		td8.textContent = data[i].isRead;
+		    		td8.id = data[i].isRead;
+		    		td8.style.color = "red";
+		    		td8.textContent = "New!";
 		    		
 		    		tr.appendChild(td1);
 		    		tr.appendChild(td2);

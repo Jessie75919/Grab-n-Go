@@ -94,6 +94,7 @@ CREATE TABLE order01 (
 	ord_tel VARCHAR(20) NOT NULL,
 	ord_Email VARCHAR(50) NOT NULL,
 	ord_evalued TINYINT(1) ,
+	is_read TINYINT(1) ,
 	CONSTRAINT order_M_username_FK FOREIGN KEY (m_username) REFERENCES Member(m_username) ON DELETE CASCADE,
 	CONSTRAINT order_rest_Id_FK FOREIGN KEY (rest_id) REFERENCES restaurant(rest_id) ON DELETE CASCADE
 ) AUTO_INCREMENT = 00001, CHARACTER SET utf8 COLLATE utf8_general_ci;

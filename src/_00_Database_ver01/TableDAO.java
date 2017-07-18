@@ -81,13 +81,13 @@ public class TableDAO {
 				
 				pst.setBlob(8, is); // m_picture
 				pst.setString(9, segment[7]+".jpg"); // m_fileName
-				boolean b = false;
-				if (segment.equals("1")) {
-					b = true ;
-				} else if (segment.equals("0")) {
-					b = false;
-				}
-				pst.setBoolean(10, b); // m_validate
+//				boolean b = false;
+//				if (segment[8].equals("1")) {
+//					b = true ;
+//				} else if (segment[8].equals("0")) {
+//					b = false;
+//				}
+				pst.setInt(10, Integer.parseInt(segment[8])); // m_validate
 				result = pst.executeUpdate();
 
 				if (result == 1)
@@ -303,7 +303,7 @@ public class TableDAO {
 	}
 	//insert OrderMain 
 	public int insertOrder(){
-		String sql = "insert into order01 values(null,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into order01 values(null,?,?,?,?,?,?,?,?,?,?,?)";
 		//ord_id, m_username, m_pickupname, ord_time, ord_pickuptime, rest_id, ord_totalPrice, ord_status
 		int result = -1;
 		try (PreparedStatement pst = con.prepareStatement(sql);
@@ -330,7 +330,7 @@ public class TableDAO {
 				pst.setString(8, segment[7]); 		
 				pst.setString(9, segment[8]); 		
 				pst.setString(10, segment[9]); 		// ord_evalued
-				
+				pst.setInt(11, Integer.parseInt(segment[10])); //isread
 				result = pst.executeUpdate();
 
 				if (result == 1)

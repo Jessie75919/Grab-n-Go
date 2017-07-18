@@ -2,6 +2,12 @@ var restUsername = document.getElementById("restUsername").value;
 var ys = document.getElementById("yearSelected");
 ys.setAttribute("onchange", "getYearOrders()");
 var loadIcon = document.getElementById("spinner");
+//亂數 for 柱狀圖顏色
+var maxNum = 255;  
+var minNum = 0;  
+var r = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum; 
+var g = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum; 
+var b = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum; 
 
 function getYearOrders(){
 	//alert("商家選擇的年份：" + ys.value);
@@ -91,7 +97,7 @@ function getYearOrders(){
 	                return d * 4;
 	            })
 	            .attr("fill", function (d) {
-	                return "rgb(" + d * 0.5 + ",100 , 100)";
+	                return "rgb(" + (r +10) + "," + (g-10) + "," + b + ")";
 	            })
 
 	        //將文字顯示在長條圖上 
@@ -113,7 +119,7 @@ function getYearOrders(){
 	            })
 	            .attr("font-family", "Tahoma")
 	            .attr("font-size", "14px")
-	            .attr("fill", "#bfbbb7")
+	            .attr("fill", "black")
 			
 		}
 	}

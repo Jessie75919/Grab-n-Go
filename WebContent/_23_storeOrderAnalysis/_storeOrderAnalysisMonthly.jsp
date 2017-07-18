@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <!-- 載入d3.js -->
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="../javascript/jquery-3.2.1.min.js"></script>
+<script src="../javascript/jquery.min_2.1.1.js"></script>
   <script>
 $(document).ready(function(){
 		  getMonthlyOrders();

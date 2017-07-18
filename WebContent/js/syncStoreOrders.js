@@ -1,17 +1,40 @@
 $(document).ready(function() {
-	var idArray = [];
-	$("table input:even").each(function() {
-		idArray.push($(this).attr("id"));
-	});
+//	var idArray = [];
+//	$("table input:even").each(function() {
+//		idArray.push($(this).attr("id"));
+//	});
+	//頁面載入後幫未讀的訂單加上class="new"
+	var $td = $("#orderTable tr td:last-child");
+	//alert($td.length);
+	for(i = 0;i < $td.length; i++){
+	     if($td[i].id == 0){
+	    	 $td[i].parentNode.setAttribute("class", "new");
+	    	 $td[i].textContent = "New!";
+	     }
+	}
+	
+	$("#orderTable input").next().click(function(){
+		if($(this).closest("tr").attr("class") == "new"){
+			readOrder($(this).closest("tr").attr("id"));
+		} else{
+			alert("已讀");
+		}
+		});
+	
+	function readOrder(id){
+		$.get("../ReadOrderServlet?ordId=" + id, function(data, status){
+	        //alert("Data: " + data + "\nStatus: " + status);
+	    });
+	}
 	
 //	setInterval(function(){
 //		$("#orderTable tr").removeClass("new");
 //		syncOrder();
-//	}, 10000);
+//	}, 1000);
 
 	
 	$("#clickme").click(function(){
-		$("#orderTable tr").removeClass("new");
+//		$("#orderTable tr").removeClass("new");
 		syncOrder();
 //		$("#countdown").text(new Date());
 	});
@@ -36,7 +59,7 @@ function syncOrder() {
 	$("table input:even").each(function() {
 		idArray.push($(this).attr("id"));
 	});
-	alert(idArray);
+	//alert(idArray);
 	
 	//jQuery ajax
 	$.post("SyncOrders.json",
@@ -51,6 +74,7 @@ function syncOrder() {
 		    		alert("insertAfterChild: " + data[i].insertIndex);
 		    		var tr = document.createElement("tr");
 		    		tr.setAttribute("class", "new");
+		    		tr.id = data[i].ore_id;
 		    		
 		    		var td1 = document.createElement("td");
 		    		td1.setAttribute("nowrap", "");
@@ -100,6 +124,11 @@ function syncOrder() {
 		    		a3.textContent = "取消訂單";
 		    		td7.appendChild(a3);
 		    		
+		    		var td8 = document.createElement("td");
+		    		td8.id = data[i].isRead;
+		    		td8.style.color = "red";
+		    		td8.textContent = "New!";
+		    		
 		    		tr.appendChild(td1);
 		    		tr.appendChild(td2);
 		    		tr.appendChild(td3);
@@ -107,6 +136,7 @@ function syncOrder() {
 		    		tr.appendChild(td5);
 		    		tr.appendChild(td6);
 		    		tr.appendChild(td7);
+		    		tr.appendChild(td8);
 		    		
 		    		$(tr).insertAfter("table tr:nth-child(" + data[i].insertIndex + ")");
 		    	}

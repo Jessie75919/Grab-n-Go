@@ -13,7 +13,13 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
+    <script src="../javascript/jquery.min_2.1.1.js"></script>
     <title>查詢訂單|本日訂單-Grab &amp; Go</title>
+    <style type="text/css">
+    	.new{
+    		background-color: #ffb84d;
+    	}
+    </style>
 </head>
 <!-- 商家已登入頁面 -->
 <!-- 查詢訂單, 顯示結果頁面 -->
@@ -86,14 +92,15 @@
                     <!-- 顯示訂單資訊 -->
                     <!-- 取得訂單 -->
                    <c:forEach var="orderSearch" items="${mPickupName}">
-                    <tr>
+                    <tr id="${orderSearch.ord_id}">
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${orderSearch.ord_time}"/></td>
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${orderSearch.ord_pickuptime}"/></td>
                         <td>${orderSearch.m_pickupname}</td>
                         <td><a href="../_24_storeOrder/_storeOrderDetails.jsp?ord_id=${orderSearch.ord_id}&ord_totalPrice=${orderSearch.ord_totalPrice}">${orderSearch.ord_id}</a></td>
                         <td> $${orderSearch.ord_totalPrice}</td>
                         <td><a href="#">${orderSearch.ord_status}</a></td>
-                        <td id="cancelB"><a href="#" onclick="orderCancel">取消訂單</a></td>
+                        <td id="cancelB"><a href="../_24_storeOrder/_storeOrderSearchResult.jsp" onclick="ordCancel(${orderSearch.ord_id})">取消訂單</a></td>
+                        <td id="${orderSearch.isRead}" style="color: red;"></td>
                     </tr>
                     </c:forEach>
                 </table>
@@ -107,7 +114,47 @@
         </div>
         </div>
     </section>
-
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//頁面載入後幫未讀的訂單加上class="new"
+			var $td = $("#orderTable tr td:last-child");
+			//alert($td.length);
+			for(i = 0;i < $td.length; i++){
+			     if($td[i].id == 0){
+			    	 $td[i].parentNode.setAttribute("class", "new");
+			    	 $td[i].textContent = "New!";
+			     }
+			}
+			
+			$("#orderTable a").click(function(){
+				if($(this).closest("tr").attr("class") == "new"){
+					readOrder($(this).closest("tr").attr("id"));
+				} else{
+					alert("已讀");
+				}
+				});
+			
+			function readOrder(id){
+				$.get("../ReadOrderServlet?ordId=" + id, function(data, status){
+			        //alert("Data: " + data + "\nStatus: " + status);
+			    });
+			}
+		});
+		
+		/* 取消訂單 */
+    	function ordCancel(cancelBtn){
+    		if(confirm("確定取消此筆訂單嗎？")){
+    			//var cancelBtn = 
+    			alert('cancel order #: ' + cancelBtn);
+    			var xhr = new XMLHttpRequest();
+    			xhr.open('GET','CancelOrder.do?ordId=' + cancelBtn,true);
+    			xhr.send();
+    			alert(" 訂單已取消囉！")	
+    		}else{
+    			alert("請繼續完成訂單呦 ~")
+    		}
+    	}
+	</script>
 </body>
 
 </html>

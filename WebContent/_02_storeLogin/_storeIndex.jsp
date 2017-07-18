@@ -18,7 +18,7 @@
     
     <style type="text/css">
     	.new{
-    		background-color: #6699ff;
+    		background-color: #ffb84d;
     	}
     </style>
 </head>
@@ -54,7 +54,7 @@
             <div class="col-md-9">
                 <div>
                     <h3>> 待處理訂單</h3>
-                    <span id="clickme">按我</span>
+                    <span id="clickme" class="btn btn-primary">立即刷新訂單</span>
                     <span id="countdown"></span>
                     <!-- 訂單搜尋 -->
                     <span><h4>請輸入欲查詢訂單的顧客姓名：</h4></span>
@@ -102,7 +102,7 @@
                     <!-- 顯示訂單資訊 -->
                     <!-- 取得訂單 -->
                    <c:forEach var="anOrderBean" items="${orderBeans.storeOrdersInPgogress}">
-                    <tr>
+                    <tr id="${anOrderBean.ord_id}">
                         <td nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}"/></td>
                         <td  nowrap=""><fmt:formatDate type = "both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_pickuptime}"/></td>
                         <td >${anOrderBean.m_pickupname}</td>
@@ -116,6 +116,7 @@
                             <a href="_storeIndex.jsp" id="ABC" onClick="updateOrdStatus(${anOrderBean.ord_id})">${anOrderBean.ord_status}</a>
                         </td>
                         <td id="cancelB"><a href="_storeIndex.jsp" onClick="ordCancel(${anOrderBean.ord_id})">取消訂單</a></td>
+                        <td id="${anOrderBean.isRead}" style="color: red;"></td>
                     </tr>
                     </c:forEach> 
                 </table>
@@ -131,7 +132,7 @@
     
     <script>
     var restId = ${StoreLoginOK.rest_id};
-    alert(restId);
+    //alert(restId);
     var ordStatus = document.getElementById("ordStatus").value;
     // var restUsername = document.getElementById("restUsername").value;
      

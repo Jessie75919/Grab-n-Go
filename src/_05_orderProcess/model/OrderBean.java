@@ -21,9 +21,18 @@ public class OrderBean {
 	int monthDay;
 	int insertIndex;
 	String ordPickuptime;
+	int isRead;
 	
 	
 	
+
+	public int getIsRead() {
+		return isRead;
+	}
+
+	public void setIsRead(int isRead) {
+		this.isRead = isRead;
+	}
 
 	public String getOrdPickuptime() {
 		return ordPickuptime;

@@ -91,7 +91,7 @@ public class RestRatingBeanDAO {
 	
 
 	public List<RestRatingBean> getAllRestEvaByRestId(int rest_id) {
-		String sql = "select * from rest_evaluate where rest_id = ?";
+		String sql = "select * from rest_evaluate where rest_id = ? order by eva_date DESC";
 		List<RestRatingBean> list = new ArrayList<>();
 		int count = 0;
 		double total = 0;
@@ -118,7 +118,7 @@ public class RestRatingBeanDAO {
 	
 	
 	public List<RestRatingBean> getAllRestEvaByRestId() {
-		String sql = "select * from rest_evaluate where rest_id = ?";
+		String sql = "select * from rest_evaluate where rest_id = ? order by eva_date DESC";
 		List<RestRatingBean> list = new ArrayList<>();
 		int count = 0;
 		double total = 0;

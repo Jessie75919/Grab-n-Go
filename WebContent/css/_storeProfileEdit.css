@@ -23,9 +23,9 @@ label{
   margin-left: 5px;
   float: left;
 }
-#titleP{
-  margin:10px;
-  font-size: 150%;
+#titleP h4{
+  margin:5px;
+  font-size: 180%;
   font-family: "Lucida Console", Monaco, monospace;
   font-style: italic;
   font-weight: bold;

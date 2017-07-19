@@ -11,7 +11,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>GrabAndGo Menu System</title>
+    <title>新增餐點項目|菜單管理-Grab &amp; Go</title>
 </head>
 <!-- 商家菜單管理 -->
 <!-- 新增餐點項目 -->
@@ -33,7 +33,7 @@
 		<jsp:include page="../_IncludeJsp/Store_Profile.jsp" />
             <div class="col-md-9">
                 <div>
-                    <h3 id="helper"> 新增餐點項目</h3>
+                    <h3 id="helper">> 新增餐點項目</h3>
                 </div>
             </div>
     </section>

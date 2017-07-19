@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="../css/_storeIndex.css">
 <link rel="stylesheet" href="../css/_storeProfileEdit.css"
 	type="text/css">
-<title>GrabAndGo Menu System</title>
+<title>帳戶資料修改-Grab &amp; Go</title>
 </head>
 <!-- 商家已登入 -->
 <!-- 修改餐廳個人資料頁面 -->
@@ -169,12 +169,13 @@
 				<!-- <div class="col-sm-offset-2 col-sm-10"> -->
 				<div id="btnS">
 					<input type="submit" name="submit" id="holyshit"
-						value="save changes" class="btn btn-warning">
+						value="確定變更" class="btn btn-primary">
 				</div>
 				<div id="btnC">
-					<input type="reset" name="cancel" id="cancel" value="cancel"
+					<input type="reset" name="cancel" id="cancel" value="取消變更"
 						class="btn btn-default">
 				</div>
+				<div class="row"></div>
 			</div>
 	</div>
 	</form>

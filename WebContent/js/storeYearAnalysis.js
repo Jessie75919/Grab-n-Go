@@ -27,6 +27,7 @@ function getYearOrders(){
 			for(var i = 0; i < yearOrders.length; i++ ){
 				console.log("orderMonth = " + yearOrders[i].ordPickuptime
 						    + "revenue = " + yearOrders[i].ord_totalPrice);
+				
 				if(yearOrders[i].ord_totalPrice != 0){
 					var tr = document.createElement("tr");
 					var td1 = document.createElement("td");
@@ -89,12 +90,12 @@ function getYearOrders(){
 	            })
 	            .attr("y", function (d) {
 	                // body...
-	                return svg_height - (d * 0.16);
+	                return svg_height - (d * 0.14);
 	            })
 	            .attr("width", svg_width / dataset.length - bar_padding)
 	            .attr("height", function (d) {
 	                // body...
-	                return d * 4;
+	                return d * 0.2 ;
 	            })
 	            .attr("fill", function (d) {
 	                return "rgb(" + (r +10) + "," + (g-10) + "," + b + ")";

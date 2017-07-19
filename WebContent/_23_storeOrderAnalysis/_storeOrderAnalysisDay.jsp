@@ -40,7 +40,7 @@
 		getDailyRevenue($("#datepicker").val());
 	});
 </script>
-<title>Welcome to GrabAndGo</title>
+<title>訂單統計(單位:日)|帳務分析-Grab &amp; Go</title>
 </head>
 <!-- 商家登入成功畫面 -->
 <!-- 帳務分析頁面/ 每日訂單統計(一併呈現當日餐點熱銷) -->
@@ -86,10 +86,10 @@
 		<br>
 		<div>
 			<ul class="nav nav-pills nav-justified">
-				<li role="presentation" class="active"><a href="#">當日訂單統計</a></li>
+				<li role="presentation" class="active"><a href="#">訂單統計&nbsp(&nbsp單位:日&nbsp)</a></li>
 				<li role="presentation"><a
-					href="_storeOrderAnalysisMonthly.jsp">當月訂單統計</a></li>
-				<li role="presentation"><a href="_storeOrderAnalysisYear.jsp">當年訂單統計</a></li>
+					href="_storeOrderAnalysisMonthly.jsp">訂單統計&nbsp(&nbsp單位:月&nbsp)</a></li>
+				<li role="presentation"><a href="_storeOrderAnalysisYear.jsp">訂單統計&nbsp(&nbsp單位:年&nbsp)</a></li>
 			</ul>
 		</div>
 		<br>

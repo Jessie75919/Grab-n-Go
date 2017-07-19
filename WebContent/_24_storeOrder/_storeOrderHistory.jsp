@@ -13,7 +13,7 @@
 <!--載入Bootstrap-->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/_storeIndex.css">
-<title>Welcome to GrabAndGo</title>
+<title>歷史訂單查詢|歷史訂單-Grab &amp; Go</title>
 <script src="../javascript/jquery.min_2.1.1.js"></script>
 </head>
 <!--商家登入成功-->
@@ -42,7 +42,7 @@
 				<span><h4>請選擇欲查詢的訂單月份：</h4></span> <br>
 				<form class="form-inline">
 					<!--月份搜尋-->
-					<select id="monthSelector">
+					<select class="form-control" id="monthSelector">
 						<!--                             <option value="January">一月</option> -->
 						<!--                             <option value="Feburary">二月</option> -->
 						<!--                             <option value="March">三月</option> -->

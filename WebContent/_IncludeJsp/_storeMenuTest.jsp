@@ -9,7 +9,7 @@
 </head>
 <!-- include 商家左側列表 -->
 <body>
-<div class="row">
+<div id="leftMenu" class="row">
             <div class="col-md-3">
             	<center>
                 <div id="topName"> <h4> ${StoreLoginOK['rest_username']} </h4></div>

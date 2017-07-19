@@ -11,7 +11,7 @@
     <!--載入Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/_storeIndex.css">
-    <title>GrabAndGo Menu System</title>
+    <title>修改餐點項目|菜單管理-Grab &amp; Go</title>
 </head>
 <!-- 商家菜單管理 -->
 <!-- 刪除修改餐點項目 -->

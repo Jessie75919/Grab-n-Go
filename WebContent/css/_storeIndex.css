@@ -1,5 +1,5 @@
 /*設定字體*/
-ul, li, h2, h3, span, div, #middleForm, #leftMenu, #topBlock, #topName{
+ul, li, h2, h3, span, div, #leftMenu, #middleForm, #leftMenu, #topBlock, #topName{
 font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 /*profile照片大小*/
@@ -34,17 +34,18 @@ font-family: "Droid Sans", Arial, "微軟正黑體", "Microsoft JhengHei";
 }
 th{
   text-align: left;
-  font-size: 110%;
+  font-size: 120%;
   width: 200px;
   height: 40px;
 
 }
 td{
   /*text-align: center;*/
-  font-size: 110%;
+  font-size: 115%;
 }
 ul, li{
-  font-size: 108%;
+  font-weight: bold;
+  font-size: 110%;
 }
 /*顯示新增餐點類別結果*/
 .ptResult{

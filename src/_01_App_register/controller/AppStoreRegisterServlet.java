@@ -114,11 +114,11 @@ public class AppStoreRegisterServlet extends HttpServlet {
 			InputStream[] is = new InputStream[3]; 
 					
 				long size[] = new long[3];	
-				is[0] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_mBanner.jpg");
+				is[0] =	getServletContext().getResourceAsStream("/images/restImage/test_mBanner.jpg");
 				size[0] = is[0].available();
-				is[1] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_logo.JPG");
+				is[1] =	getServletContext().getResourceAsStream("/images/restImage/test_logo.JPG");
 				size[1] = is[1].available();
-				is[2] =	new FileInputStream("C:\\_JSP\\GitHub_Root\\GrabAndGo\\WebContent\\images\\restImage\\test_coverImg.JPG");
+				is[2] =	getServletContext().getResourceAsStream("/images/restImage/test_coverImg.JPG");
 				size[2] = is[2].available();
 				
 			

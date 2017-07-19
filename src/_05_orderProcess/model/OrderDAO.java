@@ -634,7 +634,7 @@ public class OrderDAO {
 		List<OrderBean> obl = new ArrayList<>();
 		List<OrderItemBean> oibl = new ArrayList<>();
 		String sql = " SELECT ord_id, m_pickupname, ord_time, ord_totalPrice, "
-					+ " ord_tel, ord_status, ord_pickuptime , ord_evalued "
+					+ " ord_tel, ord_status, ord_pickuptime , ord_evalued , is_read "
 					+ " FROM order01 "
 					+ " WHERE rest_id = ? AND ord_pickuptime >= CURDATE() "
 					+ " AND ord_status IN (?) "
@@ -660,6 +660,7 @@ public class OrderDAO {
 				ob.setOrd_status(rs.getString("ord_status"));
 				ob.setOrd_pickuptime(rs.getTimestamp("ord_pickuptime"));
 				ob.setOrd_evalued(rs.getInt("ord_evalued"));
+				ob.setIsRead(rs.getInt("is_read"));
 				ob.setItems(oibl);
 				obl.add(ob);
 			}

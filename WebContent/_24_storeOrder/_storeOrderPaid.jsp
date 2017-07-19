@@ -103,36 +103,25 @@
                 <hr>
             <!-- 訂單明細  -->
              <div id="detailsModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                    <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                        <!--  popup 內容  -->
                         <div class="modal-content">
                             <!-- popup header --> 
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">訂單明細</h4>
+                                <h4 style="font-weight: bold;" class="modal-title">訂單明細</h4>
                             </div>
-                            <div id="detailsContent" style="padding: 15px;">
+                            <div id="detailsContent" style="padding: 40px;">
                                 <table id="tableD">
-                                  <tr>
-                                        <th>顧客名稱</th>
-                                        <th>餐點名稱</th>
-                                        <th>餐點編號</th>
-                                        <th>備註</th>
-                                        <th>數量</th>
-                                        <th>單價</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                    <tr>
-                        
-                                    		<td id="dPickupname"></td>
-                                    		<td nowrap="" id="dItemname"></td>
-                                    		<td id="dProdid"></td>
-                                    		<td id="dItemnote"></td>
-                                    		<td id="dItemamount"></td>
-                                    		<td id="dItemprice"></td>
-                                    		<td id="dSubprice"></td>
-                                    </tr> 
-                                    
+<!--                                   <tr> -->
+<!--                                         <th>顧客名稱</th> -->
+<!--                                         <th>餐點名稱</th> -->
+<!--                                         <th>餐點編號</th> -->
+<!--                                         <th>備註</th> -->
+<!--                                         <th>數量</th> -->
+<!--                                         <th>單價</th> -->
+<!--                                         <th>Subtotal</th> -->
+<!--                                     </tr> -->
                                 	 </table>
                             </div>
                         </div>
@@ -149,44 +138,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script>
-    var mPickupname = document.getElementById("dPickupname");
-    var itemName = document.getElementById("dItemname");
-    	var prodId = document.getElementById("dProdid");
-    	var itemNote = document.getElementById("dItemnote");
-    var itemAmount = document.getElementById("dItemamount");
-    	var itemPrice = document.getElementById("dItemprice");
-    	var subTotal = document.getElementById("dSubprice");
-    	var dTotal = document.getElementById("dTotal");
-    	
-        function clickMe(e) {
-        	//alert("target = " + e);
-        	var xhr = new XMLHttpRequest();
-        	xhr.open("GET","../AppendOrderDetail.json?id=" + e, true);
-        	xhr.send();
-        	
-        	xhr.onreadystatechange = function(){
-        		if( xhr.readyState == 4 && xhr.status == 200){
-        			alert("Got AppendOrderDetail.json!");
-        			var paidOrders = JSON.parse(xhr.responseText);
-        			alert(JSON.stringify(paidOrders));
-        			//var tr = document.createElement("tr");
-        			for(var i = 0; i < paidOrders.length ; i++ ){
-        				mPickupname.innerHTML = paidOrders[i].m_pickupname;
-            		 	itemName.innerHTML = paidOrders[i].item_name;
-            			prodId.innerHTML = paidOrders[i].prod_id;
-            			itemNote.innerHTML = paidOrders[i].item_note;
-            			itemAmount.innerHTML = paidOrders[i].item_amount;
-            			itemPrice.innerHTML = paidOrders[i].item_price;
-            			subTotal.innerHTML = paidOrders[i].item_price * paidOrders[i].item_amount;
-            			
-        			}
-        		}
-        		
-        	}
-        }
-        	
-</script>
+    <script src="../js/storeOrdDetails.js"></script>
 </body>
 
 </html>

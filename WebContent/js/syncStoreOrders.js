@@ -17,7 +17,7 @@ $(document).ready(function() {
 		if($(this).closest("tr").attr("class") == "new"){
 			readOrder($(this).closest("tr").attr("id"));
 		} else{
-			alert("已讀");
+			//alert("已讀");
 		}
 		});
 	
@@ -69,9 +69,15 @@ function syncOrder() {
 		    }
 		    ,
 		    function(data, status){
+		    	if(data.length == 0){
+		    		alert("目前沒有新的訂單。");
+		    	} else{
+		    		alert("有新的訂單: " + data.length + "筆");
+		    	}
+		    	
 		    	for(var i = 0; i < data.length; i++){
-		    		alert("Data: " + data[i].m_pickupname);
-		    		alert("insertAfterChild: " + data[i].insertIndex);
+		    		//alert("Data: " + data[i].m_pickupname);
+		    		//alert("insertAfterChild: " + data[i].insertIndex);
 		    		var tr = document.createElement("tr");
 		    		tr.setAttribute("class", "new");
 		    		tr.id = data[i].ore_id;

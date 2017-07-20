@@ -92,7 +92,11 @@
                                     <fmt:formatDate type="both" pattern="yyyy-MM-dd HH:mm" value="${anOrderBean.ord_time}" />
                                 </div>
                                 <input id="restId" type="hidden" value="${anOrderBean.rest_id}">
-                                <div id="restName" class="order store">${anOrderBean.rest_name}</div>
+                                <div id="restName" class="order store">
+                                <a href="${pageContext.servletContext.contextPath}/_07_storePage/getOneRest.do?id=${anOrderBean.rest_id}">
+                                ${anOrderBean.rest_name}
+                                </a>
+                                </div>
                                 <div class="order price">${anOrderBean.ord_totalPrice}</div>
                                 <div class="order status">${anOrderBean.ord_status}</div>
                                 <div class="order rate">

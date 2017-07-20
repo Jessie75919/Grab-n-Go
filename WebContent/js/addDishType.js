@@ -282,6 +282,10 @@ $('#helper').click(function () {
     
 });
 
+$('#helperA').click(function () { 
+    $('#dishType1').val('烤物');
+});
+
 
 function validateForm(event) {
     // alert("validateForm");

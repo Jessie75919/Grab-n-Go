@@ -22,12 +22,12 @@
 	}
 	
 	var qq =
-		[{ "name": "Afternoon Tea","rest_id":"2" },
+		[{ "name": "4Mano Caffé","rest_id":"7" },
 		{ "name": "Subway","rest_id":"1" },
 		{ "name": "Campus Cafe","rest_id":"6" },
-		{ "name": "麵家三士","rest_id":"8" },
-		{ "name": "Burger Talks淘客美式漢堡" ,"rest_id":"9"},
 		{ "name": "Omaya春川炒雞" ,"rest_id":"3"},
+		{ "name": "Burger Talks淘客美式漢堡" ,"rest_id":"9"},
+		{ "name": "麵家三士","rest_id":"8" },
 		];
 
 	venues = qq;

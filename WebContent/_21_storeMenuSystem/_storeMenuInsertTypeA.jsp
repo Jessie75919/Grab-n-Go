@@ -69,7 +69,7 @@
 		 <input id="countUpdate" name="countBB" value="0" style="display:none;">
 		<input id="restName" type="hidden" value="${StoreLoginOK['rest_name']}">
 		<input id="updateList" name="updateList" value="0" style="display:none;">
-			<h4>已新增的餐點類別：</h4>
+			<h4 id="helperA">已新增的餐點類別：</h4>
 			<div id="showAA">${MsgMap.NeedOneUpdate}${MsgOK.UpdateOK}</div> 
 		</div>
 		</form>

@@ -48,7 +48,7 @@
                     <div class="rating">
                         <div class="searchBg"></div>
                         <section class="searchContent">
-                            <h2> 還吃的習慣嗎 ? </h2>
+                            <h2 id="nonoder"> 還吃的習慣嗎 ? </h2>
                             <div class="closeBtn">
                                 <i class="icon-close" title="關閉"></i>
                             </div>
@@ -137,6 +137,9 @@
                 <script>
                     $(window).load(function() {
                         $("#loading").fadeOut(500);
+                        $("#nonoder").click(function(){
+                        	$("div.searchList textarea").text("好吃的不要不要的~");
+                        });
                     })
 
                 </script>

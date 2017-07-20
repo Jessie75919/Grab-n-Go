@@ -8,6 +8,7 @@ var score = document.getElementById("score");
 var starArr = document.querySelectorAll('.icon-star');
 
 function clikeMe(e) {
+	$("div.searchList textarea").text("");
     score.value = 0;
     for (var i = 0; i < 5; i++) {
          starArr[i].className = "icon-star";

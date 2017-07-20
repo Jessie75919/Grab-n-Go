@@ -37,8 +37,6 @@ public class AppStoreResendEmailServlet extends HttpServlet {
 		}
 		System.out.println("jsonIn = " + jsonIn);
 		JsonObject jsonObject = gson.fromJson(jsonIn.toString(), JsonObject.class);
-		String param = jsonObject.get("param").getAsString();
-		System.out.println("param = " + param);
 		String username = jsonObject.get("username").getAsString();
 		String password = jsonObject.get("password").getAsString();
 

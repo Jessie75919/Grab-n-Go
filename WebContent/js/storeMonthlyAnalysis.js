@@ -24,13 +24,13 @@ s.attr({ 'width' : 700,'height' : 330,})
 //	年
 	var ys = document.getElementById("yearSelector");
 	var year = d.getFullYear();
-	var years = ["2017","2016","2015","2018"];
+	var years = ["2015","2016","2017","2018"];
 	for (var y = 0; y < years.length; y++) {
 		var yp = document.createElement("option");
 		yp.value = y;
 		yp.text = years[y];
 		ys.appendChild(yp);
-		if (y == year) {
+		if (years[y] == year) {
 			ys.value = y;
 		}
 	}

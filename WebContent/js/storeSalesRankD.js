@@ -45,7 +45,7 @@ function getStoreSalesRankD(date) {
 				td4.textContent = dailySales[i].item_amount;
 				
 				var td5 = document.createElement("td");
-				td5.textContent = total;
+				td5.textContent = "$" + total;
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);

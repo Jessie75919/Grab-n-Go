@@ -56,7 +56,7 @@ function getStoreSalesRankM() {
 				td4.textContent = monthlySales[i].item_amount;
 				
 				var td5 = document.createElement("td");
-				td5.textContent = total;
+				td5.textContent = "$" + total;
 				
 				tr.appendChild(td1);
 				tr.appendChild(td2);

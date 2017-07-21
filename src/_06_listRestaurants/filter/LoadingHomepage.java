@@ -71,7 +71,7 @@ public class LoadingHomepage implements Filter {
 				System.out.println("get Loc in in LoadingHomepageFilter");
 				session.setAttribute("stList", storeList);
 				
-				chain.doFilter(servletRequest, servletResponse);
+				chain.doFilter(request, response);
 				
 //				servletResponse.sendRedirect("/_Grab_Go/WebContent/indexA.jsp");
 //				servletRequest.getRequestDispatcher(contextPath+"/indexA.jsp").forward(servletRequest, servletResponse);

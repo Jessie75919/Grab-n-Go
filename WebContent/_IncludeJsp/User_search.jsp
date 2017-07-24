@@ -38,12 +38,8 @@
 				<input name="reset" type="reset" id="reset" value="重填"> <input
 					name="submit" type="submit" id="submit" value="搜尋">
 			</div>
-			<input type="button" onclick="test()">
 		</form>
 		<script>
-		function test(){
-			alert("wtf");
-		}
         function validateForm() {
             var x = document.forms["searchForm"].foodKind.value;
             var y = document.forms["searchForm"]["storeName"].value;

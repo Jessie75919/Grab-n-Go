@@ -17,7 +17,7 @@
 		<div class="closeBtn">
 			<i class="icon-close" title="關閉"></i>
 		</div>
-		<form name="searchForm" action="${pageContext.servletContext.contextPath}/_22_SearchRest/SearchRestServlet" onsubmit="return validateForm()" method="get">
+		<form id="WTF" name="searchForm" action="${pageContext.servletContext.contextPath}/_22_SearchRest/SearchRestServlet" onsubmit="return validateForm()" method="get">
 			<div style="margin-bottom: 15px;">
 			<span id="noCondition" class="wRed" ></span>
 			</div>
@@ -41,9 +41,17 @@
 		</form>
 		<script>
         function validateForm() {
-            var x = document.forms["searchForm"].foodKind.value;
-            var y = document.forms["searchForm"]["storeName"].value;
-            var z = document.forms["searchForm"]["foodName"].value;
+        	var x = $('#selector').val(); 
+        	var y = $('#storeName').val(); 
+        	var z = $('#foodName').val(); 
+        	
+//         	alert(selector);
+//         	alert(storeName);
+//         	alert(foodName);
+        	
+//             var x = document.forms["searchForm"].foodKind.value;
+//             var y = document.forms["searchForm"]["storeName"].value;
+//             var z = document.forms["searchForm"]["foodName"].value;
 
             if ((!x || /^\s*$/.test(x)) && (!y || /^\s*$/.test(y)) && (!z || /^\s*$/.test(z))) {
                 noCondition.innerHTML = "請至少給一個條件吧(╬ﾟдﾟ)"

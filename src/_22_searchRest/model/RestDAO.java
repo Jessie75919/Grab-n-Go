@@ -80,7 +80,7 @@ public class RestDAO {
 	public String getSelectTag() throws SQLException {
 		String ans = "";
 		Collection<String> list = getRestType();
-		ans += "<SELECT name='" + tagName + "'>";
+		ans += "<SELECT id='selector' name='" + tagName + "'>";
 		ans += "<option value='" + "" + "'>" + "請選擇餐廳類別" + "</option>";
 		for (String type : list) {
 				ans += "<option value='" + type + "'>" + type + "</option>";

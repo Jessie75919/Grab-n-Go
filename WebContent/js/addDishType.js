@@ -283,7 +283,8 @@ $('#helper').click(function () {
 });
 
 $('#helperA').click(function () { 
-    $('#dishType1').val('烤物');
+    $('#dishType1').val('炸物');
+    
 });
 
 

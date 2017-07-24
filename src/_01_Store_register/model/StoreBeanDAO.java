@@ -676,5 +676,21 @@ public class StoreBeanDAO {
 		return listStore;
 	}
 	
-	
+	public boolean checkRestValidate(int rest_id){
+		boolean rest_validate = false;
+		StoreBean sb = null;
+		String sql = "select rest_validate FROM restaurant where rest_id = ?";
+		try (Connection con = ds.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);
+		) {
+			pst.setInt(1, rest_id);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()){
+				rest_validate = rs.getBoolean("rest_validate");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rest_validate;
+	}
 }

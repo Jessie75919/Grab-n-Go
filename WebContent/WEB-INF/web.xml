@@ -248,4 +248,10 @@
     <servlet-name>PickRestServlet</servlet-name>
     <url-pattern>/PickRestServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AppValidateCheckServlet</display-name>
+    <servlet-name>AppValidateCheckServlet</servlet-name>
+    <servlet-class>_01_App_register.controller.AppValidateCheckServlet</servlet-class>
+  </servlet>
 </web-app>

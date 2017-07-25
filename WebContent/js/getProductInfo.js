@@ -45,7 +45,7 @@ function clickMe(e) {
 }
 // <end> 找尋點擊的那筆商品的資料 & 塞入跳出的訂購頁面
 
-$('#helper').click(function () { 
+$('#title').click(function () { 
     $('#specialNeed').val("兩坨飯飯");
 });
 $('#proImg').click(function () { 

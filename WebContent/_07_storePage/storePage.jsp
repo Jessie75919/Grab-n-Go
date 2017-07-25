@@ -116,7 +116,7 @@
 					<textarea id="specialNeed" placeholder="請輸入特殊需求，例如: 大辣*1，不辣*3"
 						rows="3" name="specialNeed" id="else"></textarea>
 				</p>
-				<div class="menuCount">
+				<div id="helper" class="menuCount">
 					數量<input type="number" name="count" id="count" value="1" min="1">
 				</div>
 				<div class="addBtn">

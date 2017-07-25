@@ -77,8 +77,8 @@
 						<!-- 機器人驗證 -->
 						<div class="form-group my-1">
 							<br>
-							<div class="g-recaptcha"
-								data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"></div>
+<!-- 							<div class="g-recaptcha" -->
+<!-- 								data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"></div> -->
 							<!-- <label>I am not Robot! Enter the text:&nbsp;</label>
               <input type="text" class="form-control" placeholder="">  -->
 							<div style="padding: 10px;" class="form-check">

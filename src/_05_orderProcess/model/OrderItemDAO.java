@@ -356,10 +356,10 @@ public class OrderItemDAO {
 	
 	public Collection<OrderItemBean> getSalesRankD() {
 		Collection<OrderItemBean> coll = new ArrayList<>();
-		String sql = "SELECT b.item_name, b.item_price, SUM(b.item_amount), b.item_price*SUM(b.item_amount) AS total "
+		String sql = " SELECT b.item_name, b.item_price, SUM(b.item_amount), b.item_price * SUM(b.item_amount) AS total "
 				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
 				+ " WHERE a.rest_id = ? AND a.ord_pickuptime LIKE ? "
-				+ " GROUP BY b.item_name ORDER BY total DESC";
+				+ " GROUP BY b.item_name, b.item_price ORDER BY total DESC ";
 		int count = 1;
 		int prevTotal = 0;
 		int totalAmount = 0;
@@ -402,7 +402,7 @@ public class OrderItemDAO {
 		String sql = "SELECT b.item_name, b.item_price, SUM(b.item_amount), b.item_price*SUM(b.item_amount) AS total "
 				+ " FROM order01 a JOIN order_item b ON a.ord_id = b.ord_id "
 				+ " WHERE a.rest_id = ? AND MONTH(a.ord_pickuptime) = ? "
-				+ " GROUP BY b.item_name ORDER BY total DESC";
+				+ " GROUP BY b.item_name, b.item_price ORDER BY total DESC";
 		int count = 1;
 		int prevTotal = 0;
 		int totalAmount = 0;

@@ -212,7 +212,7 @@ public class RegisterServletMP extends HttpServlet {
 		        +" </tr> "
 		        +" <tr> "
 		        +"     <td align='left' style=\"font-family:Arial, '微軟正黑體', 'Microsoft YaHei', '新細明體'; color: #000000; font-size: 16px;\"> "
-		        +"         <p>親愛的 Garb and Go 會員您好：</p> "
+		        +"         <p>親愛的 Garb and Go 會員 "+ memberID +" ,您好：</p> "
 		        +"         <p>感謝您的註冊，請點擊以下網址完成註冊認證，謝謝！</p> "
 		        +"         <p><a href='http://localhost:8080/_Grab_Go/validate.do?mode=1&user=" + memberID+"'>點我認證</a></p> "
 		        +"     </td> "

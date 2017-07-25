@@ -63,8 +63,8 @@
               <!-- 驗證碼 -->
               <div class="form-group">
                 <br>
-                <div class="g-recaptcha" data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA">
-                </div>
+<!--                 <div class="g-recaptcha" data-sitekey="6LcHbCUUAAAAADtEowUF3Hhswm8p3tb_hrI5AOHA"> -->
+<!--                 </div> -->
                 <!-- 驗整碼輸入結果 --><span id="verfResult" style="height:10px;"></span> 
               </div>
               <!-- 顯示程式執行後的訊息 -->

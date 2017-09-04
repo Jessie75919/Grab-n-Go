@@ -34,3 +34,14 @@
 *****
 
 ## 實機畫面
+### 主畫面
+>![main](/WebContent/images/main.JPG "main")
+
+### 商家內頁畫面
+>![storepage](/WebContent/images/商家內頁畫面.JPG "storepage")
+
+### 商家內頁訂購畫面
+>![storepage](/WebContent/images/商家內頁訂購畫面.JPG "storepage")
+
+### 首頁輪盤畫面
+>![roulette](/WebContent/images/首頁輪盤畫面.JPG "roulette")

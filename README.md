@@ -7,10 +7,10 @@
 *****
 
 # 組員
-> *  Jessie 謝宗哲 
->> * 組長/ 後端JSP&Servlet撰寫、MySQL資料庫建置、前端JS/JQuery撰寫、技術支援、專案視覺設計、專案時程規劃
-> *  Christine 李欣瑾
->> *  副組長 / 手機App端撰寫、後端JSP&Servlet撰寫、MySQL資料庫調整
+> *  Jessie 謝宗哲(組長)
+>> * 後端JSP&Servlet撰寫、MySQL資料庫建置、前端JS/JQuery撰寫、技術支援、專案視覺設計、專案時程規劃
+> *  Christine 李欣瑾(副組長)
+>> * 手機App端撰寫、後端JSP&Servlet撰寫、MySQL資料庫調整
 > *  Jonna 許靖玟
 >> * 前端Bootstrap撰寫、後端JSP&Servlet撰寫、MySQL資料庫調整
 > *  Nick 陳允豪 
